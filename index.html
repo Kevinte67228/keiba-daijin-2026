@@ -1,1 +1,729 @@
-PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InpoLVRXIj4KPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCI+CiAgICA8dGl0bGU+6LO96aas5aSn5LqoIDEwIDIwMjYgLSA45aSn6LOH5paZ5bqr5bm05bqm6IiH6Ieq6KiC5qKd5Lu25LqS5YuV6YCf5p+l6KGoPC90aXRsZT4KICAgIDwhLS0gUFdBIOaUr+aPtCAtLT4KICAgIDxsaW5rIHJlbD0ibWFuaWZlc3QiIGhyZWY9Im1hbmlmZXN0Lmpzb24iPgogICAgPG1ldGEgbmFtZT0idGhlbWUtY29sb3IiIGNvbnRlbnQ9IiMwYjBmMTkiPgogICAgPG1ldGEgbmFtZT0ibW9iaWxlLXdlYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIj4KICAgIDxtZXRhIG5hbWU9ImFwcGxlLW1vYmlsZS13ZWItYXBwLWNhcGFibGUiIGNvbnRlbnQ9InllcyI+CiAgICA8bWV0YSBuYW1lPSJhcHBsZS1tb2JpbGUtd2ViLWFwcC1zdGF0dXMtYmFyLXN0eWxlIiBjb250ZW50PSJibGFjay10cmFuc2x1Y2VudCI+CiAgICA8bWV0YSBuYW1lPSJhcHBsZS1tb2JpbGUtd2ViLWFwcC10aXRsZSIgY29udGVudD0i6LO96aasMTDpgJ/mn6UiPgogICAgPGxpbmsgcmVsPSJhcHBsZS10b3VjaC1pY29uIiBocmVmPSJpY29ucy9pY29uLTE5Mi5wbmciPgogICAgPCEtLSAxMDAlIOmboue3muacrOWcsOi8ieWFpeizh+aWmeW6qyBzY3JpcHTvvIzop6PmsbrngI/opr3lmaggZmlsZTovLyDljZTlrpogQ09SUyDpmZDliLYgLS0+CiAgICA8c2NyaXB0IHNyYz0ibWFzdGVyX2xvb2t1cF9kYi5qcyI+PC9zY3JpcHQ+CiAgICA8IS0tIFNlcnZpY2UgV29ya2VyIOiou+WGiiAtLT4KICAgIDxzY3JpcHQ+CiAgICAgICAgaWYgKCdzZXJ2aWNlV29ya2VyJyBpbiBuYXZpZ2F0b3IpIHsKICAgICAgICAgICAgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoJ2xvYWQnLCAoKSA9PiB7CiAgICAgICAgICAgICAgICBuYXZpZ2F0b3Iuc2VydmljZVdvcmtlci5yZWdpc3Rlcignc3cuanMnKS50aGVuKHJlZyA9PiB7CiAgICAgICAgICAgICAgICAgICAgY29uc29sZS5sb2coJ1NXIHJlZ2lzdGVyZWQ6JywgcmVnLnNjb3BlKTsKICAgICAgICAgICAgICAgIH0pLmNhdGNoKGVyciA9PiBjb25zb2xlLndhcm4oJ1NXIHJlZ2lzdHJhdGlvbiBmYWlsZWQ6JywgZXJyKSk7CiAgICAgICAgICAgIH0pOwogICAgICAgIH0KICAgIDwvc2NyaXB0PgogICAgPHN0eWxlPgogICAgICAgIDpyb290IHsKICAgICAgICAgICAgLS1iZy1jb2xvcjogIzBiMGYxOTsKICAgICAgICAgICAgLS1wYW5lbC1iZzogIzEzMWIyZTsKICAgICAgICAgICAgLS1jYXJkLWJnOiAjMWUyOTNiOwogICAgICAgICAgICAtLWFjY2VudC1jb2xvcjogIzM4YmRmODsKICAgICAgICAgICAgLS1hY2NlbnQtaG92ZXI6ICMwMjg0Yzc7CiAgICAgICAgICAgIC0tdGV4dC1jb2xvcjogI2YxZjVmOTsKICAgICAgICAgICAgLS10ZXh0LW11dGVkOiAjOTRhM2I4OwogICAgICAgICAgICAtLWJvcmRlci1jb2xvcjogIzMzNDE1NTsKICAgICAgICAgICAgLS1nb2xkLWNvbG9yOiAjZjU5ZTBiOwogICAgICAgIH0KCiAgICAgICAgKiB7IGJveC1zaXppbmc6IGJvcmRlci1ib3g7IG1hcmdpbjogMDsgcGFkZGluZzogMDsgZm9udC1mYW1pbHk6IC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgIlNlZ29lIFVJIiwgUm9ib3RvLCAiSGVsdmV0aWNhIE5ldWUiLCBBcmlhbCwgc2Fucy1zZXJpZjsgfQoKICAgICAgICBib2R5IHsKICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tYmctY29sb3IpOwogICAgICAgICAgICBjb2xvcjogdmFyKC0tdGV4dC1jb2xvcik7CiAgICAgICAgICAgIGxpbmUtaGVpZ2h0OiAxLjU7CiAgICAgICAgICAgIHBhZGRpbmc6IDE1cHg7CiAgICAgICAgfQogICAgPC9zdHlsZT4KPC9oZWFkPgo8Ym9keT4KPGgxPuizvemmrOWkp+S6qCAxMCAyMDI2IC0g5YuL6LOH5paZ6YCf5p+l6KGoPC9oMT4KPHAgc3R5bGU9ImNvbG9yOiM5NGEzYjgiPuiVoeeoi+WktOi8iS4uLiDml6XmmI7ml6XmmI7pl67popjlsJroh6rniYjoh6rotKzlpKflrZfjgII8L3A+CjxzY3JpcHQ+CmlmICh3aW5kb3cuTUFTVEVSX0RCX0RBVEEpIHsKICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ3AnKS50ZXh0Q29udGVudCA9ICfos4fmlpnlv4XlvaLnirbmgKfvvJonICsgd2luZG93Lk1BU1RFUl9EQl9EQVRBLmFsbF9ob3JzZXMubGVuZ3RoICsgJ+WMuSwnICsgd2luZG93Lk1BU1RFUl9EQl9EQVRBLnJlY29tbWVuZGF0aW9ucy5sZW5ndGggKyAn562W5a+55o6o6JaW6KGo5ZCNJzsKfQo8L3NjcmlwdD4KPC9ib2R5Pgo8L2h0bWw+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>賽馬大亨 10 2026 - 8大資料庫年度與自訂條件互動速查表</title>
+    <!-- PWA 支援 -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0b0f19">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="賽馬10速查">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <!-- 100% 離線本地載入資料庫 script，解決瀏覽器 file:// 協定 CORS 限制 -->
+    <script src="master_lookup_db.js"></script>
+    <!-- Service Worker 註冊 -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then(reg => {
+                    console.log('SW registered:', reg.scope);
+                }).catch(err => console.warn('SW registration failed:', err));
+            });
+        }
+    </script>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --panel-bg: #131b2e;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --accent-hover: #0284c7;
+            --text-color: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --gold-color: #f59e0b;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            padding: 15px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px 10px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            color: #38bdf8;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* 8大類別頁籤 */
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent-color);
+            background: #1e293b;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-color);
+            color: #0f172a;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+        }
+
+        /* 自訂條件篩選面板 */
+        .filter-panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .filter-group label {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .filter-control {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 9px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .filter-control:focus {
+            border-color: var(--accent-color);
+        }
+
+        /* 統計列 */
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--panel-bg);
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .stats-count {
+            color: var(--gold-color);
+            font-weight: bold;
+
+        }
+
+        /* 表格樣式 */
+        .table-container {
+            overflow-x: auto;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: #1e293b;
+            color: #38bdf8;
+            padding: 12px 15px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-color);
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        th:hover {
+            background: #334155;
+        }
+
+        th .sort-icon {
+            margin-left: 4px;
+            font-size: 0.8rem;
+            color: var(--gold-color);
+        }
+
+        td {
+            padding: 11px 15px;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+            white-space: nowrap;
+        }
+
+        tr:hover td {
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        /* 標籤徽章 */
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .badge-rainbow { background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff); color: #fff; }
+        .badge-gold { background: #d97706; color: #fff; }
+        .badge-silver { background: #64748b; color: #fff; }
+        .badge-bronze { background: #b45309; color: #fff; }
+        .badge-green { background: #15803d; color: #fff; }
+
+        .horse-link {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .horse-link:hover {
+            text-decoration: underline;
+            color: #7dd3fc;
+        }
+
+        .btn-detail {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid var(--accent-color);
+            color: #38bdf8;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .btn-detail:hover {
+            background: var(--accent-color);
+            color: #0f172a;
+        }
+
+        /* 彈出視窗 Modal */
+        .modal-backdrop {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: #0f172a;
+            border: 1px solid var(--accent-color);
+            border-radius: 14px;
+            width: 100%;
+            max-width: 650px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 25px;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .modal-close:hover { color: #fff; }
+
+        .modal-header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .modal-header h2 {
+            color: #38bdf8;
+            font-size: 1.5rem;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            background: #1e293b;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .stat-value {
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .modal-btn-open {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--accent-color);
+            color: #0f172a;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .modal-btn-open:hover { background: #7dd3fc; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🏇 賽馬大亨 10 2026 - 8大資料庫年度與自訂條件速查大總攬</h1>
+        <p>15,381 匹史實馬 + 7 大年度推薦區塊 100% 離線秒速過濾、多型態高精度排序與能力卡片連動</p>
+    </div>
+
+    <!-- 8 大類別切換頁籤 -->
+    <div class="category-tabs" id="categoryTabs">
+        <button class="tab-btn active" data-cat="all_horses">🐎 1.5萬匹全史實馬</button>
+        <button class="tab-btn" data-cat="日本おすすめ幼駒">🇯🇵 日本おすすめ幼駒</button>
+        <button class="tab-btn" data-cat="海外おすすめ幼駒">🇪🇺 海外おすすめ幼駒</button>
+        <button class="tab-btn" data-cat="おすすめ繁殖牝馬">🐴 おすすめ繁殖牝馬</button>
+        <button class="tab-btn" data-cat="おすすめ幼駒セール馬">💰 幼駒セール馬</button>
+        <button class="tab-btn" data-cat="おすすめ繁殖牝馬セール馬">🏷️ 繁殖牝馬セール馬</button>
+        <button class="tab-btn" data-cat="おすすめ海外トレーニングセール馬">🏇 海外トレーニングセール</button>
+        <button class="tab-btn" data-cat="おすすめ年度末馬">🏆 おすすめ年度末馬</button>
+    </div>
+
+    <!-- 自訂條件篩選面板 -->
+    <div class="filter-panel">
+        <div class="filter-group">
+            <label for="filterYear">📅 登場年度 (Year)</label>
+            <select id="filterYear" class="filter-control">
+                <option value="ALL">全部年份 (1968 ~ 2023)</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="filterTicket">🌈 お守り/馬札等級</label>
+            <select id="filterTicket" class="filter-control">
+                <option value="ALL">全部馬札 (虹/金/銀/銅/綠/無)</option>
+                <option value="虹">🌈 虹札</option>
+                <option value="金">🥇 金札</option>
+                <option value="銀">🥈 銀札</option>
+                <option value="銅">🥉 銅札</option>
+                <option value="綠">🟢 綠札</option>
+                <option value="無">⚪ 無札</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="filterSex">♂♀ 性別 (Sex)</label>
+            <select id="filterSex" class="filter-control">
+                <option value="ALL">全部性別</option>
+                <option value="牡">牡馬</option>
+                <option value="牝">牝馬</option>
+                <option value="騙">騸馬</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="filterSp">⚡ 最小基本 SP (Speed >=)</label>
+            <select id="filterSp" class="filter-control">
+                <option value="0">全部 SP 速度</option>
+                <option value="75">SP >= 75 (S級超級名馬)</option>
+                <option value="70">SP >= 70 (A級一線名馬)</option>
+                <option value="65">SP >= 65 (B級主力名馬)</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="filterSearch">🔍 馬名 / 父馬 關鍵字搜尋</label>
+            <input type="text" id="filterSearch" class="filter-control" placeholder="輸入中日文馬名 (如: テイオー)...">
+        </div>
+    </div>
+
+    <!-- 統計列 -->
+    <div class="stats-bar">
+        <div>目前篩選結果：共 <span class="stats-count" id="matchCount">0</span> 匹馬</div>
+        <div>💡 點擊欄位標題可進行高精度正/反向排序 | 點擊馬名可檢視完整 35+ 欄位能力卡片</div>
+    </div>
+
+    <!-- 結果表格 -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr id="tableHeader">
+                    <!-- Dynamic Headers -->
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Dynamic Rows -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 詳情 Modal 卡片 -->
+    <div class="modal-backdrop" id="modalBackdrop">
+        <div class="modal-card">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalHorseName">馬匹名稱</h2>
+                <div id="modalSubtitle" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;"></div>
+            </div>
+            <div class="stat-grid" id="modalStatGrid">
+                <!-- Dynamic Stats -->
+            </div>
+        </div>
+    </div>
+    <script>
+        let dbData = window.MASTER_DB_DATA || { all_horses: [], recommendations: [] };
+        let currentTab = "all_horses";
+        let sortField = "sp";
+        let sortAsc = false;
+
+        const ticketWeights = {
+            "🌈 虹札": 6, "虹": 6,
+            "🥇 金札": 5, "金": 5,
+            "🥈 銀札": 4, "銀": 4,
+            "🥉 銅札": 3, "銅": 3,
+            "🟢 綠札": 2, "綠": 2, "緑": 2,
+            "⚪ 無札": 1, "無": 1, "": 0
+        };
+
+        function init() {
+            populateYears();
+            if (!window.MASTER_DB_DATA) {
+                console.warn("MASTER_DB_DATA 未載入，嘗試非同步載入 json...");
+                fetch("master_lookup_db.json").then(r => r.json()).then(d => {
+                    dbData = d;
+                    renderTable();
+                }).catch(e => console.error("Data load failed:", e));
+            } else {
+                renderTable();
+            }
+        }
+
+        function populateYears() {
+            const select = document.getElementById("filterYear");
+            for (let yr = 2023; yr >= 1968; yr--) {
+                const opt = document.createElement("option");
+                opt.value = yr;
+                opt.textContent = `${yr} 年登場`;
+                select.appendChild(opt);
+            }
+        }
+
+        document.querySelectorAll(".tab-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+                e.target.classList.add("active");
+                currentTab = e.target.getAttribute("data-cat");
+                renderTable();
+            });
+        });
+
+        ["filterYear", "filterTicket", "filterSex", "filterSp", "filterSearch"].forEach(id => {
+            document.getElementById(id).addEventListener("input", renderTable);
+        });
+
+        // 依據欄位型態計算可比較數值/字串 (修復多型態高精度排序)
+        function getSortValue(item, field) {
+            if (field === "year") {
+                return parseInt(item.year) || 0;
+            }
+            if (field === "ticket") {
+                return ticketWeights[item.ticket] || 0;
+            }
+            if (field === "sp" || field === "sp_max" || field === "matched_sp") {
+                let val = item[field] !== undefined ? item[field] : item.matched_sp;
+                return parseInt(val) || 0;
+            }
+            if (field === "foal_count") {
+                let m = (item.foal_count || "").match(/\d+/);
+                return m ? parseInt(m[0]) : 0;
+            }
+            if (field === "stars") {
+                let s = item.stars || "";
+                return (s.match(/★/g) || []).length;
+            }
+            if (field === "distance") {
+                let m = (item.distance || "").match(/\d+/);
+                return m ? parseInt(m[0]) : 0;
+            }
+            return (item[field] || item.details || "").toString().toLowerCase();
+        }
+
+        function renderTable() {
+            const yearVal = document.getElementById("filterYear").value;
+            const ticketVal = document.getElementById("filterTicket").value;
+            const sexVal = document.getElementById("filterSex").value;
+            const spVal = parseInt(document.getElementById("filterSp").value) || 0;
+            const searchVal = document.getElementById("filterSearch").value.trim().toLowerCase();
+
+            let dataset = (currentTab === "all_horses") ? dbData.all_horses : dbData.recommendations.filter(r => r.category === currentTab);
+
+            let filtered = dataset.filter(item => {
+                if (yearVal !== "ALL" && item.year != yearVal) return false;
+                if (ticketVal !== "ALL" && !item.ticket.includes(ticketVal)) return false;
+                if (sexVal !== "ALL" && item.sex && !item.sex.includes(sexVal)) return false;
+                
+                const sp = item.sp || item.matched_sp || 0;
+                if (spVal > 0 && sp < spVal) return false;
+
+                if (searchVal) {
+                    const nameMatch = item.name && item.name.toLowerCase().includes(searchVal);
+                    const sireMatch = item.sire && item.sire.toLowerCase().includes(searchVal);
+                    if (!nameMatch && !sireMatch) return false;
+                }
+                return true;
+            });
+
+            // 修正：多型態高精度排序 (數字/馬札/星級/距離/文字)
+            filtered.sort((a, b) => {
+                let valA = getSortValue(a, sortField);
+                let valB = getSortValue(b, sortField);
+
+                if (typeof valA === "number" && typeof valB === "number") {
+                    return sortAsc ? valA - valB : valB - valA;
+                }
+                if (valA < valB) return sortAsc ? -1 : 1;
+                if (valA > valB) return sortAsc ? 1 : -1;
+                return 0;
+            });
+
+            document.getElementById("matchCount").textContent = filtered.length.toLocaleString();
+
+            renderHeader();
+            renderBody(filtered);
+        }
+
+        function renderHeader() {
+            const tr = document.getElementById("tableHeader");
+            tr.innerHTML = "";
+
+            let cols = [];
+            if (currentTab === "all_horses") {
+                cols = [
+                    { key: "year", title: "年度" },
+                    { key: "name", title: "馬名" },
+                    { key: "ticket", title: "馬札" },
+                    { key: "sex", title: "性別" },
+                    { key: "sp", title: "SP 速度" },
+                    { key: "sp_max", title: "SP 上限" },
+                    { key: "distance", title: "距離適性" },
+                    { key: "track", title: "馬場適性" },
+                    { key: "growth", title: "成長型" },
+                    { key: "sire", title: "父馬" },
+                    { key: "action", title: "詳情" }
+                ];
+            } else if (currentTab === "おすすめ繁殖牝馬" || currentTab === "おすすめ繁殖牝馬セール馬") {
+                cols = [
+                    { key: "year", title: "年度" },
+                    { key: "name", title: "馬名/推薦項目" },
+                    { key: "ticket", title: "馬札/等級" },
+                    { key: "foal_count", title: "仔出評級" },
+                    { key: "track", title: "芝ダ(馬場)" },
+                    { key: "distance", title: "距離適性" },
+                    { key: "factor", title: "成長/因子" },
+                    { key: "details", title: "詳細說明" },
+                    { key: "action", title: "詳情卡片" }
+                ];
+            } else {
+                cols = [
+                    { key: "year", title: "年度" },
+                    { key: "name", title: "馬名/推薦項目" },
+                    { key: "ticket", title: "馬札/等級" },
+                    { key: "sex", title: "性別" },
+                    { key: "stars", title: "推薦" },
+                    { key: "matched_sp", title: "SP 速度" },
+                    { key: "distance", title: "距離適性" },
+                    { key: "details", title: "詳細說明" },
+                    { key: "action", title: "詳情卡片" }
+                ];
+            }
+
+            cols.forEach(c => {
+                const th = document.createElement("th");
+                th.innerHTML = `${c.title} <span class="sort-icon">${sortField === c.key ? (sortAsc ? "▲" : "▼") : ""}</span>`;
+                if (c.key !== "action") {
+                    th.addEventListener("click", () => {
+                        if (sortField === c.key) {
+                            sortAsc = !sortAsc;
+                        } else {
+                            sortField = c.key;
+                            sortAsc = false;
+                        }
+                        renderTable();
+                    });
+                }
+                tr.appendChild(th);
+            });
+        }
+
+        function renderBody(items) {
+            const tbody = document.getElementById("tableBody");
+            tbody.innerHTML = "";
+
+            if (items.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="10" style="text-align:center; color:var(--text-muted); padding:30px;">尚無符合條件的馬匹資料</td></tr>`;
+                return;
+            }
+
+            items.slice(0, 300).forEach(item => {
+                const tr = document.createElement("tr");
+                const detailText = item.details || item.comment || "-";
+
+                if (currentTab === "all_horses") {
+                    tr.innerHTML = `
+                        <td>${item.year || "-"}</td>
+                        <td><span class="horse-link" onclick="openModalByName('${escapeQuote(item.name)}')">${item.name}</span></td>
+                        <td>${renderTicketBadge(item.ticket)}</td>
+                        <td>${item.sex || "-"}</td>
+                        <td style="color:var(--gold-color); font-weight:bold;">${item.sp || "-"}</td>
+                        <td>${item.sp_max || "-"}</td>
+                        <td>${item.distance || "-"}</td>
+                        <td>${item.track || "-"}</td>
+                        <td>${item.growth || "-"}</td>
+                        <td>${item.sire || "-"}</td>
+                        <td><button class="btn-detail" onclick="openModalByName('${escapeQuote(item.name)}')">查看</button></td>
+                    `;
+                } else if (currentTab === "おすすめ繁殖牝馬" || currentTab === "おすすめ繁殖牝馬セール馬") {
+                    tr.innerHTML = `
+                        <td>${item.year || "-"}</td>
+                        <td><span class="horse-link" onclick="openModalByName('${escapeQuote(item.name)}')">${item.name}</span></td>
+                        <td>${renderTicketBadge(item.ticket)}</td>
+                        <td style="color:var(--gold-color); font-weight:bold;">${item.foal_count || "-"}</td>
+                        <td>${item.track || "-"}</td>
+                        <td>${item.distance || "-"}</td>
+                        <td style="color:#f43f5e; font-weight:600;">${item.factor || item.growth || "-"}</td>
+                        <td style="max-width:280px; overflow:hidden; text-overflow:ellipsis;" title="${escapeQuote(detailText)}">${detailText}</td>
+                        <td><button class="btn-detail" onclick="openModalByName('${escapeQuote(item.name)}')">查看</button></td>
+                    `;
+                } else {
+                    const sp = item.matched_sp || item.sp || "-";
+                    tr.innerHTML = `
+                        <td>${item.year || "-"}</td>
+                        <td><span class="horse-link" onclick="openModalByName('${escapeQuote(item.name)}')">${item.name}</span></td>
+                        <td>${renderTicketBadge(item.ticket)}</td>
+                        <td>${item.sex || "-"}</td>
+                        <td style="color:var(--gold-color);">${item.stars || "-"}</td>
+                        <td style="color:var(--gold-color); font-weight:bold;">${sp}</td>
+                        <td>${item.distance || "-"}</td>
+                        <td style="max-width:280px; overflow:hidden; text-overflow:ellipsis;" title="${escapeQuote(detailText)}">${detailText}</td>
+                        <td><button class="btn-detail" onclick="openModalByName('${escapeQuote(item.name)}')">查看</button></td>
+                    `;
+                }
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderTicketBadge(ticket) {
+            if (!ticket) return "-";
+            if (ticket.includes("虹")) return `<span class="badge badge-rainbow">🌈 虹札</span>`;
+            if (ticket.includes("金")) return `<span class="badge badge-gold">🥇 金札</span>`;
+            if (ticket.includes("銀")) return `<span class="badge badge-silver">🥈 銀札</span>`;
+            if (ticket.includes("銅")) return `<span class="badge badge-bronze">🥉 銅札</span>`;
+            if (ticket.includes("綠") || ticket.includes("緑")) return `<span class="badge badge-green">🟢 綠札</span>`;
+            return ticket;
+        }
+
+        function escapeQuote(str) {
+            return str ? str.replace(/'/g, "\\'").replace(/"/g, "&quot;") : "";
+        }
+
+        function openModalByName(horseName) {
+            let h = dbData.all_horses.find(x => x.name === horseName);
+            let r = dbData.recommendations.find(x => x.name === horseName);
+
+            if (!h) {
+                h = { name: horseName, comment: r ? (r.details || r.comment) : "尚無完整史實馬數據" };
+            }
+
+            document.getElementById("modalHorseName").textContent = h.name || horseName;
+            document.getElementById("modalSubtitle").textContent = `登場年份: ${h.year || (r ? r.year : "-")} 年 | 所屬地域: ${h.region || "-"} | 馬札: ${h.ticket || (r ? r.ticket : "-")}`;
+
+            const grid = document.getElementById("modalStatGrid");
+            grid.innerHTML = `
+                <div class="stat-item"><div class="stat-label">基本 SP 速度</div><div class="stat-value" style="color:var(--gold-color);">${h.sp || (r ? r.matched_sp : "-")}</div></div>
+                <div class="stat-item"><div class="stat-label">成長上限 SP</div><div class="stat-value">${h.sp_max || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">距離適性</div><div class="stat-value">${h.distance || (r ? r.distance : "-")}</div></div>
+                <div class="stat-item"><div class="stat-label">馬場適性</div><div class="stat-value">${h.track || (r ? r.track : "-")}</div></div>
+                <div class="stat-item"><div class="stat-label">成長型 / 成長力</div><div class="stat-value">${h.growth || (r ? r.growth : "-")} (${h.growth_cap || "-"})</div></div>
+                <div class="stat-item"><div class="stat-label">性別</div><div class="stat-value">${h.sex || (r ? r.sex : "-")}</div></div>
+                <div class="stat-item"><div class="stat-label">父馬</div><div class="stat-value">${h.sire || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">母馬</div><div class="stat-value">${h.dam || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">瞬發力 / 勝負根性</div><div class="stat-value">${h.shunhatsu || "-"} / ${h.konjo || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">パワー / 精神力</div><div class="stat-value">${h.power || "-"} / ${h.seishin || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">賢さ / 柔軟性 / 健康</div><div class="stat-value">${h.keshikosa || "-"} / ${h.junan || "-"} / ${h.kenko || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">詳細攻略建議與評語</div><div class="stat-value" style="font-size:0.85rem; font-weight:normal; line-height:1.4;">${h.comment || (r ? (r.details || r.comment) : "-")}</div></div>
+            `;
+
+            document.getElementById("modalBackdrop").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("modalBackdrop").style.display = "none";
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
