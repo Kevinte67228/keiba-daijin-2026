@@ -395,8 +395,8 @@
 <body>
 
     <div class="header">
-        <h1>🏇 賽馬大亨 10 2026 - 8大資料庫年度與自訂條件速查大總攬</h1>
-        <p>15,381 匹史實馬 + 7 大年度推薦區塊 100% 離線秒速過濾、多型態高精度排序與能力卡片連動</p>
+        <h1>🏇 賽馬大亨 10 2026 - 8大資料庫年度與自訂條件速查大總覽</h1>
+        <p>15,381 匹史實馬 + 7 大年度推薦分類 100% 離線秒速過濾、多型態高精度排序與能力卡片連動</p>
     </div>
     <!-- 資料庫載入進度提示 -->
     <div id="loadingMsg" style="
@@ -711,7 +711,7 @@
                     { key: "name", title: "馬名/推薦項目" },
                     { key: "ticket", title: "馬札/等級" },
                     { key: "foal_count", title: "仔出評級" },
-                    { key: "track", title: "芝ダ(馬場)" },
+                    { key: "track", title: "草地/泥地 (芝・ダ)" },
                     { key: "distance", title: "距離適性" },
                     { key: "factor", title: "成長/因子" },
                     { key: "details", title: "詳細說明" },
@@ -842,8 +842,8 @@
                 <div class="stat-item"><div class="stat-label">父馬</div><div class="stat-value">${h.sire || "-"}</div></div>
                 <div class="stat-item"><div class="stat-label">母馬</div><div class="stat-value">${h.dam || "-"}</div></div>
                 <div class="stat-item"><div class="stat-label">瞬發力 / 勝負根性</div><div class="stat-value">${h.shunhatsu || "-"} / ${h.konjo || "-"}</div></div>
-                <div class="stat-item"><div class="stat-label">パワー / 精神力</div><div class="stat-value">${h.power || "-"} / ${h.seishin || "-"}</div></div>
-                <div class="stat-item"><div class="stat-label">賢さ / 柔軟性 / 健康</div><div class="stat-value">${h.keshikosa || "-"} / ${h.junan || "-"} / ${h.kenko || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">力量 / 精神力</div><div class="stat-value">${h.power || "-"} / ${h.seishin || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">智商 / 柔軟性 / 健康</div><div class="stat-value">${h.keshikosa || "-"} / ${h.junan || "-"} / ${h.kenko || "-"}</div></div>
                 <div class="stat-item"><div class="stat-label">詳細攻略建議與評語</div><div class="stat-value" style="font-size:0.85rem; font-weight:normal; line-height:1.4;">${h.comment || (r ? (r.details || r.comment) : "-")}</div></div>
             `;
 
