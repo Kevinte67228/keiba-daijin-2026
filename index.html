@@ -478,8 +478,32 @@
         </div>
     </div>
 
-    <!-- 自訂條件篩選面板 -->
-    <div class="filter-panel">
+    <!-- 自訂條件篩選面板 (支援收折/展開) -->
+    <div class="filter-toggle-bar" onclick="toggleFilterPanel()" style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        padding: 10px 16px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.2s ease;
+    ">
+        <div style="font-weight: 600; color: #38bdf8; display: flex; align-items: center; gap: 8px; font-size: 0.95rem;">
+            <span>⚙️ 條件篩選與搜尋面板</span>
+            <span id="activeFilterBadge" style="font-size: 0.75rem; background: #0284c7; color: white; padding: 2px 8px; border-radius: 10px; display: none;">已套用篩選</span>
+        </div>
+        <div style="font-size: 0.85rem; color: #94a3b8; display: flex; align-items: center; gap: 4px;">
+            <span id="filterToggleText">收折</span>
+            <span id="filterToggleIcon">▲</span>
+        </div>
+    </div>
+
+    <!-- 自訂條件篩選面板內容 -->
+    <div class="filter-panel" id="filterPanel">
         <div class="filter-group">
             <label for="filterYear">📅 登場年度 (Year)</label>
             <select id="filterYear" class="filter-control">
@@ -553,28 +577,48 @@
             </select>
         </div>
 
-        <div class="filter-group" style="flex: 1 1 340px;">
+        <div class="filter-group" style="flex: 1 1 100%; max-width: 100%; box-sizing: border-box;">
             <label for="filterSearch">🔍 馬名 / 父馬 / 母馬 關鍵字搜尋</label>
-            <div style="display: flex; gap: 8px; align-items: center;">
-                <input type="text" id="filterSearch" class="filter-control" placeholder="輸入馬名 / 父馬 / 母馬 (如: テイオー)..." style="flex: 1;">
-                <button type="button" onclick="triggerOcr()" id="btnOcr" style="
-                    background: linear-gradient(135deg, #0284c7, #4f46e5);
+            <div style="display: flex; gap: 6px; align-items: center; width: 100%; box-sizing: border-box;">
+                <input type="text" id="filterSearch" class="filter-control" placeholder="輸入馬名 / 父馬 / 母馬 (如: テイオー)..." style="flex: 1 1 auto; min-width: 0; box-sizing: border-box;">
+                <button type="button" onclick="triggerCameraOcr()" id="btnOcrCam" style="
+                    flex: 0 0 auto;
+                    background: linear-gradient(135deg, #0284c7, #2563eb);
                     border: 1px solid #38bdf8;
                     color: white;
-                    padding: 8px 12px;
+                    padding: 8px 10px;
                     border-radius: 6px;
                     cursor: pointer;
-                    font-size: 0.85rem;
+                    font-size: 0.82rem;
                     font-weight: 600;
                     display: flex;
                     align-items: center;
-                    gap: 5px;
+                    gap: 3px;
                     white-space: nowrap;
                     transition: all 0.2s ease;
-                " title="拍攝或上傳遊戲畫面照片，自動辨識馬名">
-                    📷 OCR 拍照辨識
+                " title="手機相機直接拍照辨識馬名">
+                    📷 拍照
                 </button>
-                <input type="file" id="ocrInput" accept="image/*" style="display: none;" onchange="handleOcrImage(event)">
+                <button type="button" onclick="triggerGalleryOcr()" id="btnOcrGal" style="
+                    flex: 0 0 auto;
+                    background: #1e293b;
+                    border: 1px solid #475569;
+                    color: #cbd5e1;
+                    padding: 8px 10px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-size: 0.82rem;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 3px;
+                    white-space: nowrap;
+                    transition: all 0.2s ease;
+                " title="從相簿或電腦選圖辨識">
+                    🖼️ 相片
+                </button>
+                <input type="file" id="ocrCameraInput" accept="image/*" capture="environment" style="display: none;" onchange="handleOcrImage(event)">
+                <input type="file" id="ocrGalleryInput" accept="image/*" style="display: none;" onchange="handleOcrImage(event)">
             </div>
             <div id="ocrStatus" style="font-size: 0.8rem; color: #38bdf8; margin-top: 4px; display: none;"></div>
         </div>
@@ -1154,9 +1198,29 @@
             document.getElementById("modalBackdrop").style.display = "none";
         }
 
-        // ===== 📷 OCR 拍照文字辨識功能 =====
-        function triggerOcr() {
-            document.getElementById('ocrInput').click();
+        function toggleFilterPanel() {
+            const panel = document.getElementById("filterPanel");
+            const text = document.getElementById("filterToggleText");
+            const icon = document.getElementById("filterToggleIcon");
+            if (!panel) return;
+            if (panel.style.display === "none") {
+                panel.style.display = "flex";
+                if (text) text.textContent = "收折";
+                if (icon) icon.textContent = "▲";
+            } else {
+                panel.style.display = "none";
+                if (text) text.textContent = "展開";
+                if (icon) icon.textContent = "▼";
+            }
+        }
+
+        // ===== 📷 OCR 拍照文字辨識功能 (手機相機 / 相簿選圖) =====
+        function triggerCameraOcr() {
+            document.getElementById('ocrCameraInput').click();
+        }
+
+        function triggerGalleryOcr() {
+            document.getElementById('ocrGalleryInput').click();
         }
 
         async function handleOcrImage(event) {
@@ -1164,10 +1228,12 @@
             if (!file) return;
 
             const statusEl = document.getElementById('ocrStatus');
-            const btn = document.getElementById('btnOcr');
+            const btnCam = document.getElementById('btnOcrCam');
+            const btnGal = document.getElementById('btnOcrGal');
             statusEl.style.display = 'block';
             statusEl.textContent = '⏳ 正在啟動 OCR 辨識引擎...';
-            btn.disabled = true;
+            if (btnCam) btnCam.disabled = true;
+            if (btnGal) btnGal.disabled = true;
 
             try {
                 // 動態載入 Tesseract.js (全球 CDN)
@@ -1223,7 +1289,8 @@
                 console.error("OCR Error:", err);
                 statusEl.textContent = '❌ OCR 辨識發生錯誤，請檢查網路連線或直接手動輸入';
             } finally {
-                btn.disabled = false;
+                if (btnCam) btnCam.disabled = false;
+                if (btnGal) btnGal.disabled = false;
                 event.target.value = '';
             }
         }
