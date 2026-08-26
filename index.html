@@ -540,6 +540,17 @@
         </div>
 
         <div class="filter-group">
+            <label for="filterRegion">🌏 所屬區域 (Region)</label>
+            <select id="filterRegion" class="filter-control">
+                <option value="ALL">全部地域 (日本/美國/歐洲)</option>
+                <option value="日本">🇯🇵 日本</option>
+                <option value="米">🇺🇸 美國 / 米國</option>
+                <option value="欧">🇪🇺 歐洲</option>
+                <option value="海外">🌎 全部海外 (美/歐)</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
             <label for="filterSearch">🔍 馬名 / 父馬 關鍵字搜尋</label>
             <input type="text" id="filterSearch" class="filter-control" placeholder="輸入中日文馬名 (如: テイオー)...">
         </div>
@@ -613,6 +624,16 @@
                         if (!r.track || r.track === "-") {
                             r.track = matched.track || "-";
                         }
+                        if (!r.region || r.region === "-") {
+                            r.region = matched.region || "-";
+                        }
+                    }
+                    if (!r.region || r.region === "-") {
+                        if (r.category && r.category.includes("日本")) {
+                            r.region = "🇯🇵 日本";
+                        } else if (r.category && r.category.includes("海外")) {
+                            r.region = "海外";
+                        }
                     }
                 });
             }
@@ -655,7 +676,7 @@
             });
         });
 
-        ["filterYear", "filterTicket", "filterSex", "filterSp", "filterDistance", "filterSearch"].forEach(id => {
+        ["filterYear", "filterTicket", "filterSex", "filterSp", "filterDistance", "filterRegion", "filterSearch"].forEach(id => {
             const el = document.getElementById(id);
             if (el) el.addEventListener("input", renderTable);
         });
@@ -698,6 +719,7 @@
             const sexVal = document.getElementById("filterSex") ? document.getElementById("filterSex").value : "ALL";
             const spVal = document.getElementById("filterSp") ? (parseInt(document.getElementById("filterSp").value) || 0) : 0;
             const distVal = document.getElementById("filterDistance") ? document.getElementById("filterDistance").value : "ALL";
+            const regionVal = document.getElementById("filterRegion") ? document.getElementById("filterRegion").value : "ALL";
             const searchVal = document.getElementById("filterSearch") ? document.getElementById("filterSearch").value.trim().toLowerCase() : "";
 
             let dataset = [];
@@ -733,6 +755,20 @@
                         if (itemMinDist < 2500) return false;
                     } else {
                         if (itemMinDist !== targetDist) return false;
+                    }
+                }
+
+                // 區域別篩選
+                if (regionVal !== "ALL") {
+                    const r = item.region || "";
+                    if (regionVal === "日本") {
+                        if (!r.includes("日")) return false;
+                    } else if (regionVal === "米") {
+                        if (!r.includes("米") && !r.includes("美")) return false;
+                    } else if (regionVal === "欧") {
+                        if (!r.includes("欧") && !r.includes("歐")) return false;
+                    } else if (regionVal === "海外") {
+                        if (r.includes("日")) return false;
                     }
                 }
 
@@ -776,6 +812,7 @@
                 cols = [
                     { key: "year", title: "年度" },
                     { key: "name", title: "馬名" },
+                    { key: "region", title: "地域" },
                     { key: "ticket", title: "馬札" },
                     { key: "sex", title: "性別" },
                     { key: "sp", title: "SP 速度" },
@@ -835,7 +872,7 @@
             tbody.innerHTML = "";
 
             if (items.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="10" style="text-align:center; color:var(--text-muted); padding:30px;">尚無符合條件的馬匹資料</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="12" style="text-align:center; color:var(--text-muted); padding:30px;">尚無符合條件的馬匹資料</td></tr>`;
                 return;
             }
 
@@ -847,6 +884,7 @@
                     tr.innerHTML = `
                         <td>${item.year || "-"}</td>
                         <td><span class="horse-link" onclick="openModalByName('${escapeQuote(item.name)}')">${item.name}</span></td>
+                        <td>${item.region || "-"}</td>
                         <td>${renderTicketBadge(item.ticket)}</td>
                         <td>${item.sex || "-"}</td>
                         <td style="color:var(--gold-color); font-weight:bold;">${item.sp || "-"}</td>
