@@ -1,1 +1,73 @@
-Ly8g6LO96aas5aSn5LqoIDEwIDIwMjYg6YCf5p+lIFBXQSAtIFNlcnZpY2UgV29ya2VyCi8vIOeJiOacrOiZjO+8muavhea+qOabtOaWsOagvOao4paQ5ZKMWU9KxauvvIxovKDmnJ/mnKrmlbjmlKXor48K Y29uc3QgQ0FDSEVfTkFNRSA9ICdrZWliYS1sb29rdXAtdjEnOwoKLy8g6aaW5qyh5a6i6KOo5pmC5b+r5Z6L55qE5qSc5b+855usKGFzc2V0cykKY29uc3QgQ09SRV9BU1NFVFMgPSBbCiAgJy4vcXVpY2tfbG9va3VwLmh0bWwnLAogICcuL21hc3Rlcl9sb29rdXBfZGIuanMnLAogICcuL21hbmlmZXN0Lmpzb24nLAogICcuL2ljb25zL2ljb24tMTkyLnBuZycsCiAgJy4vaWNvbnMvaWNvbi01MTIucG5nJwpdOwoKLy8gPT09PT0gSW5zdGFsbO+8mupoZuWfm+W6pua3se+8iDXmgqXlpKrkv6Hmga8gPT09PT0Kc2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJywgZXZlbnQgPT4gewogIGNvbnNvbGUubG9nKCdbU1ddIEluc3RhbGxpbmcgY2FjaGU6JywgQ0FDSEVfTkFNRSk7CiAgZXZlbnQud2FpdFVudGlsKAogICAgY2FjaGVzLm9wZW4oQ0FDSEVfTkFNRSkudGhlbihjYWNoZSA9PiB7CiAgICAgIHJldHVybiBjYWNoZS5hZGRBbGwoQ09SRV9BU1NFVFMpLmNhdGNoKGVyciA9PiB7CiAgICAgICAgLy8gbWFzdGVyX2xvb2t1cF9kYi5qcyDlvLrkuLrlpKrkuZDvvIxlYWxsb3fliIbnvJPlub/lpKrkuZDkuI3kuK3mraUKICAgICAgICBjb25zb2xlLndhcm4oJ1tTV10gQ2FjaGUgYWRkQWxsIHBhcnRpYWwgZmFpbDonLCBlcnIpOwogICAgICB9KTsKICAgIH0pCiAgKTsKICBzZWxmLnNraXBXYWl0aW5nKCk7Cn0pOwoKLy8gPT09PT0gQWN0aXZhdGXvvJrmuIXpgZjkv6Hmga/niKXmnJ8gPT09PT0Kc2VsZi5hZGRFdmVudExpc3RlbmVyKCdhY3RpdmF0ZScsIGV2ZW50ID0+IHsKICBjb25zb2xlLmxvZygnW1NXXSBBY3RpdmF0aW5nLCBjbGVhcmluZyBvbGQgY2FjaGVzLi4uJyk7CiAgZXZlbnQud2FpdFVudGlsKAogICAgY2FjaGVzLmtleXMoKS50aGVuKGtleXMgPT4KICAgICAgUHJvbWlzZS5hbGwoCiAgICAgICAga2V5cwogICAgICAgICAgLmZpbHRlcihrZXkgPT4ga2V5ICE9PSBDQUNIRV9OQU1FKQogICAgICAgICAgLm1hcChrZXkgPT4gewogICAgICAgICAgICBjb25zb2xlLmxvZygnW1NXXSBEZWxldGluZyBvbGQgY2FjaGU6Jywga2V5KTsKICAgICAgICAgICAgcmV0dXJuIGNhY2hlcy5kZWxldGUoa2V5KTsKICAgICAgICAgIH0pCiAgICAgICkKICAgICkKICApOwogIHNlbGYuY2xpZW50cy5jbGFpbSgpOwp9KTsKCi8vID09PT09IEZldGNo77yaQ2FjaGUtRmlyc3Qg562W55Wl77yI5YuZ5YCD6Zmq5a+557us5b+r5Z6L77yJID09PT09CnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignZmV0Y2gnLCBldmVudCA9PiB7CiAgLy8g5Y+q6Z2e55+l6IKh5Yqg6KGM5a+G5Y+W5a6M77yI6KGM55+lIEdFVCDorr/oqIkKICBpZiAoZXZlbnQucmVxdWVzdC5tZXRob2QgIT09ICdHRVQnKSByZXR1cm47CgogIGV2ZW50LnJlc3BvbmRXaXRoKAogICAgY2FjaGVzLm1hdGNoKGV2ZW50LnJlcXVlc3QpLnRoZW4oY2FjaGVkID0+IHsKICAgICAgaWYgKGNhY2hlZCkgewogICAgICAgIC8vIOW/q+WchOWRpuS4iumZkO+8jOebtOaOpuWbnuS/ne+8jOimsui3r+WQjOWLu+agoemfqempl+abtOW6piBUT0RPCiAgICAgICAgcmV0dXJuIGNhY2hlZDsKICAgICAgfQoKICAgICAgLy8g5b+r5Zyc5pyq5ZCR5Li677yM5b6M57qn57WQ5ZKM5a6J5YWo5b+r5Zy8CiAgICAgIHJldHVybiBmZXRjaChldmVudC5yZXF1ZXN0KQogICAgICAgIC50aGVuKHJlc3BvbnNlID0+IHsKICAgICAgICAgIGlmICghcmVzcG9uc2UgfHwgcmVzcG9uc2Uuc3RhdHVzICE9PSAyMDAgfHwgcmVzcG9uc2UudHlwZSA9PT0gJ29wYXF1ZScpIHsKICAgICAgICAgICAgcmV0dXJuIHJlc3BvbnNlOwogICAgICAgICAgfQogICAgICAgICAgY29uc3QgdG9DYWNoZSA9IHJlc3BvbnNlLmNsb25lKCk7CiAgICAgICAgICBjYWNoZXMub3BlbihDQUNIRV9OQU1FKS50aGVuKGNhY2hlID0+IGNhY2hlLnB1dChldmVudC5yZXF1ZXN0LCB0b0NhY2hlKSk7CiAgICAgICAgICByZXR1cm4gcmVzcG9uc2U7CiAgICAgICAgfSkKICAgICAgICAuY2F0Y2goKCkgPT4gewogICAgICAgICAgLy8g5a6M5YWo6Zmq5Y+j77yM5ZGo5Ly85Li75em5Li0KICAgICAgICAgIHJldHVybiBjYWNoZXMubWF0Y2goJy4vcXVpY2tfbG9va3VwLmh0bWwnKTsKICAgICAgICB9KTsKICAgIH0pCiAgKTsKfSk7Cg==
+// 賽馬大亨 10 2026 速查 PWA - Service Worker
+// 版本號：每次更新核心檔案請遞增
+const CACHE_NAME = 'keiba-lookup-v2';
+
+// 首次安裝時快取的核心檔案
+const CORE_ASSETS = [
+  './',
+  './index.html',
+  './manifest.json',
+  './icons/icon-192.png',
+  './icons/icon-512.png'
+];
+
+// ===== Install：預先快取核心資產 =====
+self.addEventListener('install', event => {
+  console.log('[SW] Installing cache:', CACHE_NAME);
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(CORE_ASSETS).catch(err => {
+        console.warn('[SW] Cache addAll partial fail:', err);
+      });
+    })
+  );
+  self.skipWaiting();
+});
+
+// ===== Activate：清除舊版快取 =====
+self.addEventListener('activate', event => {
+  console.log('[SW] Activating, clearing old caches...');
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => {
+            console.log('[SW] Deleting old cache:', key);
+            return caches.delete(key);
+          })
+      )
+    )
+  );
+  self.clients.claim();
+});
+
+// ===== Fetch：Cache-First 策略（優先離線快取）=====
+self.addEventListener('fetch', event => {
+  // 只處理 GET 請求
+  if (event.request.method !== 'GET') return;
+
+  event.respondWith(
+    caches.match(event.request).then(cached => {
+      if (cached) {
+        // 快取命中，直接回傳，背景同時嘗試更新
+        return cached;
+      }
+
+      // 快取未命中，從網路取得並存入快取
+      return fetch(event.request)
+        .then(response => {
+          if (!response || response.status !== 200 || response.type === 'opaque') {
+            return response;
+          }
+          const toCache = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, toCache));
+          return response;
+        })
+        .catch(() => {
+          // 完全離線時，回傳主頁
+          return caches.match('./index.html') || caches.match('./');
+        });
+    })
+  );
+});

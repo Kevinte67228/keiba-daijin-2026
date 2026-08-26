@@ -1,1 +1,27 @@
-ewogICJuYW1lIjogIuizvemmrOWkp+S6qCAxMCAyMDI2IOmAn+afpea4quanogIsCiAgInNob3J0X25hbWUiOiAi6LO96aasMLnpgJ/mn6UiLAogICJkZXNjcmlwdGlvbiI6ICIxNSwzODHljLnlj7Llr6bppqwgKyA45aSn5bm05bqm5o6o6JaW6LOH5paZ5bqr77yM6Zmq57usQXBwIiwKICAic3RhcnRfdXJsIjogIi4vcXVpY2tfbG9va3VwLmh0bWwiLAogICJzY29wZSI6ICIuLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgIm9yaWVudGF0aW9uIjogInBvcnRyYWl0LXByaW1hcnkiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwYjBmMTkiLAogICJ0aGVtZV9jb2xvciI6ICIjMGIwZjE5IiwKICAibGFuZyI6ICJ6aC1UVyIsCiAgImNhdGVnb3JpZXMiOiBbImdhbWVzIiwgInV0aWxpdGllcyJdLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJpY29ucy9pY29uLTE5Mi5wbmciLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaWNvbnMvaWNvbi01MTIucG5nIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9wbmciLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXQp9Cg==
+{
+  "name": "賽馬大亨 10 2026 速查大總攬",
+  "short_name": "賽馬10速查",
+  "description": "15,381匹史實馬 + 8大年度推薦資料庫，離線可用速查App",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b0f19",
+  "theme_color": "#0b0f19",
+  "lang": "zh-TW",
+  "categories": ["games", "utilities"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
