@@ -17,7 +17,8 @@
     <script>
         // 嘗試順序：1) window.MASTER_DB_DATA (本地 file:// 模式) → 2) jsDelivr CDN
         window._DB_LOADED = false;
-        const DB_CDN_URL = 'https://cdn.jsdelivr.net/gh/Kevinte67228/keiba-daijin-2026@main/master_lookup_db.js';
+        // 指向 master_lookup_db.js 所在的具體 commit SHA（3c8f38fa），確保長期穩定
+        const DB_CDN_URL = 'https://cdn.jsdelivr.net/gh/Kevinte67228/keiba-daijin-2026@3c8f38fa7efd6c1ffabed405329a7968774eb992/master_lookup_db.js';
 
         function showLoading(msg) {
             const el = document.getElementById('loadingMsg');
