@@ -553,9 +553,30 @@
             </select>
         </div>
 
-        <div class="filter-group">
-            <label for="filterSearch">🔍 馬名 / 父馬 關鍵字搜尋</label>
-            <input type="text" id="filterSearch" class="filter-control" placeholder="輸入中日文馬名 (如: テイオー)...">
+        <div class="filter-group" style="flex: 1 1 340px;">
+            <label for="filterSearch">🔍 馬名 / 父馬 / 母馬 關鍵字搜尋</label>
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <input type="text" id="filterSearch" class="filter-control" placeholder="輸入馬名 / 父馬 / 母馬 (如: テイオー)..." style="flex: 1;">
+                <button type="button" onclick="triggerOcr()" id="btnOcr" style="
+                    background: linear-gradient(135deg, #0284c7, #4f46e5);
+                    border: 1px solid #38bdf8;
+                    color: white;
+                    padding: 8px 12px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    white-space: nowrap;
+                    transition: all 0.2s ease;
+                " title="拍攝或上傳遊戲畫面照片，自動辨識馬名">
+                    📷 OCR 拍照辨識
+                </button>
+                <input type="file" id="ocrInput" accept="image/*" style="display: none;" onchange="handleOcrImage(event)">
+            </div>
+            <div id="ocrStatus" style="font-size: 0.8rem; color: #38bdf8; margin-top: 4px; display: none;"></div>
         </div>
     </div>
 
@@ -707,8 +728,8 @@
                         if (!r.region || r.region === "-") {
                             r.region = matched.region || "-";
                         }
-                        // 同步 7 大核心屬性
-                        const attrs = ['shunhatsu', 'konjo', 'power', 'seishin', 'keshikosa', 'junan', 'kenko'];
+                        // 同步 7 大核心屬性與母馬
+                        const attrs = ['shunhatsu', 'konjo', 'power', 'seishin', 'keshikosa', 'junan', 'kenko', 'dam', 'dam_line', 'sire'];
                         attrs.forEach(a => {
                             if (!r[a] || r[a] === "-") {
                                 r[a] = matched[a] || "-";
@@ -873,11 +894,13 @@
                 if (searchVal) {
                     const name = (item.name || "").toLowerCase();
                     const sire = (item.sire || "").toLowerCase();
+                    const dam = (item.dam || "").toLowerCase();
                     const details = (item.details || item.comment || "").toLowerCase();
                     const nameMatch = name.includes(searchVal);
                     const sireMatch = sire.includes(searchVal);
+                    const damMatch = dam.includes(searchVal);
                     const detailMatch = details.includes(searchVal);
-                    if (!nameMatch && !sireMatch && !detailMatch) return false;
+                    if (!nameMatch && !sireMatch && !damMatch && !detailMatch) return false;
                 }
                 return true;
             });
@@ -927,6 +950,7 @@
                     { key: "junan", title: "柔軟" },
                     { key: "kenko", title: "健康" },
                     { key: "sire", title: "父馬" },
+                    { key: "dam", title: "母馬" },
                     { key: "action", title: "詳情" }
                 ];
             } else if (currentTab === "おすすめ繁殖牝馬" || currentTab === "おすすめ繁殖牝馬セール馬") {
@@ -945,6 +969,8 @@
                     { key: "keshikosa", title: "智商" },
                     { key: "junan", title: "柔軟" },
                     { key: "kenko", title: "健康" },
+                    { key: "sire", title: "父馬" },
+                    { key: "dam", title: "母馬" },
                     { key: "factor", title: "成長/因子" },
                     { key: "details", title: "詳細說明" },
                     { key: "action", title: "詳情卡片" }
@@ -967,6 +993,8 @@
                     { key: "keshikosa", title: "智商" },
                     { key: "junan", title: "柔軟" },
                     { key: "kenko", title: "健康" },
+                    { key: "sire", title: "父馬" },
+                    { key: "dam", title: "母馬" },
                     { key: "details", title: "詳細說明" },
                     { key: "action", title: "詳情卡片" }
                 ];
@@ -995,7 +1023,7 @@
             tbody.innerHTML = "";
 
             if (items.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="20" style="text-align:center; color:var(--text-muted); padding:30px;">尚無符合條件的馬匹資料</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="22" style="text-align:center; color:var(--text-muted); padding:30px;">尚無符合條件的馬匹資料</td></tr>`;
                 return;
             }
 
@@ -1024,6 +1052,7 @@
                         <td>${renderRankBadge(item.junan)}</td>
                         <td>${renderRankBadge(item.kenko)}</td>
                         <td>${item.sire || "-"}</td>
+                        <td>${item.dam || "-"}</td>
                         <td><button class="btn-detail" onclick="openModalByName('${escapeQuote(item.name)}')">查看</button></td>
                     `;
                 } else if (currentTab === "おすすめ繁殖牝馬" || currentTab === "おすすめ繁殖牝馬セール馬") {
@@ -1042,6 +1071,8 @@
                         <td>${renderRankBadge(item.keshikosa)}</td>
                         <td>${renderRankBadge(item.junan)}</td>
                         <td>${renderRankBadge(item.kenko)}</td>
+                        <td>${item.sire || "-"}</td>
+                        <td>${item.dam || "-"}</td>
                         <td style="color:#f43f5e; font-weight:600;">${item.factor || item.growth || "-"}</td>
                         <td style="max-width:280px; overflow:hidden; text-overflow:ellipsis;" title="${escapeQuote(detailText)}">${detailText}</td>
                         <td><button class="btn-detail" onclick="openModalByName('${escapeQuote(item.name)}')">查看</button></td>
@@ -1065,6 +1096,8 @@
                         <td>${renderRankBadge(item.keshikosa)}</td>
                         <td>${renderRankBadge(item.junan)}</td>
                         <td>${renderRankBadge(item.kenko)}</td>
+                        <td>${item.sire || "-"}</td>
+                        <td>${item.dam || "-"}</td>
                         <td style="max-width:280px; overflow:hidden; text-overflow:ellipsis;" title="${escapeQuote(detailText)}">${detailText}</td>
                         <td><button class="btn-detail" onclick="openModalByName('${escapeQuote(item.name)}')">查看</button></td>
                     `;
@@ -1103,14 +1136,14 @@
                 <div class="stat-item"><div class="stat-label">基本 SP 速度</div><div class="stat-value" style="color:var(--gold-color);">${h.sp || (r ? r.matched_sp : "-")}</div></div>
                 <div class="stat-item"><div class="stat-label">成長上限 SP</div><div class="stat-value">${h.sp_max || "-"}</div></div>
                 <div class="stat-item"><div class="stat-label">距離適性</div><div class="stat-value">${h.distance || (r ? r.distance : "-")}</div></div>
-                <div class="stat-item"><div class="stat-label">馬場適性</div><div class="stat-value">${h.track || (r ? r.track : "-")}</div></div>
+                <div class="stat-item"><div class="stat-label">馬場適性 (芝/ダ)</div><div class="stat-value">${renderTrackBadge(h.grass || "-")} / ${renderTrackBadge(h.dirt || "-")} (${h.track || (r ? r.track : "-")})</div></div>
                 <div class="stat-item"><div class="stat-label">成長型 / 成長力</div><div class="stat-value">${h.growth || (r ? r.growth : "-")} (${h.growth_cap || "-"})</div></div>
                 <div class="stat-item"><div class="stat-label">性別</div><div class="stat-value">${h.sex || (r ? r.sex : "-")}</div></div>
-                <div class="stat-item"><div class="stat-label">父馬</div><div class="stat-value">${h.sire || "-"}</div></div>
-                <div class="stat-item"><div class="stat-label">母馬</div><div class="stat-value">${h.dam || "-"}</div></div>
-                <div class="stat-item"><div class="stat-label">瞬發力 / 勝負根性</div><div class="stat-value">${h.shunhatsu || "-"} / ${h.konjo || "-"}</div></div>
-                <div class="stat-item"><div class="stat-label">力量 / 精神力</div><div class="stat-value">${h.power || "-"} / ${h.seishin || "-"}</div></div>
-                <div class="stat-item"><div class="stat-label">智商 / 柔軟性 / 健康</div><div class="stat-value">${h.keshikosa || "-"} / ${h.junan || "-"} / ${h.kenko || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">父馬 (父系統)</div><div class="stat-value">${h.sire || "-"} <span style="font-size:0.8rem; color:var(--text-muted);">(${h.sire_line || "-"})</span></div></div>
+                <div class="stat-item"><div class="stat-label">母馬 (所属牝系)</div><div class="stat-value" style="color:#f472b6; font-weight:600;">${h.dam || (r ? r.dam : "-")} <span style="font-size:0.8rem; color:var(--text-muted);">(${h.dam_line || "-"})</span></div></div>
+                <div class="stat-item"><div class="stat-label">瞬發力 / 勝負根性</div><div class="stat-value">${renderRankBadge(h.shunhatsu)} / ${renderRankBadge(h.konjo)}</div></div>
+                <div class="stat-item"><div class="stat-label">力量 / 精神力</div><div class="stat-value">${renderRankBadge(h.power)} / ${renderRankBadge(h.seishin)}</div></div>
+                <div class="stat-item"><div class="stat-label">智商 / 柔軟性 / 健康</div><div class="stat-value">${renderRankBadge(h.keshikosa)} / ${renderRankBadge(h.junan)} / ${renderRankBadge(h.kenko)}</div></div>
                 <div class="stat-item"><div class="stat-label">詳細攻略建議與評語</div><div class="stat-value" style="font-size:0.85rem; font-weight:normal; line-height:1.4;">${h.comment || (r ? (r.details || r.comment) : "-")}</div></div>
             `;
 
@@ -1121,8 +1154,81 @@
             document.getElementById("modalBackdrop").style.display = "none";
         }
 
+        // ===== 📷 OCR 拍照文字辨識功能 =====
+        function triggerOcr() {
+            document.getElementById('ocrInput').click();
+        }
+
+        async function handleOcrImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const statusEl = document.getElementById('ocrStatus');
+            const btn = document.getElementById('btnOcr');
+            statusEl.style.display = 'block';
+            statusEl.textContent = '⏳ 正在啟動 OCR 辨識引擎...';
+            btn.disabled = true;
+
+            try {
+                // 動態載入 Tesseract.js (全球 CDN)
+                if (!window.Tesseract) {
+                    await new Promise((resolve, reject) => {
+                        const script = document.createElement('script');
+                        script.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
+                        script.onload = resolve;
+                        script.onerror = reject;
+                        document.head.appendChild(script);
+                    });
+                }
+
+                statusEl.textContent = '🔍 正在分析圖片中日文字...';
+                
+                const worker = await Tesseract.createWorker('jpn+eng', 1, {
+                    logger: m => {
+                        if (m.status === 'recognizing text') {
+                            statusEl.textContent = `🔍 正在辨識文字: ${Math.round(m.progress * 100)}%`;
+                        }
+                    }
+                });
+
+                const ret = await worker.recognize(file);
+                await worker.terminate();
+
+                let rawText = ret.data.text || "";
+                // 智慧清理提取日文/中文馬名
+                let lines = rawText.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+                let recognizedWord = "";
+                
+                for (let line of lines) {
+                    let cleaned = line.replace(/[|!@#$%^&*()_+={}\[\]:;"'<>?,.\/\\~`0-9a-zA-Z]/g, '').trim();
+                    if (cleaned.length >= 2) {
+                        recognizedWord = cleaned.split(' ')[0];
+                        break;
+                    }
+                }
+                
+                if (!recognizedWord && lines.length > 0) {
+                    recognizedWord = lines[0].replace(/[\r\n\t]/g, '').trim();
+                }
+
+                if (recognizedWord) {
+                    const searchInput = document.getElementById('filterSearch');
+                    searchInput.value = recognizedWord;
+                    statusEl.innerHTML = `✅ 辨識完成！關鍵字：「<b style="color:#fbbf24;">${recognizedWord}</b>」已自動搜尋`;
+                    renderTable();
+                } else {
+                    statusEl.textContent = '⚠️ 未能辨識出有效馬名，請使用更清晰的截圖或特寫';
+                }
+            } catch (err) {
+                console.error("OCR Error:", err);
+                statusEl.textContent = '❌ OCR 辨識發生錯誤，請檢查網路連線或直接手動輸入';
+            } finally {
+                btn.disabled = false;
+                event.target.value = '';
+            }
+        }
+
         // init() 由 loadDatabase() 在資料庫載入完成後自動呼叫
-        // 同時隱藏空的 loadingMsg
         document.addEventListener('DOMContentLoaded', () => {
             const el = document.getElementById('loadingMsg');
             if (el && !el.textContent) el.style.display = 'none';
