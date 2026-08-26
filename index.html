@@ -209,6 +209,10 @@
             gap: 15px;
         }
 
+        .filter-panel.collapsed {
+            display: none !important;
+        }
+
         .filter-group {
             display: flex;
             flex-direction: column;
@@ -402,6 +406,23 @@
             padding: 10px 14px;
             border-radius: 6px;
             font-size: 0.9rem;
+        }
+
+        .modal-section-title {
+            grid-column: span 2;
+            color: #38bdf8;
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 8px 12px;
+            background: rgba(56, 189, 248, 0.12);
+            border-left: 4px solid #38bdf8;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-bottom: 2px;
+        }
+
+        .stat-item.full-width {
+            grid-column: span 2;
         }
 
         .stat-label {
@@ -1177,18 +1198,41 @@
 
             const grid = document.getElementById("modalStatGrid");
             grid.innerHTML = `
-                <div class="stat-item"><div class="stat-label">基本 SP 速度</div><div class="stat-value" style="color:var(--gold-color);">${h.sp || (r ? r.matched_sp : "-")}</div></div>
-                <div class="stat-item"><div class="stat-label">成長上限 SP</div><div class="stat-value">${h.sp_max || "-"}</div></div>
-                <div class="stat-item"><div class="stat-label">距離適性</div><div class="stat-value">${h.distance || (r ? r.distance : "-")}</div></div>
-                <div class="stat-item"><div class="stat-label">馬場適性 (芝/ダ)</div><div class="stat-value">${renderTrackBadge(h.grass || "-")} / ${renderTrackBadge(h.dirt || "-")} (${h.track || (r ? r.track : "-")})</div></div>
-                <div class="stat-item"><div class="stat-label">成長型 / 成長力</div><div class="stat-value">${h.growth || (r ? r.growth : "-")} (${h.growth_cap || "-"})</div></div>
-                <div class="stat-item"><div class="stat-label">性別</div><div class="stat-value">${h.sex || (r ? r.sex : "-")}</div></div>
-                <div class="stat-item"><div class="stat-label">父馬 (父系統)</div><div class="stat-value">${h.sire || "-"} <span style="font-size:0.8rem; color:var(--text-muted);">(${h.sire_line || "-"})</span></div></div>
-                <div class="stat-item"><div class="stat-label">母馬 (所属牝系)</div><div class="stat-value" style="color:#f472b6; font-weight:600;">${h.dam || (r ? r.dam : "-")} <span style="font-size:0.8rem; color:var(--text-muted);">(${h.dam_line || "-"})</span></div></div>
+                <!-- 1. 基本情報 & 系統情報 -->
+                <div class="modal-section-title">📋 基本情報 & 系統血統</div>
+                <div class="stat-item"><div class="stat-label">所屬地域 / 生產國</div><div class="stat-value">${h.region || "-"} / ${h.country || "日本"}</div></div>
+                <div class="stat-item"><div class="stat-label">誕生年份 / 性別</div><div class="stat-value">${h.year || "-"} 年 / ${h.sex || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">お守り馬札 / 評價額</div><div class="stat-value">${renderTicketBadge(h.ticket)} / ${h.price ? (h.price + " 萬") : "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">名聲評判</div><div class="stat-value">${h.reputation || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">父馬 (所屬父系)</div><div class="stat-value">${h.sire || "-"} <span style="font-size:0.8rem; color:var(--text-muted);">(${h.sire_line || "-"})</span></div></div>
+                <div class="stat-item"><div class="stat-label">母馬 (所屬牝系)</div><div class="stat-value" style="color:#f472b6; font-weight:600;">${h.dam || (r ? r.dam : "-")} <span style="font-size:0.8rem; color:var(--text-muted);">(${h.dam_line || "-"})</span></div></div>
+
+                <!-- 2. 競爭能力 & 個性 -->
+                <div class="modal-section-title">⚡ 競爭能力 & 特性個性</div>
+                <div class="stat-item"><div class="stat-label">基本 SP (成長上限)</div><div class="stat-value" style="color:var(--gold-color);">${h.sp || "-"} <span style="font-size:0.85rem; color:#94a3b8;">(${h.sp_max || "-"})</span></div></div>
+                <div class="stat-item"><div class="stat-label">耐力 (スタミナ) / 次能力合計</div><div class="stat-value" style="color:#38bdf8;">${h.stamina || "-"} / ${h.subpara_total || "-"}</div></div>
                 <div class="stat-item"><div class="stat-label">瞬發力 / 勝負根性</div><div class="stat-value">${renderRankBadge(h.shunhatsu)} / ${renderRankBadge(h.konjo)}</div></div>
                 <div class="stat-item"><div class="stat-label">力量 / 精神力</div><div class="stat-value">${renderRankBadge(h.power)} / ${renderRankBadge(h.seishin)}</div></div>
                 <div class="stat-item"><div class="stat-label">智商 / 柔軟性 / 健康</div><div class="stat-value">${renderRankBadge(h.keshikosa)} / ${renderRankBadge(h.junan)} / ${renderRankBadge(h.kenko)}</div></div>
-                <div class="stat-item"><div class="stat-label">詳細攻略建議與評語</div><div class="stat-value" style="font-size:0.85rem; font-weight:normal; line-height:1.4;">${h.comment || (r ? (r.details || r.comment) : "-")}</div></div>
+                <div class="stat-item"><div class="stat-label">腳質 / 氣性 / 性格</div><div class="stat-value">${h.running_style || "-"} / ${h.temperament || "-"} / ${h.personality || "-"}</div></div>
+                <div class="stat-item full-width"><div class="stat-label">戰術特性</div><div class="stat-value" style="color:#fbbf24; font-weight:600;">${h.traits || "無特殊特性"}</div></div>
+                <div class="stat-item full-width"><div class="stat-label">🐴 馬匹個性 (ウマーソナリティ)</div><div class="stat-value" style="color:#a78bfa; font-weight:600;">${h.umarsonality || "無特殊個性"}</div></div>
+
+                <!-- 3. 適性與迴轉 -->
+                <div class="modal-section-title">🎯 賽道、距離與迴轉適性</div>
+                <div class="stat-item"><div class="stat-label">距離適性</div><div class="stat-value">${h.distance || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">馬場適性 (芝 / ダ)</div><div class="stat-value">${renderTrackBadge(h.grass || "-")} / ${renderTrackBadge(h.dirt || "-")} (${h.track || "-"})</div></div>
+                <div class="stat-item"><div class="stat-label">瞬發 / 持續 / 消耗 適性上限</div><div class="stat-value" style="font-size:0.85rem;">${h.shunhatsu_apt || "-"} / ${h.jizoku_apt || "-"} / ${h.shoumo_apt || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">迴轉適性 (小 / 左 / 右)</div><div class="stat-value">${h.komawari || "〇"} / ${h.hidarimawari || "〇"} / ${h.migimawari || "〇"}</div></div>
+                <div class="stat-item full-width"><div class="stat-label">體質健康風險 (喉鳴 / 腳部不安 / 腰甘)</div><div class="stat-value">${h.nodonari || "〇"} / ${h.kyakubu_fuan || "〇"} / ${h.koshi_no_amasa || "〇"}</div></div>
+
+                <!-- 4. 成長模式 & 繁殖遺傳 -->
+                <div class="modal-section-title">🌱 成長力 & 繁殖遺傳能力</div>
+                <div class="stat-item"><div class="stat-label">成長型 / 成長力</div><div class="stat-value">${h.growth || "-"} (${h.growth_cap || "-"})</div></div>
+                <div class="stat-item"><div class="stat-label">壽命 / 毛色</div><div class="stat-value">${h.life || "100"} / ${h.coat_color || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">繼承特性</div><div class="stat-value" style="font-size:0.85rem; color:#f43f5e; font-weight:600;">${h.inheritance || "-"}</div></div>
+                <div class="stat-item"><div class="stat-label">仔出評級 (繁殖潛力)</div><div class="stat-value" style="color:var(--gold-color); font-weight:bold; font-size:1.1rem;">${h.foal_quality || "-"}</div></div>
+                <div class="stat-item full-width"><div class="stat-label">詳細攻略建議與評語</div><div class="stat-value" style="font-size:0.85rem; font-weight:normal; line-height:1.4;">${h.comment || (r ? (r.details || r.comment) : "史實實力名馬")}</div></div>
             `;
 
             document.getElementById("modalBackdrop").style.display = "flex";
@@ -1203,15 +1247,9 @@
             const text = document.getElementById("filterToggleText");
             const icon = document.getElementById("filterToggleIcon");
             if (!panel) return;
-            if (panel.style.display === "none") {
-                panel.style.display = "flex";
-                if (text) text.textContent = "收折";
-                if (icon) icon.textContent = "▲";
-            } else {
-                panel.style.display = "none";
-                if (text) text.textContent = "展開";
-                if (icon) icon.textContent = "▼";
-            }
+            const isCollapsed = panel.classList.toggle("collapsed");
+            if (text) text.textContent = isCollapsed ? "展開" : "收折";
+            if (icon) icon.textContent = isCollapsed ? "▼" : "▲";
         }
 
         // ===== 📷 OCR 拍照文字辨識功能 (手機相機 / 相簿選圖) =====
