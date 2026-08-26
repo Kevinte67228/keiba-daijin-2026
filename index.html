@@ -604,6 +604,29 @@
             "⚪ 無札": 1, "無": 1, "": 0
         };
 
+        const rankWeights = {
+            "S+": 16, "S": 15,
+            "A+": 14, "A": 13,
+            "B+": 12, "B": 11,
+            "C+": 10, "C": 9,
+            "D+": 8, "D": 7,
+            "E+": 6, "E": 5,
+            "F+": 4, "F": 3,
+            "G+": 2, "G": 1,
+            "-": 0, "": 0
+        };
+
+        function renderRankBadge(rank) {
+            if (!rank || rank === "-") return "-";
+            let color = "var(--text-muted)";
+            if (rank.startsWith("S")) color = "#f59e0b; font-weight:bold;";
+            else if (rank.startsWith("A")) color = "#a855f7; font-weight:bold;";
+            else if (rank.startsWith("B")) color = "#38bdf8; font-weight:600;";
+            else if (rank.startsWith("C")) color = "#22c55e;";
+            else if (rank.startsWith("D")) color = "#cbd5e1;";
+            return `<span style="color:${color}">${rank}</span>`;
+        }
+
         function syncHorseData() {
             if (!dbData.all_horses || dbData.all_horses.length === 0) return;
             const horseMap = {};
@@ -627,6 +650,13 @@
                         if (!r.region || r.region === "-") {
                             r.region = matched.region || "-";
                         }
+                        // 同步 7 大核心屬性
+                        const attrs = ['shunhatsu', 'konjo', 'power', 'seishin', 'keshikosa', 'junan', 'kenko'];
+                        attrs.forEach(a => {
+                            if (!r[a] || r[a] === "-") {
+                                r[a] = matched[a] || "-";
+                            }
+                        });
                     }
                     if (!r.region || r.region === "-") {
                         if (r.category && r.category.includes("日本")) {
@@ -704,6 +734,9 @@
             if (field === "distance") {
                 let m = (item.distance || "").match(/\d+/);
                 return m ? parseInt(m[0]) : 0;
+            }
+            if (['shunhatsu', 'konjo', 'power', 'seishin', 'keshikosa', 'junan', 'kenko'].includes(field)) {
+                return rankWeights[item[field]] || 0;
             }
             return (item[field] || item.details || "").toString().toLowerCase();
         }
@@ -820,6 +853,13 @@
                     { key: "distance", title: "距離適性" },
                     { key: "track", title: "馬場適性" },
                     { key: "growth", title: "成長型" },
+                    { key: "shunhatsu", title: "瞬發" },
+                    { key: "konjo", title: "根性" },
+                    { key: "power", title: "力量" },
+                    { key: "seishin", title: "精神" },
+                    { key: "keshikosa", title: "智商" },
+                    { key: "junan", title: "柔軟" },
+                    { key: "kenko", title: "健康" },
                     { key: "sire", title: "父馬" },
                     { key: "action", title: "詳情" }
                 ];
@@ -831,6 +871,13 @@
                     { key: "foal_count", title: "仔出評級" },
                     { key: "track", title: "草地/泥地 (芝・ダ)" },
                     { key: "distance", title: "距離適性" },
+                    { key: "shunhatsu", title: "瞬發" },
+                    { key: "konjo", title: "根性" },
+                    { key: "power", title: "力量" },
+                    { key: "seishin", title: "精神" },
+                    { key: "keshikosa", title: "智商" },
+                    { key: "junan", title: "柔軟" },
+                    { key: "kenko", title: "健康" },
                     { key: "factor", title: "成長/因子" },
                     { key: "details", title: "詳細說明" },
                     { key: "action", title: "詳情卡片" }
@@ -844,6 +891,13 @@
                     { key: "stars", title: "推薦" },
                     { key: "matched_sp", title: "SP 速度" },
                     { key: "distance", title: "距離適性" },
+                    { key: "shunhatsu", title: "瞬發" },
+                    { key: "konjo", title: "根性" },
+                    { key: "power", title: "力量" },
+                    { key: "seishin", title: "精神" },
+                    { key: "keshikosa", title: "智商" },
+                    { key: "junan", title: "柔軟" },
+                    { key: "kenko", title: "健康" },
                     { key: "details", title: "詳細說明" },
                     { key: "action", title: "詳情卡片" }
                 ];
@@ -872,7 +926,7 @@
             tbody.innerHTML = "";
 
             if (items.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="12" style="text-align:center; color:var(--text-muted); padding:30px;">尚無符合條件的馬匹資料</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="19" style="text-align:center; color:var(--text-muted); padding:30px;">尚無符合條件的馬匹資料</td></tr>`;
                 return;
             }
 
@@ -892,6 +946,13 @@
                         <td>${item.distance || "-"}</td>
                         <td>${item.track || "-"}</td>
                         <td>${item.growth || "-"}</td>
+                        <td>${renderRankBadge(item.shunhatsu)}</td>
+                        <td>${renderRankBadge(item.konjo)}</td>
+                        <td>${renderRankBadge(item.power)}</td>
+                        <td>${renderRankBadge(item.seishin)}</td>
+                        <td>${renderRankBadge(item.keshikosa)}</td>
+                        <td>${renderRankBadge(item.junan)}</td>
+                        <td>${renderRankBadge(item.kenko)}</td>
                         <td>${item.sire || "-"}</td>
                         <td><button class="btn-detail" onclick="openModalByName('${escapeQuote(item.name)}')">查看</button></td>
                     `;
@@ -903,6 +964,13 @@
                         <td style="color:var(--gold-color); font-weight:bold;">${item.foal_count || "-"}</td>
                         <td>${item.track || "-"}</td>
                         <td>${item.distance || "-"}</td>
+                        <td>${renderRankBadge(item.shunhatsu)}</td>
+                        <td>${renderRankBadge(item.konjo)}</td>
+                        <td>${renderRankBadge(item.power)}</td>
+                        <td>${renderRankBadge(item.seishin)}</td>
+                        <td>${renderRankBadge(item.keshikosa)}</td>
+                        <td>${renderRankBadge(item.junan)}</td>
+                        <td>${renderRankBadge(item.kenko)}</td>
                         <td style="color:#f43f5e; font-weight:600;">${item.factor || item.growth || "-"}</td>
                         <td style="max-width:280px; overflow:hidden; text-overflow:ellipsis;" title="${escapeQuote(detailText)}">${detailText}</td>
                         <td><button class="btn-detail" onclick="openModalByName('${escapeQuote(item.name)}')">查看</button></td>
@@ -917,6 +985,13 @@
                         <td style="color:var(--gold-color);">${item.stars || "-"}</td>
                         <td style="color:var(--gold-color); font-weight:bold;">${sp}</td>
                         <td>${item.distance || "-"}</td>
+                        <td>${renderRankBadge(item.shunhatsu)}</td>
+                        <td>${renderRankBadge(item.konjo)}</td>
+                        <td>${renderRankBadge(item.power)}</td>
+                        <td>${renderRankBadge(item.seishin)}</td>
+                        <td>${renderRankBadge(item.keshikosa)}</td>
+                        <td>${renderRankBadge(item.junan)}</td>
+                        <td>${renderRankBadge(item.kenko)}</td>
                         <td style="max-width:280px; overflow:hidden; text-overflow:ellipsis;" title="${escapeQuote(detailText)}">${detailText}</td>
                         <td><button class="btn-detail" onclick="openModalByName('${escapeQuote(item.name)}')">查看</button></td>
                     `;
