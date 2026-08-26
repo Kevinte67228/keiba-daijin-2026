@@ -462,6 +462,28 @@
         </div>
 
         <div class="filter-group">
+            <label for="filterDistance">📏 距離適性起點 (最短適性)</label>
+            <select id="filterDistance" class="filter-control">
+                <option value="ALL">全部起點距離</option>
+                <option value="1000">1000m 起</option>
+                <option value="1100">1100m 起</option>
+                <option value="1200">1200m 起 (短途短距離)</option>
+                <option value="1300">1300m 起</option>
+                <option value="1400">1400m 起 (短中途)</option>
+                <option value="1500">1500m 起</option>
+                <option value="1600">1600m 起 (一哩賽事)</option>
+                <option value="1700">1700m 起</option>
+                <option value="1800">1800m 起 (中一哩)</option>
+                <option value="1900">1900m 起</option>
+                <option value="2000">2000m 起 (中距離經典)</option>
+                <option value="2100">2100m 起</option>
+                <option value="2200">2200m 起</option>
+                <option value="2400">2400m 起 (中長途經典)</option>
+                <option value="2500">2500m+ 起 (長距離耐力)</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
             <label for="filterSearch">🔍 馬名 / 父馬 關鍵字搜尋</label>
             <input type="text" id="filterSearch" class="filter-control" placeholder="輸入中日文馬名 (如: テイオー)...">
         </div>
@@ -515,15 +537,42 @@
             "⚪ 無札": 1, "無": 1, "": 0
         };
 
+        function syncHorseData() {
+            if (!dbData.all_horses || dbData.all_horses.length === 0) return;
+            const horseMap = {};
+            dbData.all_horses.forEach(h => {
+                if (h.name) horseMap[h.name] = h;
+            });
+            if (dbData.recommendations) {
+                dbData.recommendations.forEach(r => {
+                    const matched = horseMap[r.name];
+                    if (matched) {
+                        // 若推薦馬自身 distance 為空，將詳情頁面的 distance 補齊到外層
+                        if (!r.distance || r.distance === "-" || r.distance === "") {
+                            r.distance = matched.distance || "-";
+                        }
+                        if (!r.matched_sp || r.matched_sp === "-" || r.matched_sp === 0) {
+                            r.matched_sp = matched.sp || "-";
+                        }
+                        if (!r.track || r.track === "-") {
+                            r.track = matched.track || "-";
+                        }
+                    }
+                });
+            }
+        }
+
         function init() {
             populateYears();
             if (!window.MASTER_DB_DATA) {
                 console.warn("MASTER_DB_DATA 未載入，嘗試非同步載入 json...");
                 fetch("master_lookup_db.json").then(r => r.json()).then(d => {
                     dbData = d;
+                    syncHorseData();
                     renderTable();
                 }).catch(e => console.error("Data load failed:", e));
             } else {
+                syncHorseData();
                 renderTable();
             }
         }
@@ -547,8 +596,9 @@
             });
         });
 
-        ["filterYear", "filterTicket", "filterSex", "filterSp", "filterSearch"].forEach(id => {
-            document.getElementById(id).addEventListener("input", renderTable);
+        ["filterYear", "filterTicket", "filterSex", "filterSp", "filterDistance", "filterSearch"].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener("input", renderTable);
         });
 
         // 依據欄位型態計算可比較數值/字串 (修復多型態高精度排序)
@@ -583,6 +633,7 @@
             const ticketVal = document.getElementById("filterTicket").value;
             const sexVal = document.getElementById("filterSex").value;
             const spVal = parseInt(document.getElementById("filterSp").value) || 0;
+            const distVal = document.getElementById("filterDistance") ? document.getElementById("filterDistance").value : "ALL";
             const searchVal = document.getElementById("filterSearch").value.trim().toLowerCase();
 
             let dataset = (currentTab === "all_horses") ? dbData.all_horses : dbData.recommendations.filter(r => r.category === currentTab);
@@ -594,6 +645,19 @@
                 
                 const sp = item.sp || item.matched_sp || 0;
                 if (spVal > 0 && sp < spVal) return false;
+
+                // 距離適性 (值小的那一個：最短起點距離) 篩選
+                if (distVal !== "ALL") {
+                    const targetDist = parseInt(distVal);
+                    const m = (item.distance || "").match(/(\d+)/);
+                    const itemMinDist = m ? parseInt(m[1]) : 0;
+                    if (distVal === "2500") {
+                        if (itemMinDist < 2500) return false;
+                    } else {
+                        if (itemMinDist !== targetDist) return false;
+                    }
+                }
+
 
                 if (searchVal) {
                     const nameMatch = item.name && item.name.toLowerCase().includes(searchVal);
