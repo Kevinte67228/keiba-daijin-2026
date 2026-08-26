@@ -12,8 +12,41 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="賽馬10速查">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
-    <!-- 100% 離線本地載入資料庫 script，解決瀏覽器 file:// 協定 CORS 限制 -->
-    <script src="master_lookup_db.js"></script>
+    <!-- 資料庫載入：從 jsDelivr CDN 動態載入（PWA 線上模式）-->
+    <!-- jsDelivr 直接從 GitHub repo 提供 CDN，不需要額外設定 -->
+    <script>
+        // 嘗試順序：1) window.MASTER_DB_DATA (本地 file:// 模式) → 2) jsDelivr CDN
+        window._DB_LOADED = false;
+        const DB_CDN_URL = 'https://cdn.jsdelivr.net/gh/Kevinte67228/keiba-daijin-2026@main/master_lookup_db.js';
+
+        function showLoading(msg) {
+            const el = document.getElementById('loadingMsg');
+            if (el) el.textContent = msg;
+        }
+
+        async function loadDatabase() {
+            if (window.MASTER_DB_DATA) {
+                window._DB_LOADED = true;
+                if (typeof init === 'function') init();
+                return;
+            }
+            showLoading('⏳ 正在從 CDN 載入資料庫（首次約需 5~15 秒）...');
+            try {
+                const resp = await fetch(DB_CDN_URL);
+                const text = await resp.text();
+                // Execute the JS which sets window.MASTER_DB_DATA
+                const script = document.createElement('script');
+                script.textContent = text;
+                document.head.appendChild(script);
+                window._DB_LOADED = true;
+                showLoading('');
+                if (typeof init === 'function') init();
+            } catch (e) {
+                showLoading('❌ 資料庫載入失敗，請確認網路連線後重新整理。Error: ' + e.message);
+            }
+        }
+        window.addEventListener('DOMContentLoaded', loadDatabase);
+    </script>
     <!-- Service Worker 註冊 -->
     <script>
         if ('serviceWorker' in navigator) {
@@ -364,6 +397,12 @@
         <h1>🏇 賽馬大亨 10 2026 - 8大資料庫年度與自訂條件速查大總攬</h1>
         <p>15,381 匹史實馬 + 7 大年度推薦區塊 100% 離線秒速過濾、多型態高精度排序與能力卡片連動</p>
     </div>
+    <!-- 資料庫載入進度提示 -->
+    <div id="loadingMsg" style="
+        display:block; text-align:center; padding:14px 20px;
+        background:#1e293b; border:1px solid #334155; border-radius:8px;
+        color:#38bdf8; font-size:0.95rem; margin-bottom:16px;
+    "></div>
 
     <!-- 8 大類別切換頁籤 -->
     <div class="category-tabs-wrapper">
@@ -750,7 +789,12 @@
             document.getElementById("modalBackdrop").style.display = "none";
         }
 
-        window.onload = init;
+        // init() 由 loadDatabase() 在資料庫載入完成後自動呼叫
+        // 同時隱藏空的 loadingMsg
+        document.addEventListener('DOMContentLoaded', () => {
+            const el = document.getElementById('loadingMsg');
+            if (el && !el.textContent) el.style.display = 'none';
+        });
     </script>
 </body>
 </html>
