@@ -22,12 +22,20 @@
 
         function showLoading(msg) {
             const el = document.getElementById('loadingMsg');
-            if (el) el.textContent = msg;
+            if (el) {
+                if (msg) {
+                    el.style.display = 'block';
+                    el.innerHTML = msg;
+                } else {
+                    el.style.display = 'none';
+                }
+            }
         }
 
         async function loadDatabase() {
             if (window.MASTER_DB_DATA) {
                 window._DB_LOADED = true;
+                if (typeof dbData !== 'undefined') dbData = window.MASTER_DB_DATA;
                 if (typeof init === 'function') init();
                 return;
             }
@@ -40,12 +48,37 @@
                 script.textContent = text;
                 document.head.appendChild(script);
                 window._DB_LOADED = true;
+                if (window.MASTER_DB_DATA && typeof dbData !== 'undefined') {
+                    dbData = window.MASTER_DB_DATA;
+                }
                 showLoading('');
                 if (typeof init === 'function') init();
             } catch (e) {
                 showLoading('❌ 資料庫載入失敗，請確認網路連線後重新整理。Error: ' + e.message);
             }
         }
+
+        async function clearPwaCache() {
+            if (!confirm("確定要清除手機/瀏覽器本機暫存並重新載入最新版本嗎？")) return;
+            showLoading("🧹 正在清除快取並重新載入最新版本...");
+            try {
+                if ('caches' in window) {
+                    const keys = await caches.keys();
+                    await Promise.all(keys.map(key => caches.delete(key)));
+                }
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    await Promise.all(registrations.map(r => r.unregister()));
+                }
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.reload(true);
+            } catch (err) {
+                alert("清除快取時發生錯誤: " + err.message);
+                window.location.reload();
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', loadDatabase);
     </script>
     <!-- Service Worker 註冊 -->
@@ -102,28 +135,33 @@
             font-size: 0.95rem;
         }
 
-        /* 8大類別頁籤 - 桌機4欄 / 手機2行×4顆可橫滑 */
+        /* 8大類別頁籤 - 手機 2×2 滑動佈局 / 桌機 4×2 展開 */
         .category-tabs-wrapper {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             margin-bottom: 20px;
-            padding-bottom: 4px;
+            padding-bottom: 6px;
+            scrollbar-width: thin;
         }
 
         .category-tabs {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(2, auto);
+            grid-template-rows: repeat(2, 44px);
+            grid-auto-flow: column;
+            grid-auto-columns: calc(50% - 6px); /* 手機一屏 2×2 = 4 顆，共 8 顆可橫向滑動 */
             gap: 8px;
-            min-width: 480px; /* 確保手機可橫滑 */
+            min-width: 100%;
         }
 
-        @media (min-width: 900px) {
+        @media (min-width: 768px) {
             .category-tabs-wrapper {
                 overflow-x: visible;
             }
             .category-tabs {
-                min-width: unset;
+                grid-template-rows: repeat(2, auto);
+                grid-auto-flow: row;
+                grid-template-columns: repeat(4, 1fr);
+                grid-auto-columns: auto;
             }
         }
 
@@ -395,7 +433,25 @@
 <body>
 
     <div class="header">
-        <h1>🏇 賽馬大亨 10 2026 - 8大資料庫年度與自訂條件速查大總覽</h1>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 8px;">
+            <h1 style="margin: 0; font-size: 1.6rem; color: #38bdf8;">🏇 賽馬大亨 10 2026 - 8大資料庫速查大總覽</h1>
+            <button onclick="clearPwaCache()" style="
+                background: rgba(239, 68, 68, 0.2);
+                border: 1px solid #ef4444;
+                color: #fca5a5;
+                padding: 6px 12px;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 0.85rem;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                transition: all 0.2s ease;
+            ">
+                🧹 清除暫存快取
+            </button>
+        </div>
         <p>15,381 匹史實馬 + 7 大年度推薦分類 100% 離線秒速過濾、多型態高精度排序與能力卡片連動</p>
     </div>
     <!-- 資料庫載入進度提示 -->
@@ -563,8 +619,11 @@
         }
 
         function init() {
+            if (window.MASTER_DB_DATA) {
+                dbData = window.MASTER_DB_DATA;
+            }
             populateYears();
-            if (!window.MASTER_DB_DATA) {
+            if (!window.MASTER_DB_DATA || !dbData || !dbData.all_horses || dbData.all_horses.length === 0) {
                 console.warn("MASTER_DB_DATA 未載入，嘗試非同步載入 json...");
                 fetch("master_lookup_db.json").then(r => r.json()).then(d => {
                     dbData = d;
@@ -629,21 +688,40 @@
         }
 
         function renderTable() {
-            const yearVal = document.getElementById("filterYear").value;
-            const ticketVal = document.getElementById("filterTicket").value;
-            const sexVal = document.getElementById("filterSex").value;
-            const spVal = parseInt(document.getElementById("filterSp").value) || 0;
-            const distVal = document.getElementById("filterDistance") ? document.getElementById("filterDistance").value : "ALL";
-            const searchVal = document.getElementById("filterSearch").value.trim().toLowerCase();
+            if (window.MASTER_DB_DATA && (!dbData || !dbData.all_horses || dbData.all_horses.length === 0)) {
+                dbData = window.MASTER_DB_DATA;
+                syncHorseData();
+            }
 
-            let dataset = (currentTab === "all_horses") ? dbData.all_horses : dbData.recommendations.filter(r => r.category === currentTab);
+            const yearVal = document.getElementById("filterYear") ? document.getElementById("filterYear").value : "ALL";
+            const ticketVal = document.getElementById("filterTicket") ? document.getElementById("filterTicket").value : "ALL";
+            const sexVal = document.getElementById("filterSex") ? document.getElementById("filterSex").value : "ALL";
+            const spVal = document.getElementById("filterSp") ? (parseInt(document.getElementById("filterSp").value) || 0) : 0;
+            const distVal = document.getElementById("filterDistance") ? document.getElementById("filterDistance").value : "ALL";
+            const searchVal = document.getElementById("filterSearch") ? document.getElementById("filterSearch").value.trim().toLowerCase() : "";
+
+            let dataset = [];
+            if (dbData) {
+                if (currentTab === "all_horses") {
+                    dataset = dbData.all_horses || [];
+                } else if (dbData.recommendations) {
+                    dataset = dbData.recommendations.filter(r => r.category === currentTab);
+                }
+            }
 
             let filtered = dataset.filter(item => {
+                if (!item) return false;
                 if (yearVal !== "ALL" && item.year != yearVal) return false;
-                if (ticketVal !== "ALL" && !item.ticket.includes(ticketVal)) return false;
-                if (sexVal !== "ALL" && item.sex && !item.sex.includes(sexVal)) return false;
+                if (ticketVal !== "ALL") {
+                    const t = item.ticket || "";
+                    if (!t.includes(ticketVal)) return false;
+                }
+                if (sexVal !== "ALL") {
+                    const s = item.sex || "";
+                    if (!s.includes(sexVal)) return false;
+                }
                 
-                const sp = item.sp || item.matched_sp || 0;
+                const sp = parseInt(item.sp || item.matched_sp) || 0;
                 if (spVal > 0 && sp < spVal) return false;
 
                 // 距離適性 (值小的那一個：最短起點距離) 篩選
@@ -658,11 +736,14 @@
                     }
                 }
 
-
                 if (searchVal) {
-                    const nameMatch = item.name && item.name.toLowerCase().includes(searchVal);
-                    const sireMatch = item.sire && item.sire.toLowerCase().includes(searchVal);
-                    if (!nameMatch && !sireMatch) return false;
+                    const name = (item.name || "").toLowerCase();
+                    const sire = (item.sire || "").toLowerCase();
+                    const details = (item.details || item.comment || "").toLowerCase();
+                    const nameMatch = name.includes(searchVal);
+                    const sireMatch = sire.includes(searchVal);
+                    const detailMatch = details.includes(searchVal);
+                    if (!nameMatch && !sireMatch && !detailMatch) return false;
                 }
                 return true;
             });
