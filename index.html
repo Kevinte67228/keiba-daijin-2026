@@ -260,18 +260,24 @@
 
         }
 
-        /* 表格樣式 */
+        /* 表格樣式 - 防止右邊框重疊與欄位壓縮 */
         .table-container {
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
             background: var(--panel-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 100%;
+            position: relative;
         }
 
         table {
-            width: 100%;
-            border-collapse: collapse;
+            width: max-content;
+            min-width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
             text-align: left;
             font-size: 0.9rem;
         }
@@ -279,7 +285,7 @@
         th {
             background: #1e293b;
             color: #38bdf8;
-            padding: 12px 15px;
+            padding: 12px 16px;
             font-weight: 700;
             border-bottom: 2px solid var(--border-color);
             cursor: pointer;
@@ -298,9 +304,16 @@
         }
 
         td {
-            padding: 11px 15px;
+            padding: 11px 16px;
             border-bottom: 1px solid rgba(51, 65, 85, 0.5);
             white-space: nowrap;
+        }
+
+        /* 最右側詳情按鈕欄位保留充足右側呼吸邊界，徹底杜絕與右外框重疊交疊 */
+        th:last-child, td:last-child {
+            padding-right: 28px !important;
+            text-align: center;
+            min-width: 90px;
         }
 
         tr:hover td {
@@ -1165,9 +1178,8 @@
             <label for="filterSex">♂♀ 性別 (Sex)</label>
             <select id="filterSex" class="filter-control">
                 <option value="ALL">全部性別</option>
-                <option value="牡">牡馬</option>
-                <option value="牝">牝馬</option>
-                <option value="騙">騸馬</option>
+                <option value="牡">牡馬 (雄)</option>
+                <option value="牝">牝馬 (雌)</option>
             </select>
         </div>
 
@@ -1343,10 +1355,12 @@
         </div>
     </div>
     <script>
-        let dbData = window.MASTER_DB_DATA || { all_horses: [], recommendations: [] };
+        let dbData = { all_horses: [], recommendations: [] };
         let currentTab = "all_horses";
         let sortField = "sp";
         let sortAsc = false;
+        let currentAppMode = 'horses';
+        let cropperInstance = null;
 
         const ticketWeights = {
             "🌈 虹札": 6, "虹": 6,
@@ -1370,11 +1384,7 @@
         };
 
         const trackWeights = {
-            "◎": 4,
-            "○": 3,
-            "△": 2,
-            "×": 1,
-            "-": 0, "": 0
+            "◎": 4, "○": 3, "△": 2, "×": 1, "-": 0, "": 0
         };
 
         function formatRegion(r) {
@@ -1425,153 +1435,112 @@
             return sym;
         }
 
-        function syncHorseData() {
-            if (!dbData.all_horses || dbData.all_horses.length === 0) return;
-            
-            dbData.all_horses.forEach(h => {
-                h.region = formatRegion(h.region);
-                const t = parseTrack(h.track);
-                h.grass = t.grass;
-                h.dirt = t.dirt;
-            });
-
-            const horseMap = {};
-            dbData.all_horses.forEach(h => {
-                if (h.name) horseMap[h.name] = h;
-            });
-
-            if (dbData.recommendations) {
-                dbData.recommendations.forEach(r => {
-                    const matched = horseMap[r.name];
-                    if (matched) {
-                        if (!r.distance || r.distance === "-" || r.distance === "") {
-                            r.distance = matched.distance || "-";
-                        }
-                        if (!r.matched_sp || r.matched_sp === "-" || r.matched_sp === 0) {
-                            r.matched_sp = matched.sp || "-";
-                        }
-                        if (!r.track || r.track === "-") {
-                            r.track = matched.track || "-";
-                        }
-                        if (!r.region || r.region === "-") {
-                            r.region = matched.region || "-";
-                        }
-                        const attrs = ['shunhatsu', 'konjo', 'power', 'seishin', 'keshikosa', 'junan', 'kenko', 'dam', 'dam_line', 'sire'];
-                        attrs.forEach(a => {
-                            if (!r[a] || r[a] === "-") {
-                                r[a] = matched[a] || "-";
-                            }
-                        });
-                    }
-                    if (!r.region || r.region === "-") {
-                        if (r.category && r.category.includes("日本")) {
-                            r.region = "🇯🇵 日本";
-                        } else if (r.category && (r.category.includes("海外") || r.category.includes("欧"))) {
-                            r.region = "🇪🇺 歐洲 (EU)";
-                        }
-                    } else {
-                        r.region = formatRegion(r.region);
-                    }
-                    const t = parseTrack(r.track);
-                    r.grass = t.grass;
-                    r.dirt = t.dirt;
-                });
+        function renderStarsBadge(stars) {
+            if (!stars || stars === "-") return "-";
+            if (stars.includes("★★★") || stars === "3") {
+                return `<span style="color:#f59e0b; font-weight:bold; text-shadow:0 0 6px rgba(245,158,11,0.4);">★★★</span>`;
             }
+            if (stars.includes("★★") || stars === "2") {
+                return `<span style="color:#fbbf24; font-weight:bold;">★★</span>`;
+            }
+            if (stars.includes("★") || stars === "1") {
+                return `<span style="color:#38bdf8; font-weight:600;">★</span>`;
+            }
+            return `<span style="color:var(--text-muted);">${stars}</span>`;
+        }
+
+        function renderTicketBadge(ticket) {
+            if (!ticket) return "-";
+            if (ticket.includes("虹")) return `<span class="badge badge-rainbow">🌈 虹札</span>`;
+            if (ticket.includes("金")) return `<span class="badge badge-gold">🥇 金札</span>`;
+            if (ticket.includes("銀")) return `<span class="badge badge-silver">🥈 銀札</span>`;
+            if (ticket.includes("銅")) return `<span class="badge badge-bronze">🥉 銅札</span>`;
+            if (ticket.includes("綠") || ticket.includes("緑")) return `<span class="badge badge-green">🟢 綠札</span>`;
+            return ticket;
+        }
+
+        function escapeQuote(str) {
+            return str ? str.replace(/'/g, "\\'").replace(/"/g, "&quot;") : "";
+        }
+
+        function generateAIComment(h) {
+            if (!h) return "尚無評語";
+            const parts = [];
+            const sp = parseInt(h.sp || h.matched_sp) || 0;
+            const sub = parseInt(h.subpara_total) || 0;
+            if (sp >= 75) parts.push(`⚡ 擁有極高之 SP 速度能力 (${sp})，具備奪取頂級 G1 之強大即戰力。`);
+            else if (sp >= 70) parts.push(`🐎 速度屬性優良 (${sp})，於重賞賽事具備高度競爭力。`);
+            if (sub >= 75) parts.push(`💎 次能力極其全面均衡 (次能力合計 ${sub})，無明顯弱點。`);
+            if (h.track && h.track.includes("◎")) parts.push(`🎯 賽道適性出色 (${h.track})，發揮極其穩定。`);
+            if (h.traits && h.traits !== "無特殊特性" && h.traits !== "-") parts.push(`✨ 具備關鍵特性「${h.traits}」，關鍵戰局往往能發揮奇效。`);
+            if (h.umarsonality && h.umarsonality !== "-") parts.push(`🐴 馬匹個性為「${h.umarsonality}」。`);
+            if (h.foal_quality && parseInt(h.foal_quality) >= 6) parts.push(`🧬 具備高繁殖潛力 (仔出評級 ${h.foal_quality})，退役後極具配種價值。`);
+            return parts.length > 0 ? parts.join(" ") : "基礎素質健全，適合依適性距離與賽道穩健安排賽程。";
+        }
+
+        function syncHorseData() {
+            if (!dbData || !dbData.all_horses || !dbData.recommendations) return;
+            const horseMap = new Map();
+            dbData.all_horses.forEach(h => {
+                if (h.name) horseMap.set(h.name, h);
+            });
+            dbData.recommendations.forEach(r => {
+                const match = horseMap.get(r.name);
+                if (match) {
+                    if (!r.matched_sp || r.matched_sp === "-") r.matched_sp = match.sp;
+                    if (!r.sp || r.sp === "-") r.sp = match.sp;
+                    if (!r.shunhatsu || r.shunhatsu === "-") r.shunhatsu = match.shunhatsu;
+                    if (!r.konjo || r.konjo === "-") r.konjo = match.konjo;
+                    if (!r.power || r.power === "-") r.power = match.power;
+                    if (!r.seishin || r.seishin === "-") r.seishin = match.seishin;
+                    if (!r.keshikosa || r.keshikosa === "-") r.keshikosa = match.keshikosa;
+                    if (!r.junan || r.junan === "-") r.junan = match.junan;
+                    if (!r.kenko || r.kenko === "-") r.kenko = match.kenko;
+                    if (!r.distance || r.distance === "-") r.distance = match.distance;
+                    if (!r.grass || r.grass === "-") r.grass = match.grass;
+                    if (!r.dirt || r.dirt === "-") r.dirt = match.dirt;
+                    if (!r.sex || r.sex === "-") r.sex = match.sex;
+                    if (!r.sire || r.sire === "-") r.sire = match.sire;
+                    if (!r.dam || r.dam === "-") r.dam = match.dam;
+                    if (!r.ticket || r.ticket === "-") r.ticket = match.ticket;
+                    if (!r.growth || r.growth === "-") r.growth = match.growth;
+                }
+            });
         }
 
         function unpackDatabase(data) {
             if (!data) return { all_horses: [], recommendations: [] };
             if (data.schema === "columnar_v1") {
                 const cols = data.columns || [];
-                const horses = (data.all_horses || []).map(row => {
+                const horses = [];
+                (data.all_horses || []).forEach(row => {
                     const obj = {};
-                    cols.forEach((k, idx) => obj[k] = row[idx]);
-                    return obj;
+                    cols.forEach((col, i) => { obj[col] = row[i]; });
+                    const tr = parseTrack(obj.track);
+                    obj.grass = tr.grass;
+                    obj.dirt = tr.dirt;
+                    horses.push(obj);
                 });
                 const recCols = data.rec_columns || [];
-                const recs = (data.recommendations || []).map(row => {
+                const recs = [];
+                (data.recommendations || []).forEach(row => {
                     const obj = {};
-                    recCols.forEach((k, idx) => obj[k] = row[idx]);
-                    return obj;
+                    recCols.forEach((col, i) => { obj[col] = row[i]; });
+                    const tr = parseTrack(obj.track);
+                    obj.grass = tr.grass;
+                    obj.dirt = tr.dirt;
+                    recs.push(obj);
                 });
                 return { all_horses: horses, recommendations: recs };
             }
             return data;
         }
 
-        function generateAIComment(h) {
-            const sp = parseInt(h.sp) || 60;
-            const sp_max = h.sp_max || (sp * 1.1).toFixed(1);
-            const stamina = parseInt(h.stamina) || 40;
-            const dist = h.distance || '1600～2000m';
-            const track = h.track || '芝◎ ダ×';
-            const growth = h.growth || '普通';
-            const growth_cap = h.growth_cap || '普通';
-            const sire_line = h.sire_line || '主流系統';
-            const foal_q = parseInt(h.foal_quality || h.foal_count) || 4;
-            const traits = (h.traits && h.traits !== '-') ? h.traits : '';
-            const umar = (h.umarsonality && h.umarsonality !== '-') ? h.umarsonality : '';
-
-            let tag = sp >= 76 ? '【殿堂級傳奇名駒】' : (sp >= 73 ? '【一線核心主力G1馬】' : (sp >= 68 ? '【高性價比重賞實力馬】' : '【史實固有血統馬】'));
-            let track_desc = track.includes('芝◎ ダ◎') ? '具備極為罕見的「草地/泥地雙頂級 (二刀流)」賽道適性，全天候賽事皆可無縫出戰' : (track.includes('ダ◎') ? '為標準的純泥地強力鬥士，極適合攻略地方交流重賞、JBC 系列賽及海外泥地大賽' : '專注於草地高速競逐，具備優異的賽道巡航與最後直線衝刺能力');
-            let dist_desc = (stamina >= 70 || dist.includes('3000') || dist.includes('3200')) ? `適性距離涵蓋 ${dist}，擁有充沛的耐力底蘊，是攻略經典三冠（菊花賞）與天皇賞(春)等長途G1的頂級人選` : (dist.includes('1200') && dist.includes('1600') ? `適性距離為 ${dist}，屬於爆發力極強的短途/一哩專家，在短距離錦標賽與安田紀念賽事中佔盡優勢` : `適性距離落在黃金中距離 ${dist}，完美契合皐月賞、日本德比、秋季天皇賞與日本盃等核心經典賽事`);
-            let grow_desc = `成長型為「${growth} (${growth_cap})」，` + (growth.includes('早') ? '2~3歲即可迅速成型並搶佔幼駒經典錦標，回本週期極快；' : (growth.includes('晩') || growth.includes('遅') ? '屬於大器晚成型，4歲後實力全面爆發，競賽壽命長且能持續征戰至高年齡；' : '成長曲線平穩均衡，能長期維持巔峰競賽狀態；'));
-            let breed_desc = `所屬父系為 ${sire_line}，退役後仔出評級達 ${foal_q}/10，` + (foal_q >= 8 ? '為極高價值的神級種馬/名牝，極易產出繼承強大因子的高SP後代！' : (foal_q >= 5 ? '具備優秀的遺傳潛力，可作為牧場核心配種體系的重要基石。' : '適合透過相性配合與母系補正，繁育出青出於藍的實力賽駒。'));
-            let extra = (traits ? ` | 固有/戰術技能：${traits}` : '') + (umar ? ` | 個性：${umar}` : '');
-            return `${tag} 基本SP ${sp} (上限 ${sp_max})，${track_desc}。${dist_desc}。${grow_desc}${breed_desc}${extra}`;
-        }
-
-        function init() {
-            if (window.MASTER_DB_DATA) {
-                dbData = unpackDatabase(window.MASTER_DB_DATA);
-            }
-            populateYears();
-            if (!window.MASTER_DB_DATA || !dbData || !dbData.all_horses || dbData.all_horses.length === 0) {
-                console.warn("MASTER_DB_DATA 未載入，嘗試非同步載入 json...");
-                fetch("master_lookup_db.json").then(r => r.json()).then(d => {
-                    dbData = unpackDatabase(d);
-                    syncHorseData();
-                    renderTable();
-                }).catch(e => console.error("Data load failed:", e));
-            } else {
-                syncHorseData();
-                renderTable();
-            }
-        }
-
-        function populateYears() {
-            const select = document.getElementById("filterYear");
-            for (let yr = 2023; yr >= 1968; yr--) {
-                const opt = document.createElement("option");
-                opt.value = yr;
-                opt.textContent = `${yr} 年登場`;
-                select.appendChild(opt);
-            }
-        }
-
-        document.querySelectorAll(".tab-btn").forEach(btn => {
-            btn.addEventListener("click", (e) => {
-                document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-                e.target.classList.add("active");
-                currentTab = e.target.getAttribute("data-cat");
-                renderTable();
-            });
-        });
-
-        ["filterYear", "filterTicket", "filterSex", "filterSp", "filterDistance", "filterRegion", "filterSearch"].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.addEventListener("input", renderTable);
-        });
-
-        // 依據欄位型態計算可比較數值/字串 (修復多型態高精度排序)
         function getSortValue(item, field) {
-            if (field === "year") {
-                return parseInt(item.year) || 0;
-            }
-            if (field === "ticket") {
-                return ticketWeights[item.ticket] || 0;
-            }
-            if (field === "sp" || field === "sp_max" || field === "matched_sp") {
+            if (!item) return 0;
+            if (field === "ticket") return ticketWeights[item.ticket] || 0;
+            if (field === "year") return parseInt(item.year) || 0;
+            if (field === "sp" || field === "matched_sp" || field === "sp_max" || field === "price" || field === "reputation") {
                 let val = item[field] !== undefined ? item[field] : item.matched_sp;
                 return parseInt(val) || 0;
             }
@@ -1598,7 +1567,7 @@
 
         function renderTable() {
             if (window.MASTER_DB_DATA && (!dbData || !dbData.all_horses || dbData.all_horses.length === 0)) {
-                dbData = window.MASTER_DB_DATA;
+                dbData = unpackDatabase(window.MASTER_DB_DATA);
                 syncHorseData();
             }
 
@@ -1634,7 +1603,6 @@
                 const sp = parseInt(item.sp || item.matched_sp) || 0;
                 if (spVal > 0 && sp < spVal) return false;
 
-                // 距離適性 (值小的那一個：最短起點距離) 篩選
                 if (distVal !== "ALL") {
                     const targetDist = parseInt(distVal);
                     const m = (item.distance || "").match(/(\d+)/);
@@ -1646,7 +1614,6 @@
                     }
                 }
 
-                // 區域別篩選
                 if (regionVal !== "ALL") {
                     const r = item.region || "";
                     if (regionVal === "日本") {
@@ -1654,9 +1621,7 @@
                     } else if (regionVal === "米") {
                         if (!r.includes("米") && !r.includes("美") && !r.includes("US")) return false;
                     } else if (regionVal === "欧") {
-                        if (!r.includes("欧") && !r.includes("歐") && !r.includes("EU")) return false;
-                    } else if (regionVal === "海外") {
-                        if (r.includes("日")) return false;
+                        if (!r.includes("欧") && !r.includes("歐") && !r.includes("EU") && !r.includes("Europe")) return false;
                     }
                 }
 
@@ -1665,20 +1630,14 @@
                     const sire = (item.sire || "").toLowerCase();
                     const dam = (item.dam || "").toLowerCase();
                     const details = (item.details || item.comment || "").toLowerCase();
-                    const nameMatch = name.includes(searchVal);
-                    const sireMatch = sire.includes(searchVal);
-                    const damMatch = dam.includes(searchVal);
-                    const detailMatch = details.includes(searchVal);
-                    if (!nameMatch && !sireMatch && !damMatch && !detailMatch) return false;
+                    if (!name.includes(searchVal) && !sire.includes(searchVal) && !dam.includes(searchVal) && !details.includes(searchVal)) return false;
                 }
                 return true;
             });
 
-            // 修正：多型態高精度排序 (數字/馬札/星級/距離/文字)
             filtered.sort((a, b) => {
                 let valA = getSortValue(a, sortField);
                 let valB = getSortValue(b, sortField);
-
                 if (typeof valA === "number" && typeof valB === "number") {
                     return sortAsc ? valA - valB : valB - valA;
                 }
@@ -1687,7 +1646,8 @@
                 return 0;
             });
 
-            document.getElementById("matchCount").textContent = filtered.length.toLocaleString();
+            const matchCountEl = document.getElementById("matchCount");
+            if (matchCountEl) matchCountEl.textContent = filtered.length.toLocaleString();
 
             renderHeader();
             renderBody(filtered);
@@ -1695,6 +1655,7 @@
 
         function renderHeader() {
             const tr = document.getElementById("tableHeader");
+            if (!tr) return;
             tr.innerHTML = "";
 
             let cols = [];
@@ -1791,6 +1752,7 @@
 
         function renderBody(items) {
             const tbody = document.getElementById("tableBody");
+            if (!tbody) return;
             tbody.innerHTML = "";
 
             if (items.length === 0) {
@@ -1879,37 +1841,9 @@
             });
         }
 
-        function renderStarsBadge(stars) {
-            if (!stars || stars === "-") return "-";
-            if (stars.includes("★★★") || stars === "3") {
-                return `<span style="color:#f59e0b; font-weight:bold; text-shadow:0 0 6px rgba(245,158,11,0.4);">★★★</span>`;
-            }
-            if (stars.includes("★★") || stars === "2") {
-                return `<span style="color:#fbbf24; font-weight:bold;">★★</span>`;
-            }
-            if (stars.includes("★") || stars === "1") {
-                return `<span style="color:#38bdf8; font-weight:600;">★</span>`;
-            }
-            return `<span style="color:var(--text-muted);">${stars}</span>`;
-        }
-
-        function renderTicketBadge(ticket) {
-            if (!ticket) return "-";
-            if (ticket.includes("虹")) return `<span class="badge badge-rainbow">🌈 虹札</span>`;
-            if (ticket.includes("金")) return `<span class="badge badge-gold">🥇 金札</span>`;
-            if (ticket.includes("銀")) return `<span class="badge badge-silver">🥈 銀札</span>`;
-            if (ticket.includes("銅")) return `<span class="badge badge-bronze">🥉 銅札</span>`;
-            if (ticket.includes("綠") || ticket.includes("緑")) return `<span class="badge badge-green">🟢 綠札</span>`;
-            return ticket;
-        }
-
-        function escapeQuote(str) {
-            return str ? str.replace(/'/g, "\\'").replace(/"/g, "&quot;") : "";
-        }
-
         function openModalByName(horseName) {
-            let h = dbData.all_horses.find(x => x.name === horseName);
-            let r = dbData.recommendations.find(x => x.name === horseName);
+            let h = dbData.all_horses ? dbData.all_horses.find(x => x.name === horseName) : null;
+            let r = dbData.recommendations ? dbData.recommendations.find(x => x.name === horseName) : null;
 
             if (!h) {
                 h = { name: horseName, comment: r ? (r.details || r.comment) : "尚無完整史實馬數據" };
@@ -1962,7 +1896,8 @@
         }
 
         function closeModal() {
-            document.getElementById("modalBackdrop").style.display = "none";
+            const el = document.getElementById("modalBackdrop");
+            if (el) el.style.display = "none";
         }
 
         function toggleFilterPanel() {
@@ -1975,10 +1910,88 @@
             if (icon) icon.textContent = isCollapsed ? "▼" : "▲";
         }
 
-                // ===== 📷 OCR 圖片裁切與文字辨識流程 (Cropper.js + Tesseract.js) =====
-        let cropperInstance = null;
-        let currentOcrFile = null;
+        // ===== 雙模式切換邏輯 (馬匹速查 / 16大核心攻略) =====
+        function switchMainMode(mode) {
+            currentAppMode = mode;
+            const btnH = document.getElementById('btnModeHorses');
+            const btnG = document.getElementById('btnModeGuides');
+            const viewH = document.getElementById('horsesView');
+            const viewG = document.getElementById('guidesView');
 
+            if (!btnH || !btnG || !viewH || !viewG) return;
+
+            if (mode === 'horses') {
+                btnH.classList.add('active');
+                btnG.classList.remove('active');
+                viewH.style.display = 'block';
+                viewG.style.display = 'none';
+            } else {
+                btnH.classList.remove('active');
+                btnG.classList.add('active');
+                viewH.style.display = 'none';
+                viewG.style.display = 'block';
+                renderGuidesGrid();
+            }
+        }
+
+        function renderGuidesGrid() {
+            const container = document.getElementById('guidesGridContainer');
+            if (!container) return;
+            const list = window.CORE_GUIDES_DATA || [];
+            if (list.length === 0) {
+                container.innerHTML = '<div style="color:var(--text-muted); padding:20px;">攻略資料載入中...</div>';
+                return;
+            }
+
+            container.innerHTML = list.map(g => `
+                <div class="guide-card" onclick="openGuideModal('${g.id}')">
+                    <div class="guide-card-tag" style="color: ${g.tag_color || '#38bdf8'};">
+                        <span>${g.icon || '🚀'}</span> ${g.category}
+                    </div>
+                    <div class="guide-card-title">${g.title}</div>
+                </div>
+            `).join('');
+        }
+
+        function openGuideModal(guideId) {
+            const list = window.CORE_GUIDES_DATA || [];
+            const g = list.find(x => x.id === guideId);
+            if (!g) return;
+
+            const tagEl = document.getElementById('guideModalTag');
+            if (tagEl) {
+                tagEl.textContent = g.category;
+                tagEl.style.backgroundColor = (g.tag_color || '#38bdf8') + '22';
+                tagEl.style.color = g.tag_color || '#38bdf8';
+                tagEl.style.border = `1px solid ${g.tag_color || '#38bdf8'}`;
+            }
+
+            const titleEl = document.getElementById('guideModalTitle');
+            if (titleEl) titleEl.textContent = `${g.icon || ''} ${g.title}`;
+
+            const sumEl = document.getElementById('guideModalSummary');
+            if (sumEl) sumEl.textContent = g.summary || '';
+
+            const contentEl = document.getElementById('guideModalContent');
+            if (contentEl) {
+                contentEl.innerHTML = (g.sections || []).map(sec => `
+                    <div class="guide-modal-section">
+                        <h3>${sec.title}</h3>
+                        ${sec.html}
+                    </div>
+                `).join('');
+            }
+
+            const backdrop = document.getElementById('guideModalBackdrop');
+            if (backdrop) backdrop.style.display = 'flex';
+        }
+
+        function closeGuideModal() {
+            const el = document.getElementById('guideModalBackdrop');
+            if (el) el.style.display = 'none';
+        }
+
+        // ===== 📷 OCR 圖片裁切與文字辨識流程 (Cropper.js + Tesseract.js) =====
         function triggerCameraOcr() {
             document.getElementById('ocrCameraInput').click();
         }
@@ -1990,26 +2003,23 @@
         function handleOcrImage(event) {
             const file = event.target.files[0];
             if (!file) return;
-            currentOcrFile = file;
 
-            // 讀取圖片並開啟裁切彈窗
             const reader = new FileReader();
             reader.onload = (e) => {
                 const img = document.getElementById('cropperTargetImg');
                 img.src = e.target.result;
                 document.getElementById('cropperModalBackdrop').style.display = 'flex';
 
-                // 初始化或重建 Cropper
                 if (cropperInstance) {
                     cropperInstance.destroy();
+                    cropperInstance = null;
                 }
 
-                // 稍微延遲以確保 modal 渲染計算尺寸
                 setTimeout(() => {
                     cropperInstance = new Cropper(img, {
                         viewMode: 1,
                         dragMode: 'move',
-                        autoCropArea: 0.6,
+                        autoCropArea: 0.7,
                         restore: false,
                         guides: true,
                         center: true,
@@ -2031,7 +2041,8 @@
         }
 
         function closeCropperModal() {
-            document.getElementById('cropperModalBackdrop').style.display = 'none';
+            const el = document.getElementById('cropperModalBackdrop');
+            if (el) el.style.display = 'none';
             if (cropperInstance) {
                 cropperInstance.destroy();
                 cropperInstance = null;
@@ -2041,7 +2052,6 @@
         async function executeCroppedOcr() {
             if (!cropperInstance) return;
 
-            // 取得裁切後的 Canvas 圖片
             const canvas = cropperInstance.getCroppedCanvas({
                 maxWidth: 1000,
                 maxHeight: 1000,
@@ -2065,13 +2075,14 @@
             const statusEl = document.getElementById('ocrStatus');
             const btnCam = document.getElementById('btnOcrCam');
             const btnGal = document.getElementById('btnOcrGal');
-            statusEl.style.display = 'block';
-            statusEl.textContent = '⏳ 正在啟動 OCR 辨識引擎...';
+            if (statusEl) {
+                statusEl.style.display = 'block';
+                statusEl.textContent = '⏳ 正在啟動 OCR 辨識引擎...';
+            }
             if (btnCam) btnCam.disabled = true;
             if (btnGal) btnGal.disabled = true;
 
             try {
-                // 動態載入 Tesseract.js (全球 CDN)
                 if (!window.Tesseract) {
                     await new Promise((resolve, reject) => {
                         const script = document.createElement('script');
@@ -2082,11 +2093,11 @@
                     });
                 }
 
-                statusEl.textContent = '🔍 正在分析裁切文字...';
+                if (statusEl) statusEl.textContent = '🔍 正在分析裁切文字...';
                 
                 const worker = await Tesseract.createWorker('jpn+eng', 1, {
                     logger: m => {
-                        if (m.status === 'recognizing text') {
+                        if (m.status === 'recognizing text' && statusEl) {
                             statusEl.textContent = `🔍 正在辨識文字: ${Math.round(m.progress * 100)}%`;
                         }
                     }
@@ -2096,9 +2107,7 @@
                 await worker.terminate();
 
                 let rawText = ret.data.text || "";
-                // 智慧清理提取日文/中文馬名
-                let lines = rawText.split('
-').map(l => l.trim()).filter(l => l.length > 0);
+                let lines = rawText.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
                 let recognizedWord = "";
                 
                 for (let line of lines) {
@@ -2110,32 +2119,97 @@
                 }
                 
                 if (!recognizedWord && lines.length > 0) {
-                    recognizedWord = lines[0].replace(/[
-
-	]/g, '').trim();
+                    recognizedWord = lines[0].replace(/[\r\n\t]/g, '').trim();
                 }
 
                 if (recognizedWord) {
                     const searchInput = document.getElementById('filterSearch');
-                    searchInput.value = recognizedWord;
-                    statusEl.innerHTML = `✅ 辨識完成！關鍵字：「<b style="color:#fbbf24;">${recognizedWord}</b>」已自動搜尋`;
+                    if (searchInput) searchInput.value = recognizedWord;
+                    if (statusEl) statusEl.innerHTML = `✅ 辨識完成！關鍵字：「<b style="color:#fbbf24;">${recognizedWord}</b>」已自動搜尋`;
                     renderTable();
                 } else {
-                    statusEl.textContent = '⚠️ 未能辨識出有效馬名，請裁切更特寫的馬名區域';
+                    if (statusEl) statusEl.textContent = '⚠️ 未能辨識出有效馬名，請裁切更特寫的馬名區域';
                 }
             } catch (err) {
                 console.error("OCR Error:", err);
-                statusEl.textContent = '❌ OCR 辨識發生錯誤，請檢查網路連線或直接手動輸入';
+                if (statusEl) statusEl.textContent = '❌ OCR 辨識發生錯誤，請檢查網路連線或直接手動輸入';
             } finally {
                 if (btnCam) btnCam.disabled = false;
                 if (btnGal) btnGal.disabled = false;
             }
         }
 
-        // init() 由 loadDatabase() 在資料庫載入完成後自動呼叫
+        // ===== 核心初始化流程 (初始化所有分類頁籤、篩選事件、年份下拉選單) =====
+        function init() {
+            console.log('Initializing PWA Application...');
+            if (window.MASTER_DB_DATA) {
+                dbData = unpackDatabase(window.MASTER_DB_DATA);
+                syncHorseData();
+            }
+
+            // 1. 綁定 8 大類別切換頁籤事件
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentTab = btn.getAttribute('data-cat') || "all_horses";
+                    renderTable();
+                });
+            });
+
+            // 2. 動態生成登場年度下拉選單 (1968 ~ 2023 降序)
+            const yearSelect = document.getElementById('filterYear');
+            if (yearSelect) {
+                yearSelect.innerHTML = '<option value="ALL">全部年份 (1968 ~ 2023)</option>';
+                const years = new Set();
+                if (dbData.all_horses) {
+                    dbData.all_horses.forEach(h => { if (h.year) years.add(parseInt(h.year)); });
+                }
+                const sortedYears = Array.from(years).sort((a, b) => a - b);
+                sortedYears.forEach(y => {
+                    if (!isNaN(y)) {
+                        const opt = document.createElement('option');
+                        opt.value = y;
+                        opt.textContent = `${y} 年`;
+                        yearSelect.appendChild(opt);
+                    }
+                });
+            }
+
+            // 3. 綁定所有篩選控制項事件
+            ['filterYear', 'filterTicket', 'filterSex', 'filterDistance', 'filterRegion'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener('change', renderTable);
+            });
+
+            const spEl = document.getElementById('filterSp');
+            if (spEl) spEl.addEventListener('input', renderTable);
+
+            const searchEl = document.getElementById('filterSearch');
+            if (searchEl) searchEl.addEventListener('input', renderTable);
+
+            // 4. 首次渲染表格與攻略網格
+            renderTable();
+            renderGuidesGrid();
+
+            const loadingEl = document.getElementById('loadingMsg');
+            if (loadingEl) loadingEl.style.display = 'none';
+        }
+
+        // 點擊背景關閉 Modal
+        window.addEventListener('click', (e) => {
+            const hModal = document.getElementById('modalBackdrop');
+            if (e.target === hModal) closeModal();
+            const gModal = document.getElementById('guideModalBackdrop');
+            if (e.target === gModal) closeGuideModal();
+            const cModal = document.getElementById('cropperModalBackdrop');
+            if (e.target === cModal) closeCropperModal();
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
-            const el = document.getElementById('loadingMsg');
-            if (el && !el.textContent) el.style.display = 'none';
+            if (window._DB_LOADED) {
+                init();
+            }
         });
     </script>
 </body>
