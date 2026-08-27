@@ -2196,6 +2196,17 @@
         }
 
         // ===== 核心初始化流程 (初始化所有分類頁籤、篩選事件、年份下拉選單) =====
+                function clearSearchInput() {
+            const input = document.getElementById('filterSearch');
+            const clearBtn = document.getElementById('searchClearBtn');
+            if (input) {
+                input.value = '';
+                if (clearBtn) clearBtn.style.display = 'none';
+                renderTable();
+                input.focus();
+            }
+        }
+
         function init() {
             console.log('Initializing PWA Application...');
             if (window.MASTER_DB_DATA) {
@@ -2242,7 +2253,13 @@
             if (spEl) spEl.addEventListener('input', renderTable);
 
             const searchEl = document.getElementById('filterSearch');
-            if (searchEl) searchEl.addEventListener('input', renderTable);
+            const searchClear = document.getElementById('searchClearBtn');
+            if (searchEl) {
+                searchEl.addEventListener('input', () => {
+                    if (searchClear) searchClear.style.display = searchEl.value ? 'block' : 'none';
+                    renderTable();
+                });
+            }
 
             // 4. 首次渲染表格與攻略網格
             renderTable();
