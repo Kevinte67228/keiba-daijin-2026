@@ -1,6 +1,6 @@
 // 賽馬大亨 10 2026 速查 PWA - Service Worker
 // 版本號：每次更新核心檔案請遞增
-const CACHE_NAME = 'keiba-lookup-v15';
+const CACHE_NAME = 'keiba-lookup-v16';
 
 // 首次安裝時快取的核心檔案
 const CORE_ASSETS = [

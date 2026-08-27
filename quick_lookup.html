@@ -1166,7 +1166,7 @@
             <img src="icons/icon-512.png" alt="Winning Post 10 2026 Logo" class="header-logo-img">
             <div class="header-title-box">
                 <h1 class="header-title">賽馬大亨 10 2026 速查大總覽</h1>
-                <p class="header-desc">15,389 匹史實馬 + 7 大推薦分類 + 16 大核心攻略</p>
+                
             </div>
             <button onclick="clearPwaCache()" class="clear-cache-btn">
                 🧹 清除快取
@@ -1364,6 +1364,8 @@
                 " title="從相簿中選擇截圖裁切辨識馬名">
                     🖼️ 相簿
                 </button>
+                <input type="file" id="ocrCameraInput" accept="image/*" capture="environment" style="display: none;" onchange="handleOcrImage(event)">
+                <input type="file" id="ocrGalleryInput" accept="image/*" style="display: none;" onchange="handleOcrImage(event)">
             </div>
             <!-- OCR 狀態提示 -->
             <div id="ocrStatus" style="display: none; font-size: 0.8rem; color: #38bdf8; margin-top: 4px; background: rgba(15, 23, 42, 0.8); border: 1px solid #0284c7; padding: 4px 8px; border-radius: 4px;"></div>
