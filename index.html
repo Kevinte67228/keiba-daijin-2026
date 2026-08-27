@@ -14,6 +14,7 @@
     <link rel="apple-touch-icon" href="icons/icon-192.png">
     <!-- 資料庫載入：本地檔案優先，若無則由 jsDelivr CDN 動態載入 -->
     <script src="master_lookup_db.js"></script>
+    <script src="core_guides_data.js"></script>
     <!-- jsDelivr 直接從 GitHub repo 提供 CDN，不需要額外設定 -->
     <script>
         // 嘗試順序：1) window.MASTER_DB_DATA (本地 file:// 模式) → 2) jsDelivr CDN
@@ -450,6 +451,216 @@
         }
 
         .modal-btn-open:hover { background: #7dd3fc; }
+    
+        /* ===== 雙模式切換導航列 ===== */
+        .main-mode-switcher {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: var(--panel-bg);
+            padding: 6px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .mode-nav-btn {
+            flex: 1;
+            padding: 12px 16px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .mode-nav-btn:hover {
+            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .mode-nav-btn.active {
+            background: var(--accent-color);
+            color: #0f172a;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+        }
+
+        /* ===== 16大核心攻略專題 4x4 卡片矩陣 ===== */
+        .guides-banner {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding-left: 4px;
+        }
+
+        .guides-banner-bar {
+            width: 4px;
+            height: 24px;
+            background: #f59e0b;
+            border-radius: 2px;
+        }
+
+        .guides-banner-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #f59e0b;
+            letter-spacing: 0.5px;
+        }
+
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 640px) {
+            .guides-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .guides-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .guide-card {
+            background: #131b2e;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 16px 18px;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 88px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-2px);
+            border-color: #38bdf8;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+            background: #182238;
+        }
+
+        .guide-card-tag {
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .guide-card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            line-height: 1.4;
+        }
+
+        /* ===== 攻略閱讀器 Modal 樣式 ===== */
+        .guide-modal-card {
+            max-width: 920px !important;
+            max-height: 88vh !important;
+            overflow-y: auto !important;
+        }
+
+        .guide-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .guide-modal-content {
+            padding: 15px 0;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .guide-modal-section {
+            margin-bottom: 24px;
+            background: rgba(15, 23, 42, 0.6);
+            padding: 16px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-modal-section h3 {
+            color: #38bdf8;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.6);
+            padding-bottom: 8px;
+        }
+
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.88rem;
+        }
+
+        .guide-table th {
+            background: #1e293b;
+            color: #38bdf8;
+            padding: 10px 12px;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-table td {
+            padding: 10px 12px;
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            background: rgba(19, 27, 46, 0.4);
+            white-space: normal !important;
+            line-height: 1.5;
+        }
+
+        .guide-list {
+            padding-left: 22px;
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+
+        .guide-list li {
+            margin-bottom: 6px;
+        }
+
+        .alert-box {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .alert-warning {
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid #f59e0b;
+            color: #fde68a;
+        }
+
+        .text-gold { color: #f59e0b !important; }
+        .text-blue { color: #38bdf8 !important; }
+        .font-bold { font-weight: bold !important; }
+    
     </style>
 </head>
 <body>
@@ -664,6 +875,33 @@
                 <!-- Dynamic Rows -->
             </tbody>
         </table>
+    </div>
+    </div>
+
+    <!-- 模式 2：16 大核心系統與序盤攻略 (4x4 卡片矩陣) -->
+    <div id="guidesView" style="display:none;">
+        <div class="guides-banner">
+            <div class="guides-banner-bar"></div>
+            <div class="guides-banner-title">🚀 核心系統與序盤攻略 (16 大核心專題)</div>
+        </div>
+        <div class="guides-grid" id="guidesGridContainer">
+            <!-- Dynamic 16 Cards -->
+        </div>
+    </div>
+
+    <!-- 攻略閱讀 Modal -->
+    <div class="modal-backdrop" id="guideModalBackdrop">
+        <div class="modal-card guide-modal-card">
+            <span class="modal-close" onclick="closeGuideModal()">&times;</span>
+            <div class="modal-header">
+                <span id="guideModalTag" class="guide-tag"></span>
+                <h2 id="guideModalTitle" style="margin-top:6px; font-size:1.4rem;"></h2>
+                <div id="guideModalSummary" style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;"></div>
+            </div>
+            <div id="guideModalContent" class="guide-modal-content">
+                <!-- Dynamic Sections -->
+            </div>
+        </div>
     </div>
 
     <!-- 詳情 Modal 卡片 -->
@@ -1392,6 +1630,87 @@
                 event.target.value = '';
             }
         }
+
+
+        // ===== 雙模式切換邏輯 (馬匹速查 / 16大核心攻略) =====
+        let currentAppMode = 'horses';
+
+        function switchMainMode(mode) {
+            currentAppMode = mode;
+            const btnH = document.getElementById('btnModeHorses');
+            const btnG = document.getElementById('btnModeGuides');
+            const viewH = document.getElementById('horsesView');
+            const viewG = document.getElementById('guidesView');
+
+            if (mode === 'horses') {
+                btnH.classList.add('active');
+                btnG.classList.remove('active');
+                viewH.style.display = 'block';
+                viewG.style.display = 'none';
+            } else {
+                btnH.classList.remove('active');
+                btnG.classList.add('active');
+                viewH.style.display = 'none';
+                viewG.style.display = 'block';
+                renderGuidesGrid();
+            }
+        }
+
+        function renderGuidesGrid() {
+            const container = document.getElementById('guidesGridContainer');
+            if (!container) return;
+            const list = window.CORE_GUIDES_DATA || [];
+            if (list.length === 0) {
+                container.innerHTML = '<div style="color:var(--text-muted); padding:20px;">攻略資料載入中...</div>';
+                return;
+            }
+
+            container.innerHTML = list.map(g => `
+                <div class="guide-card" onclick="openGuideModal('${g.id}')">
+                    <div class="guide-card-tag" style="color: ${g.tag_color || '#38bdf8'};">
+                        <span>${g.icon || '🚀'}</span> ${g.category}
+                    </div>
+                    <div class="guide-card-title">${g.title}</div>
+                </div>
+            `).join('');
+        }
+
+        function openGuideModal(guideId) {
+            const list = window.CORE_GUIDES_DATA || [];
+            const g = list.find(x => x.id === guideId);
+            if (!g) return;
+
+            const tagEl = document.getElementById('guideModalTag');
+            tagEl.textContent = g.category;
+            tagEl.style.backgroundColor = (g.tag_color || '#38bdf8') + '22';
+            tagEl.style.color = g.tag_color || '#38bdf8';
+            tagEl.style.border = `1px solid ${g.tag_color || '#38bdf8'}`;
+
+            document.getElementById('guideModalTitle').textContent = `${g.icon || ''} ${g.title}`;
+            document.getElementById('guideModalSummary').textContent = g.summary || '';
+
+            const contentEl = document.getElementById('guideModalContent');
+            contentEl.innerHTML = (g.sections || []).map(sec => `
+                <div class="guide-modal-section">
+                    <h3>${sec.title}</h3>
+                    ${sec.html}
+                </div>
+            `).join('');
+
+            document.getElementById('guideModalBackdrop').style.display = 'flex';
+        }
+
+        function closeGuideModal() {
+            document.getElementById('guideModalBackdrop').style.display = 'none';
+        }
+
+        // Close guide modal on backdrop click
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('guideModalBackdrop');
+            if (e.target === modal) {
+                closeGuideModal();
+            }
+        });
 
         // init() 由 loadDatabase() 在資料庫載入完成後自動呼叫
         document.addEventListener('DOMContentLoaded', () => {
