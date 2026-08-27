@@ -1296,12 +1296,12 @@
         <!-- 🔍 關鍵字搜尋與 OCR 快捷辨識 (跨全寬大輸入框) -->
         <div class="filter-group full-width-mobile" style="grid-column: 1 / -1 !important; width: 100% !important; margin-top: 6px; box-sizing: border-box;">
             <label for="filterSearch" style="font-size: 0.85rem; font-weight: 700; color: #38bdf8; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                <span>🔍 馬名 / 父馬 / 母馬 關鍵字搜尋</span>
+                <span>🔍 馬名關鍵字搜尋 (精準匹配馬名)</span>
                 <span style="font-size: 0.75rem; color: #94a3b8; font-weight: normal;">支援即時過濾與日文輸入</span>
             </label>
             <div class="search-input-wrapper" style="display: flex; gap: 8px; align-items: stretch; width: 100%; box-sizing: border-box;">
                 <div style="position: relative; flex: 1 1 auto; min-width: 0; box-sizing: border-box;">
-                    <input type="text" id="filterSearch" class="filter-control main-search-input" placeholder="輸入馬名 / 父馬 / 母馬 (如: テイオー、ディープ)..." style="
+                    <input type="text" id="filterSearch" class="filter-control main-search-input" placeholder="輸入馬名關鍵字 (如: ブリガ、テイオー、ディープ)..." style="
                         width: 100% !important;
                         height: 44px !important;
                         font-size: 0.95rem !important;
@@ -1730,10 +1730,8 @@
 
                 if (searchVal) {
                     const name = (item.name || "").toLowerCase();
-                    const sire = (item.sire || "").toLowerCase();
-                    const dam = (item.dam || "").toLowerCase();
-                    const details = (item.details || item.comment || "").toLowerCase();
-                    if (!name.includes(searchVal) && !sire.includes(searchVal) && !dam.includes(searchVal) && !details.includes(searchVal)) return false;
+                    // 預設精準比對馬名，避免因父馬/母馬/評語包含關鍵字而帶出無關子嗣馬匹
+                    if (!name.includes(searchVal)) return false;
                 }
                 return true;
             });
