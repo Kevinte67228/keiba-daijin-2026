@@ -12,13 +12,14 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="賽馬10速查">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
-    <!-- 資料庫載入：從 jsDelivr CDN 動態載入（PWA 線上模式）-->
+    <!-- 資料庫載入：本地檔案優先，若無則由 jsDelivr CDN 動態載入 -->
+    <script src="master_lookup_db.js"></script>
     <!-- jsDelivr 直接從 GitHub repo 提供 CDN，不需要額外設定 -->
     <script>
         // 嘗試順序：1) window.MASTER_DB_DATA (本地 file:// 模式) → 2) jsDelivr CDN
         window._DB_LOADED = false;
         // 指向 master_lookup_db.js 所在的具體 commit SHA（3c8f38fa），確保長期穩定
-        const DB_CDN_URL = 'https://cdn.jsdelivr.net/gh/Kevinte67228/keiba-daijin-2026@3c8f38fa7efd6c1ffabed405329a7968774eb992/master_lookup_db.js';
+        const DB_CDN_URL = 'https://cdn.jsdelivr.net/gh/Kevinte67228/keiba-daijin-2026@895b0738511f376f7d55f62157dc761fb7b2627c/master_lookup_db.js';
 
         function showLoading(msg) {
             const el = document.getElementById('loadingMsg');
