@@ -1282,50 +1282,86 @@
             </select>
         </div>
 
-        <div class="filter-group" style="flex: 1 1 100%; max-width: 100%; box-sizing: border-box;">
-            <label for="filterSearch">🔍 馬名 / 父馬 / 母馬 關鍵字搜尋</label>
-            <div style="display: flex; gap: 6px; align-items: center; width: 100%; box-sizing: border-box;">
-                <input type="text" id="filterSearch" class="filter-control" placeholder="輸入馬名 / 父馬 / 母馬 (如: テイオー)..." style="flex: 1 1 auto; min-width: 0; box-sizing: border-box;">
-                <button type="button" onclick="triggerCameraOcr()" id="btnOcrCam" style="
+        <!-- 🔍 關鍵字搜尋與 OCR 快捷辨識 (跨全寬大輸入框) -->
+        <div class="filter-group full-width-mobile" style="grid-column: 1 / -1 !important; width: 100% !important; margin-top: 6px; box-sizing: border-box;">
+            <label for="filterSearch" style="font-size: 0.85rem; font-weight: 700; color: #38bdf8; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                <span>🔍 馬名 / 父馬 / 母馬 關鍵字搜尋</span>
+                <span style="font-size: 0.75rem; color: #94a3b8; font-weight: normal;">支援即時過濾與日文輸入</span>
+            </label>
+            <div class="search-input-wrapper" style="display: flex; gap: 8px; align-items: stretch; width: 100%; box-sizing: border-box;">
+                <div style="position: relative; flex: 1 1 auto; min-width: 0; box-sizing: border-box;">
+                    <input type="text" id="filterSearch" class="filter-control main-search-input" placeholder="輸入馬名 / 父馬 / 母馬 (如: テイオー、ディープ)..." style="
+                        width: 100% !important;
+                        height: 44px !important;
+                        font-size: 0.95rem !important;
+                        padding: 0 36px 0 14px !important;
+                        border-radius: 8px !important;
+                        border: 1.5px solid #38bdf8 !important;
+                        background: #0b0f19 !important;
+                        color: #f1f5f9 !important;
+                        box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+                        box-sizing: border-box !important;
+                    ">
+                    <span id="searchClearBtn" onclick="clearSearchInput()" style="
+                        display: none;
+                        position: absolute;
+                        right: 10px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                        color: #94a3b8;
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        user-select: none;
+                        padding: 2px 6px;
+                    ">&times;</span>
+                </div>
+                <button type="button" onclick="triggerCameraOcr()" id="btnOcrCam" class="search-action-btn" style="
                     flex: 0 0 auto;
+                    height: 44px;
+                    padding: 0 14px;
                     background: linear-gradient(135deg, #0284c7, #2563eb);
                     border: 1px solid #38bdf8;
                     color: white;
-                    padding: 8px 10px;
-                    border-radius: 6px;
+                    border-radius: 8px;
                     cursor: pointer;
-                    font-size: 0.82rem;
-                    font-weight: 600;
+                    font-size: 0.88rem;
+                    font-weight: 700;
                     display: flex;
                     align-items: center;
-                    gap: 3px;
+                    justify-content: center;
+                    gap: 5px;
                     white-space: nowrap;
+                    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
                     transition: all 0.2s ease;
-                " title="手機相機直接拍照辨識馬名">
-                    📷 拍照
+                " title="手機相機直接拍照裁切辨識馬名">
+                    📸 拍照
                 </button>
-                <button type="button" onclick="triggerGalleryOcr()" id="btnOcrGal" style="
+                <button type="button" onclick="triggerGalleryOcr()" id="btnOcrGal" class="search-action-btn" style="
                     flex: 0 0 auto;
+                    height: 44px;
+                    padding: 0 14px;
                     background: #1e293b;
                     border: 1px solid #475569;
-                    color: #cbd5e1;
-                    padding: 8px 10px;
-                    border-radius: 6px;
+                    color: #e2e8f0;
+                    border-radius: 8px;
                     cursor: pointer;
-                    font-size: 0.82rem;
+                    font-size: 0.88rem;
                     font-weight: 600;
                     display: flex;
                     align-items: center;
-                    gap: 3px;
+                    justify-content: center;
+                    gap: 5px;
                     white-space: nowrap;
                     transition: all 0.2s ease;
-                " title="從相簿或電腦選圖辨識">
-                    🖼️ 相片
+                " title="從相簿中選擇截圖裁切辨識馬名">
+                    🖼️ 相簿
                 </button>
                 <input type="file" id="ocrCameraInput" accept="image/*" capture="environment" style="display: none;" onchange="handleOcrImage(event)">
                 <input type="file" id="ocrGalleryInput" accept="image/*" style="display: none;" onchange="handleOcrImage(event)">
             </div>
-            <div id="ocrStatus" style="font-size: 0.8rem; color: #38bdf8; margin-top: 4px; display: none;"></div>
+            <!-- OCR 狀態提示 -->
+            <div id="ocrStatus" style="display: none; font-size: 0.85rem; color: #38bdf8; margin-top: 6px; background: rgba(15, 23, 42, 0.8); border: 1px solid #0284c7; padding: 6px 10px; border-radius: 6px;"></div>
         </div>
     </div>
 
