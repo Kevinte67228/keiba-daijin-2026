@@ -199,16 +199,21 @@
             box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
         }
 
-        /* 自訂條件篩選面板 */
+        
+        /* 自訂條件篩選面板 - 強制收縮防止突破右邊框 (Prevent Grid Blowout) */
         .filter-panel {
             background: var(--panel-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 20px;
+            padding: 14px;
+            margin-bottom: 15px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
         }
 
         .filter-panel.collapsed {
@@ -218,28 +223,79 @@
         .filter-group {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
+            min-width: 0 !important; /* 重要：防止子元素內容長度撐破欄寬 */
+            max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .filter-group label {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--accent-color);
             font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .filter-control {
             background: var(--bg-color);
             border: 1px solid var(--border-color);
             color: var(--text-color);
-            padding: 9px 12px;
+            padding: 8px 10px;
             border-radius: 6px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             outline: none;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+            box-sizing: border-box !important;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
         }
 
         .filter-control:focus {
             border-color: var(--accent-color);
         }
+
+        @media (max-width: 640px) {
+            .filter-panel {
+                padding: 10px 8px !important;
+                gap: 8px !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important; /* 兩列等分，強制 minmax(0, 1fr) */
+                margin-bottom: 12px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .filter-group {
+                min-width: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .filter-group.full-width-mobile {
+                grid-column: 1 / -1 !important;
+            }
+
+            .filter-group label {
+                font-size: 0.72rem !important;
+            }
+
+            .filter-control {
+                padding: 7px 6px !important;
+                font-size: 0.78rem !important;
+                min-width: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+        }
+
 
         /* 統計列 */
         .stats-bar {
@@ -1157,14 +1213,14 @@
         <div class="filter-group">
             <label for="filterYear">📅 登場年度 (Year)</label>
             <select id="filterYear" class="filter-control">
-                <option value="ALL">全部年份 (1968 ~ 2023)</option>
+                <option value="ALL">全部年份</option>
             </select>
         </div>
 
         <div class="filter-group">
             <label for="filterTicket">🌈 お守り/馬札等級</label>
             <select id="filterTicket" class="filter-control">
-                <option value="ALL">全部馬札 (虹/金/銀/銅/綠/無)</option>
+                <option value="ALL">全部馬札</option>
                 <option value="虹">🌈 虹札</option>
                 <option value="金">🥇 金札</option>
                 <option value="銀">🥈 銀札</option>
@@ -1186,7 +1242,7 @@
         <div class="filter-group">
             <label for="filterSp">⚡ 最小基本 SP (Speed >=)</label>
             <select id="filterSp" class="filter-control">
-                <option value="0">全部 SP 速度</option>
+                <option value="0">全部 SP</option>
                 <option value="75">SP >= 75 (S級超級名馬)</option>
                 <option value="70">SP >= 70 (A級一線名馬)</option>
                 <option value="65">SP >= 65 (B級主力名馬)</option>
@@ -1196,7 +1252,7 @@
         <div class="filter-group">
             <label for="filterDistance">📏 距離適性起點 (最短適性)</label>
             <select id="filterDistance" class="filter-control">
-                <option value="ALL">全部起點距離</option>
+                <option value="ALL">全部距離</option>
                 <option value="1000">1000m 起</option>
                 <option value="1100">1100m 起</option>
                 <option value="1200">1200m 起 (短途短距離)</option>
@@ -1218,7 +1274,7 @@
         <div class="filter-group">
             <label for="filterRegion">🌏 所屬區域 (Region)</label>
             <select id="filterRegion" class="filter-control">
-                <option value="ALL">全部地域 (日本/美國/歐洲)</option>
+                <option value="ALL">全部地域</option>
                 <option value="日本">🇯🇵 日本</option>
                 <option value="米">🇺🇸 米國 (US)</option>
                 <option value="欧">🇪🇺 歐洲 (EU)</option>
@@ -2160,7 +2216,7 @@
             // 2. 動態生成登場年度下拉選單 (1968 ~ 2023 降序)
             const yearSelect = document.getElementById('filterYear');
             if (yearSelect) {
-                yearSelect.innerHTML = '<option value="ALL">全部年份 (1968 ~ 2023)</option>';
+                yearSelect.innerHTML = '<option value="ALL">全部年份</option>';
                 const years = new Set();
                 if (dbData.all_horses) {
                     dbData.all_horses.forEach(h => { if (h.year) years.add(parseInt(h.year)); });
