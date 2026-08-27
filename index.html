@@ -780,7 +780,6 @@
                 dbData.recommendations.forEach(r => {
                     const matched = horseMap[r.name];
                     if (matched) {
-                        // 若推薦馬自身 distance 為空，將詳情頁面的 distance 補齊到外層
                         if (!r.distance || r.distance === "-" || r.distance === "") {
                             r.distance = matched.distance || "-";
                         }
@@ -793,7 +792,6 @@
                         if (!r.region || r.region === "-") {
                             r.region = matched.region || "-";
                         }
-                        // 同步 7 大核心屬性與母馬
                         const attrs = ['shunhatsu', 'konjo', 'power', 'seishin', 'keshikosa', 'junan', 'kenko', 'dam', 'dam_line', 'sire'];
                         attrs.forEach(a => {
                             if (!r[a] || r[a] === "-") {
@@ -817,15 +815,57 @@
             }
         }
 
+        function unpackDatabase(data) {
+            if (!data) return { all_horses: [], recommendations: [] };
+            if (data.schema === "columnar_v1") {
+                const cols = data.columns || [];
+                const horses = (data.all_horses || []).map(row => {
+                    const obj = {};
+                    cols.forEach((k, idx) => obj[k] = row[idx]);
+                    return obj;
+                });
+                const recCols = data.rec_columns || [];
+                const recs = (data.recommendations || []).map(row => {
+                    const obj = {};
+                    recCols.forEach((k, idx) => obj[k] = row[idx]);
+                    return obj;
+                });
+                return { all_horses: horses, recommendations: recs };
+            }
+            return data;
+        }
+
+        function generateAIComment(h) {
+            const sp = parseInt(h.sp) || 60;
+            const sp_max = h.sp_max || (sp * 1.1).toFixed(1);
+            const stamina = parseInt(h.stamina) || 40;
+            const dist = h.distance || '1600～2000m';
+            const track = h.track || '芝◎ ダ×';
+            const growth = h.growth || '普通';
+            const growth_cap = h.growth_cap || '普通';
+            const sire_line = h.sire_line || '主流系統';
+            const foal_q = parseInt(h.foal_quality || h.foal_count) || 4;
+            const traits = (h.traits && h.traits !== '-') ? h.traits : '';
+            const umar = (h.umarsonality && h.umarsonality !== '-') ? h.umarsonality : '';
+
+            let tag = sp >= 76 ? '【殿堂級傳奇名駒】' : (sp >= 73 ? '【一線核心主力G1馬】' : (sp >= 68 ? '【高性價比重賞實力馬】' : '【史實固有血統馬】'));
+            let track_desc = track.includes('芝◎ ダ◎') ? '具備極為罕見的「草地/泥地雙頂級 (二刀流)」賽道適性，全天候賽事皆可無縫出戰' : (track.includes('ダ◎') ? '為標準的純泥地強力鬥士，極適合攻略地方交流重賞、JBC 系列賽及海外泥地大賽' : '專注於草地高速競逐，具備優異的賽道巡航與最後直線衝刺能力');
+            let dist_desc = (stamina >= 70 || dist.includes('3000') || dist.includes('3200')) ? `適性距離涵蓋 ${dist}，擁有充沛的耐力底蘊，是攻略經典三冠（菊花賞）與天皇賞(春)等長途G1的頂級人選` : (dist.includes('1200') && dist.includes('1600') ? `適性距離為 ${dist}，屬於爆發力極強的短途/一哩專家，在短距離錦標賽與安田紀念賽事中佔盡優勢` : `適性距離落在黃金中距離 ${dist}，完美契合皐月賞、日本德比、秋季天皇賞與日本盃等核心經典賽事`);
+            let grow_desc = `成長型為「${growth} (${growth_cap})」，` + (growth.includes('早') ? '2~3歲即可迅速成型並搶佔幼駒經典錦標，回本週期極快；' : (growth.includes('晩') || growth.includes('遅') ? '屬於大器晚成型，4歲後實力全面爆發，競賽壽命長且能持續征戰至高年齡；' : '成長曲線平穩均衡，能長期維持巔峰競賽狀態；'));
+            let breed_desc = `所屬父系為 ${sire_line}，退役後仔出評級達 ${foal_q}/10，` + (foal_q >= 8 ? '為極高價值的神級種馬/名牝，極易產出繼承強大因子的高SP後代！' : (foal_q >= 5 ? '具備優秀的遺傳潛力，可作為牧場核心配種體系的重要基石。' : '適合透過相性配合與母系補正，繁育出青出於藍的實力賽駒。'));
+            let extra = (traits ? ` | 固有/戰術技能：${traits}` : '') + (umar ? ` | 個性：${umar}` : '');
+            return `${tag} 基本SP ${sp} (上限 ${sp_max})，${track_desc}。${dist_desc}。${grow_desc}${breed_desc}${extra}`;
+        }
+
         function init() {
             if (window.MASTER_DB_DATA) {
-                dbData = window.MASTER_DB_DATA;
+                dbData = unpackDatabase(window.MASTER_DB_DATA);
             }
             populateYears();
             if (!window.MASTER_DB_DATA || !dbData || !dbData.all_horses || dbData.all_horses.length === 0) {
                 console.warn("MASTER_DB_DATA 未載入，嘗試非同步載入 json...");
                 fetch("master_lookup_db.json").then(r => r.json()).then(d => {
-                    dbData = d;
+                    dbData = unpackDatabase(d);
                     syncHorseData();
                     renderTable();
                 }).catch(e => console.error("Data load failed:", e));
@@ -998,6 +1038,7 @@
                 cols = [
                     { key: "year", title: "年度" },
                     { key: "name", title: "馬名" },
+                    { key: "stars", title: "推薦" },
                     { key: "region", title: "地域" },
                     { key: "ticket", title: "馬札" },
                     { key: "sex", title: "性別" },
@@ -1022,6 +1063,7 @@
                 cols = [
                     { key: "year", title: "年度" },
                     { key: "name", title: "馬名/推薦項目" },
+                    { key: "stars", title: "推薦" },
                     { key: "ticket", title: "馬札/等級" },
                     { key: "foal_count", title: "仔出評級" },
                     { key: "grass", title: "芝 (草地)" },
@@ -1044,9 +1086,9 @@
                 cols = [
                     { key: "year", title: "年度" },
                     { key: "name", title: "馬名/推薦項目" },
+                    { key: "stars", title: "推薦" },
                     { key: "ticket", title: "馬札/等級" },
                     { key: "sex", title: "性別" },
-                    { key: "stars", title: "推薦" },
                     { key: "matched_sp", title: "SP 速度" },
                     { key: "distance", title: "距離適性" },
                     { key: "grass", title: "芝 (草地)" },
@@ -1100,6 +1142,7 @@
                     tr.innerHTML = `
                         <td>${item.year || "-"}</td>
                         <td><span class="horse-link" onclick="openModalByName('${escapeQuote(item.name)}')">${item.name}</span></td>
+                        <td>${renderStarsBadge(item.stars)}</td>
                         <td>${item.region || "-"}</td>
                         <td>${renderTicketBadge(item.ticket)}</td>
                         <td>${item.sex || "-"}</td>
@@ -1124,8 +1167,9 @@
                     tr.innerHTML = `
                         <td>${item.year || "-"}</td>
                         <td><span class="horse-link" onclick="openModalByName('${escapeQuote(item.name)}')">${item.name}</span></td>
+                        <td>${renderStarsBadge(item.stars)}</td>
                         <td>${renderTicketBadge(item.ticket)}</td>
-                        <td style="color:var(--gold-color); font-weight:bold;">${item.foal_count || "-"}</td>
+                        <td style="color:var(--gold-color); font-weight:bold;">${item.foal_count || item.foal_quality || "-"}</td>
                         <td>${renderTrackBadge(item.grass)}</td>
                         <td>${renderTrackBadge(item.dirt)}</td>
                         <td>${item.distance || "-"}</td>
@@ -1147,9 +1191,9 @@
                     tr.innerHTML = `
                         <td>${item.year || "-"}</td>
                         <td><span class="horse-link" onclick="openModalByName('${escapeQuote(item.name)}')">${item.name}</span></td>
+                        <td>${renderStarsBadge(item.stars)}</td>
                         <td>${renderTicketBadge(item.ticket)}</td>
                         <td>${item.sex || "-"}</td>
-                        <td style="color:var(--gold-color);">${item.stars || "-"}</td>
                         <td style="color:var(--gold-color); font-weight:bold;">${sp}</td>
                         <td>${item.distance || "-"}</td>
                         <td>${renderTrackBadge(item.grass)}</td>
@@ -1169,6 +1213,20 @@
                 }
                 tbody.appendChild(tr);
             });
+        }
+
+        function renderStarsBadge(stars) {
+            if (!stars || stars === "-") return "-";
+            if (stars.includes("★★★") || stars === "3") {
+                return `<span style="color:#f59e0b; font-weight:bold; text-shadow:0 0 6px rgba(245,158,11,0.4);">★★★</span>`;
+            }
+            if (stars.includes("★★") || stars === "2") {
+                return `<span style="color:#fbbf24; font-weight:bold;">★★</span>`;
+            }
+            if (stars.includes("★") || stars === "1") {
+                return `<span style="color:#38bdf8; font-weight:600;">★</span>`;
+            }
+            return `<span style="color:var(--text-muted);">${stars}</span>`;
         }
 
         function renderTicketBadge(ticket) {
@@ -1193,7 +1251,8 @@
                 h = { name: horseName, comment: r ? (r.details || r.comment) : "尚無完整史實馬數據" };
             }
 
-            document.getElementById("modalHorseName").textContent = h.name || horseName;
+            const starsHtml = renderStarsBadge(h.stars || (r ? r.stars : ""));
+            document.getElementById("modalHorseName").innerHTML = `${h.name || horseName} <span style="font-size:1.1rem; margin-left:8px;">${starsHtml !== '-' ? starsHtml : ''}</span>`;
             document.getElementById("modalSubtitle").textContent = `登場年份: ${h.year || (r ? r.year : "-")} 年 | 所屬地域: ${h.region || "-"} | 馬札: ${h.ticket || (r ? r.ticket : "-")}`;
 
             const grid = document.getElementById("modalStatGrid");
@@ -1232,7 +1291,7 @@
                 <div class="stat-item"><div class="stat-label">壽命 / 毛色</div><div class="stat-value">${h.life || "100"} / ${h.coat_color || "-"}</div></div>
                 <div class="stat-item"><div class="stat-label">繼承特性</div><div class="stat-value" style="font-size:0.85rem; color:#f43f5e; font-weight:600;">${h.inheritance || "-"}</div></div>
                 <div class="stat-item"><div class="stat-label">仔出評級 (繁殖潛力)</div><div class="stat-value" style="color:var(--gold-color); font-weight:bold; font-size:1.1rem;">${h.foal_quality || "-"}</div></div>
-                <div class="stat-item full-width"><div class="stat-label">詳細攻略建議與評語</div><div class="stat-value" style="font-size:0.85rem; font-weight:normal; line-height:1.4;">${h.comment || (r ? (r.details || r.comment) : "史實實力名馬")}</div></div>
+                <div class="stat-item full-width"><div class="stat-label">詳細攻略建議與評語</div><div class="stat-value" style="font-size:0.85rem; font-weight:normal; line-height:1.4;">${h.comment || (r ? (r.details || r.comment) : "") || generateAIComment(h)}</div></div>
             `;
 
             document.getElementById("modalBackdrop").style.display = "flex";
