@@ -924,34 +924,163 @@
             }
         }
 
+    
+        /* ===== 頁首 LOGO 圖檔樣式 ===== */
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 25px -5px rgba(0,0,0,0.5);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .header-logo-img {
+            width: 52px;
+            height: 52px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            flex-shrink: 0;
+        }
+
+        .header-title-box {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .header-title {
+            font-size: 1.25rem;
+            color: #38bdf8;
+            margin: 0;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .header-desc {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 3px;
+        }
+
+        .clear-cache-btn {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid #ef4444;
+            color: #fca5a5;
+            padding: 7px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .clear-cache-btn:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        /* ===== OCR 圖片裁切器 Modal 樣式 ===== */
+        .cropper-modal-card {
+            max-width: 600px !important;
+            width: 95vw !important;
+            max-height: 90vh !important;
+            display: flex;
+            flex-direction: column;
+            padding: 16px !important;
+        }
+
+        .cropper-container-box {
+            width: 100%;
+            height: 360px;
+            max-height: 50vh;
+            background: #000;
+            margin: 12px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cropper-container-box img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+        }
+
+        .cropper-btn-bar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        .cropper-btn {
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .cropper-btn-cancel {
+            background: #334155;
+            color: #f1f5f9;
+        }
+
+        .cropper-btn-rotate {
+            background: #1e293b;
+            border: 1px solid #475569;
+            color: #38bdf8;
+        }
+
+        .cropper-btn-crop {
+            background: var(--accent-color);
+            color: #0f172a;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+        }
+
+        .cropper-btn-crop:hover {
+            background: #7dd3fc;
+        }
+
     </style>
+    <!-- Cropper.js 圖片裁切套件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
 </head>
 <body>
 
     <div class="header">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 8px;">
-            <h1 style="margin: 0; font-size: 1.5rem; color: #38bdf8; flex: 1 1 auto;">🏇 賽馬大亨 10 2026 - 8大資料庫速查大總覽</h1>
-            <div style="margin-left: auto; display: flex; justify-content: flex-end; width: auto;">
-                <button onclick="clearPwaCache()" style="
-                    background: rgba(239, 68, 68, 0.2);
-                    border: 1px solid #ef4444;
-                    color: #fca5a5;
-                    padding: 6px 14px;
-                    border-radius: 6px;
-                    cursor: pointer;
-                    font-size: 0.85rem;
-                    font-weight: 600;
-                    display: flex;
-                    align-items: center;
-                    gap: 4px;
-                    white-space: nowrap;
-                    transition: all 0.2s ease;
-                ">
-                    🧹 清除暫存快取
-                </button>
+        <div class="header-content">
+            <img src="icons/icon-512.png" alt="Winning Post 10 2026 Logo" class="header-logo-img">
+            <div class="header-title-box">
+                <h1 class="header-title">賽馬大亨 10 2026 速查大總覽</h1>
+                <p class="header-desc">15,389 匹史實馬 + 7 大推薦分類 + 16 大核心攻略</p>
             </div>
+            <button onclick="clearPwaCache()" class="clear-cache-btn">
+                🧹 清除快取
+            </button>
         </div>
-        <p>15,381 匹史實馬 + 7 大年度推薦分類 100% 離線秒速過濾、多型態高精度排序與能力卡片連動</p>
     </div>
     <!-- 資料庫載入進度提示 -->
     <div id="loadingMsg" style="
@@ -1161,6 +1290,27 @@
         </div>
         <div class="guides-grid" id="guidesGridContainer">
             <!-- Dynamic 16 Cards -->
+        </div>
+    </div>
+
+        <!-- 📷 OCR 圖片裁切 Modal -->
+    <div class="modal-backdrop" id="cropperModalBackdrop" style="display: none; z-index: 10000;">
+        <div class="modal-card cropper-modal-card">
+            <span class="modal-close" onclick="closeCropperModal()">&times;</span>
+            <div class="modal-header" style="margin-bottom: 6px; padding-bottom: 8px;">
+                <h2 style="font-size: 1.2rem; color: #38bdf8;">✂️ 框選馬名區域進行精準辨識</h2>
+                <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 2px;">
+                    請拖曳/縮放選取框，僅框選畫面中的「馬匹名稱」，辨識成功率最高！
+                </div>
+            </div>
+            <div class="cropper-container-box">
+                <img id="cropperTargetImg" src="" alt="待裁切圖片">
+            </div>
+            <div class="cropper-btn-bar">
+                <button type="button" class="cropper-btn cropper-btn-cancel" onclick="closeCropperModal()">❌ 取消</button>
+                <button type="button" class="cropper-btn cropper-btn-rotate" onclick="rotateCropper()">🔄 旋轉 90°</button>
+                <button type="button" class="cropper-btn cropper-btn-crop" onclick="executeCroppedOcr()">✂️ 確認裁切並辨識</button>
+            </div>
         </div>
     </div>
 
@@ -1825,7 +1975,10 @@
             if (icon) icon.textContent = isCollapsed ? "▼" : "▲";
         }
 
-        // ===== 📷 OCR 拍照文字辨識功能 (手機相機 / 相簿選圖) =====
+                // ===== 📷 OCR 圖片裁切與文字辨識流程 (Cropper.js + Tesseract.js) =====
+        let cropperInstance = null;
+        let currentOcrFile = null;
+
         function triggerCameraOcr() {
             document.getElementById('ocrCameraInput').click();
         }
@@ -1834,10 +1987,81 @@
             document.getElementById('ocrGalleryInput').click();
         }
 
-        async function handleOcrImage(event) {
+        function handleOcrImage(event) {
             const file = event.target.files[0];
             if (!file) return;
+            currentOcrFile = file;
 
+            // 讀取圖片並開啟裁切彈窗
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = document.getElementById('cropperTargetImg');
+                img.src = e.target.result;
+                document.getElementById('cropperModalBackdrop').style.display = 'flex';
+
+                // 初始化或重建 Cropper
+                if (cropperInstance) {
+                    cropperInstance.destroy();
+                }
+
+                // 稍微延遲以確保 modal 渲染計算尺寸
+                setTimeout(() => {
+                    cropperInstance = new Cropper(img, {
+                        viewMode: 1,
+                        dragMode: 'move',
+                        autoCropArea: 0.6,
+                        restore: false,
+                        guides: true,
+                        center: true,
+                        highlight: true,
+                        cropBoxMovable: true,
+                        cropBoxResizable: true,
+                        toggleDragModeOnDblclick: false,
+                    });
+                }, 150);
+            };
+            reader.readAsDataURL(file);
+            event.target.value = '';
+        }
+
+        function rotateCropper() {
+            if (cropperInstance) {
+                cropperInstance.rotate(90);
+            }
+        }
+
+        function closeCropperModal() {
+            document.getElementById('cropperModalBackdrop').style.display = 'none';
+            if (cropperInstance) {
+                cropperInstance.destroy();
+                cropperInstance = null;
+            }
+        }
+
+        async function executeCroppedOcr() {
+            if (!cropperInstance) return;
+
+            // 取得裁切後的 Canvas 圖片
+            const canvas = cropperInstance.getCroppedCanvas({
+                maxWidth: 1000,
+                maxHeight: 1000,
+                imageSmoothingEnabled: true,
+                imageSmoothingQuality: 'high'
+            });
+
+            closeCropperModal();
+
+            if (!canvas) {
+                alert("無法獲取裁切區域圖片，請重試");
+                return;
+            }
+
+            canvas.toBlob(async (blob) => {
+                await runOcrOnBlob(blob);
+            }, 'image/png');
+        }
+
+        async function runOcrOnBlob(blob) {
             const statusEl = document.getElementById('ocrStatus');
             const btnCam = document.getElementById('btnOcrCam');
             const btnGal = document.getElementById('btnOcrGal');
@@ -1858,7 +2082,7 @@
                     });
                 }
 
-                statusEl.textContent = '🔍 正在分析圖片中日文字...';
+                statusEl.textContent = '🔍 正在分析裁切文字...';
                 
                 const worker = await Tesseract.createWorker('jpn+eng', 1, {
                     logger: m => {
@@ -1868,16 +2092,17 @@
                     }
                 });
 
-                const ret = await worker.recognize(file);
+                const ret = await worker.recognize(blob);
                 await worker.terminate();
 
                 let rawText = ret.data.text || "";
                 // 智慧清理提取日文/中文馬名
-                let lines = rawText.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+                let lines = rawText.split('
+').map(l => l.trim()).filter(l => l.length > 0);
                 let recognizedWord = "";
                 
                 for (let line of lines) {
-                    let cleaned = line.replace(/[|!@#$%^&*()_+={}\[\]:;"'<>?,.\/\\~`0-9a-zA-Z]/g, '').trim();
+                    let cleaned = line.replace(/[|!@#$%^&*()_+={}\[\]:;"'<>?,.\/~`0-9a-zA-Z]/g, '').trim();
                     if (cleaned.length >= 2) {
                         recognizedWord = cleaned.split(' ')[0];
                         break;
@@ -1885,7 +2110,9 @@
                 }
                 
                 if (!recognizedWord && lines.length > 0) {
-                    recognizedWord = lines[0].replace(/[\r\n\t]/g, '').trim();
+                    recognizedWord = lines[0].replace(/[
+
+	]/g, '').trim();
                 }
 
                 if (recognizedWord) {
@@ -1894,7 +2121,7 @@
                     statusEl.innerHTML = `✅ 辨識完成！關鍵字：「<b style="color:#fbbf24;">${recognizedWord}</b>」已自動搜尋`;
                     renderTable();
                 } else {
-                    statusEl.textContent = '⚠️ 未能辨識出有效馬名，請使用更清晰的截圖或特寫';
+                    statusEl.textContent = '⚠️ 未能辨識出有效馬名，請裁切更特寫的馬名區域';
                 }
             } catch (err) {
                 console.error("OCR Error:", err);
@@ -1902,90 +2129,8 @@
             } finally {
                 if (btnCam) btnCam.disabled = false;
                 if (btnGal) btnGal.disabled = false;
-                event.target.value = '';
             }
         }
-
-
-        // ===== 雙模式切換邏輯 (馬匹速查 / 16大核心攻略) =====
-        let currentAppMode = 'horses';
-
-        function switchMainMode(mode) {
-            currentAppMode = mode;
-            const btnH = document.getElementById('btnModeHorses');
-            const btnG = document.getElementById('btnModeGuides');
-            const viewH = document.getElementById('horsesView');
-            const viewG = document.getElementById('guidesView');
-
-            if (mode === 'horses') {
-                btnH.classList.add('active');
-                btnG.classList.remove('active');
-                viewH.style.display = 'block';
-                viewG.style.display = 'none';
-            } else {
-                btnH.classList.remove('active');
-                btnG.classList.add('active');
-                viewH.style.display = 'none';
-                viewG.style.display = 'block';
-                renderGuidesGrid();
-            }
-        }
-
-        function renderGuidesGrid() {
-            const container = document.getElementById('guidesGridContainer');
-            if (!container) return;
-            const list = window.CORE_GUIDES_DATA || [];
-            if (list.length === 0) {
-                container.innerHTML = '<div style="color:var(--text-muted); padding:20px;">攻略資料載入中...</div>';
-                return;
-            }
-
-            container.innerHTML = list.map(g => `
-                <div class="guide-card" onclick="openGuideModal('${g.id}')">
-                    <div class="guide-card-tag" style="color: ${g.tag_color || '#38bdf8'};">
-                        <span>${g.icon || '🚀'}</span> ${g.category}
-                    </div>
-                    <div class="guide-card-title">${g.title}</div>
-                </div>
-            `).join('');
-        }
-
-        function openGuideModal(guideId) {
-            const list = window.CORE_GUIDES_DATA || [];
-            const g = list.find(x => x.id === guideId);
-            if (!g) return;
-
-            const tagEl = document.getElementById('guideModalTag');
-            tagEl.textContent = g.category;
-            tagEl.style.backgroundColor = (g.tag_color || '#38bdf8') + '22';
-            tagEl.style.color = g.tag_color || '#38bdf8';
-            tagEl.style.border = `1px solid ${g.tag_color || '#38bdf8'}`;
-
-            document.getElementById('guideModalTitle').textContent = `${g.icon || ''} ${g.title}`;
-            document.getElementById('guideModalSummary').textContent = g.summary || '';
-
-            const contentEl = document.getElementById('guideModalContent');
-            contentEl.innerHTML = (g.sections || []).map(sec => `
-                <div class="guide-modal-section">
-                    <h3>${sec.title}</h3>
-                    ${sec.html}
-                </div>
-            `).join('');
-
-            document.getElementById('guideModalBackdrop').style.display = 'flex';
-        }
-
-        function closeGuideModal() {
-            document.getElementById('guideModalBackdrop').style.display = 'none';
-        }
-
-        // Close guide modal on backdrop click
-        window.addEventListener('click', (e) => {
-            const modal = document.getElementById('guideModalBackdrop');
-            if (e.target === modal) {
-                closeGuideModal();
-            }
-        });
 
         // init() 由 loadDatabase() 在資料庫載入完成後自動呼叫
         document.addEventListener('DOMContentLoaded', () => {
