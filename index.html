@@ -5469,7 +5469,6 @@
                     { key: "kenko", title: "健康" },
                     { key: "sire", title: "父馬" },
                     { key: "dam", title: "母馬" },
-                    { key: "details", title: "詳細特徵/配合建議" },
                     { key: "action", title: "詳情" }
                 ];
             } else {
@@ -5493,7 +5492,6 @@
                     { key: "kenko", title: "健康" },
                     { key: "sire", title: "父馬" },
                     { key: "dam", title: "母馬" },
-                    { key: "details", title: "推薦評析/戰略價值" },
                     { key: "action", title: "詳情" }
                 ];
             }
@@ -5588,7 +5586,6 @@
                         <td>${renderRankBadge(item.kenko)}</td>
                         <td>${item.sire || "-"}</td>
                         <td>${item.dam || "-"}</td>
-                        <td style="max-width:260px; white-space:normal;">${item.details || "-"}</td>
                         <td><button class="btn-detail" onclick="openModalByIndex(${idx})">詳情</button></td>
                     `;
                 } else {
@@ -5613,7 +5610,6 @@
                         <td>${renderRankBadge(item.kenko)}</td>
                         <td>${item.sire || "-"}</td>
                         <td>${item.dam || "-"}</td>
-                        <td style="max-width:260px; white-space:normal;">${item.details || "-"}</td>
                         <td><button class="btn-detail" onclick="openModalByIndex(${idx})">詳情</button></td>
                     `;
                 }
@@ -5676,7 +5672,10 @@
             addStat("母父 (Dam's Sire)", item.damsire || "-");
             addStat("仔出評級 (Foal Quality)", item.foal_quality || item.foal_count || "-");
 
-            addTitle("✨ 特性・個性 (ウマソナ) 與戰略評語");
+            addTitle("✨ 詳細特徵・配合建議與戰略評語");
+            if (item.details && item.details !== "-") {
+                addStat("💡 詳細特徵 / 配合建議", item.details, true);
+            }
             addStat("特殊特性 (Traits)", item.traits || "無特殊特性", true);
             addStat("馬之個性 (ウマソナ)", item.umarsonality || "-", true);
             addStat("AI 戰略評語", generateAIComment(item), true);
