@@ -5384,113 +5384,21 @@ li {
 
         // ==================== 馬庫輔助轉換函數 ====================
         function parseTrack(trackStr) {
+            if (!trackStr || trackStr === "-") return { grass: "-", dirt: "-" };
             let grass = "-";
             let dirt = "-";
-            if (!trackStr || trackStr === "-") return { grass, dirt };
-            if (trackStr.includes("芝") || trackStr.includes("ダ")) {
-                let mGrass = trackStr.match(/芝([◎○△×])/);
-                let mDirt = trackStr.match(/ダ([◎○△×])/);
-                if (mGrass) grass = mGrass[1];
-                if (mDirt) dirt = mDirt[1];
-            } else {
-                let symbols = trackStr.match(/([◎○△×])/g);
-                if (symbols && symbols.length >= 2) {
-                    grass = symbols[0];
-                    dirt = symbols[1];
-                } else if (symbols && symbols.length === 1) {
-                    grass = symbols[0];
-                }
-            }
+            if (trackStr.includes("芝◎") || trackStr.includes("芝:◎")) grass = "◎";
+            else if (trackStr.includes("芝○") || trackStr.includes("芝:○")) grass = "○";
+            else if (trackStr.includes("芝△") || trackStr.includes("芝:△")) grass = "△";
+            else if (trackStr.includes("芝×") || trackStr.includes("芝:×")) grass = "×";
+            else if (trackStr.includes("芝")) grass = "○";
+
+            if (trackStr.includes("ダ◎") || trackStr.includes("ダ:◎") || trackStr.includes("泥◎")) dirt = "◎";
+            else if (trackStr.includes("ダ○") || trackStr.includes("ダ:○") || trackStr.includes("泥○")) dirt = "○";
+            else if (trackStr.includes("ダ△") || trackStr.includes("ダ:△") || trackStr.includes("泥△")) dirt = "△";
+            else if (trackStr.includes("ダ×") || trackStr.includes("ダ:×") || trackStr.includes("泥×")) dirt = "×";
+            else if (trackStr.includes("ダ") || trackStr.includes("泥")) dirt = "○";
             return { grass, dirt };
-        }
-
-        function renderRankBadge(rank) {
-            if (!rank || rank === "-") return "-";
-            let color = "var(--text-muted)";
-            if (rank.startsWith("S")) color = "#f59e0b; font-weight:bold;";
-            else if (rank.startsWith("A")) color = "#a855f7; font-weight:bold;";
-            else if (rank.startsWith("B")) color = "#38bdf8; font-weight:600;";
-            else if (rank.startsWith("C")) color = "#22c55e;";
-            else if (rank.startsWith("D")) color = "#cbd5e1;";
-            return `<span style="color:${color}">${rank}</span>`;
-        }
-
-        function renderTrackBadge(sym) {
-            if (!sym || sym === "-") return "-";
-            if (sym === "◎") return `<span style="color:#f59e0b; font-weight:bold; font-size:1.05rem;">◎</span>`;
-            if (sym === "○") return `<span style="color:#22c55e; font-weight:bold; font-size:1.05rem;">○</span>`;
-            if (sym === "△") return `<span style="color:#38bdf8; font-size:1rem;">△</span>`;
-            if (sym === "×") return `<span style="color:#ef4444; font-size:1rem;">×</span>`;
-            return sym;
-        }
-
-        function renderStarsBadge(stars) {
-            if (!stars || stars === "-") return "-";
-            if (stars.includes("★★★") || stars === "3") {
-                return `<span style="color:#f59e0b; font-weight:bold; text-shadow:0 0 6px rgba(245,158,11,0.4);">★★★</span>`;
-            }
-            if (stars.includes("★★") || stars === "2") {
-                return `<span style="color:#fbbf24; font-weight:bold;">★★</span>`;
-            }
-            if (stars.includes("★") || stars === "1") {
-                return `<span style="color:#38bdf8; font-weight:600;">★</span>`;
-            }
-            return `<span style="color:var(--text-muted);">${stars}</span>`;
-        }
-
-        function renderTicketBadge(ticket) {
-            if (!ticket) return "-";
-            if (ticket.includes("虹")) return `<span class="badge badge-rainbow">🌈 虹札</span>`;
-            if (ticket.includes("金")) return `<span class="badge badge-gold">🥇 金札</span>`;
-            if (ticket.includes("銀")) return `<span class="badge badge-silver">🥈 銀札</span>`;
-            if (ticket.includes("銅")) return `<span class="badge badge-bronze">🥉 銅札</span>`;
-            if (ticket.includes("綠") || ticket.includes("緑")) return `<span class="badge badge-green">🟢 綠札</span>`;
-            return ticket;
-        }
-
-        function generateAIComment(h) {
-            if (!h) return "尚無評語";
-            const parts = [];
-            const sp = parseInt(h.sp || h.matched_sp) || 0;
-            const sub = parseInt(h.subpara_total) || 0;
-            if (sp >= 75) parts.push(`⚡ 擁有極高之 SP 速度能力 (${sp})，具備奪取頂級 G1 之強大即戰力。`);
-            else if (sp >= 70) parts.push(`🐎 速度屬性優良 (${sp})，於重賞賽事具備高度競爭力。`);
-            if (sub >= 75) parts.push(`💎 次能力極其全面均衡 (次能力合計 ${sub})，無明顯弱點。`);
-            if (h.track && h.track.includes("◎")) parts.push(`🎯 賽道適性出色 (${h.track})，發揮極其穩定。`);
-            if (h.traits && h.traits !== "無特殊特性" && h.traits !== "-") parts.push(`✨ 具備關鍵特性「${h.traits}」，關鍵戰局往往能發揮奇效。`);
-            if (h.umarsonality && h.umarsonality !== "-") parts.push(`🐴 馬匹個性為「${h.umarsonality}」。`);
-            if (h.foal_quality && parseInt(h.foal_quality) >= 6) parts.push(`🧬 具備高繁殖潛力 (仔出評級 ${h.foal_quality})，退役後極具配種價值。`);
-            return parts.length > 0 ? parts.join(" ") : "基礎素質健全，適合依適性距離與賽道穩健安排賽程。";
-        }
-
-        function syncHorseData() {
-            if (!dbData || !dbData.all_horses || !dbData.recommendations) return;
-            const horseMap = new Map();
-            dbData.all_horses.forEach(h => {
-                if (h.name) horseMap.set(h.name, h);
-            });
-            dbData.recommendations.forEach(r => {
-                const match = horseMap.get(r.name);
-                if (match) {
-                    if (!r.matched_sp || r.matched_sp === "-") r.matched_sp = match.sp;
-                    if (!r.sp || r.sp === "-") r.sp = match.sp;
-                    if (!r.shunhatsu || r.shunhatsu === "-") r.shunhatsu = match.shunhatsu;
-                    if (!r.konjo || r.konjo === "-") r.konjo = match.konjo;
-                    if (!r.power || r.power === "-") r.power = match.power;
-                    if (!r.seishin || r.seishin === "-") r.seishin = match.seishin;
-                    if (!r.keshikosa || r.keshikosa === "-") r.keshikosa = match.keshikosa;
-                    if (!r.junan || r.junan === "-") r.junan = match.junan;
-                    if (!r.kenko || r.kenko === "-") r.kenko = match.kenko;
-                    if (!r.distance || r.distance === "-") r.distance = match.distance;
-                    if (!r.grass || r.grass === "-") r.grass = match.grass;
-                    if (!r.dirt || r.dirt === "-") r.dirt = match.dirt;
-                    if (!r.sex || r.sex === "-") r.sex = match.sex;
-                    if (!r.sire || r.sire === "-") r.sire = match.sire;
-                    if (!r.dam || r.dam === "-") r.dam = match.dam;
-                    if (!r.ticket || r.ticket === "-") r.ticket = match.ticket;
-                    if (!r.growth || r.growth === "-") r.growth = match.growth;
-                }
-            });
         }
 
         function unpackDatabase(data) {
@@ -5501,9 +5409,11 @@ li {
                 (data.all_horses || []).forEach(row => {
                     const obj = {};
                     cols.forEach((col, i) => { obj[col] = row[i]; });
-                    const tr = parseTrack(obj.track);
-                    obj.grass = tr.grass;
-                    obj.dirt = tr.dirt;
+                    if (obj.track && (!obj.grass || obj.grass === "-" || !obj.dirt || obj.dirt === "-")) {
+                        const tr = parseTrack(obj.track);
+                        if (!obj.grass || obj.grass === "-") obj.grass = tr.grass;
+                        if (!obj.dirt || obj.dirt === "-") obj.dirt = tr.dirt;
+                    }
                     horses.push(obj);
                 });
                 const recCols = data.rec_columns || [];
@@ -5511,9 +5421,11 @@ li {
                 (data.recommendations || []).forEach(row => {
                     const obj = {};
                     recCols.forEach((col, i) => { obj[col] = row[i]; });
-                    const tr = parseTrack(obj.track);
-                    obj.grass = tr.grass;
-                    obj.dirt = tr.dirt;
+                    if (obj.track && (!obj.grass || obj.grass === "-" || !obj.dirt || obj.dirt === "-")) {
+                        const tr = parseTrack(obj.track);
+                        if (!obj.grass || obj.grass === "-") obj.grass = tr.grass;
+                        if (!obj.dirt || obj.dirt === "-") obj.dirt = tr.dirt;
+                    }
                     recs.push(obj);
                 });
                 return { all_horses: horses, recommendations: recs };
