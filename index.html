@@ -1033,7 +1033,99 @@
         [data-theme="light"] .node-dam-side { background-color: #f3e8ff !important; color: #6b21a8 !important; }
         .node-target-gold { background-color: #e3b341 !important; color: #0d1117 !important; font-weight: 800 !important; }
 
-    </style>
+    
+/* ================== 強迫症完美排版校正 ================== */
+.table-responsive, .table-container {
+    -webkit-overflow-scrolling: touch !important;
+    overflow-x: auto !important;
+}
+.table-responsive::-webkit-scrollbar, .table-container::-webkit-scrollbar {
+    height: 6px;
+    background: transparent;
+}
+.table-responsive::-webkit-scrollbar-thumb, .table-container::-webkit-scrollbar-thumb {
+    background: var(--accent-color, #38bdf8);
+    border-radius: 4px;
+}
+.table-responsive::-webkit-scrollbar-track, .table-container::-webkit-scrollbar-track {
+    background: var(--panel-bg, #111827);
+}
+
+.col-short {
+    width: 1% !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
+.col-long {
+    width: auto !important;
+    min-width: 250px !important;
+    line-height: 1.6 !important;
+    white-space: normal !important;
+    text-align: left !important;
+    word-break: break-word !important;
+}
+
+.pedigree-table {
+    table-layout: fixed !important;
+    min-width: 680px !important;
+    margin: 0 auto !important;
+    border-collapse: collapse !important;
+}
+.pedigree-table th, .pedigree-table td {
+    text-align: center !important;
+    vertical-align: middle !important;
+    word-wrap: break-word !important;
+    white-space: normal !important;
+}
+.pedigree-table .sire, .pedigree-table .father, .pedigree-table .pedigree-sire, td.sire-cell {
+    background-color: #132742 !important;
+    color: #ffffff !important;
+}
+.pedigree-table .dam, .pedigree-table .mother, .pedigree-table .pedigree-dam, td.dam-cell {
+    background-color: #2b1738 !important;
+    color: #ffffff !important;
+}
+.pedigree-table .target, .pedigree-table .pedigree-target, td.target-cell {
+    background-color: #e3b341 !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+}
+.factor-badge, .genetic-badge, .pedigree-table img, .pedigree-table span.badge {
+    vertical-align: middle !important;
+    display: inline-block !important;
+    margin: 0 2px !important;
+}
+
+p, h1, h2, h3, h4, h5, h6, ul, ol, li, .callout {
+    line-height: 1.6 !important;
+}
+h1, h2, h3, h4 {
+    margin-top: 1.5em !important;
+    margin-bottom: 0.75em !important;
+}
+p, ul, ol, .callout {
+    margin-bottom: 1.25em !important;
+}
+ul, ol {
+    padding-left: 2.5em !important;
+    margin-left: 0 !important;
+}
+li {
+    margin-bottom: 0.5em !important;
+}
+
+.modal, .drawer, .chapter-drawer, .modal-detail, #jumpModal, #searchModal, .modal-overlay {
+    display: none !important;
+    position: fixed !important;
+}
+.modal.active, .modal.show, .drawer.active, .drawer.show, .chapter-drawer.active, .modal-detail.active, #jumpModal.active, #searchModal.active, .modal-overlay.active {
+    display: flex !important;
+}
+/* ================== 結束強迫症校正 ================== */
+\n</style>
 </head>
 <body>
 <!-- 頁首 -->
@@ -6140,5 +6232,37 @@
             renderTable();
         }
     </script>
-</body>
+
+<!-- ================== 強迫症完美排版校正 JS ================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const shortKeywords = ['年份', '性別', '馬札', '星級', '等級', 'SP數值', '芝泥適性', '期間', '大成功率', '操作', '按鈕', 'SP', '適性', '評價', '爆發力', '馬場', '距離', '成長', '壽命', '體力', '年', '歲', '金額', '機率', '條件達成', '成功率', '世代', '次數', '週數'];
+    const longKeywords = ['馬名', '配合理論說明', '史實調教詳細效果', '特性發動條件', '殿堂馬稱號條件', '三冠賽事條件', '說明', '效果', '條件', '備註', '詳細', '事件', '獲得條件', '內容', '評價標準', '描述', '觸發條件', '特徵', '簡介', '大系'];
+
+    document.querySelectorAll('table').forEach(table => {
+        const headers = table.querySelectorAll('th, td'); // top row usually
+        let isHeaderRow = false;
+        
+        const firstRow = table.querySelector('tr');
+        if (!firstRow) return;
+        
+        const firstRowCells = firstRow.children;
+        Array.from(firstRowCells).forEach((th, index) => {
+            const text = th.textContent.trim();
+            let isShort = shortKeywords.some(kw => text.includes(kw));
+            let isLong = longKeywords.some(kw => text.includes(kw));
+            if (!isShort && !isLong && text.length <= 4) isShort = true; // Auto short for very short headers
+
+            table.querySelectorAll('tr').forEach(row => {
+                const cells = row.children;
+                if (cells.length > index) {
+                    if (isShort) cells[index].classList.add('col-short');
+                    if (isLong) cells[index].classList.add('col-long');
+                }
+            });
+        });
+    });
+});
+</script>
+\n</body>
 </html>
