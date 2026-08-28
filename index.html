@@ -928,6 +928,113 @@
         .stat-item.full-width { grid-column: span 2; }
         .stat-label { color: var(--text-muted); font-size: 0.72rem; }
         .stat-value { color: var(--text-color); font-weight: bold; }
+    
+        /* ==================== 欄位寬度與平滑滑動檢視優化 ==================== */
+        .table-responsive, .table-container, .pedigree-wrapper {
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) var(--card-bg);
+            border-radius: 8px;
+            margin: 12px 0 16px 0;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+        }
+
+        .table-responsive::-webkit-scrollbar,
+        .table-container::-webkit-scrollbar,
+        .pedigree-wrapper::-webkit-scrollbar {
+            height: 6px;
+        }
+        .table-responsive::-webkit-scrollbar-thumb,
+        .table-container::-webkit-scrollbar-thumb,
+        .pedigree-wrapper::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        /* 通用 data-table 基本樣式 */
+        table.data-table {
+            width: max-content !important;
+            min-width: 100% !important;
+            border-collapse: collapse !important;
+            font-size: 0.82rem !important;
+            text-align: left !important;
+        }
+        table.data-table th {
+            background: rgba(30, 41, 59, 0.95) !important;
+            color: var(--accent-color) !important;
+            padding: 10px 14px !important;
+            border-bottom: 2px solid var(--border-color) !important;
+            font-weight: 700 !important;
+            white-space: nowrap !important;
+            vertical-align: middle !important;
+        }
+        [data-theme="light"] table.data-table th {
+            background: #e2e8f0 !important;
+            color: #0369a1 !important;
+        }
+        table.data-table td {
+            padding: 9px 14px !important;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.35) !important;
+            color: var(--text-color) !important;
+            line-height: 1.55 !important;
+            vertical-align: middle !important;
+        }
+
+        /* 第一分頁馬庫速查各欄位清晰寬度 (支援平滑橫向滑動) */
+        #horseTable {
+            width: max-content !important;
+            min-width: 100% !important;
+        }
+        #horseTable th, #horseTable td {
+            white-space: nowrap !important;
+        }
+        #horseTable th:nth-child(1), #horseTable td:nth-child(1) { width: 60px; min-width: 55px; text-align: center; } /* 登場 */
+        #horseTable th:nth-child(2), #horseTable td:nth-child(2) { min-width: 160px; font-weight: 700; white-space: normal; } /* 馬名 */
+        #horseTable th:nth-child(3), #horseTable td:nth-child(3) { width: 80px; min-width: 75px; text-align: center; } /* 推薦 */
+        #horseTable th:nth-child(4), #horseTable td:nth-child(4) { width: 70px; min-width: 65px; text-align: center; } /* 地區 */
+        #horseTable th:nth-child(5), #horseTable td:nth-child(5) { width: 65px; min-width: 60px; text-align: center; } /* 馬札 */
+        #horseTable th:nth-child(6), #horseTable td:nth-child(6) { width: 55px; min-width: 50px; text-align: center; } /* 性別 */
+        #horseTable th:nth-child(7), #horseTable td:nth-child(7) { width: 80px; min-width: 75px; text-align: center; } /* SP 速度 */
+        #horseTable th:nth-child(8), #horseTable td:nth-child(8) { width: 110px; min-width: 100px; text-align: center; } /* 距離適性 */
+        #horseTable th:nth-child(9), #horseTable td:nth-child(9) { width: 60px; min-width: 55px; text-align: center; } /* 芝 */
+        #horseTable th:nth-child(10), #horseTable td:nth-child(10) { width: 60px; min-width: 55px; text-align: center; } /* ダ */
+        #horseTable th:nth-child(11), #horseTable td:nth-child(11) { width: 85px; min-width: 80px; text-align: center; } /* 成長型 */
+        #horseTable th:nth-child(12), #horseTable td:nth-child(12) { width: 70px; min-width: 65px; text-align: center; } /* 詳情 */
+
+        /* 4 代血統樹與配合矩陣專屬樣式 (獨立防跑版) */
+        .pedigree-table {
+            width: 100% !important;
+            min-width: 680px !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            font-size: 11px !important;
+        }
+        .pedigree-table th {
+            background-color: var(--card-bg) !important;
+            border: 1px solid var(--border-color) !important;
+            padding: 5px 6px !important;
+            font-weight: 700 !important;
+            color: var(--text-muted) !important;
+            text-align: center !important;
+            white-space: nowrap !important;
+        }
+        .pedigree-table td {
+            border: 1px solid var(--border-color) !important;
+            padding: 5px 6px !important;
+            text-align: center !important;
+            vertical-align: middle !important;
+            font-weight: 500 !important;
+            white-space: normal !important;
+            word-break: break-word !important;
+        }
+        .node-sire-side { background-color: #132742 !important; color: #93c5fd !important; }
+        [data-theme="light"] .node-sire-side { background-color: #dbeafe !important; color: #1e40af !important; }
+        .node-dam-side { background-color: #2b1738 !important; color: #e9d5ff !important; }
+        [data-theme="light"] .node-dam-side { background-color: #f3e8ff !important; color: #6b21a8 !important; }
+        .node-target-gold { background-color: #e3b341 !important; color: #0d1117 !important; font-weight: 800 !important; }
+
     </style>
 </head>
 <body>
