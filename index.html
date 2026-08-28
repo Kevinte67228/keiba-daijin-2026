@@ -101,25 +101,65 @@
     <style>
         :root {
             --bg-color: #0b0f19;
+            --bg-primary: #0b0f19;
+            --bg-secondary: #131b2e;
+            --bg-tertiary: #1b2333;
+            --bg-card: #1e293b;
             --panel-bg: #131b2e;
             --card-bg: #1e293b;
             --accent-color: #38bdf8;
             --accent-hover: #0284c7;
             --text-color: #f1f5f9;
+            --text-main: #f1f5f9;
             --text-muted: #94a3b8;
+            --text-highlight: #60a5fa;
             --border-color: #334155;
+            --border-accent: #38bdf8;
             --gold-color: #f59e0b;
+            --accent-gold: #f59e0b;
+            --accent-gold-bg: rgba(245, 158, 11, 0.12);
+            --accent-gold-border: #d97706;
+            --accent-green: #10b981;
+            --accent-green-bg: rgba(16, 185, 129, 0.12);
+            --accent-red: #ef4444;
+            --accent-red-bg: rgba(239, 68, 68, 0.12);
+            --accent-purple: #a855f7;
+            --accent-purple-bg: rgba(168, 85, 247, 0.12);
+            --accent-cyan: #06b6d4;
+            --accent-cyan-bg: rgba(6, 182, 212, 0.12);
+            --sire-bg: #132742;
+            --dam-bg: #2b1738;
         }
         [data-theme="light"] {
             --bg-color: #f8fafc;
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f1f5f9;
+            --bg-card: #ffffff;
             --panel-bg: #ffffff;
             --card-bg: #f1f5f9;
             --accent-color: #0284c7;
             --accent-hover: #0369a1;
             --text-color: #0f172a;
+            --text-main: #0f172a;
             --text-muted: #64748b;
+            --text-highlight: #0284c7;
             --border-color: #cbd5e1;
+            --border-accent: #0284c7;
             --gold-color: #d97706;
+            --accent-gold: #b45309;
+            --accent-gold-bg: rgba(245, 158, 11, 0.18);
+            --accent-gold-border: #b45309;
+            --accent-green: #047857;
+            --accent-green-bg: rgba(16, 185, 129, 0.15);
+            --accent-red: #b91c1c;
+            --accent-red-bg: rgba(239, 68, 68, 0.15);
+            --accent-purple: #7e22ce;
+            --accent-purple-bg: rgba(168, 85, 247, 0.15);
+            --accent-cyan: #0e7490;
+            --accent-cyan-bg: rgba(6, 182, 212, 0.15);
+            --sire-bg: #e0f2fe;
+            --dam-bg: #fae8ff;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
         body {
@@ -226,6 +266,9 @@
             box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
             font-weight: 800;
         }
+        .tab-icon { font-size: 1.1rem; }
+        .tab-text { font-size: 0.88rem; }
+        .pillar-content { width: 100%; }
 
         /* 8大類別頁籤 - 手機 2×2 滑動佈局 */
         .category-tabs-wrapper {
@@ -412,6 +455,79 @@
             font-size: 0.72rem;
         }
 
+        /* 晶片篩選列 (Filter Bar & Filter Buttons) */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+            padding: 4px 0;
+        }
+        .filter-btn {
+            padding: 5px 12px;
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 0.78rem;
+            font-weight: 600;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .filter-btn:hover {
+            background-color: var(--border-color);
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        .filter-btn.active {
+            background-color: var(--accent-gold);
+            color: #0f172a !important;
+            border-color: var(--accent-gold-border);
+            font-weight: 800;
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+        }
+
+        /* 系統確立 Tab 按鈕 (Sys-btn) 與計算器 */
+        .sys-btn {
+            padding: 8px 14px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .calc-in {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 4px 8px;
+            color: var(--text-main);
+            font-size: 0.8rem;
+            outline: none;
+        }
+        .calc-in:focus { border-color: var(--border-accent); }
+
+        /* Responsive Grid Utility Classes */
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        @media (min-width: 768px) {
+            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .lg\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+            .lg\:col-span-5 { grid-column: span 5 / span 5; }
+            .lg\:col-span-7 { grid-column: span 7 / span 7; }
+        }
+
         /* 百科通用美化 */
         .pillar-header-card {
             background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
@@ -490,21 +606,27 @@
             border-radius: 8px;
         }
         .pill {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
             padding: 2px 7px;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 0.72rem;
             font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            white-space: nowrap;
         }
         .pill-power { background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid #d97706; }
         .pill-danger { background: rgba(239, 68, 68, 0.18); color: #f87171; border: 1px solid #dc2626; }
         .pill-safe { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid #059669; }
+        .pill-version { background: rgba(168, 85, 247, 0.18); color: #c084fc; border: 1px solid #a855f7; }
         .pill-cyan { background: rgba(6, 182, 212, 0.18); color: #22d3ee; border: 1px solid #0891b2; }
         .pill-gold-tag { background: #d97706; color: #fff; }
         .pill-silver-tag { background: #64748b; color: #fff; }
         .pill-bronze-tag { background: #b45309; color: #fff; }
         .pill-green-tag { background: #15803d; color: #fff; }
         .pill-rainbow-tag { background: linear-gradient(135deg, #a855f7, #ec4899, #eab308); color: #fff; font-weight: bold; }
+        
         .callout {
             padding: 11px 14px;
             border-radius: 8px;
@@ -517,6 +639,9 @@
         }
         .callout-info { background: rgba(56, 189, 248, 0.1); border: 1px solid #0284c7; color: #bae6fd; }
         .callout-gold { background: rgba(245, 158, 11, 0.1); border: 1px solid #d97706; color: #fde68a; }
+        .callout-tip { background: rgba(16, 185, 129, 0.1); border: 1px solid #059669; color: #a7f3d0; }
+        .callout-warning { background: rgba(239, 68, 68, 0.1); border: 1px solid #dc2626; color: #fecaca; }
+
         .checklist-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -537,6 +662,9 @@
             align-items: center;
             gap: 6px;
         }
+        .checklist-items { list-style: none; font-size: 0.8rem; }
+        .checklist-items li { padding: 2px 0; display: flex; align-items: flex-start; gap: 5px; }
+
         .pedigree-wrapper {
             margin: 12px 0;
             overflow-x: auto;
@@ -3615,7 +3743,11 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
             if (pillarId === 'pillar-breed') {
-                initSimulatorChart();
+                initSimulationChart();
+                setSysTab('child');
+            }
+            if (pillarId === 'pillar-ranch') {
+                renderSHTable(shDatabase.filter(h => h.ver === '2026'));
             }
         }
 
@@ -3628,42 +3760,195 @@
             const next = current === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', next);
             localStorage.setItem('keiba_theme', next);
+            if (explosionChartInstance) explosionChartInstance.update();
         }
 
-        // Simulator Chart
-        let chartInitialized = false;
-        function initSimulatorChart() {
-            if (chartInitialized) return;
-            const ctx = document.getElementById('explosionChart');
-            if (!ctx) return;
-            chartInitialized = true;
-            runSimulation();
+        // ==================== 配合理論分類篩選 (Section 2 Chips) ====================
+        function filterCategory(category, btn) {
+            document.querySelectorAll('#sec-master-table .filter-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            const rows = document.querySelectorAll('#theoryMasterTable tbody tr');
+            rows.forEach(row => {
+                const cat = row.getAttribute('data-cat');
+                if (category === 'all' || cat === category) row.style.display = '';
+                else row.style.display = 'none';
+            });
         }
 
-        function runSimulation() {
-            const B = parseInt(document.getElementById('inputB') ? document.getElementById('inputB').value : 30) || 30;
-            const facilityLv = parseInt(document.getElementById('facilityLv') ? document.getElementById('facilityLv').value : 3) || 0;
-            const samples = 1000;
-            const results = [];
-            for (let i = 0; i < samples; i++) {
-                const b = Math.floor(Math.random() * B);
-                results.push(b + facilityLv);
+        // ==================== 超級馬 (SH) 資料庫與篩選 ====================
+        const shDatabase = [
+            { ver: "2026", year: 2016, region: "日本", name: "サードステージ", card: "彩", sex: "牡", sire: "トウカイテイオー", dam: "ファレノプシス", sp: 77, st: 75, pwr: "C+", dsh: "A", rrt: "A", sft: "A+", spi: "C", wis: "A+", hlt: "C+", turf: "◎", dirt: "✕", dist: "18~32", grow: "早め", life: "持", pup: 9 },
+            { ver: "2026", year: 2024, region: "日本", name: "ユーティライズ", card: "彩", sex: "牝", sire: "ギンザグリングラス", dam: "アサヒライジング", sp: 76, st: 50, pwr: "C", dsh: "A+", rrt: "D", sft: "A+", spi: "A+", wis: "C", hlt: "E", turf: "◎", dirt: "✕", dist: "14~26", grow: "早め", life: "持", pup: 7 },
+            { ver: "2026", year: 2024, region: "日本", name: "センチョク", card: "金", sex: "牡", sire: "カルストンライトオ", dam: "エーシンヴァーゴウ", sp: 72, st: 10, pwr: "C", dsh: "E", rrt: "A", sft: "E+", spi: "C", wis: "E", hlt: "C", turf: "◎", dirt: "✕", dist: "10~14", grow: "早め", life: "持", pup: 7 },
+            { ver: "2026", year: 2024, region: "日本", name: "ルックミーダッド", card: "金", sex: "牡", sire: "カジノドライヴ", dam: "ミラクルレジェンド", sp: 70, st: 40, pwr: "A", dsh: "E", rrt: "C", sft: "E+", spi: "E", wis: "A", hlt: "E", turf: "✕", dirt: "◎", dist: "16~20", grow: "早め", life: "有", pup: 7 },
+            { ver: "2026", year: 2024, region: "日本", name: "ルビーヴェイル", card: "銀", sex: "牝", sire: "メイショウサムソン", dam: "スマートレイアー", sp: 70, st: 45, pwr: "C", dsh: "C", rrt: "C", sft: "C+", spi: "C", wis: "C", hlt: "C", turf: "◎", dirt: "◎", dist: "16~20", grow: "早め", life: "持", pup: 9 },
+            { ver: "2026", year: 2024, region: "美國", name: "Iron King", card: "金", sex: "牡", sire: "Giacomo", dam: "Indian Blessing", sp: 74, st: 45, pwr: "A", dsh: "A", rrt: "A", sft: "E+", spi: "C", wis: "A", hlt: "C", turf: "✕", dirt: "◎", dist: "17~21", grow: "早め", life: "持", pup: 6 },
+            { ver: "2026", year: 2024, region: "美國", name: "T.T.", card: "金", sex: "牝", sire: "Gio Ponti", dam: "Lady Shakespeare", sp: 72, st: 45, pwr: "A", dsh: "A", rrt: "A", sft: "C+", spi: "A", wis: "A", hlt: "E", turf: "◎", dirt: "◎", dist: "15~23", grow: "早め", life: "普", pup: 7 },
+            { ver: "2026", year: 2024, region: "歐洲", name: "Queen of Spain", card: "金", sex: "牝", sire: "Authorized", dam: "Midday", sp: 73, st: 60, pwr: "A+", dsh: "C", rrt: "C", sft: "C+", spi: "A", wis: "A", hlt: "A", turf: "◎", dirt: "✕", dist: "20~28", grow: "早め", life: "持", pup: 8 },
+            { ver: "2026", year: 2024, region: "歐洲", name: "Tornado", card: "金", sex: "牡", sire: "Dawn Approach", dam: "Moonlight Cloud", sp: 75, st: 20, pwr: "A+", dsh: "A+", rrt: "C", sft: "E+", spi: "A", wis: "C", hlt: "C", turf: "◎", dirt: "✕", dist: "12~16", grow: "早め", life: "有", pup: 6 },
+            { ver: "2026", year: 2025, region: "日本", name: "インデュース", card: "彩", sex: "牡", sire: "グランプリボス", dam: "ジェンティルドンナ", sp: 75, st: 45, pwr: "A", dsh: "A", rrt: "A", sft: "A+", spi: "A", wis: "A", hlt: "A", turf: "◎", dirt: "✕", dist: "15~23", grow: "早め", life: "持", pup: 8 },
+            { ver: "2026", year: 2025, region: "日本", name: "メイジガルダン", card: "金", sex: "牡", sire: "アポロキングダム", dam: "アップトゥデイト", sp: 72, st: 80, pwr: "A+", dsh: "C", rrt: "A+", sft: "A+", spi: "A", wis: "C", hlt: "A", turf: "◎", dirt: "◎", dist: "24~36", grow: "普通", life: "持", pup: 8 },
+            { ver: "2026", year: 2025, region: "美國", name: "Empire Maker", card: "彩", sex: "牡", sire: "Pioneerof the Nile", dam: "Untapable", sp: 76, st: 55, pwr: "A+", dsh: "A", rrt: "A", sft: "A+", spi: "A", wis: "A", hlt: "A", turf: "✕", dirt: "◎", dist: "18~26", grow: "早め", life: "持", pup: 9 },
+            { ver: "2025", year: 2023, region: "日本", name: "グランシャリオ", card: "彩", sex: "牡", sire: "オルフェーヴル", dam: "アーモンドアイ", sp: 77, st: 65, pwr: "A+", dsh: "A+", rrt: "A+", sft: "A+", spi: "A+", wis: "A+", hlt: "A", turf: "◎", dirt: "✕", dist: "18~28", grow: "早熟", life: "持", pup: 9 },
+            { ver: "2025", year: 2023, region: "日本", name: "ダークレジェンド", card: "金", sex: "牡", sire: "ゴールドシップ", dam: "ブエナビスタ", sp: 74, st: 85, pwr: "A+", dsh: "C", rrt: "S", sft: "A", spi: "S", wis: "C", hlt: "S", turf: "◎", dirt: "✕", dist: "22~36", grow: "晩成", life: "持", pup: 8 },
+            { ver: "2025", year: 2023, region: "美國", name: "Thunder Bolt", card: "彩", sex: "牡", sire: "American Pharoah", dam: "Beholder", sp: 76, st: 50, pwr: "S", dsh: "A", rrt: "A+", sft: "A", spi: "A+", wis: "A", hlt: "A", turf: "✕", dirt: "◎", dist: "16~24", grow: "早め", life: "持", pup: 9 },
+            { ver: "2024", year: 2022, region: "日本", name: "アルファヴェロシティ", card: "金", sex: "牡", sire: "キタサンブラック", dam: "リスグラシュー", sp: 75, st: 70, pwr: "A+", dsh: "A", rrt: "A+", sft: "A", spi: "A", wis: "A", hlt: "A", turf: "◎", dirt: "✕", dist: "20~30", grow: "早め", life: "持", pup: 8 },
+            { ver: "2024", year: 2022, region: "日本", name: "スターアライン", card: "金", sex: "牝", sire: "ロードカナロア", dam: "グランアレグリア", sp: 76, st: 25, pwr: "A", dsh: "S", rrt: "A", sft: "A+", spi: "A", wis: "A", hlt: "A", turf: "◎", dirt: "✕", dist: "12~18", grow: "早熟", life: "持", pup: 8 },
+            { ver: "origin", year: 2020, region: "日本", name: "ネココネコロガール", card: "金", sex: "牝", sire: "ディープインパクト", dam: "アパパネ", sp: 75, st: 50, pwr: "A", dsh: "A+", rrt: "A", sft: "A+", spi: "A", wis: "A", hlt: "A", turf: "◎", dirt: "✕", dist: "16~24", grow: "普通", life: "持", pup: 8 },
+            { ver: "origin", year: 2020, region: "日本", name: "スーパーシュート", card: "金", sex: "牡", sire: "キングカメハメ哈", dam: "ウオッカ", sp: 76, st: 55, pwr: "A+", dsh: "A", rrt: "A+", sft: "A", spi: "A+", wis: "A", hlt: "A", turf: "◎", dirt: "✕", dist: "16~24", grow: "早め", life: "持", pup: 8 }
+        ];
+
+        function renderSHTable(data) {
+            const tbody = document.getElementById('shTableBody');
+            if (!tbody) return;
+            tbody.innerHTML = data.map(horse => {
+                let cardBadge = '';
+                if (horse.card === '彩') cardBadge = '<span class="pill pill-rainbow-tag">彩</span>';
+                else if (horse.card === '金') cardBadge = '<span class="pill pill-gold-tag">金</span>';
+                else if (horse.card === '銀') cardBadge = '<span class="pill pill-silver-tag">銀</span>';
+                else if (horse.card === '銅') cardBadge = '<span class="pill pill-bronze-tag">銅</span>';
+                else cardBadge = '<span class="pill">' + horse.card + '</span>';
+
+                return `
+                    <tr>
+                        <td><strong>${horse.year}</strong></td>
+                        <td>${horse.region}</td>
+                        <td><strong>${horse.name}</strong></td>
+                        <td>${cardBadge}</td>
+                        <td>${horse.sex === '牡' ? '<span style="color:#60a5fa">牡</span>' : '<span style="color:#f472b6">牝</span>'}</td>
+                        <td><small>${horse.sire}</small></td>
+                        <td><small>${horse.dam}</small></td>
+                        <td style="font-weight:bold; color:var(--accent-gold);">${horse.sp}</td>
+                        <td>${horse.st}</td>
+                        <td>${horse.pwr}</td>
+                        <td>${horse.dsh}</td>
+                        <td>${horse.rrt}</td>
+                        <td>${horse.sft}</td>
+                        <td>${horse.spi}</td>
+                        <td>${horse.wis}</td>
+                        <td>${horse.hlt}</td>
+                        <td>${horse.turf}</td>
+                        <td>${horse.dirt}</td>
+                        <td>${horse.dist}</td>
+                        <td>${horse.grow}</td>
+                        <td>${horse.life}</td>
+                        <td style="font-weight:bold; color:var(--accent-cyan);">${horse.pup}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function filterSHVersion(version, btn) {
+            document.querySelectorAll('#sec-super-horses .filter-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            if (version === 'all') renderSHTable(shDatabase);
+            else renderSHTable(shDatabase.filter(h => h.ver === version));
+        }
+
+        // ==================== 系統確立四級階層 Tab ====================
+        const systemInfo = {
+            child: {
+                title: "銀底：子系統確立 (Child System)",
+                badge: "銀底名種牡馬因子",
+                reqs: ["【條件①】 全球血統支配率達 <b>2.0% 以上</b>。", "【條件②】 所屬區域支配率達 <b>5.0% 以上</b>，且直系現役種馬達 <b>4 頭以上</b>。"],
+                notes: "● 全遊戲每年最多 <b>2 系統</b> 同時確立。<br>● 年末未滿 27 歲；Private 種馬亦計入數量與支配率。"
+            },
+            parent: {
+                title: "金底：親系統昇格 (Parent System)",
+                badge: "金底大種牡馬因子",
+                reqs: ["滿足以下任一條件（系統未滅亡）：", "1. 全球支配率達 <b>10.0%</b>，或單一區域達 <b>12.0%</b>。", "2. 傘下於 <b>2 條以上不同 Sire Line</b> 確立子系統。", "3. 傘下於 <b>同一 Sire Line 直系連續 3 代以上</b> 確立子系統。"],
+                notes: "● 已滅亡或已昇格系統不計入分支。<br>● 無年度數量限制，滿足即於年末自動昇格。"
+            },
+            world: {
+                title: "彩虹底：世界系統昇格 (World System)",
+                badge: "彩虹底世界種牡馬因子",
+                reqs: ["需同時滿足：", "1. 全球支配率達 <b>15.0% 以上</b>。", "2. 傘下存續子系統達 <b>6 種類以上</b>。", "3. 日美歐各區具備適性子系統，或各區主要 G1 <b>5 勝以上</b>。"],
+                notes: "● 古老系統不計入分支。<br>● 相性配合（ニックス）副屬性爆發力直接<b>翻倍（2 倍加成）</b>。"
+            },
+            ancestor: {
+                title: "極限標誌：始祖系統昇格 (Ancestor System)",
+                badge: "始祖系統標誌",
+                reqs: ["需同時滿足：", "1. 全球支配率達 <b>25.0% 以上</b>，且至少一區達 <b>25.0%</b>。", "2. 傘下子孫系統達 <b>5 種類以上</b>（含親/世界系統 3 種以上）。", "3. 日美歐現役種馬各 <b>5 頭以上</b>、G1 各 <b>5 勝以上</b>。", "4. <b>總 Drama 指數達 200pt</b>（日美歐各至少 30pt）。"],
+                notes: "● 血統演化之終極型態。<br>● 加成效果擴張至全體子孫馬且數值全面躍升。"
             }
-            const counts = {};
-            results.forEach(v => counts[v] = (counts[v] || 0) + 1);
-            const labels = Object.keys(counts).sort((a, b) => a - b);
-            const data = labels.map(k => counts[k]);
-            
-            const ctx = document.getElementById('explosionChart');
-            if (!ctx) return;
-            if (window.simChart) window.simChart.destroy();
-            window.simChart = new Chart(ctx, {
+        };
+
+        function setSysTab(sysKey) {
+            document.querySelectorAll('.sys-btn').forEach(btn => {
+                btn.style.color = 'var(--text-muted)';
+                btn.style.borderBottomColor = 'transparent';
+            });
+            const activeBtn = document.getElementById(`sysTab-${sysKey}`);
+            if (activeBtn) {
+                activeBtn.style.color = 'var(--text-main)';
+                activeBtn.style.borderBottomColor = 'var(--border-accent)';
+            }
+            const data = systemInfo[sysKey];
+            const container = document.getElementById('sysContent');
+            if (container && data) {
+                container.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                        <h4 style="font-size:13px; font-weight:800; color:var(--text-highlight);">${data.title}</h4>
+                        <span class="pill pill-version">${data.badge}</span>
+                    </div>
+                    <div style="background:var(--bg-tertiary); padding:8px; border-radius:6px; margin-bottom:6px; border:1px solid var(--border-color);">
+                        ${data.reqs.map(r => `<p style="margin-bottom:3px;">${r}</p>`).join('')}
+                    </div>
+                    <div style="font-size:11px; color:var(--text-muted);">${data.notes}</div>
+                `;
+            }
+        }
+
+        function calculateDominance() {
+            const jp1 = parseFloat(document.getElementById('jp1') ? document.getElementById('jp1').value : 0) || 0;
+            const jp2 = parseFloat(document.getElementById('jp2') ? document.getElementById('jp2').value : 0) || 0;
+            const jp3 = parseFloat(document.getElementById('jp3') ? document.getElementById('jp3').value : 0) || 0;
+            const jp4 = parseFloat(document.getElementById('jp4') ? document.getElementById('jp4').value : 0) || 0;
+            let jpAvg = (jp1 + jp2 + jp3 + jp4) / 4;
+            if (jpAvg > 0 && jpAvg < 0.05) jpAvg = 0.1;
+            const resJpEl = document.getElementById('resJP');
+            if (resJpEl) resJpEl.innerText = jpAvg.toFixed(2) + '%';
+
+            const usDom = parseFloat(document.getElementById('usDom') ? document.getElementById('usDom').value : 0) || 0;
+            const euDom = parseFloat(document.getElementById('euDom') ? document.getElementById('euDom').value : 0) || 0;
+            const globalAvg = (jpAvg + usDom + euDom) / 3;
+            const resGlEl = document.getElementById('resGlobal');
+            if (resGlEl) resGlEl.innerText = globalAvg.toFixed(2) + '%';
+
+            const statusEl = document.getElementById('estStatus');
+            if (!statusEl) return;
+            if (globalAvg >= 25.0 || (globalAvg >= 20.0 && jpAvg >= 25.0)) {
+                statusEl.innerText = "👑 滿足始祖系統昇格門檻 (全球 ≥ 25.0%)";
+                statusEl.style.color = "#c084fc";
+            } else if (globalAvg >= 15.0) {
+                statusEl.innerText = "🌟 滿足世界系統昇格門檻 (全球 ≥ 15.0%)";
+                statusEl.style.color = "#38bdf8";
+            } else if (globalAvg >= 10.0 || jpAvg >= 12.0) {
+                statusEl.innerText = "🏆 滿足親系統昇格門檻 (全球 ≥ 10.0% 或單區 ≥ 12.0%)";
+                statusEl.style.color = "#fcd34d";
+            } else if (globalAvg >= 2.0 || jpAvg >= 5.0) {
+                statusEl.innerText = "✅ 滿足子系統確立門檻 (全球 ≥ 2.0% 或單區 ≥ 5.0%)";
+                statusEl.style.color = "#6ee7b7";
+            } else {
+                statusEl.innerText = "⚠️ 未達子系統確立門檻 (全球需 ≥ 2.0% 或單區 ≥ 5.0%)";
+                statusEl.style.color = "#cbd5e1";
+            }
+        }
+
+        // ==================== 配合爆發力抽樣模擬器 (Section 1) ====================
+        let explosionChartInstance = null;
+        function initSimulationChart() {
+            const canvasEl = document.getElementById('explosionChart');
+            if (!canvasEl) return;
+            if (explosionChartInstance) return;
+            const ctx = canvasEl.getContext('2d');
+            explosionChartInstance = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: labels,
+                    labels: [],
                     datasets: [{
-                        label: '抽樣次數 (共1000次)',
-                        data: data,
+                        label: '抽樣次數 (加成值 b)',
+                        data: [],
                         backgroundColor: 'rgba(56, 189, 248, 0.6)',
                         borderColor: '#38bdf8',
                         borderWidth: 1
@@ -3672,15 +3957,32 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
                     scales: {
-                        x: { title: { display: true, text: '速度加成值 (b + 設施加成)', color: '#94a3b8' }, ticks: { color: '#cbd5e1' } },
-                        y: { title: { display: true, text: '抽中頻率', color: '#94a3b8' }, ticks: { color: '#cbd5e1' } }
-                    },
-                    plugins: { legend: { labels: { color: '#cbd5e1' } } }
+                        x: { title: { display: true, text: '實際速度加成 (b + 設施加成)', font: { size: 10 }, color: '#94a3b8' }, ticks: { font: { size: 9 }, color: '#94a3b8' } },
+                        y: { title: { display: true, text: '抽中頻率 (共1000次)', font: { size: 10 }, color: '#94a3b8' }, ticks: { font: { size: 9 }, color: '#94a3b8' } }
+                    }
                 }
             });
+            runSimulation();
         }
 
+        function runSimulation() {
+            const baseB = parseInt(document.getElementById('inputB') ? document.getElementById('inputB').value : 30) || 30;
+            const facilityAdd = parseInt(document.getElementById('facilityLv') ? document.getElementById('facilityLv').value : 3) || 0;
+            const totalB = baseB + facilityAdd;
+            const counts = new Array(totalB).fill(0);
+            for (let i = 0; i < 1000; i++) {
+                counts[Math.floor(Math.random() * totalB)]++;
+            }
+            if (explosionChartInstance) {
+                explosionChartInstance.data.labels = Array.from({ length: totalB }, (_, i) => i);
+                explosionChartInstance.data.datasets[0].data = counts;
+                explosionChartInstance.update();
+            }
+        }
+
+        // ==================== 馬庫輔助轉換函數 ====================
         function parseTrack(trackStr) {
             let grass = "-";
             let dirt = "-";
@@ -4256,6 +4558,13 @@
             if (savedTheme) {
                 document.documentElement.setAttribute('data-theme', savedTheme);
             }
+
+            // 配合大系、系統確立與計算機初始化
+            document.querySelectorAll('.calc-in').forEach(input => {
+                input.addEventListener('input', calculateDominance);
+            });
+            calculateDominance();
+            setSysTab('child');
 
             renderTable();
         }
