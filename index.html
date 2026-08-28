@@ -5693,7 +5693,7 @@
 
         
         // ==================== 全年代推薦種牡馬・繁殖牝馬 1:1 渲染引擎 ====================
-        let currentRecYear = "1970年";
+        let currentRecYear = "SP種牡馬・繁殖牝馬";
 
         function initYearlyRecsUI() {
             const btnContainer = document.getElementById("recsYearButtons");
@@ -5704,7 +5704,12 @@
             years.forEach(y => {
                 const btn = document.createElement("button");
                 btn.className = "filter-btn" + (y === currentRecYear ? " active" : "");
-                btn.innerText = y;
+                if (y === "SP種牡馬・繁殖牝馬") {
+                    btn.innerHTML = "🧬 🌟 <strong>SP種牡馬・SP繁殖牝馬</strong>";
+                    btn.style.cssText = "border: 1.5px solid var(--gold-color); background: rgba(245, 158, 11, 0.15); color: var(--gold-color); font-weight: bold;";
+                } else {
+                    btn.innerText = y;
+                }
                 btn.onclick = () => {
                     document.querySelectorAll("#recsYearButtons .filter-btn").forEach(b => b.classList.remove("active"));
                     btn.classList.add("active");
