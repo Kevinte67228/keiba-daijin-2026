@@ -3563,6 +3563,7 @@
         let currentTab = "all_horses";
         let sortField = "sp";
         let sortAsc = false;
+        window._CURRENT_RENDERED_ITEMS = [];
 
         const ticketWeights = {
             "🌈 虹札": 6, "虹": 6,
@@ -3735,10 +3736,6 @@
             if (ticket.includes("銅")) return `<span class="badge badge-bronze">🥉 銅札</span>`;
             if (ticket.includes("綠") || ticket.includes("緑")) return `<span class="badge badge-green">🟢 綠札</span>`;
             return ticket;
-        }
-
-        function escapeQuote(str) {
-            return str ? str.replace(/'/g, "\'").replace(/"/g, "&quot;") : "";
         }
 
         function generateAIComment(h) {
@@ -4027,12 +4024,19 @@
             });
         }
 
+        function openModalByIndex(idx) {
+            const item = window._CURRENT_RENDERED_ITEMS[idx];
+            if (!item) return;
+            openModalDirect(item);
+        }
+
         function renderBody(items) {
             const tbody = document.getElementById("tableBody");
             if (!tbody) return;
             tbody.innerHTML = "";
 
             if (items.length === 0) {
+                window._CURRENT_RENDERED_ITEMS = [];
                 const tr = document.createElement("tr");
                 tr.innerHTML = `<td colspan="25" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
                 tbody.appendChild(tr);
@@ -4041,15 +4045,15 @@
 
             const displayLimit = 200;
             const slice = items.slice(0, displayLimit);
+            window._CURRENT_RENDERED_ITEMS = slice;
 
-            slice.forEach(item => {
+            slice.forEach((item, idx) => {
                 const tr = document.createElement("tr");
-                let jsonStr = escapeQuote(JSON.stringify(item));
 
                 if (currentTab === "all_horses") {
                     tr.innerHTML = `
                         <td>${item.year || "-"}</td>
-                        <td><a class="horse-link" onclick='openModalDirect(${jsonStr})'>${item.name || "-"}</a></td>
+                        <td><a class="horse-link" onclick="openModalByIndex(${idx})">${item.name || "-"}</a></td>
                         <td>${renderStarsBadge(item.stars)}</td>
                         <td>${item.region || "-"}</td>
                         <td>${renderTicketBadge(item.ticket)}</td>
@@ -4069,12 +4073,12 @@
                         <td>${renderRankBadge(item.kenko)}</td>
                         <td>${item.sire || "-"}</td>
                         <td>${item.dam || "-"}</td>
-                        <td><button class="btn-detail" onclick='openModalDirect(${jsonStr})'>詳情</button></td>
+                        <td><button class="btn-detail" onclick="openModalByIndex(${idx})">詳情</button></td>
                     `;
                 } else if (currentTab === "おすすめ繁殖牝馬" || currentTab === "おすすめ繁殖牝馬セール馬") {
                     tr.innerHTML = `
                         <td>${item.year || "-"}</td>
-                        <td><a class="horse-link" onclick='openModalDirect(${jsonStr})'>${item.name || "-"}</a></td>
+                        <td><a class="horse-link" onclick="openModalByIndex(${idx})">${item.name || "-"}</a></td>
                         <td>${renderStarsBadge(item.stars)}</td>
                         <td>${renderTicketBadge(item.ticket)}</td>
                         <td style="color:var(--gold-color); font-weight:bold;">${item.foal_count || "-"}</td>
@@ -4091,13 +4095,13 @@
                         <td>${item.sire || "-"}</td>
                         <td>${item.dam || "-"}</td>
                         <td style="max-width:260px; white-space:normal;">${item.details || "-"}</td>
-                        <td><button class="btn-detail" onclick='openModalDirect(${jsonStr})'>詳情</button></td>
+                        <td><button class="btn-detail" onclick="openModalByIndex(${idx})">詳情</button></td>
                     `;
                 } else {
                     let spDisplay = item.matched_sp || item.sp || "-";
                     tr.innerHTML = `
                         <td>${item.year || "-"}</td>
-                        <td><a class="horse-link" onclick='openModalDirect(${jsonStr})'>${item.name || "-"}</a></td>
+                        <td><a class="horse-link" onclick="openModalByIndex(${idx})">${item.name || "-"}</a></td>
                         <td>${renderStarsBadge(item.stars)}</td>
                         <td>${renderTicketBadge(item.ticket)}</td>
                         <td>${item.sex || "-"}</td>
@@ -4116,7 +4120,7 @@
                         <td>${item.sire || "-"}</td>
                         <td>${item.dam || "-"}</td>
                         <td style="max-width:260px; white-space:normal;">${item.details || "-"}</td>
-                        <td><button class="btn-detail" onclick='openModalDirect(${jsonStr})'>詳情</button></td>
+                        <td><button class="btn-detail" onclick="openModalByIndex(${idx})">詳情</button></td>
                     `;
                 }
                 tbody.appendChild(tr);
