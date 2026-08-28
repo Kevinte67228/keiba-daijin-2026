@@ -3009,35 +3009,174 @@
       </div>
     </section>
 <section id="sec-racecourses" class="section-card">
-      <div class="section-header">
+    <div class="section-header">
         <div class="section-title"><i class="fa-solid fa-flag-checkered"></i> 第 20 章：全球賽馬場特性與跑道數據庫</div>
-      </div>
-      <div class="section-body">
-        <div class="table-responsive">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>馬場名稱 (競馬場 / 地區)</th>
-                <th>左/右回り</th>
-                <th>直線長度 / 高低差</th>
-                <th>草質基準</th>
-                <th>主流步速與適性傾向</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>東京競馬場 (Tokyo / 日本)</strong></td><td>左回り (左彎)</td><td>525.9m (長直線) / 2.7m 坡</td><td><span class="pill pill-safe">1~2 (極輕草)</span></td><td><strong>瞬発戦</strong> (大步幅大跳び/後上追込戰法極為有利)</td></tr>
-              <tr><td><strong>中山競馬場 (Nakayama / 日本)</strong></td><td>右回り (右彎)</td><td>310.0m (短直線) / 5.3m 急坡</td><td><span class="pill pill-safe">2~3 (輕草)</span></td><td><strong>小回り (小圈適性) + パワー (力量)</strong> (短步頻ピッチ/急坡加速)</td></tr>
-              <tr><td><strong>阪神競馬場 (Hanshin / 日本)</strong></td><td>右回り (右彎)</td><td>473.6m (外圈) / 1.8m 坡</td><td><span class="pill pill-safe">2~3 (輕草)</span></td><td><strong>瞬発戦 + パワー</strong> (桜花賞/宝塚記念主場)</td></tr>
-              <tr><td><strong>京都競馬場 (Kyoto / 日本)</strong></td><td>右回り (右彎)</td><td>404.0m (外圈) / 淀の坂 4.3m</td><td><span class="pill pill-safe">1~2 (極輕草)</span></td><td><strong>折り合い (控韁) 與下坡加速</strong> (菊花賞/天皇賞春主場)</td></tr>
-              <tr><td><strong>ロンシャン競馬場 (ParisLongchamp / 法國)</strong></td><td>右回り (右彎)</td><td>533.0m (長直路) / 10m 大起伏</td><td><span class="pill pill-danger">6~8 (重草)</span></td><td><strong>持久戦</strong> (凱旋門賞，極耗耐力 Stamina 與力量 Power)</td></tr>
-              <tr><td><strong>アスコット競馬場 (Ascot / 英國)</strong></td><td>右回り (右彎)</td><td>500.0m (直路全上坡) / 22m 高差</td><td><span class="pill pill-danger">6~8 (重草)</span></td><td><strong>持久戦</strong> (ロイヤルアスコット / 皇家雅士谷，歐洲最高力量考驗)</td></tr>
-              <tr><td><strong>チャーチルダウンズ競馬場 (Churchill Downs / 美國)</strong></td><td>左回り (左彎)</td><td>376.0m (泥地) / 平坦</td><td><span class="pill pill-power">ダート (泥地)</span></td><td><strong>消耗戦</strong> (ケンタッキーダービー / 肯塔基德比，出閘超快步速肉搏)</td></tr>
-              <tr><td><strong>シャティン競馬場 (沙田 / Sha Tin / 香港)</strong></td><td>右回り (右彎)</td><td>430.0m / 平坦</td><td><span class="pill pill-cyan">3~4 (中等草)</span></td><td><strong>瞬発戦 / スピード</strong> (香港国際競走，日本馬適應性極佳)</td></tr>
-            </tbody>
-          </table>
+    </div>
+    <div class="section-body">
+        <div class="callout callout-gold">
+            <i class="fa-solid fa-map-location-dot" style="font-size:1.2rem; color:var(--accent-gold);"></i>
+            <div>
+                <strong>《賽馬大亨 10 2026》全球賽馬場特性與比賽展開傾向庫</strong><br>
+                本作大幅細化了各大賽馬場的物理跑道數據（左右迴圈、坡度急坂、直線長度、起伏形態），並導入賽事展開傾向（瞬發戰 / 持久戰 / 消耗戰 / 綜合戰）。出賽前針對賽道特性選派適應能力契合的馬匹是奪冠關鍵！
+            </div>
         </div>
-      </div>
-    </section>
+
+        <h3 style="font-size:1rem; color:var(--accent-color); margin: 16px 0 8px;"><i class="fa-solid fa-trophy"></i> 一、日本中央四大與主要賽馬場特性對照表</h3>
+        <div class="table-responsive">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>賽馬場</th>
+                        <th>所屬</th>
+                        <th>草地 (芝) 跑道特性</th>
+                        <th>草地內圈 (內回り)</th>
+                        <th>泥地 (ダート) 跑道特性</th>
+                        <th>主要比賽展開傾向</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>東京</strong><br><small>(Tokyo)</small></td>
+                        <td>關東</td>
+                        <td>左迴 / 有坡度 / 直線長 / 起伏普通 / 大迴圈</td>
+                        <td>-</td>
+                        <td>左迴 / 有坡度 / 直線長 / 起伏普通 / 大迴圈</td>
+                        <td><span class="pill pill-danger">瞬発戦 ◎</span> (末腳極限爆發)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>中山</strong><br><small>(Nakayama)</small></td>
+                        <td>關東</td>
+                        <td>右迴 / <strong>急坂 (險峻陡坡)</strong> / 直線偏短 / 起伏普通</td>
+                        <td>-</td>
+                        <td>右迴 / 有坡度 / 直線偏短 / 起伏普通</td>
+                        <td><span class="pill pill-safe">持久戦 ◎</span> (耐力與力量拼鬥)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>京都</strong><br><small>(Kyoto)</small></td>
+                        <td>關西</td>
+                        <td>右迴 / 無最後坡度 / 直線普通 / 平坦</td>
+                        <td>右迴 / 直線偏短</td>
+                        <td>右迴 / 無坡度 / 直線偏短</td>
+                        <td><span class="pill pill-safe">持久戦 ◎</span> / 泥地消耗戰</td>
+                    </tr>
+                    <tr>
+                        <td><strong>阪神</strong><br><small>(Hanshin)</small></td>
+                        <td>關西</td>
+                        <td>右迴 / <strong>急坂 (陡坡)</strong> / 外圈直線偏長 / 略平坦</td>
+                        <td>右迴 / 直線偏短 (持久戰◎)</td>
+                        <td>右迴 / 有坡度 / 直線偏短</td>
+                        <td>外圈 <span class="pill pill-danger">瞬発戦 ◎</span> / 內圈 <span class="pill pill-safe">持久戦 ◎</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>中京</strong><br><small>(Chukyo)</small></td>
+                        <td>地方/中京</td>
+                        <td>左迴 / <strong>急坂</strong> / 直線普通</td>
+                        <td>-</td>
+                        <td>左迴 / 有坡度 / 直線普通</td>
+                        <td><span class="pill pill-danger">瞬発戦 〇</span> / 泥地消耗戰 〇</td>
+                    </tr>
+                    <tr>
+                        <td><strong>新潟</strong><br><small>(Niigata)</small></td>
+                        <td>關東/新潟</td>
+                        <td>左迴 / 平坦無坡 / <strong>超長直線 (659m)</strong> / 大迴圈</td>
+                        <td>左迴 / 直線普通 (瞬發戰△)</td>
+                        <td>左迴 / 直線偏短 / 大迴圈</td>
+                        <td><span class="pill pill-danger">瞬発戦 〇</span> (直線千直與外圈長末腳)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>札幌</strong><br><small>(Sapporo)</small></td>
+                        <td>北海道</td>
+                        <td>右迴 / 極平坦無坡 / 直線偏短 / 小迴圈</td>
+                        <td>-</td>
+                        <td>右迴 / 極平坦 / 直線偏短 / 小迴圈</td>
+                        <td><span class="pill pill-version">消耗戦 〇</span> / 洋芝適性要求高</td>
+                    </tr>
+                    <tr>
+                        <td><strong>函館</strong><br><small>(Hakodate)</small></td>
+                        <td>北海道</td>
+                        <td>右迴 / 上下起伏大 / 直線最短 (262m) / 小迴圈</td>
+                        <td>-</td>
+                        <td>右迴 / 起伏大 / 直線短 / 小迴圈</td>
+                        <td><span class="pill pill-version">消耗戦 〇</span> (考驗起步加速與洋芝)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="font-size:1rem; color:var(--accent-color); margin: 20px 0 8px;"><i class="fa-solid fa-earth-americas"></i> 二、歐美與全球頂級海外賽馬場跑道特性庫</h3>
+        <div class="table-responsive">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>海外賽馬場</th>
+                        <th>國家/地區</th>
+                        <th>草質與跑道形態</th>
+                        <th>標誌性重賞 G1</th>
+                        <th>比賽展開核心傾向</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>隆尚</strong> (ParisLongchamp)</td>
+                        <td>🇫🇷 法國</td>
+                        <td>草質 9~10 (極重草) / 大迴圈 / 假直線 (Fausse ligne droite)</td>
+                        <td><strong>凱旋門賞</strong> (Prix de l'Arc de Triomphe)</td>
+                        <td><span class="pill pill-safe">究極持久戦 ◎</span> (耐力/力量/重草極限)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>阿斯科特</strong> (Ascot)</td>
+                        <td>🇬🇧 英國</td>
+                        <td>草質 8~9 (厚重草) / 直線爬坡陡峭 / 馬場起伏劇烈</td>
+                        <td><strong>英國冠軍錦標、英皇錦標</strong></td>
+                        <td><span class="pill pill-safe">超持久戦 ◎</span> (勝負根性與精神力)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>葉森</strong> (Epsom Downs)</td>
+                        <td>🇬🇧 英國</td>
+                        <td>草質 8~9 / 傳奇塔登漢彎角 (Tattenham Corner) / 劇烈下坡急彎</td>
+                        <td><strong>葉森德比</strong> (Epsom Derby)</td>
+                        <td><span class="pill pill-safe">持久戰＋平衡綜合戰</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>杜拜美丹</strong> (Meydan)</td>
+                        <td>🇦🇪 杜拜</td>
+                        <td>草質 5~6 (中等偏硬) / 泥地超高速 / 寬廣現代跑道</td>
+                        <td><strong>杜拜世界盃、杜拜司馬經典賽</strong></td>
+                        <td>草地 <span class="pill pill-danger">瞬発戦 〇</span> / 泥地 <span class="pill pill-version">超高速消耗戰</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>邱吉爾園</strong> (Churchill Downs)</td>
+                        <td>🇺🇸 美國</td>
+                        <td>泥地 (Dirt) / 平坦左迴 / 小迴圈高速彎道</td>
+                        <td><strong>肯塔基德比</strong> (Kentucky Derby)</td>
+                        <td><span class="pill pill-version">究極消耗戦 ◎</span> (開閘即全速對決)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>沙拉托加</strong> (Saratoga)</td>
+                        <td>🇺🇸 美國</td>
+                        <td>泥地 / 草地雙軌 / 「名馬墳場」緊湊彎道</td>
+                        <td><strong>崔佛斯錦標</strong> (Travers Stakes)</td>
+                        <td><span class="pill pill-version">消耗戦 ◎</span> (前領先鋒激烈廝殺)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>沙田</strong> (Sha Tin)</td>
+                        <td>🇭🇰 香港</td>
+                        <td>草質 3~4 (偏硬平整) / 直線 430m 寬闊 / 極速轉彎</td>
+                        <td><strong>香港盃、香港短途錦標</strong></td>
+                        <td><span class="pill pill-danger">極速瞬発戦 ◎</span> (考驗極速與瞬發力)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>弗明頓</strong> (Flemington)</td>
+                        <td>🇦🇺 澳洲</td>
+                        <td>草質 4~5 / 超長直路 450m / 寬廣平坦</td>
+                        <td><strong>墨爾本盃</strong> (Melbourne Cup)</td>
+                        <td><span class="pill pill-safe">長途持久戰 〇</span> / 短途直路賽</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
 <section id="sec-turf-adapt" class="section-card">
       <div class="section-header">
         <div class="section-title"><i class="fa-solid fa-seedling"></i> 第 21 章：全球草質 (Turf 1~11) 與適應能力對照</div>
@@ -3555,69 +3694,133 @@
       </div>
     </section>
 <section id="sec-skills-traits" class="section-card">
-      <div class="section-header">
+    <div class="section-header">
         <div class="section-title"><i class="fa-solid fa-medal"></i> 第 28 章：基礎能力・適性・特性全書與培育策略</div>
-      </div>
-      <div class="section-body">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="tool-card">
-            <h4 style="font-size:13px; font-weight:800; color:var(--text-highlight); margin-bottom:5px;">
-              🏃 腳質與適性分類
-            </h4>
-            <ul style="font-size:11.5px; color:var(--text-muted); line-height:1.7; list-style:none;">
-              <li><strong>腳質：</strong> 大逃げ / 逃げ / 先行 / 差し / 追込 / 自在先行 / 自在差し / 自在 (需氣性大人)。</li>
-              <li><strong>距離適性：</strong> 短距離 (1000~1400m)、マイル (1400~1800m)、中距離 (1800~2200m)、クラシック (2000~2600m)、長距離 (2400~3600m)。</li>
-              <li><strong>重馬場：</strong> 鬼 ＞ 得意 ＞ 普通 ＞ 苦手。走法：ピッチ (小步頻) vs 大跳び (大步幅)。</li>
-            </ul>
-          </div>
+    </div>
+    <div class="section-body">
+        <div class="callout callout-gold">
+            <i class="fa-solid fa-gauge-simple-high" style="font-size:1.2rem; color:var(--accent-gold);"></i>
+            <div>
+                <strong>《賽馬大亨 10 2026》核心數值・8 大次能力・適應能力與四大比賽展開</strong><br>
+                本作新增全新比賽演算法與「適應能力 (適応能力)」，賽事將依馬場地形與步速明確劃分為四大展開（持久戰 / 瞬發戰 / 消耗戰 / 綜合戰）。
+            </div>
+        </div>
 
-          <div class="tool-card">
-            <h4 style="font-size:13px; font-weight:800; color:var(--accent-gold); margin-bottom:5px;">
-              🔍 隱藏參數與狀態機制
-            </h4>
-            <ul style="font-size:11.5px; color:var(--text-muted); line-height:1.7; list-style:none;">
-              <li><strong>成長度：</strong> 最高 110%，速度發揮值 = <code>速度 x 成長度(%)</code>。</li>
-              <li><strong>成長力：</strong> ない(無) ＜ 普通 ＜ ある(有) ＜ 持続。</li>
-              <li><strong>壽命 (Life)：</strong> 滿值 100 逐戰消耗；比賽感覺 (レース勘 0~100) 放牧下降。</li>
-              <li><strong>火氣 (気合乗り)：</strong> 4 階段馬頭圖示，以 <strong>3 個馬頭</strong> 戰力巔峰。</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-<section id="sec-historical-train" class="section-card">
-      <div class="section-header">
-        <div class="section-title"><i class="fa-solid fa-dumbbell"></i> 第 29 章：史實調教・SP 合練與三大流派習得</div>
-      </div>
-      <div class="section-body">
+        <h3 style="font-size:1rem; color:var(--accent-color); margin: 16px 0 8px;"><i class="fa-solid fa-crosshairs"></i> 一、四大比賽展開傾向 (Race Flow Categories)</h3>
         <div class="table-responsive">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>年份</th>
-                <th>調教名稱 (流派)</th>
-                <th>稀</th>
-                <th>調教效果</th>
-                <th>期間</th>
-                <th>大成功率</th>
-                <th>特性進化</th>
-                <th>推薦調教適性 (ウマソナ)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>1952</td><td><strong>レジェンド豪華併せ馬</strong></td><td><span class="pill pill-power">SP</span></td><td>瞬發戰↑(大)、持久戰↑(大)、疲勞↑(中)</td><td>6週</td><td>40%</td><td>長距離ターボ → 長駆突入</td><td>負けず嫌い、剛腕○、馬込み○</td></tr>
-              <tr><td>1952</td><td><strong>レジェンド併せ馬</strong></td><td><span class="pill pill-power">SP</span></td><td>瞬發戰↑(大)、消耗戰↑(大)、疲勞↑(中)</td><td>6週</td><td>40%</td><td>マイルターボ → 疾風迅雷</td><td>負けず嫌い、剛腕○、馬込み○</td></tr>
-              <tr><td>1960</td><td><strong>イギリス式馬本位調教</strong></td><td><span class="pill pill-power">SP</span></td><td>持久戰↑(中)、力量 Power↑(中)</td><td>6週</td><td>30%</td><td>アスコット巧者 → アスコットマイスター</td><td>反抗的、わがまま、ソフト調整向き</td></tr>
-              <tr><td>1970</td><td><strong>アメリカ式実戦想定調教</strong></td><td><span class="pill pill-power">SP</span></td><td>消耗戰↑(中)、瞬發力↑(中)</td><td>6週</td><td>30%</td><td>夏競馬 → 夏馬</td><td>前向き、スパルタ調整向き、ムラっ気</td></tr>
-              <tr><td>1990</td><td><strong>日本式併せ調教</strong></td><td><span class="pill pill-power">SP</span></td><td>瞬發戰↑(中)、勝負根性↑(中)</td><td>6週</td><td>30%</td><td>東京巧者 → 府中の申し子</td><td>詰めが甘い、風車鞭○、ズブい</td></tr>
-              <tr><td>1995</td><td><strong>フランス式大自然調教</strong></td><td><span class="pill pill-power">SP</span></td><td>持久戰↑(中)、瞬發力↑(中)</td><td>6週</td><td>40%</td><td>ロンシャン巧者 → ロンシャンマイスター</td><td>反抗的、わがまま、環境変化×</td></tr>
-              <tr><td>2018</td><td><strong>香港式最新坂路調教</strong></td><td><span class="pill pill-power">SP</span></td><td>消耗戰↑(中)、瞬發戰↑(微)</td><td>6週</td><td>40%</td><td>香港巧者 → 香港マイスター</td><td>目立ちたがり、新聞を読む馬、環境変化○</td></tr>
-              <tr><td>2022</td><td><strong>アイルランド式超縦列調教</strong></td><td><span class="pill pill-power">SP</span></td><td>瞬發戰↑(中)、持久戰↑(微)</td><td>6週</td><td>40%</td><td>ドバイ巧者 → ドバイマイスター</td><td>群れの一員、馬込み○、剛腕○</td></tr>
-            </tbody>
-          </table>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>比賽展開類別</th>
+                        <th>代表賽場與區域</th>
+                        <th>步速與戰局演變特徵</th>
+                        <th>關鍵制勝屬性與應對策略</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>持久戦</strong><br><span class="pill pill-safe">持久戰 (超/究極)</span></td>
+                        <td>歐洲各大賽場 (隆尚/阿斯科特/葉森/中山)</td>
+                        <td>前段慢步速蓄力，進入中後盤步速步步拉高，對耐力與底力考驗極其嚴酷。</td>
+                        <td><strong>耐力 (ST)、勝負根性、精神力</strong>。<br>可指示「持久戰作戰」或裝備世界 100 傑異名。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>瞬発戦</strong><br><span class="pill pill-danger">瞬發戰 (極速對決)</span></td>
+                        <td>日本主要賽場 (東京/阪神外圈/新潟/沙田)</td>
+                        <td>前中段保持均勻步速，最後直路 400~500m 展開極限末腳爆發廝殺。</td>
+                        <td><strong>SP 速度、瞬發力、智商 (賢さ)</strong>。<br>適合「差・追」腳質發揮凌厲末腳。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>消耗戦</strong><br><span class="pill pill-version">消耗戰 (泥地前搶)</span></td>
+                        <td>美國賽場 (邱吉爾園/沙拉托加) 與日本小迴圈</td>
+                        <td>出閘即全力搶佔先鋒，整場維持超高步速，各駒體力急速消耗。</td>
+                        <td><strong>力量 (Power)、健康、起步加速 (閘廂)</strong>。<br>適合「逃・先行」腳質一放到底。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>総合戦</strong><br><span class="pill pill-gold">綜合戰 (全屬性頂級)</span></td>
+                        <td>全球頂級年終賽事與高水準 G1</td>
+                        <td>各路馬王頂級對決，任何單一屬性短板都會導致落敗。</td>
+                        <td><strong>全次能力均衡在 A+ 以上</strong>，適應能力皆需達 11+。</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-      </div>
-    </section>
+
+        <h3 style="font-size:1rem; color:var(--accent-color); margin: 20px 0 8px;"><i class="fa-solid fa-wand-magic-sparkles"></i> 二、適應能力 (適応能力) 三大快速提升途徑</h3>
+        <div class="checklist-grid">
+            <div class="checklist-card">
+                <div class="checklist-card-header"><i class="fa-solid fa-dumbbell" style="color:var(--accent-gold);"></i> ① SP 史實調教合練</div>
+                <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">
+                    史實調教累積 3 次大成功後開啟 SP 合練。與高相性名馬雙馬合練，可大幅提升特定適應能力，大成功更有機率<strong>突破適應能力原始上限</strong>！
+                </p>
+            </div>
+            <div class="checklist-card">
+                <div class="checklist-card-header"><i class="fa-solid fa-chess" style="color:var(--accent-color);"></i> ② 比賽前指示「新作戰」</div>
+                <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">
+                    賽前指示新作戰指令，可於當場比賽中<strong>臨時大幅提升對應展開之適應能力</strong>（賽後疲勞略高），是逆轉強敵之關鍵奇招！
+                </p>
+            </div>
+            <div class="checklist-card">
+                <div class="checklist-card-header"><i class="fa-solid fa-award" style="color:var(--accent-gold);"></i> ③ 佩戴「世界 100 傑馬」異名</div>
+                <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">
+                    自家馬首次登入世界 100 傑排行榜即可獲得異名「世界100傑馬」，裝備後<strong>所有適應能力全數直接 ＋1</strong>！
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="sec-historical-train" class="section-card">
+    <div class="section-header">
+        <div class="section-title"><i class="fa-solid fa-dumbbell"></i> 第 29 章：史實調教・SP 合練與三大流派習得</div>
+    </div>
+    <div class="section-body">
+        <div class="callout callout-gold">
+            <i class="fa-solid fa-fire" style="font-size:1.2rem; color:var(--accent-gold);"></i>
+            <div>
+                <strong>《賽馬大亨 10 2026》史實調教・SP 雙馬合練・大成功量表與限界突破機制</strong><br>
+                史實調教分為一般史實調教、上位史實調教、以及 2025/2026 導入的 <strong>SP 史實調教 (スペシャル史実調教)</strong>！
+            </div>
+        </div>
+
+        <h3 style="font-size:1rem; color:var(--accent-color); margin: 16px 0 8px;"><i class="fa-solid fa-star"></i> 一、SP 史實調教觸發與執行完整流程</h3>
+        <div class="table-responsive">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>步驟順序</th>
+                        <th>執行動作</th>
+                        <th>機制與觸發效果細節</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>第 ① 步</strong></td>
+                        <td><strong>累積 3 次史實調教大成功</strong></td>
+                        <td>每當一般史實調教達成「大成功」，左側量表增加 1 格。累積滿 3 格後，指令圖標變為<strong>金色 SP 圖標</strong>！</td>
+                    </tr>
+                    <tr>
+                        <td><strong>第 ② 步</strong></td>
+                        <td><strong>挑選雙馬合練搭檔 (Partner)</strong></td>
+                        <td>SP 調教必須由 2 匹馬共同執行。可挑選「同地區所屬自用馬」或「贏得過重賞之非自用名馬」。<strong>兩馬相性契合度越高，大成功率與增幅越強！</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>第 ③ 步</strong></td>
+                        <td><strong>獲得適應能力提升與限界突破</strong></td>
+                        <td>依調教種類大幅提升對應之「適應能力」與「次能力」。若達成大成功，更有高機率<strong>直接突破該馬適應能力之原始上限值！</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="font-size:1rem; color:var(--accent-color); margin: 20px 0 8px;"><i class="fa-solid fa-crown"></i> 二、特別 SP 史實調教「傳奇豪華併走合練 (レジェンド豪華併せ馬)」</h3>
+        <div class="callout callout-info">
+            <div>
+                <strong>【解鎖條件】</strong>：在每年末專屬頂級大賽<strong>「The Legend Match (ザ・レジェンドマッチ)」</strong>（世界 100 傑馬專屬賽事）中通算累積一定勝場，即可獲得此終極調教秘傳！<br>
+                <strong>【特異效果】</strong>：一般 SP 調教僅能提升 1 種適應能力，而「傳奇豪華併走合練」<strong>可一次同時大幅提升 2 種適應能力</strong>，培育全能世界王者無往不利！
+            </div>
+        </div>
+    </div>
+</section>
 <section id="sec-umasona" class="section-card">
       <div class="section-header">
         <div class="section-title"><i class="fa-solid fa-face-smile"></i> 第 30 章：ウマソナ (馬之個性) 克服與進化秘技</div>
