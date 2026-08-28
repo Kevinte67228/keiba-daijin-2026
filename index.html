@@ -540,112 +540,8 @@
         }
 
         
-        /* ==================== 頂級排版與上下文字縮排對齊 (Typography & Indents) ==================== */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.65;
-            font-size: 14px;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        p {
-            margin: 0 0 10px 0;
-            line-height: 1.65;
-            text-align: justify;
-            word-break: break-word;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            color: var(--text-color);
-            font-weight: 700;
-            line-height: 1.4;
-            margin-top: 14px;
-            margin-bottom: 8px;
-        }
-
-        ul, ol {
-            margin: 0 0 12px 0;
-            padding-left: 22px;
-            line-height: 1.65;
-        }
-
-        li {
-            margin-bottom: 4px;
-            padding-left: 2px;
-        }
-
-        li::marker {
-            color: var(--accent-color);
-        }
-
-        .section-card {
-            background: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            margin-bottom: 18px;
-            overflow: hidden;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.22);
-            scroll-margin-top: 20px;
-            transition: box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-
-        .section-header {
-            background: var(--card-bg);
-            padding: 12px 18px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .section-title {
-            font-size: 1.02rem;
-            font-weight: 700;
-            color: #60a5fa;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin: 0;
-        }
-
-        .section-body {
-            padding: 16px 18px;
-            font-size: 0.88rem;
-            line-height: 1.65;
-        }
-
-        .callout {
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin-bottom: 14px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            text-align: left;
-            font-size: 0.84rem;
-            line-height: 1.6;
-        }
-
-        .callout i {
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-
-        .callout > div {
-            flex: 1;
-            min-width: 0;
-        }
-
+        
+        /* ==================== 表格欄位寬度比例智慧分配 (Column Widths Proportions) ==================== */
         .table-responsive {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -658,16 +554,16 @@
 
         .data-table {
             width: 100%;
-            min-width: 580px;
             border-collapse: collapse;
             font-size: 0.82rem;
             text-align: left;
+            table-layout: auto;
         }
 
         .data-table th {
             background: rgba(30, 41, 59, 0.95);
             color: var(--accent-color);
-            padding: 9px 12px;
+            padding: 10px 12px;
             border-bottom: 2px solid var(--border-color);
             font-weight: 700;
             white-space: nowrap;
@@ -688,6 +584,41 @@
             text-align: left;
         }
 
+        /* 數值、徽章、按鈕等簡短欄位：緊湊定寬置中，不佔用多餘空間 */
+        .data-table th.col-short,
+        .data-table td.col-short,
+        .data-table td:has(.badge),
+        .data-table td:has(.btn-detail),
+        .data-table td:has(.pill) {
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        /* 長文字、說明、效果、評析等內容多欄位：獲得充裕寬度與優先分配 */
+        .data-table td.col-text,
+        .data-table td:last-child:not(:has(.btn-detail)),
+        .data-table .col-desc {
+            min-width: 240px;
+            max-width: 550px;
+            white-space: normal;
+            word-break: break-word;
+            line-height: 1.6;
+        }
+
+        /* 馬庫速查表各欄位精準寬度比例配置 */
+        #horseTable th:nth-child(1), #horseTable td:nth-child(1) { width: 55px; min-width: 50px; text-align: center; white-space: nowrap; } /* 登場 */
+        #horseTable th:nth-child(2), #horseTable td:nth-child(2) { min-width: 160px; font-weight: 700; } /* 馬名 (最多空間) */
+        #horseTable th:nth-child(3), #horseTable td:nth-child(3) { width: 75px; min-width: 70px; text-align: center; white-space: nowrap; } /* 推薦 */
+        #horseTable th:nth-child(4), #horseTable td:nth-child(4) { width: 65px; min-width: 60px; text-align: center; white-space: nowrap; } /* 地區 */
+        #horseTable th:nth-child(5), #horseTable td:nth-child(5) { width: 60px; min-width: 55px; text-align: center; white-space: nowrap; } /* 馬札 */
+        #horseTable th:nth-child(6), #horseTable td:nth-child(6) { width: 50px; min-width: 45px; text-align: center; white-space: nowrap; } /* 性別 */
+        #horseTable th:nth-child(7), #horseTable td:nth-child(7) { width: 75px; min-width: 70px; text-align: center; white-space: nowrap; } /* SP 速度 */
+        #horseTable th:nth-child(8), #horseTable td:nth-child(8) { width: 100px; min-width: 90px; text-align: center; white-space: nowrap; } /* 距離適性 */
+        #horseTable th:nth-child(9), #horseTable td:nth-child(9) { width: 55px; min-width: 50px; text-align: center; white-space: nowrap; } /* 芝 */
+        #horseTable th:nth-child(10), #horseTable td:nth-child(10) { width: 55px; min-width: 50px; text-align: center; white-space: nowrap; } /* ダ */
+        #horseTable th:nth-child(11), #horseTable td:nth-child(11) { width: 80px; min-width: 75px; text-align: center; white-space: nowrap; } /* 成長型 */
+        #horseTable th:nth-child(12), #horseTable td:nth-child(12) { width: 65px; min-width: 60px; text-align: center; white-space: nowrap; } /* 詳情 */
+
         .data-table tr:last-child td {
             border-bottom: none;
         }
@@ -695,6 +626,7 @@
         .data-table tr:hover td {
             background: rgba(56, 189, 248, 0.05);
         }
+
 
         /* 詳情彈窗與數值卡對齊 */
         .modal-card {
