@@ -39,7 +39,7 @@
         async function loadDatabase() {
             if (window.MASTER_DB_DATA) {
                 window._DB_LOADED = true;
-                if (typeof dbData !== 'undefined') dbData = window.MASTER_DB_DATA;
+                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
                 if (typeof init === 'function') init();
                 return;
             }
@@ -51,13 +51,12 @@
                 script.textContent = text;
                 document.head.appendChild(script);
                 window._DB_LOADED = true;
-                if (window.MASTER_DB_DATA && typeof dbData !== 'undefined') {
-                    dbData = window.MASTER_DB_DATA;
-                }
+                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
                 showLoading('');
                 if (typeof init === 'function') init();
             } catch (e) {
                 showLoading('⚠️ 本機或離線模式已就緒。如需網路同步，請連線後重新整理。');
+                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
                 if (typeof init === 'function') init();
             }
         }
@@ -3559,7 +3558,7 @@
 
     <script>
         // ==================== 全域變數與資料庫邏輯 ====================
-        let dbData = window.MASTER_DB_DATA || { all_horses: [], recommendations: [] };
+        let dbData = null;
         let currentTab = "all_horses";
         let sortField = "sp";
         let sortAsc = false;
@@ -3581,6 +3580,15 @@
         const trackWeights = {
             "◎": 4, "○": 3, "△": 2, "×": 1, "-": 0
         };
+
+        function ensureUnpackedDb() {
+            if (window.MASTER_DB_DATA) {
+                if (!dbData || !dbData.all_horses || (dbData.all_horses.length > 0 && Array.isArray(dbData.all_horses[0]))) {
+                    dbData = unpackDatabase(window.MASTER_DB_DATA);
+                    syncHorseData();
+                }
+            }
+        }
 
         function switchMainPillar(pillarId) {
             document.querySelectorAll('.pillar-content').forEach(el => {
@@ -3841,10 +3849,7 @@
         }
 
         function renderTable() {
-            if (window.MASTER_DB_DATA && (!dbData || !dbData.all_horses || dbData.all_horses.length === 0)) {
-                dbData = unpackDatabase(window.MASTER_DB_DATA);
-                syncHorseData();
-            }
+            ensureUnpackedDb();
 
             const yearVal = document.getElementById("filterYear") ? document.getElementById("filterYear").value : "ALL";
             const ticketVal = document.getElementById("filterTicket") ? document.getElementById("filterTicket").value : "ALL";
@@ -4223,10 +4228,7 @@
         }
 
         function init() {
-            if (window.MASTER_DB_DATA && (!dbData || !dbData.all_horses || dbData.all_horses.length === 0)) {
-                dbData = unpackDatabase(window.MASTER_DB_DATA);
-                syncHorseData();
-            }
+            ensureUnpackedDb();
             initCategoryTabs();
             initYearFilter();
 
