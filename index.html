@@ -5637,77 +5637,20 @@ li {
             if (!tr) return;
             tr.innerHTML = "";
 
-            let cols = [];
-            if (currentTab === "all_horses") {
-                cols = [
-                    { key: "year", title: "年度" },
-                    { key: "name", title: "馬名" },
-                    { key: "stars", title: "推薦" },
-                    { key: "region", title: "地域" },
-                    { key: "ticket", title: "馬札" },
-                    { key: "sex", title: "性別" },
-                    { key: "sp", title: "SP 速度" },
-                    { key: "sp_max", title: "SP 上限" },
-                    { key: "distance", title: "距離適性" },
-                    { key: "grass", title: "芝 (草地)" },
-                    { key: "dirt", title: "ダ (泥地)" },
-                    { key: "growth", title: "成長型" },
-                    { key: "shunhatsu", title: "瞬發" },
-                    { key: "konjo", title: "根性" },
-                    { key: "power", title: "力量" },
-                    { key: "seishin", title: "精神" },
-                    { key: "keshikosa", title: "智商" },
-                    { key: "junan", title: "柔軟" },
-                    { key: "kenko", title: "健康" },
-                    { key: "sire", title: "父馬" },
-                    { key: "dam", title: "母馬" },
-                    { key: "action", title: "詳情" }
-                ];
-            } else if (currentTab === "おすすめ繁殖牝馬" || currentTab === "おすすめ繁殖牝馬セール馬") {
-                cols = [
-                    { key: "year", title: "年度" },
-                    { key: "name", title: "馬名/推薦項目" },
-                    { key: "stars", title: "推薦" },
-                    { key: "ticket", title: "馬札/等級" },
-                    { key: "foal_count", title: "仔出評級" },
-                    { key: "grass", title: "芝 (草地)" },
-                    { key: "dirt", title: "ダ (泥地)" },
-                    { key: "distance", title: "距離適性" },
-                    { key: "shunhatsu", title: "瞬發" },
-                    { key: "konjo", title: "根性" },
-                    { key: "power", title: "力量" },
-                    { key: "seishin", title: "精神" },
-                    { key: "keshikosa", title: "智商" },
-                    { key: "junan", title: "柔軟" },
-                    { key: "kenko", title: "健康" },
-                    { key: "sire", title: "父馬" },
-                    { key: "dam", title: "母馬" },
-                    { key: "action", title: "詳情" }
-                ];
-            } else {
-                cols = [
-                    { key: "year", title: "年度" },
-                    { key: "name", title: "馬名" },
-                    { key: "stars", title: "推薦" },
-                    { key: "ticket", title: "馬札" },
-                    { key: "sex", title: "性別" },
-                    { key: "matched_sp", title: "SP 速度" },
-                    { key: "distance", title: "距離適性" },
-                    { key: "grass", title: "芝 (草地)" },
-                    { key: "dirt", title: "ダ (泥地)" },
-                    { key: "growth", title: "成長型" },
-                    { key: "shunhatsu", title: "瞬發" },
-                    { key: "konjo", title: "根性" },
-                    { key: "power", title: "力量" },
-                    { key: "seishin", title: "精神" },
-                    { key: "keshikosa", title: "智商" },
-                    { key: "junan", title: "柔軟" },
-                    { key: "kenko", title: "健康" },
-                    { key: "sire", title: "父馬" },
-                    { key: "dam", title: "母馬" },
-                    { key: "action", title: "詳情" }
-                ];
-            }
+            const cols = [
+                { key: "year", title: "登場" },
+                { key: "name", title: "馬名" },
+                { key: "stars", title: "推薦" },
+                { key: "region", title: "地區" },
+                { key: "ticket", title: "馬札" },
+                { key: "sex", title: "性別" },
+                { key: "sp", title: "SP 速度" },
+                { key: "distance", title: "距離適性" },
+                { key: "grass", title: "芝" },
+                { key: "dirt", title: "ダ" },
+                { key: "growth", title: "成長/仔出" },
+                { key: "action", title: "詳情" }
+            ];
 
             cols.forEach(col => {
                 const th = document.createElement("th");
@@ -5729,6 +5672,10 @@ li {
             });
         }
 
+        function renderThead() {
+            renderHeader();
+        }
+
         function openModalByIndex(idx) {
             const item = window._CURRENT_RENDERED_ITEMS[idx];
             if (!item) return;
@@ -5743,7 +5690,7 @@ li {
             if (items.length === 0) {
                 window._CURRENT_RENDERED_ITEMS = [];
                 const tr = document.createElement("tr");
-                tr.innerHTML = `<td colspan="25" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
+                tr.innerHTML = `<td colspan="12" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
                 tbody.appendChild(tr);
                 return;
             }
@@ -5754,84 +5701,36 @@ li {
 
             slice.forEach((item, idx) => {
                 const tr = document.createElement("tr");
-
-                if (currentTab === "all_horses") {
-                    tr.innerHTML = `
-                        <td>${item.year || "-"}</td>
-                        <td><a class="horse-link" onclick="openModalByIndex(${idx})">${item.name || "-"}</a></td>
-                        <td>${renderStarsBadge(item.stars)}</td>
-                        <td>${item.region || "-"}</td>
-                        <td>${renderTicketBadge(item.ticket)}</td>
-                        <td>${item.sex || "-"}</td>
-                        <td style="font-weight:bold; color:var(--accent-color);">${item.sp || "-"}</td>
-                        <td>${item.sp_max || "-"}</td>
-                        <td>${item.distance || "-"}</td>
-                        <td>${renderTrackBadge(item.grass)}</td>
-                        <td>${renderTrackBadge(item.dirt)}</td>
-                        <td>${item.growth || "-"}</td>
-                        <td>${renderRankBadge(item.shunhatsu)}</td>
-                        <td>${renderRankBadge(item.konjo)}</td>
-                        <td>${renderRankBadge(item.power)}</td>
-                        <td>${renderRankBadge(item.seishin)}</td>
-                        <td>${renderRankBadge(item.keshikosa)}</td>
-                        <td>${renderRankBadge(item.junan)}</td>
-                        <td>${renderRankBadge(item.kenko)}</td>
-                        <td>${item.sire || "-"}</td>
-                        <td>${item.dam || "-"}</td>
-                        <td><button class="btn-detail" onclick="openModalByIndex(${idx})">詳情</button></td>
-                    `;
-                } else if (currentTab === "おすすめ繁殖牝馬" || currentTab === "おすすめ繁殖牝馬セール馬") {
-                    tr.innerHTML = `
-                        <td>${item.year || "-"}</td>
-                        <td><a class="horse-link" onclick="openModalByIndex(${idx})">${item.name || "-"}</a></td>
-                        <td>${renderStarsBadge(item.stars)}</td>
-                        <td>${renderTicketBadge(item.ticket)}</td>
-                        <td style="color:var(--gold-color); font-weight:bold;">${item.foal_count || "-"}</td>
-                        <td>${renderTrackBadge(item.grass)}</td>
-                        <td>${renderTrackBadge(item.dirt)}</td>
-                        <td>${item.distance || "-"}</td>
-                        <td>${renderRankBadge(item.shunhatsu)}</td>
-                        <td>${renderRankBadge(item.konjo)}</td>
-                        <td>${renderRankBadge(item.power)}</td>
-                        <td>${renderRankBadge(item.seishin)}</td>
-                        <td>${renderRankBadge(item.keshikosa)}</td>
-                        <td>${renderRankBadge(item.junan)}</td>
-                        <td>${renderRankBadge(item.kenko)}</td>
-                        <td>${item.sire || "-"}</td>
-                        <td>${item.dam || "-"}</td>
-                        <td><button class="btn-detail" onclick="openModalByIndex(${idx})">詳情</button></td>
-                    `;
-                } else {
-                    let spDisplay = item.matched_sp || item.sp || "-";
-                    tr.innerHTML = `
-                        <td>${item.year || "-"}</td>
-                        <td><a class="horse-link" onclick="openModalByIndex(${idx})">${item.name || "-"}</a></td>
-                        <td>${renderStarsBadge(item.stars)}</td>
-                        <td>${renderTicketBadge(item.ticket)}</td>
-                        <td>${item.sex || "-"}</td>
-                        <td style="font-weight:bold; color:var(--accent-color);">${spDisplay}</td>
-                        <td>${item.distance || "-"}</td>
-                        <td>${renderTrackBadge(item.grass)}</td>
-                        <td>${renderTrackBadge(item.dirt)}</td>
-                        <td>${item.growth || "-"}</td>
-                        <td>${renderRankBadge(item.shunhatsu)}</td>
-                        <td>${renderRankBadge(item.konjo)}</td>
-                        <td>${renderRankBadge(item.power)}</td>
-                        <td>${renderRankBadge(item.seishin)}</td>
-                        <td>${renderRankBadge(item.keshikosa)}</td>
-                        <td>${renderRankBadge(item.junan)}</td>
-                        <td>${renderRankBadge(item.kenko)}</td>
-                        <td>${item.sire || "-"}</td>
-                        <td>${item.dam || "-"}</td>
-                        <td><button class="btn-detail" onclick="openModalByIndex(${idx})">詳情</button></td>
-                    `;
+                const spVal = item.sp || item.matched_sp || "-";
+                const regionVal = item.region || (currentTab.includes("海外") ? "海外" : "日本");
+                let growthVal = item.growth || "-";
+                if (item.foal_count) {
+                    growthVal = "仔出 " + item.foal_count;
+                } else if (item.foal_quality) {
+                    growthVal = "仔出 " + item.foal_quality;
                 }
+                const sexVal = item.sex === "牡" ? '<span style="color:#60a5fa; font-weight:bold;">牡</span>' : (item.sex === "牝" ? '<span style="color:#f472b6; font-weight:bold;">牝</span>' : (item.sex || "-"));
+
+                tr.innerHTML = `
+                    <td style="text-align:center;">${item.year || "-"}</td>
+                    <td><a class="horse-link" onclick="openModalByIndex(${idx})">${item.name || "-"}</a></td>
+                    <td style="text-align:center;">${renderStarsBadge(item.stars)}</td>
+                    <td style="text-align:center;">${regionVal}</td>
+                    <td style="text-align:center;">${renderTicketBadge(item.ticket)}</td>
+                    <td style="text-align:center;">${sexVal}</td>
+                    <td style="text-align:center; font-weight:bold; color:var(--accent-color);">${spVal}</td>
+                    <td style="text-align:center;">${item.distance || "-"}</td>
+                    <td style="text-align:center;">${renderTrackBadge(item.grass)}</td>
+                    <td style="text-align:center;">${renderTrackBadge(item.dirt)}</td>
+                    <td style="text-align:center;">${growthVal}</td>
+                    <td style="text-align:center;"><button class="btn-detail" onclick="openModalByIndex(${idx})">詳情</button></td>
+                `;
                 tbody.appendChild(tr);
             });
 
             if (items.length > displayLimit) {
                 const trMore = document.createElement("tr");
-                trMore.innerHTML = `<td colspan="25" style="text-align:center; padding:15px; color:var(--accent-color); font-weight:bold;">已顯示前 200 筆（共 ${items.length.toLocaleString()} 筆）。請縮小篩選條件以精確瀏覽。</td>`;
+                trMore.innerHTML = `<td colspan="12" style="text-align:center; padding:15px; color:var(--accent-color); font-weight:bold;">已顯示前 200 筆（共 ${items.length.toLocaleString()} 筆）。請縮小篩選條件以精確瀏覽。</td>`;
                 tbody.appendChild(trMore);
             }
         }
