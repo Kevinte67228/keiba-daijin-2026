@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.09",
+  "current_version": "v01.10",
   "history": [
     {
       "version": "v01.01",
@@ -45,6 +45,11 @@
       "version": "v01.09",
       "date": "2026-08-29",
       "description": "Feature: Replace UI tabs with all 14 structured clean categories"
+    },
+    {
+      "version": "v01.10",
+      "date": "2026-08-29",
+      "description": "Fix: Seamlessly bind all 14 clean categories with instant dual-view rendering"
     }
   ]
 }
