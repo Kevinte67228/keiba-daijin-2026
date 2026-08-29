@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.60",
+  "current_version": "v01.61",
   "history": [
     {
       "version": "v01.01",
@@ -300,6 +300,11 @@
       "version": "v01.60",
       "date": "2026-08-29",
       "description": "Content: Add 夢乃美空 (Misora Yumeno) and real avatar for 茅野翠月 (Mitsuki Kayano) in Chapter 31 Ranch Masters"
+    },
+    {
+      "version": "v01.61",
+      "date": "2026-08-29",
+      "description": "Feature: 48-Week Auto-Linked Race Calendar in Tactics Tracker, Pre-rendered 13 Tactics UI, and Full 24 Foundation Ranks (80 Broodmares) in Ch37"
     }
   ]
 }
