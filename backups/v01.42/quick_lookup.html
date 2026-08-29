@@ -1190,7 +1190,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.39</span>
+        <span class="version-badge">v01.43</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -2313,39 +2313,344 @@ li {
 <div class="section-title"><i class="fa-solid fa-dna"></i> 第 14 章：13 大遺傳因子獲得・活性化與圖鑑</div>
 </div>
 <div class="section-body">
-<div class="callout callout-info">
-<i class="fa-solid fa-circle-info"></i>
+<div class="callout callout-gold">
+<i class="fa-solid fa-dna" style="font-size:1.2rem; color:var(--accent-gold);"></i>
 <div>
-            祖先持有的因子將影響相關能力的遺傳，符合相應的配合理論時將大幅加強遺傳效果。受胎時根據血統內的因子活性化（小蛋 <i class="fa-solid fa-egg"></i>、大蛋、鑽石蛋 <i class="fa-solid fa-gem" style="color:#60a5fa"></i>）提升對應能力！
+<strong>《賽馬大亨 10 2026》全遺傳因子庫・引退獲得條件與因子活性化判定法</strong><br/>
+            祖先持有的因子將直接決定並深刻影響產駒相關能力的遺傳強度，符合相應的配合理論將大幅加強遺傳效果。引退時按競走馬最終能力（含後天調教養成）決定是否獲得因子（最多 2 個）；配種受胎時則依 4 代血統矩陣觸發因子活性化（小蛋 ➔ 大蛋 ➔ 鑽石蛋極致爆發）！
           </div>
 </div>
-<div class="table-responsive">
+<!-- 官方/WPStud 因子與活性化圖式視覺圖卡 -->
+<div style="background:rgba(15, 23, 42, 0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:20px;">
+<div style="font-size:0.95rem; font-weight:bold; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-image"></i> 因子與活性化圖式速查原圖 (WPStud / 遊戲對照)
+            </div>
+<div style="text-align:left; max-width:960px; overflow-x:auto;">
+<img alt="Winning Post 10 因子與活性化圖鑑" src="images/gene_factors_table.png" style="width:100%; max-width:820px; border-radius:8px; border:1px solid var(--border-color); box-shadow:0 4px 14px rgba(0,0,0,0.5);"/>
+</div>
+</div>
+<!-- ==================== 一、全 17 種因子效果與獲得必要條件總覽 ==================== -->
+<h3 style="font-size:1rem; color:var(--accent-color); margin:18px 0 10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-table-list"></i> 一、全 17 種遺傳因子・活性化圖標與獲得必要條件完全對照表
+        </h3>
+<div class="table-responsive" style="margin-bottom:24px;">
 <table class="data-table">
 <thead>
 <tr>
-<th>因子類別</th>
-<th>因子名稱</th>
-<th>活性化圖標</th>
-<th>能力效果說明</th>
-<th>引退獲得必要條件</th>
+<th style="min-width:110px;">因子類別</th>
+<th style="min-width:130px;">因子名稱</th>
+<th style="min-width:100px;">活性化圖標</th>
+<th style="min-width:240px;">能力效果說明</th>
+<th style="min-width:260px;">因子獲得必要條件</th>
 </tr>
 </thead>
 <tbody>
-<tr><td><span class="factor-badge factor-speed">能力因子</span></td><td><strong>速度 (Speed)</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋 / 鑽石</span></td><td>提升產駒速度上限</td><td>SP 71+ (國內) / SP 74+ (海外)</td></tr>
-<tr><td><span class="factor-badge factor-stamina">能力因子</span></td><td><strong>耐力 (Stamina)</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋 / 鑽石</span></td><td>提升產駒耐力與長距離適性</td><td>ST 53+</td></tr>
-<tr><td><span class="factor-badge factor-dash">能力因子</span></td><td><strong>瞬發力</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋 / 鑽石</span></td><td>提升彎道加速與直線爆發</td><td>該項能力達 <strong>A+ 級或以上</strong></td></tr>
-<tr><td><span class="factor-badge factor-spirit">能力因子</span></td><td><strong>勝負根性</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋 / 鑽石</span></td><td>提升並排搏鬥時的鬥志與持久度</td><td>該項能力達 <strong>A+ 級或以上</strong></td></tr>
-<tr><td><span class="factor-badge factor-power">能力因子</span></td><td><strong>力量 (Power)</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋 / 鑽石</span></td><td>提升斜坡衝刺與重馬場抓地力</td><td>該項能力達 <strong>A+ 級或以上</strong></td></tr>
-<tr><td><span class="factor-badge factor-soft">能力因子</span></td><td><strong>柔軟性</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋 / 鑽石</span></td><td>拓寬距離適應範圍上下限</td><td>該項能力達 <strong>A+ 級或以上</strong></td></tr>
-<tr><td><span class="factor-badge" style="background:#f97316; color:#fff;">特性因子</span></td><td><strong>早熟化</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋</span></td><td>產駒成長型偏向早熟</td><td>成長型為「早熟」</td></tr>
-<tr><td><span class="factor-badge" style="background:#64748b; color:#fff;">特性因子</span></td><td><strong>晚成化</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋</span></td><td>產駒成長型偏向晚成或超晚成</td><td>成長型為「晚成 / 超晚成」</td></tr>
-<tr><td><span class="factor-badge" style="background:#b91c1c; color:#fff;">特性因子</span></td><td><strong>脾氣劣化 (気性難)</strong></td><td><span class="pill pill-danger">脾氣蛋</span></td><td>產駒脾氣激躁，需高賢度騎手駕馭</td><td>氣性為「激 / 超激」</td></tr>
-<tr><td><span class="factor-badge factor-silver">系統因子</span></td><td><strong>名種牡馬 (銀底)</strong></td><td>/</td><td>子系統確立，提升活力與爆發</td><td>自立子系統確立</td></tr>
-<tr><td><span class="factor-badge factor-gold">系統因子</span></td><td><strong>大種牡馬 (金底)</strong></td><td>/</td><td>親系統昇格，大幅增加爆發與全副屬性</td><td>自立親系統確立</td></tr>
-<tr><td><span class="factor-badge factor-world">系統因子</span></td><td><strong>世界種牡馬 (彩虹底)</strong></td><td>/</td><td>世界系統昇格，5大副屬性爆發<strong>直接翻倍 (2倍)</strong></td><td>自立世界系統確立</td></tr>
-<tr><td><span class="factor-badge factor-drama">2026 NEW</span></td><td><strong>ドラマ因子 (傳奇因子)</strong></td><td>/</td><td>活性化後誘發頂級 Drama 融合與始祖回溯</td><td>現役達成傳奇生涯成就並確立子系或主流牝系</td></tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#1d4ed8; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #3b82f6;">スピード</span></td>
+<td><span style="font-size:1.1rem; color:#38bdf8;">🔵</span> <small style="color:var(--text-muted);">小蛋/大蛋/💎</small></td>
+<td><strong>速度 (Speed)</strong><br/><small style="color:var(--text-muted)">提升極速上限與核心競走力</small></td>
+<td><strong>SP 71+</strong> (國內) / <strong>74+</strong> (海外)</td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#b45309; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #f59e0b;">スタミナ</span></td>
+<td><span style="font-size:1.1rem; color:#f59e0b;">🟡</span> <small style="color:var(--text-muted)">小蛋/大蛋/💎</small></td>
+<td><strong>耐力 (Stamina)</strong><br/><small style="color:var(--text-muted)">提升長距離適性與持久續航力</small></td>
+<td><strong>ST 53+</strong></td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#047857; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #10b981;">瞬発力</span></td>
+<td><span style="font-size:1.1rem; color:#10b981;">🟢</span> <small style="color:var(--text-muted)">小蛋/大蛋/💎</small></td>
+<td><strong>瞬發力 (Dash)</strong><br/><small style="color:var(--text-muted)">提升出彎加速與直線極限爆發</small></td>
+<td>該能力達 <strong>A+ 級或以上</strong></td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#be123c; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #f43f5e;">勝負根性</span></td>
+<td><span style="font-size:1.1rem; color:#f43f5e;">🔴</span> <small style="color:var(--text-muted)">小蛋/大蛋/💎</small></td>
+<td><strong>勝負根性 (Spirit)</strong><br/><small style="color:var(--text-muted)">提升直路死鬥鬥志與抗壓耐力</small></td>
+<td>該能力達 <strong>A+ 級或以上</strong></td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#a21caf; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #d946ef;">パワー</span></td>
+<td><span style="font-size:1.1rem; color:#d946ef;">🟣</span> <small style="color:var(--text-muted)">小蛋/大蛋/💎</small></td>
+<td><strong>力量 (Power)</strong><br/><small style="color:var(--text-muted)">提升爬坡衝刺與重馬場抓地力</small></td>
+<td>該能力達 <strong>A+ 級或以上</strong></td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#0e7490; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #06b6d4;">柔軟</span></td>
+<td><span style="font-size:1.1rem; color:#06b6d4;">🔷</span> <small style="color:var(--text-muted)">小蛋/大蛋/💎</small></td>
+<td><strong>柔軟性 (Soft)</strong><br/><small style="color:var(--text-muted)">拓寬距離適應範圍之上下限</small></td>
+<td>該能力達 <strong>A+ 級或以上</strong></td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#65a30d; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #84cc16;">早熟</span></td>
+<td><span style="font-size:1.1rem; color:#84cc16;">🟢</span> <small style="color:var(--text-muted)">小蛋/大蛋</small></td>
+<td><strong>早熟化 (Early)</strong><br/><small style="color:var(--text-muted)">產駒成長型偏向早熟即戰力</small></td>
+<td>成長型為<strong>「早熟」</strong></td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#475569; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #94a3b8;">晩成</span></td>
+<td><span style="font-size:1.1rem; color:#94a3b8;">⚪</span> <small style="color:var(--text-muted)">小蛋/大蛋</small></td>
+<td><strong>晚成化 (Late)</strong><br/><small style="color:var(--text-muted)">產駒成長型偏向晚成古馬期</small></td>
+<td>成長型為<strong>「晚成 / 超晚成」</strong></td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#6b21a8; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #a855f7;">気性難</span></td>
+<td><span style="font-size:1.1rem; color:#a855f7;">💢</span> <small style="color:#ef4444;">脾氣劣化</small></td>
+<td><strong>脾氣劣化 (Temperament)</strong><br/><small style="color:var(--text-muted)">脾氣激躁，需高賢度騎手駕馭</small></td>
+<td>氣性為<strong>「激 / 超激」</strong></td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:linear-gradient(90deg, #10b981, #38bdf8, #ec4899); color:#fff; font-weight:bold; font-size:0.75rem;">🌈 世界系統</span></td>
+<td>/</td>
+<td><strong>該種牡馬為世界系統 (世界種牡馬)</strong><br/><small style="color:var(--text-muted)">5大副屬性爆發加成直接翻倍 (2倍)</small></td>
+<td>自立世界系統確立 (全球支配率 ≥ 15%)</td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#eab308; color:#000; font-weight:bold; font-size:0.75rem;">🥇 親系統</span></td>
+<td>/</td>
+<td><strong>該種牡馬為親系統 (大種牡馬)</strong><br/><small style="color:var(--text-muted)">確立完全血脈活性化與親系 Linebreed</small></td>
+<td>自立親系統昇格 (單區 ≥ 12% 或全球 ≥ 10%)</td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#94a3b8; color:#000; font-weight:bold; font-size:0.75rem;">🥈 子系統</span></td>
+<td>/</td>
+<td><strong>該種牡馬為子系統 (名種牡馬)</strong><br/><small style="color:var(--text-muted)">提升血統活力與自產爆發力</small></td>
+<td>自立子系統確立 (單區 ≥ 5% 或全球 ≥ 2%)</td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#0284c7; color:#fff; font-weight:bold; font-size:0.75rem;">SP系</span></td>
+<td>/</td>
+<td><strong>SP 系統，趨向速度化</strong><br/><small style="color:var(--text-muted)">可成立 SP 昇華配合</small></td>
+<td>/</td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#b45309; color:#fff; font-weight:bold; font-size:0.75rem;">ST系</span></td>
+<td>/</td>
+<td><strong>ST 系統，趨向高耐力</strong><br/><small style="color:var(--text-muted)">可成立 ST 昇華配合</small></td>
+<td>/</td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#334155; color:#fff; font-weight:bold; font-size:0.75rem;">零細</span></td>
+<td>/</td>
+<td><strong>零細血統，該系統所在地域為弱勢</strong><br/><small style="color:var(--text-muted)">可成立零細交配、活力補完配合</small></td>
+<td>該地域血統支配率 <strong>1% 或以下</strong></td>
+</tr>
+<tr>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#15803d; color:#fff; font-weight:bold; font-size:0.75rem;">流行</span></td>
+<td>/</td>
+<td><strong>流行血統，該系統所在地域為強勢</strong><br/><small style="color:var(--text-muted)">可成立雄系活性化等主流配合</small></td>
+<td>該地域血統支配率 <strong>10% 或以上</strong></td>
+</tr>
+<tr>
+<td><span style="font-size:1.05rem;">🇯🇵 🇺🇸 🇪🇺 🌈</span></td>
+<td>/</td>
+<td><strong>地域適性 / 世界適性，決定草地適性範圍</strong><br/><small style="color:var(--text-muted)">日本、美國偏向輕(左)，歐洲偏向重(右)，世界系統擴闊草地適性範圍</small></td>
+<td>/</td>
+</tr>
+<tr>
+<td><span class="factor-badge factor-drama">2026 NEW</span></td>
+<td>/</td>
+<td><strong>ドラマ因子 (傳奇因子)</strong><br/><small style="color:var(--text-muted)">誘發頂級 Drama 融合與史詩級固有特性回溯</small></td>
+<td>現役達成傳奇生涯成就並確立子系或主流名牝系</td>
+</tr>
 </tbody>
 </table>
+</div>
+<!-- ==================== 二、種牡馬 / 繁殖牝馬 引退獲得因子條件門檻大表 ==================== -->
+<h3 style="font-size:1rem; color:var(--gold-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-award"></i> 二、種牡馬與繁殖牝馬引退獲得因子條件門檻大表 (最多獲得 2 個)
+        </h3>
+<p style="font-size:0.84rem; line-height:1.75; color:var(--text-color); margin-bottom:12px;">
+          競走馬引退成為種牡馬或繁殖牝馬時，將按照<strong>競走生涯結束時的最終能力（含後天史實調教與訓練成果）</strong>決定是否獲得因子（最多可獲得 2 個）。因子種類由符合條件之能力中隨機獲得；若<strong>父、父父（種牡馬）</strong>或<strong>母、母母（繁殖牝馬）</strong>擁有相同因子時，將<strong>大幅提高該因子的繼承獲得機率</strong>！
+        </p>
+<div class="table-responsive" style="margin-bottom:24px;">
+<table class="data-table">
+<thead>
+<tr>
+<th style="width:1%; white-space:nowrap;">因子數</th>
+<th style="min-width:140px;">引退身份與所屬</th>
+<th style="min-width:520px;">因子獲得詳細必要條件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:var(--accent-color); text-align:left;">1 因子</td>
+<td><strong>國內種牡馬</strong></td>
+<td>
+                  • SP 71 (B~B+) 或以上，輔助能力最少有 <strong>1 項為 A+ 級或以上</strong> (不包括精神力)<br/>
+                  • <em>若為史實名馬，額外需勝出 <strong>3 場 G1 賽事</strong></em>
+</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:var(--accent-color); text-align:left;">1 因子</td>
+<td><strong>海外種牡馬</strong></td>
+<td>
+                  • SP 74 (A) 或以上，輔助能力最少有 <strong>1 項為 A+ 級或以上</strong> (不包括精神力)<br/>
+                  • <em>若為史實名馬，額外需勝出 <strong>6 場 G1 賽事</strong></em>
+</td>
+</tr>
+<tr style="background:rgba(234, 179, 8, 0.05);">
+<td style="font-weight:bold; color:var(--gold-color); text-align:left;">2 因子 (雙因子)</td>
+<td><strong>國內種牡馬</strong></td>
+<td>
+                  • SP 71 (B~B+) 或以上，輔助能力最少有 <strong>2 項為 A+ 級或以上</strong> (不包括精神力)<br/>
+                  • <em>若為史實名馬，額外需勝出 <strong>3 場 G1 賽事</strong></em>
+</td>
+</tr>
+<tr style="background:rgba(234, 179, 8, 0.05);">
+<td style="font-weight:bold; color:var(--gold-color); text-align:left;">2 因子 (雙因子)</td>
+<td><strong>海外種牡馬</strong></td>
+<td>
+                  • SP 74 (A) 或以上，輔助能力最少有 <strong>2 項為 A+ 級或以上</strong> (不包括精神力)<br/>
+                  • <em>若為史實名馬，額外需勝出 <strong>6 場 G1 賽事</strong></em>
+</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#f472b6; text-align:left;">1 因子</td>
+<td><strong>國內繁殖牝馬</strong></td>
+<td>
+                  • SP 71 (B~B+) 或以上，輔助能力最少有 <strong>1 項為 A+ 級或以上</strong> (不包括精神力)；或<br/>
+                  • 所屬已確立之<strong>名牝系</strong>，SP 65 或以上即有低機率獲得！
+                </td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#f472b6; text-align:left;">1 因子</td>
+<td><strong>海外繁殖牝馬</strong></td>
+<td>
+                  • SP 74 (A) 或以上，輔助能力最少有 <strong>1 項為 A+ 級或以上</strong> (不包括精神力)；或<br/>
+                  • 所屬已確立之<strong>名牝系</strong>，SP 67 或以上即有低機率獲得！
+                </td>
+</tr>
+<tr style="background:rgba(244, 114, 182, 0.08);">
+<td style="font-weight:bold; color:#f43f5e; text-align:left;">2 因子 (雙因子)</td>
+<td><strong>國內繁殖牝馬 (極致)</strong></td>
+<td>
+                  • SP 71 (B~B+) 或以上，輔助能力最少有 <strong>1 項 A+ 級或以上</strong> (不含精神力)，且另有 <strong>1 項 S 級或以上</strong> (可含精神力)，並<strong>勝出 8 場 G1 賽事</strong>！
+                </td>
+</tr>
+<tr style="background:rgba(244, 114, 182, 0.08);">
+<td style="font-weight:bold; color:#f43f5e; text-align:left;">2 因子 (雙因子)</td>
+<td><strong>海外繁殖牝馬 (極致)</strong></td>
+<td>
+                  • SP 74 (A) 或以上，輔助能力最少有 <strong>1 項 A+ 級或以上</strong> (不含精神力)，且另有 <strong>1 項 S 級或以上</strong> (可含精神力)，並<strong>勝出 8 場 G1 賽事</strong>！
+                </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ==================== 三、因子活性化機制、4 代血統矩陣與 +1/+2 觸發條件 ==================== -->
+<h3 style="font-size:1rem; color:#38bdf8; margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-diagram-project"></i> 三、因子活性化機制・4 代 16 祖先血統矩陣與 +1/+2 判定全法則
+        </h3>
+<p style="font-size:0.84rem; line-height:1.75; color:var(--text-color); margin-bottom:12px;">
+          配種受胎時，系統會自動比對 4 代血統矩陣內的因子佈局進行「因子活性化」，直接大幅拉升產駒對應的能力上限。效果小時顯示為<strong>小蛋圖示</strong>，效果大時顯示為<strong>大蛋圖示</strong>，效果達到極致頂峰時顯示為<strong>💎 鑽石圖示 (速度鑽石等)</strong>！
+        </p>
+<!-- 4 代血統矩陣對照結構表 -->
+<div style="margin-bottom:16px;">
+<div style="font-size:0.88rem; font-weight:bold; color:var(--text-highlight); margin-bottom:6px;">
+            📊 4 代 16 祖先血統矩陣判讀圖譜
+          </div>
+<div class="table-responsive">
+<table class="data-table" style="font-size:0.8rem; text-align:left;">
+<thead>
+<tr style="background:rgba(30, 41, 59, 0.98);">
+<th style="min-width:100px;">第 1 代 (父母)</th>
+<th style="min-width:100px;">第 2 代 (祖父母)</th>
+<th style="min-width:100px;">第 3 代 (曾祖父母)</th>
+<th style="min-width:110px;">第 4 代 (高祖父母)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="8" style="background:rgba(59, 130, 246, 0.1); font-weight:bold; color:#60a5fa;">父 (種牡馬)</td>
+<td rowspan="4">父父</td>
+<td rowspan="2">父父父</td>
+<td>父父父父</td>
+</tr>
+<tr><td>父父父母</td></tr>
+<tr>
+<td rowspan="2">父父母</td>
+<td>父父母父</td>
+</tr>
+<tr><td>父父母母</td></tr>
+<tr>
+<td rowspan="4">父母</td>
+<td rowspan="2">父母父</td>
+<td>父母父父</td>
+</tr>
+<tr><td>父母父母</td></tr>
+<tr>
+<td rowspan="2">父母母</td>
+<td>父母母父</td>
+</tr>
+<tr><td>父母母母</td></tr>
+<tr style="border-top:2px solid var(--accent-color);">
+<td rowspan="8" style="background:rgba(244, 114, 182, 0.1); font-weight:bold; color:#f472b6;">母 (繁殖牝馬)</td>
+<td rowspan="4">母父</td>
+<td rowspan="2">母父父</td>
+<td>母父父父</td>
+</tr>
+<tr><td>母父父母</td></tr>
+<tr>
+<td rowspan="2">母父母</td>
+<td>母父母父</td>
+</tr>
+<tr><td>母父母母</td></tr>
+<tr>
+<td rowspan="4">母母</td>
+<td rowspan="2">母母父</td>
+<td>母母父父</td>
+</tr>
+<tr><td>母母父母</td></tr>
+<tr>
+<td rowspan="2">母母母</td>
+<td>母母母父</td>
+</tr>
+<tr><td>母母母母</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- 活性化 +1 與 +2 判定條件對照卡片 -->
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; margin-bottom:16px;">
+<!-- 活性化 +1 條件 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.4);">
+<div style="font-weight:bold; color:#38bdf8; font-size:0.95rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-plus-circle"></i> 血統內指定祖先擁有相同因子時：活性化 ＋１
+            </div>
+<ol style="font-size:0.8rem; line-height:1.75; margin:0; padding-left:20px; color:var(--text-color);">
+<li><strong>父 ＋ 母</strong> (父母直接擁有相同因子)</li>
+<li><strong>父 ＋ 母父</strong></li>
+<li><strong>父父 ＋ 母父</strong></li>
+<li><strong>父母 ＋ 母母</strong></li>
+<li><strong>父母 ＋ 母母母</strong></li>
+<li><strong>母母 ＋ 父母母</strong></li>
+<li><strong>父母母 ＋ 母母母</strong></li>
+<li><strong>第 3 代 4 匹種牡馬當中 3 匹有相同因子</strong><br/>
+<small style="color:var(--text-muted);">※ 註：如種牡馬無因子，可由同系持有相同因子之母系取代計算；但若種牡馬持有不同因子時，即使母系持有相同因子亦不予計算。</small>
+</li>
+<li><strong>連續 3 代皆有相同因子</strong> (不限父母線，只需連續如：父 ➔ 父母 ➔ 父母父)</li>
+</ol>
+</div>
+<!-- 活性化 +2 條件 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(234,179,8,0.4);">
+<div style="font-weight:bold; color:#facc15; font-size:0.95rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-gem"></i> 符合頂級佈局時：活性化 ＋２ (極致加乘)
+            </div>
+<ol style="font-size:0.8rem; line-height:1.75; margin:0; padding-left:20px; color:var(--text-color);">
+<li style="margin-bottom:10px;">
+<strong>第 3 代 4 匹種牡馬全部 (4 匹) 擁有相同因子</strong><br/>
+<small style="color:var(--text-muted);">※ 註：如種牡馬沒有因子，可由同系持有相同因子的母系取代計算；但種牡馬持有不相同因子時，即使母系持有相同因子亦不會計算。</small>
+</li>
+<li>
+<strong>連續 4 代皆擁有相同因子</strong><br/>
+<small style="color:var(--text-muted);">（不限父母線，只需連續串聯，例如：母 ➔ 母父 ➔ 母父母 ➔ 母父母父）</small>
+</li>
+</ol>
+<div style="margin-top:12px; padding:8px 10px; background:rgba(234,179,8,0.1); border-radius:6px; font-size:0.78rem; color:#fde047;">
+              💡 <strong>頂級繁育技巧</strong>：透過多代回溯將「速度 (Speed)」因子連續 4 代傳承，可穩定在受胎時觸發「💎 速度鑽石蛋」，直接突破產駒先天 SP 極限！
+            </div>
+</div>
 </div>
 </div>
 </section>
@@ -2365,21 +2670,21 @@ li {
 <div style="background:var(--bg-tertiary); padding:8px; border-radius:6px; margin-bottom:8px; font-size:11.5px;">
 <div style="font-weight:700; color:var(--text-highlight); margin-bottom:4px;">日本市場份額 (%)</div>
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
-<div><label style="font-size:10px; color:var(--text-muted);">種付料 %:</label><input class="calc-in" id="jp1" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="6.0"/></div>
-<div><label style="font-size:10px; color:var(--text-muted);">種馬數 %:</label><input class="calc-in" id="jp2" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="5.5"/></div>
-<div><label style="font-size:10px; color:var(--text-muted);">競走馬數 %:</label><input class="calc-in" id="jp3" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="4.8"/></div>
-<div><label style="font-size:10px; color:var(--text-muted);">繁殖母馬 %:</label><input class="calc-in" id="jp4" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="5.2"/></div>
+<div><label style="font-size:10px; color:var(--text-muted);">種付料 %:</label><input class="calc-in" id="jp1" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="6.0"/></div>
+<div><label style="font-size:10px; color:var(--text-muted);">種馬數 %:</label><input class="calc-in" id="jp2" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="5.5"/></div>
+<div><label style="font-size:10px; color:var(--text-muted);">競走馬數 %:</label><input class="calc-in" id="jp3" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="4.8"/></div>
+<div><label style="font-size:10px; color:var(--text-muted);">繁殖母馬 %:</label><input class="calc-in" id="jp4" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="5.2"/></div>
 </div>
 <div style="text-align:right; font-weight:bold; margin-top:4px; color:var(--text-highlight);">日本支配率: <span id="resJP">5.38%</span></div>
 </div>
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:8px; font-size:11.5px;">
 <div style="background:var(--bg-tertiary); padding:6px; border-radius:6px;">
 <label style="font-weight:700; display:block; font-size:10px;">美國支配率%:</label>
-<input class="calc-in" id="usDom" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="1.5"/>
+<input class="calc-in" id="usDom" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="1.5"/>
 </div>
 <div style="background:var(--bg-tertiary); padding:6px; border-radius:6px;">
 <label style="font-weight:700; display:block; font-size:10px;">歐洲支配率%:</label>
-<input class="calc-in" id="euDom" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="0.8"/>
+<input class="calc-in" id="euDom" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="0.8"/>
 </div>
 </div>
 <div style="background:linear-gradient(135deg,#1e3a8a,#312e81); padding:10px; border-radius:6px; text-align: left; color:#fff;">
@@ -2911,47 +3216,71 @@ li {
                 涵蓋四大解鎖途徑、大成功機率精算公式、同調教連續執行冷卻懲罰 (CD)、全 8 大 SP 雙馬合練、全 37 種一般競走馬史實調教，以及 1 歲 9~11 月限定之全 16 種幼駒專用史實調教解鎖樹！
             </div>
 </div>
-<!-- ==================== 一、史實調教獲取途徑、大成功機率精算公式與冷卻懲罰 ==================== -->
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:14px; margin-bottom:20px;">
-<!-- 獲取途徑與基礎規則 -->
-<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3);">
-<div style="font-weight:bold; color:#38bdf8; font-size:0.95rem; margin-bottom:8px;">
-<i class="fa-solid fa-graduation-cap"></i> 史實調教四大解鎖途徑與使用限制
-                </div>
-<ul style="font-size:0.8rem; line-height:1.7; margin:0; padding-left:18px;">
-<li><strong>第 1 年教學：</strong>開局新手教學直接贈送基礎調教。</li>
-<li><strong>勝出重賞初識：</strong>贏得重賞後認識新調教師時隨機傳授。</li>
-<li><strong>友好度 40 達標：</strong>與調教師友好度達到 40 時必定解鎖專屬調教。</li>
-<li><strong>友好度 100 ＋ G1 優勝：</strong>友好度達 100 時該馬房賽馬贏得 G1 隨機傳授上位調教！</li>
-<li><span style="color:#f59e0b;">★ 永久保留：</span>一旦開放即永久存在，調教師引退後依然可跨世代使用。</li>
+<!-- ==================== 一、史實調教獲取途徑、使用規則與大成功加成精算表 ==================== -->
+<div style="background:rgba(15, 23, 42, 0.6); border:1px solid var(--border-color); border-radius:10px; padding:18px 20px; margin-bottom:24px;">
+<p style="font-size:0.88rem; line-height:1.75; color:var(--text-color); margin-top:0; margin-bottom:12px;">
+<strong>史實調教由調教師提案而開放，開放後即一直存在。即使未到相關年份仍可以獲得相關史實調教。獲得方法如下：</strong>
+</p>
+<ul style="font-size:0.85rem; line-height:1.8; color:var(--text-color); margin:0 0 16px 0; padding-left:22px;">
+<li>首年的教學 (開局新手教學直接贈送基礎調教)</li>
+<li>勝出重賞後認識新調教師時 (隨機)</li>
+<li>與調教師友好度達到 40 (必定傳授解鎖)</li>
+<li>調教師友好度達到 100 時該廄馬房的競走馬勝出 G1 (隨機傳授上位史實調教)</li>
 </ul>
-</div>
-<!-- 大成功率加成公式 -->
-<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(234,179,8,0.3);">
-<div style="font-weight:bold; color:#facc15; font-size:0.95rem; margin-bottom:8px;">
-<i class="fa-solid fa-calculator"></i> 大成功 (Great Success) 機率精算公式
-                </div>
-<div style="font-size:0.78rem; line-height:1.65;">
-<div>• <strong>「競馬熱潮 (競馬ブーム)」期間：</strong><span style="color:#10b981; font-weight:bold;">＋１０％ ～ ＋２０％</span></div>
-<div>• <strong>符合調教適性之ウマソナ：</strong>每項 <span style="color:#10b981; font-weight:bold;">＋１０％</span> (上位個性每項 <span style="color:#10b981; font-weight:bold;">＋１５％</span>)</div>
-<div>• <strong>提案者與現任調教師同一人：</strong><span style="color:#10b981; font-weight:bold;">＋１０％</span> (引退後永久生效)</div>
-<div>• <strong>ウマソナ「秀才肌」/「努力上手」：</strong><span style="color:#10b981; font-weight:bold;">＋１０％ / ＋５％</span></div>
-<div>• <strong>牧場設施「調教師應援室」：</strong>Lv1 <span style="color:#10b981; font-weight:bold;">＋５％</span> / Lv2 <span style="color:#10b981; font-weight:bold;">＋７％</span> / Lv3 <span style="color:#10b981; font-weight:bold;">＋１０％</span></div>
-<div>• <strong>ウマソナ負面個性「手抜き癖」：</strong><span style="color:#ef4444; font-weight:bold;">－５％</span></div>
-</div>
-</div>
-<!-- 連續使用冷卻懲罰 -->
-<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(239,68,68,0.3);">
-<div style="font-weight:bold; color:#ef4444; font-size:0.95rem; margin-bottom:8px;">
-<i class="fa-solid fa-triangle-exclamation"></i> 同一調教連續執行冷卻懲罰 (CD)
-                </div>
-<div style="font-size:0.78rem; line-height:1.65;">
-<div>同一匹賽馬若過於頻繁使用<strong>同一項史實調教</strong>，大成功率將面臨嚴重衰減：</div>
-<div style="margin-top:4px;">• <strong>４週以內重複使用：</strong><span style="color:#ef4444; font-weight:bold;">大成功率 －３０％</span></div>
-<div>• <strong>８週以內重複使用：</strong><span style="color:#f97316; font-weight:bold;">大成功率 －２０％</span></div>
-<div>• <strong>１２週以內重複使用：</strong><span style="color:#f59e0b; font-weight:bold;">大成功率 －１０％</span></div>
-<div style="color:var(--text-muted); margin-top:4px;">💡 <em>建議多項調教輪替執行，避免單一調教過度重複！</em></div>
-</div>
+<p style="font-size:0.88rem; line-height:1.75; color:var(--text-color); margin-bottom:14px;">
+<strong>史實調教每月有使用限制，由開局 1 次起隨遊戲進度增加可執行次數。每匹競走馬同時只可進行 1 次史實調教，同時每種類史實調教亦只能同時應用 1 匹競走馬。大成功時會提升效果，同時提升馬匹信賴度，會隨特定情況提升或減少大成功機率。詳情如下：</strong>
+</p>
+<div class="table-responsive" style="margin:0 0 10px 0;">
+<table class="data-table" style="font-size:0.84rem;">
+<thead>
+<tr style="background:rgba(30, 41, 59, 0.98);">
+<th style="min-width:320px; font-weight:bold; color:var(--accent-color);">情況</th>
+<th style="min-width:280px; font-weight:bold; color:var(--accent-color);">加成 (大成功機率增減)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>「競馬ブーム」期間 (競馬熱潮 2024/2026 版)</strong></td>
+<td style="color:#10b981; font-weight:bold;">＋１０％ / ＋２０％</td>
+</tr>
+<tr>
+<td><strong>合乎「調教適性」的特徵 (ウマソナ / 走法 / 馬體)</strong></td>
+<td style="color:#10b981; font-weight:bold;">每項 ＋１０％ / 上位ウマソナ每項 ＋１５％</td>
+</tr>
+<tr>
+<td><strong>「提案者」與調教師為同一人</strong></td>
+<td style="color:#10b981; font-weight:bold;">＋１０％ (調教師引退後永久發動，轉生後解除)</td>
+</tr>
+<tr>
+<td><strong>ウマソナ「努力上手」</strong></td>
+<td style="color:#10b981; font-weight:bold;">＋５％</td>
+</tr>
+<tr>
+<td><strong>ウマソナ「秀才肌」</strong></td>
+<td style="color:#10b981; font-weight:bold;">＋１０％</td>
+</tr>
+<tr>
+<td><strong>ウマソナ負面個性「手抜き癖」</strong></td>
+<td style="color:#ef4444; font-weight:bold;">－５％</td>
+</tr>
+<tr>
+<td><strong>牧場設施「調教師応接室」</strong></td>
+<td style="color:#10b981; font-weight:bold;">Lv1 ５％ / Lv2 ７％ / Lv3 １０％</td>
+</tr>
+<tr>
+<td><strong>同馬 ４ 週或以內使用相同史實調教 (連續使用懲罰)</strong></td>
+<td style="color:#ef4444; font-weight:bold;">－３０％</td>
+</tr>
+<tr>
+<td><strong>同馬 ８ 週或以內使用相同史實調教 (連續使用懲罰)</strong></td>
+<td style="color:#f97316; font-weight:bold;">－２０％</td>
+</tr>
+<tr>
+<td><strong>同馬 １２ 週或以內使用相同史實調教 (連續使用懲罰)</strong></td>
+<td style="color:#f59e0b; font-weight:bold;">－１０％</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <!-- ==================== 二、SP 史實調教 (雙馬合練・關係性深化) 全圖鑑 (全 8 種) ==================== -->
@@ -6728,83 +7057,104 @@ li {
             });
         }
 
-        // ==================== 系統確立試算機 (Section 15) ====================
+        // ==================== 系統確立四大體系資料庫與分頁切換 ====================
         const sysDatabase = {
             child: {
-                title: "子系統確立 (Child System)",
-                badge: "血統爆發力 +4~+8",
+                title: "子系統確立 (Sub-system / 名種牡馬 銀因子)",
+                badge: "🥈 子系統 (銀)",
                 reqs: [
-                    "① 日本或美歐單一地區血統支配率 ≥ 5.0%，或全球血統支配率 ≥ 2.0%",
-                    "② 該種牡馬在役，且旗下至少有 4 匹現役/退役之重賞種牡馬產駒",
-                    "③ 年底 (12 月 4 週) 自動進行判定與獨立血統確立"
+                    "① 該種牡馬於單一地區（日本/美洲/歐洲）<strong>血統支配率 ≥ 5.0%</strong>，或<strong>全球支配率 ≥ 2.0%</strong>",
+                    "② 旗下必須至少擁有 4 匹同父系後代活躍現役種牡馬",
+                    "③ 該種牡馬尚未引退，或於引退當年達成門檻（當年年末結算成立）"
                 ],
-                notes: "💡 提示：盡早將主力種牡馬退役至自家牧場，集中母馬配種以快速衝高單一地區 5.0% 支配率。"
+                notes: "💡 效益：獲得銀色名種牡馬因子，大幅活化血脈並建立自產 Linebreed 基礎。"
             },
             parent: {
-                title: "親系統昇格 (Parent System)",
-                badge: "完全獨立大系・血脈活性化核心",
+                title: "親系統昇格 (Parent System / 大種牡馬 金因子)",
+                badge: "🥇 親系統 (金)",
                 reqs: [
-                    "① 旗下衍生出 3 個已確立之子系統 (同代或跨代)",
-                    "② 或母系/父系連續兩代達成子系統確立，且全球支配率 ≥ 10.0%",
-                    "③ 或單一地區支配率 ≥ 12.0%"
+                    "① <strong>條件 A (單區支配率)</strong>：單一地區血統支配率達到 <strong>≥ 12.0%</strong>",
+                    "② <strong>條件 B (全球支配率)</strong>：全球平均血統支配率達到 <strong>≥ 10.0%</strong>",
+                    "③ <strong>條件 C (三代連續子系)</strong>：旗下連續 3 代後代皆成功自立子系統"
                 ],
-                notes: "💡 提示：親系統是達成「8親系完全血脈活性化配合 (+8爆發力)」的基石。"
+                notes: "💡 效益：獲得金色大種牡馬因子，成立血脈活性化與親系 Linebreed 配合。"
             },
             world: {
-                title: "世界系統昇格 (World System)",
-                badge: "全球影響力加成・全地域無弱化",
+                title: "世界系統昇格 (World System / 世界種牡馬 彩虹因子)",
+                badge: "🌈 世界系統 (彩虹)",
                 reqs: [
-                    "① 全球血統支配率 ≥ 15.0%",
+                    "① 全球平均血統支配率達到 <strong>≥ 15.0%</strong>",
                     "② 在日、美、歐三大地區皆擁有活躍之子系統種牡馬",
                     "③ 旗下產駒在各大賽馬場均享有高適性與爆發力加成"
                 ],
-                notes: "💡 提示：如 Northern Dancer、Sunday Silence、Mr. Prospector 級別之歷史世界霸權。"
+                notes: "💡 效益：獲得彩虹世界種牡馬因子，5大副屬性爆發加成直接翻倍 (2倍)！"
             },
-            founder: {
-                title: "世界始祖系統 (World Founder - 2026 最新機制)",
-                badge: "👑 2026 神級巔峰機制",
+            ancestor: {
+                title: "世界始祖系統 (World Founder / 2026 最新神級巔峰機制)",
+                badge: "👑 始祖系統 (極限)",
                 reqs: [
-                    "① 全球血統支配率達到史無前例之 ≥ 25.0% (或全球 ≥ 20.0% 且單區 ≥ 25.0%)",
+                    "① 全球血統支配率達到史無前例之 <strong>≥ 25.0%</strong> (或全球 ≥ 20.0% 且單區 ≥ 25.0%)",
                     "② 橫跨 4 代以上均為主流親系統，繁衍超過 50 匹殿堂 G1 冠軍產駒",
                     "③ 解鎖全遊戲最強之「始祖融合特性」與超限爆發力加成"
                 ],
-                notes: "💡 提示：2026 版全新繁育終極目標，象徵自身牧場王朝徹底統治世界賽馬史。"
+                notes: "💡 效益：2026 版全新繁育終極目標，象徵自身牧場王朝徹底統治世界賽馬史。"
+            },
+            founder: {
+                title: "世界始祖系統 (World Founder / 2026 最新神級巔峰機制)",
+                badge: "👑 始祖系統 (極限)",
+                reqs: [
+                    "① 全球血統支配率達到史無前例之 <strong>≥ 25.0%</strong> (或全球 ≥ 20.0% 且單區 ≥ 25.0%)",
+                    "② 橫跨 4 代以上均為主流親系統，繁衍超過 50 匹殿堂 G1 冠軍產駒",
+                    "③ 解鎖全遊戲最強之「始祖融合特性」與超限爆發力加成"
+                ],
+                notes: "💡 效益：2026 版全新繁育終極目標，象徵自身牧場王朝徹底統治世界賽馬史。"
             }
         };
 
         function setSysTab(tabKey) {
-            document.querySelectorAll('#sec-systems .filter-btn').forEach(b => b.classList.remove('active'));
-            const clickedBtn = Array.from(document.querySelectorAll('#sec-systems .filter-btn')).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes(tabKey));
-            if (clickedBtn) clickedBtn.classList.add('active');
+            const key = (tabKey === 'founder' || tabKey === 'ancestor') ? 'ancestor' : tabKey;
+            
+            // Highlight active button
+            document.querySelectorAll('.sys-btn').forEach(b => {
+                b.style.color = 'var(--text-muted)';
+                b.style.borderBottom = '2px solid transparent';
+                b.style.fontWeight = 'bold';
+            });
+            const activeBtn = document.getElementById(`sysTab-${key}`) || document.getElementById(`sysTab-${tabKey}`);
+            if (activeBtn) {
+                activeBtn.style.color = 'var(--accent-color)';
+                activeBtn.style.borderBottom = '2px solid var(--accent-color)';
+            }
 
-            const card = document.getElementById('sysDetailCard');
-            const data = sysDatabase[tabKey];
-            if (card && data) {
-                card.innerHTML = `
-                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-                        <h4 style="font-size:13px; font-weight:800; color:var(--text-highlight);">${data.title}</h4>
-                        <span class="pill pill-version">${data.badge}</span>
+            // Render content into #sysContent
+            const container = document.getElementById('sysContent') || document.getElementById('sysDetailCard');
+            const data = sysDatabase[key] || sysDatabase[tabKey];
+            if (container && data) {
+                container.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+                        <strong style="font-size:13px; color:var(--text-highlight);">${data.title}</strong>
+                        <span class="pill pill-version" style="font-size:0.75rem;">${data.badge}</span>
                     </div>
-                    <div style="background:var(--bg-tertiary); padding:8px; border-radius:6px; margin-bottom:6px; border:1px solid var(--border-color);">
-                        ${data.reqs.map(r => `<p style="margin-bottom:3px;">${r}</p>`).join('')}
+                    <div style="background:var(--bg-tertiary); padding:10px 12px; border-radius:6px; margin-bottom:8px; border:1px solid var(--border-color); line-height:1.7;">
+                        ${data.reqs.map(r => `<div style="margin-bottom:4px;">${r}</div>`).join('')}
                     </div>
-                    <div style="font-size:11px; color:var(--text-muted);">${data.notes}</div>
+                    <div style="font-size:11.5px; color:var(--text-muted); padding:4px 2px;">${data.notes}</div>
                 `;
             }
         }
 
         function calculateDominance() {
-            const jp1 = parseFloat(document.getElementById('jp1') ? document.getElementById('jp1').value : 0) || 0;
-            const jp2 = parseFloat(document.getElementById('jp2') ? document.getElementById('jp2').value : 0) || 0;
-            const jp3 = parseFloat(document.getElementById('jp3') ? document.getElementById('jp3').value : 0) || 0;
-            const jp4 = parseFloat(document.getElementById('jp4') ? document.getElementById('jp4').value : 0) || 0;
+            const jp1 = parseFloat(document.getElementById('jp1') ? document.getElementById('jp1').value : 6.0) || 0;
+            const jp2 = parseFloat(document.getElementById('jp2') ? document.getElementById('jp2').value : 5.5) || 0;
+            const jp3 = parseFloat(document.getElementById('jp3') ? document.getElementById('jp3').value : 4.8) || 0;
+            const jp4 = parseFloat(document.getElementById('jp4') ? document.getElementById('jp4').value : 5.2) || 0;
             let jpAvg = (jp1 + jp2 + jp3 + jp4) / 4;
             if (jpAvg > 0 && jpAvg < 0.05) jpAvg = 0.1;
             const resJpEl = document.getElementById('resJP');
             if (resJpEl) resJpEl.innerText = jpAvg.toFixed(2) + '%';
 
-            const usDom = parseFloat(document.getElementById('usDom') ? document.getElementById('usDom').value : 0) || 0;
-            const euDom = parseFloat(document.getElementById('euDom') ? document.getElementById('euDom').value : 0) || 0;
+            const usDom = parseFloat(document.getElementById('usDom') ? document.getElementById('usDom').value : 1.5) || 0;
+            const euDom = parseFloat(document.getElementById('euDom') ? document.getElementById('euDom').value : 0.8) || 0;
             const globalAvg = (jpAvg + usDom + euDom) / 3;
             const resGlEl = document.getElementById('resGlobal');
             if (resGlEl) resGlEl.innerText = globalAvg.toFixed(2) + '%';
@@ -6843,9 +7193,10 @@ li {
                     datasets: [{
                         label: '抽樣次數 (加成值 b)',
                         data: [],
-                        backgroundColor: 'rgba(56, 189, 248, 0.6)',
+                        backgroundColor: 'rgba(56, 189, 248, 0.65)',
                         borderColor: '#38bdf8',
-                        borderWidth: 1
+                        borderWidth: 1.5,
+                        borderRadius: 3
                     }]
                 },
                 options: {
@@ -6853,16 +7204,21 @@ li {
                     maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
                     scales: {
-                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } },
-                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } }
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } } },
+                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } } }
                     }
                 }
             });
         }
 
-        function runExplosionSimulation() {
-            const B = parseInt(document.getElementById('simB') ? document.getElementById('simB').value : 30) || 30;
-            const N = parseInt(document.getElementById('simN') ? document.getElementById('simN').value : 5000) || 5000;
+        function runSimulation() {
+            initSimulationChart();
+            const bInput = document.getElementById('inputB') || document.getElementById('simB');
+            const facInput = document.getElementById('facilityLv');
+            const baseB = parseInt(bInput ? bInput.value : 30) || 30;
+            const facBonus = parseInt(facInput ? facInput.value : 3) || 0;
+            const B = baseB + facBonus;
+            const N = 1000;
             const dist = new Array(B + 1).fill(0);
 
             for (let i = 0; i < N; i++) {
@@ -6870,34 +7226,15 @@ li {
                 dist[b]++;
             }
 
-            let sum = 0, countBgte15 = 0, countBgte25 = 0, countMax = dist[B];
-            for (let b = 0; b <= B; b++) {
-                sum += b * dist[b];
-                if (b >= 15) countBgte15 += dist[b];
-                if (b >= 25) countBgte25 += dist[b];
-            }
-            const avg = (sum / N).toFixed(2);
-            const p15 = ((countBgte15 / N) * 100).toFixed(1);
-            const p25 = ((countBgte25 / N) * 100).toFixed(1);
-            const pMax = ((countMax / N) * 100).toFixed(2);
-
-            const simResEl = document.getElementById('simResults');
-            if (simResEl) {
-                simResEl.innerHTML = `
-                    <div style="font-size:0.85rem; line-height:1.6; color:var(--text-color);">
-                        <div>📊 <strong>模擬抽樣總次數</strong>：${N.toLocaleString()} 次 | 設定爆發力上限 B = ${B}</div>
-                        <div>📈 <strong>平均實質爆發力加成</strong>：<span style="color:var(--accent-color); font-weight:bold;">${avg}</span></div>
-                        <div>🎯 <strong>加成值 ≥ 15 機率</strong>：<span style="color:var(--safe-color); font-weight:bold;">${p15}%</span> | <strong>≥ 25 機率</strong>：<span style="color:var(--gold-color); font-weight:bold;">${p25}%</span></div>
-                        <div>🏆 <strong>滿貫極限 (b = ${B}) 命中率</strong>：<span style="color:#c084fc; font-weight:bold;">${pMax}%</span></div>
-                    </div>
-                `;
-            }
-
             if (explosionChartInstance) {
                 explosionChartInstance.data.labels = Array.from({ length: B + 1 }, (_, i) => `${i}`);
                 explosionChartInstance.data.datasets[0].data = dist;
                 explosionChartInstance.update();
             }
+        }
+
+        function runExplosionSimulation() {
+            runSimulation();
         }
 
 
@@ -7360,13 +7697,15 @@ li {
             const years = Object.keys(window.YEARLY_RECS_DATA);
             years.forEach(y => {
                 const btn = document.createElement("button");
-                btn.className = "filter-btn" + (y === currentRecYear ? " active" : "");
+                const isActive = (y === currentRecYear);
+                btn.className = "filter-btn" + (isActive ? " active" : "");
+                
                 if (y.includes("SP種牡馬")) {
                     btn.innerHTML = "🧬 🌟 <strong>SP種牡馬・SP繁殖牝馬(全覽)</strong>";
-                    btn.style.cssText = "border: 1.5px solid var(--gold-color); background: rgba(245, 158, 11, 0.15); color: var(--gold-color); font-weight: bold;";
                 } else {
                     btn.innerText = y;
                 }
+                
                 btn.onclick = () => {
                     document.querySelectorAll("#recsYearButtons .filter-btn").forEach(b => b.classList.remove("active"));
                     btn.classList.add("active");
@@ -7616,11 +7955,19 @@ li {
         }
 
 
-        function init() {
+                        function init() {
             ensureUnpackedDb();
             initCategoryTabs();
             makeTablesSortable();
             initYearFilter();
+            initSimulationChart();
+            runSimulation();
+            setSysTab('child');
+            calculateDominance();
+            initSimulationChart();
+            runSimulation();
+            setSysTab('child');
+            calculateDominance();
 
             const bindChange = (id) => {
                 const el = document.getElementById(id);
