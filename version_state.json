@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.18",
+  "current_version": "v01.19",
   "history": [
     {
       "version": "v01.01",
@@ -90,6 +90,11 @@
       "version": "v01.18",
       "date": "2026-08-29",
       "description": "Feature: Remake Marriage Candidates & Partners page with full character portraits, 3-stage criteria, and ranch manager stats cards"
+    },
+    {
+      "version": "v01.19",
+      "date": "2026-08-29",
+      "description": "Refactor: Streamline Horse Database tabs to 11 pure tables and merge Superstar Guide (Cat 11) into Chapter 34 & Rainbow Ticket Guide (Cat 12) into Chapter 30"
     }
   ]
 }
