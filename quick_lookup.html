@@ -885,7 +885,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.04</span>
+        <span class="version-badge">v01.05</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -5420,11 +5420,12 @@ li {
             return { grass, dirt };
         }
 
-        function unpackDatabase(data) {
+                function unpackDatabase(data) {
             if (!data) return { all_horses: [], recommendations: [] };
             if (data.schema === "columnar_v1") {
                 const cols = data.columns || [];
                 const horses = [];
+                const horseMap = {};
                 (data.all_horses || []).forEach(row => {
                     const obj = {};
                     cols.forEach((col, i) => { obj[col] = row[i]; });
@@ -5434,12 +5435,25 @@ li {
                         if (!obj.dirt || obj.dirt === "-") obj.dirt = tr.dirt;
                     }
                     horses.push(obj);
+                    if (obj.name) horseMap[obj.name] = obj;
                 });
                 const recCols = data.rec_columns || [];
                 const recs = [];
                 (data.recommendations || []).forEach(row => {
                     const obj = {};
                     recCols.forEach((col, i) => { obj[col] = row[i]; });
+                    const m = horseMap[obj.name];
+                    if (m) {
+                        if (!obj.stamina || obj.stamina === "-") obj.stamina = m.stamina;
+                        if (!obj.subpara_total || obj.subpara_total === "-") obj.subpara_total = m.subpara_total;
+                        if (!obj.sp_max || obj.sp_max === "-") obj.sp_max = m.sp_max;
+                        if (!obj.growth_cap || obj.growth_cap === "-") obj.growth_cap = m.growth_cap;
+                        if (!obj.sire || obj.sire === "-") obj.sire = m.sire;
+                        if (!obj.dam || obj.dam === "-") obj.dam = m.dam;
+                        if (!obj.damsire || obj.damsire === "-") obj.damsire = m.damsire;
+                        if (!obj.traits || obj.traits === "-") obj.traits = m.traits;
+                        if (!obj.umarsonality || obj.umarsonality === "-") obj.umarsonality = m.umarsonality;
+                    }
                     if (obj.track && (!obj.grass || obj.grass === "-" || !obj.dirt || obj.dirt === "-")) {
                         const tr = parseTrack(obj.track);
                         if (!obj.grass || obj.grass === "-") obj.grass = tr.grass;
@@ -5456,12 +5470,22 @@ li {
             if (!item) return 0;
             if (field === "ticket") return ticketWeights[item.ticket] || 0;
             if (field === "year") return parseInt(item.year) || 0;
-            if (field === "sp" || field === "matched_sp" || field === "sp_max" || field === "price" || field === "reputation") {
-                let val = item[field] !== undefined ? item[field] : item.matched_sp;
-                return parseInt(val) || 0;
+            if (field === "sp" || field === "matched_sp" || field === "sp_max") {
+                let val = item.sp || item.matched_sp || item.sp_max || 0;
+                return parseFloat(val) || 0;
             }
-            if (field === "foal_count") {
-                let m = (item.foal_count || "").match(/\d+/);
+            if (field === "stamina" || field === "st") {
+                return parseInt(item.stamina || item.st) || 0;
+            }
+            if (field === "subpara_total" || field === "sub" || field === "サ") {
+                return parseInt(item.subpara_total) || 0;
+            }
+            if (field === "price" || field === "reputation" || field === "life") {
+                return parseInt(item[field]) || 0;
+            }
+            if (field === "foal_quality" || field === "foal_count") {
+                let val = item.foal_quality || item.foal_count || "";
+                let m = String(val).match(/\d+/);
                 return m ? parseInt(m[0]) : 0;
             }
             if (field === "stars") {
@@ -5609,7 +5633,7 @@ li {
             return r;
         }
 
-        function renderHeader() {
+                function renderHeader() {
             const tr = document.getElementById("tableHeader");
             if (!tr) return;
             tr.innerHTML = "";
@@ -5620,6 +5644,7 @@ li {
                 { key: "ticket", title: "札" },
                 { key: "sex", title: "性別" },
                 { key: "sp", title: "SP" },
+                { key: "stamina", title: "ST" },
                 { key: "subpara_total", title: "サ" },
                 { key: "growth", title: "成型(威力)" },
                 { key: "grass", title: "芝" },
@@ -5668,7 +5693,7 @@ li {
             if (items.length === 0) {
                 window._CURRENT_RENDERED_ITEMS = [];
                 const tr = document.createElement("tr");
-                tr.innerHTML = `<td colspan="13" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
+                tr.innerHTML = `<td colspan="14" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
                 tbody.appendChild(tr);
                 return;
             }
@@ -5680,6 +5705,7 @@ li {
             slice.forEach((item, idx) => {
                 const tr = document.createElement("tr");
                 const spVal = item.sp || item.matched_sp || "-";
+                const stVal = item.stamina || "-";
                 const subVal = item.subpara_total || "-";
                 const regionVal = item.region || (currentTab.includes("海外") ? "海外" : "日本");
                 let growthVal = item.growth || "-";
@@ -5696,6 +5722,7 @@ li {
                     <td style="text-align:center;">${renderTicketBadge(item.ticket)}</td>
                     <td style="text-align:center;">${sexVal}</td>
                     <td style="text-align:center; font-weight:bold; color:var(--accent-color);">${spVal}</td>
+                    <td style="text-align:center; font-weight:bold; color:#38bdf8;">${stVal}</td>
                     <td style="text-align:center; font-weight:bold; color:var(--gold-color);">${subVal}</td>
                     <td style="text-align:center;">${growthVal}</td>
                     <td style="text-align:center;">${renderTrackBadge(item.grass)}</td>
@@ -5710,12 +5737,12 @@ li {
 
             if (items.length > displayLimit) {
                 const trMore = document.createElement("tr");
-                trMore.innerHTML = `<td colspan="13" style="text-align:center; padding:15px; color:var(--accent-color); font-weight:bold;">已顯示前 200 筆（共 ${items.length.toLocaleString()} 筆）。請縮小篩選條件以精確瀏覽。</td>`;
+                trMore.innerHTML = `<td colspan="14" style="text-align:center; padding:15px; color:var(--accent-color); font-weight:bold;">已顯示前 200 筆（共 ${items.length.toLocaleString()} 筆）。請縮小篩選條件以精確瀏覽。</td>`;
                 tbody.appendChild(trMore);
             }
         }
 
-// ==================== AI 戰略評語引擎 ====================
+        // ==================== AI 戰略評語引擎 ====================
         function generateAIComment(h) {
             if (!h) return "尚無評語";
             const parts = [];
