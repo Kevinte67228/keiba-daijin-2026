@@ -530,126 +530,100 @@
             word-break: keep-all !important;
         }
 
-                /* ==================== 完美欄位寬度最適化 (Column Width Optimization) ==================== */
+                        /* ==================== 全域全章節表格欄位「最適化」架構 (Global Table Column Optimization) ==================== */
         
-        /* 1. 史實調教大表 (第 20 章 - 8 欄位完美最適化) */
-        #sec-historical-train .data-table {
-            min-width: 880px !important;
+        .table-responsive {
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
             width: 100% !important;
+            margin: 12px 0 16px 0 !important;
+            border-radius: 8px !important;
+            border: 1px solid var(--border-color) !important;
+            background: var(--card-bg) !important;
+            scrollbar-width: thin !important;
+            scrollbar-color: var(--accent-color) var(--card-bg) !important;
+        }
+        
+        .data-table {
+            width: 100% !important;
+            border-collapse: collapse !important;
+            font-size: 0.82rem !important;
+            text-align: left !important;
             table-layout: auto !important;
         }
-        #sec-historical-train .data-table th:nth-child(1),
-        #sec-historical-train .data-table td:nth-child(1) {
-            width: 55px !important;
-            min-width: 50px !important;
-            max-width: 60px !important;
-            white-space: nowrap !important;
-        } /* 年份 */
-        #sec-historical-train .data-table th:nth-child(2),
-        #sec-historical-train .data-table td:nth-child(2) {
-            min-width: 150px !important;
-            font-weight: bold !important;
-            white-space: nowrap !important;
-        } /* 調教名稱 */
-        #sec-historical-train .data-table th:nth-child(3),
-        #sec-historical-train .data-table td:nth-child(3) {
-            width: 55px !important;
-            min-width: 50px !important;
-            max-width: 60px !important;
-            white-space: nowrap !important;
-        } /* 等級 */
-        #sec-historical-train .data-table th:nth-child(4),
-        #sec-historical-train .data-table td:nth-child(4) {
-            min-width: 180px !important;
+        
+        .data-table th,
+        .data-table td {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.35) !important;
+            vertical-align: middle !important;
+            text-align: left !important;
             line-height: 1.5 !important;
-        } /* 提升屬性與詳細效果 */
-        #sec-historical-train .data-table th:nth-child(5),
-        #sec-historical-train .data-table td:nth-child(5) {
-            width: 55px !important;
-            min-width: 50px !important;
-            max-width: 60px !important;
             white-space: nowrap !important;
-        } /* 期間 */
-        #sec-historical-train .data-table th:nth-child(6),
-        #sec-historical-train .data-table td:nth-child(6) {
-            width: 70px !important;
-            min-width: 65px !important;
-            max-width: 75px !important;
-            font-weight: bold !important;
+        }
+
+        .data-table th {
+            background: rgba(30, 41, 59, 0.98) !important;
+            color: var(--accent-color) !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.3px !important;
+        }
+        [data-theme="light"] .data-table th {
+            background: #e2e8f0 !important;
+            color: #0369a1 !important;
+        }
+
+        /* 短數據欄位自動緊湊貼合 (年份/評級/期間/大成功率/札色/性別/SP/草質/數字) */
+        .data-table td.col-shrink,
+        .data-table th.col-shrink,
+        .data-table td:has(.badge),
+        .data-table td:has(.pill-safe):not(:has(br)),
+        .data-table td:has(.pill-gold):not(:has(br)) {
+            width: 1% !important;
             white-space: nowrap !important;
-        } /* 大成功率 */
-        #sec-historical-train .data-table th:nth-child(7),
-        #sec-historical-train .data-table td:nth-child(7) {
-            min-width: 170px !important;
+            padding-right: 14px !important;
+        }
+
+        /* 標題與名稱欄位 (馬名/調教名/理論名/設施名) */
+        .data-table td.col-name,
+        .data-table td strong {
             white-space: nowrap !important;
-        } /* 特性進化 */
-        #sec-historical-train .data-table th:nth-child(8),
-        #sec-historical-train .data-table td:nth-child(8) {
-            min-width: 150px !important;
+            color: var(--text-color) !important;
+        }
+
+        /* 長描述與多行效果欄位 (詳細效果/成立條件/特性進化/前置說明) */
+        .data-table td.col-desc,
+        .data-table td:has(br),
+        .data-table td:has(small) {
+            white-space: normal !important;
+            min-width: 180px !important;
+            max-width: 380px !important;
             line-height: 1.45 !important;
-        } /* 調教適性 */
+        }
 
-        /* 幼駒調教表 (9 欄位) */
-        #foal-train-catalog + p + .table-responsive .data-table th:nth-child(1),
-        #foal-train-catalog + p + .table-responsive .data-table td:nth-child(1) { min-width: 140px !important; font-weight: bold !important; }
-        #foal-train-catalog + p + .table-responsive .data-table th:nth-child(2),
-        #foal-train-catalog + p + .table-responsive .data-table td:nth-child(2) { width: 50px !important; min-width: 45px !important; }
-        #foal-train-catalog + p + .table-responsive .data-table th:nth-child(3),
-        #foal-train-catalog + p + .table-responsive .data-table td:nth-child(3) { min-width: 160px !important; }
-        #foal-train-catalog + p + .table-responsive .data-table th:nth-child(4),
-        #foal-train-catalog + p + .table-responsive .data-table td:nth-child(4) { width: 50px !important; min-width: 45px !important; }
-        #foal-train-catalog + p + .table-responsive .data-table th:nth-child(5),
-        #foal-train-catalog + p + .table-responsive .data-table td:nth-child(5) { width: 65px !important; min-width: 60px !important; font-weight: bold !important; }
-        #foal-train-catalog + p + .table-responsive .data-table th:nth-child(6),
-        #foal-train-catalog + p + .table-responsive .data-table td:nth-child(6) { min-width: 150px !important; }
-        #foal-train-catalog + p + .table-responsive .data-table th:nth-child(7),
-        #foal-train-catalog + p + .table-responsive .data-table td:nth-child(7) { min-width: 140px !important; }
-        #foal-train-catalog + p + .table-responsive .data-table th:nth-child(8),
-        #foal-train-catalog + p + .table-responsive .data-table td:nth-child(8) { width: 80px !important; min-width: 75px !important; }
-        #foal-train-catalog + p + .table-responsive .data-table th:nth-child(9),
-        #foal-train-catalog + p + .table-responsive .data-table td:nth-child(9) { min-width: 160px !important; }
-
-        /* 2. 全年代推薦大表 (#yearlyRecsContainer - 19 欄位最適化) */
-        #yearlyRecsContainer .data-table td:nth-child(1) { min-width: 120px !important; font-weight: bold !important; } /* 馬名 */
-        #yearlyRecsContainer .data-table td:nth-child(2) { width: 45px !important; min-width: 40px !important; max-width: 50px !important; } /* 札 */
-        #yearlyRecsContainer .data-table td:nth-child(3) { width: 40px !important; min-width: 35px !important; max-width: 45px !important; } /* 性 */
-        #yearlyRecsContainer .data-table td:nth-child(4) { width: 48px !important; min-width: 45px !important; max-width: 55px !important; font-weight: bold !important; color: var(--accent-color) !important; } /* SP */
-        #yearlyRecsContainer .data-table td:nth-child(5) { width: 45px !important; min-width: 40px !important; max-width: 50px !important; } /* サ */
-        #yearlyRecsContainer .data-table td:nth-child(6) { width: 40px !important; min-width: 35px !important; max-width: 45px !important; } /* 芝 */
-        #yearlyRecsContainer .data-table td:nth-child(7) { width: 40px !important; min-width: 35px !important; max-width: 45px !important; } /* ダ */
-        #yearlyRecsContainer .data-table td:nth-child(8) { min-width: 85px !important; } /* 芝質 */
-        #yearlyRecsContainer .data-table td:nth-child(9) { min-width: 105px !important; } /* 距離適性 */
-        #yearlyRecsContainer .data-table td:nth-child(10) { min-width: 65px !important; } /* 脚質 */
-        #yearlyRecsContainer .data-table td:nth-child(11) { min-width: 75px !important; } /* 成長型 */
-        #yearlyRecsContainer .data-table td:nth-child(12) { width: 48px !important; min-width: 45px !important; max-width: 55px !important; } /* 仔出し */
+        /* 全年代推薦大表 19 欄精準最適化 */
+        #yearlyRecsContainer .data-table {
+            min-width: 1260px !important;
+        }
+        #yearlyRecsContainer .data-table td:nth-child(1) { width: 1% !important; white-space: nowrap !important; font-weight: bold !important; } /* 馬名 */
+        #yearlyRecsContainer .data-table td:nth-child(2) { width: 1% !important; white-space: nowrap !important; } /* 札 */
+        #yearlyRecsContainer .data-table td:nth-child(3) { width: 1% !important; white-space: nowrap !important; } /* 性 */
+        #yearlyRecsContainer .data-table td:nth-child(4) { width: 1% !important; white-space: nowrap !important; font-weight: bold !important; color: var(--accent-color) !important; } /* SP */
+        #yearlyRecsContainer .data-table td:nth-child(5) { width: 1% !important; white-space: nowrap !important; } /* サ */
+        #yearlyRecsContainer .data-table td:nth-child(6) { width: 1% !important; white-space: nowrap !important; } /* 芝 */
+        #yearlyRecsContainer .data-table td:nth-child(7) { width: 1% !important; white-space: nowrap !important; } /* ダ */
+        #yearlyRecsContainer .data-table td:nth-child(8) { width: 1% !important; white-space: nowrap !important; } /* 芝質 */
+        #yearlyRecsContainer .data-table td:nth-child(9) { width: 1% !important; white-space: nowrap !important; } /* 距離適性 */
+        #yearlyRecsContainer .data-table td:nth-child(10) { width: 1% !important; white-space: nowrap !important; } /* 脚質 */
+        #yearlyRecsContainer .data-table td:nth-child(11) { width: 1% !important; white-space: nowrap !important; } /* 成長型 */
+        #yearlyRecsContainer .data-table td:nth-child(12) { width: 1% !important; white-space: nowrap !important; } /* 仔出し */
         #yearlyRecsContainer .data-table td:nth-child(13) { min-width: 150px !important; white-space: normal !important; } /* 特性 */
         #yearlyRecsContainer .data-table td:nth-child(14) { min-width: 140px !important; white-space: normal !important; } /* ウマソナ */
-        #yearlyRecsContainer .data-table td:nth-child(15) { width: 55px !important; min-width: 50px !important; max-width: 60px !important; } /* 生產國 */
-        #yearlyRecsContainer .data-table td:nth-child(16) { width: 55px !important; min-width: 50px !important; max-width: 60px !important; } /* 現役地域 */
-        #yearlyRecsContainer .data-table td:nth-child(17) { min-width: 100px !important; } /* 父 */
-        #yearlyRecsContainer .data-table td:nth-child(18) { min-width: 100px !important; } /* 母 */
-        #yearlyRecsContainer .data-table td:nth-child(19) { min-width: 110px !important; } /* 馬名(日) */
-
-        /* 3. 馬庫主表 (#horseTable - 12 欄位最適化) */
-        #horseTable th:nth-child(1), #horseTable td:nth-child(1) { width: 50px !important; min-width: 45px !important; max-width: 55px !important; } /* 登場 */
-        #horseTable th:nth-child(2), #horseTable td:nth-child(2) { min-width: 140px !important; font-weight: bold !important; } /* 馬名 */
-        #horseTable th:nth-child(3), #horseTable td:nth-child(3) { width: 45px !important; min-width: 40px !important; max-width: 50px !important; } /* 札 */
-        #horseTable th:nth-child(4), #horseTable td:nth-child(4) { width: 40px !important; min-width: 35px !important; max-width: 45px !important; } /* 性 */
-        #horseTable th:nth-child(5), #horseTable td:nth-child(5) { width: 45px !important; min-width: 40px !important; max-width: 50px !important; font-weight: bold !important; } /* SP */
-        #horseTable th:nth-child(6), #horseTable td:nth-child(6) { width: 40px !important; min-width: 35px !important; max-width: 45px !important; } /* 芝 */
-        #horseTable th:nth-child(7), #horseTable td:nth-child(7) { width: 40px !important; min-width: 35px !important; max-width: 45px !important; } /* ダ */
-        #horseTable th:nth-child(8), #horseTable td:nth-child(8) { min-width: 95px !important; } /* 距離 */
-        #horseTable th:nth-child(9), #horseTable td:nth-child(9) { min-width: 70px !important; } /* 成長 */
-        #horseTable th:nth-child(10), #horseTable td:nth-child(10) { width: 48px !important; min-width: 45px !important; max-width: 55px !important; } /* 仔出 */
-        #horseTable th:nth-child(11), #horseTable td:nth-child(11) { min-width: 110px !important; } /* 父 */
-        #horseTable th:nth-child(12), #horseTable td:nth-child(12) { width: 60px !important; min-width: 55px !important; max-width: 65px !important; } /* 詳情 */
-
-        /* 4. 配合理論大表 (#theoryMasterTable) */
-        #theoryMasterTable th:nth-child(1), #theoryMasterTable td:nth-child(1) { min-width: 150px !important; font-weight: bold !important; }
-        #theoryMasterTable th:nth-child(2), #theoryMasterTable td:nth-child(2) { width: 85px !important; min-width: 80px !important; }
-        #theoryMasterTable th:nth-child(3), #theoryMasterTable td:nth-child(3) { min-width: 240px !important; line-height: 1.5 !important; }
-        #theoryMasterTable th:nth-child(4), #theoryMasterTable td:nth-child(4) { min-width: 150px !important; }
-        #theoryMasterTable th:nth-child(5), #theoryMasterTable td:nth-child(5) { width: 65px !important; min-width: 60px !important; }
+        #yearlyRecsContainer .data-table td:nth-child(15) { width: 1% !important; white-space: nowrap !important; } /* 生產國 */
+        #yearlyRecsContainer .data-table td:nth-child(16) { width: 1% !important; white-space: nowrap !important; } /* 現役地域 */
+        #yearlyRecsContainer .data-table td:nth-child(17) { width: 1% !important; white-space: nowrap !important; } /* 父 */
+        #yearlyRecsContainer .data-table td:nth-child(18) { width: 1% !important; white-space: nowrap !important; } /* 母 */
+        #yearlyRecsContainer .data-table td:nth-child(19) { width: 1% !important; white-space: nowrap !important; } /* 馬名(日) */
 
 
         /* 4 代血統樹與配合矩陣專屬樣式 (100% 完美呈現) */
@@ -1216,7 +1190,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.38</span>
+        <span class="version-badge">v01.42</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -1512,11 +1486,11 @@ li {
 <table class="data-table" id="theoryMasterTable">
 <thead>
 <tr>
-<th style="min-width: 180px;">配合理論名稱 (中 / 日)</th>
-<th style="min-width: 85px; text-align: left;">爆發力加成</th>
+<th>配合理論名稱 (中 / 日)</th>
+<th>爆發力加成</th>
 <th>成立條件簡述</th>
-<th style="min-width: 130px;">危險度 / 額外效果</th>
-<th style="min-width: 80px;">版本</th>
+<th>危險度 / 額外效果</th>
+<th>版本</th>
 </tr>
 </thead>
 <tbody>
@@ -1860,10 +1834,10 @@ li {
 <table class="pedigree-table">
 <thead>
 <tr>
-<th style="width: 25%;">第 1 代 (父母 50%)</th>
-<th style="width: 25%;">第 2 代 (祖父母 25%)</th>
-<th style="width: 25%;">第 3 代 (曾祖父母 12.5%)</th>
-<th style="width: 25%;">第 4 代 (高祖父母 6.25%)</th>
+<th>第 1 代 (父母 50%)</th>
+<th>第 2 代 (祖父母 25%)</th>
+<th>第 3 代 (曾祖父母 12.5%)</th>
+<th>第 4 代 (高祖父母 6.25%)</th>
 </tr>
 </thead>
 <tbody>
@@ -2391,21 +2365,21 @@ li {
 <div style="background:var(--bg-tertiary); padding:8px; border-radius:6px; margin-bottom:8px; font-size:11.5px;">
 <div style="font-weight:700; color:var(--text-highlight); margin-bottom:4px;">日本市場份額 (%)</div>
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
-<div><label style="font-size:10px; color:var(--text-muted);">種付料 %:</label><input class="calc-in" id="jp1" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="6.0"/></div>
-<div><label style="font-size:10px; color:var(--text-muted);">種馬數 %:</label><input class="calc-in" id="jp2" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="5.5"/></div>
-<div><label style="font-size:10px; color:var(--text-muted);">競走馬數 %:</label><input class="calc-in" id="jp3" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="4.8"/></div>
-<div><label style="font-size:10px; color:var(--text-muted);">繁殖母馬 %:</label><input class="calc-in" id="jp4" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="5.2"/></div>
+<div><label style="font-size:10px; color:var(--text-muted);">種付料 %:</label><input class="calc-in" id="jp1" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="6.0"/></div>
+<div><label style="font-size:10px; color:var(--text-muted);">種馬數 %:</label><input class="calc-in" id="jp2" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="5.5"/></div>
+<div><label style="font-size:10px; color:var(--text-muted);">競走馬數 %:</label><input class="calc-in" id="jp3" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="4.8"/></div>
+<div><label style="font-size:10px; color:var(--text-muted);">繁殖母馬 %:</label><input class="calc-in" id="jp4" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="5.2"/></div>
 </div>
 <div style="text-align:right; font-weight:bold; margin-top:4px; color:var(--text-highlight);">日本支配率: <span id="resJP">5.38%</span></div>
 </div>
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:8px; font-size:11.5px;">
 <div style="background:var(--bg-tertiary); padding:6px; border-radius:6px;">
 <label style="font-weight:700; display:block; font-size:10px;">美國支配率%:</label>
-<input class="calc-in" id="usDom" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="1.5"/>
+<input class="calc-in" id="usDom" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="1.5"/>
 </div>
 <div style="background:var(--bg-tertiary); padding:6px; border-radius:6px;">
 <label style="font-weight:700; display:block; font-size:10px;">歐洲支配率%:</label>
-<input class="calc-in" id="euDom" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="0.8"/>
+<input class="calc-in" id="euDom" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="0.8"/>
 </div>
 </div>
 <div style="background:linear-gradient(135deg,#1e3a8a,#312e81); padding:10px; border-radius:6px; text-align: left; color:#fff;">
@@ -2541,7 +2515,7 @@ li {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:100px;">能力門檻</th>
+<th>能力門檻</th>
 <th>牧場長評語 (日文原文)</th>
 <th>中文註釋與能力解讀</th>
 </tr>
@@ -2575,7 +2549,7 @@ li {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:95px;">SP 數值區間</th>
+<th>SP 數值區間</th>
 <th>牧場長評語 (日文原文)</th>
 <th>中文註釋與潛力等級</th>
 </tr>
@@ -2621,7 +2595,7 @@ li {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:95px;">ST 數值區間</th>
+<th>ST 數值區間</th>
 <th>牧場長評語 (日文原文)</th>
 <th>中文註釋與路程適性</th>
 </tr>
@@ -2665,7 +2639,7 @@ li {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:95px;">能力組合</th>
+<th>能力組合</th>
 <th>牧場長評語 (日文原文)</th>
 <th>中文註釋與能力等級</th>
 </tr>
@@ -2848,9 +2822,9 @@ li {
 <table class="data-table" style="font-size:0.8rem;">
 <thead>
 <tr>
-<th style="width:130px;">固有特性名稱</th>
-<th style="width:140px;">代表名馬 (誕生年)</th>
-<th style="width:130px;">作戰 / 距離適性</th>
+<th>固有特性名稱</th>
+<th>代表名馬 (誕生年)</th>
+<th>作戰 / 距離適性</th>
 <th>詳細發動條件與戰鬥力增幅效果</th>
 </tr>
 </thead>
@@ -2937,47 +2911,71 @@ li {
                 涵蓋四大解鎖途徑、大成功機率精算公式、同調教連續執行冷卻懲罰 (CD)、全 8 大 SP 雙馬合練、全 37 種一般競走馬史實調教，以及 1 歲 9~11 月限定之全 16 種幼駒專用史實調教解鎖樹！
             </div>
 </div>
-<!-- ==================== 一、史實調教獲取途徑、大成功機率精算公式與冷卻懲罰 ==================== -->
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:14px; margin-bottom:20px;">
-<!-- 獲取途徑與基礎規則 -->
-<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3);">
-<div style="font-weight:bold; color:#38bdf8; font-size:0.95rem; margin-bottom:8px;">
-<i class="fa-solid fa-graduation-cap"></i> 史實調教四大解鎖途徑與使用限制
-                </div>
-<ul style="font-size:0.8rem; line-height:1.7; margin:0; padding-left:18px;">
-<li><strong>第 1 年教學：</strong>開局新手教學直接贈送基礎調教。</li>
-<li><strong>勝出重賞初識：</strong>贏得重賞後認識新調教師時隨機傳授。</li>
-<li><strong>友好度 40 達標：</strong>與調教師友好度達到 40 時必定解鎖專屬調教。</li>
-<li><strong>友好度 100 ＋ G1 優勝：</strong>友好度達 100 時該馬房賽馬贏得 G1 隨機傳授上位調教！</li>
-<li><span style="color:#f59e0b;">★ 永久保留：</span>一旦開放即永久存在，調教師引退後依然可跨世代使用。</li>
+<!-- ==================== 一、史實調教獲取途徑、使用規則與大成功加成精算表 ==================== -->
+<div style="background:rgba(15, 23, 42, 0.6); border:1px solid var(--border-color); border-radius:10px; padding:18px 20px; margin-bottom:24px;">
+<p style="font-size:0.88rem; line-height:1.75; color:var(--text-color); margin-top:0; margin-bottom:12px;">
+<strong>史實調教由調教師提案而開放，開放後即一直存在。即使未到相關年份仍可以獲得相關史實調教。獲得方法如下：</strong>
+</p>
+<ul style="font-size:0.85rem; line-height:1.8; color:var(--text-color); margin:0 0 16px 0; padding-left:22px;">
+<li>首年的教學 (開局新手教學直接贈送基礎調教)</li>
+<li>勝出重賞後認識新調教師時 (隨機)</li>
+<li>與調教師友好度達到 40 (必定傳授解鎖)</li>
+<li>調教師友好度達到 100 時該廄馬房的競走馬勝出 G1 (隨機傳授上位史實調教)</li>
 </ul>
-</div>
-<!-- 大成功率加成公式 -->
-<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(234,179,8,0.3);">
-<div style="font-weight:bold; color:#facc15; font-size:0.95rem; margin-bottom:8px;">
-<i class="fa-solid fa-calculator"></i> 大成功 (Great Success) 機率精算公式
-                </div>
-<div style="font-size:0.78rem; line-height:1.65;">
-<div>• <strong>「競馬熱潮 (競馬ブーム)」期間：</strong><span style="color:#10b981; font-weight:bold;">＋１０％ ～ ＋２０％</span></div>
-<div>• <strong>符合調教適性之ウマソナ：</strong>每項 <span style="color:#10b981; font-weight:bold;">＋１０％</span> (上位個性每項 <span style="color:#10b981; font-weight:bold;">＋１５％</span>)</div>
-<div>• <strong>提案者與現任調教師同一人：</strong><span style="color:#10b981; font-weight:bold;">＋１０％</span> (引退後永久生效)</div>
-<div>• <strong>ウマソナ「秀才肌」/「努力上手」：</strong><span style="color:#10b981; font-weight:bold;">＋１０％ / ＋５％</span></div>
-<div>• <strong>牧場設施「調教師應援室」：</strong>Lv1 <span style="color:#10b981; font-weight:bold;">＋５％</span> / Lv2 <span style="color:#10b981; font-weight:bold;">＋７％</span> / Lv3 <span style="color:#10b981; font-weight:bold;">＋１０％</span></div>
-<div>• <strong>ウマソナ負面個性「手抜き癖」：</strong><span style="color:#ef4444; font-weight:bold;">－５％</span></div>
-</div>
-</div>
-<!-- 連續使用冷卻懲罰 -->
-<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(239,68,68,0.3);">
-<div style="font-weight:bold; color:#ef4444; font-size:0.95rem; margin-bottom:8px;">
-<i class="fa-solid fa-triangle-exclamation"></i> 同一調教連續執行冷卻懲罰 (CD)
-                </div>
-<div style="font-size:0.78rem; line-height:1.65;">
-<div>同一匹賽馬若過於頻繁使用<strong>同一項史實調教</strong>，大成功率將面臨嚴重衰減：</div>
-<div style="margin-top:4px;">• <strong>４週以內重複使用：</strong><span style="color:#ef4444; font-weight:bold;">大成功率 －３０％</span></div>
-<div>• <strong>８週以內重複使用：</strong><span style="color:#f97316; font-weight:bold;">大成功率 －２０％</span></div>
-<div>• <strong>１２週以內重複使用：</strong><span style="color:#f59e0b; font-weight:bold;">大成功率 －１０％</span></div>
-<div style="color:var(--text-muted); margin-top:4px;">💡 <em>建議多項調教輪替執行，避免單一調教過度重複！</em></div>
-</div>
+<p style="font-size:0.88rem; line-height:1.75; color:var(--text-color); margin-bottom:14px;">
+<strong>史實調教每月有使用限制，由開局 1 次起隨遊戲進度增加可執行次數。每匹競走馬同時只可進行 1 次史實調教，同時每種類史實調教亦只能同時應用 1 匹競走馬。大成功時會提升效果，同時提升馬匹信賴度，會隨特定情況提升或減少大成功機率。詳情如下：</strong>
+</p>
+<div class="table-responsive" style="margin:0 0 10px 0;">
+<table class="data-table" style="font-size:0.84rem;">
+<thead>
+<tr style="background:rgba(30, 41, 59, 0.98);">
+<th style="min-width:320px; font-weight:bold; color:var(--accent-color);">情況</th>
+<th style="min-width:280px; font-weight:bold; color:var(--accent-color);">加成 (大成功機率增減)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>「競馬ブーム」期間 (競馬熱潮 2024/2026 版)</strong></td>
+<td style="color:#10b981; font-weight:bold;">＋１０％ / ＋２０％</td>
+</tr>
+<tr>
+<td><strong>合乎「調教適性」的特徵 (ウマソナ / 走法 / 馬體)</strong></td>
+<td style="color:#10b981; font-weight:bold;">每項 ＋１０％ / 上位ウマソナ每項 ＋１５％</td>
+</tr>
+<tr>
+<td><strong>「提案者」與調教師為同一人</strong></td>
+<td style="color:#10b981; font-weight:bold;">＋１０％ (調教師引退後永久發動，轉生後解除)</td>
+</tr>
+<tr>
+<td><strong>ウマソナ「努力上手」</strong></td>
+<td style="color:#10b981; font-weight:bold;">＋５％</td>
+</tr>
+<tr>
+<td><strong>ウマソナ「秀才肌」</strong></td>
+<td style="color:#10b981; font-weight:bold;">＋１０％</td>
+</tr>
+<tr>
+<td><strong>ウマソナ負面個性「手抜き癖」</strong></td>
+<td style="color:#ef4444; font-weight:bold;">－５％</td>
+</tr>
+<tr>
+<td><strong>牧場設施「調教師応接室」</strong></td>
+<td style="color:#10b981; font-weight:bold;">Lv1 ５％ / Lv2 ７％ / Lv3 １０％</td>
+</tr>
+<tr>
+<td><strong>同馬 ４ 週或以內使用相同史實調教 (連續使用懲罰)</strong></td>
+<td style="color:#ef4444; font-weight:bold;">－３０％</td>
+</tr>
+<tr>
+<td><strong>同馬 ８ 週或以內使用相同史實調教 (連續使用懲罰)</strong></td>
+<td style="color:#f97316; font-weight:bold;">－２０％</td>
+</tr>
+<tr>
+<td><strong>同馬 １２ 週或以內使用相同史實調教 (連續使用懲罰)</strong></td>
+<td style="color:#f59e0b; font-weight:bold;">－１０％</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <!-- ==================== 二、SP 史實調教 (雙馬合練・關係性深化) 全圖鑑 (全 8 種) ==================== -->
@@ -2988,17 +2986,17 @@ li {
             累積滿 3 次一般調教大成功後解鎖 SP 調教。需安排 2 匹同地域賽馬共同合練（6 週），兩駒均可獲得超高能力增幅，並同步建立或加深 2026 版全新「宿敵 / 同門戰友 / 師徒」關係性！
         </p>
 <div class="table-responsive" style="margin-bottom:24px;">
-<table class="data-table" style="min-width:920px;">
+<table class="data-table">
 <thead>
 <tr>
-<th style="width:55px;">年份</th>
-<th style="min-width:160px;">SP 史實調教名稱</th>
-<th style="width:65px; text-align: left;">等級</th>
-<th style="min-width:220px;">提升屬性與詳細效果</th>
-<th style="width:65px; text-align: left;">期間</th>
-<th style="width:75px; text-align: left;">大成功率</th>
-<th style="min-width:180px;">特性進化 (Evolution)</th>
-<th style="min-width:160px;">調教適性 (ウマソナ / 走法)</th>
+<th>年份</th>
+<th>SP 史實調教名稱</th>
+<th>等級</th>
+<th>提升屬性與詳細效果</th>
+<th>期間</th>
+<th>大成功率</th>
+<th>特性進化 (Evolution)</th>
+<th>調教適性 (ウマソナ / 走法)</th>
 </tr>
 </thead>
 <tbody>
@@ -3090,17 +3088,17 @@ li {
 <i class="fa-solid fa-list-check"></i> 三、全 37 種一般競走馬史實調教完全圖鑑 (含 2025/2026 新調教)
         </h3>
 <div class="table-responsive" style="margin-bottom:24px;">
-<table class="data-table" style="min-width:920px;">
+<table class="data-table">
 <thead>
 <tr>
-<th style="width:55px;">年份</th>
-<th style="min-width:160px;">史實調教名稱</th>
-<th style="width:65px; text-align: left;">等級</th>
-<th style="min-width:220px;">提升屬性與詳細效果</th>
-<th style="width:65px; text-align: left;">期間</th>
-<th style="width:75px; text-align: left;">大成功率</th>
-<th style="min-width:180px;">特性進化 (Evolution)</th>
-<th style="min-width:160px;">調教適性 (ウマソナ / 走法)</th>
+<th>年份</th>
+<th>史實調教名稱</th>
+<th>等級</th>
+<th>提升屬性與詳細效果</th>
+<th>期間</th>
+<th>大成功率</th>
+<th>特性進化 (Evolution)</th>
+<th>調教適性 (ウマソナ / 走法)</th>
 </tr>
 </thead>
 <tbody>
@@ -3485,18 +3483,18 @@ li {
             幼駒史實調教<strong>僅限 1 歲 9 月 ~ 11 月期間開放執行</strong>。下位調教達成大成功後隨機解鎖對應上位調教：
         </p>
 <div class="table-responsive" style="margin-bottom:20px;">
-<table class="data-table" style="min-width:980px;">
+<table class="data-table">
 <thead>
 <tr>
-<th style="min-width:150px;">幼駒史實調教名稱</th>
-<th style="width:65px; text-align: left;">等級</th>
-<th style="min-width:200px;">提升屬性與效果</th>
-<th style="width:65px; text-align: left;">期間</th>
-<th style="width:75px; text-align: left;">大成功率</th>
-<th style="min-width:160px;">特性進化</th>
-<th style="min-width:150px;">調教適性 (ウマソナ)</th>
-<th style="width:100px;">關聯設施</th>
-<th style="min-width:160px;">開放與前置解鎖條件</th>
+<th>幼駒史實調教名稱</th>
+<th>等級</th>
+<th>提升屬性與效果</th>
+<th>期間</th>
+<th>大成功率</th>
+<th>特性進化</th>
+<th>調教適性 (ウマソナ)</th>
+<th>關聯設施</th>
+<th>開放與前置解鎖條件</th>
 </tr>
 </thead>
 <tbody>
@@ -3812,13 +3810,13 @@ li {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:140px;">三冠名稱 (中 / 日)</th>
+<th>三冠名稱 (中 / 日)</th>
 <th>構成賽事 (中 / 日對照)</th>
-<th style="min-width:80px;">馬場</th>
-<th style="min-width:85px;">路程</th>
-<th style="min-width:75px;">時期</th>
-<th style="min-width:80px;">守護符</th>
-<th style="min-width:170px;">額外獎勵與繁育效果</th>
+<th>馬場</th>
+<th>路程</th>
+<th>時期</th>
+<th>守護符</th>
+<th>額外獎勵與繁育效果</th>
 </tr>
 </thead>
 <tbody>
@@ -4577,9 +4575,9 @@ li {
 <table class="data-table" style="font-size:0.8rem;">
 <thead>
 <tr>
-<th style="width:130px;">後天個性名稱</th>
-<th style="width:90px; text-align: left;">人氣 Boost</th>
-<th style="width:180px;">解鎖獲得條件</th>
+<th>後天個性名稱</th>
+<th>人氣 Boost</th>
+<th>解鎖獲得條件</th>
 <th>戰略效益與熱潮推動</th>
 </tr>
 </thead>
@@ -4688,9 +4686,9 @@ li {
 <table class="data-table" style="font-size:0.8rem;">
 <thead>
 <tr>
-<th style="width:140px;">殿堂馬異名 (日/中)</th>
-<th style="width:50px; text-align: left;">評級</th>
-<th style="width:150px;">獲得條件 / 代表馬</th>
+<th>殿堂馬異名 (日/中)</th>
+<th>評級</th>
+<th>獲得條件 / 代表馬</th>
 <th>詳細特殊效果與 S+ 限界突破</th>
 </tr>
 </thead>
@@ -5010,12 +5008,12 @@ li {
 <table class="data-table" style="font-size:0.8rem;">
 <thead>
 <tr>
-<th style="min-width:140px;">設施名稱 (日/中)</th>
-<th style="min-width:70px; text-align: left;">場所</th>
-<th style="min-width:55px; text-align: left;">面積</th>
-<th style="min-width:160px;">解鎖時期與前置條件</th>
+<th>設施名稱 (日/中)</th>
+<th>場所</th>
+<th>面積</th>
+<th>解鎖時期與前置條件</th>
 <th>詳細設施效果說明</th>
-<th style="min-width:120px;">得意牧場長 / 人員</th>
+<th>得意牧場長 / 人員</th>
 </tr>
 </thead>
 <tbody>
@@ -5962,8 +5960,8 @@ li {
 <table class="data-table">
 <thead>
 <tr>
-<th style="width:110px;">發生時期</th>
-<th style="width:140px;">核心事件</th>
+<th>發生時期</th>
+<th>核心事件</th>
 <th>詳細機制與 S/L (リセマラ) 刷屬性關鍵點</th>
 </tr>
 </thead>
@@ -6116,9 +6114,9 @@ li {
 <table class="data-table">
 <thead>
 <tr>
-<th style="width:100px;">御守等級</th>
+<th>御守等級</th>
 <th>核心獲得條件</th>
-<th style="width:130px;">兌換價值與用途</th>
+<th>兌換價值與用途</th>
 </tr>
 </thead>
 <tbody>
@@ -6754,83 +6752,104 @@ li {
             });
         }
 
-        // ==================== 系統確立試算機 (Section 15) ====================
+        // ==================== 系統確立四大體系資料庫與分頁切換 ====================
         const sysDatabase = {
             child: {
-                title: "子系統確立 (Child System)",
-                badge: "血統爆發力 +4~+8",
+                title: "子系統確立 (Sub-system / 名種牡馬 銀因子)",
+                badge: "🥈 子系統 (銀)",
                 reqs: [
-                    "① 日本或美歐單一地區血統支配率 ≥ 5.0%，或全球血統支配率 ≥ 2.0%",
-                    "② 該種牡馬在役，且旗下至少有 4 匹現役/退役之重賞種牡馬產駒",
-                    "③ 年底 (12 月 4 週) 自動進行判定與獨立血統確立"
+                    "① 該種牡馬於單一地區（日本/美洲/歐洲）<strong>血統支配率 ≥ 5.0%</strong>，或<strong>全球支配率 ≥ 2.0%</strong>",
+                    "② 旗下必須至少擁有 4 匹同父系後代活躍現役種牡馬",
+                    "③ 該種牡馬尚未引退，或於引退當年達成門檻（當年年末結算成立）"
                 ],
-                notes: "💡 提示：盡早將主力種牡馬退役至自家牧場，集中母馬配種以快速衝高單一地區 5.0% 支配率。"
+                notes: "💡 效益：獲得銀色名種牡馬因子，大幅活化血脈並建立自產 Linebreed 基礎。"
             },
             parent: {
-                title: "親系統昇格 (Parent System)",
-                badge: "完全獨立大系・血脈活性化核心",
+                title: "親系統昇格 (Parent System / 大種牡馬 金因子)",
+                badge: "🥇 親系統 (金)",
                 reqs: [
-                    "① 旗下衍生出 3 個已確立之子系統 (同代或跨代)",
-                    "② 或母系/父系連續兩代達成子系統確立，且全球支配率 ≥ 10.0%",
-                    "③ 或單一地區支配率 ≥ 12.0%"
+                    "① <strong>條件 A (單區支配率)</strong>：單一地區血統支配率達到 <strong>≥ 12.0%</strong>",
+                    "② <strong>條件 B (全球支配率)</strong>：全球平均血統支配率達到 <strong>≥ 10.0%</strong>",
+                    "③ <strong>條件 C (三代連續子系)</strong>：旗下連續 3 代後代皆成功自立子系統"
                 ],
-                notes: "💡 提示：親系統是達成「8親系完全血脈活性化配合 (+8爆發力)」的基石。"
+                notes: "💡 效益：獲得金色大種牡馬因子，成立血脈活性化與親系 Linebreed 配合。"
             },
             world: {
-                title: "世界系統昇格 (World System)",
-                badge: "全球影響力加成・全地域無弱化",
+                title: "世界系統昇格 (World System / 世界種牡馬 彩虹因子)",
+                badge: "🌈 世界系統 (彩虹)",
                 reqs: [
-                    "① 全球血統支配率 ≥ 15.0%",
+                    "① 全球平均血統支配率達到 <strong>≥ 15.0%</strong>",
                     "② 在日、美、歐三大地區皆擁有活躍之子系統種牡馬",
                     "③ 旗下產駒在各大賽馬場均享有高適性與爆發力加成"
                 ],
-                notes: "💡 提示：如 Northern Dancer、Sunday Silence、Mr. Prospector 級別之歷史世界霸權。"
+                notes: "💡 效益：獲得彩虹世界種牡馬因子，5大副屬性爆發加成直接翻倍 (2倍)！"
             },
-            founder: {
-                title: "世界始祖系統 (World Founder - 2026 最新機制)",
-                badge: "👑 2026 神級巔峰機制",
+            ancestor: {
+                title: "世界始祖系統 (World Founder / 2026 最新神級巔峰機制)",
+                badge: "👑 始祖系統 (極限)",
                 reqs: [
-                    "① 全球血統支配率達到史無前例之 ≥ 25.0% (或全球 ≥ 20.0% 且單區 ≥ 25.0%)",
+                    "① 全球血統支配率達到史無前例之 <strong>≥ 25.0%</strong> (或全球 ≥ 20.0% 且單區 ≥ 25.0%)",
                     "② 橫跨 4 代以上均為主流親系統，繁衍超過 50 匹殿堂 G1 冠軍產駒",
                     "③ 解鎖全遊戲最強之「始祖融合特性」與超限爆發力加成"
                 ],
-                notes: "💡 提示：2026 版全新繁育終極目標，象徵自身牧場王朝徹底統治世界賽馬史。"
+                notes: "💡 效益：2026 版全新繁育終極目標，象徵自身牧場王朝徹底統治世界賽馬史。"
+            },
+            founder: {
+                title: "世界始祖系統 (World Founder / 2026 最新神級巔峰機制)",
+                badge: "👑 始祖系統 (極限)",
+                reqs: [
+                    "① 全球血統支配率達到史無前例之 <strong>≥ 25.0%</strong> (或全球 ≥ 20.0% 且單區 ≥ 25.0%)",
+                    "② 橫跨 4 代以上均為主流親系統，繁衍超過 50 匹殿堂 G1 冠軍產駒",
+                    "③ 解鎖全遊戲最強之「始祖融合特性」與超限爆發力加成"
+                ],
+                notes: "💡 效益：2026 版全新繁育終極目標，象徵自身牧場王朝徹底統治世界賽馬史。"
             }
         };
 
         function setSysTab(tabKey) {
-            document.querySelectorAll('#sec-systems .filter-btn').forEach(b => b.classList.remove('active'));
-            const clickedBtn = Array.from(document.querySelectorAll('#sec-systems .filter-btn')).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes(tabKey));
-            if (clickedBtn) clickedBtn.classList.add('active');
+            const key = (tabKey === 'founder' || tabKey === 'ancestor') ? 'ancestor' : tabKey;
+            
+            // Highlight active button
+            document.querySelectorAll('.sys-btn').forEach(b => {
+                b.style.color = 'var(--text-muted)';
+                b.style.borderBottom = '2px solid transparent';
+                b.style.fontWeight = 'bold';
+            });
+            const activeBtn = document.getElementById(`sysTab-${key}`) || document.getElementById(`sysTab-${tabKey}`);
+            if (activeBtn) {
+                activeBtn.style.color = 'var(--accent-color)';
+                activeBtn.style.borderBottom = '2px solid var(--accent-color)';
+            }
 
-            const card = document.getElementById('sysDetailCard');
-            const data = sysDatabase[tabKey];
-            if (card && data) {
-                card.innerHTML = `
-                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-                        <h4 style="font-size:13px; font-weight:800; color:var(--text-highlight);">${data.title}</h4>
-                        <span class="pill pill-version">${data.badge}</span>
+            // Render content into #sysContent
+            const container = document.getElementById('sysContent') || document.getElementById('sysDetailCard');
+            const data = sysDatabase[key] || sysDatabase[tabKey];
+            if (container && data) {
+                container.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+                        <strong style="font-size:13px; color:var(--text-highlight);">${data.title}</strong>
+                        <span class="pill pill-version" style="font-size:0.75rem;">${data.badge}</span>
                     </div>
-                    <div style="background:var(--bg-tertiary); padding:8px; border-radius:6px; margin-bottom:6px; border:1px solid var(--border-color);">
-                        ${data.reqs.map(r => `<p style="margin-bottom:3px;">${r}</p>`).join('')}
+                    <div style="background:var(--bg-tertiary); padding:10px 12px; border-radius:6px; margin-bottom:8px; border:1px solid var(--border-color); line-height:1.7;">
+                        ${data.reqs.map(r => `<div style="margin-bottom:4px;">${r}</div>`).join('')}
                     </div>
-                    <div style="font-size:11px; color:var(--text-muted);">${data.notes}</div>
+                    <div style="font-size:11.5px; color:var(--text-muted); padding:4px 2px;">${data.notes}</div>
                 `;
             }
         }
 
         function calculateDominance() {
-            const jp1 = parseFloat(document.getElementById('jp1') ? document.getElementById('jp1').value : 0) || 0;
-            const jp2 = parseFloat(document.getElementById('jp2') ? document.getElementById('jp2').value : 0) || 0;
-            const jp3 = parseFloat(document.getElementById('jp3') ? document.getElementById('jp3').value : 0) || 0;
-            const jp4 = parseFloat(document.getElementById('jp4') ? document.getElementById('jp4').value : 0) || 0;
+            const jp1 = parseFloat(document.getElementById('jp1') ? document.getElementById('jp1').value : 6.0) || 0;
+            const jp2 = parseFloat(document.getElementById('jp2') ? document.getElementById('jp2').value : 5.5) || 0;
+            const jp3 = parseFloat(document.getElementById('jp3') ? document.getElementById('jp3').value : 4.8) || 0;
+            const jp4 = parseFloat(document.getElementById('jp4') ? document.getElementById('jp4').value : 5.2) || 0;
             let jpAvg = (jp1 + jp2 + jp3 + jp4) / 4;
             if (jpAvg > 0 && jpAvg < 0.05) jpAvg = 0.1;
             const resJpEl = document.getElementById('resJP');
             if (resJpEl) resJpEl.innerText = jpAvg.toFixed(2) + '%';
 
-            const usDom = parseFloat(document.getElementById('usDom') ? document.getElementById('usDom').value : 0) || 0;
-            const euDom = parseFloat(document.getElementById('euDom') ? document.getElementById('euDom').value : 0) || 0;
+            const usDom = parseFloat(document.getElementById('usDom') ? document.getElementById('usDom').value : 1.5) || 0;
+            const euDom = parseFloat(document.getElementById('euDom') ? document.getElementById('euDom').value : 0.8) || 0;
             const globalAvg = (jpAvg + usDom + euDom) / 3;
             const resGlEl = document.getElementById('resGlobal');
             if (resGlEl) resGlEl.innerText = globalAvg.toFixed(2) + '%';
@@ -6869,9 +6888,10 @@ li {
                     datasets: [{
                         label: '抽樣次數 (加成值 b)',
                         data: [],
-                        backgroundColor: 'rgba(56, 189, 248, 0.6)',
+                        backgroundColor: 'rgba(56, 189, 248, 0.65)',
                         borderColor: '#38bdf8',
-                        borderWidth: 1
+                        borderWidth: 1.5,
+                        borderRadius: 3
                     }]
                 },
                 options: {
@@ -6879,16 +6899,21 @@ li {
                     maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
                     scales: {
-                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } },
-                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } }
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } } },
+                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } } }
                     }
                 }
             });
         }
 
-        function runExplosionSimulation() {
-            const B = parseInt(document.getElementById('simB') ? document.getElementById('simB').value : 30) || 30;
-            const N = parseInt(document.getElementById('simN') ? document.getElementById('simN').value : 5000) || 5000;
+        function runSimulation() {
+            initSimulationChart();
+            const bInput = document.getElementById('inputB') || document.getElementById('simB');
+            const facInput = document.getElementById('facilityLv');
+            const baseB = parseInt(bInput ? bInput.value : 30) || 30;
+            const facBonus = parseInt(facInput ? facInput.value : 3) || 0;
+            const B = baseB + facBonus;
+            const N = 1000;
             const dist = new Array(B + 1).fill(0);
 
             for (let i = 0; i < N; i++) {
@@ -6896,34 +6921,15 @@ li {
                 dist[b]++;
             }
 
-            let sum = 0, countBgte15 = 0, countBgte25 = 0, countMax = dist[B];
-            for (let b = 0; b <= B; b++) {
-                sum += b * dist[b];
-                if (b >= 15) countBgte15 += dist[b];
-                if (b >= 25) countBgte25 += dist[b];
-            }
-            const avg = (sum / N).toFixed(2);
-            const p15 = ((countBgte15 / N) * 100).toFixed(1);
-            const p25 = ((countBgte25 / N) * 100).toFixed(1);
-            const pMax = ((countMax / N) * 100).toFixed(2);
-
-            const simResEl = document.getElementById('simResults');
-            if (simResEl) {
-                simResEl.innerHTML = `
-                    <div style="font-size:0.85rem; line-height:1.6; color:var(--text-color);">
-                        <div>📊 <strong>模擬抽樣總次數</strong>：${N.toLocaleString()} 次 | 設定爆發力上限 B = ${B}</div>
-                        <div>📈 <strong>平均實質爆發力加成</strong>：<span style="color:var(--accent-color); font-weight:bold;">${avg}</span></div>
-                        <div>🎯 <strong>加成值 ≥ 15 機率</strong>：<span style="color:var(--safe-color); font-weight:bold;">${p15}%</span> | <strong>≥ 25 機率</strong>：<span style="color:var(--gold-color); font-weight:bold;">${p25}%</span></div>
-                        <div>🏆 <strong>滿貫極限 (b = ${B}) 命中率</strong>：<span style="color:#c084fc; font-weight:bold;">${pMax}%</span></div>
-                    </div>
-                `;
-            }
-
             if (explosionChartInstance) {
                 explosionChartInstance.data.labels = Array.from({ length: B + 1 }, (_, i) => `${i}`);
                 explosionChartInstance.data.datasets[0].data = dist;
                 explosionChartInstance.update();
             }
+        }
+
+        function runExplosionSimulation() {
+            runSimulation();
         }
 
 
@@ -7386,13 +7392,15 @@ li {
             const years = Object.keys(window.YEARLY_RECS_DATA);
             years.forEach(y => {
                 const btn = document.createElement("button");
-                btn.className = "filter-btn" + (y === currentRecYear ? " active" : "");
+                const isActive = (y === currentRecYear);
+                btn.className = "filter-btn" + (isActive ? " active" : "");
+                
                 if (y.includes("SP種牡馬")) {
                     btn.innerHTML = "🧬 🌟 <strong>SP種牡馬・SP繁殖牝馬(全覽)</strong>";
-                    btn.style.cssText = "border: 1.5px solid var(--gold-color); background: rgba(245, 158, 11, 0.15); color: var(--gold-color); font-weight: bold;";
                 } else {
                     btn.innerText = y;
                 }
+                
                 btn.onclick = () => {
                     document.querySelectorAll("#recsYearButtons .filter-btn").forEach(b => b.classList.remove("active"));
                     btn.classList.add("active");
@@ -7642,11 +7650,19 @@ li {
         }
 
 
-        function init() {
+                        function init() {
             ensureUnpackedDb();
             initCategoryTabs();
             makeTablesSortable();
             initYearFilter();
+            initSimulationChart();
+            runSimulation();
+            setSysTab('child');
+            calculateDominance();
+            initSimulationChart();
+            runSimulation();
+            setSysTab('child');
+            calculateDominance();
 
             const bindChange = (id) => {
                 const el = document.getElementById(id);
