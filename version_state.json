@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.48",
+  "current_version": "v01.49",
   "history": [
     {
       "version": "v01.01",
@@ -240,6 +240,11 @@
       "version": "v01.48",
       "date": "2026-08-29",
       "description": "Fix: Add data-cat attributes to all theoryMasterTable rows and support space-separated categories for Chapter 3 filter chips"
+    },
+    {
+      "version": "v01.49",
+      "date": "2026-08-29",
+      "description": "Feature: Add direct jump hyperlinks to all breeding theories in Chapter 3 master table and enrich all detail chapters with colorful tables and preserved pedigree diagrams"
     }
   ]
 }
