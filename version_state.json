@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.77",
+  "current_version": "v01.78",
   "history": [
     {
       "version": "v01.01",
@@ -385,6 +385,11 @@
       "version": "v01.77",
       "date": "2026-08-29",
       "description": "Refactor: Streamlined Chapter 38 with full Traditional Chinese/Japanese translations, consolidated interactive Stakes master table with instant multi-criteria filters, and clean tabbed layout"
+    },
+    {
+      "version": "v01.78",
+      "date": "2026-08-29",
+      "description": "Fix: Corrected Chapter 38 column alignments, removed summary table leaks, and enabled chronological month+week table sorting"
     }
   ]
 }
