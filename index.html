@@ -5886,7 +5886,7 @@ li {
             calculateDominance();
             setSysTab('child');
 
-            initYearlyRecsUI();
+                        initYearlyRecsUI();
             renderTable();
 
             // 若資料庫非同步載入完成，自動立即重新渲染
@@ -5896,8 +5896,15 @@ li {
                     renderTable();
                     clearInterval(checkDbInterval);
                 }
-            }, 300);
-            setTimeout(() => clearInterval(checkDbInterval), 10000);
+            }, 200);
+            setTimeout(() => clearInterval(checkDbInterval), 12000);
+        }
+
+        // 自動啟動應用程式 (Auto Launch)
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
         }
     </script>
 </body>
