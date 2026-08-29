@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.11",
+  "current_version": "v01.12",
   "history": [
     {
       "version": "v01.01",
@@ -55,6 +55,11 @@
       "version": "v01.11",
       "date": "2026-08-29",
       "description": "Fix: Remove stale hardcoded jsDelivr commit hash that overwrote master database and enable fresh direct loading"
+    },
+    {
+      "version": "v01.12",
+      "date": "2026-08-29",
+      "description": "Fix: Eliminate duplicate let declaration and ensure rock-solid 14-category runtime execution"
     }
   ]
 }
