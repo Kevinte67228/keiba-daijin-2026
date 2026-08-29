@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.36",
+  "current_version": "v01.37",
   "history": [
     {
       "version": "v01.01",
@@ -180,6 +180,11 @@
       "version": "v01.36",
       "date": "2026-08-29",
       "description": "Docs & Maintenance: Update GEMINI.md with 5-backup retention policy and recent tablet/sorting collaboration rules, and prune GitHub backups"
+    },
+    {
+      "version": "v01.37",
+      "date": "2026-08-29",
+      "description": "Layout: Unify all table columns and headers to strict LEFT ALIGNMENT across all data tables and sync rule to GEMINI.md"
     }
   ]
 }

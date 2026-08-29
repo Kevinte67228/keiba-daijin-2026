@@ -21,6 +21,7 @@
 
 ## Collaboration & Layout Rules (近期協作排版與開發核心規範)
 1. **平板與行動端體驗優先 (Tablet-First Layout)**：
+      - **欄位文字一律靠左對齊 (Left-Aligned Table Content)**：全站所有資料表格（包含表頭與內容單元格）文字一律統一為「靠左對齊 (`text-align: left !important`)」，嚴禁用置中對齊，確保各欄位數據垂直視覺掃描齊頭流暢。
    - **防字符垂直擠壓換行 (No Vertical Squishing)**：所有表格 (`.data-table`) 必須具備充足之 `min-width`（如史實調教 `880px`、年度推薦 `1320px`），確保日文中文字元不被壓縮為單字垂直換行。
    - **水平觸控滑動軌道**：外層容器 `.table-responsive` 必須啟用 `-webkit-overflow-scrolling: touch` 與輕量科技藍自定義滾動條。
    - **徽章與標籤防斷詞**：所有 `.badge`、`.pill`、`.tag` 一律強制 `white-space: nowrap !important; word-break: keep-all !important;`。
