@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.53",
+  "current_version": "v01.54",
   "history": [
     {
       "version": "v01.01",
@@ -265,6 +265,11 @@
       "version": "v01.53",
       "date": "2026-08-29",
       "description": "Content: Integrate official KOEI TECMO manual 2026 systems into Chapters 19, 20, 22, and 26 including 5-Tier Trait colors, Adaptability Limit Break, 2026 Relationships, and Idol Horse UMAP"
+    },
+    {
+      "version": "v01.54",
+      "date": "2026-08-29",
+      "description": "Fix & Deploy: Robustly compile all 36 chapters including full bilingual translations and KOEI TECMO official 2026 manual additions"
     }
   ]
 }
