@@ -18,9 +18,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-    <script src="master_lookup_db.js"></script>
-    <script src="core_guides_data.js"></script>
-    <script src="yearly_recs_db.js"></script>
+    <script src="master_lookup_db.js?v=v01.13"></script>
+    <script src="core_guides_data.js?v=v01.13"></script>
+    <script src="yearly_recs_db.js?v=v01.13"></script>
     <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -92,7 +92,7 @@
     <script>
         if (window.location.protocol !== 'file:' && 'serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').then(reg => {
+                navigator.serviceWorker.register('sw.js?t=' + Date.now()).then(r => r.update()).then(reg => {
                     console.log('SW registered:', reg.scope);
                 }).catch(err => console.warn('SW registration failed:', err));
             });
@@ -885,7 +885,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.12</span>
+        <span class="version-badge">v01.13</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -5548,7 +5548,7 @@ li {
                 const spVal = item.sp || item.matched_sp || "-";
                 const stVal = item.stamina || "-";
                 const subVal = item.subpara_total || "-";
-                const regionVal = item.region || (currentTab.includes("海外") ? "海外" : "日本");
+                const regionVal = item.region || (["cat4", "cat8", "cat14"].includes(currentTab) ? "海外" : "日本");
                 let growthVal = item.growth || "-";
                 if (item.growth_cap && item.growth_cap !== "-" && item.growth_cap !== "普通") {
                     growthVal += `(${item.growth_cap})`;
