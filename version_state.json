@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.10",
+  "current_version": "v01.11",
   "history": [
     {
       "version": "v01.01",
@@ -50,6 +50,11 @@
       "version": "v01.10",
       "date": "2026-08-29",
       "description": "Fix: Seamlessly bind all 14 clean categories with instant dual-view rendering"
+    },
+    {
+      "version": "v01.11",
+      "date": "2026-08-29",
+      "description": "Fix: Remove stale hardcoded jsDelivr commit hash that overwrote master database and enable fresh direct loading"
     }
   ]
 }
