@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.45",
+  "current_version": "v01.46",
   "history": [
     {
       "version": "v01.01",
@@ -225,6 +225,11 @@
       "version": "v01.45",
       "date": "2026-08-29",
       "description": "Content: Add authentic World/Parent/Child horse icons and 9-color activation egg icons into Section 14 table"
+    },
+    {
+      "version": "v01.46",
+      "date": "2026-08-29",
+      "description": "Layout: Remove low-resolution full diagram image from Section 14 while retaining crisp individual icon badges and comprehensive table"
     }
   ]
 }
