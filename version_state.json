@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.55",
+  "current_version": "v01.56",
   "history": [
     {
       "version": "v01.01",
@@ -275,6 +275,11 @@
       "version": "v01.55",
       "date": "2026-08-29",
       "description": "Feature: Integrate uipo-nou.com 2026 Broodmare Vitality (活力) and Vitality Enhancement (活力増強) mechanics into Chapters 2 and 13"
+    },
+    {
+      "version": "v01.56",
+      "date": "2026-08-29",
+      "description": "Feature: Add Chapter 37 - 1968 Scenario Complete Guide (1968年シナリオ攻略・元祖三強・日美歐持続牝馬全書・種牡馬施設Lv3解鎖)"
     }
   ]
 }
