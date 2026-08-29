@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.83",
+  "current_version": "v01.84",
   "history": [
     {
       "version": "v01.01",
@@ -415,6 +415,11 @@
       "version": "v01.83",
       "date": "2026-08-29",
       "description": "Refactor: Added explicit '賽程階段 (第X戰目)' column to all 36 series, and unified 8-segment Turf Bars across Subtab 4 Racecourses Database"
+    },
+    {
+      "version": "v01.84",
+      "date": "2026-08-29",
+      "description": "Refactor: Cleaned all '第 X 戰目' badges without parentheses across Subtab 2, and verified Subtab 4 8-segment Turf Bars"
     }
   ]
 }
