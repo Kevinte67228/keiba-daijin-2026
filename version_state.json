@@ -1,0 +1,10 @@
+{
+  "current_version": "v01.01",
+  "history": [
+    {
+      "version": "v01.01",
+      "date": "2026-08-29",
+      "description": "Initial baseline release with 15,389 horses database, 35 chapters encyclopedia, unified 12 columns, and AI comment detail modals."
+    }
+  ]
+}
