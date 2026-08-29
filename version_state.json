@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.63",
+  "current_version": "v01.64",
   "history": [
     {
       "version": "v01.01",
@@ -315,6 +315,11 @@
       "version": "v01.63",
       "date": "2026-08-29",
       "description": "Feature: WP10 274 Races Multi-Dimensional Filter (Month, Week, Region, Grade), Pre-rendered 13 Tactics Matrix, and Dual Highly-Visible Gold Save Buttons"
+    },
+    {
+      "version": "v01.64",
+      "date": "2026-08-29",
+      "description": "Feature: Transform Tactics Tracker into Horizontal Multi-Horse Spreadsheet Grid & Bulletproof Cache Clearer with Query Busting"
     }
   ]
 }
