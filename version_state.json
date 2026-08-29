@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.86",
+  "current_version": "v01.87",
   "history": [
     {
       "version": "v01.01",
@@ -430,6 +430,11 @@
       "version": "v01.86",
       "date": "2026-08-29",
       "description": "Refactor: Re-organized 38 chapters consecutively, centered header subtitle, removed legacy PWA phrasing, and unified all 8 Pillars"
+    },
+    {
+      "version": "v01.87",
+      "date": "2026-08-29",
+      "description": "Style: Normalized Chapter 23 card header and modal button styles to match standard encyclopedia theme"
     }
   ]
 }
