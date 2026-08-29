@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.75",
+  "current_version": "v01.76",
   "history": [
     {
       "version": "v01.01",
@@ -375,6 +375,11 @@
       "version": "v01.75",
       "date": "2026-08-29",
       "description": "Feature: Added ST (耐力) and Track Aptitude (芝/ダ/万能) filters directly after SP filter in Horse DB"
+    },
+    {
+      "version": "v01.76",
+      "date": "2026-08-29",
+      "description": "Feature: Added Chapter 38 comprehensive Graded Stakes, Triple Crown, Stakes Winners, Racecourses, and G1 Guide from alnasgames"
     }
   ]
 }
