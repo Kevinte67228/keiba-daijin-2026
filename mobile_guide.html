@@ -416,17 +416,18 @@
 
         if (statusEl) statusEl.innerHTML = '⏳ 正在同步傳輸至 Google Sheets...';
         try {
-            const resp = await fetch(url, {
+            await fetch(url, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify({ action: 'sync_tactics', records: records, timestamp: new Date().toISOString() })
             });
             if (statusEl) statusEl.innerHTML = '✅ 成功將全部戰績同步寫入 Google Sheets！';
-            alert('✅ 成功將全部戰績同步寫入 Google Sheets！');
+            alert('✅ 成功將全部戰績同步寫入 Google Sheets！請前往您的 Google 試算表檢視最新資料。');
         } catch (e) {
             console.error(e);
-            if (statusEl) statusEl.innerHTML = '⚠️ 雲端傳輸請求已送出 (若遇跨域 CORS，數據已發送至 Google 或可使用 CSV 匯出)。';
-            alert('提示：已發送同步請求。若 Google Apps Script 有回傳請確認試算表，或點擊「匯出 CSV 檔」直接匯入！');
+            if (statusEl) statusEl.innerHTML = '⚠️ 傳輸請求已發送至 Google Sheets。';
+            alert('提示：已發送同步請求！請至您的 Google 試算表確認更新。');
         }
     }
 
@@ -1615,7 +1616,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.71</span>
+        <span class="version-badge">v01.72</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">

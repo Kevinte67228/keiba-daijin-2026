@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.71",
+  "current_version": "v01.72",
   "history": [
     {
       "version": "v01.01",
@@ -355,6 +355,11 @@
       "version": "v01.71",
       "date": "2026-08-29",
       "description": "UI: Adjusted action chips to no-icon, no-wrap single-line compact layout"
+    },
+    {
+      "version": "v01.72",
+      "date": "2026-08-29",
+      "description": "Feature: Optimized syncToGoogleSheets for CORS no-cors transmission"
     }
   ]
 }
