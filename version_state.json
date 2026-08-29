@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.81",
+  "current_version": "v01.82",
   "history": [
     {
       "version": "v01.01",
@@ -405,6 +405,11 @@
       "version": "v01.81",
       "date": "2026-08-29",
       "description": "Fix: Restored 100% complete historical winners, 2-crown champions, and superstar badges across all 36 Triple Crowns in Chapter 38-2"
+    },
+    {
+      "version": "v01.82",
+      "date": "2026-08-29",
+      "description": "Refactor: Integrated G1 Strategy Guide Subtab, removed duplicate Winner Subtab, fixed 100% column alignment for all 36 Series, and unified screenshot-matching Turf bars"
     }
   ]
 }
