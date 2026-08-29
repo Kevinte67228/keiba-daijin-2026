@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.33",
+  "current_version": "v01.34",
   "history": [
     {
       "version": "v01.01",
@@ -165,6 +165,11 @@
       "version": "v01.33",
       "date": "2026-08-29",
       "description": "Fix: Comprehensive tablet layout optimization (horizontal swipeable year chip rail, dedicated column widths with min-width: 1320px, eliminating single-character squishing)"
+    },
+    {
+      "version": "v01.34",
+      "date": "2026-08-29",
+      "description": "Feature: Add interactive column sorting (with smart parsing for Numbers, Tickets, Ability Ranks, Track Aptitude, Distances, and Percentages) to ALL data tables across all 36 chapters"
     }
   ]
 }
