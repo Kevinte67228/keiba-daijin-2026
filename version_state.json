@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.76",
+  "current_version": "v01.77",
   "history": [
     {
       "version": "v01.01",
@@ -380,6 +380,11 @@
       "version": "v01.76",
       "date": "2026-08-29",
       "description": "Feature: Added Chapter 38 comprehensive Graded Stakes, Triple Crown, Stakes Winners, Racecourses, and G1 Guide from alnasgames"
+    },
+    {
+      "version": "v01.77",
+      "date": "2026-08-29",
+      "description": "Refactor: Streamlined Chapter 38 with full Traditional Chinese/Japanese translations, consolidated interactive Stakes master table with instant multi-criteria filters, and clean tabbed layout"
     }
   ]
 }
