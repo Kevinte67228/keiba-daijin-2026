@@ -928,7 +928,114 @@
 
 
         
-/* ================== 強迫症完美排版校正 ================== */
+        /* ==================== 平板與行動端專用全域優化 (Tablet/Mobile First) ==================== */
+        
+        /* 1. 全年代年度推薦年份切換軌道 (水平滑動膠囊，不佔用直向高度) */
+        #recsYearButtons {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            gap: 8px !important;
+            padding: 8px 4px 12px 4px !important;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) var(--card-bg);
+            margin-bottom: 8px !important;
+        }
+        #recsYearButtons::-webkit-scrollbar {
+            height: 6px;
+        }
+        #recsYearButtons::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 3px;
+        }
+        #recsYearButtons::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 3px;
+        }
+        #recsYearButtons .filter-btn {
+            flex: 0 0 auto !important;
+            white-space: nowrap !important;
+            padding: 6px 14px !important;
+            font-size: 0.82rem !important;
+            border-radius: 20px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.2s ease !important;
+        }
+
+        /* 2. 全年代推薦大表 (#yearlyRecsContainer) 19 欄位平板防擠壓自適應規範 */
+        #yearlyRecsContainer .table-responsive {
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            width: 100% !important;
+            border-radius: 8px !important;
+            border: 1px solid var(--border-color) !important;
+            background: var(--card-bg) !important;
+        }
+        #yearlyRecsContainer .data-table {
+            min-width: 1320px !important;
+            width: 100% !important;
+            border-collapse: collapse !important;
+            font-size: 0.82rem !important;
+        }
+        #yearlyRecsContainer .data-table th,
+        #yearlyRecsContainer .data-table td {
+            padding: 8px 10px !important;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.35) !important;
+            vertical-align: middle !important;
+            white-space: nowrap !important;
+            line-height: 1.5 !important;
+        }
+        #yearlyRecsContainer .data-table th {
+            background: rgba(30, 41, 59, 0.98) !important;
+            color: var(--accent-color) !important;
+            font-weight: 700 !important;
+            text-align: center !important;
+        }
+        [data-theme="light"] #yearlyRecsContainer .data-table th {
+            background: #e2e8f0 !important;
+            color: #0369a1 !important;
+        }
+        
+        /* 推薦表各欄位專屬寬度與對齊 */
+        #yearlyRecsContainer .data-table td:nth-child(1) { min-width: 130px !important; font-weight: bold !important; text-align: left !important; } /* 馬名 */
+        #yearlyRecsContainer .data-table td:nth-child(2) { width: 50px !important; min-width: 50px !important; text-align: center !important; } /* 札 */
+        #yearlyRecsContainer .data-table td:nth-child(3) { width: 45px !important; min-width: 45px !important; text-align: center !important; } /* 性 */
+        #yearlyRecsContainer .data-table td:nth-child(4) { width: 55px !important; min-width: 55px !important; text-align: center !important; font-weight: bold !important; color: var(--accent-color) !important; } /* SP */
+        #yearlyRecsContainer .data-table td:nth-child(5) { width: 50px !important; min-width: 50px !important; text-align: center !important; } /* サ */
+        #yearlyRecsContainer .data-table td:nth-child(6) { width: 45px !important; min-width: 45px !important; text-align: center !important; } /* 芝 */
+        #yearlyRecsContainer .data-table td:nth-child(7) { width: 45px !important; min-width: 45px !important; text-align: center !important; } /* ダ */
+        #yearlyRecsContainer .data-table td:nth-child(8) { min-width: 95px !important; text-align: center !important; } /* 芝質 */
+        #yearlyRecsContainer .data-table td:nth-child(9) { min-width: 115px !important; text-align: center !important; } /* 距離適性 */
+        #yearlyRecsContainer .data-table td:nth-child(10) { min-width: 75px !important; text-align: center !important; } /* 脚質 */
+        #yearlyRecsContainer .data-table td:nth-child(11) { min-width: 85px !important; text-align: center !important; } /* 成長型 */
+        #yearlyRecsContainer .data-table td:nth-child(12) { width: 55px !important; min-width: 55px !important; text-align: center !important; } /* 仔出し */
+        #yearlyRecsContainer .data-table td:nth-child(13) { min-width: 170px !important; white-space: normal !important; text-align: left !important; } /* 特性 */
+        #yearlyRecsContainer .data-table td:nth-child(14) { min-width: 150px !important; white-space: normal !important; text-align: left !important; } /* ウマソナ */
+        #yearlyRecsContainer .data-table td:nth-child(15) { width: 65px !important; min-width: 65px !important; text-align: center !important; } /* 生產國 */
+        #yearlyRecsContainer .data-table td:nth-child(16) { width: 65px !important; min-width: 65px !important; text-align: center !important; } /* 現役地域 */
+        #yearlyRecsContainer .data-table td:nth-child(17) { min-width: 120px !important; text-align: left !important; } /* 父 */
+        #yearlyRecsContainer .data-table td:nth-child(18) { min-width: 120px !important; text-align: left !important; } /* 母 */
+        #yearlyRecsContainer .data-table td:nth-child(19) { min-width: 130px !important; text-align: left !important; } /* 馬名(日) */
+
+        /* 3. 馬庫主表 (#horseTable) 平板欄位自適應 */
+        #horseTable {
+            min-width: 1100px !important;
+            width: 100% !important;
+        }
+        #horseTable th, #horseTable td {
+            white-space: nowrap !important;
+            padding: 8px 10px !important;
+        }
+        #horseTable td.col-details {
+            white-space: normal !important;
+            min-width: 180px !important;
+        }
+
+
+        /* ================== 強迫症完美排版校正 ================== */
 .table-responsive, .table-container {
     -webkit-overflow-scrolling: touch !important;
     overflow-x: auto !important;
@@ -1026,7 +1133,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.32</span>
+        <span class="version-badge">v01.33</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
