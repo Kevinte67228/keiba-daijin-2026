@@ -1190,7 +1190,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.43</span>
+        <span class="version-badge">v01.47</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -1482,340 +1482,235 @@ li {
 <button class="filter-btn" onclick="filterCategory('special', this)">特殊與彩蛋配合</button>
 <button class="filter-btn" onclick="filterCategory('new', this)">2024~2026最新配合</button>
 </div>
-<div class="table-responsive">
+<div class="table-responsive" style="margin-bottom:24px;">
 <table class="data-table" id="theoryMasterTable">
 <thead>
 <tr>
-<th>配合理論名稱 (中 / 日)</th>
-<th>爆發力加成</th>
-<th>成立條件簡述</th>
-<th>危險度 / 額外效果</th>
-<th>版本</th>
+<th style="min-width:220px;">配合理論名稱 (日/中)</th>
+<th style="width:1%; white-space:nowrap;">爆發力 (Explosion)</th>
+<th style="min-width:380px;">成立條件、詳細機制與備註說明</th>
 </tr>
 </thead>
 <tbody>
-<!-- 基礎設施 -->
-<tr data-cat="basic">
-<td><strong>種牡馬繋養施設</strong><br/><small class="text-muted">種牡馬繋養施設</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+1 ~ +3</span></td>
-<td>牧場設施（種牡馬繋養施設）等級 Lv1~3 加成</td>
-<td><span class="pill pill-safe">無危險度</span> 牧場設施穩定加成</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>種牡馬繋養施設</strong><br/><small style="color:var(--text-muted)">種牡馬繫養設施配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+1 ~ +3</span></td>
+<td>牧場設施「種牡馬繫養設施」Lv1 (+1) / Lv2 (+2) / Lv3 (+3) 帶來的先天爆發力加成。</td>
 </tr>
-<!-- 相性 -->
-<tr data-cat="basic">
-<td><strong>單向相性</strong><br/><small class="text-muted">シングルニックス (Single Nicks)</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+2</span></td>
-<td>種牡馬子系統與【母父】子系統為良好相性</td>
-<td><span class="pill pill-cyan">觸發輔助因子爆發</span></td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>ニックス (シングルニックス)</strong><br/><small style="color:var(--text-muted)">單向相性配合 (Single Nicks)</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+2</span></td>
+<td>種牡馬父系與【母父】子系統為良好相性。<strong>觸發副屬性因子爆發 (サブパラ爆発力)</strong>。</td>
 </tr>
-<tr data-cat="basic">
-<td><strong>2次 / 3次 / 4次 相性</strong><br/><small class="text-muted">2次/3次/4次ニックス</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+1 (可疊加)</span></td>
-<td>種牡馬與【母母父】/【母母母父】/【母母母母】單獨為良好相性</td>
-<td>無輔助因子爆發，可與其他次數相性並存</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>2次ニックス / 3次ニックス / 4次ニックス</strong><br/><small style="color:var(--text-muted)">2次 / 3次 / 4次相性配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">各 +1</span></td>
+<td>種牡馬父系分別與【母母父】、【母母母父】、【母母母母】成立相性（可複數同時疊加，無副屬性爆發）。</td>
 </tr>
-<tr data-cat="basic">
-<td><strong>二重相性 (Double Nicks)</strong><br/><small class="text-muted">ダブルニックス</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+4</span></td>
-<td>種牡馬與【母父】及【母母父】同時為良好相性</td>
-<td><span class="pill pill-cyan">觸發輔助因子爆發</span></td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>ダブルニックス</strong><br/><small style="color:var(--text-muted)">二重相性配合 (Double Nicks)</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+4</span></td>
+<td>種牡馬父系同時與【母父】及【母母父】子系統成立相性。觸發副屬性因子爆發。</td>
 </tr>
-<tr data-cat="basic">
-<td><strong>三重相性 (Triple Nicks)</strong><br/><small class="text-muted">トリプルニックス</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+6</span></td>
-<td>種牡馬與【母父】、【母母父】及【母母母父】3處皆為良好相性</td>
-<td><span class="pill pill-cyan">輔助因子爆發量大幅提升</span></td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>トリプルニックス</strong><br/><small style="color:var(--text-muted)">三重相性配合 (Triple Nicks)</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+6</span></td>
+<td>種牡馬父系同時與【母父】、【母母父】及【母母母父】子系統成立相性。觸發副屬性因子爆發。</td>
 </tr>
-<tr data-cat="basic">
-<td><strong>四重相性 (Force Nicks)</strong><br/><small class="text-muted">フォースニックス</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+8</span></td>
-<td>種牡馬與【母父】、【母母父】、【母母母父】及【母母母母】全 4 處皆為良好相性</td>
-<td><span class="pill pill-cyan">輔助因子爆發量達到極限</span></td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>フォースニックス</strong><br/><small style="color:var(--text-muted)">四重相性配合 (Force Nicks)</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+8</span></td>
+<td>種牡馬父系同時與【母父】、【母母父】、【母母母父】及【母母母母】全數成立相性。極致副屬性爆發！</td>
 </tr>
-<tr data-cat="basic">
-<td><strong>輔助因子爆發</strong><br/><small class="text-muted">サブパラ爆発力</small></td>
-<td style="text-align: left;"><span class="pill pill-cyan">能力直升</span></td>
-<td>單向/二重/三重/四重相性成立時，爆發耐力/瞬發/根性/力量/柔軟因子</td>
-<td>種牡馬固定 +1；繁殖牝馬端依繁榮度加成（衰退+1、安定+2、繁榮+3）</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>サブパラ爆発力</strong><br/><small style="color:var(--text-muted)">副屬性因子爆發 (Subparameter Nicks)</small></td>
+<td style="font-weight:bold; color:#38bdf8;"><span class="pill pill-gold">副屬性提升</span></td>
+<td>相性成立時，種牡馬固定 +1，母方依該子系統繁榮度加成（繁榮 +3 / 安定 +2 / 衰退 +1），大幅強化耐力、瞬發、根性、力量、柔軟！</td>
 </tr>
-<!-- 近親與異系 -->
-<tr data-cat="inbreed">
-<td><strong>近親交配 (Inbreed)</strong><br/><small class="text-muted">インブリード</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+1 ~ +5</span></td>
-<td>父母 4 代血統內出現相同祖先馬（奇蹟血量 3x4 = 18.75% 最佳）</td>
-<td>祖先馬每個速度因子額外 <span class="pill pill-power">+3</span>；<span class="pill pill-danger">危險度 +1~4</span></td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>インブリード (Inbreeding)</strong><br/><small style="color:var(--text-muted)">一般近親交配 (奇跡之血量 3×4)</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+1 ~ +5</span><br/><small>(速因子每個+3)</small></td>
+<td>4 代內含有相同祖先（12.5%~37.5%）。Inbred 祖先每個速度因子直接 <strong>+3 爆發力</strong>；帶危險度（父母健康 S 減 2，A 減 1；血脈活性化可消除）。</td>
 </tr>
-<tr data-cat="inbreed">
-<td><strong>全兄弟姐妹近親交配</strong><br/><small class="text-muted">全きょうだいインブリード</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+1 ~ +5</span></td>
-<td>出現全兄弟姐妹馬（如大震撼與黑潮），至少一匹在第 3 代以內</td>
-<td>兄弟姐妹因子分開累加計算（每速因子+3，可爆出超高值）</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>全きょうだいインブリード</strong><br/><small style="color:var(--text-muted)">全兄弟姐妹近親交配</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+1 ~ +5</span><br/><small>(速因子分開獨立累加)</small></td>
+<td>近親中出現全兄弟姐妹（如大震撼與黑潮）。兄弟馬之速度因子<strong>分開獨立計算</strong>，3 匹雙速因子全兄弟可帶來 <strong>+18 爆發力</strong>！</td>
 </tr>
-<tr data-cat="inbreed">
-<td><strong>母系近親交配</strong><br/><small class="text-muted">母系インブリード</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+1 ~ +5</span></td>
-<td>相同祖先馬同時出現在【父母】與【母母】的母系血統內</td>
-<td>因子爆發比普通近親 <span class="pill pill-power">+1</span>，危險度低 1 點，機率進化牝系特性</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>母系インブリード</strong><br/><small style="color:var(--text-muted)">母系近親交配 (Mother Line Inbreed)</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+1 ~ +5</span><br/><small>(速因子每個+4)</small></td>
+<td>Inbred 相同祖先全數出現在【父母】與【母母】端。因子爆發比一般近親<strong>多 +1 (速因子每個+4)</strong>，危險度<strong>少 -1</strong>，且機率進化牝系特性！</td>
 </tr>
-<tr data-cat="inbreed">
-<td><strong>異系交配 (Outbreed / 雜交)</strong><br/><small class="text-muted">アウトブリード</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+1</span></td>
-<td>4 代血統內完全沒有重複祖先馬，且未成立 Linebreed</td>
-<td>精神力、賢度、健康、柔軟性、競走壽命微幅全面上升</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>アウトブリード (Outbreeding)</strong><br/><small style="color:var(--text-muted)">完全異系交配</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+1</span></td>
+<td>4 代血統內完全無相同祖先且無 Linebreed。產駒精神力、智商、健康、柔軟性與競走壽命全面輕微上升。</td>
 </tr>
-<!-- 系統交配 -->
-<tr data-cat="line">
-<td><strong>子系統 Linebreed / SP型</strong><br/><small class="text-muted">子系統ラインブリード</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+3 / +5</span></td>
-<td>種牡馬與繁殖牝馬同屬相同子系統（SP系統時為SP型 +5）</td>
-<td><span class="pill pill-danger">危險度 +2</span>（可由血脈活性化化解）</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>子系統ラインブリード (通常 / SP型)</strong><br/><small style="color:var(--text-muted)">子系統 Linebreed 配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+3 / +5</span></td>
+<td>種牡馬與繁殖牝馬同屬相同子系統。一般型 +3 (危險度+2)；若為 SP 系統則為 SP 型 <strong>+5 爆發力</strong>。</td>
 </tr>
-<tr data-cat="line">
-<td><strong>親系統 Linebreed / SP型</strong><br/><small class="text-muted">親系統ラインブリード</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+2 / +3</span></td>
-<td>種牡馬與繁殖牝馬同屬相同親系統但不同子系統（SP系統時為SP型 +3）</td>
-<td><span class="pill pill-danger">危險度 +1</span>（可由血脈活性化化解）</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>親系統ラインブリード (通常 / SP型)</strong><br/><small style="color:var(--text-muted)">親系統 Linebreed 配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+2 / +3</span></td>
+<td>父母同屬相同親系統但不同子系統。一般型 +2 (危險度+1)；若為 SP 系統則為 SP 型 <strong>+3 爆發力</strong>。</td>
 </tr>
-<tr data-cat="line">
-<td><strong>親系統 Linebreed 3本爆發型 / SP型</strong><br/><small class="text-muted">親系統ラインブリード3本爆発型</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+7 / +9</span></td>
-<td>第 3 代 4 個父系（父父父/父母父/母父父/母母父）中有 3 個同親系不同子系</td>
-<td><span class="pill pill-danger">危險度 +1</span>（種牡馬為SP系時為SP型 +9）</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>親系統ラインブリード 3本爆発型 (通常 / SP型)</strong><br/><small style="color:var(--text-muted)">親系統 3 本爆發型配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+7 / +9</span></td>
+<td>第 3 代 4 匹父系（父父父、父母父、母父父、母母父）中有 3 匹為同親系不同子系。一般型 +7；SP 型 <strong>+9 爆發力</strong>。</td>
 </tr>
-<tr data-cat="line">
-<td><strong>親系統 Linebreed 4本爆發型 / SP型</strong><br/><small class="text-muted">親系統ラインブリード4本爆発型</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+11 / +13</span></td>
-<td>第 3 代 4 個父系全部同親系不同子系</td>
-<td><span class="pill pill-danger">危險度 +1</span>（種牡馬為SP系時為SP型 +13）</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>親系統ラインブリード 4本爆発型 (通常 / SP型)</strong><br/><small style="color:var(--text-muted)">親系統 4 本爆發型配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+11 / +13</span></td>
+<td>第 3 代 4 匹父系全為同一親系統但分屬不同子系統。一般型 +11；SP 型 <strong>+13 超極致爆發力</strong>！</td>
 </tr>
-<tr data-cat="line">
-<td><strong>母父○ (BMS)</strong><br/><small class="text-muted">母父○</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+2 ~ +5</span></td>
-<td>母父擁有大種牡馬(金)/名種牡馬(銀)因子，且帶有能力因子</td>
-<td>1因子 +2，2因子 +4，若為世界系統額外 +1</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>母父○ (BMS 配合)</strong><br/><small style="color:var(--text-muted)">優良母父配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+2 ~ +5</span></td>
+<td>母父帶有自立大/名種牡馬因子且擁有能力因子。帶 1 因子 +2；帶 2 因子 +4；若母父為世界系統額外 <strong>+1 (合計 +5)</strong>。</td>
 </tr>
-<!-- 血脈活性與活力 -->
-<tr data-cat="activation">
-<td><strong>血脈活性化配合 (6/7/8 親系統)</strong><br/><small class="text-muted">血脈活性化配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+4 / +6 / +8</span></td>
-<td>第 3 代 8 個祖先來自 6、7 或 8 個完全不同的親系統</td>
-<td><span class="pill pill-safe">7~8本可完全消除 Linebreed 與 18.75%近親危險度</span></td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>血脈活性化配合 (6 / 7 / 8 親系統)</strong><br/><small style="color:var(--text-muted)">親系活化配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+4 / +6 / +8</span></td>
+<td>第 3 代 8 匹祖先分別由 6 個 (+4)、7 個 (+6) 或 8 個 (+8 完全活性) 不同親系統組成。<strong>完全消除近親與 Linebreed 危險度</strong>！</td>
 </tr>
-<tr data-cat="activation">
-<td><strong>活力源化因子</strong><br/><small class="text-muted">活力源化因子</small></td>
-<td style="text-align: left;"><span class="pill pill-power">按因子數計算</span></td>
-<td>父系與母系血統中同時出現大種牡馬(金)/名種牡馬(銀)/世界系統因子</td>
-<td>每個金/銀因子 +1，世界因子 +2（近親度過高時會衰減）</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>活力源化因子 (名種 / 大種 / 世界種)</strong><br/><small style="color:var(--text-muted)">活力因子配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+1 ~ +8</span></td>
+<td>父母雙方血統均帶有名種牡馬(銀+1)、大種牡馬(金+1)、世界種牡馬(彩虹+2)因子。</td>
 </tr>
-<tr data-cat="activation">
-<td><strong>活力補完 (完全型)</strong><br/><small class="text-muted">完全型活力補完</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+3</span></td>
-<td>第 3 代 8 匹祖先全部符合名種牡馬型/名牝型/零細異系血脈型條件</td>
-<td>提升競走壽命，8 匹全滿額外爆發力 +3</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>活力補完 (名種 / 名牝 / 異系 / 完全型)</strong><br/><small style="color:var(--text-muted)">活力補完配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+0 / +3</span></td>
+<td>第 3 代 8 匹祖先具備系統因子、牝系因子或零細血統。提升競走壽命；<strong>8 匹全滿 (完全型) 額外 +3 爆發力</strong>。</td>
 </tr>
-<tr data-cat="activation">
-<td><strong>隔世遺傳 (Generation Gap)</strong><br/><small class="text-muted">隔世遺伝</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+3 / +6</span></td>
-<td>種牡馬與繁殖牝馬皆無因子，但【父父】或【母父】擁有因子</td>
-<td>祖先因子爆發效果 x3（父父優先）</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>隔世遺傳 (Generation Gap)</strong><br/><small style="color:var(--text-muted)">隔代因子遺傳配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+3 / +6</span></td>
+<td>父母雙方皆無因子，但【父父】或【母父】持有能力因子。因子效果直接 <strong>×3 倍爆發</strong>（每個速因子 +3，最高 +6）！</td>
 </tr>
-<tr data-cat="activation">
-<td><strong>雄系活性配合 (Lv1~3)</strong><br/><small class="text-muted">メールライン活性配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+3 / +6 / +10</span></td>
-<td>種牡馬為流行血統，母系至第 3 代血統皆為零細血統</td>
-<td>隨母系零細覆蓋範圍逐級提升爆發力</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>メールライン活性配合 (雄系活性 Lv1~3)</strong><br/><small style="color:var(--text-muted)">父系強勢活性化配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+3 / +6 / +10</span></td>
+<td>種牡馬為流行血統，母系端為零細。Lv1 (母系底線零細 +3) / Lv2 (母系3代全零細 +6) / Lv3 (除父直系外全零細 <strong>+10</strong>)。</td>
 </tr>
-<tr data-cat="activation">
-<td><strong>雌系活性配合 (Lv1~3)</strong><br/><small class="text-muted">ボトムライン活性配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+3 / +6 / +10</span></td>
-<td>母線（母、母母、母母母）為流行或帶因子，種牡馬端為零細血統</td>
-<td>隨父系零細與母系流行覆蓋範圍逐級提升爆發力</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>ボトムライン活性配合 (雌系活性 Lv1~3)</strong><br/><small style="color:var(--text-muted)">母線底線活性化配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+3 / +6 / +10</span></td>
+<td>母線為流行/帶因子，父系為零細。Lv1 (+3) / Lv2 (+6) / Lv3 (母系3代全流行且父系全零細 <strong>+10</strong>)。</td>
 </tr>
-<!-- 特性昇華與融合 -->
-<tr data-cat="traits">
-<td><strong>SP 昇華配合 (Lv1~3)</strong><br/><small class="text-muted">SP昇華配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+1 / +3 / +5</span></td>
-<td>父母及祖先世代皆為 SP 系統特性（Lv3 覆蓋至第 3 代）</td>
-<td>Lv3 爆發力 +5 且大幅提升瞬發力</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>SP 昇華配合 (系統特性昇華 SP Lv1~3)</strong><br/><small style="color:var(--text-muted)">SP 系統極速昇華配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+1 / +3 / +5</span></td>
+<td>全世代血統皆為 SP 系統。Lv1 (+1) / Lv2 (+3) / Lv3 (+5)，大幅拉升產駒瞬發力與速度極限。</td>
 </tr>
-<tr data-cat="traits">
-<td><strong>ST 昇華配合 (Lv1~3)</strong><br/><small class="text-muted">ST昇華配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+1 / +2 / +3</span></td>
-<td>父母及祖先世代皆為 ST 系統特性（Lv3 覆蓋至第 3 代）</td>
-<td>柔軟性、力量、勝負根性大幅提升</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>ST 昇華配合 (系統特性昇華 ST Lv1~3)</strong><br/><small style="color:var(--text-muted)">ST 系統耐力昇華配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+1 / +2 / +3</span></td>
+<td>全世代血統皆為 ST 系統。Lv1 (+1) / Lv2 (+2) / Lv3 (+3)，大幅拉升柔軟性、勝負根性與長途耐力。</td>
 </tr>
-<tr data-cat="traits">
-<td><strong>SP・ST 融合配合</strong><br/><small class="text-muted">SPST融合配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+5</span></td>
-<td>父系至第 3 代全為 SP 系，母系至第 3 代全為 ST 系（或反向）</td>
-<td>力量能力大幅提升</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>SP・ST 融合配合 (系統特性融合)</strong><br/><small style="color:var(--text-muted)">極速與耐力融合配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+5</span></td>
+<td>一方血統至第 3 代全為 SP 系，另一方全為 ST 系。<strong>爆發力 +5</strong> 且力量 (Power) 大幅躍升。</td>
 </tr>
-<!-- 特殊與彩蛋配合 -->
-<tr data-cat="special">
-<td><strong>搞笑配合</strong><br/><small class="text-muted">お笑い配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+5</span></td>
-<td>配種費 100 萬以下種牡馬 × 評價額 1 億以上且賢度 C+ 繁殖牝馬</td>
-<td>精神力、賢度、勝負根性上升</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>系統特性昇華配合 (なし/無特性 2024 NEW)</strong><br/><small style="color:var(--text-muted)">無特性均衡昇華配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+1 / +2 / +3</span></td>
+<td>祖先世代全為無特性（既非 SP 亦非 ST）系統，提升產駒綜合素質。</td>
 </tr>
-<tr data-cat="special">
-<td><strong>門當戶對配合</strong><br/><small class="text-muted">お似合い配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+5</span></td>
-<td>配種費 200 萬以下且賢度 A+ 種牡馬 × 評價額 1000 萬以上且賢度 A+ 牝馬</td>
-<td>精神力、賢度、勝負根性上升</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>系統特性融合配合 (SP・無 / ST・無 2024 NEW)</strong><br/><small style="color:var(--text-muted)">特性與無特性融合配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+5 / +3</span></td>
+<td>一方全為 SP 或 ST，另一方全為無特性。SP・無型 <strong>+5</strong>；ST・無型 <strong>+3</strong>。</td>
 </tr>
-<tr data-cat="special">
-<td><strong>告別配合 / 雙重告別配合</strong><br/><small class="text-muted">サヨナラ配合 / Ｗサヨナラ配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+5 / +8</span></td>
-<td>種牡馬 24 歲以上且所屬子系統於該地區僅剩自己一匹（W配合需牝馬18歲以上）</td>
-<td>W配合大幅全面提升力量、精神、健康、勝負根性、瞬發、賢度</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>1/4 異系配合 (2024 NEW)</strong><br/><small style="color:var(--text-muted)">四分之一異系活性化配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+2</span></td>
+<td>父母 4 個祖先分支中剛好有 1 個分支屬於零細異系血脈。</td>
 </tr>
-<tr data-cat="special">
-<td><strong>稻妻配合 / 真稻妻配合</strong><br/><small class="text-muted">稲妻配合 / 真稻妻配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+6 / +12</span></td>
-<td>父母皆瞬發力 A+ 且勝負根性 D+ 以下（真稻妻需雙方皆為白毛或蘆毛）</td>
-<td>瞬發、柔軟上升，勝負根性下降</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>お笑い配合 (搞笑配合)</strong><br/><small style="color:var(--text-muted)">搞笑配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+5</span></td>
+<td>評價額 100 萬以下種牡馬（賢度 A+）× 評價額 1 億以上母馬（賢度 A+）。提升勝負根性與精神力。</td>
 </tr>
-<tr data-cat="special">
-<td><strong>疾風配合 / 真疾風配合</strong><br/><small class="text-muted">疾風配合 / 真疾風配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+6 / +12</span></td>
-<td>父母皆勝負根性 A+ 且瞬發力 D+ 以下（真疾風需雙方皆為黑鹿毛/青鹿毛/青毛）</td>
-<td>勝負根性、精神力上升，瞬發力下降</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>お似合い配合 (門當戶對配合)</strong><br/><small style="color:var(--text-muted)">門當戶對配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+5</span></td>
+<td>種牡馬與母馬評價額皆在 1000 萬以下且賢度皆達 A+。提升勝負根性與爆發力。</td>
 </tr>
-<tr data-cat="special">
-<td><strong>3冠配合</strong><br/><small class="text-muted">3冠配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+4</span></td>
-<td>種牡馬與繁殖牝馬競走生涯皆曾勝出指定三冠路線</td>
-<td>日/美/歐/南關東/德國三冠皆適用（香港/美草地三冠除外）</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>サヨナラ配合 / Ｗサヨナラ配合</strong><br/><small style="color:var(--text-muted)">告別配合 / 雙重告別配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+5 / +8</span></td>
+<td>同地域唯一現役且 23 歲以上老種牡馬 (+5)；若母馬亦達 15 歲以上同系唯一則成立 W 告別 <strong>+8 爆發力</strong>！</td>
 </tr>
-<tr data-cat="special">
-<td><strong>牝系 / 名牝系 / W名牝系配合</strong><br/><small class="text-muted">牝系 / 名牝系 / Ｗ名牝系配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+2 / +3 / +4</span></td>
-<td>種牡馬與繁殖牝馬皆屬於主流牝系（雙方皆為名牝系時為 W配合）</td>
-<td>提升優秀牝系特性繼承率</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>稲妻配合 / 真・稲妻配合</strong><br/><small style="color:var(--text-muted)">閃電配合 / 真閃電配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+6 / +12</span></td>
+<td>瞬發 S+ 且勝負根性 D 以下，毛色為蘆毛/白毛/黑鹿毛/青毛。真閃電爆發力高達 <strong>+12 且瞬發極限突破</strong>！</td>
 </tr>
-<tr data-cat="special">
-<td><strong>初次登台配合</strong><br/><small class="text-muted">お披露目配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+2</span></td>
-<td>父母雙方皆曾獲得 G1 冠軍，且皆為初年度投入配種</td>
-<td>限定首年配種生效</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>疾風配合 / 真・疾風配合</strong><br/><small style="color:var(--text-muted)">疾風配合 / 真疾風配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+6 / +12</span></td>
+<td>勝負根性 S+ 且瞬發 D 以下，毛色為栗毛/尾花栗毛/栃栗毛/鹿毛。真疾風爆發力高達 <strong>+12 且根性極限突破</strong>！</td>
 </tr>
-<tr data-cat="special">
-<td><strong>雷嵐配合 (Lv1~3)</strong><br/><small class="text-muted">雷嵐配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+6 / +8 / +10</span></td>
-<td>種牡馬為【春嵐馬】× 繁殖牝馬為【春雷馬】，於首 3 年內配種</td>
-<td>依據雙方春嵐/春雷事件達成度提升爆發力</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>3冠配合 (三冠配合)</strong><br/><small style="color:var(--text-muted)">經典三冠名駒交配</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+4</span></td>
+<td>雙方皆為三冠得主（日本三冠、歐洲三冠、美國三冠、牝馬三冠等）。大幅提升精神力與勝負根性。</td>
 </tr>
-<tr data-cat="special">
-<td><strong>雙胞胎/面容相似配合</strong><br/><small class="text-muted">そっくりさん配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+2</span></td>
-<td>種牡馬與繁殖牝馬毛色與頭部白印（顔白徴）完全一致</td>
-<td>外觀匹配趣味配合</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>牝系配合 / 名牝系 / Ｗ名牝系配合</strong><br/><small style="color:var(--text-muted)">名牝系配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+2 / +3 / +4</span></td>
+<td>母馬所屬主流牝系 (+2) 或名牝系 (+3)；父母雙方皆出自名牝系則成立 W 名牝系配合 (<strong>+4 爆發力</strong>)。</td>
 </tr>
-<tr data-cat="special">
-<td><strong>宿敵配合 / 宿敵母父配合</strong><br/><small class="text-muted">ライバル配合 / ライバル配合母父</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+3 / +6</span></td>
-<td>父母互為宿敵關係，或種牡馬與【母父】互為宿敵關係</td>
-<td>1個閃電符號 +3，2個閃電符號(◎) +6，勝負根性上升</td>
-<td><span class="pill pill-version">歷代通屬</span></td>
+<tr>
+<td><strong>お披露目配合 (公開亮相配合)</strong><br/><small style="color:var(--text-muted)">新種馬公開配種配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+2</span></td>
+<td>該種牡馬供種第 1 年初度配種時成立。</td>
 </tr>
-<!-- 2024 / 2025 / 2026 最新理論 -->
-<tr data-cat="new">
-<td><strong>1/4 異系配合</strong><br/><small class="text-muted">1/4異系配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+3</span></td>
-<td>第 4 代 16 祖先分 4 組，3 組同親系，剩餘 1 組為異系親系且無近親</td>
-<td>固有特性遺傳機率大幅上升</td>
-<td><span class="pill pill-version">2024版新增</span></td>
+<tr>
+<td><strong>雷嵐配合 (真・雷嵐配合)</strong><br/><small style="color:var(--text-muted)">雷嵐天命配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+6 / +8 / +10</span></td>
+<td>自家產頂級春雷馬 × 流星馬配種。產駒極高機率繼承無敵固有特性與滿格次能力。</td>
 </tr>
-<tr data-cat="new">
-<td><strong>無特性昇華配合 (Lv1~3)</strong><br/><small class="text-muted">系統特性昇華配合（なし）</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+1 / +2 / +3</span></td>
-<td>父母及祖先世代皆為【無特性】系統（Lv3 覆蓋至第 3 代）</td>
-<td>精神力、賢度、健康大幅上升</td>
-<td><span class="pill pill-version">2024版新增</span></td>
+<tr>
+<td><strong>そっくりさん配合 (相似名駒配合)</strong><br/><small style="color:var(--text-muted)">外觀毛色流星相似配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+2</span></td>
+<td>父母毛色、面部流星斑紋特徵高度相似時成立。</td>
 </tr>
-<tr data-cat="new">
-<td><strong>特性融合配合 (SP・無 / ST・無)</strong><br/><small class="text-muted">系統特性融合配合(SP・無 / ST・無)</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+5 / +3</span></td>
-<td>一方至第 3 代全為 SP/ST 系，另一方至第 3 代全為無特性</td>
-<td>SP・無精神力上升；ST・無力量與精神力上升</td>
-<td><span class="pill pill-version">2024版新增</span></td>
+<tr>
+<td><strong>ライバル配合 / ライバル母父配合</strong><br/><small style="color:var(--text-muted)">宿敵配合 / 宿敵母父配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+3 / +6</span></td>
+<td>現役時期累積高宿敵關係點數之名馬交配。提升勝負根性與對抗爆發力。</td>
 </tr>
-<tr data-cat="new">
-<td><strong>基準交配</strong><br/><small class="text-muted">基準交配</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+2</span></td>
-<td>【繁殖牝馬位於日本】，單方血統內帶 3x3 近親（交配時為 4x4），另一方無近親</td>
-<td>瞬發力、草/泥地適應能力上升，成長上限機率突破</td>
-<td><span class="pill pill-version">2025新增</span></td>
+<tr>
+<td><strong>基準交配 (2025 日本限定 NEW)</strong><br/><small style="color:var(--text-muted)">基準交配理論</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+2</span></td>
+<td>日本母馬限定。單方帶 3×3 近親，另一方無近親。<strong>突破成長上限</strong>！</td>
 </tr>
-<tr data-cat="new">
-<td><strong>劑量理論</strong><br/><small class="text-muted">ドサージュ理論 (Dosage)</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+2</span></td>
-<td>【繁殖牝馬位於歐洲】，配合中父系自立系統積點達 32 點以上</td>
-<td>持久戰適應力提升，依種牡馬因子數量額外加成</td>
-<td><span class="pill pill-version">2025新增</span></td>
+<tr>
+<td><strong>ドサージュ理論 (Dosage 2025 歐洲限定 NEW)</strong><br/><small style="color:var(--text-muted)">劑量理論配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+2</span></td>
+<td>歐洲母馬限定。父系各代自立系統積點達 32 點以上成立。提升持久戰適應力。</td>
 </tr>
-<tr data-cat="new">
-<td><strong>拉斯穆森因子 (RF)</strong><br/><small class="text-muted">ラスムッセン・ファクター</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+2</span></td>
-<td>【繁殖牝馬位於美國】，成立母系近親或包含母系的全兄妹近親（濃度上限 3x3）</td>
-<td>消耗戰適應力上升，名牝系特性進化機率提升</td>
-<td><span class="pill pill-version">2025新增</span></td>
+<tr>
+<td><strong>ラスムッセン・ファクター (RF 2025 美國限定 NEW)</strong><br/><small style="color:var(--text-muted)">拉斯穆森因子配合</small></td>
+<td style="font-weight:bold; color:var(--accent-color);"><span class="pill pill-power">+2</span></td>
+<td>美國母馬限定。母系近親或全兄妹近親（濃度 ≤ 3×3）。名牝特性進化率大幅提升。</td>
 </tr>
-<tr data-cat="new" style="background-color:rgba(168,85,247,0.08);">
-<td><strong>始祖血脈融合配合</strong><br/><small class="text-muted">始祖血脈融合配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+8 ~ +12</span></td>
-<td>將 3 大始祖（Eclipse、Herod、Matchem）或古代始祖血統透過 4 代系譜重新連結融合</td>
-<td>啟動古代因子回溯，全副屬性史詩級增幅</td>
-<td><span class="pill pill-version" style="background:#7e22ce; color:#fff;">2026 NEW</span></td>
+<tr>
+<td><strong>始祖血脈融合配合 (2026 最新神級機制)</strong><br/><small style="color:var(--text-muted)">世界始祖系統回溯配合</small></td>
+<td style="font-weight:bold; color:var(--gold-color);"><span class="pill pill-gold">+8 ~ +12</span></td>
+<td>2026 最新頂級機制！Eclipse、Herod、Matchem 三大始祖血脈於 4 代內重新連結。啟動始祖融合特性！</td>
 </tr>
-<tr data-cat="new" style="background-color:rgba(168,85,247,0.08);">
-<td><strong>ドラマ因子ライン配合</strong><br/><small class="text-muted">ドラマ因子ライン配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+6</span></td>
-<td>父系直系連續 2 代以上持有活性化之ドラマ因子</td>
-<td>大幅強化產駒於大賽關鍵時刻（直線勝負、宿敵對決）的心理素質</td>
-<td><span class="pill pill-version" style="background:#7e22ce; color:#fff;">2026 NEW</span></td>
-</tr>
-<tr data-cat="new" style="background-color:rgba(168,85,247,0.08);">
-<td><strong>ドラマ因子融合配合</strong><br/><small class="text-muted">ドラマ因子融合配合</small></td>
-<td style="text-align: left;"><span class="pill pill-power">+10</span></td>
-<td>父母雙方皆帶有不同且已活性化之ドラマ因子並交配</td>
-<td>賦予產駒極高機率獲得強力固有特性與史詩級仔出值</td>
-<td><span class="pill pill-version" style="background:#7e22ce; color:#fff;">2026 NEW</span></td>
+<tr>
+<td><strong>ドラマ因子融合配合 (Drama 2026 NEW)</strong><br/><small style="color:var(--text-muted)">傳奇 Drama 因子配合</small></td>
+<td style="font-weight:bold; color:#ec4899;"><span class="pill pill-power">+10</span></td>
+<td>父母雙方皆帶有活性化之ドラマ因子。繼承史詩級固有特性並大幅拉升實戰爆發力！</td>
 </tr>
 </tbody>
 </table>
@@ -2337,129 +2232,111 @@ li {
 </thead>
 <tbody>
 <tr>
-<td><span class="factor-badge factor-speed">能力因子</span></td>
-<td><strong>速度 (Speed)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
-<td>提升產駒之極速上限與核心競走力</td>
-<td><strong>SP 71+</strong> (國內) / <strong>SP 74+</strong> (海外)</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#1d4ed8; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #3b82f6;">スピード</span></td>
+<td><img alt="速度活性化" src="images/icons/egg_speed.png" style="height:22px; vertical-align:middle; border-radius:3px;"/></td>
+<td><strong>速度 (Speed)</strong><br/><small style="color:var(--text-muted)">提升極速上限與核心競走力</small></td>
+<td><strong>SP 71+</strong> (國內) / <strong>74+</strong> (海外)</td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-stamina">能力因子</span></td>
-<td><strong>耐力 (Stamina)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
-<td>提升產駒耐力、持久力與長距離適性</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#b45309; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #f59e0b;">スタミナ</span></td>
+<td><img alt="耐力活性化" src="images/icons/egg_stamina.png" style="height:22px; vertical-align:middle; border-radius:3px;"/></td>
+<td><strong>耐力 (Stamina)</strong><br/><small style="color:var(--text-muted)">提升長距離適性與持久續航力</small></td>
 <td><strong>ST 53+</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-dash">能力因子</span></td>
-<td><strong>瞬發力 (Dash)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
-<td>提升彎道出彎加速、直線爆發與仕掛瞬發</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#047857; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #10b981;">瞬発力</span></td>
+<td><img alt="瞬發力活性化" src="images/icons/egg_dash.png" style="height:22px; vertical-align:middle; border-radius:3px;"/></td>
+<td><strong>瞬發力 (Dash)</strong><br/><small style="color:var(--text-muted)">提升出彎加速與直線極限爆發</small></td>
 <td>該能力達 <strong>A+ 級或以上</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-spirit">能力因子</span></td>
-<td><strong>勝負根性 (Spirit)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
-<td>提升直路並排搏鬥時的鬥志、死鬥抗壓與不服輸精神</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#be123c; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #f43f5e;">勝負根性</span></td>
+<td><img alt="根性活性化" src="images/icons/egg_spirit.png" style="height:22px; vertical-align:middle; border-radius:3px;"/></td>
+<td><strong>勝負根性 (Spirit)</strong><br/><small style="color:var(--text-muted)">提升直路死鬥鬥志與抗壓耐力</small></td>
 <td>該能力達 <strong>A+ 級或以上</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-power">能力因子</span></td>
-<td><strong>力量 (Power)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
-<td>提升陡坡爬坡力、不良重馬場抓地力與加速對抗</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#a21caf; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #d946ef;">パワー</span></td>
+<td><img alt="力量活性化" src="images/icons/egg_power.png" style="height:22px; vertical-align:middle; border-radius:3px;"/></td>
+<td><strong>力量 (Power)</strong><br/><small style="color:var(--text-muted)">提升爬坡衝刺與重馬場抓地力</small></td>
 <td>該能力達 <strong>A+ 級或以上</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-soft">能力因子</span></td>
-<td><strong>柔軟性 (Soft)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
-<td>大幅拓寬產駒之適性距離上限與下限範圍</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#0e7490; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #06b6d4;">柔軟</span></td>
+<td><img alt="柔軟活性化" src="images/icons/egg_soft.png" style="height:22px; vertical-align:middle; border-radius:3px;"/></td>
+<td><strong>柔軟性 (Soft)</strong><br/><small style="color:var(--text-muted)">拓寬距離適應範圍之上下限</small></td>
 <td>該能力達 <strong>A+ 級或以上</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#f97316; color:#fff;">特性因子</span></td>
-<td><strong>早熟化 (Early)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋</span></td>
-<td>產駒成長型偏向早熟，2歲出道即具備高峰即戰力</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#65a30d; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #84cc16;">早熟</span></td>
+<td><img alt="早熟活性化" src="images/icons/egg_early.png" style="height:22px; vertical-align:middle; border-radius:3px;"/></td>
+<td><strong>早熟化 (Early)</strong><br/><small style="color:var(--text-muted)">產駒成長型偏向早熟即戰力</small></td>
 <td>成長型為<strong>「早熟」</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#64748b; color:#fff;">特性因子</span></td>
-<td><strong>晚成化 (Late)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋</span></td>
-<td>產駒成長型偏向晚成，巔峰期延長至 5~7 歲古馬期</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#475569; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #94a3b8;">晩成</span></td>
+<td><img alt="晚成活性化" src="images/icons/egg_late.png" style="height:22px; vertical-align:middle; border-radius:3px;"/></td>
+<td><strong>晚成化 (Late)</strong><br/><small style="color:var(--text-muted)">產駒成長型偏向晚成古馬期</small></td>
 <td>成長型為<strong>「晚成 / 超晚成」</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#b91c1c; color:#fff;">特性因子</span></td>
-<td><strong>脾氣劣化 (気性難)</strong></td>
-<td><span class="pill pill-danger">💢 脾氣蛋</span></td>
-<td>產駒脾氣激躁易暴走漏閘，需高賢度/特定個性調教彌補</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#6b21a8; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #a855f7;">気性難</span></td>
+<td><img alt="脾氣活性化" src="images/icons/egg_temperament.png" style="height:22px; vertical-align:middle; border-radius:3px;"/></td>
+<td><strong>脾氣劣化 (Temperament)</strong><br/><small style="color:var(--text-muted)">脾氣激躁，需高賢度騎手駕馭</small></td>
 <td>氣性為<strong>「激 / 超激」</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-world">系統因子</span></td>
-<td><strong>世界種牡馬 (彩虹底)</strong></td>
+<td><img alt="世界系統 (世界種牡馬)" src="images/icons/horse_world.png" style="height:24px; vertical-align:middle; border-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,0.4);"/></td>
 <td>/</td>
-<td>該種牡馬自立世界系統，5大副屬性爆發加成<strong>直接翻倍 (2倍)</strong></td>
+<td><strong>該種牡馬為世界系統 (世界種牡馬)</strong><br/><small style="color:var(--text-muted)">5大副屬性爆發加成直接翻倍 (2倍)</small></td>
 <td>自立世界系統確立 (全球支配率 ≥ 15%)</td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-gold">系統因子</span></td>
-<td><strong>大種牡馬 (金底)</strong></td>
+<td><img alt="親系統 (大種牡馬)" src="images/icons/horse_parent.png" style="height:24px; vertical-align:middle; border-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,0.4);"/></td>
 <td>/</td>
-<td>該種牡馬昇格為親系統，奠定完全血脈活性化與親系 Linebreed</td>
+<td><strong>該種牡馬為親系統 (大種牡馬)</strong><br/><small style="color:var(--text-muted)">確立完全血脈活性化與親系 Linebreed</small></td>
 <td>自立親系統昇格 (單區 ≥ 12% 或全球 ≥ 10%)</td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-silver">系統因子</span></td>
-<td><strong>名種牡馬 (銀底)</strong></td>
+<td><img alt="子系統 (名種牡馬)" src="images/icons/horse_child.png" style="height:24px; vertical-align:middle; border-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,0.4);"/></td>
 <td>/</td>
-<td>該種牡馬確立為子系統，提升血統活力與自產爆發力</td>
+<td><strong>該種牡馬為子系統 (名種牡馬)</strong><br/><small style="color:var(--text-muted)">提升血統活力與自產爆發力</small></td>
 <td>自立子系統確立 (單區 ≥ 5% 或全球 ≥ 2%)</td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#0284c7; color:#fff;">系統屬性</span></td>
-<td><strong>SP 系統 (Speed Line)</strong></td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#0284c7; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #38bdf8;">SP系</span></td>
 <td>/</td>
-<td>血統風格偏向極速化，可成立 SP 昇華配合</td>
-<td>系統確立時由父系與母系能力評定 SP 屬性</td>
+<td><strong>SP 系統，趨向速度化</strong><br/><small style="color:var(--text-muted)">可成立 SP 昇華配合</small></td>
+<td>/</td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#dc2626; color:#fff;">系統屬性</span></td>
-<td><strong>ST 系統 (Stamina Line)</strong></td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#b45309; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #f59e0b;">ST系</span></td>
 <td>/</td>
-<td>血統風格偏向耐力與持久力，可成立 ST 昇華配合</td>
-<td>系統確立時由父系與母系能力評定 ST 屬性</td>
+<td><strong>ST 系統，趨向高耐力</strong><br/><small style="color:var(--text-muted)">可成立 ST 昇華配合</small></td>
+<td>/</td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#475569; color:#fff;">血統規模</span></td>
-<td><strong>零細血統 (Minor Line)</strong></td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#334155; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #64748b;">零細</span></td>
 <td>/</td>
-<td>該系統所在地域為弱勢，可成立零細配合、活力補完與活性化配合</td>
-<td>該地域血統支配率 <strong>≤ 1.0%</strong></td>
+<td><strong>零細血統，該系統所在地域為弱勢</strong><br/><small style="color:var(--text-muted)">可成立零細交配、活力補完配合</small></td>
+<td>該地域血統支配率 <strong>1% 或以下</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#16a34a; color:#fff;">血統規模</span></td>
-<td><strong>流行血統 (Popular Line)</strong></td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#15803d; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #22c55e;">流行</span></td>
 <td>/</td>
-<td>該系統所在地域為強勢主流，可成立雄系活性化等配合</td>
-<td>該地域血統支配率 <strong>≥ 10.0%</strong></td>
+<td><strong>流行血統，該系統所在地域為強勢</strong><br/><small style="color:var(--text-muted)">可成立雄系活性化等主流配合</small></td>
+<td>該地域血統支配率 <strong>10% 或以上</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#7c3aed; color:#fff;">適性範圍</span></td>
-<td><strong>地域適性 / 世界適性 (Turf)</strong></td>
+<td><span style="font-size:1.05rem;">🇯🇵 🇺🇸 🇪🇺 🌈</span></td>
 <td>/</td>
-<td>決定草地草質適性範圍：日本/美國偏輕(左1~5)，歐洲偏重(右7~11)，世界系統大幅拓寬草地適應範圍</td>
-<td>出生所屬地域及世界系統確立加成</td>
+<td><strong>地域適性 / 世界適性，決定草地適性範圍</strong><br/><small style="color:var(--text-muted)">日本、美國偏向輕(左)，歐洲偏向重(右)，世界系統擴闊草地適性範圍</small></td>
+<td>/</td>
 </tr>
 <tr>
 <td><span class="factor-badge factor-drama">2026 NEW</span></td>
-<td><strong>ドラマ因子 (傳奇因子)</strong></td>
 <td>/</td>
-<td>2026 最新要素！受胎活性化後誘發頂級 Drama 融合與史詩級固有特性回溯繼承</td>
+<td><strong>ドラマ因子 (傳奇因子)</strong><br/><small style="color:var(--text-muted)">誘發頂級 Drama 融合與史詩級固有特性回溯</small></td>
 <td>現役達成傳奇生涯成就並確立子系或主流名牝系</td>
 </tr>
 </tbody>
@@ -2713,6 +2590,106 @@ li {
 </div>
 <div id="sysContent" style="font-size:12px; color:var(--text-main); line-height:1.6;"></div>
 </div>
+</div>
+<!-- ==================== 牝系確立與全 11 種牝系特性因子圖鑑 (wp10line.htm) ==================== -->
+<h3 style="font-size:1.05rem; color:var(--gold-color); margin:28px 0 12px; display:flex; align-items:center; gap:8px; border-bottom:1px solid rgba(234,179,8,0.3); padding-bottom:6px;">
+<i class="fa-solid fa-venus-mars"></i> 牝系確立機制（主流牝系・名牝系）與全 11 種牝系特性因子完全大表
+        </h3>
+<p style="font-size:0.85rem; line-height:1.75; color:var(--text-color); margin-bottom:14px;">
+            牝系為繁殖牝馬端建立之血統下線系統（母 ➔ 母母 ➔ 母母母...）。可於遊戲主畫面「記録」➔「牝系図」中查閱。昇格為<strong>「主流牝系」</strong>或巔峰<strong>「名牝系」</strong>後，能大幅增加配合爆發力，並擁有牝系因子將關鍵特性傳承給後代！
+        </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; margin-bottom:18px;">
+<!-- 主流牝系條件 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(244,114,182,0.4);">
+<div style="font-weight:bold; color:#f472b6; font-size:0.95rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-star"></i> 主流牝系成立條件
+                </div>
+<ol style="font-size:0.8rem; line-height:1.75; margin:0; padding-left:20px; color:var(--text-color);">
+<li><strong>連續 3 代子嗣</strong>都曾勝出重賞 (G1~G3)，及</li>
+<li><strong>國內產始祖</strong>於 4 代之內最少有 5 匹勝出重賞（當中最少 1 匹勝出 G1）；或<strong>外國產始祖</strong>於 4 代之內最少有 10 匹勝出重賞（當中最少 5 匹勝出 G1），及</li>
+<li>始祖的 <strong>2 個分支或以上</strong>的後代皆勝出重賞。</li>
+</ol>
+</div>
+<!-- 名牝系條件 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(234,179,8,0.4);">
+<div style="font-weight:bold; color:#facc15; font-size:0.95rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-crown"></i> 名牝系成立條件 (極致殿堂)
+                </div>
+<ol style="font-size:0.8rem; line-height:1.75; margin:0; padding-left:20px; color:var(--text-color);">
+<li><strong>牝系所屬馬達 200 匹或以上</strong> (最困難點：若旗下牝馬自立新主流牝系則會脫離計算)，及</li>
+<li>牝系<strong>連續 3 年或以上</strong>達到 A 或 S 級評價，及</li>
+<li>牝系所屬最少有 <strong>5 匹現役競走馬</strong>，且當年度最少 <strong>1 匹勝出 G1</strong>，及</li>
+<li>牝系所屬最少有 <strong>5 匹現役繁殖牝馬</strong>。</li>
+</ol>
+</div>
+</div>
+<div class="table-responsive" style="margin-bottom:24px;">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:140px;">牝系特性因子</th>
+<th style="min-width:160px;">日文原名</th>
+<th style="min-width:420px;">傳承遺傳效果與能力加成說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="pill pill-gold">大舞台</span></td>
+<td><strong>大舞台</strong></td>
+<td>產駒極高機率直接獲得「大舞台」特性（大賽發揮超常戰力）。</td>
+</tr>
+<tr>
+<td><span class="pill pill-gold">牝馬</span></td>
+<td><strong>牝馬</strong></td>
+<td>牝馬產駒極高機率獲得「牡牝混合」特性（面對牡馬無對抗減成）。</td>
+</tr>
+<tr>
+<td><span class="pill pill-gold">根幹距離</span></td>
+<td><strong>根幹距離</strong></td>
+<td>產駒極高機率獲得「根幹距離」特性（1200/1600/2000/2400m 戰力提升）。</td>
+</tr>
+<tr>
+<td><span class="pill pill-gold">非根幹距離</span></td>
+<td><strong>非根幹距離</strong></td>
+<td>產駒極高機率獲得「非根幹距離」特性（1400/1800/2200/2500m 戰力提升）。</td>
+</tr>
+<tr>
+<td><span class="pill pill-gold">意外性</span></td>
+<td><strong>意外性</strong></td>
+<td>產駒極高機率獲得「大駆け」特性（人氣偏低時爆發驚人末腳）。</td>
+</tr>
+<tr>
+<td><span class="pill pill-gold">海外遠征</span></td>
+<td><strong>海外遠征</strong></td>
+<td>產駒極高機率獲得「海外遠征」特性（遠征海外賽事無水土不服減成）。</td>
+</tr>
+<tr>
+<td><span class="pill pill-cyan">スタミナ</span></td>
+<td><strong>スタミナ (耐力)</strong></td>
+<td>產駒耐力 (Stamina) 屬性先天顯著上升。</td>
+</tr>
+<tr>
+<td><span class="pill pill-cyan">パワー</span></td>
+<td><strong>パワー (力量)</strong></td>
+<td>產駒力量 (Power) 屬性先天顯著上升。</td>
+</tr>
+<tr>
+<td><span class="pill pill-cyan">柔軟性</span></td>
+<td><strong>柔軟性</strong></td>
+<td>產駒柔軟性屬性先天顯著上升，拓寬距離適應範圍。</td>
+</tr>
+<tr>
+<td><span class="pill pill-cyan">ダート</span></td>
+<td><strong>ダート (泥地適性)</strong></td>
+<td>產駒泥地 (Dirt) 賽道抓地適性先天顯著上升。</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.08);">
+<td><span class="pill pill-version" style="background:#eab308; color:#000; font-weight:bold;">👑 名牝</span></td>
+<td><strong>名牝 (極致)</strong></td>
+<td><strong>以上所有牝系特性因子效果全面強化上升，且交配時先天爆發力額外 ＋３！</strong></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </section>
