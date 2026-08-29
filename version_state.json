@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.49",
+  "current_version": "v01.50",
   "history": [
     {
       "version": "v01.01",
@@ -245,6 +245,11 @@
       "version": "v01.49",
       "date": "2026-08-29",
       "description": "Feature: Add direct jump hyperlinks to all breeding theories in Chapter 3 master table and enrich all detail chapters with colorful tables and preserved pedigree diagrams"
+    },
+    {
+      "version": "v01.50",
+      "date": "2026-08-29",
+      "description": "UI: Refine Chapter 3 theory links to clean sky-blue text like horse names and render explosion column as clean plain text without box borders"
     }
   ]
 }
