@@ -62,7 +62,7 @@
             }
         }
 
-        async function clearPwaCache() {
+        async async async function clearPwaCache() {
             if (!confirm("確定要清除快取並重新載入最新版本嗎？")) return;
             showLoading("🧹 正在清除快取並重新載入最新版本...");
             try {
@@ -1615,7 +1615,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.61</span>
+        <span class="version-badge">v01.62</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -9948,56 +9948,49 @@ li {
     <div id="pillar-tracker" class="pillar-content" style="display:none;">
         <div class="pillar-header-card">
             <h2>📊 實戰 13 大跑法比賽戰績紀錄儀 (Race Tactics Tracker)</h2>
-            <p>即時紀錄賽駒在 13 種跑法下之賽事名次，支援本地自動持久化儲存、Google Sheets 雲端同步與 CSV 匯出/匯入</p>
+            <p>1 行完整對應 1 匹馬在該賽事的 13 種跑法實戰名次，選定月份與第幾週自動帶出正統重賞賽事，支援 Google Sheets 雲端同步與 CSV 匯出</p>
         </div>
 
-        <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:20px; margin-bottom:24px;">
-            <h3 style="color:var(--accent-color); font-size:1.05rem; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
-                <i class="fa-solid fa-pen-to-square"></i> 填寫賽事與 13 跑法名次表單
+        <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:22px; margin-bottom:24px;">
+            <h3 style="color:var(--accent-color); font-size:1.1rem; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+                <i class="fa-solid fa-pen-to-square"></i> 填寫賽事與 13 跑法實戰名次表單
             </h3>
             
             <input type="hidden" id="editingRecordId" value="">
 
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:14px; margin-bottom:18px;">
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap:14px; margin-bottom:20px;">
                 <div class="filter-group">
                     <label for="trackYear"><i class="fa-solid fa-calendar"></i> 年度 (Year)</label>
                     <input type="number" id="trackYear" class="filter-control" value="1968" min="1968" max="2035">
                 </div>
 
                 <div class="filter-group">
+                    <label for="trackMonth"><i class="fa-solid fa-calendar-days"></i> 月份 (Month)</label>
+                    <select id="trackMonth" class="filter-control" onchange="onDateSelectionChange()">
+<option value="1月">1月</option><option value="2月">2月</option><option value="3月">3月</option><option value="4月">4月</option><option value="5月" selected>5月</option><option value="6月">6月</option><option value="7月">7月</option><option value="8月">8月</option><option value="9月">9月</option><option value="10月">10月</option><option value="11月">11月</option><option value="12月">12月</option>                    </select>
+                </div>
+
+                <div class="filter-group">
                     <label for="trackWeek"><i class="fa-solid fa-clock"></i> 週別 (Week)</label>
-                    <select id="trackWeek" class="filter-control">
-                        <!-- Weeks generated dynamically -->
-                    </select>
+                    <select id="trackWeek" class="filter-control" onchange="onDateSelectionChange()">
+<option value="1週">1週</option><option value="2週">2週</option><option value="3週">3週</option><option value="4週">4週</option><option value="5週" selected>5週</option>                    </select>
                 </div>
 
                 <div class="filter-group" style="grid-column: span 2;">
-                    <label for="trackRace"><i class="fa-solid fa-trophy"></i> 比賽名稱 (Race Name)</label>
+                    <label for="trackRace"><i class="fa-solid fa-trophy"></i> 比賽名稱 (Race Name - 依月份週別推薦)</label>
                     <div style="display:flex; gap:6px;">
-                        <select id="trackRaceSelect" class="filter-control" style="width:50%;" onchange="if(this.value!='CUSTOM') document.getElementById('trackRace').value=this.value;">
-                            <option value="日本ダービー (東京・芝2400m)">🇯🇵 日本ダービー (日本德比)</option>
-                            <option value="有馬記念 (中山・芝2500m)">🇯🇵 有馬記念 (有馬紀念)</option>
-                            <option value="ジャパンカップ (東京・芝2400m)">🇯🇵 ジャパンC (日本盃)</option>
-                            <option value="皐月賞 (中山・芝2000m)">🇯🇵 皐月賞 (皋月賞)</option>
-                            <option value="菊花賞 (京都・芝3000m)">🇯🇵 菊花賞 (菊花賞)</option>
-                            <option value="天皇賞・秋 (東京・芝2000m)">🇯🇵 天皇賞・秋 (秋天)</option>
-                            <option value="天皇賞・春 (京都・芝3200m)">🇯🇵 天皇賞・春 (春天)</option>
-                            <option value="宝塚記念 (阪神・芝2200m)">🇯🇵 宝塚記念 (寶塚紀念)</option>
-                            <option value="安田記念 (東京・芝1600m)">🇯🇵 安田記念 (安田紀念)</option>
-                            <option value="マイルCS (京都・芝1600m)">🇯🇵 マイルCS (一哩冠軍賽)</option>
-                            <option value="凱旋門賞 (巴黎ロンシャン・芝2400m)">🇫🇷 凱旋門賞 (凱旋門大賽)</option>
-                            <option value="BCクラシック (美・ダ2000m)">🇺🇸 BCクラシック (育馬者盃經典)</option>
-                            <option value="ドバイワールドC (杜拜・ダ2000m)">🇦🇪 ドバイワールドC (杜拜世界盃)</option>
-                            <option value="香港カップ (沙田・芝2000m)">🇭🇰 香港カップ (香港盃)</option>
-                            <option value="CUSTOM">✏️ 自定義賽事名稱...</option>
+                        <select id="trackRaceSelect" class="filter-control" style="width:55%;" onchange="onTrackRaceSelectChange()">
+                            <option value="★ 日本ダービー・東京優駿 (東京・芝2400m・G1)">★ 日本ダービー・東京優駿 (東京・芝2400m・G1)</option>
+                            <option value="目黒記念 (東京・芝2500m・G2)">目黒記念 (東京・芝2500m・G2)</option>
+                            <option value="CUSTOM">✏️ 手動自填賽事名稱...</option>
                         </select>
-                        <input type="text" id="trackRace" class="filter-control" value="日本ダービー (東京・芝2400m)" placeholder="或自行輸入賽事名稱...">
+                        <input type="text" id="trackRace" class="filter-control" value="★ 日本ダービー・東京優駿 (東京・芝2400m・G1)" placeholder="或自填賽事名稱...">
                     </div>
                 </div>
 
                 <div class="filter-group">
                     <label for="trackHorse"><i class="fa-solid fa-horse"></i> 賽駒名稱 (Horse)</label>
-                    <input type="text" id="trackHorse" class="filter-control" placeholder="如: オーハヤブサ, テイオー...">
+                    <input type="text" id="trackHorse" class="filter-control" placeholder="如: オーハヤブサ, トウカイテイオー...">
                 </div>
 
                 <div class="filter-group">
@@ -10006,88 +9999,143 @@ li {
                 </div>
             </div>
 
-            <!-- 13 跑法名次填寫矩陣 -->
-            <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:16px; margin-bottom:18px;">
-                <div style="font-weight:bold; color:var(--gold-color); font-size:0.92rem; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
-                    <i class="fa-solid fa-list-ol"></i> 13 種跑法實戰名次矩陣填寫 (可填入名次如 1, 2, 3 或留空未測試)
+            <!-- 13 跑法名次平鋪填寫矩陣 -->
+            <div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-accent); border-radius:10px; padding:18px; margin-bottom:20px;">
+                <div style="font-weight:bold; color:var(--gold-color); font-size:0.95rem; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-list-ol"></i> 13 種跑法實戰名次平鋪輸入 (請直接填入各跑法實跑名次 1~18 着，未測試可留空)
                 </div>
-                <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap:10px;" id="tacticsInputsContainer">
-                    <!-- 13 tactics inputs generated dynamically -->
+                <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap:12px;" id="tacticsInputsContainer">
+                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">大逃げ <small style="color:var(--text-muted); font-size:0.75rem;">(狂奔大逃)</small></div>
+                            <span class="pill pill-safe" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">通常</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <input type="number" id="t_oonige" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
+                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">逃げ <small style="color:var(--text-muted); font-size:0.75rem;">(領放逃領)</small></div>
+                            <span class="pill pill-safe" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">通常</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <input type="number" id="t_nige" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
+                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">積極策 <small style="color:var(--text-muted); font-size:0.75rem;">(積極搶先)</small></div>
+                            <span class="pill pill-danger" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">特殊[赤]</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <input type="number" id="t_sekkyoku" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
+                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">前付け <small style="color:var(--text-muted); font-size:0.75rem;">(前位壓制)</small></div>
+                            <span class="pill pill-danger" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">特殊[赤]</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <input type="number" id="t_maezuke" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
+                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">好位抜出 <small style="color:var(--text-muted); font-size:0.75rem;">(好位突圍)</small></div>
+                            <span class="pill pill-danger" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">特殊[赤]</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <input type="number" id="t_kouinukedashi" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
+                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">先行 <small style="color:var(--text-muted); font-size:0.75rem;">(先行跟前)</small></div>
+                            <span class="pill pill-safe" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">通常</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <input type="number" id="t_senkou" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
+                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">イン狙い <small style="color:var(--text-muted); font-size:0.75rem;">(內線突擊)</small></div>
+                            <span class="pill pill-gold" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">限定[金]</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <input type="number" id="t_inner" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
+                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">差し <small style="color:var(--text-muted); font-size:0.75rem;">(居中差追)</small></div>
+                            <span class="pill pill-safe" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">通常</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <input type="number" id="t_sashi" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
+                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">まくり <small style="color:var(--text-muted); font-size:0.75rem;">(外側捲入)</small></div>
+                            <span class="pill pill-gold" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">限定[金]</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <input type="number" id="t_makuri" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
+                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">馬群待機 <small style="color:var(--text-muted); font-size:0.75rem;">(馬群待機)</small></div>
+                            <span class="pill pill-danger" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">特殊[赤]</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <input type="number" id="t_baguntaiki" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
+                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">大外一気 <small style="color:var(--text-muted); font-size:0.75rem;">(大外一氣)</small></div>
+                            <span class="pill pill-danger" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">特殊[赤]</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <input type="number" id="t_oosotoikki" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
+                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">直線強襲 <small style="color:var(--text-muted); font-size:0.75rem;">(直線強襲)</small></div>
+                            <span class="pill pill-danger" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">特殊[赤]</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <input type="number" id="t_chokusenkyoushuu" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
+                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">追込 <small style="color:var(--text-muted); font-size:0.75rem;">(後追留後)</small></div>
+                            <span class="pill pill-safe" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">通常</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <input type="number" id="t_oikomi" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
+                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- 操作按鈕列 -->
-            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-                <button class="header-btn btn-gold" id="btnSaveTrackRecord" onclick="saveTacticsRecord()" style="padding:8px 20px; font-size:0.9rem;">
-                    <i class="fa-solid fa-floppy-disk"></i> <span id="saveBtnText">新增這筆戰績紀錄</span>
-                </button>
-                <button class="header-btn" onclick="clearTacticsForm()" style="padding:8px 16px; font-size:0.85rem;">
-                    <i class="fa-solid fa-rotate-left"></i> 清空表單
-                </button>
-            </div>
-        </div>
-
-        <!-- Google Sheets 雲端同步與備份卡片 -->
-        <div style="background:var(--panel-bg); border:1px solid var(--border-accent); border-radius:12px; padding:18px 20px; margin-bottom:24px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
-                <h3 style="color:#38bdf8; font-size:0.95rem; margin:0; display:flex; align-items:center; gap:8px;">
-                    <i class="fa-solid fa-cloud-arrow-up"></i> Google Sheets 雲端同步與備份管理
-                </h3>
-                <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                    <button class="header-btn" onclick="syncToGoogleSheets()" style="background:#059669; color:#fff; border:none; padding:6px 14px; font-size:0.82rem;">
-                        <i class="fa-solid fa-bolt"></i> 🚀 一鍵同步至 Google Sheets
-                    </button>
-                    <button class="header-btn" onclick="exportTacticsCsv()" style="padding:6px 12px; font-size:0.82rem;">
-                        <i class="fa-solid fa-file-csv"></i> 匯出 CSV 檔
-                    </button>
-                    <button class="header-btn" onclick="exportTacticsJson()" style="padding:6px 12px; font-size:0.82rem;">
-                        <i class="fa-solid fa-download"></i> 匯出 JSON
-                    </button>
-                    <label class="header-btn" style="padding:6px 12px; font-size:0.82rem; cursor:pointer;">
-                        <i class="fa-solid fa-upload"></i> 匯入 JSON
-                        <input type="file" id="importJsonInput" accept=".json" style="display:none;" onchange="importTacticsJson(event)">
-                    </label>
-                </div>
-            </div>
-
-            <div style="margin-bottom:8px;">
-                <label for="gSheetUrl" style="font-size:0.8rem; color:var(--text-muted);">🔗 Google Apps Script Web App URL (選填，若有部屬 Apps Script 可填入直接雙向寫入 Google 試算表)：</label>
-                <input type="text" id="gSheetUrl" class="filter-control" placeholder="https://script.google.com/macros/s/AKfycbx.../exec" style="font-size:0.82rem; padding:6px 10px; margin-top:4px;" onchange="localStorage.setItem('WP10_GSHEET_URL', this.value)">
-            </div>
-            <div id="syncStatusMsg" style="font-size:0.8rem; color:#10b981; margin-top:4px;"></div>
-        </div>
-
-        <!-- 戰績紀錄總表 -->
-        <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:20px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
-                <h3 style="color:var(--text-main); font-size:1rem; margin:0; display:flex; align-items:center; gap:8px;">
-                    <i class="fa-solid fa-table-list"></i> 跑法戰績紀錄清單 (共 <span id="trackRecordCount" style="color:var(--gold-color);">0</span> 筆)
-                </h3>
-                <div>
-                    <input type="text" id="trackSearchFilter" class="filter-control" placeholder="🔍 搜尋馬名/賽事/騎手..." style="font-size:0.82rem; padding:5px 10px; width:220px;" oninput="renderTacticsTable()">
-                </div>
-            </div>
-
-            <div class="table-responsive">
-                <table class="data-table" id="tacticsRecordsTable">
-                    <thead>
-                        <tr>
-                            <th style="min-width:110px;">年度/週別</th>
-                            <th style="min-width:180px;">賽事名稱</th>
-                            <th style="min-width:130px;">賽駒名稱</th>
-                            <th style="min-width:110px;">騎手</th>
-                            <th style="min-width:440px;">13 跑法實戰名次清單</th>
-                            <th style="min-width:140px;">最優推薦跑法</th>
-                            <th style="min-width:100px; text-align:center;">操作</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tacticsRecordsBody">
-                        <!-- Dynamic Records -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
 
 </body>
 </html>

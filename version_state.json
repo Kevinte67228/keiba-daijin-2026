@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.61",
+  "current_version": "v01.62",
   "history": [
     {
       "version": "v01.01",
@@ -305,6 +305,11 @@
       "version": "v01.61",
       "date": "2026-08-29",
       "description": "Feature: 48-Week Auto-Linked Race Calendar in Tactics Tracker, Pre-rendered 13 Tactics UI, and Full 24 Foundation Ranks (80 Broodmares) in Ch37"
+    },
+    {
+      "version": "v01.62",
+      "date": "2026-08-29",
+      "description": "Fix: Make clearPwaCache async, add authentic Winning Post Month + Week dropdowns with auto race recommendations, and pre-render 13 tactics inputs directly in static HTML"
     }
   ]
 }
