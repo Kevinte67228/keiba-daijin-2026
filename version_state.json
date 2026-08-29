@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.22",
+  "current_version": "v01.23",
   "history": [
     {
       "version": "v01.01",
@@ -110,6 +110,11 @@
       "version": "v01.22",
       "date": "2026-08-29",
       "description": "Feature: Integrate WP10 Descendants & Dynasty Progression Guide (子孫誕生・教育方針・進路培育・S/L秘技) into Chapter 34"
+    },
+    {
+      "version": "v01.23",
+      "date": "2026-08-29",
+      "description": "Refactor: Re-architect entire strategy encyclopedia into 7 clean logical pillars and 36 strictly-mapped chapters"
     }
   ]
 }
