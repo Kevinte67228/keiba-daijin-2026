@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.24",
+  "current_version": "v01.25",
   "history": [
     {
       "version": "v01.01",
@@ -120,6 +120,11 @@
       "version": "v01.24",
       "date": "2026-08-29",
       "description": "Refactor: Fix top navigation tabs rendering to 7 pillars and implement pixel-perfect chapter button layout with icon, badge and text containers"
+    },
+    {
+      "version": "v01.25",
+      "date": "2026-08-29",
+      "description": "Fix: Enforce strict 3-column alignment (fixed icon, fixed gold chapter num, and aligned title) for all 36 chapter jump buttons"
     }
   ]
 }
