@@ -1,10 +1,15 @@
 {
-  "current_version": "v01.01",
+  "current_version": "v01.02",
   "history": [
     {
       "version": "v01.01",
       "date": "2026-08-29",
       "description": "Initial baseline release with 15,389 horses database, 35 chapters encyclopedia, unified 12 columns, and AI comment detail modals."
+    },
+    {
+      "version": "v01.02",
+      "date": "2026-08-29",
+      "description": "Add 1967 year, align outer table columns with image, and support full wp10-26-new2.html detail fields in modal"
     }
   ]
 }

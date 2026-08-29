@@ -885,7 +885,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.01</span>
+        <span class="version-badge">v01.02</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -934,7 +934,7 @@ li {
         </div>
         <div class="section-body" style="padding-bottom:6px;">
             <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
-                涵蓋 1968 ~ 2023 年共 15,389 匹全史實馬、7 大年度推薦分類、35+ 欄位能力詳細卡片與 AI 戰略評析。
+                涵蓋 1967 ~ 2023 年共 15,389 匹全史實馬、7 大年度推薦分類、35+ 欄位能力詳細卡片與 AI 戰略評析。
             </p>
 
             <!-- 8大類別頁籤 - 手機 2×2 滑動佈局 -->
@@ -956,7 +956,7 @@ li {
                 <div class="filter-group">
                     <label for="filterYear">📅 登場年度 (Year)</label>
                     <select id="filterYear" class="filter-control">
-                        <option value="ALL">全部年份 (1968 ~ 2023)</option>
+                        <option value="ALL">全部年份 (1967 ~ 2023)</option>
                     </select>
                 </div>
 
@@ -5616,15 +5616,16 @@ li {
             const cols = [
                 { key: "year", title: "登場" },
                 { key: "name", title: "馬名" },
-                { key: "stars", title: "推薦" },
-                { key: "region", title: "地區" },
-                { key: "ticket", title: "馬札" },
+                { key: "ticket", title: "札" },
                 { key: "sex", title: "性別" },
-                { key: "sp", title: "SP 速度" },
-                { key: "distance", title: "距離適性" },
+                { key: "sp", title: "SP" },
+                { key: "subpara_total", title: "サ" },
+                { key: "growth", title: "成型(威力)" },
                 { key: "grass", title: "芝" },
                 { key: "dirt", title: "ダ" },
-                { key: "growth", title: "成長/仔出" },
+                { key: "distance", title: "距離適性" },
+                { key: "stars", title: "推薦" },
+                { key: "region", title: "地區" },
                 { key: "action", title: "詳情" }
             ];
 
@@ -5666,7 +5667,7 @@ li {
             if (items.length === 0) {
                 window._CURRENT_RENDERED_ITEMS = [];
                 const tr = document.createElement("tr");
-                tr.innerHTML = `<td colspan="12" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
+                tr.innerHTML = `<td colspan="13" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
                 tbody.appendChild(tr);
                 return;
             }
@@ -5678,27 +5679,29 @@ li {
             slice.forEach((item, idx) => {
                 const tr = document.createElement("tr");
                 const spVal = item.sp || item.matched_sp || "-";
+                const subVal = item.subpara_total || "-";
                 const regionVal = item.region || (currentTab.includes("海外") ? "海外" : "日本");
                 let growthVal = item.growth || "-";
-                if (item.foal_count) {
+                if (item.growth_cap && item.growth_cap !== "-" && item.growth_cap !== "普通") {
+                    growthVal += `(${item.growth_cap})`;
+                } else if (item.foal_count) {
                     growthVal = "仔出 " + item.foal_count;
-                } else if (item.foal_quality) {
-                    growthVal = "仔出 " + item.foal_quality;
                 }
                 const sexVal = item.sex === "牡" ? '<span style="color:#60a5fa; font-weight:bold;">牡</span>' : (item.sex === "牝" ? '<span style="color:#f472b6; font-weight:bold;">牝</span>' : (item.sex || "-"));
 
                 tr.innerHTML = `
                     <td style="text-align:center;">${item.year || "-"}</td>
                     <td><a class="horse-link" onclick="openModalByIndex(${idx})">${item.name || "-"}</a></td>
-                    <td style="text-align:center;">${renderStarsBadge(item.stars)}</td>
-                    <td style="text-align:center;">${regionVal}</td>
                     <td style="text-align:center;">${renderTicketBadge(item.ticket)}</td>
                     <td style="text-align:center;">${sexVal}</td>
                     <td style="text-align:center; font-weight:bold; color:var(--accent-color);">${spVal}</td>
-                    <td style="text-align:center;">${item.distance || "-"}</td>
+                    <td style="text-align:center; font-weight:bold; color:var(--gold-color);">${subVal}</td>
+                    <td style="text-align:center;">${growthVal}</td>
                     <td style="text-align:center;">${renderTrackBadge(item.grass)}</td>
                     <td style="text-align:center;">${renderTrackBadge(item.dirt)}</td>
-                    <td style="text-align:center;">${growthVal}</td>
+                    <td style="text-align:center;">${item.distance || "-"}</td>
+                    <td style="text-align:center;">${renderStarsBadge(item.stars)}</td>
+                    <td style="text-align:center;">${regionVal}</td>
                     <td style="text-align:center;"><button class="btn-detail" onclick="openModalByIndex(${idx})">詳情</button></td>
                 `;
                 tbody.appendChild(tr);
@@ -5706,32 +5709,17 @@ li {
 
             if (items.length > displayLimit) {
                 const trMore = document.createElement("tr");
-                trMore.innerHTML = `<td colspan="12" style="text-align:center; padding:15px; color:var(--accent-color); font-weight:bold;">已顯示前 200 筆（共 ${items.length.toLocaleString()} 筆）。請縮小篩選條件以精確瀏覽。</td>`;
+                trMore.innerHTML = `<td colspan="13" style="text-align:center; padding:15px; color:var(--accent-color); font-weight:bold;">已顯示前 200 筆（共 ${items.length.toLocaleString()} 筆）。請縮小篩選條件以精確瀏覽。</td>`;
                 tbody.appendChild(trMore);
             }
         }
 
-        function generateAIComment(h) {
-            if (!h) return "尚無評語";
-            const parts = [];
-            const sp = parseInt(h.sp || h.matched_sp) || 0;
-            const sub = parseInt(h.subpara_total) || 0;
-            if (sp >= 75) parts.push(`⚡ 擁有極高之 SP 速度能力 (${sp})，具備奪取頂級 G1 之強大即戰力。`);
-            else if (sp >= 70) parts.push(`🐎 速度屬性優良 (${sp})，於重賞賽事具備高度競爭力。`);
-            if (sub >= 75) parts.push(`💎 次能力極其全面均衡 (次能力合計 ${sub})，無明顯弱點。`);
-            if (h.track && h.track.includes("◎")) parts.push(`🎯 賽道適性出色 (${h.track})，發揮極其穩定。`);
-            if (h.traits && h.traits !== "無特殊特性" && h.traits !== "-") parts.push(`✨ 具備關鍵特性「${h.traits}」，關鍵戰局往往能發揮奇效。`);
-            if (h.umarsonality && h.umarsonality !== "-") parts.push(`🐴 馬匹個性為「${h.umarsonality}」。`);
-            if (h.foal_quality && parseInt(h.foal_quality) >= 6) parts.push(`🧬 具備高繁殖潛力 (仔出評級 ${h.foal_quality})，退役後極具配種價值。`);
-            return parts.length > 0 ? parts.join(" ") : "基礎素質健全，適合依適性距離與賽道穩健安排賽程。";
-        }
-
-        function openModalDirect(item) {
+function openModalDirect(item) {
             if (!item) return;
             document.getElementById("mName").textContent = item.name || "未命名馬匹";
             document.getElementById("mTicket").innerHTML = renderTicketBadge(item.ticket);
-            document.getElementById("mSex").textContent = `性別: ${item.sex || '-'}`;
-            document.getElementById("mRegion").textContent = `地區: ${item.region || '日本'} | 登場: ${item.year || '-'}年`;
+            document.getElementById("mSex").innerHTML = item.sex === "牡" ? '<span style="color:#60a5fa; font-weight:bold;">牡馬</span>' : (item.sex === "牝" ? '<span style="color:#f472b6; font-weight:bold;">牝馬</span>' : (item.sex || "-"));
+            document.getElementById("mRegion").textContent = `所屬: ${item.region || item.country || '日本'} | 登場: ${item.year || '-'}年`;
 
             const grid = document.getElementById("mGrid");
             grid.innerHTML = "";
@@ -5751,35 +5739,55 @@ li {
                 grid.appendChild(div);
             };
 
-            addTitle("🎯 基礎數值與賽道適性");
-            addStat("SP 速度", item.sp || item.matched_sp || "-");
-            addStat("SP 上限 (SP Max)", item.sp_max || "-");
-            addStat("適性距離", item.distance || "-");
-            addStat("成長型 (Growth)", item.growth || "-");
-            addStat("芝 (草地適性)", renderTrackBadge(item.grass));
-            addStat("ダ (泥地適性)", renderTrackBadge(item.dirt));
+            // Section 1: 🎯 基本資料與身價 (Basic Info)
+            addTitle("🎯 基本資料與身價評級");
+            addStat("誕生年 / 生年", `${item.year || '-'} 年`);
+            addStat("お守り / 馬札", renderTicketBadge(item.ticket));
+            addStat("毛色 (Coat Color)", item.coat_color || "-");
+            addStat("所屬國 / 地區", item.country || item.region || "日本");
+            addStat("評判額 / 評價額", item.price ? `${item.price} 萬 (名聲: ${item.reputation || '-'})` : "-");
+            addStat("競走壽命 (Life)", item.life || "-");
 
-            addTitle("⚡ 8 大次能力 (Sub-parameters)");
-            addStat("瞬發力", renderRankBadge(item.shunhatsu));
-            addStat("勝負根性", renderRankBadge(item.konjo));
-            addStat("力量 (Power)", renderRankBadge(item.power));
-            addStat("精神力", renderRankBadge(item.seishin));
+            // Section 2: ⚡ 核心能力與 8 大次能力 (Abilities & Sub-parameters)
+            addTitle("⚡ 核心能力與 8 大次能力 (Sub-parameters)");
+            const spStr = item.sp_max ? `${item.sp || item.matched_sp || '-'} (上限: ${item.sp_max}) [${item.sp_rank || '-'}]` : (item.sp || item.matched_sp || "-");
+            addStat("スピード (SP 速度 / 上限)", spStr);
+            addStat("スタミナ (耐力 Stamina)", item.stamina || "-");
+            addStat("サブパラ合計 (次能力合計)", item.subpara_total || "-");
+            addStat("瞬發力 (瞬発)", renderRankBadge(item.shunhatsu));
+            addStat("勝負根性 (根性)", renderRankBadge(item.konjo));
+            addStat("力量 (パワー)", renderRankBadge(item.power));
+            addStat("精神力 (精神)", renderRankBadge(item.seishin));
             addStat("智商 (賢さ)", renderRankBadge(item.keshikosa));
-            addStat("柔軟性", renderRankBadge(item.junan));
+            addStat("柔軟性 (柔軟)", renderRankBadge(item.junan));
             addStat("健康 (Health)", renderRankBadge(item.kenko));
-            addStat("次能力合計 (Sub Total)", item.subpara_total || "-");
+            addStat("脚質 (跑法)", item.running_style || "-");
+            addStat("氣性 / 性格", `${item.temperament || '-'} / ${item.personality || '-'}`);
 
-            addTitle("🧬 血統世系與繁殖");
-            addStat("父馬 (Sire)", item.sire || "-");
-            addStat("母馬 (Dam)", item.dam || "-");
-            addStat("母父 (Dam's Sire)", item.damsire || "-");
+            // Section 3: 🏟️ 賽道適性與 2026 三大新適性 (Track & 2026 Aptitudes)
+            addTitle("🏟️ 賽道適性與 2026 三大新適性");
+            addStat("適性距離", item.distance || "-");
+            addStat("馬場適性 (芝 / ダ)", `${renderTrackBadge(item.grass)} (芝) / ${renderTrackBadge(item.dirt)} (ダ)`);
+            addStat("瞬発力適性 (上限)", item.shunhatsu_apt || "-");
+            addStat("持続力適性 (上限)", item.jizoku_apt || "-");
+            addStat("消耗力適性 (上限)", item.shoumo_apt || "-");
+            addStat("轉彎適性 (小/左/右回り)", `${item.komawari || '-'} / ${item.hidarimawari || '-'} / ${item.migimawari || '-'}`);
+            addStat("體質弱點 (喉鳴/腳部/腰)", `${item.nodonari || '無'} / ${item.kyakubu_fuan || '無'} / ${item.koshi_no_amasa || '無'}`);
+
+            // Section 4: 🧬 血統世系與繁殖遺傳 (Lineage & Breeding)
+            addTitle("🧬 血統世系與繁殖遺傳");
+            addStat("父馬 (Sire)", `${item.sire || '-'} [${item.sire_line || '-'}]`);
+            addStat("母馬 (Dam)", `${item.dam || '-'} [${item.dam_line || '-'}]`);
+            addStat("成長型 (成長力)", `${item.growth || '-'} (${item.growth_cap || '普通'})`);
+            addStat("系統特性 / 遺伝", item.inheritance || "-");
             addStat("仔出評級 (Foal Quality)", item.foal_quality || item.foal_count || "-");
 
-            addTitle("✨ 詳細特徵・配合建議與戰略評語");
+            // Section 5: ✨ 2026 特性・個性與戰略評析
+            addTitle("✨ 2026 特性・個性與戰略評析");
             if (item.details && item.details !== "-") {
                 addStat("💡 詳細特徵 / 配合建議", item.details, true);
             }
-            addStat("特殊特性 (Traits)", item.traits || "無特殊特性", true);
+            addStat("史實固有特性 (Traits)", item.traits || "無特殊特性", true);
             addStat("馬之個性 (ウマソナ)", item.umarsonality || "-", true);
             addStat("AI 戰略評語", generateAIComment(item), true);
 
@@ -5919,8 +5927,8 @@ li {
         function initYearFilter() {
             const sel = document.getElementById("filterYear");
             if (!sel) return;
-            sel.innerHTML = '<option value="ALL">全部年份 (1968 ~ 2023)</option>';
-            for (let y = 1968; y <= 2023; y++) {
+            sel.innerHTML = '<option value="ALL">全部年份 (1967 ~ 2023)</option>';
+            for (let y = 1967; y <= 2023; y++) {
                 const opt = document.createElement("option");
                 opt.value = y;
                 opt.textContent = `${y} 年`;
