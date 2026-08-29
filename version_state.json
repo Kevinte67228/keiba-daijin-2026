@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.15",
+  "current_version": "v01.16",
   "history": [
     {
       "version": "v01.01",
@@ -75,6 +75,11 @@
       "version": "v01.15",
       "date": "2026-08-29",
       "description": "Data Cleanup: Remove 3,447 garbage section-header entries from cat3/cat5/cat13"
+    },
+    {
+      "version": "v01.16",
+      "date": "2026-08-29",
+      "description": "Data Quality: Deduplicate broodmares (1336->384 with year ranges), clean foals (914->608), remove non-horse entries"
     }
   ]
 }
