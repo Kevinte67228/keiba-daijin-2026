@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.87",
+  "current_version": "v01.88",
   "history": [
     {
       "version": "v01.01",
@@ -435,6 +435,11 @@
       "version": "v01.87",
       "date": "2026-08-29",
       "description": "Style: Normalized Chapter 23 card header and modal button styles to match standard encyclopedia theme"
+    },
+    {
+      "version": "v01.88",
+      "date": "2026-08-29",
+      "description": "Refactor: Changed region chip title to '香港/澳洲/其他三冠' to prevent text overflow on tablet devices"
     }
   ]
 }
