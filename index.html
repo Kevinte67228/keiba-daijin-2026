@@ -1190,7 +1190,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.40</span>
+        <span class="version-badge">v01.41</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -2911,47 +2911,71 @@ li {
                 涵蓋四大解鎖途徑、大成功機率精算公式、同調教連續執行冷卻懲罰 (CD)、全 8 大 SP 雙馬合練、全 37 種一般競走馬史實調教，以及 1 歲 9~11 月限定之全 16 種幼駒專用史實調教解鎖樹！
             </div>
 </div>
-<!-- ==================== 一、史實調教獲取途徑、大成功機率精算公式與冷卻懲罰 ==================== -->
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:14px; margin-bottom:20px;">
-<!-- 獲取途徑與基礎規則 -->
-<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3);">
-<div style="font-weight:bold; color:#38bdf8; font-size:0.95rem; margin-bottom:8px;">
-<i class="fa-solid fa-graduation-cap"></i> 史實調教四大解鎖途徑與使用限制
-                </div>
-<ul style="font-size:0.8rem; line-height:1.7; margin:0; padding-left:18px;">
-<li><strong>第 1 年教學：</strong>開局新手教學直接贈送基礎調教。</li>
-<li><strong>勝出重賞初識：</strong>贏得重賞後認識新調教師時隨機傳授。</li>
-<li><strong>友好度 40 達標：</strong>與調教師友好度達到 40 時必定解鎖專屬調教。</li>
-<li><strong>友好度 100 ＋ G1 優勝：</strong>友好度達 100 時該馬房賽馬贏得 G1 隨機傳授上位調教！</li>
-<li><span style="color:#f59e0b;">★ 永久保留：</span>一旦開放即永久存在，調教師引退後依然可跨世代使用。</li>
+<!-- ==================== 一、史實調教獲取途徑、使用規則與大成功加成精算表 ==================== -->
+<div style="background:rgba(15, 23, 42, 0.6); border:1px solid var(--border-color); border-radius:10px; padding:18px 20px; margin-bottom:24px;">
+<p style="font-size:0.88rem; line-height:1.75; color:var(--text-color); margin-top:0; margin-bottom:12px;">
+<strong>史實調教由調教師提案而開放，開放後即一直存在。即使未到相關年份仍可以獲得相關史實調教。獲得方法如下：</strong>
+</p>
+<ul style="font-size:0.85rem; line-height:1.8; color:var(--text-color); margin:0 0 16px 0; padding-left:22px;">
+<li>首年的教學 (開局新手教學直接贈送基礎調教)</li>
+<li>勝出重賞後認識新調教師時 (隨機)</li>
+<li>與調教師友好度達到 40 (必定傳授解鎖)</li>
+<li>調教師友好度達到 100 時該廄馬房的競走馬勝出 G1 (隨機傳授上位史實調教)</li>
 </ul>
-</div>
-<!-- 大成功率加成公式 -->
-<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(234,179,8,0.3);">
-<div style="font-weight:bold; color:#facc15; font-size:0.95rem; margin-bottom:8px;">
-<i class="fa-solid fa-calculator"></i> 大成功 (Great Success) 機率精算公式
-                </div>
-<div style="font-size:0.78rem; line-height:1.65;">
-<div>• <strong>「競馬熱潮 (競馬ブーム)」期間：</strong><span style="color:#10b981; font-weight:bold;">＋１０％ ～ ＋２０％</span></div>
-<div>• <strong>符合調教適性之ウマソナ：</strong>每項 <span style="color:#10b981; font-weight:bold;">＋１０％</span> (上位個性每項 <span style="color:#10b981; font-weight:bold;">＋１５％</span>)</div>
-<div>• <strong>提案者與現任調教師同一人：</strong><span style="color:#10b981; font-weight:bold;">＋１０％</span> (引退後永久生效)</div>
-<div>• <strong>ウマソナ「秀才肌」/「努力上手」：</strong><span style="color:#10b981; font-weight:bold;">＋１０％ / ＋５％</span></div>
-<div>• <strong>牧場設施「調教師應援室」：</strong>Lv1 <span style="color:#10b981; font-weight:bold;">＋５％</span> / Lv2 <span style="color:#10b981; font-weight:bold;">＋７％</span> / Lv3 <span style="color:#10b981; font-weight:bold;">＋１０％</span></div>
-<div>• <strong>ウマソナ負面個性「手抜き癖」：</strong><span style="color:#ef4444; font-weight:bold;">－５％</span></div>
-</div>
-</div>
-<!-- 連續使用冷卻懲罰 -->
-<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(239,68,68,0.3);">
-<div style="font-weight:bold; color:#ef4444; font-size:0.95rem; margin-bottom:8px;">
-<i class="fa-solid fa-triangle-exclamation"></i> 同一調教連續執行冷卻懲罰 (CD)
-                </div>
-<div style="font-size:0.78rem; line-height:1.65;">
-<div>同一匹賽馬若過於頻繁使用<strong>同一項史實調教</strong>，大成功率將面臨嚴重衰減：</div>
-<div style="margin-top:4px;">• <strong>４週以內重複使用：</strong><span style="color:#ef4444; font-weight:bold;">大成功率 －３０％</span></div>
-<div>• <strong>８週以內重複使用：</strong><span style="color:#f97316; font-weight:bold;">大成功率 －２０％</span></div>
-<div>• <strong>１２週以內重複使用：</strong><span style="color:#f59e0b; font-weight:bold;">大成功率 －１０％</span></div>
-<div style="color:var(--text-muted); margin-top:4px;">💡 <em>建議多項調教輪替執行，避免單一調教過度重複！</em></div>
-</div>
+<p style="font-size:0.88rem; line-height:1.75; color:var(--text-color); margin-bottom:14px;">
+<strong>史實調教每月有使用限制，由開局 1 次起隨遊戲進度增加可執行次數。每匹競走馬同時只可進行 1 次史實調教，同時每種類史實調教亦只能同時應用 1 匹競走馬。大成功時會提升效果，同時提升馬匹信賴度，會隨特定情況提升或減少大成功機率。詳情如下：</strong>
+</p>
+<div class="table-responsive" style="margin:0 0 10px 0;">
+<table class="data-table" style="font-size:0.84rem;">
+<thead>
+<tr style="background:rgba(30, 41, 59, 0.98);">
+<th style="min-width:320px; font-weight:bold; color:var(--accent-color);">情況</th>
+<th style="min-width:280px; font-weight:bold; color:var(--accent-color);">加成 (大成功機率增減)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>「競馬ブーム」期間 (競馬熱潮 2024/2026 版)</strong></td>
+<td style="color:#10b981; font-weight:bold;">＋１０％ / ＋２０％</td>
+</tr>
+<tr>
+<td><strong>合乎「調教適性」的特徵 (ウマソナ / 走法 / 馬體)</strong></td>
+<td style="color:#10b981; font-weight:bold;">每項 ＋１０％ / 上位ウマソナ每項 ＋１５％</td>
+</tr>
+<tr>
+<td><strong>「提案者」與調教師為同一人</strong></td>
+<td style="color:#10b981; font-weight:bold;">＋１０％ (調教師引退後永久發動，轉生後解除)</td>
+</tr>
+<tr>
+<td><strong>ウマソナ「努力上手」</strong></td>
+<td style="color:#10b981; font-weight:bold;">＋５％</td>
+</tr>
+<tr>
+<td><strong>ウマソナ「秀才肌」</strong></td>
+<td style="color:#10b981; font-weight:bold;">＋１０％</td>
+</tr>
+<tr>
+<td><strong>ウマソナ負面個性「手抜き癖」</strong></td>
+<td style="color:#ef4444; font-weight:bold;">－５％</td>
+</tr>
+<tr>
+<td><strong>牧場設施「調教師応接室」</strong></td>
+<td style="color:#10b981; font-weight:bold;">Lv1 ５％ / Lv2 ７％ / Lv3 １０％</td>
+</tr>
+<tr>
+<td><strong>同馬 ４ 週或以內使用相同史實調教 (連續使用懲罰)</strong></td>
+<td style="color:#ef4444; font-weight:bold;">－３０％</td>
+</tr>
+<tr>
+<td><strong>同馬 ８ 週或以內使用相同史實調教 (連續使用懲罰)</strong></td>
+<td style="color:#f97316; font-weight:bold;">－２０％</td>
+</tr>
+<tr>
+<td><strong>同馬 １２ 週或以內使用相同史實調教 (連續使用懲罰)</strong></td>
+<td style="color:#f59e0b; font-weight:bold;">－１０％</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <!-- ==================== 二、SP 史實調教 (雙馬合練・關係性深化) 全圖鑑 (全 8 種) ==================== -->

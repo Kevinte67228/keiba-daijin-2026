@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.40",
+  "current_version": "v01.41",
   "history": [
     {
       "version": "v01.01",
@@ -200,6 +200,11 @@
       "version": "v01.40",
       "date": "2026-08-29",
       "description": "Fix: Restore explosion simulator chart drawing, fix system establishment 4-tier tabs, and fix chip active highlight state"
+    },
+    {
+      "version": "v01.41",
+      "date": "2026-08-29",
+      "description": "Content: Supplement exact text paragraphs and '情況 vs 加成' table for Historical Training from WPStud guide"
     }
   ]
 }
