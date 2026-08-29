@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.17",
+  "current_version": "v01.18",
   "history": [
     {
       "version": "v01.01",
@@ -85,6 +85,11 @@
       "version": "v01.17",
       "date": "2026-08-29",
       "description": "Data Clean: Purge website sidebar and menu items (馬, 結婚相手, 牧場長, 体験版, 新要素, etc.) from cat5 and cat13"
+    },
+    {
+      "version": "v01.18",
+      "date": "2026-08-29",
+      "description": "Feature: Remake Marriage Candidates & Partners page with full character portraits, 3-stage criteria, and ranch manager stats cards"
     }
   ]
 }
