@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.50",
+  "current_version": "v01.51",
   "history": [
     {
       "version": "v01.01",
@@ -250,6 +250,11 @@
       "version": "v01.50",
       "date": "2026-08-29",
       "description": "UI: Refine Chapter 3 theory links to clean sky-blue text like horse names and render explosion column as clean plain text without box borders"
+    },
+    {
+      "version": "v01.51",
+      "date": "2026-08-29",
+      "description": "Content: Fully integrate 4 WPStud guides into Chapters 16, 17, 18, and 21 with colorful tables and left alignment"
     }
   ]
 }
