@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.34",
+  "current_version": "v01.36",
   "history": [
     {
       "version": "v01.01",
@@ -170,6 +170,16 @@
       "version": "v01.34",
       "date": "2026-08-29",
       "description": "Feature: Add interactive column sorting (with smart parsing for Numbers, Tickets, Ability Ranks, Track Aptitude, Distances, and Percentages) to ALL data tables across all 36 chapters"
+    },
+    {
+      "version": "v01.35",
+      "date": "2026-08-29",
+      "description": "Docs & Maintenance: Update GEMINI.md with 5-backup retention policy and recent tablet/sorting collaboration rules, and prune GitHub backups"
+    },
+    {
+      "version": "v01.36",
+      "date": "2026-08-29",
+      "description": "Docs & Maintenance: Update GEMINI.md with 5-backup retention policy and recent tablet/sorting collaboration rules, and prune GitHub backups"
     }
   ]
 }
