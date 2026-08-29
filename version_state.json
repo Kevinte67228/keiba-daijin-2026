@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.44",
+  "current_version": "v01.45",
   "history": [
     {
       "version": "v01.01",
@@ -220,6 +220,11 @@
       "version": "v01.44",
       "date": "2026-08-29",
       "description": "Content: Add official WPStud gene factor visual diagram and style table badges with 100% precision"
+    },
+    {
+      "version": "v01.45",
+      "date": "2026-08-29",
+      "description": "Content: Add authentic World/Parent/Child horse icons and 9-color activation egg icons into Section 14 table"
     }
   ]
 }
