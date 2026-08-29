@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.19",
+  "current_version": "v01.20",
   "history": [
     {
       "version": "v01.01",
@@ -95,6 +95,11 @@
       "version": "v01.19",
       "date": "2026-08-29",
       "description": "Refactor: Streamline Horse Database tabs to 11 pure tables and merge Superstar Guide (Cat 11) into Chapter 34 & Rainbow Ticket Guide (Cat 12) into Chapter 30"
+    },
+    {
+      "version": "v01.20",
+      "date": "2026-08-29",
+      "description": "Fix: Restore missing sec-start-guide, re-align 36-chapter IDs in Pillar 5, and add scroll-margin-top offset"
     }
   ]
 }
