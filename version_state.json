@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.54",
+  "current_version": "v01.55",
   "history": [
     {
       "version": "v01.01",
@@ -270,6 +270,11 @@
       "version": "v01.54",
       "date": "2026-08-29",
       "description": "Fix & Deploy: Robustly compile all 36 chapters including full bilingual translations and KOEI TECMO official 2026 manual additions"
+    },
+    {
+      "version": "v01.55",
+      "date": "2026-08-29",
+      "description": "Feature: Integrate uipo-nou.com 2026 Broodmare Vitality (活力) and Vitality Enhancement (活力増強) mechanics into Chapters 2 and 13"
     }
   ]
 }
