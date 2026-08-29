@@ -62,28 +62,24 @@
             }
         }
 
-        async async async function clearPwaCache() {
-            if (!confirm("確定要清除快取並重新載入最新版本嗎？")) return;
-            showLoading("🧹 正在清除快取並重新載入最新版本...");
+        async function clearPwaCache() {
+            if (!confirm("確定要徹底清除快取並強制載入最新版本嗎？")) return;
+            showLoading("🧹 正在徹底清除快取並重新載入最新版本...");
             try {
-                if (window.location.protocol !== 'file:' && 'caches' in window) {
-                    try {
-                        const keys = await caches.keys();
-                        await Promise.all(keys.map(key => caches.delete(key)));
-                    } catch(e) { console.warn("Cache clear warning:", e); }
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    for (let reg of registrations) { await reg.unregister(); }
                 }
-                if (window.location.protocol !== 'file:' && 'serviceWorker' in navigator) {
-                    try {
-                        const registrations = await navigator.serviceWorker.getRegistrations();
-                        await Promise.all(registrations.map(r => r.unregister()));
-                    } catch(e) { console.warn("SW unregister warning:", e); }
+                if ('caches' in window) {
+                    const keys = await caches.keys();
+                    await Promise.all(keys.map(key => caches.delete(key)));
                 }
-                try { localStorage.clear(); } catch(e){}
                 try { sessionStorage.clear(); } catch(e){}
-                window.location.reload(true);
+                const cleanUrl = window.location.origin + window.location.pathname + '?bust=' + Date.now();
+                window.location.replace(cleanUrl);
             } catch (err) {
-                console.warn("clearPwaCache fallback reload:", err);
-                window.location.reload();
+                console.warn("clearPwaCache fallback:", err);
+                window.location.replace(window.location.origin + window.location.pathname + '?bust=' + Date.now());
             }
         }
 
@@ -91,212 +87,10 @@
 
     </script>
     <script>
-        window._DB_LOADED = false;
-        const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
+    
+    // ==================== 274 場 WP10 完整賽事資料庫 (無星號版) ====================
+    const WP10_RACES_DB = [{"name": "中山金杯", "month": "1月", "week": "1週", "region": "関東", "grade": "G3", "course": "中山・芝2000m"}, {"name": "京都金杯", "month": "1月", "week": "1週", "region": "関西", "grade": "G3", "course": "京都・芝1600m"}, {"name": "ジュニアC", "month": "1月", "week": "1週", "region": "関東", "grade": "OP", "course": "中山・芝1600m"}, {"name": "サンタアニタH", "month": "1月", "week": "1週", "region": "米国", "grade": "G2", "course": "美・ダ2000m"}, {"name": "シンザン記念", "month": "1月", "week": "2週", "region": "関西", "grade": "G3", "course": "中京/京都・芝1600m"}, {"name": "フェアリーS", "month": "1月", "week": "2週", "region": "関東", "grade": "G3", "course": "中山・芝1600m"}, {"name": "淀短距離S", "month": "1月", "week": "2週", "region": "関西", "grade": "OP", "course": "京都・芝1200m"}, {"name": "日経新春杯", "month": "1月", "week": "3週", "region": "関西", "grade": "G2", "course": "中京/京都・芝2200m"}, {"name": "京成杯", "month": "1月", "week": "3週", "region": "関東", "grade": "G3", "course": "中山・芝2000m"}, {"name": "愛知杯", "month": "1月", "week": "3週", "region": "ローカル", "grade": "G3", "course": "小倉/中京・芝2000m"}, {"name": "紅梅S", "month": "1月", "week": "3週", "region": "関西", "grade": "OP", "course": "京都・芝1400m"}, {"name": "ペガサスWC", "month": "1月", "week": "3週", "region": "米国", "grade": "G1", "course": "美・ダ1800m"}, {"name": "ペガサスWCT", "month": "1月", "week": "3週", "region": "米国", "grade": "G1", "course": "美・芝1900m"}, {"name": "アメリカJCC (AJCC)", "month": "1月", "week": "4週", "region": "関東", "grade": "G2", "course": "中山・芝2200m"}, {"name": "東海S", "month": "1月", "week": "4週", "region": "関西", "grade": "G2", "course": "中京・ダ1800m"}, {"name": "根岸S", "month": "1月", "week": "4週", "region": "関東", "grade": "G3", "course": "東京・ダ1400m"}, {"name": "シルクロードS", "month": "1月", "week": "4週", "region": "関西", "grade": "G3", "course": "京都/中京・芝1200m"}, {"name": "川崎記念", "month": "1月", "week": "4週", "region": "地方", "grade": "G1", "course": "川崎・ダ2100m"}, {"name": "香港スチュワーズC", "month": "1月", "week": "4週", "region": "その他海外", "grade": "G1", "course": "沙田・芝1600m"}, {"name": "サウジC前哨戦", "month": "1月", "week": "4週", "region": "その他海外", "grade": "G3", "course": "沙國・ダ1800m"}, {"name": "白富士S", "month": "1月", "week": "5週", "region": "関東", "grade": "OP", "course": "東京・芝2000m"}, {"name": "きさらぎ賞", "month": "2月", "week": "1週", "region": "関西", "grade": "G3", "course": "中京/京都・芝2000m"}, {"name": "東京新聞杯", "month": "2月", "week": "1週", "region": "関東", "grade": "G3", "course": "東京・芝1600m"}, {"name": "アルデバランS", "month": "2月", "week": "1週", "region": "関西", "grade": "OP", "course": "京都・ダ1900m"}, {"name": "京都記念", "month": "2月", "week": "2週", "region": "関西", "grade": "G2", "course": "阪神/京都・芝2200m"}, {"name": "共同通信杯", "month": "2月", "week": "2週", "region": "関東", "grade": "G3", "course": "東京・芝1800m"}, {"name": "クイーンC", "month": "2月", "week": "2週", "region": "関東", "grade": "G3", "course": "東京・芝1600m"}, {"name": "北九州短距離S", "month": "2月", "week": "2週", "region": "ローカル", "grade": "OP", "course": "小倉・芝1200m"}, {"name": "フェブラリーS", "month": "2月", "week": "3週", "region": "関東", "grade": "G1", "course": "東京・ダ1600m"}, {"name": "小倉大賞典", "month": "2月", "week": "3週", "region": "ローカル", "grade": "G3", "course": "小倉・芝1800m"}, {"name": "ダイヤモンドS", "month": "2月", "week": "3週", "region": "関東", "grade": "G3", "course": "東京・芝3400m"}, {"name": "京都牝馬S", "month": "2月", "week": "3週", "region": "関西", "grade": "G3", "course": "阪神/京都・芝1400m"}, {"name": "中山記念", "month": "2月", "week": "4週", "region": "関東", "grade": "G2", "course": "中山・芝1800m"}, {"name": "阪急杯", "month": "2月", "week": "4週", "region": "関西", "grade": "G3", "course": "阪神・芝1400m"}, {"name": "サウジカップ", "month": "2月", "week": "4週", "region": "その他海外", "grade": "G1", "course": "沙國・ダ1800m"}, {"name": "リヤドダートスプリント", "month": "2月", "week": "4週", "region": "その他海外", "grade": "G3", "course": "沙國・ダ1200m"}, {"name": "ネオムターフC", "month": "2月", "week": "4週", "region": "その他海外", "grade": "G2", "course": "沙國・芝2100m"}, {"name": "1351ターフスプリント", "month": "2月", "week": "4週", "region": "その他海外", "grade": "G2", "course": "沙國・芝1351m"}, {"name": "レッドシーターフH", "month": "2月", "week": "4週", "region": "その他海外", "grade": "G3", "course": "沙國・芝3000m"}, {"name": "サウジダービー", "month": "2月", "week": "4週", "region": "その他海外", "grade": "G3", "course": "沙國・ダ1600m"}, {"name": "香港金杯", "month": "2月", "week": "4週", "region": "その他海外", "grade": "G1", "course": "沙田・芝2000m"}, {"name": "クイーンズシルヴァージュビリーC", "month": "2月", "week": "4週", "region": "その他海外", "grade": "G1", "course": "沙田・芝1400m"}, {"name": "仁川S", "month": "2月", "week": "5週", "region": "関西", "grade": "OP", "course": "阪神・ダ2000m"}, {"name": "弥生賞ディープインパクト記念", "month": "3月", "week": "1週", "region": "関東", "grade": "G2", "course": "中山・芝2000m"}, {"name": "チューリップ賞", "month": "3月", "week": "1週", "region": "関西", "grade": "G2", "course": "阪神・芝1600m"}, {"name": "オーシャンS", "month": "3月", "week": "1週", "region": "関東", "grade": "G3", "course": "中山・芝1200m"}, {"name": "金鯱賞", "month": "3月", "week": "2週", "region": "関西", "grade": "G2", "course": "中京・芝2000m"}, {"name": "フィリーズレビュー", "month": "3月", "week": "2週", "region": "関西", "grade": "G2", "course": "阪神・芝1400m"}, {"name": "中山牝馬S", "month": "3月", "week": "2週", "region": "関東", "grade": "G3", "course": "中山・芝1800m"}, {"name": "アネモネS", "month": "3月", "week": "2週", "region": "関東", "grade": "OP", "course": "中山・芝1600m"}, {"name": "スプリングS", "month": "3月", "week": "3週", "region": "関東", "grade": "G2", "course": "中山・芝1800m"}, {"name": "阪神大賞典", "month": "3月", "week": "3週", "region": "関西", "grade": "G2", "course": "阪神・芝3000m"}, {"name": "ファルコンS", "month": "3月", "week": "3週", "region": "関西", "grade": "G3", "course": "中京・芝1400m"}, {"name": "フラワーC", "month": "3月", "week": "3週", "region": "関東", "grade": "G3", "course": "中山・芝1800m"}, {"name": "若葉S", "month": "3月", "week": "3週", "region": "関西", "grade": "OP", "course": "阪神・芝2000m"}, {"name": "高松宮記念", "month": "3月", "week": "4週", "region": "関西", "grade": "G1", "course": "中京・芝1200m"}, {"name": "日経賞", "month": "3月", "week": "4週", "region": "関東", "grade": "G2", "course": "中山・芝2500m"}, {"name": "毎日杯", "month": "3月", "week": "4週", "region": "関西", "grade": "G3", "course": "阪神・芝1800m"}, {"name": "マーチS", "month": "3月", "week": "4週", "region": "関東", "grade": "G3", "course": "中山・ダ1800m"}, {"name": "ドバイワールドカップ", "month": "3月", "week": "4週", "region": "その他海外", "grade": "G1", "course": "杜拜・ダ2000m"}, {"name": "ドバイシーマクラシック", "month": "3月", "week": "4週", "region": "その他海外", "grade": "G1", "course": "杜拜・芝2410m"}, {"name": "ドバイターフ", "month": "3月", "week": "4週", "region": "その他海外", "grade": "G1", "course": "杜拜・芝1800m"}, {"name": "ドバイゴールデンシャヒーン", "month": "3月", "week": "4週", "region": "その他海外", "grade": "G1", "course": "杜拜・ダ1200m"}, {"name": "アルクオーツスプリント", "month": "3月", "week": "4週", "region": "その他海外", "grade": "G1", "course": "杜拜・芝1200m"}, {"name": "UAEダービー", "month": "3月", "week": "4週", "region": "その他海外", "grade": "G2", "course": "杜拜・ダ1900m"}, {"name": "ドバイゴールドC", "month": "3月", "week": "4週", "region": "その他海外", "grade": "G2", "course": "杜拜・芝3200m"}, {"name": "ゴドルフィンマイル", "month": "3月", "week": "4週", "region": "その他海外", "grade": "G2", "course": "杜拜・ダ1600m"}, {"name": "伏竜S", "month": "3月", "week": "5週", "region": "関東", "grade": "OP", "course": "中山・ダ1800m"}, {"name": "六甲S", "month": "3月", "week": "5週", "region": "関西", "grade": "OP", "course": "阪神・芝1600m"}, {"name": "大阪杯", "month": "4月", "week": "1週", "region": "関西", "grade": "G1", "course": "阪神・芝2000m"}, {"name": "ダービー卿CT", "month": "4月", "week": "1週", "region": "関東", "grade": "G3", "course": "中山・芝1600m"}, {"name": "チャーチルダウンズS", "month": "4月", "week": "1週", "region": "米国", "grade": "G1", "course": "美・ダ1400m"}, {"name": "ポラリスS", "month": "4月", "week": "1週", "region": "関西", "grade": "OP", "course": "阪神・ダ1400m"}, {"name": "桜花賞", "month": "4月", "week": "2週", "region": "関西", "grade": "G1", "course": "阪神・芝1600m"}, {"name": "ニュージーランドT (NZT)", "month": "4月", "week": "2週", "region": "関東", "grade": "G2", "course": "中山・芝1600m"}, {"name": "阪神牝馬S", "month": "4月", "week": "2週", "region": "関西", "grade": "G2", "course": "阪神・芝1600m"}, {"name": "春雷S", "month": "4月", "week": "2週", "region": "関東", "grade": "OP", "course": "中山・芝1200m"}, {"name": "忘れな草賞", "month": "4月", "week": "2週", "region": "関西", "grade": "OP", "course": "阪神・芝2000m"}, {"name": "吾妻小富士S", "month": "4月", "week": "2週", "region": "ローカル", "grade": "OP", "course": "福島・ダ1700m"}, {"name": "皐月賞", "month": "4月", "week": "3週", "region": "関東", "grade": "G1", "course": "中山・芝2000m"}, {"name": "アンタレスS", "month": "4月", "week": "3週", "region": "関西", "grade": "G3", "course": "阪神・ダ1800m"}, {"name": "アーリントンC", "month": "4月", "week": "3週", "region": "関西", "grade": "G3", "course": "阪神・芝1600m"}, {"name": "福島民報杯", "month": "4月", "week": "3週", "region": "ローカル", "grade": "OP", "course": "福島・芝2000m"}, {"name": "京葉S", "month": "4月", "week": "3週", "region": "関東", "grade": "OP", "course": "中山・ダ1200m"}, {"name": "福島牝馬S", "month": "4月", "week": "3週", "region": "ローカル", "grade": "G3", "course": "福島・芝1800m"}, {"name": "フローラS", "month": "4月", "week": "4週", "region": "関東", "grade": "G2", "course": "東京・芝2000m"}, {"name": "マイラーズC", "month": "4月", "week": "4週", "region": "関西", "grade": "G2", "course": "阪神/京都・芝1600m"}, {"name": "香港QE2世C", "month": "4月", "week": "4週", "region": "その他海外", "grade": "G1", "course": "沙田・芝2000m"}, {"name": "香港チャンピオンズマイル", "month": "4月", "week": "4週", "region": "その他海外", "grade": "G1", "course": "沙田・芝1600m"}, {"name": "チェアマンズスプリントプライズ", "month": "4月", "week": "4週", "region": "その他海外", "grade": "G1", "course": "沙田・芝1200m"}, {"name": "オアシスS", "month": "4月", "week": "5週", "region": "関東", "grade": "OP", "course": "東京・ダ1600m"}, {"name": "天皇賞・春", "month": "5月", "week": "1週", "region": "関西", "grade": "G1", "course": "京都・芝3200m"}, {"name": "青葉賞", "month": "5月", "week": "1週", "region": "関東", "grade": "G2", "course": "東京・芝2400m"}, {"name": "京都新聞杯", "month": "5月", "week": "1週", "region": "関西", "grade": "G2", "course": "中京/京都・芝2200m"}, {"name": "ケンタッキーダービー", "month": "5月", "week": "1週", "region": "米国", "grade": "G1", "course": "美・ダ2000m"}, {"name": "ケンタッキーオークス", "month": "5月", "week": "1週", "region": "米国", "grade": "G1", "course": "美・ダ1800m"}, {"name": "かしわ記念", "month": "5月", "week": "1週", "region": "地方", "grade": "G1", "course": "船橋・ダ1600m"}, {"name": "英2000ギニー", "month": "5月", "week": "1週", "region": "欧州", "grade": "G1", "course": "英・芝1600m"}, {"name": "英1000ギニー", "month": "5月", "week": "1週", "region": "欧州", "grade": "G1", "course": "英・芝1600m"}, {"name": "NHKマイルカップ", "month": "5月", "week": "2週", "region": "関東", "grade": "G1", "course": "東京・芝1600m"}, {"name": "京王杯スプリングC", "month": "5月", "week": "2週", "region": "関東", "grade": "G2", "course": "東京・芝1400m"}, {"name": "新潟大賞典", "month": "5月", "week": "2週", "region": "ローカル", "grade": "G3", "course": "新潟・芝2000m"}, {"name": "仏2000ギニー", "month": "5月", "week": "2週", "region": "欧州", "grade": "G1", "course": "法・芝1600m"}, {"name": "仏1000ギニー", "month": "5月", "week": "2週", "region": "欧州", "grade": "G1", "course": "法・芝1600m"}, {"name": "ヴィクトリアマイル", "month": "5月", "week": "3週", "region": "関東", "grade": "G1", "course": "東京・芝1600m"}, {"name": "平安S", "month": "5月", "week": "3週", "region": "関西", "grade": "G3", "course": "中京/京都・ダ1900m"}, {"name": "プリークネスS", "month": "5月", "week": "3週", "region": "米国", "grade": "G1", "course": "美・ダ1900m"}, {"name": "ブラックアイドスーザンS", "month": "5月", "week": "3週", "region": "米国", "grade": "G2", "course": "美・ダ1800m"}, {"name": "オークス (優駿牝馬)", "month": "5月", "week": "4週", "region": "関東", "grade": "G1", "course": "東京・芝2400m"}, {"name": "葵S", "month": "5月", "week": "4週", "region": "関西", "grade": "G3", "course": "中京/京都・芝1200m"}, {"name": "メイS", "month": "5月", "week": "4週", "region": "関東", "grade": "OP", "course": "東京・芝1800m"}, {"name": "愛2000ギニー", "month": "5月", "week": "4週", "region": "欧州", "grade": "G1", "course": "愛・芝1600m"}, {"name": "愛1000ギニー", "month": "5月", "week": "4週", "region": "欧州", "grade": "G1", "course": "愛・芝1600m"}, {"name": "日本ダービー (東京優駿)", "month": "5月", "week": "5週", "region": "関東", "grade": "G1", "course": "東京・芝2400m"}, {"name": "目黒記念", "month": "5月", "week": "5週", "region": "関東", "grade": "G2", "course": "東京・芝2500m"}, {"name": "安土城S", "month": "5月", "week": "5週", "region": "関西", "grade": "OP", "course": "京都・芝1400m"}, {"name": "イスパーン賞", "month": "5月", "week": "5週", "region": "欧州", "grade": "G1", "course": "法・芝1850m"}, {"name": "安田記念", "month": "6月", "week": "1週", "region": "関東", "grade": "G1", "course": "東京・芝1600m"}, {"name": "鳴尾記念", "month": "6月", "week": "1週", "region": "関西", "grade": "G3", "course": "中京/阪神・芝2000m"}, {"name": "ベルモントS", "month": "6月", "week": "1週", "region": "米国", "grade": "G1", "course": "美・ダ2400m"}, {"name": "エプソムダービー (英ダービー)", "month": "6月", "week": "1週", "region": "欧州", "grade": "G1", "course": "英・芝2420m"}, {"name": "エプソムオークス (英オークス)", "month": "6月", "week": "1週", "region": "欧州", "grade": "G1", "course": "英・芝2420m"}, {"name": "コロネーションC", "month": "6月", "week": "1週", "region": "欧州", "grade": "G1", "course": "英・芝2420m"}, {"name": "仏ダービー (ジョッケクルブ賞)", "month": "6月", "week": "1週", "region": "欧州", "grade": "G1", "course": "法・芝2100m"}, {"name": "東京ダービー", "month": "6月", "week": "1週", "region": "地方", "grade": "G1", "course": "大井・ダ2000m"}, {"name": "エプソムカップ", "month": "6月", "week": "2週", "region": "関東", "grade": "G3", "course": "東京・芝1800m"}, {"name": "マーメイドS", "month": "6月", "week": "2週", "region": "関西", "grade": "G3", "course": "阪神・芝2000m"}, {"name": "プリンスオブウェールズS (ロイヤルアスコット)", "month": "6月", "week": "2週", "region": "欧州", "grade": "G1", "course": "英・芝2000m"}, {"name": "クイーンアンS (ロイヤルアスコット)", "month": "6月", "week": "2週", "region": "欧州", "grade": "G1", "course": "英・芝1600m"}, {"name": "ゴールドカップ (ロイヤルアスコット)", "month": "6月", "week": "2週", "region": "欧州", "grade": "G1", "course": "英・芝4000m"}, {"name": "キングズスタンドS", "month": "6月", "week": "2週", "region": "欧州", "grade": "G1", "course": "英・芝1000m"}, {"name": "プラチナジュビリーS", "month": "6月", "week": "2週", "region": "欧州", "grade": "G1", "course": "英・芝1200m"}, {"name": "セントジェームズパレスS", "month": "6月", "week": "2週", "region": "欧州", "grade": "G1", "course": "英・芝1600m"}, {"name": "コロネーションS", "month": "6月", "week": "2週", "region": "欧州", "grade": "G1", "course": "英・芝1600m"}, {"name": "仏オークス (ディアヌ賞)", "month": "6月", "week": "2週", "region": "欧州", "grade": "G1", "course": "法・芝2100m"}, {"name": "ユニコーンS", "month": "6月", "week": "3週", "region": "関東", "grade": "G3", "course": "東京/京都・ダ1600m/1900m"}, {"name": "函館スプリントS", "month": "6月", "week": "3週", "region": "ローカル", "grade": "G3", "course": "函館・芝1200m"}, {"name": "米子S", "month": "6月", "week": "3週", "region": "関西", "grade": "OP", "course": "阪神・芝1600m"}, {"name": "宝塚記念", "month": "6月", "week": "4週", "region": "関西", "grade": "G1", "course": "阪神/京都・芝2200m"}, {"name": "府中牝馬S", "month": "6月", "week": "4週", "region": "関東", "grade": "G2", "course": "東京・芝1800m"}, {"name": "帝王賞", "month": "6月", "week": "4週", "region": "地方", "grade": "G1", "course": "大井・ダ2000m"}, {"name": "アイリッシュダービー (愛ダービー)", "month": "6月", "week": "4週", "region": "欧州", "grade": "G1", "course": "愛・芝2400m"}, {"name": "サンクルー大賞", "month": "6月", "week": "4週", "region": "欧州", "grade": "G1", "course": "法・芝2400m"}, {"name": "大沼S", "month": "6月", "week": "5週", "region": "ローカル", "grade": "OP", "course": "函館・ダ1700m"}, {"name": "ラジオNIKKEI賞", "month": "7月", "week": "1週", "region": "ローカル", "grade": "G3", "course": "福島・芝1800m"}, {"name": "CBC賞", "month": "7月", "week": "1週", "region": "ローカル", "grade": "G3", "course": "小倉/中京・芝1200m"}, {"name": "エクリプスS", "month": "7月", "week": "1週", "region": "欧州", "grade": "G1", "course": "英・芝2000m"}, {"name": "七夕賞", "month": "7月", "week": "2週", "region": "ローカル", "grade": "G3", "course": "福島・芝2000m"}, {"name": "プロキオンS", "month": "7月", "week": "2週", "region": "ローカル", "grade": "G3", "course": "小倉/中京・ダ1700m"}, {"name": "ジャパンダートクラシック", "month": "7月", "week": "2週", "region": "地方", "grade": "G1", "course": "大井・ダ2000m"}, {"name": "ジュライC", "month": "7月", "week": "2週", "region": "欧州", "grade": "G1", "course": "英・芝1200m"}, {"name": "パリ大賞典", "month": "7月", "week": "2週", "region": "欧州", "grade": "G1", "course": "法・芝2400m"}, {"name": "函館記念", "month": "7月", "week": "3週", "region": "ローカル", "grade": "G3", "course": "函館・芝2000m"}, {"name": "中京記念", "month": "7月", "week": "3週", "region": "ローカル", "grade": "G3", "course": "小倉/中京・芝1800m"}, {"name": "愛オークス", "month": "7月", "week": "3週", "region": "欧州", "grade": "G1", "course": "愛・芝2400m"}, {"name": "アイビスサマーダッシュ (アイビスSD)", "month": "7月", "week": "4週", "region": "ローカル", "grade": "G3", "course": "新潟・芝1000m"}, {"name": "クイーンS", "month": "7月", "week": "4週", "region": "ローカル", "grade": "G3", "course": "札幌/函館・芝1800m"}, {"name": "キングジョージ6世＆クイーンエリザベスS (KG6&QES)", "month": "7月", "week": "4週", "region": "欧州", "grade": "G1", "course": "英・芝2400m"}, {"name": "サセックスS (グッドウッド)", "month": "7月", "week": "4週", "region": "欧州", "grade": "G1", "course": "英・芝1600m"}, {"name": "ナッソーS (グッドウッド)", "month": "7月", "week": "4週", "region": "欧州", "grade": "G1", "course": "英・芝2000m"}, {"name": "グッドウッドカップ", "month": "7月", "week": "4週", "region": "欧州", "grade": "G1", "course": "英・芝3200m"}, {"name": "関越S", "month": "7月", "week": "5週", "region": "ローカル", "grade": "OP", "course": "新潟・ダ1800m"}, {"name": "レパードS", "month": "8月", "week": "1週", "region": "ローカル", "grade": "G3", "course": "新潟・ダ1800m"}, {"name": "エルムS", "month": "8月", "week": "1週", "region": "ローカル", "grade": "G3", "course": "札幌・ダ1700m"}, {"name": "モーリスドゲスト賞", "month": "8月", "week": "1週", "region": "欧州", "grade": "G1", "course": "法・芝1300m"}, {"name": "ホイットニーS", "month": "8月", "week": "1週", "region": "米国", "grade": "G1", "course": "美・ダ1800m"}, {"name": "小倉記念", "month": "8月", "week": "2週", "region": "ローカル", "grade": "G3", "course": "小倉・芝2000m"}, {"name": "関屋記念", "month": "8月", "week": "2週", "region": "ローカル", "grade": "G3", "course": "新潟・芝1600m"}, {"name": "ジャックルマロワ賞", "month": "8月", "week": "2週", "region": "欧州", "grade": "G1", "course": "法・芝1600m"}, {"name": "札幌記念", "month": "8月", "week": "3週", "region": "ローカル", "grade": "G2", "course": "札幌・芝2000m"}, {"name": "北九州記念", "month": "8月", "week": "3週", "region": "ローカル", "grade": "G3", "course": "小倉・芝1200m"}, {"name": "インターナショナルS (ヨーク)", "month": "8月", "week": "3週", "region": "欧州", "grade": "G1", "course": "英・芝2050m"}, {"name": "ヨークシャーオークス", "month": "8月", "week": "3週", "region": "欧州", "grade": "G1", "course": "英・芝2400m"}, {"name": "ナンソープS", "month": "8月", "week": "3週", "region": "欧州", "grade": "G1", "course": "英・芝1000m"}, {"name": "パシフィッククラシック", "month": "8月", "week": "3週", "region": "米国", "grade": "G1", "course": "美・ダ2000m"}, {"name": "ジャンロマネ賞", "month": "8月", "week": "3週", "region": "欧州", "grade": "G1", "course": "法・芝2000m"}, {"name": "モルニ賞", "month": "8月", "week": "3週", "region": "欧州", "grade": "G1", "course": "法・芝1200m"}, {"name": "新潟2歳S", "month": "8月", "week": "4週", "region": "ローカル", "grade": "G3", "course": "新潟・芝1600m"}, {"name": "キーンランドカップ", "month": "8月", "week": "4週", "region": "ローカル", "grade": "G3", "course": "札幌・芝1200m"}, {"name": "トラヴァーズS", "month": "8月", "week": "4週", "region": "米国", "grade": "G1", "course": "美・ダ2000m"}, {"name": "朱鷺S", "month": "8月", "week": "5週", "region": "ローカル", "grade": "OP", "course": "新潟・芝1400m"}, {"name": "札幌2歳S", "month": "9月", "week": "1週", "region": "ローカル", "grade": "G3", "course": "札幌・芝1800m"}, {"name": "小倉2歳S", "month": "9月", "week": "1週", "region": "ローカル", "grade": "G3", "course": "小倉・芝1200m"}, {"name": "新潟記念", "month": "9月", "week": "1週", "region": "ローカル", "grade": "G3", "course": "新潟・芝2000m"}, {"name": "ジョッキークラブゴールドC", "month": "9月", "week": "1週", "region": "米国", "grade": "G1", "course": "美・ダ2000m"}, {"name": "ムーランドロンシャン賞", "month": "9月", "week": "1週", "region": "欧州", "grade": "G1", "course": "法・芝1600m"}, {"name": "紫苑S", "month": "9月", "week": "2週", "region": "関東", "grade": "G2", "course": "中山・芝2000m"}, {"name": "セントウルS", "month": "9月", "week": "2週", "region": "関西", "grade": "G2", "course": "中京・芝1200m"}, {"name": "京成杯オータムH (京成杯AH)", "month": "9月", "week": "2週", "region": "関東", "grade": "G3", "course": "中山・芝1600m"}, {"name": "愛チャンピオンS", "month": "9月", "week": "2週", "region": "欧州", "grade": "G1", "course": "愛・芝2000m"}, {"name": "愛メイトロンS", "month": "9月", "week": "2週", "region": "欧州", "grade": "G1", "course": "愛・芝1600m"}, {"name": "アイリッシュセントレジャー", "month": "9月", "week": "2週", "region": "欧州", "grade": "G1", "course": "愛・芝2800m"}, {"name": "フォワ賞 (前哨戦)", "month": "9月", "week": "2週", "region": "欧州", "grade": "G2", "course": "法・芝2400m"}, {"name": "ニエル賞 (前哨戦)", "month": "9月", "week": "2週", "region": "欧州", "grade": "G2", "course": "法・芝2400m"}, {"name": "ヴェルメイユ賞", "month": "9月", "week": "2週", "region": "欧州", "grade": "G1", "course": "法・芝2400m"}, {"name": "ローズS", "month": "9月", "week": "3週", "region": "関西", "grade": "G2", "course": "中京/阪神・芝2000m/1800m"}, {"name": "セントライト記念", "month": "9月", "week": "3週", "region": "関東", "grade": "G2", "course": "中山・芝2200m"}, {"name": "英セントレジャー", "month": "9月", "week": "3週", "region": "欧州", "grade": "G1", "course": "英・芝2920m"}, {"name": "オールカマー", "month": "9月", "week": "4週", "region": "関東", "grade": "G2", "course": "中山・芝2200m"}, {"name": "神戸新聞杯", "month": "9月", "week": "4週", "region": "関西", "grade": "G2", "course": "中京/阪神・芝2200m/2400m"}, {"name": "シリウスS", "month": "9月", "week": "4週", "region": "関西", "grade": "G3", "course": "中京/阪神・ダ1900m/2000m"}, {"name": "白山大賞典", "month": "9月", "week": "5週", "region": "地方", "grade": "G3", "course": "金沢・ダ2100m"}, {"name": "スプリンターズS", "month": "10月", "week": "1週", "region": "関東", "grade": "G1", "course": "中山・芝1200m"}, {"name": "毎日王冠", "month": "10月", "week": "1週", "region": "関東", "grade": "G2", "course": "東京・芝1800m"}, {"name": "京都大賞典", "month": "10月", "week": "1週", "region": "関西", "grade": "G2", "course": "阪神/京都・芝2400m"}, {"name": "凱旋門賞 (Prix de l'Arc de Triomphe)", "month": "10月", "week": "1週", "region": "欧州", "grade": "G1", "course": "巴黎ロンシャン・芝2400m"}, {"name": "アベイユドロンシャン賞", "month": "10月", "week": "1週", "region": "欧州", "grade": "G1", "course": "法・芝1000m"}, {"name": "フォレ賞", "month": "10月", "week": "1週", "region": "欧州", "grade": "G1", "course": "法・芝1400m"}, {"name": "オペラ賞", "month": "10月", "week": "1週", "region": "欧州", "grade": "G1", "course": "法・芝2000m"}, {"name": "ジャンリュックラガルデール賞", "month": "10月", "week": "1週", "region": "欧州", "grade": "G1", "course": "法・芝1400m"}, {"name": "マルセルブサック賞", "month": "10月", "week": "1週", "region": "欧州", "grade": "G1", "course": "法・芝1600m"}, {"name": "ロワイヤリュー賞", "month": "10月", "week": "1週", "region": "欧州", "grade": "G1", "course": "法・芝2800m"}, {"name": "カドラン賞", "month": "10月", "week": "1週", "region": "欧州", "grade": "G1", "course": "法・芝4000m"}, {"name": "ジ・エベレスト", "month": "10月", "week": "1週", "region": "その他海外", "grade": "G1", "course": "澳・芝1200m"}, {"name": "府中牝馬S", "month": "10月", "week": "2週", "region": "関東", "grade": "G2", "course": "東京・芝1800m"}, {"name": "サウジアラビアロイヤルC (サウジアラビアRC)", "month": "10月", "week": "2週", "region": "関東", "grade": "G3", "course": "東京・芝1600m"}, {"name": "コックスプレート", "month": "10月", "week": "2週", "region": "その他海外", "grade": "G1", "course": "澳・芝2040m"}, {"name": "コーフィールドC", "month": "10月", "week": "2週", "region": "その他海外", "grade": "G1", "course": "澳・芝2400m"}, {"name": "秋華賞", "month": "10月", "week": "3週", "region": "関西", "grade": "G1", "course": "阪神/京都・芝2000m"}, {"name": "富士S", "month": "10月", "week": "3週", "region": "関東", "grade": "G2", "course": "東京・芝1600m"}, {"name": "英チャンピオンS (アスコット)", "month": "10月", "week": "3週", "region": "欧州", "grade": "G1", "course": "英・芝2000m"}, {"name": "クイーンエリザベス2世S (QE2世S)", "month": "10月", "week": "3週", "region": "欧州", "grade": "G1", "course": "英・芝1600m"}, {"name": "英チャンピオンズフィリーズ＆メアズS", "month": "10月", "week": "3週", "region": "欧州", "grade": "G1", "course": "英・芝2400m"}, {"name": "英チャンピオンズスプリントS", "month": "10月", "week": "3週", "region": "欧州", "grade": "G1", "course": "英・芝1200m"}, {"name": "英チャンピオンズロングディスタンスC", "month": "10月", "week": "3週", "region": "欧州", "grade": "G2", "course": "英・芝3200m"}, {"name": "菊花賞", "month": "10月", "week": "4週", "region": "関西", "grade": "G1", "course": "京都・芝3000m"}, {"name": "スワンS", "month": "10月", "week": "4週", "region": "関西", "grade": "G2", "course": "阪神/京都・芝1400m"}, {"name": "アルテミスS", "month": "10月", "week": "4週", "region": "関東", "grade": "G3", "course": "東京・芝1600m"}, {"name": "天皇賞・秋", "month": "10月", "week": "5週", "region": "関東", "grade": "G1", "course": "東京・芝2000m"}, {"name": "ブリーダーズカップ・クラシック (BCクラシック)", "month": "10月", "week": "5週", "region": "米国", "grade": "G1", "course": "美・ダ2000m"}, {"name": "ブリーダーズカップ・ターフ (BCターフ)", "month": "10月", "week": "5週", "region": "米国", "grade": "G1", "course": "美・芝2400m"}, {"name": "ブリーダーズカップ・マイル (BCマイル)", "month": "10月", "week": "5週", "region": "米国", "grade": "G1", "course": "美・芝1600m"}, {"name": "ブリーダーズカップ・ディスタフ (BCディスタフ)", "month": "10月", "week": "5週", "region": "米国", "grade": "G1", "course": "美・ダ1800m"}, {"name": "ブリーダーズカップ・スプリント (BCスプリント)", "month": "10月", "week": "5週", "region": "米国", "grade": "G1", "course": "美・ダ1200m"}, {"name": "ブリーダーズカップ・フィリー＆メアターフ (BC F&Mターフ)", "month": "10月", "week": "5週", "region": "米国", "grade": "G1", "course": "美・芝2200m"}, {"name": "ブリーダーズカップ・ダートマイル (BCダートマイル)", "month": "10月", "week": "5週", "region": "米国", "grade": "G1", "course": "美・ダ1600m"}, {"name": "ブリーダーズカップ・ターフスプリント (BCターフスプリント)", "month": "10月", "week": "5週", "region": "米国", "grade": "G1", "course": "美・芝1000m"}, {"name": "ブリーダーズカップ・ジュヴェナイル (BCジュヴェナイル)", "month": "10月", "week": "5週", "region": "米国", "grade": "G1", "course": "美・ダ1700m"}, {"name": "アルゼンチン共和国杯", "month": "11月", "week": "1週", "region": "関東", "grade": "G2", "course": "東京・芝2500m"}, {"name": "みやこS", "month": "11月", "week": "1週", "region": "関西", "grade": "G3", "course": "阪神/京都・ダ1800m"}, {"name": "ファンタジーS", "month": "11月", "week": "1週", "region": "関西", "grade": "G3", "course": "阪神/京都・芝1400m"}, {"name": "JBCクラシック", "month": "11月", "week": "1週", "region": "地方", "grade": "G1", "course": "地方・ダ2000m"}, {"name": "JBCスプリント", "month": "11月", "week": "1週", "region": "地方", "grade": "G1", "course": "地方・ダ1200m"}, {"name": "JBCレディスクラシック", "month": "11月", "week": "1週", "region": "地方", "grade": "G1", "course": "地方・ダ1800m"}, {"name": "メルボルンカップ", "month": "11月", "week": "1週", "region": "その他海外", "grade": "G1", "course": "澳・芝3200m"}, {"name": "エリザベス女王杯", "month": "11月", "week": "2週", "region": "関西", "grade": "G1", "course": "阪神/京都・芝2200m"}, {"name": "武蔵野S", "month": "11月", "week": "2週", "region": "関東", "grade": "G3", "course": "東京・ダ1600m"}, {"name": "デイリー杯2歳S", "month": "11月", "week": "2週", "region": "関西", "grade": "G2", "course": "阪神/京都・芝1600m"}, {"name": "福島記念", "month": "11月", "week": "2週", "region": "ローカル", "grade": "G3", "course": "福島・芝2000m"}, {"name": "マイルチャンピオンシップ (マイルCS)", "month": "11月", "week": "3週", "region": "関西", "grade": "G1", "course": "阪神/京都・芝1600m"}, {"name": "東京スポーツ杯2歳S (東スポ杯2歳S)", "month": "11月", "week": "3週", "region": "関東", "grade": "G2", "course": "東京・芝1800m"}, {"name": "香港ジョッキークラブC (國際賽前哨戰)", "month": "11月", "week": "3週", "region": "その他海外", "grade": "G2", "course": "沙田・芝2000m"}, {"name": "ジャパンカップ (ジャパンC)", "month": "11月", "week": "4週", "region": "関東", "grade": "G1", "course": "東京・芝2400m"}, {"name": "京阪杯", "month": "11月", "week": "4週", "region": "関西", "grade": "G3", "course": "阪神/京都・芝1200m"}, {"name": "京都2歳S", "month": "11月", "week": "4週", "region": "関西", "grade": "G3", "course": "京都/阪神・芝2000m"}, {"name": "キャピタルS", "month": "11月", "week": "5週", "region": "関東", "grade": "OP", "course": "東京・芝1600m"}, {"name": "チャンピオンズカップ (チャンピオンズC)", "month": "12月", "week": "1週", "region": "関西", "grade": "G1", "course": "中京・ダ1800m"}, {"name": "ステイヤーズS", "month": "12月", "week": "1週", "region": "関東", "grade": "G2", "course": "中山・芝3600m"}, {"name": "チャレンジカップ", "month": "12月", "week": "1週", "region": "関西", "grade": "G3", "course": "阪神・芝2000m"}, {"name": "阪神ジュベナイルフィリーズ (阪神JF)", "month": "12月", "week": "2週", "region": "関西", "grade": "G1", "course": "阪神・芝1600m"}, {"name": "カペラS", "month": "12月", "week": "2週", "region": "関東", "grade": "G3", "course": "中山・ダ1200m"}, {"name": "中日新聞杯", "month": "12月", "week": "2週", "region": "関西", "grade": "G3", "course": "中京・芝2000m"}, {"name": "香港カップ", "month": "12月", "week": "2週", "region": "その他海外", "grade": "G1", "course": "沙田・芝2000m"}, {"name": "香港マイル", "month": "12月", "week": "2週", "region": "その他海外", "grade": "G1", "course": "沙田・芝1600m"}, {"name": "香港ヴァーズ", "month": "12月", "week": "2週", "region": "その他海外", "grade": "G1", "course": "沙田・芝2400m"}, {"name": "香港スプリント", "month": "12月", "week": "2週", "region": "その他海外", "grade": "G1", "course": "沙田・芝1200m"}, {"name": "全日本2歳優駿", "month": "12月", "week": "2週", "region": "地方", "grade": "G1", "course": "川崎・ダ1600m"}, {"name": "朝日杯フューチュリティS (朝日杯FS)", "month": "12月", "week": "3週", "region": "関西", "grade": "G1", "course": "阪神・芝1600m"}, {"name": "ターコイズS", "month": "12月", "week": "3週", "region": "関東", "grade": "G3", "course": "中山・芝1600m"}, {"name": "有馬記念", "month": "12月", "week": "4週", "region": "関東", "grade": "G1", "course": "中山・芝2500m"}, {"name": "ホープフルS", "month": "12月", "week": "4週", "region": "関東", "grade": "G1", "course": "中山・芝2000m"}, {"name": "阪神カップ", "month": "12月", "week": "4週", "region": "関西", "grade": "G2", "course": "阪神・芝1400m"}, {"name": "東京大賞典", "month": "12月", "week": "4週", "region": "地方", "grade": "G1", "course": "大井・ダ2000m"}, {"name": "中山大障害", "month": "12月", "week": "5週", "region": "関東", "grade": "G1", "course": "中山・障4100m"}];
 
-        function showLoading(msg) {
-            const el = document.getElementById('loadingMsg');
-            if (el) {
-                if (msg) {
-                    el.style.display = 'block';
-                    el.innerHTML = msg;
-                } else {
-                    el.style.display = 'none';
-                }
-            }
-        }
-
-        async function loadDatabase() {
-            if (window.MASTER_DB_DATA) {
-                window._DB_LOADED = true;
-                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
-                if (typeof init === 'function') init();
-                return;
-            }
-            showLoading('⏳ 正在從 CDN 載入資料庫（首次約需 5~15 秒）...');
-            try {
-                const resp = await fetch(DB_CDN_URL);
-                const text = await resp.text();
-                const script = document.createElement('script');
-                script.textContent = text;
-                document.head.appendChild(script);
-                window._DB_LOADED = true;
-                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
-                showLoading('');
-                if (typeof init === 'function') init();
-            } catch (e) {
-                showLoading('⚠️ 本機或離線模式已就緒。如需網路同步，請連線後重新整理。');
-                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
-                if (typeof init === 'function') init();
-            }
-        }
-
-        async async async function clearPwaCache() {
-            if (!confirm("確定要清除快取並重新載入最新版本嗎？")) return;
-            showLoading("🧹 正在清除快取並重新載入最新版本...");
-            try {
-                if (window.location.protocol !== 'file:' && 'caches' in window) {
-                    try {
-                        const keys = await caches.keys();
-                        await Promise.all(keys.map(key => caches.delete(key)));
-                    } catch(e) { console.warn("Cache clear warning:", e); }
-                }
-                if (window.location.protocol !== 'file:' && 'serviceWorker' in navigator) {
-                    try {
-                        const registrations = await navigator.serviceWorker.getRegistrations();
-                        await Promise.all(registrations.map(r => r.unregister()));
-                    } catch(e) { console.warn("SW unregister warning:", e); }
-                }
-                try { localStorage.clear(); } catch(e){}
-                try { sessionStorage.clear(); } catch(e){}
-                window.location.reload(true);
-            } catch (err) {
-                console.warn("clearPwaCache fallback reload:", err);
-                window.location.reload();
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', loadDatabase);
-
-    </script>
-    <script>
-        window._DB_LOADED = false;
-        const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
-
-        function showLoading(msg) {
-            const el = document.getElementById('loadingMsg');
-            if (el) {
-                if (msg) {
-                    el.style.display = 'block';
-                    el.innerHTML = msg;
-                } else {
-                    el.style.display = 'none';
-                }
-            }
-        }
-
-        async function loadDatabase() {
-            if (window.MASTER_DB_DATA) {
-                window._DB_LOADED = true;
-                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
-                if (typeof init === 'function') init();
-                return;
-            }
-            showLoading('⏳ 正在從 CDN 載入資料庫（首次約需 5~15 秒）...');
-            try {
-                const resp = await fetch(DB_CDN_URL);
-                const text = await resp.text();
-                const script = document.createElement('script');
-                script.textContent = text;
-                document.head.appendChild(script);
-                window._DB_LOADED = true;
-                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
-                showLoading('');
-                if (typeof init === 'function') init();
-            } catch (e) {
-                showLoading('⚠️ 本機或離線模式已就緒。如需網路同步，請連線後重新整理。');
-                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
-                if (typeof init === 'function') init();
-            }
-        }
-
-        async async async function clearPwaCache() {
-            if (!confirm("確定要清除快取並重新載入最新版本嗎？")) return;
-            showLoading("🧹 正在清除快取並重新載入最新版本...");
-            try {
-                if (window.location.protocol !== 'file:' && 'caches' in window) {
-                    try {
-                        const keys = await caches.keys();
-                        await Promise.all(keys.map(key => caches.delete(key)));
-                    } catch(e) { console.warn("Cache clear warning:", e); }
-                }
-                if (window.location.protocol !== 'file:' && 'serviceWorker' in navigator) {
-                    try {
-                        const registrations = await navigator.serviceWorker.getRegistrations();
-                        await Promise.all(registrations.map(r => r.unregister()));
-                    } catch(e) { console.warn("SW unregister warning:", e); }
-                }
-                try { localStorage.clear(); } catch(e){}
-                try { sessionStorage.clear(); } catch(e){}
-                window.location.reload(true);
-            } catch (err) {
-                console.warn("clearPwaCache fallback reload:", err);
-                window.location.reload();
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', loadDatabase);
-
-    </script>
-    <script>
-        window._DB_LOADED = false;
-        const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
-
-        function showLoading(msg) {
-            const el = document.getElementById('loadingMsg');
-            if (el) {
-                if (msg) {
-                    el.style.display = 'block';
-                    el.innerHTML = msg;
-                } else {
-                    el.style.display = 'none';
-                }
-            }
-        }
-
-        async function loadDatabase() {
-            if (window.MASTER_DB_DATA) {
-                window._DB_LOADED = true;
-                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
-                if (typeof init === 'function') init();
-                return;
-            }
-            showLoading('⏳ 正在從 CDN 載入資料庫（首次約需 5~15 秒）...');
-            try {
-                const resp = await fetch(DB_CDN_URL);
-                const text = await resp.text();
-                const script = document.createElement('script');
-                script.textContent = text;
-                document.head.appendChild(script);
-                window._DB_LOADED = true;
-                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
-                showLoading('');
-                if (typeof init === 'function') init();
-            } catch (e) {
-                showLoading('⚠️ 本機或離線模式已就緒。如需網路同步，請連線後重新整理。');
-                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
-                if (typeof init === 'function') init();
-            }
-        }
-
-        async async async function clearPwaCache() {
-            if (!confirm("確定要清除快取並重新載入最新版本嗎？")) return;
-            showLoading("🧹 正在清除快取並重新載入最新版本...");
-            try {
-                if (window.location.protocol !== 'file:' && 'caches' in window) {
-                    try {
-                        const keys = await caches.keys();
-                        await Promise.all(keys.map(key => caches.delete(key)));
-                    } catch(e) { console.warn("Cache clear warning:", e); }
-                }
-                if (window.location.protocol !== 'file:' && 'serviceWorker' in navigator) {
-                    try {
-                        const registrations = await navigator.serviceWorker.getRegistrations();
-                        await Promise.all(registrations.map(r => r.unregister()));
-                    } catch(e) { console.warn("SW unregister warning:", e); }
-                }
-                try { localStorage.clear(); } catch(e){}
-                try { sessionStorage.clear(); } catch(e){}
-                window.location.reload(true);
-            } catch (err) {
-                console.warn("clearPwaCache fallback reload:", err);
-                window.location.reload();
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', loadDatabase);
-
-    // ==================== 跑法戰績紀錄儀 JavaScript Logic ====================
     const TACTICS_DEFINITIONS = [
         { id: 'oonige', name: '大逃げ', type: 'normal', badge: '通常' },
         { id: 'nige', name: '逃げ', type: 'normal', badge: '通常' },
@@ -313,297 +107,272 @@
         { id: 'oikomi', name: '追込', type: 'normal', badge: '通常' }
     ];
 
-    
-    // ==================== 48 週賽事日曆對照資料庫 ====================
-    const WEEK_RACES_CALENDAR = {
-        '1月1週': ['中山金杯 (中山・芝2000m・G3)', '京都金杯 (京都・芝1600m・G3)'],
-        '1月2週': ['シンザン記念 (中京・芝1600m・G3)', 'フェアリーS (中山・芝1600m・G3)'],
-        '1月3週': ['日経新春杯 (中京・芝2200m・G2)', '京成杯 (中山・芝2000m・G3)', '愛知杯 (小倉・芝2000m・G3)'],
-        '1月4週': ['アメリカJCC (中山・芝2200m・G2)', '東海S (中京・ダ1800m・G2)', '根岸S (東京・ダ1400m・G3)', 'シルクロードS (中京・芝1200m・G3)'],
-        '2月1週': ['きさらぎ賞 (中京・芝2000m・G3)', '東京新聞杯 (東京・芝1600m・G3)'],
-        '2月2週': ['京都記念 (阪神・芝2200m・G2)', '共同通信杯 (東京・芝1800m・G3)', 'クイーンC (東京・芝1600m・G3)'],
-        '2月3週': ['★ フェブラリーS (東京・ダ1600m・G1)', '小倉大賞典 (小倉・芝1800m・G3)', 'ダイヤモンドS (東京・芝3400m・G3)'],
-        '2月4週': ['中山記念 (中山・芝1800m・G2)', '阪急杯 (阪神・芝1400m・G3)', '★ サウジカップ (沙國・ダ1800m・G1)'],
-        '3月1週': ['弥生賞ディープ記念 (中山・芝2000m・G2)', 'チューリップ賞 (阪神・芝1600m・G2)', 'オーシャンS (中山・芝1200m・G3)'],
-        '3月2週': ['金鯱賞 (中京・芝2000m・G2)', 'フィリーズレビュー (阪神・芝1400m・G2)', '中山牝馬S (中山・芝1800m・G3)'],
-        '3月3週': ['スプリングS (中山・芝1800m・G2)', '阪神大賞典 (阪神・芝3000m・G2)', 'ファルコンS (中京・芝1400m・G3)'],
-        '3月4週': ['★ 高松宮記念 (中京・芝1200m・G1)', '日経賞 (中山・芝2500m・G2)', '毎日杯 (阪神・芝1800m・G3)', 'マーチS (中山・ダ1800m・G3)', '★ ドバイワールドC (杜拜・ダ2000m・G1)', '★ ドバイシーマC (杜拜・芝2410m・G1)', '★ ドバイターフ (杜拜・芝1800m・G1)'],
-        '4月1週': ['★ 大阪杯 (阪神・芝2000m・G1)', 'ダービー卿CT (中山・芝1600m・G3)'],
-        '4月2週': ['★ 桜花賞 (阪神・芝1600m・G1)', 'ニュージーランドT (中山・芝1600m・G2)', '阪神牝馬S (阪神・芝1600m・G2)'],
-        '4月3週': ['★ 皐月賞 (中山・芝2000m・G1)', 'アンタレスS (阪神・ダ1800m・G3)', 'アーリントンC (阪神・芝1600m・G3)'],
-        '4月4週': ['フローラS (東京・芝2000m・G2)', 'マイラーズC (阪神・芝1600m・G2)', '福島牝馬S (福島・芝1800m・G3)', '★ 香港QE2世C (沙田・芝2000m・G1)', '★ 香港チャンピオンズM (沙田・芝1600m・G1)'],
-        '5月1週': ['★ 天皇賞・春 (京都・芝3200m・G1)', '青葉賞 (東京・芝2400m・G2)', '京都新聞杯 (中京・芝2200m・G2)', '★ ケンタッキーダービー (美・ダ2000m・G1)'],
-        '5月2週': ['★ NHKマイルC (東京・芝1600m・G1)', '京王杯SC (東京・芝1400m・G2)', '新潟大賞典 (新潟・芝2000m・G3)'],
-        '5月3週': ['★ ヴィクトリアマイル (東京・芝1600m・G1)', '平安S (中京・ダ1900m・G3)', '★ プリークネスS (美・ダ1900m・G1)'],
-        '5月4週': ['★ オークス・優駿牝馬 (東京・芝2400m・G1)', '葵S (中京・芝1200m・G3)'],
-        '5月5週': ['★ 日本ダービー・東京優駿 (東京・芝2400m・G1)', '目黒記念 (東京・芝2500m・G2)'],
-        '6月1週': ['★ 安田記念 (東京・芝1600m・G1)', '鳴尾記念 (中京・芝2000m・G3)', '★ ベルモントS (美・ダ2400m・G1)', '★ 英ダービー (英・芝2420m・G1)'],
-        '6月2週': ['エプソムC (東京・芝1800m・G3)', 'マーメイドS (阪神・芝2000m・G3)', '★ ロイヤルアスコット開催 (英・G1)'],
-        '6月3週': ['ユニコーンS (東京・ダ1600m・G3)', '函館スプリントS (函館・芝1200m・G3)'],
-        '6月4週': ['★ 宝塚記念 (阪神・芝2200m・G1)', '府中牝馬S (東京・芝1800m・G2)'],
-        '7月1週': ['ラジオNIKKEI賞 (福島・芝1800m・G3)', 'CBC賞 (小倉・芝1200m・G3)'],
-        '7月2週': ['七夕賞 (福島・芝2000m・G3)', 'プロキオンS (小倉・ダ1700m・G3)'],
-        '7月3週': ['函館記念 (函館・芝2000m・G3)', '中京記念 (小倉・芝1800m・G3)'],
-        '7月4週': ['アイビスSD (新潟・芝1000m・G3)', 'クイーンS (札幌・芝1800m・G3)', '★ キングジョージ6世＆QES (英・芝2400m・G1)'],
-        '8月1週': ['レパードS (新潟・ダ1800m・G3)', 'エルムS (札幌・ダ1700m・G3)'],
-        '8月2週': ['小倉記念 (小倉・芝2000m・G3)', '関屋記念 (新潟・芝1600m・G3)'],
-        '8月3週': ['札幌記念 (札幌・芝2000m・G2)', '北九州記念 (小倉・芝1200m・G3)', '★ 英インターナショナルS (英・芝2050m・G1)'],
-        '8月4週': ['新潟2歳S (新潟・芝1600m・G3)', 'キーンランドC (札幌・芝1200m・G3)', '★ トラヴァーズS (美・ダ2000m・G1)'],
-        '9月1週': ['札幌2歳S (札幌・芝1800m・G3)', '小倉2歳S (小倉・芝1200m・G3)', '新潟記念 (新潟・芝2000m・G3)'],
-        '9月2週': ['紫苑S (中山・芝2000m・G2)', 'セントウルS (中京・芝1200m・G2)', '京成杯AH (中山・芝1600m・G3)'],
-        '9月3週': ['ローズS (中京・芝2000m・G2)', 'セントライト記念 (中山・芝2200m・G2)'],
-        '9月4週': ['オールカマー (中山・芝2200m・G2)', '神戸新聞杯 (中京・芝2200m・G2)', 'シリウスS (中京・ダ1900m・G3)'],
-        '10月1週': ['★ スプリンターズS (中山・芝1200m・G1)', '毎日王冠 (東京・芝1800m・G2)', '京都大賞典 (阪神・芝2400m・G2)', '★ 凱旋門賞 (法・芝2400m・G1)'],
-        '10月2週': ['府中牝馬S (東京・芝1800m・G2)', 'サウジアラビアRC (東京・芝1600m・G3)'],
-        '10月3週': ['★ 秋華賞 (阪神・芝2000m・G1)', '富士S (東京・芝1600m・G2)', '★ 英チャンピオンS (英・芝2000m・G1)'],
-        '10月4週': ['★ 菊花賞 (阪神・芝3000m・G1)', 'スワンS (阪神・芝1400m・G2)', 'アルテミスS (東京・芝1600m・G3)'],
-        '10月5週': ['★ 天皇賞・秋 (東京・芝2000m・G1)', '★ BCクラシック (美・ダ2000m・G1)', '★ BCターフ (美・芝2400m・G1)', '★ BCマイル (美・芝1600m・G1)'],
-        '11月1週': ['アルゼンチン共和国杯 (東京・芝2500m・G2)', 'みやこS (阪神・ダ1800m・G3)', 'ファンタジーS (阪神・芝1400m・G3)', '★ JBCクラシック (地方・ダ2000m・Jpn1)', '★ メルボルンC (澳・芝3200m・G1)'],
-        '11月2週': ['★ エリザベス女王杯 (阪神・芝2200m・G1)', '武蔵野S (東京・ダ1600m・G3)', 'デイリー杯2歳S (阪神・芝1600m・G2)'],
-        '11月3週': ['★ マイルCS (阪神・芝1600m・G1)', '東スポ杯2歳S (東京・芝1800m・G2)'],
-        '11月4週': ['★ ジャパンカップ (東京・芝2400m・G1)', '京阪杯 (阪神・芝1200m・G3)', '京都2歳S (阪神・芝2000m・G3)'],
-        '12月1週': ['★ チャンピオンズC (中京・ダ1800m・G1)', 'ステイヤーズS (中山・芝3600m・G2)', 'チャレンジC (阪神・芝2000m・G3)'],
-        '12月2週': ['★ 阪神JF (阪神・芝1600m・G1)', 'カペラS (中山・ダ1200m・G3)', '中日新聞杯 (中京・芝2000m・G3)', '★ 香港カップ (沙田・芝2000m・G1)', '★ 香港マイル (沙田・芝1600m・G1)', '★ 香港ヴァーズ (沙田・芝2400m・G1)', '★ 香港スプリント (沙田・芝1200m・G1)'],
-        '12月3週': ['★ 朝日杯FS (阪神・芝1600m・G1)', 'ターコイズS (中山・芝1600m・G3)'],
-        '12月4週': ['★ 有馬記念 (中山・芝2500m・G1)', '★ ホープフルS (中山・芝2000m・G1)', '★ 東京大賞典 (大井・ダ2000m・G1)', '阪神C (阪神・芝1400m・G2)']
-    };
-
-    function onTrackWeekChange() {
-        const week = document.getElementById('trackWeek')?.value || '5月5週';
-        const raceSelect = document.getElementById('trackRaceSelect');
-        const raceInput = document.getElementById('trackRace');
-        if (!raceSelect) return;
-
-        raceSelect.innerHTML = '';
-        const races = WEEK_RACES_CALENDAR[week] || ['日本ダービー (東京・芝2400m)'];
-        
-        races.forEach((r, idx) => {
-            const opt = document.createElement('option');
-            opt.value = r;
-            opt.textContent = r;
-            raceSelect.appendChild(opt);
-            if (idx === 0 && raceInput) raceInput.value = r;
-        });
-
-        const customOpt = document.createElement('option');
-        customOpt.value = 'CUSTOM';
-        customOpt.textContent = '✏️ 手動自填賽事名稱...';
-        raceSelect.appendChild(customOpt);
-    }
-
-    function onTrackRaceSelectChange() {
-        const raceSelect = document.getElementById('trackRaceSelect');
-        const raceInput = document.getElementById('trackRace');
-        if (!raceSelect || !raceInput) return;
-        if (raceSelect.value === 'CUSTOM') {
-            raceInput.value = '';
-            raceInput.focus();
-        } else {
-            raceInput.value = raceSelect.value;
-        }
-    }
-
-    function initTacticsTracker() {
-        // 1. Populate Weeks
-        const weekSelect = document.getElementById('trackWeek');
-        if (weekSelect && weekSelect.children.length === 0) {
-            for (let m = 1; m <= 12; m++) {
-                for (let w = 1; w <= 4; w++) {
-                    const opt = document.createElement('option');
-                    opt.value = `${m}月${w}週`;
-                    opt.textContent = `${m}月 ${w}週`;
-                    weekSelect.appendChild(opt);
-                }
-            }
-        }
-
-        // 2. Populate 13 tactics input fields
-        const container = document.getElementById('tacticsInputsContainer');
-        if (container && container.children.length === 0) {
-            TACTICS_DEFINITIONS.forEach(t => {
-                const item = document.createElement('div');
-                item.style.cssText = 'background:rgba(30,41,59,0.7); border:1px solid rgba(51,65,85,0.4); border-radius:6px; padding:6px 10px; display:flex; justify-content:space-between; align-items:center;';
-                
-                let badgeClass = 'pill-safe';
-                if (t.type === 'special') badgeClass = 'pill-danger';
-                if (t.type === 'limit') badgeClass = 'pill-gold';
-
-                item.innerHTML = `
-                    <div>
-                        <div style="font-weight:bold; font-size:0.82rem; color:var(--text-main);">${t.name}</div>
-                        <span class="pill ${badgeClass}" style="font-size:0.65rem; padding:1px 5px;">${t.badge}</span>
-                    </div>
-                    <div style="display:flex; align-items:center; gap:4px;">
-                        <input type="number" id="t_${t.id}" min="1" max="18" placeholder="名次" class="filter-control" style="width:60px; padding:3px 6px; font-size:0.82rem; text-align:center;">
-                        <span style="font-size:0.75rem; color:var(--text-muted);">着</span>
-                    </div>
-                `;
-                container.appendChild(item);
-            });
-        }
-
-        // 3. Load stored Google Sheet URL
-        const gUrlInput = document.getElementById('gSheetUrl');
-        if (gUrlInput) {
-            gUrlInput.value = localStorage.getItem('WP10_GSHEET_URL') || '';
-        }
-
-        onTrackWeekChange();
-        renderTacticsTable();
+    function getMatchedRacesForDate(month, week) {
+        return WP10_RACES_DB.filter(r => r.month === month && r.week === week);
     }
 
     function getTacticsRecords() {
         try {
-            return JSON.parse(localStorage.getItem('WP10_TACTICS_RECORDS') || '[]');
+            const stored = localStorage.getItem('WP10_TACTICS_RECORDS');
+            if (stored !== null) {
+                const parsed = JSON.parse(stored);
+                if (Array.isArray(parsed)) return parsed;
+            }
         } catch (e) {
-            return [];
+            console.warn(e);
         }
+        return [
+            {
+                id: 'rec_' + Date.now(),
+                year: '1968',
+                month: '5月',
+                week: '5週',
+                race: '[G1] 日本ダービー (東京優駿) (東京・芝2400m)',
+                horse: 'オーハヤブサ',
+                jockey: '武豊',
+                ranks: { 'senkou': 1, 'nige': 2, 'sashi': 4 }
+            },
+            {
+                id: 'rec_' + (Date.now() + 1),
+                year: '1968',
+                month: '5月',
+                week: '5週',
+                race: '[G2] 目黒記念 (東京・芝2500m)',
+                horse: 'ケンホウ',
+                jockey: '岡部幸雄',
+                ranks: { 'sekkyoku': 1, 'maezuke': 2 }
+            }
+        ];
     }
 
     function saveTacticsRecords(records) {
         localStorage.setItem('WP10_TACTICS_RECORDS', JSON.stringify(records));
-        onTrackWeekChange();
-        renderTacticsTable();
+        renderTacticsGrid();
     }
 
-    function saveTacticsRecord() {
-        const year = document.getElementById('trackYear').value || '1968';
-        const week = document.getElementById('trackWeek').value || '1月1週';
-        const race = document.getElementById('trackRace').value.trim() || '未定賽事';
-        const horse = document.getElementById('trackHorse').value.trim();
-        const jockey = document.getElementById('trackJockey').value.trim() || '未定騎手';
-
-        if (!horse) {
-            alert('請填寫賽駒名稱！');
-            document.getElementById('trackHorse').focus();
-            return;
-        }
-
-        const ranks = {};
-        TACTICS_DEFINITIONS.forEach(t => {
-            const val = document.getElementById(`t_${t.id}`).value;
-            if (val) ranks[t.id] = parseInt(val, 10);
-        });
-
+    function addNewTacticsRow() {
         const records = getTacticsRecords();
-        const editingId = document.getElementById('editingRecordId').value;
-
-        if (editingId) {
-            // Update
-            const idx = records.findIndex(r => r.id === editingId);
-            if (idx !== -1) {
-                records[idx] = { id: editingId, year, week, race, horse, jockey, ranks, updatedAt: new Date().toISOString() };
-            }
-        } else {
-            // Add new
-            const newRecord = {
-                id: 'rec_' + Date.now(),
-                year, week, race, horse, jockey, ranks,
-                createdAt: new Date().toISOString()
-            };
-            records.unshift(newRecord);
-        }
-
+        const newRecord = {
+            id: 'rec_' + Date.now() + '_' + Math.floor(Math.random()*1000),
+            year: records.length > 0 ? records[0].year : '1968',
+            month: '5月',
+            week: '5週',
+            race: '[G1] 日本ダービー (東京優駿) (東京・芝2400m)',
+            horse: '',
+            jockey: '',
+            ranks: {}
+        };
+        records.unshift(newRecord);
         saveTacticsRecords(records);
-        clearTacticsForm();
-        alert('✅ 戰績紀錄儲存成功！');
     }
 
-    function editTacticsRecord(id) {
+    function copyTacticsRow(id) {
         const records = getTacticsRecords();
-        const rec = records.find(r => r.id === id);
-        if (!rec) return;
-
-        document.getElementById('editingRecordId').value = rec.id;
-        document.getElementById('trackYear').value = rec.year;
-        document.getElementById('trackWeek').value = rec.week;
-        document.getElementById('trackRace').value = rec.race;
-        document.getElementById('trackHorse').value = rec.horse;
-        document.getElementById('trackJockey').value = rec.jockey;
-
-        TACTICS_DEFINITIONS.forEach(t => {
-            document.getElementById(`t_${t.id}`).value = rec.ranks[t.id] !== undefined ? rec.ranks[t.id] : '';
-        });
-
-        document.getElementById('saveBtnText').textContent = '💾 儲存修改內容';
-        document.getElementById('btnSaveTrackRecord').scrollIntoView({ behavior: 'smooth' });
+        const target = records.find(r => r.id === id);
+        if (!target) return;
+        const copied = JSON.parse(JSON.stringify(target));
+        copied.id = 'rec_' + Date.now() + '_' + Math.floor(Math.random()*1000);
+        copied.horse = copied.horse ? copied.horse + ' (副本)' : '';
+        records.unshift(copied);
+        saveTacticsRecords(records);
     }
 
-    function deleteTacticsRecord(id) {
-        if (!confirm('確定要刪除這筆戰績紀錄嗎？')) return;
+    function deleteTacticsRow(id) {
+        if (!confirm('確定要刪除此列賽事紀錄嗎？')) return;
         let records = getTacticsRecords();
         records = records.filter(r => r.id !== id);
         saveTacticsRecords(records);
     }
 
-    function clearTacticsForm() {
-        document.getElementById('editingRecordId').value = '';
-        document.getElementById('trackHorse').value = '';
-        document.getElementById('trackJockey').value = '';
-        document.getElementById('saveBtnText').textContent = '新增這筆戰績紀錄';
-        TACTICS_DEFINITIONS.forEach(t => {
-            document.getElementById(`t_${t.id}`).value = '';
-        });
+    function clearAllTacticsRows() {
+        if (!confirm('⚠️ 警告：確定要清空所有賽駒戰績紀錄嗎？（建議先點擊「匯出 CSV」進行備份）')) return;
+        localStorage.setItem('WP10_TACTICS_RECORDS', '[]');
+        renderTacticsGrid();
     }
 
-    function renderTacticsTable() {
-        const tbody = document.getElementById('tacticsRecordsBody');
-        const countSpan = document.getElementById('trackRecordCount');
+    function onRaceDropdownChange(id, val) {
+        const records = getTacticsRecords();
+        const target = records.find(r => r.id === id);
+        if (!target) return;
+        const inputEl = document.getElementById(`race_input_${id}`);
+        if (val === 'CUSTOM') {
+            target.race = '';
+            if (inputEl) {
+                inputEl.value = '';
+                inputEl.placeholder = '請手動自填賽事名稱...';
+                inputEl.focus();
+            }
+        } else if (val) {
+            target.race = val;
+            if (inputEl) inputEl.value = val;
+        }
+        localStorage.setItem('WP10_TACTICS_RECORDS', JSON.stringify(records));
+    }
+
+    function onGridRowFieldChange(id, field, value) {
+        const records = getTacticsRecords();
+        const target = records.find(r => r.id === id);
+        if (!target) return;
+
+        target[field] = value;
+
+        if (field === 'month' || field === 'week') {
+            const matched = getMatchedRacesForDate(target.month, target.week);
+            if (matched.length > 0) {
+                let r = matched[0];
+                target.race = `[${r.grade}] ${r.name} (${r.course || r.region})`;
+            } else {
+                target.race = '';
+            }
+        }
+
+        localStorage.setItem('WP10_TACTICS_RECORDS', JSON.stringify(records));
+        updateRowBestTacticBadge(id);
+        if (field === 'month' || field === 'week') {
+            renderTacticsGrid();
+        }
+    }
+
+    function onGridRowRankChange(id, tacticId, rankVal) {
+        const records = getTacticsRecords();
+        const target = records.find(r => r.id === id);
+        if (!target) return;
+        if (!target.ranks) target.ranks = {};
+
+        if (rankVal && rankVal.trim() !== '') {
+            target.ranks[tacticId] = parseInt(rankVal, 10);
+        } else {
+            delete target.ranks[tacticId];
+        }
+
+        localStorage.setItem('WP10_TACTICS_RECORDS', JSON.stringify(records));
+        updateRowBestTacticBadge(id);
+    }
+
+    function updateRowBestTacticBadge(id) {
+        const records = getTacticsRecords();
+        const target = records.find(r => r.id === id);
+        if (!target) return;
+
+        let bestTactic = '未測試';
+        let minRank = 999;
+        TACTICS_DEFINITIONS.forEach(t => {
+            const rank = target.ranks ? target.ranks[t.id] : undefined;
+            if (rank && rank < minRank) {
+                minRank = rank;
+                bestTactic = `${t.name} (${rank}着)`;
+            }
+        });
+
+        const badgeEl = document.getElementById(`best_tactic_${id}`);
+        if (badgeEl) {
+            badgeEl.textContent = bestTactic;
+            badgeEl.className = minRank === 1 ? 'pill pill-gold' : (minRank <= 3 ? 'pill pill-safe' : 'pill');
+        }
+    }
+
+    function saveAllTacticsRows() {
+        const records = getTacticsRecords();
+        localStorage.setItem('WP10_TACTICS_RECORDS', JSON.stringify(records));
+        alert(`✅ 成功儲存全部 ${records.length} 列戰績紀錄！`);
+    }
+
+    function renderTacticsGrid() {
+        const tbody = document.getElementById('tacticsGridBody');
+        const countSpan = document.getElementById('trackRowCount');
         if (!tbody) return;
 
         const records = getTacticsRecords();
-        const searchKeyword = (document.getElementById('trackSearchFilter')?.value || '').toLowerCase().trim();
+        const keyword = (document.getElementById('gridSearchFilter')?.value || '').toLowerCase().trim();
 
         const filtered = records.filter(r => {
-            if (!searchKeyword) return true;
-            return (r.horse && r.horse.toLowerCase().includes(searchKeyword)) ||
-                   (r.race && r.race.toLowerCase().includes(searchKeyword)) ||
-                   (r.jockey && r.jockey.toLowerCase().includes(searchKeyword)) ||
-                   (r.year && String(r.year).includes(searchKeyword));
+            if (!keyword) return true;
+            return (r.horse && r.horse.toLowerCase().includes(keyword)) ||
+                   (r.race && r.race.toLowerCase().includes(keyword)) ||
+                   (r.jockey && r.jockey.toLowerCase().includes(keyword)) ||
+                   (r.year && String(r.year).includes(keyword));
         });
 
         if (countSpan) countSpan.textContent = filtered.length;
 
         if (filtered.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:30px; color:var(--text-muted);">尚無符合的跑法戰績紀錄。請在上方表單填寫並點擊「新增這筆戰績紀錄」。</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="20" style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-folder-open" style="font-size:1.8rem; opacity:0.5; margin-bottom:8px; display:block;"></i>尚無任何賽事紀錄。請點擊「➕ 新增一列賽事紀錄 (Add Row)」開始錄入！</td></tr>`;
             return;
         }
 
         tbody.innerHTML = filtered.map(r => {
-            // Find best tactic
+            const monthOpts = [1,2,3,4,5,6,7,8,9,10,11,12].map(m => `<option value="${m}月"${r.month === `${m}月` ? ' selected' : ''}>${m}月</option>`).join('');
+            const weekOpts = [1,2,3,4,5].map(w => `<option value="${w}週"${r.week === `${w}週` ? ' selected' : ''}>${w}週</option>`).join('');
+
+            const matchedRaces = getMatchedRacesForDate(r.month || '5月', r.week || '5週');
+            let raceOpts = matchedRaces.map(rc => {
+                let fullLabel = `[${rc.grade}] ${rc.name} (${rc.course || rc.region})`;
+                return `<option value="${fullLabel}"${r.race === fullLabel ? ' selected' : ''}>${fullLabel}</option>`;
+            }).join('');
+
             let bestTactic = '未測試';
             let minRank = 999;
             TACTICS_DEFINITIONS.forEach(t => {
-                const rank = r.ranks[t.id];
+                const rank = r.ranks ? r.ranks[t.id] : undefined;
                 if (rank && rank < minRank) {
                     minRank = rank;
                     bestTactic = `${t.name} (${rank}着)`;
                 }
             });
+            let bestClass = minRank === 1 ? 'pill pill-gold' : (minRank <= 3 ? 'pill pill-safe' : 'pill');
 
-            // Generate badges for 13 tactics
-            const rankBadges = TACTICS_DEFINITIONS.map(t => {
-                const rank = r.ranks[t.id];
-                if (!rank) return `<span style="opacity:0.25; font-size:0.75rem; margin-right:4px;">${t.name}:-</span>`;
-                let bg = 'rgba(51,65,85,0.4)';
-                let color = '#94a3b8';
-                if (rank === 1) { bg = '#eab308'; color = '#000'; font = 'bold'; }
-                else if (rank === 2) { bg = '#94a3b8'; color = '#000'; font = 'bold'; }
-                else if (rank === 3) { bg = '#cd7f32'; color = '#fff'; font = 'bold'; }
-                return `<span style="background:${bg}; color:${color}; font-weight:bold; font-size:0.72rem; padding:2px 5px; border-radius:4px; margin-right:4px; display:inline-block; margin-bottom:2px;">${t.name}:${rank}着</span>`;
+            const tacticsInputsHtml = TACTICS_DEFINITIONS.map(t => {
+                const rankVal = (r.ranks && r.ranks[t.id] !== undefined) ? r.ranks[t.id] : '';
+                let cellBg = rankVal === 1 ? 'background:rgba(234,179,8,0.25);' : (rankVal === 2 ? 'background:rgba(148,163,184,0.2);' : (rankVal === 3 ? 'background:rgba(205,127,50,0.2);' : ''));
+                return `
+                    <td style="padding:4px; text-align:center; ${cellBg}">
+                        <input type="number" min="1" max="18" value="${rankVal}" placeholder="-" 
+                            class="filter-control" 
+                            style="width:52px; padding:4px 2px; font-size:0.85rem; text-align:center; font-weight:bold; color:var(--gold-color); background:rgba(15,23,42,0.85); border:1px solid rgba(255,255,255,0.15);"
+                            oninput="onGridRowRankChange('${r.id}', '${t.id}', this.value)"
+                            title="${t.name} 名次">
+                    </td>
+                `;
             }).join('');
 
             return `
-                <tr>
-                    <td><strong>${r.year} 年</strong><br><small style="color:var(--text-muted);">${r.week}</small></td>
-                    <td><strong style="color:var(--accent-color);">${r.race}</strong></td>
-                    <td><strong>${r.horse}</strong></td>
-                    <td>${r.jockey}</td>
-                    <td><div style="line-height:1.7;">${rankBadges}</div></td>
-                    <td><span class="pill pill-gold">${bestTactic}</span></td>
-                    <td style="text-align:center;">
-                        <button onclick="editTacticsRecord('${r.id}')" style="background:#0284c7; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:0.75rem; margin-right:4px;" title="編輯"><i class="fa-solid fa-pen"></i></button>
-                        <button onclick="deleteTacticsRecord('${r.id}')" style="background:#ef4444; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:0.75rem;" title="刪除"><i class="fa-solid fa-trash"></i></button>
+                <tr id="row_${r.id}" style="border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <td>
+                        <input type="number" value="${r.year || '1968'}" min="1968" max="2035" class="filter-control" style="width:68px; padding:4px; font-size:0.82rem;" onchange="onGridRowFieldChange('${r.id}', 'year', this.value)">
+                    </td>
+                    <td>
+                        <select class="filter-control" style="width:68px; padding:4px 2px; font-size:0.82rem;" onchange="onGridRowFieldChange('${r.id}', 'month', this.value)">
+                            ${monthOpts}
+                        </select>
+                    </td>
+                    <td>
+                        <select class="filter-control" style="width:65px; padding:4px 2px; font-size:0.82rem;" onchange="onGridRowFieldChange('${r.id}', 'week', this.value)">
+                            ${weekOpts}
+                        </select>
+                    </td>
+                    <td>
+                        <div style="display:flex; gap:4px; align-items:center;">
+                            <select class="filter-control" style="width:46%; min-width:110px; padding:4px 2px; font-size:0.78rem;" onchange="onRaceDropdownChange('${r.id}', this.value)">
+                                <option value="">-- 選定重賞 --</option>
+                                ${raceOpts}
+                                <option value="CUSTOM">✏️ 手動自填...</option>
+                            </select>
+                            <input type="text" id="race_input_${r.id}" value="${r.race || ''}" placeholder="自定賽事名稱..." class="filter-control" style="width:54%; min-width:130px; padding:4px 6px; font-size:0.82rem; font-weight:bold; color:var(--accent-color);" oninput="onGridRowFieldChange('${r.id}', 'race', this.value)">
+                        </div>
+                    </td>
+                    <td>
+                        <input type="text" value="${r.horse || ''}" placeholder="如: オーハヤブサ" class="filter-control" style="width:100%; min-width:120px; padding:4px 8px; font-size:0.85rem; font-weight:bold;" oninput="onGridRowFieldChange('${r.id}', 'horse', this.value)">
+                    </td>
+                    <td>
+                        <input type="text" value="${r.jockey || ''}" placeholder="如: 武豊" class="filter-control" style="width:100%; min-width:95px; padding:4px 8px; font-size:0.85rem;" oninput="onGridRowFieldChange('${r.id}', 'jockey', this.value)">
+                    </td>
+                    ${tacticsInputsHtml}
+                    <td>
+                        <span id="best_tactic_${r.id}" class="${bestClass}" style="font-size:0.75rem; white-space:nowrap;">${bestTactic}</span>
+                    </td>
+                    <td style="text-align:center; white-space:nowrap;">
+                        <button onclick="copyTacticsRow('${r.id}')" style="background:#0284c7; color:#fff; border:none; padding:4px 7px; border-radius:4px; cursor:pointer; font-size:0.75rem; margin-right:3px;" title="複製此列"><i class="fa-solid fa-copy"></i></button>
+                        <button onclick="deleteTacticsRow('${r.id}')" style="background:#ef4444; color:#fff; border:none; padding:4px 7px; border-radius:4px; cursor:pointer; font-size:0.75rem;" title="刪除此列"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
             `;
@@ -621,7 +390,6 @@
         }
 
         if (!url) {
-            // If no webhook URL, offer automatic CSV download
             if (confirm('尚未設定 Google Apps Script Web App URL。是否立即直接「匯出 Google Sheets 相容 CSV 檔案」？')) {
                 exportTacticsCsv();
             }
@@ -639,7 +407,7 @@
             alert('✅ 成功將全部戰績同步寫入 Google Sheets！');
         } catch (e) {
             console.error(e);
-            if (statusEl) statusEl.innerHTML = '⚠️ 雲端傳輸完成 (若遇跨域 CORS，數據已送出或可使用 CSV 匯出)。';
+            if (statusEl) statusEl.innerHTML = '⚠️ 雲端傳輸請求已送出 (若遇跨域 CORS，數據已發送至 Google 或可使用 CSV 匯出)。';
             alert('提示：已發送同步請求。若 Google Apps Script 有回傳請確認試算表，或點擊「匯出 CSV 檔」直接匯入！');
         }
     }
@@ -651,14 +419,14 @@
             return;
         }
 
-        const headers = ['年度', '週別', '賽事名稱', '賽駒名稱', '騎手', ...TACTICS_DEFINITIONS.map(t => t.name), '最優跑法'];
+        const headers = ['年度', '月份', '週別', '賽事名稱', '賽駒名稱', '騎手', ...TACTICS_DEFINITIONS.map(t => t.name), '最優跑法'];
         const csvRows = [headers.join(',')];
 
         records.forEach(r => {
             let bestTactic = '-';
             let minRank = 999;
             TACTICS_DEFINITIONS.forEach(t => {
-                const rank = r.ranks[t.id];
+                const rank = r.ranks ? r.ranks[t.id] : undefined;
                 if (rank && rank < minRank) {
                     minRank = rank;
                     bestTactic = `${t.name} (${rank}着)`;
@@ -666,19 +434,19 @@
             });
 
             const row = [
-                `"${r.year}"`,
-                `"${r.week}"`,
-                `"${r.race}"`,
-                `"${r.horse}"`,
-                `"${r.jockey}"`,
-                ...TACTICS_DEFINITIONS.map(t => r.ranks[t.id] ? `"${r.ranks[t.id]}"` : '""'),
+                `"${r.year || ''}"`,
+                `"${r.month || ''}"`,
+                `"${r.week || ''}"`,
+                `"${r.race || ''}"`,
+                `"${r.horse || ''}"`,
+                `"${r.jockey || ''}"`,
+                ...TACTICS_DEFINITIONS.map(t => (r.ranks && r.ranks[t.id]) ? `"${r.ranks[t.id]}"` : '""'),
                 `"${bestTactic}"`
             ];
             csvRows.push(row.join(','));
         });
 
-        const blob = new Blob(["﻿" + csvRows.join('
-')], { type: 'text/csv;charset=utf-8;' });
+        const blob = new Blob(["﻿" + csvRows.join(String.fromCharCode(10))], { type: 'text/csv;charset=utf-8;' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -716,10 +484,17 @@
         reader.readAsText(file);
     }
 
+    function initTacticsTracker() {
+        const gUrlInput = document.getElementById('gSheetUrl');
+        if (gUrlInput) {
+            gUrlInput.value = localStorage.getItem('WP10_GSHEET_URL') || '';
+        }
+        renderTacticsGrid();
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
         initTacticsTracker();
     });
-
     </script>
     <script>
         if (window.location.protocol !== 'file:' && 'serviceWorker' in navigator) {
@@ -1822,7 +1597,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.65</span>
+        <span class="version-badge">v01.69</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -9076,8 +8851,12 @@ li {
                 'pillar-train': 'tabPillarTrain',
                 'pillar-races': 'tabPillarRaces',
                 'pillar-ranch': 'tabPillarRanch',
-                'pillar-secrets': 'tabPillarSecrets'
+                'pillar-secrets': 'tabPillarSecrets',
+                'pillar-tracker': 'tabPillarTracker'
             };
+            if (pillarId === 'pillar-tracker' && typeof renderTacticsGrid === 'function') {
+                renderTacticsGrid();
+            }
             const btn = document.getElementById(btnMap[pillarId]);
             if (btn) btn.classList.add('active');
 
@@ -10151,198 +9930,96 @@ li {
         }
     </script>
 
-    <!-- Pillar 8: 📊 實戰 13 大跑法比賽戰績紀錄儀 (Race Tactics Tracker) -->
+    
+    <!-- Pillar 8: 📊 實戰 13 大跑法比賽戰績紀錄儀 (橫向試算表批次錄入版) -->
     <div id="pillar-tracker" class="pillar-content" style="display:none;">
         <div class="pillar-header-card">
-            <h2>📊 實戰 13 大跑法比賽戰績紀錄儀 (Race Tactics Tracker)</h2>
-            <p>1 行完整對應 1 匹馬在該賽事的 13 種跑法實戰名次，選定月份與第幾週自動帶出正統重賞賽事，支援 Google Sheets 雲端同步與 CSV 匯出</p>
+            <h2>📊 實戰 13 大跑法比賽戰績紀錄儀 (橫向即時批次錄入大表)</h2>
+            <p>橫向一行對應一匹馬的一場比賽戰績，支援同時進行多匹馬的 13 種跑法即時輸入、切換月份週別自動推薦重賞、自動計算最優跑法、以及 Google Sheets 雙向同步</p>
         </div>
 
-        <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:22px; margin-bottom:24px;">
-            <h3 style="color:var(--accent-color); font-size:1.1rem; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
-                <i class="fa-solid fa-pen-to-square"></i> 填寫賽事與 13 跑法實戰名次表單
-            </h3>
-            
-            <input type="hidden" id="editingRecordId" value="">
-
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap:14px; margin-bottom:20px;">
-                <div class="filter-group">
-                    <label for="trackYear"><i class="fa-solid fa-calendar"></i> 年度 (Year)</label>
-                    <input type="number" id="trackYear" class="filter-control" value="1968" min="1968" max="2035">
+        <!-- 頂部快速操作與 Google Sheets 管理欄 -->
+        <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:18px 20px; margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.2);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+                <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                    <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.95rem; font-weight:bold; padding:10px 22px; border:none; border-radius:8px; box-shadow:0 2px 10px rgba(2,132,199,0.35); cursor:pointer;">
+                        <i class="fa-solid fa-plus"></i> ➕ 新增一列賽事紀錄 (Add Row)
+                    </button>
+                    <button class="header-btn" onclick="saveAllTacticsRows()" style="background:linear-gradient(135deg, #eab308, #ca8a04); color:#000; font-size:0.95rem; font-weight:bold; padding:10px 22px; border:none; border-radius:8px; box-shadow:0 2px 10px rgba(234,179,8,0.35); cursor:pointer;">
+                        <i class="fa-solid fa-floppy-disk"></i> 💾 全部儲存 (Save All)
+                    </button>
+                    <button class="header-btn" onclick="syncToGoogleSheets()" style="background:#059669; color:#fff; font-size:0.92rem; font-weight:bold; padding:10px 20px; border:none; border-radius:8px; box-shadow:0 2px 10px rgba(5,150,105,0.35); cursor:pointer;">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> 🚀 一鍵同步至 Google Sheets
+                    </button>
                 </div>
-
-                <div class="filter-group">
-                    <label for="trackMonth"><i class="fa-solid fa-calendar-days"></i> 月份 (Month)</label>
-                    <select id="trackMonth" class="filter-control" onchange="onDateSelectionChange()">
-<option value="1月">1月</option><option value="2月">2月</option><option value="3月">3月</option><option value="4月">4月</option><option value="5月" selected>5月</option><option value="6月">6月</option><option value="7月">7月</option><option value="8月">8月</option><option value="9月">9月</option><option value="10月">10月</option><option value="11月">11月</option><option value="12月">12月</option>                    </select>
-                </div>
-
-                <div class="filter-group">
-                    <label for="trackWeek"><i class="fa-solid fa-clock"></i> 週別 (Week)</label>
-                    <select id="trackWeek" class="filter-control" onchange="onDateSelectionChange()">
-<option value="1週">1週</option><option value="2週">2週</option><option value="3週">3週</option><option value="4週">4週</option><option value="5週" selected>5週</option>                    </select>
-                </div>
-
-                <div class="filter-group" style="grid-column: span 2;">
-                    <label for="trackRace"><i class="fa-solid fa-trophy"></i> 比賽名稱 (Race Name - 依月份週別推薦)</label>
-                    <div style="display:flex; gap:6px;">
-                        <select id="trackRaceSelect" class="filter-control" style="width:55%;" onchange="onTrackRaceSelectChange()">
-                            <option value="★ 日本ダービー・東京優駿 (東京・芝2400m・G1)">★ 日本ダービー・東京優駿 (東京・芝2400m・G1)</option>
-                            <option value="目黒記念 (東京・芝2500m・G2)">目黒記念 (東京・芝2500m・G2)</option>
-                            <option value="CUSTOM">✏️ 手動自填賽事名稱...</option>
-                        </select>
-                        <input type="text" id="trackRace" class="filter-control" value="★ 日本ダービー・東京優駿 (東京・芝2400m・G1)" placeholder="或自填賽事名稱...">
-                    </div>
-                </div>
-
-                <div class="filter-group">
-                    <label for="trackHorse"><i class="fa-solid fa-horse"></i> 賽駒名稱 (Horse)</label>
-                    <input type="text" id="trackHorse" class="filter-control" placeholder="如: オーハヤブサ, トウカイテイオー...">
-                </div>
-
-                <div class="filter-group">
-                    <label for="trackJockey"><i class="fa-solid fa-user-astronaut"></i> 騎手名稱 (Jockey)</label>
-                    <input type="text" id="trackJockey" class="filter-control" placeholder="如: 武豊, 岡部幸雄, 魯傑羅...">
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button class="header-btn" onclick="exportTacticsCsv()" style="padding:8px 14px; font-size:0.85rem;">
+                        <i class="fa-solid fa-file-csv"></i> 匯出 CSV 檔
+                    </button>
+                    <button class="header-btn" onclick="exportTacticsJson()" style="padding:8px 14px; font-size:0.85rem;">
+                        <i class="fa-solid fa-download"></i> 匯出 JSON
+                    </button>
+                    <label class="header-btn" style="padding:8px 14px; font-size:0.85rem; cursor:pointer;">
+                        <i class="fa-solid fa-upload"></i> 匯入 JSON
+                        <input type="file" id="importJsonInput" accept=".json" style="display:none;" onchange="importTacticsJson(event)">
+                    </label>
+                    <button class="header-btn" onclick="clearAllTacticsRows()" style="background:#ef4444; color:#fff; border:none; padding:8px 14px; font-size:0.85rem;">
+                        <i class="fa-solid fa-trash-can"></i> 清空全部
+                    </button>
                 </div>
             </div>
 
-            <!-- 13 跑法名次平鋪填寫矩陣 -->
-            <div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-accent); border-radius:10px; padding:18px; margin-bottom:20px;">
-                <div style="font-weight:bold; color:var(--gold-color); font-size:0.95rem; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
-                    <i class="fa-solid fa-list-ol"></i> 13 種跑法實戰名次平鋪輸入 (請直接填入各跑法實跑名次 1~18 着，未測試可留空)
+            <!-- Google Sheets Webhook 配置 -->
+            <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-accent); border-radius:8px; padding:10px 14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                <label for="gSheetUrl" style="font-size:0.82rem; color:var(--text-muted); white-space:nowrap;"><i class="fa-solid fa-link"></i> Google Apps Script Web App URL：</label>
+                <input type="text" id="gSheetUrl" class="filter-control" placeholder="https://script.google.com/macros/s/AKfycbx.../exec" style="flex:1; min-width:240px; font-size:0.82rem; padding:6px 10px;" onchange="localStorage.setItem('WP10_GSHEET_URL', this.value)">
+                <div id="syncStatusMsg" style="font-size:0.82rem; color:#10b981; font-weight:bold;"></div>
+            </div>
+        </div>
+
+        <!-- 橫向即時批次錄入大表格容器 -->
+        <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:20px; box-shadow:0 4px 16px rgba(0,0,0,0.2);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+                <h3 style="color:var(--text-main); font-size:1.05rem; margin:0; display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-table-cells"></i> 賽駒實戰跑法橫向試算表 (共 <span id="trackRowCount" style="color:var(--gold-color); font-weight:bold;">0</span> 列賽事)
+                </h3>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <input type="text" id="gridSearchFilter" class="filter-control" placeholder="🔍 搜尋馬名/賽事/騎手..." style="font-size:0.82rem; padding:5px 12px; width:220px;" oninput="renderTacticsGrid()">
+                    <span style="font-size:0.75rem; color:var(--text-muted);">💡 支援左右滑動，直接在格子內修改數值即時自動保存</span>
                 </div>
-                <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap:12px;" id="tacticsInputsContainer">
-                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-                        <div>
-                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">大逃げ <small style="color:var(--text-muted); font-size:0.75rem;">(狂奔大逃)</small></div>
-                            <span class="pill pill-safe" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">通常</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <input type="number" id="t_oonige" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
-                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
-                        </div>
-                    </div>
-                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-                        <div>
-                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">逃げ <small style="color:var(--text-muted); font-size:0.75rem;">(領放逃領)</small></div>
-                            <span class="pill pill-safe" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">通常</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <input type="number" id="t_nige" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
-                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
-                        </div>
-                    </div>
-                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-                        <div>
-                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">積極策 <small style="color:var(--text-muted); font-size:0.75rem;">(積極搶先)</small></div>
-                            <span class="pill pill-danger" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">特殊[赤]</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <input type="number" id="t_sekkyoku" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
-                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
-                        </div>
-                    </div>
-                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-                        <div>
-                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">前付け <small style="color:var(--text-muted); font-size:0.75rem;">(前位壓制)</small></div>
-                            <span class="pill pill-danger" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">特殊[赤]</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <input type="number" id="t_maezuke" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
-                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
-                        </div>
-                    </div>
-                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-                        <div>
-                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">好位抜出 <small style="color:var(--text-muted); font-size:0.75rem;">(好位突圍)</small></div>
-                            <span class="pill pill-danger" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">特殊[赤]</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <input type="number" id="t_kouinukedashi" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
-                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
-                        </div>
-                    </div>
-                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-                        <div>
-                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">先行 <small style="color:var(--text-muted); font-size:0.75rem;">(先行跟前)</small></div>
-                            <span class="pill pill-safe" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">通常</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <input type="number" id="t_senkou" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
-                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
-                        </div>
-                    </div>
-                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-                        <div>
-                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">イン狙い <small style="color:var(--text-muted); font-size:0.75rem;">(內線突擊)</small></div>
-                            <span class="pill pill-gold" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">限定[金]</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <input type="number" id="t_inner" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
-                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
-                        </div>
-                    </div>
-                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-                        <div>
-                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">差し <small style="color:var(--text-muted); font-size:0.75rem;">(居中差追)</small></div>
-                            <span class="pill pill-safe" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">通常</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <input type="number" id="t_sashi" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
-                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
-                        </div>
-                    </div>
-                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-                        <div>
-                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">まくり <small style="color:var(--text-muted); font-size:0.75rem;">(外側捲入)</small></div>
-                            <span class="pill pill-gold" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">限定[金]</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <input type="number" id="t_makuri" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
-                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
-                        </div>
-                    </div>
-                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-                        <div>
-                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">馬群待機 <small style="color:var(--text-muted); font-size:0.75rem;">(馬群待機)</small></div>
-                            <span class="pill pill-danger" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">特殊[赤]</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <input type="number" id="t_baguntaiki" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
-                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
-                        </div>
-                    </div>
-                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-                        <div>
-                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">大外一気 <small style="color:var(--text-muted); font-size:0.75rem;">(大外一氣)</small></div>
-                            <span class="pill pill-danger" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">特殊[赤]</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <input type="number" id="t_oosotoikki" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
-                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
-                        </div>
-                    </div>
-                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-                        <div>
-                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">直線強襲 <small style="color:var(--text-muted); font-size:0.75rem;">(直線強襲)</small></div>
-                            <span class="pill pill-danger" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">特殊[赤]</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <input type="number" id="t_chokusenkyoushuu" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
-                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
-                        </div>
-                    </div>
-                    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(71,85,105,0.6); border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-                        <div>
-                            <div style="font-weight:bold; font-size:0.88rem; color:var(--text-main);">追込 <small style="color:var(--text-muted); font-size:0.75rem;">(後追留後)</small></div>
-                            <span class="pill pill-safe" style="font-size:0.68rem; padding:2px 6px; margin-top:2px; display:inline-block;">通常</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:5px;">
-                            <input type="number" id="t_oikomi" min="1" max="18" placeholder="名次" class="filter-control" style="width:68px; padding:5px 6px; font-size:0.9rem; text-align:center; font-weight:bold; color:var(--gold-color);">
-                            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:bold;">着</span>
-                        </div>
-                    </div>
+            </div>
+
+            <div class="table-responsive" style="-webkit-overflow-scrolling:touch; overflow-x:auto;">
+                <table class="data-table" id="tacticsGridTable" style="min-width:1720px; width:100%;">
+                    <thead>
+                        <tr style="background:rgba(15,23,42,0.95);">
+                            <th style="min-width:75px; text-align:left;">年度</th>
+                            <th style="min-width:80px; text-align:left;">月份</th>
+                            <th style="min-width:75px; text-align:left;">週別</th>
+                            <th style="min-width:280px; text-align:left;">賽事名稱 (重賞選單 / 自由自填)</th>
+                            <th style="min-width:140px; text-align:left;">賽駒名稱</th>
+                            <th style="min-width:110px; text-align:left;">騎手</th>
+                            <th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">大逃げ</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">逃げ</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">積極策</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">前付け</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">好位抜出</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">先行</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">イン狙い</div><span class="pill pill-gold" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">限定</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">差し</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">まくり</div><span class="pill pill-gold" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">限定</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">馬群待機</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">大外一気</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">直線強襲</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">追込</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th>
+                            <th style="min-width:130px; text-align:left;">最優推薦跑法</th>
+                            <th style="min-width:90px; text-align:center;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tacticsGridBody">
+                        <!-- Dynamic Rows injected here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.9rem; font-weight:bold; padding:8px 20px; border:none; border-radius:6px;">
+                    <i class="fa-solid fa-plus"></i> ➕ 新增一列賽事紀錄
+                </button>
+                <div style="font-size:0.8rem; color:var(--text-muted);">
+                    提示：左側選單可快速套用重賞，右側文字框可自由輸入任何自定賽事名稱！
                 </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
