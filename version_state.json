@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.06",
+  "current_version": "v01.07",
   "history": [
     {
       "version": "v01.01",
@@ -30,6 +30,11 @@
       "version": "v01.06",
       "date": "2026-08-29",
       "description": "Localization: Translate all Rainbow Ticket recommendation reasons to Traditional Chinese with bilingual proper nouns and update GEMINI.md"
+    },
+    {
+      "version": "v01.07",
+      "date": "2026-08-29",
+      "description": "Fix: Populate 海外トレーニングセール category data in master DB and match tab filter"
     }
   ]
 }
