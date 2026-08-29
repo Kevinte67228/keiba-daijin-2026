@@ -5544,6 +5544,52 @@ li {
             renderBody(filtered);
         }
 
+        // ==================== 徽章與樣式輔助函數 ====================
+        function renderStarsBadge(stars) {
+            if (!stars || stars === "-") return "-";
+            const sStr = String(stars);
+            if (sStr.includes("★")) {
+                return `<span style="color:var(--gold-color); font-weight:bold;">${sStr}</span>`;
+            }
+            const count = parseInt(sStr) || 0;
+            if (count > 0 && count <= 5) {
+                return `<span style="color:var(--gold-color); font-weight:bold;">${"★".repeat(count)}${"☆".repeat(5 - count)}</span>`;
+            }
+            return sStr;
+        }
+
+        function renderTicketBadge(ticket) {
+            if (!ticket || ticket === "-" || ticket === "無") return `<span class="badge" style="background:#334155; color:#94a3b8;">無</span>`;
+            const t = String(ticket).trim();
+            if (t.includes("虹") || t.includes("彩")) return `<span class="badge badge-rainbow">虹</span>`;
+            if (t.includes("金")) return `<span class="badge badge-gold">金</span>`;
+            if (t.includes("銀")) return `<span class="badge badge-silver">銀</span>`;
+            if (t.includes("銅")) return `<span class="badge badge-bronze">銅</span>`;
+            if (t.includes("綠") || t.includes("緑")) return `<span class="badge badge-green">綠</span>`;
+            return `<span class="badge" style="background:#334155; color:#fff;">${t}</span>`;
+        }
+
+        function renderTrackBadge(val) {
+            if (!val || val === "-") return "-";
+            const v = String(val).trim();
+            if (v.includes("◎")) return `<span style="color:#10b981; font-weight:bold;">◎</span>`;
+            if (v.includes("○")) return `<span style="color:#38bdf8; font-weight:bold;">○</span>`;
+            if (v.includes("△")) return `<span style="color:#f59e0b; font-weight:bold;">△</span>`;
+            if (v.includes("×") || v.includes("✕")) return `<span style="color:#ef4444; font-weight:bold;">×</span>`;
+            return v;
+        }
+
+        function renderRankBadge(rank) {
+            if (!rank || rank === "-") return "-";
+            const r = String(rank).trim();
+            if (r.startsWith("S")) return `<span style="color:#eab308; font-weight:bold;">${r}</span>`;
+            if (r.startsWith("A")) return `<span style="color:#f43f5e; font-weight:bold;">${r}</span>`;
+            if (r.startsWith("B")) return `<span style="color:#3b82f6; font-weight:bold;">${r}</span>`;
+            if (r.startsWith("C")) return `<span style="color:#10b981; font-weight:bold;">${r}</span>`;
+            if (r.startsWith("D") || r.startsWith("E") || r.startsWith("G")) return `<span style="color:#94a3b8;">${r}</span>`;
+            return r;
+        }
+
         function renderHeader() {
             const tr = document.getElementById("tableHeader");
             if (!tr) return;
