@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.14",
+  "current_version": "v01.15",
   "history": [
     {
       "version": "v01.01",
@@ -70,6 +70,11 @@
       "version": "v01.14",
       "date": "2026-08-29",
       "description": "Critical Fix: Restore accidentally deleted renderTable() and renderGuideCategory() core rendering engine"
+    },
+    {
+      "version": "v01.15",
+      "date": "2026-08-29",
+      "description": "Data Cleanup: Remove 3,447 garbage section-header entries from cat3/cat5/cat13"
     }
   ]
 }
