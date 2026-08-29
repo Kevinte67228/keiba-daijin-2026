@@ -1190,7 +1190,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.39</span>
+        <span class="version-badge">v01.40</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -2365,21 +2365,21 @@ li {
 <div style="background:var(--bg-tertiary); padding:8px; border-radius:6px; margin-bottom:8px; font-size:11.5px;">
 <div style="font-weight:700; color:var(--text-highlight); margin-bottom:4px;">日本市場份額 (%)</div>
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
-<div><label style="font-size:10px; color:var(--text-muted);">種付料 %:</label><input class="calc-in" id="jp1" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="6.0"/></div>
-<div><label style="font-size:10px; color:var(--text-muted);">種馬數 %:</label><input class="calc-in" id="jp2" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="5.5"/></div>
-<div><label style="font-size:10px; color:var(--text-muted);">競走馬數 %:</label><input class="calc-in" id="jp3" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="4.8"/></div>
-<div><label style="font-size:10px; color:var(--text-muted);">繁殖母馬 %:</label><input class="calc-in" id="jp4" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="5.2"/></div>
+<div><label style="font-size:10px; color:var(--text-muted);">種付料 %:</label><input class="calc-in" id="jp1" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="6.0"/></div>
+<div><label style="font-size:10px; color:var(--text-muted);">種馬數 %:</label><input class="calc-in" id="jp2" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="5.5"/></div>
+<div><label style="font-size:10px; color:var(--text-muted);">競走馬數 %:</label><input class="calc-in" id="jp3" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="4.8"/></div>
+<div><label style="font-size:10px; color:var(--text-muted);">繁殖母馬 %:</label><input class="calc-in" id="jp4" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="5.2"/></div>
 </div>
 <div style="text-align:right; font-weight:bold; margin-top:4px; color:var(--text-highlight);">日本支配率: <span id="resJP">5.38%</span></div>
 </div>
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:8px; font-size:11.5px;">
 <div style="background:var(--bg-tertiary); padding:6px; border-radius:6px;">
 <label style="font-weight:700; display:block; font-size:10px;">美國支配率%:</label>
-<input class="calc-in" id="usDom" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="1.5"/>
+<input class="calc-in" id="usDom" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="1.5"/>
 </div>
 <div style="background:var(--bg-tertiary); padding:6px; border-radius:6px;">
 <label style="font-weight:700; display:block; font-size:10px;">歐洲支配率%:</label>
-<input class="calc-in" id="euDom" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="0.8"/>
+<input class="calc-in" id="euDom" oninput="calculateDominance()" step="0.1" style="width:100%; padding:2px 5px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11px;" type="number" value="0.8"/>
 </div>
 </div>
 <div style="background:linear-gradient(135deg,#1e3a8a,#312e81); padding:10px; border-radius:6px; text-align: left; color:#fff;">
@@ -7360,13 +7360,15 @@ li {
             const years = Object.keys(window.YEARLY_RECS_DATA);
             years.forEach(y => {
                 const btn = document.createElement("button");
-                btn.className = "filter-btn" + (y === currentRecYear ? " active" : "");
+                const isActive = (y === currentRecYear);
+                btn.className = "filter-btn" + (isActive ? " active" : "");
+                
                 if (y.includes("SP種牡馬")) {
                     btn.innerHTML = "🧬 🌟 <strong>SP種牡馬・SP繁殖牝馬(全覽)</strong>";
-                    btn.style.cssText = "border: 1.5px solid var(--gold-color); background: rgba(245, 158, 11, 0.15); color: var(--gold-color); font-weight: bold;";
                 } else {
                     btn.innerText = y;
                 }
+                
                 btn.onclick = () => {
                     document.querySelectorAll("#recsYearButtons .filter-btn").forEach(b => b.classList.remove("active"));
                     btn.classList.add("active");
