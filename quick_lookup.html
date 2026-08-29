@@ -1387,26 +1387,31 @@
         /* 浮動按鈕群 (跳轉目錄 + 回頂部) */
         .floating-btn-group {
             position: fixed;
-            bottom: 22px;
-            right: 18px;
+            bottom: 16px;
+            right: 12px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             z-index: 999;
+            opacity: 0.7;
+            transition: opacity 0.25s ease;
+        }
+        .floating-btn-group:hover, .floating-btn-group:active {
+            opacity: 1;
         }
         .btn-floating {
             background: var(--accent-color);
             color: #0f172a;
-            width: 44px;
-            height: 44px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             border: none;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.35);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             transition: transform 0.2s ease, background-color 0.2s ease;
         }
         .btn-floating:hover { transform: scale(1.08); background: #38bdf8; }
@@ -1663,7 +1668,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.73</span>
+        <span class="version-badge">v01.74</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
@@ -9998,7 +10003,7 @@ li {
 
     
     <!-- Pillar 8: 📊 實戰 13 大跑法比賽戰績紀錄儀 (橫向試算表批次錄入版) -->
-    <div id="pillar-tracker" class="pillar-content" style="display:none;">
+    <div id="pillar-tracker" class="pillar-content" style="display:none; padding-bottom:110px;">
         <div class="pillar-header-card">
             <h2>📊 實戰 13 大跑法比賽戰績紀錄儀 (橫向即時批次錄入大表)</h2>
             <p>橫向一行對應一匹馬的一場比賽戰績，支援同時進行多匹馬的 13 種跑法即時輸入、切換月份週別自動推薦重賞、自動計算最優跑法、以及 Google Sheets 雙向同步</p>
@@ -10092,12 +10097,9 @@ li {
                 </table>
             </div>
 
-            <div style="margin-top:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-                <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.85rem; font-weight:bold; padding:8px 18px; border:none; border-radius:6px; white-space:nowrap !important;">
-                    新增紀錄 (Add Row)
-                </button>
-                <div style="font-size:0.8rem; color:var(--text-muted);">
-                    提示：左側選單可快速套用重賞，右側文字框可自由輸入任何自定賽事名稱！
+            <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:0.82rem; color:var(--text-muted);">
+                    💡 提示：左側選單可快速套用重賞/條件戰，右側文字框可自由輸入任何自定賽事名稱！
                 </div>
             </div>
         </div>
