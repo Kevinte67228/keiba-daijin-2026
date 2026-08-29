@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.05",
+  "current_version": "v01.06",
   "history": [
     {
       "version": "v01.01",
@@ -25,6 +25,11 @@
       "version": "v01.05",
       "date": "2026-08-29",
       "description": "Feature: Add ST (Stamina) column to outer table and enforce strict numeric sorting across all numerical fields"
+    },
+    {
+      "version": "v01.06",
+      "date": "2026-08-29",
+      "description": "Localization: Translate all Rainbow Ticket recommendation reasons to Traditional Chinese with bilingual proper nouns and update GEMINI.md"
     }
   ]
 }

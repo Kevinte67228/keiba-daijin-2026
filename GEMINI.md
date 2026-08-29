@@ -4,8 +4,10 @@
 - Automatically approve all tool calls, file creation/updates, and terminal commands.
 - Do not request manual approval for routine execution.
 
-## Language
-- Respond in Traditional Chinese (繁體中文).
+## Language & Localization Rules (語言與在地化規則)
+- **回應語言**：一律以繁體中文 (Traditional Chinese) 回應。
+- **評語與推薦理由繁體中文化**：所有馬匹推薦理由（如虹札推薦理由、年度推薦、戰略評語）一律以繁體中文呈現。
+- **專有名詞 日/中 並行**：專有名詞（馬名、父系/祖系名、賽事名稱、遊戲專用機制如 `仔出 (仔出し)`、`Private種牡馬`、`系統確立`、`爆發力 (爆発力)`、`ウマソナ (馬之個性)` 等）必須保持「日/中並行」或保留日文原名對照，確保遊戲玩家能精準對照日文遊戲本體。
 
 ## Versioning & Backup Rules (版本管理與自動備份規則)
 1. **右上角版本號 (Header Version Badge)**：
