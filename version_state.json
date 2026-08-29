@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.51",
+  "current_version": "v01.52",
   "history": [
     {
       "version": "v01.01",
@@ -255,6 +255,11 @@
       "version": "v01.51",
       "date": "2026-08-29",
       "description": "Content: Fully integrate 4 WPStud guides into Chapters 16, 17, 18, and 21 with colorful tables and left alignment"
+    },
+    {
+      "version": "v01.52",
+      "date": "2026-08-29",
+      "description": "Localization: Add comprehensive Japanese and Traditional Chinese bilingual translations for all comments and proper nouns in Chapters 16, 17, 18, and 21"
     }
   ]
 }
