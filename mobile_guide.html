@@ -177,8 +177,25 @@
         li::marker { color: var(--accent-color); }
 
         .header {
+            position: relative;
             text-align: center;
-            padding: 16px 12px;
+            padding: 20px 14px 14px 14px;
+        .version-badge {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+        }
+
             background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -868,6 +885,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
+        <span class="version-badge">v01.01</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
