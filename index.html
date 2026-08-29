@@ -1615,13 +1615,13 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.70</span>
+        <span class="version-badge">v01.71</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
-        <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
-            <button class="header-btn btn-gold" onclick="openChapterModal()"><i class="fa-solid fa-list-ol"></i> 📑 章節快速跳轉</button>
-            <button class="header-btn" onclick="clearPwaCache()"><i class="fa-solid fa-broom"></i> 清除快取重載</button>
-            <button class="header-btn" onclick="toggleAppTheme()"><i class="fa-solid fa-moon"></i> 主題切換</button>
+        <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
+            <button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">章節快速跳轉</button>
+            <button class="header-btn" onclick="clearPwaCache()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">清除快取重載</button>
+            <button class="header-btn" onclick="toggleAppTheme()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">主題切換</button>
         </div>
     </div>
 
@@ -9957,32 +9957,32 @@ li {
         </div>
 
         <!-- 頂部快速操作與 Google Sheets 管理欄 -->
-        <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:18px 20px; margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.2);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
-                <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                    <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.95rem; font-weight:bold; padding:10px 22px; border:none; border-radius:8px; box-shadow:0 2px 10px rgba(2,132,199,0.35); cursor:pointer;">
-                        <i class="fa-solid fa-plus"></i> ➕ 新增一列賽事紀錄 (Add Row)
+        <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:16px 18px; margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.2);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+                <div style="display:flex; align-items:center; gap:8px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
+                    <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.85rem; font-weight:bold; padding:8px 14px; border:none; border-radius:8px; box-shadow:0 2px 8px rgba(2,132,199,0.3); white-space:nowrap !important; cursor:pointer;">
+                        新增紀錄 (Add Row)
                     </button>
-                    <button class="header-btn" onclick="saveAllTacticsRows()" style="background:linear-gradient(135deg, #eab308, #ca8a04); color:#000; font-size:0.95rem; font-weight:bold; padding:10px 22px; border:none; border-radius:8px; box-shadow:0 2px 10px rgba(234,179,8,0.35); cursor:pointer;">
-                        <i class="fa-solid fa-floppy-disk"></i> 💾 全部儲存 (Save All)
+                    <button class="header-btn" onclick="saveAllTacticsRows()" style="background:linear-gradient(135deg, #eab308, #ca8a04); color:#000; font-size:0.85rem; font-weight:bold; padding:8px 14px; border:none; border-radius:8px; box-shadow:0 2px 8px rgba(234,179,8,0.3); white-space:nowrap !important; cursor:pointer;">
+                        全部儲存 (Save All)
                     </button>
-                    <button class="header-btn" onclick="syncToGoogleSheets()" style="background:#059669; color:#fff; font-size:0.92rem; font-weight:bold; padding:10px 20px; border:none; border-radius:8px; box-shadow:0 2px 10px rgba(5,150,105,0.35); cursor:pointer;">
-                        <i class="fa-solid fa-cloud-arrow-up"></i> 🚀 一鍵同步至 Google Sheets
+                    <button class="header-btn" onclick="syncToGoogleSheets()" style="background:#059669; color:#fff; font-size:0.85rem; font-weight:bold; padding:8px 14px; border:none; border-radius:8px; box-shadow:0 2px 8px rgba(5,150,105,0.3); white-space:nowrap !important; cursor:pointer;">
+                        同步 Google Sheets
                     </button>
                 </div>
-                <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                    <button class="header-btn" onclick="exportTacticsCsv()" style="padding:8px 14px; font-size:0.85rem;">
-                        <i class="fa-solid fa-file-csv"></i> 匯出 CSV 檔
+                <div style="display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
+                    <button class="header-btn" onclick="exportTacticsCsv()" style="padding:6px 10px; font-size:0.8rem; white-space:nowrap !important;">
+                        匯出 CSV
                     </button>
-                    <button class="header-btn" onclick="exportTacticsJson()" style="padding:8px 14px; font-size:0.85rem;">
-                        <i class="fa-solid fa-download"></i> 匯出 JSON
+                    <button class="header-btn" onclick="exportTacticsJson()" style="padding:6px 10px; font-size:0.8rem; white-space:nowrap !important;">
+                        匯出 JSON
                     </button>
-                    <label class="header-btn" style="padding:8px 14px; font-size:0.85rem; cursor:pointer;">
-                        <i class="fa-solid fa-upload"></i> 匯入 JSON
+                    <label class="header-btn" style="padding:6px 10px; font-size:0.8rem; white-space:nowrap !important; cursor:pointer;">
+                        匯入 JSON
                         <input type="file" id="importJsonInput" accept=".json" style="display:none;" onchange="importTacticsJson(event)">
                     </label>
-                    <button class="header-btn" onclick="clearAllTacticsRows()" style="background:#ef4444; color:#fff; border:none; padding:8px 14px; font-size:0.85rem;">
-                        <i class="fa-solid fa-trash-can"></i> 清空全部
+                    <button class="header-btn" onclick="clearAllTacticsRows()" style="background:#ef4444; color:#fff; border:none; padding:6px 10px; font-size:0.8rem; white-space:nowrap !important;">
+                        清空全部
                     </button>
                 </div>
             </div>
@@ -10029,8 +10029,8 @@ li {
             </div>
 
             <div style="margin-top:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-                <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.9rem; font-weight:bold; padding:8px 20px; border:none; border-radius:6px;">
-                    <i class="fa-solid fa-plus"></i> ➕ 新增一列賽事紀錄
+                <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.85rem; font-weight:bold; padding:8px 18px; border:none; border-radius:6px; white-space:nowrap !important;">
+                    新增紀錄 (Add Row)
                 </button>
                 <div style="font-size:0.8rem; color:var(--text-muted);">
                     提示：左側選單可快速套用重賞，右側文字框可自由輸入任何自定賽事名稱！

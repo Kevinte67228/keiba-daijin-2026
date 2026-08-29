@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.70",
+  "current_version": "v01.71",
   "history": [
     {
       "version": "v01.01",
@@ -350,6 +350,11 @@
       "version": "v01.70",
       "date": "2026-08-29",
       "description": "Feature: Added weekly fixed condition classes (新馬, 未勝利, 500万下, 1000万下, 1600万下) to race picker"
+    },
+    {
+      "version": "v01.71",
+      "date": "2026-08-29",
+      "description": "UI: Adjusted action chips to no-icon, no-wrap single-line compact layout"
     }
   ]
 }
