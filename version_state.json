@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.85",
+  "current_version": "v01.86",
   "history": [
     {
       "version": "v01.01",
@@ -425,6 +425,11 @@
       "version": "v01.85",
       "date": "2026-08-29",
       "description": "Refactor: Unified all chip sizes and subtab buttons with responsive CSS equal grids by region across Chapter 38"
+    },
+    {
+      "version": "v01.86",
+      "date": "2026-08-29",
+      "description": "Refactor: Re-organized 38 chapters consecutively, centered header subtitle, removed legacy PWA phrasing, and unified all 8 Pillars"
     }
   ]
 }
