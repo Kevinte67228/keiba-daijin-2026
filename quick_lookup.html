@@ -885,7 +885,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.19</span>
+        <span class="version-badge">v01.20</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -3622,9 +3622,47 @@ li {
         </div>
       </div>
     </section>
+<section id="sec-start-guide" class="section-card">
+    <div class="section-header">
+        <div class="section-title"><i class="fa-solid fa-play"></i> 第 27 章：開局劇本年代與史實名馬選拔指南</div>
+    </div>
+    <div class="section-body">
+        <div class="callout callout-gold">
+            <i class="fa-solid fa-calendar-check" style="font-size:1.2rem; color:var(--accent-gold);"></i>
+            <div>
+                <strong>《賽馬大亨 10 2026》全年代 (1970 ~ 2022) 推薦幼駒・種牡馬・繁殖牝馬與 SP 繁育庫</strong><br>
+                涵蓋 1970 至 2022 橫跨 50+ 年代之全史實推薦幼駒、金銀銅札性價比神駒、拍賣會免札收購技巧、全 SP 種牡馬/繁殖牝馬能力詳情與戰略繁育評析（1:1 原汁原味完整呈現）。
+            </div>
+        </div>
+
+        <!-- 快速搜尋與年代晶片導航 -->
+        <div class="filter-panel" style="margin-bottom:12px;">
+            <div class="filter-group full-width-mobile">
+                <label for="recsSearchInput">🔍 搜尋全年代推薦馬名或評價關鍵字</label>
+                <input type="text" id="recsSearchInput" class="filter-control" placeholder="輸入馬名 (如: オグリキャップ, ナリタブライアン, ディープ, トウカイテイオー)..." oninput="filterYearlyRecs()">
+            </div>
+        </div>
+
+        <!-- 年代晶片滑動列 (54 個年代切換) -->
+        <div style="font-size:0.78rem; font-weight:700; color:var(--accent-color); margin-bottom:4px;">📅 選擇年代切換：</div>
+        <div class="filter-bar" id="recsYearButtons" style="margin-bottom:14px; max-height:160px; overflow-y:auto; padding:8px; background:var(--bg-tertiary); border-radius:10px; border:1px solid var(--border-color); display:flex; flex-wrap:wrap; gap:6px;">
+            <!-- Dynamic Year Buttons: SP種牡馬・繁殖牝馬, 1970年, 1971年 ... 2022年 -->
+        </div>
+
+        <div class="stats-bar" style="margin-bottom:12px;">
+            <div>目前檢視年代：<span id="currentRecsYearLabel" style="color:var(--accent-color); font-weight:bold;">1970 年</span>（共 <span id="currentRecsCount" style="color:var(--gold-color); font-weight:bold;">0</span> 匹推薦馬）</div>
+            <div>💡 點擊上方年代晶片可即時切換 | 欄位資訊 1:1 完全對照呈現</div>
+        </div>
+
+        <!-- 動態渲染 1:1 推薦表格容器 -->
+        <div id="yearlyRecsContainer">
+            <!-- Dynamic Tables generated via JS -->
+        </div>
+    </div>
+</section>
 <section id="sec-skills-traits" class="section-card">
     <div class="section-header">
-        <div class="section-title"><i class="fa-solid fa-medal"></i> 第 27 章：基礎能力・四大比賽展開・適應能力與名馬固有特性全書</div>
+        <div class="section-title"><i class="fa-solid fa-medal"></i> 第 28 章：基礎能力・四大比賽展開・適應能力與名馬固有特性全書</div>
     </div>
     <div class="section-body">
         <div class="callout callout-gold">
@@ -3677,7 +3715,7 @@ li {
 </section>
 <section id="sec-historical-train" class="section-card">
     <div class="section-header">
-        <div class="section-title"><i class="fa-solid fa-dumbbell"></i> 第 28 章：史實調教・SP 雙馬合練・大成功量表與全 40+ 種調教效果全圖鑑</div>
+        <div class="section-title"><i class="fa-solid fa-dumbbell"></i> 第 29 章：史實調教・SP 雙馬合練・大成功量表與全 40+ 種調教效果全圖鑑</div>
     </div>
     <div class="section-body">
         <div class="callout callout-gold">
@@ -4131,7 +4169,7 @@ li {
 </section>
 <section id="sec-umasona" class="section-card">
       <div class="section-header">
-        <div class="section-title"><i class="fa-solid fa-face-smile"></i> 第 29 章：ウマソナ (馬之個性) 克服與進化秘技</div>
+        <div class="section-title"><i class="fa-solid fa-face-smile"></i> 第 30 章：ウマソナ (馬之個性) 克服與進化秘技</div>
       </div>
       <div class="section-body">
         <div class="table-responsive">
@@ -4238,7 +4276,7 @@ li {
 </section>
 <section id="sec-personnel" class="section-card">
       <div class="section-header">
-        <div class="section-title"><i class="fa-solid fa-user-gear"></i> 第 31 章：騎手・調教師・牧場長 18 大人物技能全書</div>
+        <div class="section-title"><i class="fa-solid fa-user-gear"></i> 第 32 章：騎手・調教師・牧場長 18 大人物技能全書</div>
       </div>
       <div class="section-body">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -4284,7 +4322,7 @@ li {
     </section>
 <section id="sec-version-diff" class="section-card">
       <div class="section-header">
-        <div class="section-title"><i class="fa-solid fa-code-compare"></i> 第 32 章：歷代版本演進差異完全剖析 (2023~2026)</div>
+        <div class="section-title"><i class="fa-solid fa-code-compare"></i> 第 33 章：歷代版本演進差異完全剖析 (2023~2026)</div>
       </div>
       <div class="section-body">
         <div class="table-responsive">
@@ -5050,7 +5088,7 @@ li {
 </section>
 <section id="sec-pro-tricks" class="section-card">
       <div class="section-header">
-        <div class="section-title"><i class="fa-solid fa-chess-knight"></i> 第 35 章：+40 爆發力滿貫公式與賽務職業小技</div>
+        <div class="section-title"><i class="fa-solid fa-chess-knight"></i> 第 36 章：+40 爆發力滿貫公式與賽務職業小技</div>
       </div>
       <div class="section-body">
         <div class="checklist-grid">
