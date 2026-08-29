@@ -114,7 +114,10 @@
     function getTacticsRecords() {
         try {
             const stored = localStorage.getItem('WP10_TACTICS_RECORDS');
-            if (stored) return JSON.parse(stored);
+            if (stored) {
+                const parsed = JSON.parse(stored);
+                if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+            }
         } catch (e) {
             console.warn(e);
         }
@@ -128,6 +131,16 @@
                 horse: 'オーハヤブサ',
                 jockey: '武豊',
                 ranks: { 'senkou': 1, 'nige': 2, 'sashi': 4 }
+            },
+            {
+                id: 'rec_' + (Date.now() + 1),
+                year: '1968',
+                month: '5月',
+                week: '5週',
+                race: '[G2] 目黒記念 (東京・芝2500m)',
+                horse: 'ケンホウ',
+                jockey: '岡部幸雄',
+                ranks: { 'sekkyoku': 1, 'maezuke': 2 }
             }
         ];
     }
@@ -412,8 +425,7 @@
             csvRows.push(row.join(','));
         });
 
-        const blob = new Blob(["﻿" + csvRows.join('
-')], { type: 'text/csv;charset=utf-8;' });
+        const blob = new Blob(["﻿" + csvRows.join(String.fromCharCode(10))], { type: 'text/csv;charset=utf-8;' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -1565,7 +1577,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.66</span>
+        <span class="version-badge">v01.67</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -8819,8 +8831,12 @@ li {
                 'pillar-train': 'tabPillarTrain',
                 'pillar-races': 'tabPillarRaces',
                 'pillar-ranch': 'tabPillarRanch',
-                'pillar-secrets': 'tabPillarSecrets'
+                'pillar-secrets': 'tabPillarSecrets',
+                'pillar-tracker': 'tabPillarTracker'
             };
+            if (pillarId === 'pillar-tracker' && typeof renderTacticsGrid === 'function') {
+                renderTacticsGrid();
+            }
             const btn = document.getElementById(btnMap[pillarId]);
             if (btn) btn.classList.add('active');
 
