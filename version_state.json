@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.29",
+  "current_version": "v01.30",
   "history": [
     {
       "version": "v01.01",
@@ -145,6 +145,11 @@
       "version": "v01.29",
       "date": "2026-08-29",
       "description": "Feature: Integrate WPStud Historical Training guide (4 acquisition methods, precise Great Success modifiers, cooldown penalties, and SP training)"
+    },
+    {
+      "version": "v01.30",
+      "date": "2026-08-29",
+      "description": "Fix: Fix container card nesting for Foal Training and audit all 35 sections to ensure 100% consistent card borders and padding"
     }
   ]
 }
