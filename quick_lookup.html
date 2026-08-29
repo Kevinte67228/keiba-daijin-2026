@@ -1035,6 +1035,35 @@
         }
 
 
+        
+        /* 表格排序交互樣式 */
+        .data-table th.sortable-th {
+            cursor: pointer !important;
+            user-select: none !important;
+            position: relative;
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+        .data-table th.sortable-th:hover {
+            background: rgba(56, 189, 248, 0.22) !important;
+            color: #38bdf8 !important;
+        }
+        .data-table th .sort-icon {
+            margin-left: 5px;
+            font-size: 0.72rem;
+            opacity: 0.55;
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            display: inline-block;
+        }
+        .data-table th.sorted-asc .sort-icon {
+            opacity: 1;
+            color: #38bdf8;
+        }
+        .data-table th.sorted-desc .sort-icon {
+            opacity: 1;
+            color: #f59e0b;
+        }
+
+
         /* ================== 強迫症完美排版校正 ================== */
 .table-responsive, .table-container {
     -webkit-overflow-scrolling: touch !important;
@@ -1133,7 +1162,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.33</span>
+        <span class="version-badge">v01.34</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -6587,6 +6616,7 @@ li {
             document.documentElement.setAttribute('data-theme', next);
             localStorage.setItem('keiba_theme', next);
             if (explosionChartInstance) explosionChartInstance.update();
+            makeTablesSortable();
         }
 
         // ==================== 章節快速跳轉功能 (Quick Jump) ====================
@@ -7394,6 +7424,7 @@ li {
             
             const countEl = document.getElementById("currentRecsCount");
             if (countEl) countEl.innerText = totalCount.toLocaleString();
+            makeTablesSortable(container);
         }
 
         function filterYearlyRecs() {
@@ -7424,9 +7455,143 @@ li {
             }
         }
 
+        
+        // ==================== 全域通用表格即時排序引擎 (Universal Table Sorter) ====================
+        const TICKET_WEIGHTS = { '虹': 6, '彩': 6, '金': 5, '銀': 4, '銅': 3, '緑': 2, '綠': 2, '無': 1, '-': 0 };
+        const RANK_WEIGHTS = { 'S+': 10, 'S': 9, 'A+': 8, 'A': 7, 'B+': 6, 'B': 5, 'C+': 4, 'C': 3, 'D': 2, 'E': 1, 'G': 0, '-': 0 };
+        const TRACK_WEIGHTS = { '◎': 4, '○': 3, '△': 2, '×': 1, '✕': 1, '-': 0 };
+
+        function parseSortValue(cellText) {
+            if (!cellText) return { type: 'str', val: '' };
+            const s = cellText.trim();
+            
+            // 1. Ticket Rank
+            if (TICKET_WEIGHTS[s] !== undefined) return { type: 'num', val: TICKET_WEIGHTS[s] };
+            
+            // 2. Ability Rank
+            if (RANK_WEIGHTS[s] !== undefined) return { type: 'num', val: RANK_WEIGHTS[s] };
+            
+            // 3. Track Aptitude
+            if (TRACK_WEIGHTS[s] !== undefined) return { type: 'num', val: TRACK_WEIGHTS[s] };
+            
+            // 4. Star Rating
+            if (s.includes('★')) {
+                const count = (s.match(/★/g) || []).length;
+                return { type: 'num', val: count };
+            }
+            
+            // 5. Percentage (e.g. +16%, 30%, 15.5%)
+            if (s.endsWith('%')) {
+                const num = parseFloat(s.replace(/[^0-9.-]/g, ''));
+                if (!isNaN(num)) return { type: 'num', val: num };
+            }
+            
+            // 6. Distance (e.g. 1800~3200m or 2000m)
+            const distMatch = s.match(/(\d+)(?:\s*[~～-]\s*\d+)?m/);
+            if (distMatch) {
+                return { type: 'num', val: parseInt(distMatch[1]) };
+            }
+            
+            // 7. Duration in Weeks (e.g. 4週, 6週間, 2週)
+            const weekMatch = s.match(/(\d+)週/);
+            if (weekMatch) {
+                return { type: 'num', val: parseInt(weekMatch[1]) };
+            }
+            
+            // 8. Pure Number / Year / Price
+            const pureNum = parseFloat(s.replace(/,/g, ''));
+            if (!isNaN(pureNum) && /^[-+]?[0-9]*\.?[0-9]+$/.test(s.replace(/,/g, ''))) {
+                return { type: 'num', val: pureNum };
+            }
+            
+            // 9. Standard String
+            return { type: 'str', val: s.toLowerCase() };
+        }
+
+        function sortTableByColumn(table, colIndex, headerEl) {
+            const tbody = table.querySelector('tbody');
+            if (!tbody) return;
+            
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            if (rows.length === 0) return;
+            
+            // Determine current sort direction
+            let isAsc = true;
+            if (headerEl.classList.contains('sorted-asc')) {
+                isAsc = false;
+            }
+            
+            // Reset all headers in this table
+            table.querySelectorAll('th').forEach(th => {
+                th.classList.remove('sorted-asc', 'sorted-desc');
+                const icon = th.querySelector('.sort-icon');
+                if (icon) icon.className = 'fa-solid fa-sort sort-icon';
+            });
+            
+            // Apply new state to clicked header
+            headerEl.classList.add(isAsc ? 'sorted-asc' : 'sorted-desc');
+            const icon = headerEl.querySelector('.sort-icon');
+            if (icon) {
+                icon.className = isAsc ? 'fa-solid fa-sort-up sort-icon' : 'fa-solid fa-sort-down sort-icon';
+            }
+            
+            // Sort rows
+            rows.sort((rowA, rowB) => {
+                const cellA = rowA.children[colIndex];
+                const cellB = rowB.children[colIndex];
+                const textA = cellA ? cellA.innerText : '';
+                const textB = cellB ? cellB.innerText : '';
+                
+                const valA = parseSortValue(textA);
+                const valB = parseSortValue(textB);
+                
+                if (valA.type === 'num' && valB.type === 'num') {
+                    return isAsc ? (valA.val - valB.val) : (valB.val - valA.val);
+                }
+                
+                const strA = String(valA.val);
+                const strB = String(valB.val);
+                return isAsc ? strA.localeCompare(strB, 'zh-Hant') : strB.localeCompare(strA, 'zh-Hant');
+            });
+            
+            // Re-append sorted rows
+            rows.forEach(r => tbody.appendChild(r));
+        }
+
+        function makeTablesSortable(root = document) {
+            const tables = root.querySelectorAll('table.data-table');
+            tables.forEach(table => {
+                if (table.id === 'horseTable') return; // horseTable has its own virtual sorting
+                
+                const thead = table.querySelector('thead');
+                if (!thead) return;
+                
+                const headers = thead.querySelectorAll('th');
+                headers.forEach((th, idx) => {
+                    if (th.getAttribute('data-sort-bound')) return;
+                    th.setAttribute('data-sort-bound', 'true');
+                    th.classList.add('sortable-th');
+                    
+                    // Add icon if missing
+                    if (!th.querySelector('.sort-icon')) {
+                        const iconSpan = document.createElement('span');
+                        iconSpan.innerHTML = '<i class="fa-solid fa-sort sort-icon"></i>';
+                        th.appendChild(iconSpan);
+                    }
+                    
+                    th.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        sortTableByColumn(table, idx, th);
+                    });
+                });
+            });
+        }
+
+
         function init() {
             ensureUnpackedDb();
             initCategoryTabs();
+            makeTablesSortable();
             initYearFilter();
 
             const bindChange = (id) => {
