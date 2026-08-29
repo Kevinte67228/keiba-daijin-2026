@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.69",
+  "current_version": "v01.70",
   "history": [
     {
       "version": "v01.01",
@@ -345,6 +345,11 @@
       "version": "v01.69",
       "date": "2026-08-29",
       "description": "Feature: Removed stars from race names and upgraded race column to Dual Pick + Free Custom Input Box"
+    },
+    {
+      "version": "v01.70",
+      "date": "2026-08-29",
+      "description": "Feature: Added weekly fixed condition classes (新馬, 未勝利, 500万下, 1000万下, 1600万下) to race picker"
     }
   ]
 }

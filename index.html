@@ -305,9 +305,20 @@
             const weekOpts = [1,2,3,4,5].map(w => `<option value="${w}週"${r.week === `${w}週` ? ' selected' : ''}>${w}週</option>`).join('');
 
             const matchedRaces = getMatchedRacesForDate(r.month || '5月', r.week || '5週');
-            let raceOpts = matchedRaces.map(rc => {
+            let raceGroupOpts = matchedRaces.map(rc => {
                 let fullLabel = `[${rc.grade}] ${rc.name} (${rc.course || rc.region})`;
                 return `<option value="${fullLabel}"${r.race === fullLabel ? ' selected' : ''}>${fullLabel}</option>`;
+            }).join('');
+
+            const fixedClasses = [
+                '新馬',
+                '未勝利',
+                '500万下',
+                '1000万下',
+                '1600万下'
+            ];
+            let classGroupOpts = fixedClasses.map(cls => {
+                return `<option value="${cls}"${r.race === cls ? ' selected' : ''}>${cls}</option>`;
             }).join('');
 
             let bestTactic = '未測試';
@@ -353,11 +364,18 @@
                     <td>
                         <div style="display:flex; gap:4px; align-items:center;">
                             <select class="filter-control" style="width:46%; min-width:110px; padding:4px 2px; font-size:0.78rem;" onchange="onRaceDropdownChange('${r.id}', this.value)">
-                                <option value="">-- 選定重賞 --</option>
-                                ${raceOpts}
-                                <option value="CUSTOM">✏️ 手動自填...</option>
+                                <option value="">-- 選擇賽事/條件 --</option>
+                                <optgroup label="📋 常設條件戰 (每週固定)">
+                                    ${classGroupOpts}
+                                </optgroup>
+                                <optgroup label="🏆 當週重賞/公開賽">
+                                    ${raceGroupOpts}
+                                </optgroup>
+                                <optgroup label="✏️ 自定義">
+                                    <option value="CUSTOM">✏️ 手動自填...</option>
+                                </optgroup>
                             </select>
-                            <input type="text" id="race_input_${r.id}" value="${r.race || ''}" placeholder="自定賽事名稱..." class="filter-control" style="width:54%; min-width:130px; padding:4px 6px; font-size:0.82rem; font-weight:bold; color:var(--accent-color);" oninput="onGridRowFieldChange('${r.id}', 'race', this.value)">
+                            <input type="text" id="race_input_${r.id}" value="${r.race || ''}" placeholder="賽事/條件名稱..." class="filter-control" style="width:54%; min-width:130px; padding:4px 6px; font-size:0.82rem; font-weight:bold; color:var(--accent-color);" oninput="onGridRowFieldChange('${r.id}', 'race', this.value)">
                         </div>
                     </td>
                     <td>
@@ -1597,7 +1615,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.69</span>
+        <span class="version-badge">v01.70</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
