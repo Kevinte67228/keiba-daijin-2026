@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.31",
+  "current_version": "v01.32",
   "history": [
     {
       "version": "v01.01",
@@ -155,6 +155,11 @@
       "version": "v01.31",
       "date": "2026-08-29",
       "description": "Fix: Optimize table column widths and horizontal scroll for tablets (iPad) and mobile devices across all 35 sections"
+    },
+    {
+      "version": "v01.32",
+      "date": "2026-08-29",
+      "description": "Feature: 100% Full Integration of WPStud Training Guide (8 SP Twin-Horse, 37 General Historical, 16 1yo Foal Trainings, Unlock Trees, Cooldowns)"
     }
   ]
 }
