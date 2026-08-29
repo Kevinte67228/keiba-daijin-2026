@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.82",
+  "current_version": "v01.83",
   "history": [
     {
       "version": "v01.01",
@@ -410,6 +410,11 @@
       "version": "v01.82",
       "date": "2026-08-29",
       "description": "Refactor: Integrated G1 Strategy Guide Subtab, removed duplicate Winner Subtab, fixed 100% column alignment for all 36 Series, and unified screenshot-matching Turf bars"
+    },
+    {
+      "version": "v01.83",
+      "date": "2026-08-29",
+      "description": "Refactor: Added explicit '賽程階段 (第X戰目)' column to all 36 series, and unified 8-segment Turf Bars across Subtab 4 Racecourses Database"
     }
   ]
 }
