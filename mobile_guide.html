@@ -885,7 +885,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.02</span>
+        <span class="version-badge">v01.03</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -5714,84 +5714,113 @@ li {
             }
         }
 
-function openModalDirect(item) {
-            if (!item) return;
-            document.getElementById("mName").textContent = item.name || "未命名馬匹";
-            document.getElementById("mTicket").innerHTML = renderTicketBadge(item.ticket);
-            document.getElementById("mSex").innerHTML = item.sex === "牡" ? '<span style="color:#60a5fa; font-weight:bold;">牡馬</span>' : (item.sex === "牝" ? '<span style="color:#f472b6; font-weight:bold;">牝馬</span>' : (item.sex || "-"));
-            document.getElementById("mRegion").textContent = `所屬: ${item.region || item.country || '日本'} | 登場: ${item.year || '-'}年`;
+// ==================== AI 戰略評語引擎 ====================
+        function generateAIComment(h) {
+            if (!h) return "尚無評語";
+            const parts = [];
+            const sp = parseInt(h.sp || h.matched_sp) || 0;
+            const sub = parseInt(h.subpara_total) || 0;
+            if (sp >= 75) parts.push(`⚡ 擁有極高之 SP 速度能力 (${sp})，具備奪取頂級 G1 之強大即戰力。`);
+            else if (sp >= 70) parts.push(`🐎 速度屬性優良 (${sp})，於重賞賽事具備高度競爭力。`);
+            if (sub >= 75) parts.push(`💎 次能力極其全面均衡 (次能力合計 ${sub})，無明顯弱點。`);
+            if (h.track && h.track.includes("◎")) parts.push(`🎯 賽道適性出色 (${h.track})，發揮極其穩定。`);
+            if (h.traits && h.traits !== "無特殊特性" && h.traits !== "-") parts.push(`✨ 具備關鍵特性「${h.traits}」，關鍵戰局往往能發揮奇效。`);
+            if (h.umarsonality && h.umarsonality !== "-") parts.push(`🐴 馬匹個性為「${h.umarsonality}」。`);
+            if (h.foal_quality && parseInt(h.foal_quality) >= 6) parts.push(`🧬 具備高繁殖潛力 (仔出評級 ${h.foal_quality})，退役後極具配種價值。`);
+            return parts.length > 0 ? parts.join(" ") : "基礎素質健全，適合依適性距離與賽道穩健安排賽程。";
+        }
 
-            const grid = document.getElementById("mGrid");
-            grid.innerHTML = "";
 
-            const addStat = (label, val, fullWidth = false) => {
-                if (val === undefined || val === null || val === "") val = "-";
-                const div = document.createElement("div");
-                div.className = "stat-item" + (fullWidth ? " full-width" : "");
-                div.innerHTML = `<div class="stat-label">${label}</div><div class="stat-value">${val}</div>`;
-                grid.appendChild(div);
-            };
+        function openModalDirect(item) {
+            try {
+                if (!item) return;
+                const mName = document.getElementById("mName");
+                if (mName) mName.textContent = item.name || "未命名馬匹";
+                const mTicket = document.getElementById("mTicket");
+                if (mTicket) mTicket.innerHTML = renderTicketBadge(item.ticket);
+                const mSex = document.getElementById("mSex");
+                if (mSex) mSex.innerHTML = item.sex === "牡" ? '<span style="color:#60a5fa; font-weight:bold;">牡馬</span>' : (item.sex === "牝" ? '<span style="color:#f472b6; font-weight:bold;">牝馬</span>' : (item.sex || "-"));
+                const mRegion = document.getElementById("mRegion");
+                if (mRegion) mRegion.textContent = `所屬: ${item.region || item.country || '日本'} | 登場: ${item.year || '-'}年`;
 
-            const addTitle = (title) => {
-                const div = document.createElement("div");
-                div.className = "modal-section-title";
-                div.textContent = title;
-                grid.appendChild(div);
-            };
+                const grid = document.getElementById("mGrid");
+                if (!grid) return;
+                grid.innerHTML = "";
 
-            // Section 1: 🎯 基本資料與身價 (Basic Info)
-            addTitle("🎯 基本資料與身價評級");
-            addStat("誕生年 / 生年", `${item.year || '-'} 年`);
-            addStat("お守り / 馬札", renderTicketBadge(item.ticket));
-            addStat("毛色 (Coat Color)", item.coat_color || "-");
-            addStat("所屬國 / 地區", item.country || item.region || "日本");
-            addStat("評判額 / 評價額", item.price ? `${item.price} 萬 (名聲: ${item.reputation || '-'})` : "-");
-            addStat("競走壽命 (Life)", item.life || "-");
+                const addStat = (label, val, fullWidth = false) => {
+                    if (val === undefined || val === null || val === "") val = "-";
+                    const div = document.createElement("div");
+                    div.className = "stat-item" + (fullWidth ? " full-width" : "");
+                    div.innerHTML = `<div class="stat-label">${label}</div><div class="stat-value">${val}</div>`;
+                    grid.appendChild(div);
+                };
 
-            // Section 2: ⚡ 核心能力與 8 大次能力 (Abilities & Sub-parameters)
-            addTitle("⚡ 核心能力與 8 大次能力 (Sub-parameters)");
-            const spStr = item.sp_max ? `${item.sp || item.matched_sp || '-'} (上限: ${item.sp_max}) [${item.sp_rank || '-'}]` : (item.sp || item.matched_sp || "-");
-            addStat("スピード (SP 速度 / 上限)", spStr);
-            addStat("スタミナ (耐力 Stamina)", item.stamina || "-");
-            addStat("サブパラ合計 (次能力合計)", item.subpara_total || "-");
-            addStat("瞬發力 (瞬発)", renderRankBadge(item.shunhatsu));
-            addStat("勝負根性 (根性)", renderRankBadge(item.konjo));
-            addStat("力量 (パワー)", renderRankBadge(item.power));
-            addStat("精神力 (精神)", renderRankBadge(item.seishin));
-            addStat("智商 (賢さ)", renderRankBadge(item.keshikosa));
-            addStat("柔軟性 (柔軟)", renderRankBadge(item.junan));
-            addStat("健康 (Health)", renderRankBadge(item.kenko));
-            addStat("脚質 (跑法)", item.running_style || "-");
-            addStat("氣性 / 性格", `${item.temperament || '-'} / ${item.personality || '-'}`);
+                const addTitle = (title) => {
+                    const div = document.createElement("div");
+                    div.className = "modal-section-title";
+                    div.textContent = title;
+                    grid.appendChild(div);
+                };
 
-            // Section 3: 🏟️ 賽道適性與 2026 三大新適性 (Track & 2026 Aptitudes)
-            addTitle("🏟️ 賽道適性與 2026 三大新適性");
-            addStat("適性距離", item.distance || "-");
-            addStat("馬場適性 (芝 / ダ)", `${renderTrackBadge(item.grass)} (芝) / ${renderTrackBadge(item.dirt)} (ダ)`);
-            addStat("瞬発力適性 (上限)", item.shunhatsu_apt || "-");
-            addStat("持続力適性 (上限)", item.jizoku_apt || "-");
-            addStat("消耗力適性 (上限)", item.shoumo_apt || "-");
-            addStat("轉彎適性 (小/左/右回り)", `${item.komawari || '-'} / ${item.hidarimawari || '-'} / ${item.migimawari || '-'}`);
-            addStat("體質弱點 (喉鳴/腳部/腰)", `${item.nodonari || '無'} / ${item.kyakubu_fuan || '無'} / ${item.koshi_no_amasa || '無'}`);
+                // Section 1: 🎯 基本資料與身價評級
+                addTitle("🎯 基本資料與身價評級");
+                addStat("誕生年 / 生年", `${item.year || '-'} 年`);
+                addStat("お守り / 馬札", renderTicketBadge(item.ticket));
+                addStat("毛色 (Coat Color)", item.coat_color || "-");
+                addStat("所屬國 / 地區", item.country || item.region || "日本");
+                addStat("評判額 / 評價額", item.price ? `${item.price} 萬 (名聲: ${item.reputation || '-'})` : "-");
+                addStat("競走壽命 (Life)", item.life || "-");
 
-            // Section 4: 🧬 血統世系與繁殖遺傳 (Lineage & Breeding)
-            addTitle("🧬 血統世系與繁殖遺傳");
-            addStat("父馬 (Sire)", `${item.sire || '-'} [${item.sire_line || '-'}]`);
-            addStat("母馬 (Dam)", `${item.dam || '-'} [${item.dam_line || '-'}]`);
-            addStat("成長型 (成長力)", `${item.growth || '-'} (${item.growth_cap || '普通'})`);
-            addStat("系統特性 / 遺伝", item.inheritance || "-");
-            addStat("仔出評級 (Foal Quality)", item.foal_quality || item.foal_count || "-");
+                // Section 2: ⚡ 核心能力與 8 大次能力 (Sub-parameters)
+                addTitle("⚡ 核心能力與 8 大次能力 (Sub-parameters)");
+                const spStr = item.sp_max ? `${item.sp || item.matched_sp || '-'} (上限: ${item.sp_max}) [${item.sp_rank || '-'}]` : (item.sp || item.matched_sp || "-");
+                addStat("スピード (SP 速度 / 上限)", spStr);
+                addStat("スタミナ (耐力 Stamina)", item.stamina || "-");
+                addStat("サブパラ合計 (次能力合計)", item.subpara_total || "-");
+                addStat("瞬發力 (瞬発)", renderRankBadge(item.shunhatsu));
+                addStat("勝負根性 (根性)", renderRankBadge(item.konjo));
+                addStat("力量 (パワー)", renderRankBadge(item.power));
+                addStat("精神力 (精神)", renderRankBadge(item.seishin));
+                addStat("智商 (賢さ)", renderRankBadge(item.keshikosa));
+                addStat("柔軟性 (柔軟)", renderRankBadge(item.junan));
+                addStat("健康 (Health)", renderRankBadge(item.kenko));
+                addStat("脚質 (跑法)", item.running_style || "-");
+                addStat("氣性 / 性格", `${item.temperament || '-'} / ${item.personality || '-'}`);
 
-            // Section 5: ✨ 2026 特性・個性與戰略評析
-            addTitle("✨ 2026 特性・個性與戰略評析");
-            if (item.details && item.details !== "-") {
-                addStat("💡 詳細特徵 / 配合建議", item.details, true);
+                // Section 3: 🏟️ 賽道適性與 2026 三大新適性
+                addTitle("🏟️ 賽道適性與 2026 三大新適性");
+                addStat("適性距離", item.distance || "-");
+                addStat("馬場適性 (芝 / ダ)", `${renderTrackBadge(item.grass)} (芝) / ${renderTrackBadge(item.dirt)} (ダ)`);
+                addStat("瞬発力適性 (上限)", item.shunhatsu_apt || "-");
+                addStat("持続力適性 (上限)", item.jizoku_apt || "-");
+                addStat("消耗力適性 (上限)", item.shoumo_apt || "-");
+                addStat("轉彎適性 (小/左/右回り)", `${item.komawari || '-'} / ${item.hidarimawari || '-'} / ${item.migimawari || '-'}`);
+                addStat("體質弱點 (喉鳴/腳部/腰)", `${item.nodonari || '無'} / ${item.kyakubu_fuan || '無'} / ${item.koshi_no_amasa || '無'}`);
+
+                // Section 4: 🧬 血統世系與繁殖遺傳
+                addTitle("🧬 血統世系與繁殖遺傳");
+                addStat("父馬 (Sire)", `${item.sire || '-'} [${item.sire_line || '-'}]`);
+                addStat("母馬 (Dam)", `${item.dam || '-'} [${item.dam_line || '-'}]`);
+                addStat("成長型 (成長力)", `${item.growth || '-'} (${item.growth_cap || '普通'})`);
+                addStat("系統特性 / 遺伝", item.inheritance || "-");
+                addStat("仔出評級 (Foal Quality)", item.foal_quality || item.foal_count || "-");
+
+                // Section 5: ✨ 2026 特性・個性與戰略評析
+                addTitle("✨ 2026 特性・個性與戰略評析");
+                if (item.details && item.details !== "-") {
+                    addStat("💡 詳細特徵 / 配合建議", item.details, true);
+                }
+                addStat("史實固有特性 (Traits)", item.traits || "無特殊特性", true);
+                addStat("馬之個性 (ウマソナ)", item.umarsonality || "-", true);
+                addStat("AI 戰略評語", generateAIComment(item), true);
+
+                const modal = document.getElementById("horseModal");
+                if (modal) modal.style.display = "flex";
+            } catch (err) {
+                console.error("Modal open error:", err);
+                const modal = document.getElementById("horseModal");
+                if (modal) modal.style.display = "flex";
             }
-            addStat("史實固有特性 (Traits)", item.traits || "無特殊特性", true);
-            addStat("馬之個性 (ウマソナ)", item.umarsonality || "-", true);
-            addStat("AI 戰略評語", generateAIComment(item), true);
-
-            document.getElementById("horseModal").style.display = "flex";
         }
 
         function closeModal(event) {
