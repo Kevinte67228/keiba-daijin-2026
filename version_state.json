@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.21",
+  "current_version": "v01.22",
   "history": [
     {
       "version": "v01.01",
@@ -105,6 +105,11 @@
       "version": "v01.21",
       "date": "2026-08-29",
       "description": "Fix: Eliminate unhandled ReferenceError in switchMainPillar and ensure flawless Pillar 5 chapter jumping"
+    },
+    {
+      "version": "v01.22",
+      "date": "2026-08-29",
+      "description": "Feature: Integrate WP10 Descendants & Dynasty Progression Guide (子孫誕生・教育方針・進路培育・S/L秘技) into Chapter 34"
     }
   ]
 }
