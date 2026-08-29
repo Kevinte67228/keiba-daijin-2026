@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.90",
+  "current_version": "v01.91",
   "history": [
     {
       "version": "v01.01",
@@ -450,6 +450,11 @@
       "version": "v01.90",
       "date": "2026-08-29",
       "description": "Refactor: Removed the top banner image in Marriage and Acquaintances section (sec-marriage-secrets)"
+    },
+    {
+      "version": "v01.91",
+      "date": "2026-08-29",
+      "description": "Refactor: Unified 2-column grid alignment and equal-sized badges (68px) for overseas ranch steps and advantage comparison"
     }
   ]
 }
