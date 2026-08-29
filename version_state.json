@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.73",
+  "current_version": "v01.74",
   "history": [
     {
       "version": "v01.01",
@@ -365,6 +365,11 @@
       "version": "v01.73",
       "date": "2026-08-29",
       "description": "Feature: Made Google Sheets URL collapsible with dedicated Save button and status badge to prevent accidental editing"
+    },
+    {
+      "version": "v01.74",
+      "date": "2026-08-29",
+      "description": "UI: Removed duplicate bottom Add Row button and increased padding/opacity for FAB buttons to prevent blocking Copy/Delete actions"
     }
   ]
 }
