@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.65",
+  "current_version": "v01.66",
   "history": [
     {
       "version": "v01.01",
@@ -325,6 +325,11 @@
       "version": "v01.65",
       "date": "2026-08-29",
       "description": "Feature: Horizontal Multi-Horse Tactics Spreadsheet Grid, 274 Races DB Auto-linkage, and Bulletproof Cache Buster"
+    },
+    {
+      "version": "v01.66",
+      "date": "2026-08-29",
+      "description": "Feature: Comprehensive Fix - Horizontal Multi-Horse Tactics Grid, 274 Races Linkage, and Bulletproof Cache Clearer"
     }
   ]
 }
