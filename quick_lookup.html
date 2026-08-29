@@ -89,6 +89,75 @@
 
         window.addEventListener('DOMContentLoaded', loadDatabase);
 
+    </script>
+    <script>
+        window._DB_LOADED = false;
+        const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
+
+        function showLoading(msg) {
+            const el = document.getElementById('loadingMsg');
+            if (el) {
+                if (msg) {
+                    el.style.display = 'block';
+                    el.innerHTML = msg;
+                } else {
+                    el.style.display = 'none';
+                }
+            }
+        }
+
+        async function loadDatabase() {
+            if (window.MASTER_DB_DATA) {
+                window._DB_LOADED = true;
+                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
+                if (typeof init === 'function') init();
+                return;
+            }
+            showLoading('⏳ 正在從 CDN 載入資料庫（首次約需 5~15 秒）...');
+            try {
+                const resp = await fetch(DB_CDN_URL);
+                const text = await resp.text();
+                const script = document.createElement('script');
+                script.textContent = text;
+                document.head.appendChild(script);
+                window._DB_LOADED = true;
+                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
+                showLoading('');
+                if (typeof init === 'function') init();
+            } catch (e) {
+                showLoading('⚠️ 本機或離線模式已就緒。如需網路同步，請連線後重新整理。');
+                if (typeof ensureUnpackedDb === 'function') ensureUnpackedDb();
+                if (typeof init === 'function') init();
+            }
+        }
+
+        async async async function clearPwaCache() {
+            if (!confirm("確定要清除快取並重新載入最新版本嗎？")) return;
+            showLoading("🧹 正在清除快取並重新載入最新版本...");
+            try {
+                if (window.location.protocol !== 'file:' && 'caches' in window) {
+                    try {
+                        const keys = await caches.keys();
+                        await Promise.all(keys.map(key => caches.delete(key)));
+                    } catch(e) { console.warn("Cache clear warning:", e); }
+                }
+                if (window.location.protocol !== 'file:' && 'serviceWorker' in navigator) {
+                    try {
+                        const registrations = await navigator.serviceWorker.getRegistrations();
+                        await Promise.all(registrations.map(r => r.unregister()));
+                    } catch(e) { console.warn("SW unregister warning:", e); }
+                }
+                try { localStorage.clear(); } catch(e){}
+                try { sessionStorage.clear(); } catch(e){}
+                window.location.reload(true);
+            } catch (err) {
+                console.warn("clearPwaCache fallback reload:", err);
+                window.location.reload();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadDatabase);
+
     // ==================== 跑法戰績紀錄儀 JavaScript Logic ====================
     const TACTICS_DEFINITIONS = [
         { id: 'oonige', name: '大逃げ', type: 'normal', badge: '通常' },
@@ -1615,7 +1684,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.62</span>
+        <span class="version-badge">v01.63</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
