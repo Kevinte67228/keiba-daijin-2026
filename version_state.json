@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.47",
+  "current_version": "v01.48",
   "history": [
     {
       "version": "v01.01",
@@ -235,6 +235,11 @@
       "version": "v01.47",
       "date": "2026-08-29",
       "description": "Content: Redraw all breeding theory and line establishment tables from WPStud guides with 100% full coverage and left alignment"
+    },
+    {
+      "version": "v01.48",
+      "date": "2026-08-29",
+      "description": "Fix: Add data-cat attributes to all theoryMasterTable rows and support space-separated categories for Chapter 3 filter chips"
     }
   ]
 }
