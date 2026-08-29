@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.37",
+  "current_version": "v01.39",
   "history": [
     {
       "version": "v01.01",
@@ -185,6 +185,16 @@
       "version": "v01.37",
       "date": "2026-08-29",
       "description": "Layout: Unify all table columns and headers to strict LEFT ALIGNMENT across all data tables and sync rule to GEMINI.md"
+    },
+    {
+      "version": "v01.38",
+      "date": "2026-08-29",
+      "description": "Layout: Comprehensive column width optimization across all data tables (Historical training, Yearly recommendations, Horse DB, Theories, Triple Crowns)"
+    },
+    {
+      "version": "v01.39",
+      "date": "2026-08-29",
+      "description": "Layout: Universal content-driven column width optimization across ALL 43 tables (shrink-wrapping short data columns and expanding descriptive columns)"
     }
   ]
 }
