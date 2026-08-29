@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.26",
+  "current_version": "v01.27",
   "history": [
     {
       "version": "v01.01",
@@ -130,6 +130,11 @@
       "version": "v01.26",
       "date": "2026-08-29",
       "description": "Feature: Integrate 25+ Ranch Facilities guide with unlock conditions, areas, and staff bonuses into Chapter 29"
+    },
+    {
+      "version": "v01.27",
+      "date": "2026-08-29",
+      "description": "Feature: Integrate 5 guides (Ranch staffing & building order priority, Foal Historical Training, and Unique Traits catalog)"
     }
   ]
 }
