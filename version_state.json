@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.16",
+  "current_version": "v01.17",
   "history": [
     {
       "version": "v01.01",
@@ -80,6 +80,11 @@
       "version": "v01.16",
       "date": "2026-08-29",
       "description": "Data Quality: Deduplicate broodmares (1336->384 with year ranges), clean foals (914->608), remove non-horse entries"
+    },
+    {
+      "version": "v01.17",
+      "date": "2026-08-29",
+      "description": "Data Clean: Purge website sidebar and menu items (馬, 結婚相手, 牧場長, 体験版, 新要素, etc.) from cat5 and cat13"
     }
   ]
 }
