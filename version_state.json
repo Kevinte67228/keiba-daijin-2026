@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.88",
+  "current_version": "v01.89",
   "history": [
     {
       "version": "v01.01",
@@ -440,6 +440,11 @@
       "version": "v01.88",
       "date": "2026-08-29",
       "description": "Refactor: Changed region chip title to '香港/澳洲/其他三冠' to prevent text overflow on tablet devices"
+    },
+    {
+      "version": "v01.89",
+      "date": "2026-08-29",
+      "description": "Fix: Fixed premature closing tag in Chapter 2 (sec-metrics) ensuring all Vitality content is properly enclosed within section-card and section-body"
     }
   ]
 }
