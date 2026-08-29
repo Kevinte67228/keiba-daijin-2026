@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.04",
+  "current_version": "v01.05",
   "history": [
     {
       "version": "v01.01",
@@ -20,6 +20,11 @@
       "version": "v01.04",
       "date": "2026-08-29",
       "description": "Feature: Add Recommended Rainbow Ticket Horses (おすすめ虹札馬) category with 89 entries from wp10-25-nijihuda"
+    },
+    {
+      "version": "v01.05",
+      "date": "2026-08-29",
+      "description": "Feature: Add ST (Stamina) column to outer table and enforce strict numeric sorting across all numerical fields"
     }
   ]
 }
