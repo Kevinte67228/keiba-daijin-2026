@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.42",
+  "current_version": "v01.44",
   "history": [
     {
       "version": "v01.01",
@@ -210,6 +210,16 @@
       "version": "v01.42",
       "date": "2026-08-29",
       "description": "Fix: Completely replace and verify Chapter 2 explosion simulator chart runtime and Chapter 15 system establishment tabs"
+    },
+    {
+      "version": "v01.43",
+      "date": "2026-08-29",
+      "description": "Content: Supplement complete Genetic Factors guide (17+ factors, Sire/Dam retirement acquisition thresholds, 4-gen pedigree activation matrix, +1/+2 rules) from WPStud"
+    },
+    {
+      "version": "v01.44",
+      "date": "2026-08-29",
+      "description": "Content: Add official WPStud gene factor visual diagram and style table badges with 100% precision"
     }
   ]
 }

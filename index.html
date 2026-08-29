@@ -1190,7 +1190,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.42</span>
+        <span class="version-badge">v01.43</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -2313,39 +2313,353 @@ li {
 <div class="section-title"><i class="fa-solid fa-dna"></i> 第 14 章：13 大遺傳因子獲得・活性化與圖鑑</div>
 </div>
 <div class="section-body">
-<div class="callout callout-info">
-<i class="fa-solid fa-circle-info"></i>
+<div class="callout callout-gold">
+<i class="fa-solid fa-dna" style="font-size:1.2rem; color:var(--accent-gold);"></i>
 <div>
-            祖先持有的因子將影響相關能力的遺傳，符合相應的配合理論時將大幅加強遺傳效果。受胎時根據血統內的因子活性化（小蛋 <i class="fa-solid fa-egg"></i>、大蛋、鑽石蛋 <i class="fa-solid fa-gem" style="color:#60a5fa"></i>）提升對應能力！
+<strong>《賽馬大亨 10 2026》全遺傳因子庫・引退獲得條件與因子活性化判定法</strong><br/>
+            祖先持有的因子將直接決定並深刻影響產駒相關能力的遺傳強度，符合相應的配合理論將大幅加強遺傳效果。引退時按競走馬最終能力（含後天調教養成）決定是否獲得因子（最多 2 個）；配種受胎時則依 4 代血統矩陣觸發因子活性化（小蛋 ➔ 大蛋 ➔ 鑽石蛋極致爆發）！
           </div>
 </div>
-<div class="table-responsive">
+<!-- ==================== 一、全 17 種因子效果與獲得必要條件總覽 ==================== -->
+<h3 style="font-size:1rem; color:var(--accent-color); margin:18px 0 10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-table-list"></i> 一、全 17 種遺傳因子・活性化圖標與獲得必要條件完全對照表
+        </h3>
+<div class="table-responsive" style="margin-bottom:24px;">
 <table class="data-table">
 <thead>
 <tr>
-<th>因子類別</th>
-<th>因子名稱</th>
-<th>活性化圖標</th>
-<th>能力效果說明</th>
-<th>引退獲得必要條件</th>
+<th style="min-width:110px;">因子類別</th>
+<th style="min-width:130px;">因子名稱</th>
+<th style="min-width:100px;">活性化圖標</th>
+<th style="min-width:240px;">能力效果說明</th>
+<th style="min-width:260px;">因子獲得必要條件</th>
 </tr>
 </thead>
 <tbody>
-<tr><td><span class="factor-badge factor-speed">能力因子</span></td><td><strong>速度 (Speed)</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋 / 鑽石</span></td><td>提升產駒速度上限</td><td>SP 71+ (國內) / SP 74+ (海外)</td></tr>
-<tr><td><span class="factor-badge factor-stamina">能力因子</span></td><td><strong>耐力 (Stamina)</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋 / 鑽石</span></td><td>提升產駒耐力與長距離適性</td><td>ST 53+</td></tr>
-<tr><td><span class="factor-badge factor-dash">能力因子</span></td><td><strong>瞬發力</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋 / 鑽石</span></td><td>提升彎道加速與直線爆發</td><td>該項能力達 <strong>A+ 級或以上</strong></td></tr>
-<tr><td><span class="factor-badge factor-spirit">能力因子</span></td><td><strong>勝負根性</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋 / 鑽石</span></td><td>提升並排搏鬥時的鬥志與持久度</td><td>該項能力達 <strong>A+ 級或以上</strong></td></tr>
-<tr><td><span class="factor-badge factor-power">能力因子</span></td><td><strong>力量 (Power)</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋 / 鑽石</span></td><td>提升斜坡衝刺與重馬場抓地力</td><td>該項能力達 <strong>A+ 級或以上</strong></td></tr>
-<tr><td><span class="factor-badge factor-soft">能力因子</span></td><td><strong>柔軟性</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋 / 鑽石</span></td><td>拓寬距離適應範圍上下限</td><td>該項能力達 <strong>A+ 級或以上</strong></td></tr>
-<tr><td><span class="factor-badge" style="background:#f97316; color:#fff;">特性因子</span></td><td><strong>早熟化</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋</span></td><td>產駒成長型偏向早熟</td><td>成長型為「早熟」</td></tr>
-<tr><td><span class="factor-badge" style="background:#64748b; color:#fff;">特性因子</span></td><td><strong>晚成化</strong></td><td><span class="pill pill-cyan">小蛋 / 大蛋</span></td><td>產駒成長型偏向晚成或超晚成</td><td>成長型為「晚成 / 超晚成」</td></tr>
-<tr><td><span class="factor-badge" style="background:#b91c1c; color:#fff;">特性因子</span></td><td><strong>脾氣劣化 (気性難)</strong></td><td><span class="pill pill-danger">脾氣蛋</span></td><td>產駒脾氣激躁，需高賢度騎手駕馭</td><td>氣性為「激 / 超激」</td></tr>
-<tr><td><span class="factor-badge factor-silver">系統因子</span></td><td><strong>名種牡馬 (銀底)</strong></td><td>/</td><td>子系統確立，提升活力與爆發</td><td>自立子系統確立</td></tr>
-<tr><td><span class="factor-badge factor-gold">系統因子</span></td><td><strong>大種牡馬 (金底)</strong></td><td>/</td><td>親系統昇格，大幅增加爆發與全副屬性</td><td>自立親系統確立</td></tr>
-<tr><td><span class="factor-badge factor-world">系統因子</span></td><td><strong>世界種牡馬 (彩虹底)</strong></td><td>/</td><td>世界系統昇格，5大副屬性爆發<strong>直接翻倍 (2倍)</strong></td><td>自立世界系統確立</td></tr>
-<tr><td><span class="factor-badge factor-drama">2026 NEW</span></td><td><strong>ドラマ因子 (傳奇因子)</strong></td><td>/</td><td>活性化後誘發頂級 Drama 融合與始祖回溯</td><td>現役達成傳奇生涯成就並確立子系或主流牝系</td></tr>
+<tr>
+<td><span class="factor-badge factor-speed">能力因子</span></td>
+<td><strong>速度 (Speed)</strong></td>
+<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
+<td>提升產駒之極速上限與核心競走力</td>
+<td><strong>SP 71+</strong> (國內) / <strong>SP 74+</strong> (海外)</td>
+</tr>
+<tr>
+<td><span class="factor-badge factor-stamina">能力因子</span></td>
+<td><strong>耐力 (Stamina)</strong></td>
+<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
+<td>提升產駒耐力、持久力與長距離適性</td>
+<td><strong>ST 53+</strong></td>
+</tr>
+<tr>
+<td><span class="factor-badge factor-dash">能力因子</span></td>
+<td><strong>瞬發力 (Dash)</strong></td>
+<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
+<td>提升彎道出彎加速、直線爆發與仕掛瞬發</td>
+<td>該能力達 <strong>A+ 級或以上</strong></td>
+</tr>
+<tr>
+<td><span class="factor-badge factor-spirit">能力因子</span></td>
+<td><strong>勝負根性 (Spirit)</strong></td>
+<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
+<td>提升直路並排搏鬥時的鬥志、死鬥抗壓與不服輸精神</td>
+<td>該能力達 <strong>A+ 級或以上</strong></td>
+</tr>
+<tr>
+<td><span class="factor-badge factor-power">能力因子</span></td>
+<td><strong>力量 (Power)</strong></td>
+<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
+<td>提升陡坡爬坡力、不良重馬場抓地力與加速對抗</td>
+<td>該能力達 <strong>A+ 級或以上</strong></td>
+</tr>
+<tr>
+<td><span class="factor-badge factor-soft">能力因子</span></td>
+<td><strong>柔軟性 (Soft)</strong></td>
+<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
+<td>大幅拓寬產駒之適性距離上限與下限範圍</td>
+<td>該能力達 <strong>A+ 級或以上</strong></td>
+</tr>
+<tr>
+<td><span class="factor-badge" style="background:#f97316; color:#fff;">特性因子</span></td>
+<td><strong>早熟化 (Early)</strong></td>
+<td><span class="pill pill-cyan">小蛋 / 大蛋</span></td>
+<td>產駒成長型偏向早熟，2歲出道即具備高峰即戰力</td>
+<td>成長型為<strong>「早熟」</strong></td>
+</tr>
+<tr>
+<td><span class="factor-badge" style="background:#64748b; color:#fff;">特性因子</span></td>
+<td><strong>晚成化 (Late)</strong></td>
+<td><span class="pill pill-cyan">小蛋 / 大蛋</span></td>
+<td>產駒成長型偏向晚成，巔峰期延長至 5~7 歲古馬期</td>
+<td>成長型為<strong>「晚成 / 超晚成」</strong></td>
+</tr>
+<tr>
+<td><span class="factor-badge" style="background:#b91c1c; color:#fff;">特性因子</span></td>
+<td><strong>脾氣劣化 (気性難)</strong></td>
+<td><span class="pill pill-danger">💢 脾氣蛋</span></td>
+<td>產駒脾氣激躁易暴走漏閘，需高賢度/特定個性調教彌補</td>
+<td>氣性為<strong>「激 / 超激」</strong></td>
+</tr>
+<tr>
+<td><span class="factor-badge factor-world">系統因子</span></td>
+<td><strong>世界種牡馬 (彩虹底)</strong></td>
+<td>/</td>
+<td>該種牡馬自立世界系統，5大副屬性爆發加成<strong>直接翻倍 (2倍)</strong></td>
+<td>自立世界系統確立 (全球支配率 ≥ 15%)</td>
+</tr>
+<tr>
+<td><span class="factor-badge factor-gold">系統因子</span></td>
+<td><strong>大種牡馬 (金底)</strong></td>
+<td>/</td>
+<td>該種牡馬昇格為親系統，奠定完全血脈活性化與親系 Linebreed</td>
+<td>自立親系統昇格 (單區 ≥ 12% 或全球 ≥ 10%)</td>
+</tr>
+<tr>
+<td><span class="factor-badge factor-silver">系統因子</span></td>
+<td><strong>名種牡馬 (銀底)</strong></td>
+<td>/</td>
+<td>該種牡馬確立為子系統，提升血統活力與自產爆發力</td>
+<td>自立子系統確立 (單區 ≥ 5% 或全球 ≥ 2%)</td>
+</tr>
+<tr>
+<td><span class="factor-badge" style="background:#0284c7; color:#fff;">系統屬性</span></td>
+<td><strong>SP 系統 (Speed Line)</strong></td>
+<td>/</td>
+<td>血統風格偏向極速化，可成立 SP 昇華配合</td>
+<td>系統確立時由父系與母系能力評定 SP 屬性</td>
+</tr>
+<tr>
+<td><span class="factor-badge" style="background:#dc2626; color:#fff;">系統屬性</span></td>
+<td><strong>ST 系統 (Stamina Line)</strong></td>
+<td>/</td>
+<td>血統風格偏向耐力與持久力，可成立 ST 昇華配合</td>
+<td>系統確立時由父系與母系能力評定 ST 屬性</td>
+</tr>
+<tr>
+<td><span class="factor-badge" style="background:#475569; color:#fff;">血統規模</span></td>
+<td><strong>零細血統 (Minor Line)</strong></td>
+<td>/</td>
+<td>該系統所在地域為弱勢，可成立零細配合、活力補完與活性化配合</td>
+<td>該地域血統支配率 <strong>≤ 1.0%</strong></td>
+</tr>
+<tr>
+<td><span class="factor-badge" style="background:#16a34a; color:#fff;">血統規模</span></td>
+<td><strong>流行血統 (Popular Line)</strong></td>
+<td>/</td>
+<td>該系統所在地域為強勢主流，可成立雄系活性化等配合</td>
+<td>該地域血統支配率 <strong>≥ 10.0%</strong></td>
+</tr>
+<tr>
+<td><span class="factor-badge" style="background:#7c3aed; color:#fff;">適性範圍</span></td>
+<td><strong>地域適性 / 世界適性 (Turf)</strong></td>
+<td>/</td>
+<td>決定草地草質適性範圍：日本/美國偏輕(左1~5)，歐洲偏重(右7~11)，世界系統大幅拓寬草地適應範圍</td>
+<td>出生所屬地域及世界系統確立加成</td>
+</tr>
+<tr>
+<td><span class="factor-badge factor-drama">2026 NEW</span></td>
+<td><strong>ドラマ因子 (傳奇因子)</strong></td>
+<td>/</td>
+<td>2026 最新要素！受胎活性化後誘發頂級 Drama 融合與史詩級固有特性回溯繼承</td>
+<td>現役達成傳奇生涯成就並確立子系或主流名牝系</td>
+</tr>
 </tbody>
 </table>
+</div>
+<!-- ==================== 二、種牡馬 / 繁殖牝馬 引退獲得因子條件門檻大表 ==================== -->
+<h3 style="font-size:1rem; color:var(--gold-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-award"></i> 二、種牡馬與繁殖牝馬引退獲得因子條件門檻大表 (最多獲得 2 個)
+        </h3>
+<p style="font-size:0.84rem; line-height:1.75; color:var(--text-color); margin-bottom:12px;">
+          競走馬引退成為種牡馬或繁殖牝馬時，將按照<strong>競走生涯結束時的最終能力（含後天史實調教與訓練成果）</strong>決定是否獲得因子（最多可獲得 2 個）。因子種類由符合條件之能力中隨機獲得；若<strong>父、父父（種牡馬）</strong>或<strong>母、母母（繁殖牝馬）</strong>擁有相同因子時，將<strong>大幅提高該因子的繼承獲得機率</strong>！
+        </p>
+<div class="table-responsive" style="margin-bottom:24px;">
+<table class="data-table">
+<thead>
+<tr>
+<th style="width:1%; white-space:nowrap;">因子數</th>
+<th style="min-width:140px;">引退身份與所屬</th>
+<th style="min-width:520px;">因子獲得詳細必要條件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:var(--accent-color); text-align:left;">1 因子</td>
+<td><strong>國內種牡馬</strong></td>
+<td>
+                  • SP 71 (B~B+) 或以上，輔助能力最少有 <strong>1 項為 A+ 級或以上</strong> (不包括精神力)<br/>
+                  • <em>若為史實名馬，額外需勝出 <strong>3 場 G1 賽事</strong></em>
+</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:var(--accent-color); text-align:left;">1 因子</td>
+<td><strong>海外種牡馬</strong></td>
+<td>
+                  • SP 74 (A) 或以上，輔助能力最少有 <strong>1 項為 A+ 級或以上</strong> (不包括精神力)<br/>
+                  • <em>若為史實名馬，額外需勝出 <strong>6 場 G1 賽事</strong></em>
+</td>
+</tr>
+<tr style="background:rgba(234, 179, 8, 0.05);">
+<td style="font-weight:bold; color:var(--gold-color); text-align:left;">2 因子 (雙因子)</td>
+<td><strong>國內種牡馬</strong></td>
+<td>
+                  • SP 71 (B~B+) 或以上，輔助能力最少有 <strong>2 項為 A+ 級或以上</strong> (不包括精神力)<br/>
+                  • <em>若為史實名馬，額外需勝出 <strong>3 場 G1 賽事</strong></em>
+</td>
+</tr>
+<tr style="background:rgba(234, 179, 8, 0.05);">
+<td style="font-weight:bold; color:var(--gold-color); text-align:left;">2 因子 (雙因子)</td>
+<td><strong>海外種牡馬</strong></td>
+<td>
+                  • SP 74 (A) 或以上，輔助能力最少有 <strong>2 項為 A+ 級或以上</strong> (不包括精神力)<br/>
+                  • <em>若為史實名馬，額外需勝出 <strong>6 場 G1 賽事</strong></em>
+</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#f472b6; text-align:left;">1 因子</td>
+<td><strong>國內繁殖牝馬</strong></td>
+<td>
+                  • SP 71 (B~B+) 或以上，輔助能力最少有 <strong>1 項為 A+ 級或以上</strong> (不包括精神力)；或<br/>
+                  • 所屬已確立之<strong>名牝系</strong>，SP 65 或以上即有低機率獲得！
+                </td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#f472b6; text-align:left;">1 因子</td>
+<td><strong>海外繁殖牝馬</strong></td>
+<td>
+                  • SP 74 (A) 或以上，輔助能力最少有 <strong>1 項為 A+ 級或以上</strong> (不包括精神力)；或<br/>
+                  • 所屬已確立之<strong>名牝系</strong>，SP 67 或以上即有低機率獲得！
+                </td>
+</tr>
+<tr style="background:rgba(244, 114, 182, 0.08);">
+<td style="font-weight:bold; color:#f43f5e; text-align:left;">2 因子 (雙因子)</td>
+<td><strong>國內繁殖牝馬 (極致)</strong></td>
+<td>
+                  • SP 71 (B~B+) 或以上，輔助能力最少有 <strong>1 項 A+ 級或以上</strong> (不含精神力)，且另有 <strong>1 項 S 級或以上</strong> (可含精神力)，並<strong>勝出 8 場 G1 賽事</strong>！
+                </td>
+</tr>
+<tr style="background:rgba(244, 114, 182, 0.08);">
+<td style="font-weight:bold; color:#f43f5e; text-align:left;">2 因子 (雙因子)</td>
+<td><strong>海外繁殖牝馬 (極致)</strong></td>
+<td>
+                  • SP 74 (A) 或以上，輔助能力最少有 <strong>1 項 A+ 級或以上</strong> (不含精神力)，且另有 <strong>1 項 S 級或以上</strong> (可含精神力)，並<strong>勝出 8 場 G1 賽事</strong>！
+                </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ==================== 三、因子活性化機制、4 代血統矩陣與 +1/+2 觸發條件 ==================== -->
+<h3 style="font-size:1rem; color:#38bdf8; margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-diagram-project"></i> 三、因子活性化機制・4 代 16 祖先血統矩陣與 +1/+2 判定全法則
+        </h3>
+<p style="font-size:0.84rem; line-height:1.75; color:var(--text-color); margin-bottom:12px;">
+          配種受胎時，系統會自動比對 4 代血統矩陣內的因子佈局進行「因子活性化」，直接大幅拉升產駒對應的能力上限。效果小時顯示為<strong>小蛋圖示</strong>，效果大時顯示為<strong>大蛋圖示</strong>，效果達到極致頂峰時顯示為<strong>💎 鑽石圖示 (速度鑽石等)</strong>！
+        </p>
+<!-- 4 代血統矩陣對照結構表 -->
+<div style="margin-bottom:16px;">
+<div style="font-size:0.88rem; font-weight:bold; color:var(--text-highlight); margin-bottom:6px;">
+            📊 4 代 16 祖先血統矩陣判讀圖譜
+          </div>
+<div class="table-responsive">
+<table class="data-table" style="font-size:0.8rem; text-align:left;">
+<thead>
+<tr style="background:rgba(30, 41, 59, 0.98);">
+<th style="min-width:100px;">第 1 代 (父母)</th>
+<th style="min-width:100px;">第 2 代 (祖父母)</th>
+<th style="min-width:100px;">第 3 代 (曾祖父母)</th>
+<th style="min-width:110px;">第 4 代 (高祖父母)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="8" style="background:rgba(59, 130, 246, 0.1); font-weight:bold; color:#60a5fa;">父 (種牡馬)</td>
+<td rowspan="4">父父</td>
+<td rowspan="2">父父父</td>
+<td>父父父父</td>
+</tr>
+<tr><td>父父父母</td></tr>
+<tr>
+<td rowspan="2">父父母</td>
+<td>父父母父</td>
+</tr>
+<tr><td>父父母母</td></tr>
+<tr>
+<td rowspan="4">父母</td>
+<td rowspan="2">父母父</td>
+<td>父母父父</td>
+</tr>
+<tr><td>父母父母</td></tr>
+<tr>
+<td rowspan="2">父母母</td>
+<td>父母母父</td>
+</tr>
+<tr><td>父母母母</td></tr>
+<tr style="border-top:2px solid var(--accent-color);">
+<td rowspan="8" style="background:rgba(244, 114, 182, 0.1); font-weight:bold; color:#f472b6;">母 (繁殖牝馬)</td>
+<td rowspan="4">母父</td>
+<td rowspan="2">母父父</td>
+<td>母父父父</td>
+</tr>
+<tr><td>母父父母</td></tr>
+<tr>
+<td rowspan="2">母父母</td>
+<td>母父母父</td>
+</tr>
+<tr><td>母父母母</td></tr>
+<tr>
+<td rowspan="4">母母</td>
+<td rowspan="2">母母父</td>
+<td>母母父父</td>
+</tr>
+<tr><td>母母父母</td></tr>
+<tr>
+<td rowspan="2">母母母</td>
+<td>母母母父</td>
+</tr>
+<tr><td>母母母母</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- 活性化 +1 與 +2 判定條件對照卡片 -->
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; margin-bottom:16px;">
+<!-- 活性化 +1 條件 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.4);">
+<div style="font-weight:bold; color:#38bdf8; font-size:0.95rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-plus-circle"></i> 血統內指定祖先擁有相同因子時：活性化 ＋１
+            </div>
+<ol style="font-size:0.8rem; line-height:1.75; margin:0; padding-left:20px; color:var(--text-color);">
+<li><strong>父 ＋ 母</strong> (父母直接擁有相同因子)</li>
+<li><strong>父 ＋ 母父</strong></li>
+<li><strong>父父 ＋ 母父</strong></li>
+<li><strong>父母 ＋ 母母</strong></li>
+<li><strong>父母 ＋ 母母母</strong></li>
+<li><strong>母母 ＋ 父母母</strong></li>
+<li><strong>父母母 ＋ 母母母</strong></li>
+<li><strong>第 3 代 4 匹種牡馬當中 3 匹有相同因子</strong><br/>
+<small style="color:var(--text-muted);">※ 註：如種牡馬無因子，可由同系持有相同因子之母系取代計算；但若種牡馬持有不同因子時，即使母系持有相同因子亦不予計算。</small>
+</li>
+<li><strong>連續 3 代皆有相同因子</strong> (不限父母線，只需連續如：父 ➔ 父母 ➔ 父母父)</li>
+</ol>
+</div>
+<!-- 活性化 +2 條件 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(234,179,8,0.4);">
+<div style="font-weight:bold; color:#facc15; font-size:0.95rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-gem"></i> 符合頂級佈局時：活性化 ＋２ (極致加乘)
+            </div>
+<ol style="font-size:0.8rem; line-height:1.75; margin:0; padding-left:20px; color:var(--text-color);">
+<li style="margin-bottom:10px;">
+<strong>第 3 代 4 匹種牡馬全部 (4 匹) 擁有相同因子</strong><br/>
+<small style="color:var(--text-muted);">※ 註：如種牡馬沒有因子，可由同系持有相同因子的母系取代計算；但種牡馬持有不相同因子時，即使母系持有相同因子亦不會計算。</small>
+</li>
+<li>
+<strong>連續 4 代皆擁有相同因子</strong><br/>
+<small style="color:var(--text-muted);">（不限父母線，只需連續串聯，例如：母 ➔ 母父 ➔ 母父母 ➔ 母父母父）</small>
+</li>
+</ol>
+<div style="margin-top:12px; padding:8px 10px; background:rgba(234,179,8,0.1); border-radius:6px; font-size:0.78rem; color:#fde047;">
+              💡 <strong>頂級繁育技巧</strong>：透過多代回溯將「速度 (Speed)」因子連續 4 代傳承，可穩定在受胎時觸發「💎 速度鑽石蛋」，直接突破產駒先天 SP 極限！
+            </div>
+</div>
 </div>
 </div>
 </section>
