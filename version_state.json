@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.23",
+  "current_version": "v01.24",
   "history": [
     {
       "version": "v01.01",
@@ -115,6 +115,11 @@
       "version": "v01.23",
       "date": "2026-08-29",
       "description": "Refactor: Re-architect entire strategy encyclopedia into 7 clean logical pillars and 36 strictly-mapped chapters"
+    },
+    {
+      "version": "v01.24",
+      "date": "2026-08-29",
+      "description": "Refactor: Fix top navigation tabs rendering to 7 pillars and implement pixel-perfect chapter button layout with icon, badge and text containers"
     }
   ]
 }
