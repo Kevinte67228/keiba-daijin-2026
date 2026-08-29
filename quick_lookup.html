@@ -1190,7 +1190,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.43</span>
+        <span class="version-badge">v01.44</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -2320,6 +2320,15 @@ li {
             祖先持有的因子將直接決定並深刻影響產駒相關能力的遺傳強度，符合相應的配合理論將大幅加強遺傳效果。引退時按競走馬最終能力（含後天調教養成）決定是否獲得因子（最多 2 個）；配種受胎時則依 4 代血統矩陣觸發因子活性化（小蛋 ➔ 大蛋 ➔ 鑽石蛋極致爆發）！
           </div>
 </div>
+<!-- 官方/WPStud 因子與活性化圖式視覺圖卡 -->
+<div style="background:rgba(15, 23, 42, 0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:20px;">
+<div style="font-size:0.95rem; font-weight:bold; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-image"></i> 因子與活性化圖式速查原圖 (WPStud / 遊戲對照)
+            </div>
+<div style="text-align:left; max-width:960px; overflow-x:auto;">
+<img alt="Winning Post 10 因子與活性化圖鑑" src="images/gene_factors_table.png" style="width:100%; max-width:820px; border-radius:8px; border:1px solid var(--border-color); box-shadow:0 4px 14px rgba(0,0,0,0.5);"/>
+</div>
+</div>
 <!-- ==================== 一、全 17 種因子效果與獲得必要條件總覽 ==================== -->
 <h3 style="font-size:1rem; color:var(--accent-color); margin:18px 0 10px; display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-table-list"></i> 一、全 17 種遺傳因子・活性化圖標與獲得必要條件完全對照表
@@ -2337,129 +2346,111 @@ li {
 </thead>
 <tbody>
 <tr>
-<td><span class="factor-badge factor-speed">能力因子</span></td>
-<td><strong>速度 (Speed)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
-<td>提升產駒之極速上限與核心競走力</td>
-<td><strong>SP 71+</strong> (國內) / <strong>SP 74+</strong> (海外)</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#1d4ed8; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #3b82f6;">スピード</span></td>
+<td><span style="font-size:1.1rem; color:#38bdf8;">🔵</span> <small style="color:var(--text-muted);">小蛋/大蛋/💎</small></td>
+<td><strong>速度 (Speed)</strong><br/><small style="color:var(--text-muted)">提升極速上限與核心競走力</small></td>
+<td><strong>SP 71+</strong> (國內) / <strong>74+</strong> (海外)</td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-stamina">能力因子</span></td>
-<td><strong>耐力 (Stamina)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
-<td>提升產駒耐力、持久力與長距離適性</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#b45309; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #f59e0b;">スタミナ</span></td>
+<td><span style="font-size:1.1rem; color:#f59e0b;">🟡</span> <small style="color:var(--text-muted)">小蛋/大蛋/💎</small></td>
+<td><strong>耐力 (Stamina)</strong><br/><small style="color:var(--text-muted)">提升長距離適性與持久續航力</small></td>
 <td><strong>ST 53+</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-dash">能力因子</span></td>
-<td><strong>瞬發力 (Dash)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
-<td>提升彎道出彎加速、直線爆發與仕掛瞬發</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#047857; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #10b981;">瞬発力</span></td>
+<td><span style="font-size:1.1rem; color:#10b981;">🟢</span> <small style="color:var(--text-muted)">小蛋/大蛋/💎</small></td>
+<td><strong>瞬發力 (Dash)</strong><br/><small style="color:var(--text-muted)">提升出彎加速與直線極限爆發</small></td>
 <td>該能力達 <strong>A+ 級或以上</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-spirit">能力因子</span></td>
-<td><strong>勝負根性 (Spirit)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
-<td>提升直路並排搏鬥時的鬥志、死鬥抗壓與不服輸精神</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#be123c; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #f43f5e;">勝負根性</span></td>
+<td><span style="font-size:1.1rem; color:#f43f5e;">🔴</span> <small style="color:var(--text-muted)">小蛋/大蛋/💎</small></td>
+<td><strong>勝負根性 (Spirit)</strong><br/><small style="color:var(--text-muted)">提升直路死鬥鬥志與抗壓耐力</small></td>
 <td>該能力達 <strong>A+ 級或以上</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-power">能力因子</span></td>
-<td><strong>力量 (Power)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
-<td>提升陡坡爬坡力、不良重馬場抓地力與加速對抗</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#a21caf; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #d946ef;">パワー</span></td>
+<td><span style="font-size:1.1rem; color:#d946ef;">🟣</span> <small style="color:var(--text-muted)">小蛋/大蛋/💎</small></td>
+<td><strong>力量 (Power)</strong><br/><small style="color:var(--text-muted)">提升爬坡衝刺與重馬場抓地力</small></td>
 <td>該能力達 <strong>A+ 級或以上</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-soft">能力因子</span></td>
-<td><strong>柔軟性 (Soft)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋 / 💎鑽石</span></td>
-<td>大幅拓寬產駒之適性距離上限與下限範圍</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#0e7490; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #06b6d4;">柔軟</span></td>
+<td><span style="font-size:1.1rem; color:#06b6d4;">🔷</span> <small style="color:var(--text-muted)">小蛋/大蛋/💎</small></td>
+<td><strong>柔軟性 (Soft)</strong><br/><small style="color:var(--text-muted)">拓寬距離適應範圍之上下限</small></td>
 <td>該能力達 <strong>A+ 級或以上</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#f97316; color:#fff;">特性因子</span></td>
-<td><strong>早熟化 (Early)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋</span></td>
-<td>產駒成長型偏向早熟，2歲出道即具備高峰即戰力</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#65a30d; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #84cc16;">早熟</span></td>
+<td><span style="font-size:1.1rem; color:#84cc16;">🟢</span> <small style="color:var(--text-muted)">小蛋/大蛋</small></td>
+<td><strong>早熟化 (Early)</strong><br/><small style="color:var(--text-muted)">產駒成長型偏向早熟即戰力</small></td>
 <td>成長型為<strong>「早熟」</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#64748b; color:#fff;">特性因子</span></td>
-<td><strong>晚成化 (Late)</strong></td>
-<td><span class="pill pill-cyan">小蛋 / 大蛋</span></td>
-<td>產駒成長型偏向晚成，巔峰期延長至 5~7 歲古馬期</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#475569; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #94a3b8;">晩成</span></td>
+<td><span style="font-size:1.1rem; color:#94a3b8;">⚪</span> <small style="color:var(--text-muted)">小蛋/大蛋</small></td>
+<td><strong>晚成化 (Late)</strong><br/><small style="color:var(--text-muted)">產駒成長型偏向晚成古馬期</small></td>
 <td>成長型為<strong>「晚成 / 超晚成」</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#b91c1c; color:#fff;">特性因子</span></td>
-<td><strong>脾氣劣化 (気性難)</strong></td>
-<td><span class="pill pill-danger">💢 脾氣蛋</span></td>
-<td>產駒脾氣激躁易暴走漏閘，需高賢度/特定個性調教彌補</td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#6b21a8; color:#fff; font-weight:bold; font-size:0.75rem; border:1px solid #a855f7;">気性難</span></td>
+<td><span style="font-size:1.1rem; color:#a855f7;">💢</span> <small style="color:#ef4444;">脾氣劣化</small></td>
+<td><strong>脾氣劣化 (Temperament)</strong><br/><small style="color:var(--text-muted)">脾氣激躁，需高賢度騎手駕馭</small></td>
 <td>氣性為<strong>「激 / 超激」</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-world">系統因子</span></td>
-<td><strong>世界種牡馬 (彩虹底)</strong></td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:linear-gradient(90deg, #10b981, #38bdf8, #ec4899); color:#fff; font-weight:bold; font-size:0.75rem;">🌈 世界系統</span></td>
 <td>/</td>
-<td>該種牡馬自立世界系統，5大副屬性爆發加成<strong>直接翻倍 (2倍)</strong></td>
+<td><strong>該種牡馬為世界系統 (世界種牡馬)</strong><br/><small style="color:var(--text-muted)">5大副屬性爆發加成直接翻倍 (2倍)</small></td>
 <td>自立世界系統確立 (全球支配率 ≥ 15%)</td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-gold">系統因子</span></td>
-<td><strong>大種牡馬 (金底)</strong></td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#eab308; color:#000; font-weight:bold; font-size:0.75rem;">🥇 親系統</span></td>
 <td>/</td>
-<td>該種牡馬昇格為親系統，奠定完全血脈活性化與親系 Linebreed</td>
+<td><strong>該種牡馬為親系統 (大種牡馬)</strong><br/><small style="color:var(--text-muted)">確立完全血脈活性化與親系 Linebreed</small></td>
 <td>自立親系統昇格 (單區 ≥ 12% 或全球 ≥ 10%)</td>
 </tr>
 <tr>
-<td><span class="factor-badge factor-silver">系統因子</span></td>
-<td><strong>名種牡馬 (銀底)</strong></td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#94a3b8; color:#000; font-weight:bold; font-size:0.75rem;">🥈 子系統</span></td>
 <td>/</td>
-<td>該種牡馬確立為子系統，提升血統活力與自產爆發力</td>
+<td><strong>該種牡馬為子系統 (名種牡馬)</strong><br/><small style="color:var(--text-muted)">提升血統活力與自產爆發力</small></td>
 <td>自立子系統確立 (單區 ≥ 5% 或全球 ≥ 2%)</td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#0284c7; color:#fff;">系統屬性</span></td>
-<td><strong>SP 系統 (Speed Line)</strong></td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#0284c7; color:#fff; font-weight:bold; font-size:0.75rem;">SP系</span></td>
 <td>/</td>
-<td>血統風格偏向極速化，可成立 SP 昇華配合</td>
-<td>系統確立時由父系與母系能力評定 SP 屬性</td>
+<td><strong>SP 系統，趨向速度化</strong><br/><small style="color:var(--text-muted)">可成立 SP 昇華配合</small></td>
+<td>/</td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#dc2626; color:#fff;">系統屬性</span></td>
-<td><strong>ST 系統 (Stamina Line)</strong></td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#b45309; color:#fff; font-weight:bold; font-size:0.75rem;">ST系</span></td>
 <td>/</td>
-<td>血統風格偏向耐力與持久力，可成立 ST 昇華配合</td>
-<td>系統確立時由父系與母系能力評定 ST 屬性</td>
+<td><strong>ST 系統，趨向高耐力</strong><br/><small style="color:var(--text-muted)">可成立 ST 昇華配合</small></td>
+<td>/</td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#475569; color:#fff;">血統規模</span></td>
-<td><strong>零細血統 (Minor Line)</strong></td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#334155; color:#fff; font-weight:bold; font-size:0.75rem;">零細</span></td>
 <td>/</td>
-<td>該系統所在地域為弱勢，可成立零細配合、活力補完與活性化配合</td>
-<td>該地域血統支配率 <strong>≤ 1.0%</strong></td>
+<td><strong>零細血統，該系統所在地域為弱勢</strong><br/><small style="color:var(--text-muted)">可成立零細交配、活力補完配合</small></td>
+<td>該地域血統支配率 <strong>1% 或以下</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#16a34a; color:#fff;">血統規模</span></td>
-<td><strong>流行血統 (Popular Line)</strong></td>
+<td><span style="display:inline-block; padding:3px 8px; border-radius:4px; background:#15803d; color:#fff; font-weight:bold; font-size:0.75rem;">流行</span></td>
 <td>/</td>
-<td>該系統所在地域為強勢主流，可成立雄系活性化等配合</td>
-<td>該地域血統支配率 <strong>≥ 10.0%</strong></td>
+<td><strong>流行血統，該系統所在地域為強勢</strong><br/><small style="color:var(--text-muted)">可成立雄系活性化等主流配合</small></td>
+<td>該地域血統支配率 <strong>10% 或以上</strong></td>
 </tr>
 <tr>
-<td><span class="factor-badge" style="background:#7c3aed; color:#fff;">適性範圍</span></td>
-<td><strong>地域適性 / 世界適性 (Turf)</strong></td>
+<td><span style="font-size:1.05rem;">🇯🇵 🇺🇸 🇪🇺 🌈</span></td>
 <td>/</td>
-<td>決定草地草質適性範圍：日本/美國偏輕(左1~5)，歐洲偏重(右7~11)，世界系統大幅拓寬草地適應範圍</td>
-<td>出生所屬地域及世界系統確立加成</td>
+<td><strong>地域適性 / 世界適性，決定草地適性範圍</strong><br/><small style="color:var(--text-muted)">日本、美國偏向輕(左)，歐洲偏向重(右)，世界系統擴闊草地適性範圍</small></td>
+<td>/</td>
 </tr>
 <tr>
 <td><span class="factor-badge factor-drama">2026 NEW</span></td>
-<td><strong>ドラマ因子 (傳奇因子)</strong></td>
 <td>/</td>
-<td>2026 最新要素！受胎活性化後誘發頂級 Drama 融合與史詩級固有特性回溯繼承</td>
+<td><strong>ドラマ因子 (傳奇因子)</strong><br/><small style="color:var(--text-muted)">誘發頂級 Drama 融合與史詩級固有特性回溯</small></td>
 <td>現役達成傳奇生涯成就並確立子系或主流名牝系</td>
 </tr>
 </tbody>
