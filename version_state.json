@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.59",
+  "current_version": "v01.60",
   "history": [
     {
       "version": "v01.01",
@@ -295,6 +295,11 @@
       "version": "v01.59",
       "date": "2026-08-29",
       "description": "Feature: Full 1:1 Chapter 37 with all 92 mares, 12 Core Breeding Theories & Foal Potential from uipo-nou, plus new Pillar 8 - 13 Tactics Race Performance Tracker with Google Sheets & LocalStorage sync"
+    },
+    {
+      "version": "v01.60",
+      "date": "2026-08-29",
+      "description": "Content: Add 夢乃美空 (Misora Yumeno) and real avatar for 茅野翠月 (Mitsuki Kayano) in Chapter 31 Ranch Masters"
     }
   ]
 }
