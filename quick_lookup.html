@@ -463,7 +463,7 @@
         .callout-tip { background: rgba(16, 185, 129, 0.1); border: 1px solid #059669; color: #a7f3d0; }
         .callout-warning { background: rgba(239, 68, 68, 0.1); border: 1px solid #dc2626; color: #fecaca; }
 
-        /* 全域通用表格 */
+                        /* 全域通用表格優化 (平板/手機最佳化) */
         .table-responsive {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -472,8 +472,27 @@
             border-radius: 8px;
             border: 1px solid var(--border-color);
             background: var(--card-bg);
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) var(--card-bg);
         }
-        .data-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left; }
+        .table-responsive::-webkit-scrollbar {
+            height: 6px;
+        }
+        .table-responsive::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 3px;
+        }
+        .table-responsive::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 3px;
+        }
+        
+        .data-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            font-size: 0.82rem; 
+            text-align: left; 
+        }
         .data-table th {
             background: rgba(30, 41, 59, 0.95);
             color: var(--accent-color);
@@ -494,6 +513,90 @@
         }
         .data-table tr:last-child td { border-bottom: none; }
         .data-table tr:hover td { background: rgba(56, 189, 248, 0.05); }
+
+        /* 防折行與徽章規範 */
+        .badge, .pill, .tag, .pill-safe, .pill-gold, .pill-cyan, .pill-version {
+            display: inline-block;
+            white-space: nowrap !important;
+            word-break: keep-all !important;
+        }
+        .badge-rainbow, .badge-gold, .badge-silver, .badge-bronze, .badge-green {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: bold;
+            white-space: nowrap !important;
+            word-break: keep-all !important;
+        }
+
+        /* 史實調教大表 (第 20 章) 平板欄位自適應寬度 */
+        #sec-historical-train .data-table {
+            min-width: 880px;
+        }
+        #sec-historical-train .data-table th:nth-child(1),
+        #sec-historical-train .data-table td:nth-child(1) {
+            min-width: 150px;
+            font-weight: bold;
+        }
+        #sec-historical-train .data-table th:nth-child(2),
+        #sec-historical-train .data-table td:nth-child(2) {
+            width: 65px;
+            min-width: 65px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        #sec-historical-train .data-table th:nth-child(3),
+        #sec-historical-train .data-table td:nth-child(3) {
+            min-width: 220px;
+        }
+        #sec-historical-train .data-table th:nth-child(4),
+        #sec-historical-train .data-table td:nth-child(4) {
+            min-width: 180px;
+        }
+        #sec-historical-train .data-table th:nth-child(5),
+        #sec-historical-train .data-table td:nth-child(5) {
+            min-width: 150px;
+        }
+        #sec-historical-train .data-table th:nth-child(6),
+        #sec-historical-train .data-table td:nth-child(6) {
+            width: 70px;
+            min-width: 70px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        #sec-historical-train .data-table th:nth-child(7),
+        #sec-historical-train .data-table td:nth-child(7) {
+            width: 80px;
+            min-width: 80px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        /* 幼駒調教表 */
+        #foal-train-catalog + p + .table-responsive .data-table {
+            min-width: 720px;
+        }
+
+        /* 配合理論大表 (第 3 章) */
+        #sec-master-table .data-table {
+            min-width: 820px;
+        }
+
+        /* 三冠大表 (第 23 章) */
+        #sec-triple-crowns .data-table {
+            min-width: 850px;
+        }
+
+        /* 牧場設施大表 (第 29 章) */
+        #sec-farm-facilities .data-table {
+            min-width: 860px;
+        }
+
+        /* 賽馬場跑道特性大表 (第 24 章) */
+        #sec-racecourses .data-table {
+            min-width: 840px;
+        }
 
         /* 馬庫專用寬度 */
         #horseTable th:nth-child(1), #horseTable td:nth-child(1) { width: 55px; min-width: 50px; text-align: center; white-space: nowrap; }
@@ -923,7 +1026,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.30</span>
+        <span class="version-badge">v01.31</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">

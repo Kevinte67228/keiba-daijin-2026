@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.30",
+  "current_version": "v01.31",
   "history": [
     {
       "version": "v01.01",
@@ -150,6 +150,11 @@
       "version": "v01.30",
       "date": "2026-08-29",
       "description": "Fix: Fix container card nesting for Foal Training and audit all 35 sections to ensure 100% consistent card borders and padding"
+    },
+    {
+      "version": "v01.31",
+      "date": "2026-08-29",
+      "description": "Fix: Optimize table column widths and horizontal scroll for tablets (iPad) and mobile devices across all 35 sections"
     }
   ]
 }
