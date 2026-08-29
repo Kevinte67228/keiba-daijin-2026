@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.20",
+  "current_version": "v01.21",
   "history": [
     {
       "version": "v01.01",
@@ -100,6 +100,11 @@
       "version": "v01.20",
       "date": "2026-08-29",
       "description": "Fix: Restore missing sec-start-guide, re-align 36-chapter IDs in Pillar 5, and add scroll-margin-top offset"
+    },
+    {
+      "version": "v01.21",
+      "date": "2026-08-29",
+      "description": "Fix: Eliminate unhandled ReferenceError in switchMainPillar and ensure flawless Pillar 5 chapter jumping"
     }
   ]
 }
