@@ -114,13 +114,14 @@
     function getTacticsRecords() {
         try {
             const stored = localStorage.getItem('WP10_TACTICS_RECORDS');
-            if (stored) {
+            if (stored !== null) {
                 const parsed = JSON.parse(stored);
-                if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                if (Array.isArray(parsed)) return parsed;
             }
         } catch (e) {
             console.warn(e);
         }
+        // 首次造訪時之預設初始範例（若使用者刪除後將保持為空，不會再次彈出）
         return [
             {
                 id: 'rec_' + Date.now(),
@@ -186,7 +187,7 @@
 
     function clearAllTacticsRows() {
         if (!confirm('⚠️ 警告：確定要清空所有賽駒戰績紀錄嗎？（建議先點擊「匯出 CSV」進行備份）')) return;
-        localStorage.removeItem('WP10_TACTICS_RECORDS');
+        localStorage.setItem('WP10_TACTICS_RECORDS', '[]');
         renderTacticsGrid();
     }
 
@@ -1577,7 +1578,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.67</span>
+        <span class="version-badge">v01.68</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
