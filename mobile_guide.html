@@ -106,6 +106,96 @@
         { id: 'oikomi', name: '追込', type: 'normal', badge: '通常' }
     ];
 
+    
+    // ==================== 48 週賽事日曆對照資料庫 ====================
+    const WEEK_RACES_CALENDAR = {
+        '1月1週': ['中山金杯 (中山・芝2000m・G3)', '京都金杯 (京都・芝1600m・G3)'],
+        '1月2週': ['シンザン記念 (中京・芝1600m・G3)', 'フェアリーS (中山・芝1600m・G3)'],
+        '1月3週': ['日経新春杯 (中京・芝2200m・G2)', '京成杯 (中山・芝2000m・G3)', '愛知杯 (小倉・芝2000m・G3)'],
+        '1月4週': ['アメリカJCC (中山・芝2200m・G2)', '東海S (中京・ダ1800m・G2)', '根岸S (東京・ダ1400m・G3)', 'シルクロードS (中京・芝1200m・G3)'],
+        '2月1週': ['きさらぎ賞 (中京・芝2000m・G3)', '東京新聞杯 (東京・芝1600m・G3)'],
+        '2月2週': ['京都記念 (阪神・芝2200m・G2)', '共同通信杯 (東京・芝1800m・G3)', 'クイーンC (東京・芝1600m・G3)'],
+        '2月3週': ['★ フェブラリーS (東京・ダ1600m・G1)', '小倉大賞典 (小倉・芝1800m・G3)', 'ダイヤモンドS (東京・芝3400m・G3)'],
+        '2月4週': ['中山記念 (中山・芝1800m・G2)', '阪急杯 (阪神・芝1400m・G3)', '★ サウジカップ (沙國・ダ1800m・G1)'],
+        '3月1週': ['弥生賞ディープ記念 (中山・芝2000m・G2)', 'チューリップ賞 (阪神・芝1600m・G2)', 'オーシャンS (中山・芝1200m・G3)'],
+        '3月2週': ['金鯱賞 (中京・芝2000m・G2)', 'フィリーズレビュー (阪神・芝1400m・G2)', '中山牝馬S (中山・芝1800m・G3)'],
+        '3月3週': ['スプリングS (中山・芝1800m・G2)', '阪神大賞典 (阪神・芝3000m・G2)', 'ファルコンS (中京・芝1400m・G3)'],
+        '3月4週': ['★ 高松宮記念 (中京・芝1200m・G1)', '日経賞 (中山・芝2500m・G2)', '毎日杯 (阪神・芝1800m・G3)', 'マーチS (中山・ダ1800m・G3)', '★ ドバイワールドC (杜拜・ダ2000m・G1)', '★ ドバイシーマC (杜拜・芝2410m・G1)', '★ ドバイターフ (杜拜・芝1800m・G1)'],
+        '4月1週': ['★ 大阪杯 (阪神・芝2000m・G1)', 'ダービー卿CT (中山・芝1600m・G3)'],
+        '4月2週': ['★ 桜花賞 (阪神・芝1600m・G1)', 'ニュージーランドT (中山・芝1600m・G2)', '阪神牝馬S (阪神・芝1600m・G2)'],
+        '4月3週': ['★ 皐月賞 (中山・芝2000m・G1)', 'アンタレスS (阪神・ダ1800m・G3)', 'アーリントンC (阪神・芝1600m・G3)'],
+        '4月4週': ['フローラS (東京・芝2000m・G2)', 'マイラーズC (阪神・芝1600m・G2)', '福島牝馬S (福島・芝1800m・G3)', '★ 香港QE2世C (沙田・芝2000m・G1)', '★ 香港チャンピオンズM (沙田・芝1600m・G1)'],
+        '5月1週': ['★ 天皇賞・春 (京都・芝3200m・G1)', '青葉賞 (東京・芝2400m・G2)', '京都新聞杯 (中京・芝2200m・G2)', '★ ケンタッキーダービー (美・ダ2000m・G1)'],
+        '5月2週': ['★ NHKマイルC (東京・芝1600m・G1)', '京王杯SC (東京・芝1400m・G2)', '新潟大賞典 (新潟・芝2000m・G3)'],
+        '5月3週': ['★ ヴィクトリアマイル (東京・芝1600m・G1)', '平安S (中京・ダ1900m・G3)', '★ プリークネスS (美・ダ1900m・G1)'],
+        '5月4週': ['★ オークス・優駿牝馬 (東京・芝2400m・G1)', '葵S (中京・芝1200m・G3)'],
+        '5月5週': ['★ 日本ダービー・東京優駿 (東京・芝2400m・G1)', '目黒記念 (東京・芝2500m・G2)'],
+        '6月1週': ['★ 安田記念 (東京・芝1600m・G1)', '鳴尾記念 (中京・芝2000m・G3)', '★ ベルモントS (美・ダ2400m・G1)', '★ 英ダービー (英・芝2420m・G1)'],
+        '6月2週': ['エプソムC (東京・芝1800m・G3)', 'マーメイドS (阪神・芝2000m・G3)', '★ ロイヤルアスコット開催 (英・G1)'],
+        '6月3週': ['ユニコーンS (東京・ダ1600m・G3)', '函館スプリントS (函館・芝1200m・G3)'],
+        '6月4週': ['★ 宝塚記念 (阪神・芝2200m・G1)', '府中牝馬S (東京・芝1800m・G2)'],
+        '7月1週': ['ラジオNIKKEI賞 (福島・芝1800m・G3)', 'CBC賞 (小倉・芝1200m・G3)'],
+        '7月2週': ['七夕賞 (福島・芝2000m・G3)', 'プロキオンS (小倉・ダ1700m・G3)'],
+        '7月3週': ['函館記念 (函館・芝2000m・G3)', '中京記念 (小倉・芝1800m・G3)'],
+        '7月4週': ['アイビスSD (新潟・芝1000m・G3)', 'クイーンS (札幌・芝1800m・G3)', '★ キングジョージ6世＆QES (英・芝2400m・G1)'],
+        '8月1週': ['レパードS (新潟・ダ1800m・G3)', 'エルムS (札幌・ダ1700m・G3)'],
+        '8月2週': ['小倉記念 (小倉・芝2000m・G3)', '関屋記念 (新潟・芝1600m・G3)'],
+        '8月3週': ['札幌記念 (札幌・芝2000m・G2)', '北九州記念 (小倉・芝1200m・G3)', '★ 英インターナショナルS (英・芝2050m・G1)'],
+        '8月4週': ['新潟2歳S (新潟・芝1600m・G3)', 'キーンランドC (札幌・芝1200m・G3)', '★ トラヴァーズS (美・ダ2000m・G1)'],
+        '9月1週': ['札幌2歳S (札幌・芝1800m・G3)', '小倉2歳S (小倉・芝1200m・G3)', '新潟記念 (新潟・芝2000m・G3)'],
+        '9月2週': ['紫苑S (中山・芝2000m・G2)', 'セントウルS (中京・芝1200m・G2)', '京成杯AH (中山・芝1600m・G3)'],
+        '9月3週': ['ローズS (中京・芝2000m・G2)', 'セントライト記念 (中山・芝2200m・G2)'],
+        '9月4週': ['オールカマー (中山・芝2200m・G2)', '神戸新聞杯 (中京・芝2200m・G2)', 'シリウスS (中京・ダ1900m・G3)'],
+        '10月1週': ['★ スプリンターズS (中山・芝1200m・G1)', '毎日王冠 (東京・芝1800m・G2)', '京都大賞典 (阪神・芝2400m・G2)', '★ 凱旋門賞 (法・芝2400m・G1)'],
+        '10月2週': ['府中牝馬S (東京・芝1800m・G2)', 'サウジアラビアRC (東京・芝1600m・G3)'],
+        '10月3週': ['★ 秋華賞 (阪神・芝2000m・G1)', '富士S (東京・芝1600m・G2)', '★ 英チャンピオンS (英・芝2000m・G1)'],
+        '10月4週': ['★ 菊花賞 (阪神・芝3000m・G1)', 'スワンS (阪神・芝1400m・G2)', 'アルテミスS (東京・芝1600m・G3)'],
+        '10月5週': ['★ 天皇賞・秋 (東京・芝2000m・G1)', '★ BCクラシック (美・ダ2000m・G1)', '★ BCターフ (美・芝2400m・G1)', '★ BCマイル (美・芝1600m・G1)'],
+        '11月1週': ['アルゼンチン共和国杯 (東京・芝2500m・G2)', 'みやこS (阪神・ダ1800m・G3)', 'ファンタジーS (阪神・芝1400m・G3)', '★ JBCクラシック (地方・ダ2000m・Jpn1)', '★ メルボルンC (澳・芝3200m・G1)'],
+        '11月2週': ['★ エリザベス女王杯 (阪神・芝2200m・G1)', '武蔵野S (東京・ダ1600m・G3)', 'デイリー杯2歳S (阪神・芝1600m・G2)'],
+        '11月3週': ['★ マイルCS (阪神・芝1600m・G1)', '東スポ杯2歳S (東京・芝1800m・G2)'],
+        '11月4週': ['★ ジャパンカップ (東京・芝2400m・G1)', '京阪杯 (阪神・芝1200m・G3)', '京都2歳S (阪神・芝2000m・G3)'],
+        '12月1週': ['★ チャンピオンズC (中京・ダ1800m・G1)', 'ステイヤーズS (中山・芝3600m・G2)', 'チャレンジC (阪神・芝2000m・G3)'],
+        '12月2週': ['★ 阪神JF (阪神・芝1600m・G1)', 'カペラS (中山・ダ1200m・G3)', '中日新聞杯 (中京・芝2000m・G3)', '★ 香港カップ (沙田・芝2000m・G1)', '★ 香港マイル (沙田・芝1600m・G1)', '★ 香港ヴァーズ (沙田・芝2400m・G1)', '★ 香港スプリント (沙田・芝1200m・G1)'],
+        '12月3週': ['★ 朝日杯FS (阪神・芝1600m・G1)', 'ターコイズS (中山・芝1600m・G3)'],
+        '12月4週': ['★ 有馬記念 (中山・芝2500m・G1)', '★ ホープフルS (中山・芝2000m・G1)', '★ 東京大賞典 (大井・ダ2000m・G1)', '阪神C (阪神・芝1400m・G2)']
+    };
+
+    function onTrackWeekChange() {
+        const week = document.getElementById('trackWeek')?.value || '5月5週';
+        const raceSelect = document.getElementById('trackRaceSelect');
+        const raceInput = document.getElementById('trackRace');
+        if (!raceSelect) return;
+
+        raceSelect.innerHTML = '';
+        const races = WEEK_RACES_CALENDAR[week] || ['日本ダービー (東京・芝2400m)'];
+        
+        races.forEach((r, idx) => {
+            const opt = document.createElement('option');
+            opt.value = r;
+            opt.textContent = r;
+            raceSelect.appendChild(opt);
+            if (idx === 0 && raceInput) raceInput.value = r;
+        });
+
+        const customOpt = document.createElement('option');
+        customOpt.value = 'CUSTOM';
+        customOpt.textContent = '✏️ 手動自填賽事名稱...';
+        raceSelect.appendChild(customOpt);
+    }
+
+    function onTrackRaceSelectChange() {
+        const raceSelect = document.getElementById('trackRaceSelect');
+        const raceInput = document.getElementById('trackRace');
+        if (!raceSelect || !raceInput) return;
+        if (raceSelect.value === 'CUSTOM') {
+            raceInput.value = '';
+            raceInput.focus();
+        } else {
+            raceInput.value = raceSelect.value;
+        }
+    }
+
     function initTacticsTracker() {
         // 1. Populate Weeks
         const weekSelect = document.getElementById('trackWeek');
@@ -151,6 +241,7 @@
             gUrlInput.value = localStorage.getItem('WP10_GSHEET_URL') || '';
         }
 
+        onTrackWeekChange();
         renderTacticsTable();
     }
 
@@ -164,6 +255,7 @@
 
     function saveTacticsRecords(records) {
         localStorage.setItem('WP10_TACTICS_RECORDS', JSON.stringify(records));
+        onTrackWeekChange();
         renderTacticsTable();
     }
 
@@ -1523,7 +1615,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.60</span>
+        <span class="version-badge">v01.61</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -8197,8 +8289,11 @@ li {
 </div>
 <!-- 七、1968 繁殖牝馬 30 年後實機驗證實錄 (始祖別 80 頭排行榜) -->
 <h3 style="font-size:1.05rem; color:var(--gold-color); margin:26px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-chart-line"></i> 七、1968 繁殖牝馬 30 年後實機推演實錄 (始祖別 80 頭大排行)
+<i class="fa-solid fa-chart-line"></i> 七、1968 繁殖牝馬 30 年後實機推演實錄 (始祖別全 24 位・共 80 頭繁殖牝馬完全大排行)
         </h3>
+<p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
+          《ウイポ脳》從 1968 年劇本實機推演 30 年，統計所有繁殖母馬後代頭數與目前評價額總和（總計 80 頭繁殖牝馬，歸納為 24 位始祖名門），以下為 100% 完整無遺漏之 80 頭實機推演大排行：
+        </p>
 <div class="table-responsive" style="margin-bottom:20px;">
 <table class="data-table">
 <thead>
@@ -8213,34 +8308,34 @@ li {
 </thead>
 <tbody>
 <tr style="background:rgba(234,179,8,0.15);">
-<td><strong style="color:var(--gold-color);">👑 第 1 位</strong></td>
-<td><strong style="color:var(--gold-color);">オーハヤブサ (Oh Hayabusa)</strong></td>
+<td><strong>第 1 位</strong></td>
+<td><strong>オーハヤブサ (Oh Hayabusa)</strong></td>
 <td>🇯🇵 日本 (銀札)</td>
 <td><strong>11 頭 (第 1)</strong></td>
 <td><strong>23 億 9000 萬 (第 1)</strong></td>
-<td><strong>頭數與產值雙料總冠軍！</strong> 跨世代繁衍能力完全制霸，1968 最強始祖！</td>
+<td>頭數與產值雙料總冠軍！跨世代繁衍能力完全制霸，1968 最強始祖！</td>
 </tr>
 <tr style="background:rgba(56,189,248,0.08);">
-<td><strong style="color:#38bdf8;">🥈 第 2 位</strong></td>
-<td><strong style="color:#38bdf8;">アフェクショネイトリー</strong></td>
+<td><strong>第 2 位</strong></td>
+<td><strong>ミスケイコ (Miss Keiko)</strong></td>
+<td>🇯🇵 日本 (銅札)</td>
+<td><strong>7 頭 (第 2)</strong></td>
+<td><strong>6 億 5200 萬</strong></td>
+<td>銅札性價比最高代表！7 頭後代遍佈牧場，平民玩家開局救星！</td>
+</tr>
+<tr style="background:rgba(56,189,248,0.08);">
+<td><strong>第 3 位</strong></td>
+<td><strong>アフェクショネイトリー (Affectionately)</strong></td>
 <td>🇺🇸 美國 (金札)</td>
-<td>6 頭</td>
+<td><strong>6 頭 (第 3)</strong></td>
 <td><strong>13 億 1200 萬 (第 2)</strong></td>
 <td>美國產值冠軍！後代 G1 戰力極度強橫。</td>
-</tr>
-<tr style="background:rgba(56,189,248,0.08);">
-<td><strong style="color:#38bdf8;">🥉 第 3 位</strong></td>
-<td><strong style="color:#38bdf8;">カランドスタンプ</strong></td>
-<td>🇺🇸 美國 (金札)</td>
-<td>2 頭</td>
-<td><strong>12 億 8600 萬 (第 3)</strong></td>
-<td><strong>1 頭平均產值約 6.43 億 (效率第 1)！</strong> 真正意義上的少數精銳。</td>
 </tr>
 <tr>
 <td><strong>第 4 位</strong></td>
 <td><strong>タイムマンナ (Time Manna)</strong></td>
 <td>🇯🇵 日本 (銀札)</td>
-<td>5 頭</td>
+<td><strong>5 頭</strong></td>
 <td><strong>11 億 4700 萬</strong></td>
 <td>5 歲開局優勢徹底發揮，產值破 11 億之日本頂級支柱。</td>
 </tr>
@@ -8248,7 +8343,7 @@ li {
 <td><strong>第 5 位</strong></td>
 <td><strong>キャッスルフォーブス (Castle Forbes)</strong></td>
 <td>🇺🇸 美國 (銀札)</td>
-<td>5 頭</td>
+<td><strong>5 頭</strong></td>
 <td><strong>9 億 9100 萬</strong></td>
 <td>銀札超值回報，美國血統奠基主力。</td>
 </tr>
@@ -8256,41 +8351,153 @@ li {
 <td><strong>第 6 位</strong></td>
 <td><strong>ラペーヴァ (Lapeva)</strong></td>
 <td>🇪🇺 歐洲 (金札)</td>
-<td>5 頭</td>
+<td><strong>5 頭</strong></td>
 <td><strong>9 億 5000 萬</strong></td>
 <td>歐洲產值第一母本！</td>
 </tr>
 <tr>
 <td><strong>第 7 位</strong></td>
-<td><strong>トキノキロク (Tokino Kiroku)</strong></td>
-<td>🇯🇵 日本 (銀札)</td>
-<td>4 頭</td>
-<td><strong>7 億 5800 萬</strong></td>
-<td>穩定產出重賞冠軍後代。</td>
+<td><strong>シラオキ (白沖 / Shiraoki)</strong></td>
+<td>🇯🇵 日本 (金札)</td>
+<td><strong>5 頭</strong></td>
+<td><strong>6 億 8200 萬</strong></td>
+<td>高齡產出仍極為出色，日本近代名門之源。</td>
 </tr>
 <tr>
 <td><strong>第 8 位</strong></td>
-<td><strong>シラオキ (白沖 / Shiraoki)</strong></td>
-<td>🇯🇵 日本 (金札)</td>
-<td>5 頭</td>
-<td><strong>6 億 8200 萬</strong></td>
-<td>高齡產出仍極為出色，日本近代名門之源。</td>
+<td><strong>トキノキロク (Tokino Kiroku)</strong></td>
+<td>🇯🇵 日本 (銀札)</td>
+<td><strong>4 頭</strong></td>
+<td><strong>7 億 5800 萬</strong></td>
+<td>穩定產出重賞冠軍後代。</td>
 </tr>
 <tr>
 <td><strong>第 9 位</strong></td>
 <td><strong>ハイクレア (Highclere)</strong></td>
 <td>🇪🇺 歐洲 (金札)</td>
-<td>4 頭</td>
+<td><strong>4 頭</strong></td>
 <td><strong>6 億 5300 萬</strong></td>
 <td>伊莉莎白女王御用名系，後勁十足。</td>
 </tr>
 <tr>
 <td><strong>第 10 位</strong></td>
-<td><strong>ミスケイコ (Miss Keiko)</strong></td>
+<td><strong>ダーリア (Dahlia)</strong></td>
+<td>🇪🇺 歐洲 (金札)</td>
+<td><strong>4 頭</strong></td>
+<td><strong>2 億 8800 萬</strong></td>
+<td>歐洲女皇，直系血統戰力扎實。</td>
+</tr>
+<tr>
+<td><strong>第 11 位</strong></td>
+<td><strong>アレフランス (Allez France)</strong></td>
+<td>🇪🇺 歐洲 (虹札)</td>
+<td><strong>4 頭</strong></td>
+<td><strong>2 億 200 萬</strong></td>
+<td>凱旋門賞冠軍名雌，後代傳承穩定。</td>
+</tr>
+<tr>
+<td><strong>第 12 位</strong></td>
+<td><strong>クレイレッサ (Clayressa)</strong></td>
+<td>🇪🇺 歐洲 (金札)</td>
+<td><strong>3 頭</strong></td>
+<td><strong>3 億 5300 萬</strong></td>
+<td>歐洲優質中堅母本。</td>
+</tr>
+<tr>
+<td><strong>第 13 位</strong></td>
+<td><strong>カランドスタンプ (Currandamp)</strong></td>
+<td>🇺🇸 美國 (金札)</td>
+<td><strong>2 頭</strong></td>
+<td><strong>12 億 8600 萬 (第 3)</strong></td>
+<td>1 頭平均產值約 6.43 億 (效率第 1)！真正意義上的少數精銳。</td>
+</tr>
+<tr>
+<td><strong>第 14 位</strong></td>
+<td><strong>トシマンナ (Toshimanna)</strong></td>
+<td>🇯🇵 日本 (金札)</td>
+<td><strong>2 頭</strong></td>
+<td><strong>6 億 3800 萬</strong></td>
+<td>日本高產值名門代表。</td>
+</tr>
+<tr>
+<td><strong>第 15 位</strong></td>
+<td><strong>ファストターン (Fast Turn)</strong></td>
+<td>🇺🇸 美國 (虹札)</td>
+<td><strong>2 頭</strong></td>
+<td><strong>1 億 5400 萬</strong></td>
+<td>五維頂尖，後續發揮穩健。</td>
+</tr>
+<tr>
+<td><strong>第 16 位</strong></td>
+<td><strong>ピア (Pia)</strong></td>
+<td>🇪🇺 歐洲 (金札)</td>
+<td><strong>2 頭</strong></td>
+<td><strong>1 億 4600 萬</strong></td>
+<td>歐洲名牝系確立支柱。</td>
+</tr>
+<tr>
+<td><strong>第 17 位</strong></td>
+<td><strong>テスコガビー (Tesco Gaby)</strong></td>
+<td>🇯🇵 日本 (金札)</td>
+<td><strong>2 頭</strong></td>
+<td><strong>1 億 2500 萬</strong></td>
+<td>極速一哩名雌後代。</td>
+</tr>
+<tr>
+<td><strong>第 18 位</strong></td>
+<td><strong>ゲイムリー (Gamely)</strong></td>
+<td>🇺🇸 美國 (金札)</td>
+<td><strong>1 頭</strong></td>
+<td><strong>1 億 6900 萬</strong></td>
+<td>單匹即創造 1.69 億高額回報。</td>
+</tr>
+<tr>
+<td><strong>第 19 位</strong></td>
+<td><strong>サバナスターリナ (Sabana Starlina)</strong></td>
+<td>🇪🇺 歐洲 (金札)</td>
+<td><strong>1 頭</strong></td>
+<td><strong>4800 萬</strong></td>
+<td>平穩傳承。</td>
+</tr>
+<tr>
+<td><strong>第 20 位</strong></td>
+<td><strong>ラフィアン (Ruffian / 拉菲安)</strong></td>
+<td>🇺🇸 美國 (虹札)</td>
+<td><strong>1 頭</strong></td>
+<td><strong>4600 萬</strong></td>
+<td>傳奇不敗女帝。</td>
+</tr>
+<tr>
+<td><strong>第 21 位</strong></td>
+<td><strong>ミスズクイン (Misuzu Queen)</strong></td>
 <td>🇯🇵 日本 (銅札)</td>
-<td><strong>7 頭 (頭數第 2)</strong></td>
-<td><strong>6 億 5200 萬</strong></td>
-<td><strong>銅札性價比最高代表！</strong> 7 頭後代遍佈牧場，平民玩家開局救星！</td>
+<td><strong>1 頭</strong></td>
+<td><strong>4100 萬</strong></td>
+<td>銅札經濟實惠。</td>
+</tr>
+<tr>
+<td><strong>第 22 位</strong></td>
+<td><strong>ゾナー (Zonah)</strong></td>
+<td>🇺🇸 美國 (金札)</td>
+<td><strong>1 頭</strong></td>
+<td><strong>3700 萬</strong></td>
+<td>配合特化型頂級聖獸。</td>
+</tr>
+<tr>
+<td><strong>第 23 位</strong></td>
+<td><strong>トサモアー (Tosamoa)</strong></td>
+<td>🇯🇵 日本 (銀札)</td>
+<td><strong>1 頭</strong></td>
+<td><strong>3500 萬</strong></td>
+<td>傳統耐力血脈。</td>
+</tr>
+<tr>
+<td><strong>第 24 位</strong></td>
+<td><strong>クイル (Quill)</strong></td>
+<td>🇺🇸 美國 (金札)</td>
+<td><strong>1 頭</strong></td>
+<td><strong>3000 萬</strong></td>
+<td>全能型草泥母本。</td>
 </tr>
 </tbody>
 </table>

@@ -88,6 +88,431 @@
         }
 
         window.addEventListener('DOMContentLoaded', loadDatabase);
+
+    // ==================== 跑法戰績紀錄儀 JavaScript Logic ====================
+    const TACTICS_DEFINITIONS = [
+        { id: 'oonige', name: '大逃げ', type: 'normal', badge: '通常' },
+        { id: 'nige', name: '逃げ', type: 'normal', badge: '通常' },
+        { id: 'sekkyoku', name: '積極策', type: 'special', badge: '特殊[赤]' },
+        { id: 'maezuke', name: '前付け', type: 'special', badge: '特殊[赤]' },
+        { id: 'kouinukedashi', name: '好位抜出', type: 'special', badge: '特殊[赤]' },
+        { id: 'senkou', name: '先行', type: 'normal', badge: '通常' },
+        { id: 'inner', name: 'イン狙い', type: 'limit', badge: '限定[金]' },
+        { id: 'sashi', name: '差し', type: 'normal', badge: '通常' },
+        { id: 'makuri', name: 'まくり', type: 'limit', badge: '限定[金]' },
+        { id: 'baguntaiki', name: '馬群待機', type: 'special', badge: '特殊[赤]' },
+        { id: 'oosotoikki', name: '大外一気', type: 'special', badge: '特殊[赤]' },
+        { id: 'chokusenkyoushuu', name: '直線強襲', type: 'special', badge: '特殊[赤]' },
+        { id: 'oikomi', name: '追込', type: 'normal', badge: '通常' }
+    ];
+
+    
+    // ==================== 48 週賽事日曆對照資料庫 ====================
+    const WEEK_RACES_CALENDAR = {
+        '1月1週': ['中山金杯 (中山・芝2000m・G3)', '京都金杯 (京都・芝1600m・G3)'],
+        '1月2週': ['シンザン記念 (中京・芝1600m・G3)', 'フェアリーS (中山・芝1600m・G3)'],
+        '1月3週': ['日経新春杯 (中京・芝2200m・G2)', '京成杯 (中山・芝2000m・G3)', '愛知杯 (小倉・芝2000m・G3)'],
+        '1月4週': ['アメリカJCC (中山・芝2200m・G2)', '東海S (中京・ダ1800m・G2)', '根岸S (東京・ダ1400m・G3)', 'シルクロードS (中京・芝1200m・G3)'],
+        '2月1週': ['きさらぎ賞 (中京・芝2000m・G3)', '東京新聞杯 (東京・芝1600m・G3)'],
+        '2月2週': ['京都記念 (阪神・芝2200m・G2)', '共同通信杯 (東京・芝1800m・G3)', 'クイーンC (東京・芝1600m・G3)'],
+        '2月3週': ['★ フェブラリーS (東京・ダ1600m・G1)', '小倉大賞典 (小倉・芝1800m・G3)', 'ダイヤモンドS (東京・芝3400m・G3)'],
+        '2月4週': ['中山記念 (中山・芝1800m・G2)', '阪急杯 (阪神・芝1400m・G3)', '★ サウジカップ (沙國・ダ1800m・G1)'],
+        '3月1週': ['弥生賞ディープ記念 (中山・芝2000m・G2)', 'チューリップ賞 (阪神・芝1600m・G2)', 'オーシャンS (中山・芝1200m・G3)'],
+        '3月2週': ['金鯱賞 (中京・芝2000m・G2)', 'フィリーズレビュー (阪神・芝1400m・G2)', '中山牝馬S (中山・芝1800m・G3)'],
+        '3月3週': ['スプリングS (中山・芝1800m・G2)', '阪神大賞典 (阪神・芝3000m・G2)', 'ファルコンS (中京・芝1400m・G3)'],
+        '3月4週': ['★ 高松宮記念 (中京・芝1200m・G1)', '日経賞 (中山・芝2500m・G2)', '毎日杯 (阪神・芝1800m・G3)', 'マーチS (中山・ダ1800m・G3)', '★ ドバイワールドC (杜拜・ダ2000m・G1)', '★ ドバイシーマC (杜拜・芝2410m・G1)', '★ ドバイターフ (杜拜・芝1800m・G1)'],
+        '4月1週': ['★ 大阪杯 (阪神・芝2000m・G1)', 'ダービー卿CT (中山・芝1600m・G3)'],
+        '4月2週': ['★ 桜花賞 (阪神・芝1600m・G1)', 'ニュージーランドT (中山・芝1600m・G2)', '阪神牝馬S (阪神・芝1600m・G2)'],
+        '4月3週': ['★ 皐月賞 (中山・芝2000m・G1)', 'アンタレスS (阪神・ダ1800m・G3)', 'アーリントンC (阪神・芝1600m・G3)'],
+        '4月4週': ['フローラS (東京・芝2000m・G2)', 'マイラーズC (阪神・芝1600m・G2)', '福島牝馬S (福島・芝1800m・G3)', '★ 香港QE2世C (沙田・芝2000m・G1)', '★ 香港チャンピオンズM (沙田・芝1600m・G1)'],
+        '5月1週': ['★ 天皇賞・春 (京都・芝3200m・G1)', '青葉賞 (東京・芝2400m・G2)', '京都新聞杯 (中京・芝2200m・G2)', '★ ケンタッキーダービー (美・ダ2000m・G1)'],
+        '5月2週': ['★ NHKマイルC (東京・芝1600m・G1)', '京王杯SC (東京・芝1400m・G2)', '新潟大賞典 (新潟・芝2000m・G3)'],
+        '5月3週': ['★ ヴィクトリアマイル (東京・芝1600m・G1)', '平安S (中京・ダ1900m・G3)', '★ プリークネスS (美・ダ1900m・G1)'],
+        '5月4週': ['★ オークス・優駿牝馬 (東京・芝2400m・G1)', '葵S (中京・芝1200m・G3)'],
+        '5月5週': ['★ 日本ダービー・東京優駿 (東京・芝2400m・G1)', '目黒記念 (東京・芝2500m・G2)'],
+        '6月1週': ['★ 安田記念 (東京・芝1600m・G1)', '鳴尾記念 (中京・芝2000m・G3)', '★ ベルモントS (美・ダ2400m・G1)', '★ 英ダービー (英・芝2420m・G1)'],
+        '6月2週': ['エプソムC (東京・芝1800m・G3)', 'マーメイドS (阪神・芝2000m・G3)', '★ ロイヤルアスコット開催 (英・G1)'],
+        '6月3週': ['ユニコーンS (東京・ダ1600m・G3)', '函館スプリントS (函館・芝1200m・G3)'],
+        '6月4週': ['★ 宝塚記念 (阪神・芝2200m・G1)', '府中牝馬S (東京・芝1800m・G2)'],
+        '7月1週': ['ラジオNIKKEI賞 (福島・芝1800m・G3)', 'CBC賞 (小倉・芝1200m・G3)'],
+        '7月2週': ['七夕賞 (福島・芝2000m・G3)', 'プロキオンS (小倉・ダ1700m・G3)'],
+        '7月3週': ['函館記念 (函館・芝2000m・G3)', '中京記念 (小倉・芝1800m・G3)'],
+        '7月4週': ['アイビスSD (新潟・芝1000m・G3)', 'クイーンS (札幌・芝1800m・G3)', '★ キングジョージ6世＆QES (英・芝2400m・G1)'],
+        '8月1週': ['レパードS (新潟・ダ1800m・G3)', 'エルムS (札幌・ダ1700m・G3)'],
+        '8月2週': ['小倉記念 (小倉・芝2000m・G3)', '関屋記念 (新潟・芝1600m・G3)'],
+        '8月3週': ['札幌記念 (札幌・芝2000m・G2)', '北九州記念 (小倉・芝1200m・G3)', '★ 英インターナショナルS (英・芝2050m・G1)'],
+        '8月4週': ['新潟2歳S (新潟・芝1600m・G3)', 'キーンランドC (札幌・芝1200m・G3)', '★ トラヴァーズS (美・ダ2000m・G1)'],
+        '9月1週': ['札幌2歳S (札幌・芝1800m・G3)', '小倉2歳S (小倉・芝1200m・G3)', '新潟記念 (新潟・芝2000m・G3)'],
+        '9月2週': ['紫苑S (中山・芝2000m・G2)', 'セントウルS (中京・芝1200m・G2)', '京成杯AH (中山・芝1600m・G3)'],
+        '9月3週': ['ローズS (中京・芝2000m・G2)', 'セントライト記念 (中山・芝2200m・G2)'],
+        '9月4週': ['オールカマー (中山・芝2200m・G2)', '神戸新聞杯 (中京・芝2200m・G2)', 'シリウスS (中京・ダ1900m・G3)'],
+        '10月1週': ['★ スプリンターズS (中山・芝1200m・G1)', '毎日王冠 (東京・芝1800m・G2)', '京都大賞典 (阪神・芝2400m・G2)', '★ 凱旋門賞 (法・芝2400m・G1)'],
+        '10月2週': ['府中牝馬S (東京・芝1800m・G2)', 'サウジアラビアRC (東京・芝1600m・G3)'],
+        '10月3週': ['★ 秋華賞 (阪神・芝2000m・G1)', '富士S (東京・芝1600m・G2)', '★ 英チャンピオンS (英・芝2000m・G1)'],
+        '10月4週': ['★ 菊花賞 (阪神・芝3000m・G1)', 'スワンS (阪神・芝1400m・G2)', 'アルテミスS (東京・芝1600m・G3)'],
+        '10月5週': ['★ 天皇賞・秋 (東京・芝2000m・G1)', '★ BCクラシック (美・ダ2000m・G1)', '★ BCターフ (美・芝2400m・G1)', '★ BCマイル (美・芝1600m・G1)'],
+        '11月1週': ['アルゼンチン共和国杯 (東京・芝2500m・G2)', 'みやこS (阪神・ダ1800m・G3)', 'ファンタジーS (阪神・芝1400m・G3)', '★ JBCクラシック (地方・ダ2000m・Jpn1)', '★ メルボルンC (澳・芝3200m・G1)'],
+        '11月2週': ['★ エリザベス女王杯 (阪神・芝2200m・G1)', '武蔵野S (東京・ダ1600m・G3)', 'デイリー杯2歳S (阪神・芝1600m・G2)'],
+        '11月3週': ['★ マイルCS (阪神・芝1600m・G1)', '東スポ杯2歳S (東京・芝1800m・G2)'],
+        '11月4週': ['★ ジャパンカップ (東京・芝2400m・G1)', '京阪杯 (阪神・芝1200m・G3)', '京都2歳S (阪神・芝2000m・G3)'],
+        '12月1週': ['★ チャンピオンズC (中京・ダ1800m・G1)', 'ステイヤーズS (中山・芝3600m・G2)', 'チャレンジC (阪神・芝2000m・G3)'],
+        '12月2週': ['★ 阪神JF (阪神・芝1600m・G1)', 'カペラS (中山・ダ1200m・G3)', '中日新聞杯 (中京・芝2000m・G3)', '★ 香港カップ (沙田・芝2000m・G1)', '★ 香港マイル (沙田・芝1600m・G1)', '★ 香港ヴァーズ (沙田・芝2400m・G1)', '★ 香港スプリント (沙田・芝1200m・G1)'],
+        '12月3週': ['★ 朝日杯FS (阪神・芝1600m・G1)', 'ターコイズS (中山・芝1600m・G3)'],
+        '12月4週': ['★ 有馬記念 (中山・芝2500m・G1)', '★ ホープフルS (中山・芝2000m・G1)', '★ 東京大賞典 (大井・ダ2000m・G1)', '阪神C (阪神・芝1400m・G2)']
+    };
+
+    function onTrackWeekChange() {
+        const week = document.getElementById('trackWeek')?.value || '5月5週';
+        const raceSelect = document.getElementById('trackRaceSelect');
+        const raceInput = document.getElementById('trackRace');
+        if (!raceSelect) return;
+
+        raceSelect.innerHTML = '';
+        const races = WEEK_RACES_CALENDAR[week] || ['日本ダービー (東京・芝2400m)'];
+        
+        races.forEach((r, idx) => {
+            const opt = document.createElement('option');
+            opt.value = r;
+            opt.textContent = r;
+            raceSelect.appendChild(opt);
+            if (idx === 0 && raceInput) raceInput.value = r;
+        });
+
+        const customOpt = document.createElement('option');
+        customOpt.value = 'CUSTOM';
+        customOpt.textContent = '✏️ 手動自填賽事名稱...';
+        raceSelect.appendChild(customOpt);
+    }
+
+    function onTrackRaceSelectChange() {
+        const raceSelect = document.getElementById('trackRaceSelect');
+        const raceInput = document.getElementById('trackRace');
+        if (!raceSelect || !raceInput) return;
+        if (raceSelect.value === 'CUSTOM') {
+            raceInput.value = '';
+            raceInput.focus();
+        } else {
+            raceInput.value = raceSelect.value;
+        }
+    }
+
+    function initTacticsTracker() {
+        // 1. Populate Weeks
+        const weekSelect = document.getElementById('trackWeek');
+        if (weekSelect && weekSelect.children.length === 0) {
+            for (let m = 1; m <= 12; m++) {
+                for (let w = 1; w <= 4; w++) {
+                    const opt = document.createElement('option');
+                    opt.value = `${m}月${w}週`;
+                    opt.textContent = `${m}月 ${w}週`;
+                    weekSelect.appendChild(opt);
+                }
+            }
+        }
+
+        // 2. Populate 13 tactics input fields
+        const container = document.getElementById('tacticsInputsContainer');
+        if (container && container.children.length === 0) {
+            TACTICS_DEFINITIONS.forEach(t => {
+                const item = document.createElement('div');
+                item.style.cssText = 'background:rgba(30,41,59,0.7); border:1px solid rgba(51,65,85,0.4); border-radius:6px; padding:6px 10px; display:flex; justify-content:space-between; align-items:center;';
+                
+                let badgeClass = 'pill-safe';
+                if (t.type === 'special') badgeClass = 'pill-danger';
+                if (t.type === 'limit') badgeClass = 'pill-gold';
+
+                item.innerHTML = `
+                    <div>
+                        <div style="font-weight:bold; font-size:0.82rem; color:var(--text-main);">${t.name}</div>
+                        <span class="pill ${badgeClass}" style="font-size:0.65rem; padding:1px 5px;">${t.badge}</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:4px;">
+                        <input type="number" id="t_${t.id}" min="1" max="18" placeholder="名次" class="filter-control" style="width:60px; padding:3px 6px; font-size:0.82rem; text-align:center;">
+                        <span style="font-size:0.75rem; color:var(--text-muted);">着</span>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // 3. Load stored Google Sheet URL
+        const gUrlInput = document.getElementById('gSheetUrl');
+        if (gUrlInput) {
+            gUrlInput.value = localStorage.getItem('WP10_GSHEET_URL') || '';
+        }
+
+        onTrackWeekChange();
+        renderTacticsTable();
+    }
+
+    function getTacticsRecords() {
+        try {
+            return JSON.parse(localStorage.getItem('WP10_TACTICS_RECORDS') || '[]');
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function saveTacticsRecords(records) {
+        localStorage.setItem('WP10_TACTICS_RECORDS', JSON.stringify(records));
+        onTrackWeekChange();
+        renderTacticsTable();
+    }
+
+    function saveTacticsRecord() {
+        const year = document.getElementById('trackYear').value || '1968';
+        const week = document.getElementById('trackWeek').value || '1月1週';
+        const race = document.getElementById('trackRace').value.trim() || '未定賽事';
+        const horse = document.getElementById('trackHorse').value.trim();
+        const jockey = document.getElementById('trackJockey').value.trim() || '未定騎手';
+
+        if (!horse) {
+            alert('請填寫賽駒名稱！');
+            document.getElementById('trackHorse').focus();
+            return;
+        }
+
+        const ranks = {};
+        TACTICS_DEFINITIONS.forEach(t => {
+            const val = document.getElementById(`t_${t.id}`).value;
+            if (val) ranks[t.id] = parseInt(val, 10);
+        });
+
+        const records = getTacticsRecords();
+        const editingId = document.getElementById('editingRecordId').value;
+
+        if (editingId) {
+            // Update
+            const idx = records.findIndex(r => r.id === editingId);
+            if (idx !== -1) {
+                records[idx] = { id: editingId, year, week, race, horse, jockey, ranks, updatedAt: new Date().toISOString() };
+            }
+        } else {
+            // Add new
+            const newRecord = {
+                id: 'rec_' + Date.now(),
+                year, week, race, horse, jockey, ranks,
+                createdAt: new Date().toISOString()
+            };
+            records.unshift(newRecord);
+        }
+
+        saveTacticsRecords(records);
+        clearTacticsForm();
+        alert('✅ 戰績紀錄儲存成功！');
+    }
+
+    function editTacticsRecord(id) {
+        const records = getTacticsRecords();
+        const rec = records.find(r => r.id === id);
+        if (!rec) return;
+
+        document.getElementById('editingRecordId').value = rec.id;
+        document.getElementById('trackYear').value = rec.year;
+        document.getElementById('trackWeek').value = rec.week;
+        document.getElementById('trackRace').value = rec.race;
+        document.getElementById('trackHorse').value = rec.horse;
+        document.getElementById('trackJockey').value = rec.jockey;
+
+        TACTICS_DEFINITIONS.forEach(t => {
+            document.getElementById(`t_${t.id}`).value = rec.ranks[t.id] !== undefined ? rec.ranks[t.id] : '';
+        });
+
+        document.getElementById('saveBtnText').textContent = '💾 儲存修改內容';
+        document.getElementById('btnSaveTrackRecord').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function deleteTacticsRecord(id) {
+        if (!confirm('確定要刪除這筆戰績紀錄嗎？')) return;
+        let records = getTacticsRecords();
+        records = records.filter(r => r.id !== id);
+        saveTacticsRecords(records);
+    }
+
+    function clearTacticsForm() {
+        document.getElementById('editingRecordId').value = '';
+        document.getElementById('trackHorse').value = '';
+        document.getElementById('trackJockey').value = '';
+        document.getElementById('saveBtnText').textContent = '新增這筆戰績紀錄';
+        TACTICS_DEFINITIONS.forEach(t => {
+            document.getElementById(`t_${t.id}`).value = '';
+        });
+    }
+
+    function renderTacticsTable() {
+        const tbody = document.getElementById('tacticsRecordsBody');
+        const countSpan = document.getElementById('trackRecordCount');
+        if (!tbody) return;
+
+        const records = getTacticsRecords();
+        const searchKeyword = (document.getElementById('trackSearchFilter')?.value || '').toLowerCase().trim();
+
+        const filtered = records.filter(r => {
+            if (!searchKeyword) return true;
+            return (r.horse && r.horse.toLowerCase().includes(searchKeyword)) ||
+                   (r.race && r.race.toLowerCase().includes(searchKeyword)) ||
+                   (r.jockey && r.jockey.toLowerCase().includes(searchKeyword)) ||
+                   (r.year && String(r.year).includes(searchKeyword));
+        });
+
+        if (countSpan) countSpan.textContent = filtered.length;
+
+        if (filtered.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:30px; color:var(--text-muted);">尚無符合的跑法戰績紀錄。請在上方表單填寫並點擊「新增這筆戰績紀錄」。</td></tr>`;
+            return;
+        }
+
+        tbody.innerHTML = filtered.map(r => {
+            // Find best tactic
+            let bestTactic = '未測試';
+            let minRank = 999;
+            TACTICS_DEFINITIONS.forEach(t => {
+                const rank = r.ranks[t.id];
+                if (rank && rank < minRank) {
+                    minRank = rank;
+                    bestTactic = `${t.name} (${rank}着)`;
+                }
+            });
+
+            // Generate badges for 13 tactics
+            const rankBadges = TACTICS_DEFINITIONS.map(t => {
+                const rank = r.ranks[t.id];
+                if (!rank) return `<span style="opacity:0.25; font-size:0.75rem; margin-right:4px;">${t.name}:-</span>`;
+                let bg = 'rgba(51,65,85,0.4)';
+                let color = '#94a3b8';
+                if (rank === 1) { bg = '#eab308'; color = '#000'; font = 'bold'; }
+                else if (rank === 2) { bg = '#94a3b8'; color = '#000'; font = 'bold'; }
+                else if (rank === 3) { bg = '#cd7f32'; color = '#fff'; font = 'bold'; }
+                return `<span style="background:${bg}; color:${color}; font-weight:bold; font-size:0.72rem; padding:2px 5px; border-radius:4px; margin-right:4px; display:inline-block; margin-bottom:2px;">${t.name}:${rank}着</span>`;
+            }).join('');
+
+            return `
+                <tr>
+                    <td><strong>${r.year} 年</strong><br><small style="color:var(--text-muted);">${r.week}</small></td>
+                    <td><strong style="color:var(--accent-color);">${r.race}</strong></td>
+                    <td><strong>${r.horse}</strong></td>
+                    <td>${r.jockey}</td>
+                    <td><div style="line-height:1.7;">${rankBadges}</div></td>
+                    <td><span class="pill pill-gold">${bestTactic}</span></td>
+                    <td style="text-align:center;">
+                        <button onclick="editTacticsRecord('${r.id}')" style="background:#0284c7; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:0.75rem; margin-right:4px;" title="編輯"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="deleteTacticsRecord('${r.id}')" style="background:#ef4444; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:0.75rem;" title="刪除"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    async function syncToGoogleSheets() {
+        const url = (document.getElementById('gSheetUrl')?.value || '').trim();
+        const records = getTacticsRecords();
+        const statusEl = document.getElementById('syncStatusMsg');
+
+        if (records.length === 0) {
+            alert('目前尚無任何戰績紀錄可供同步！');
+            return;
+        }
+
+        if (!url) {
+            // If no webhook URL, offer automatic CSV download
+            if (confirm('尚未設定 Google Apps Script Web App URL。是否立即直接「匯出 Google Sheets 相容 CSV 檔案」？')) {
+                exportTacticsCsv();
+            }
+            return;
+        }
+
+        if (statusEl) statusEl.innerHTML = '⏳ 正在同步傳輸至 Google Sheets...';
+        try {
+            const resp = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'sync_tactics', records: records, timestamp: new Date().toISOString() })
+            });
+            if (statusEl) statusEl.innerHTML = '✅ 成功將全部戰績同步寫入 Google Sheets！';
+            alert('✅ 成功將全部戰績同步寫入 Google Sheets！');
+        } catch (e) {
+            console.error(e);
+            if (statusEl) statusEl.innerHTML = '⚠️ 雲端傳輸完成 (若遇跨域 CORS，數據已送出或可使用 CSV 匯出)。';
+            alert('提示：已發送同步請求。若 Google Apps Script 有回傳請確認試算表，或點擊「匯出 CSV 檔」直接匯入！');
+        }
+    }
+
+    function exportTacticsCsv() {
+        const records = getTacticsRecords();
+        if (records.length === 0) {
+            alert('尚無資料可匯出！');
+            return;
+        }
+
+        const headers = ['年度', '週別', '賽事名稱', '賽駒名稱', '騎手', ...TACTICS_DEFINITIONS.map(t => t.name), '最優跑法'];
+        const csvRows = [headers.join(',')];
+
+        records.forEach(r => {
+            let bestTactic = '-';
+            let minRank = 999;
+            TACTICS_DEFINITIONS.forEach(t => {
+                const rank = r.ranks[t.id];
+                if (rank && rank < minRank) {
+                    minRank = rank;
+                    bestTactic = `${t.name} (${rank}着)`;
+                }
+            });
+
+            const row = [
+                `"${r.year}"`,
+                `"${r.week}"`,
+                `"${r.race}"`,
+                `"${r.horse}"`,
+                `"${r.jockey}"`,
+                ...TACTICS_DEFINITIONS.map(t => r.ranks[t.id] ? `"${r.ranks[t.id]}"` : '""'),
+                `"${bestTactic}"`
+            ];
+            csvRows.push(row.join(','));
+        });
+
+        const blob = new Blob(["﻿" + csvRows.join('
+')], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `WP10_2026_跑法戰績紀錄_${new Date().toISOString().slice(0,10)}.csv`;
+        a.click();
+    }
+
+    function exportTacticsJson() {
+        const records = getTacticsRecords();
+        const blob = new Blob([JSON.stringify(records, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `WP10_2026_跑法戰績備份_${new Date().toISOString().slice(0,10)}.json`;
+        a.click();
+    }
+
+    function importTacticsJson(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const imported = JSON.parse(e.target.result);
+                if (Array.isArray(imported)) {
+                    saveTacticsRecords(imported);
+                    alert(`✅ 成功匯入 ${imported.length} 筆跑法戰績紀錄！`);
+                } else {
+                    alert('檔案格式不正確！');
+                }
+            } catch (err) {
+                alert('解析 JSON 檔案失敗！');
+            }
+        };
+        reader.readAsText(file);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        initTacticsTracker();
+    });
+
     </script>
     <script>
         if (window.location.protocol !== 'file:' && 'serviceWorker' in navigator) {
@@ -1190,7 +1615,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.57</span>
+        <span class="version-badge">v01.61</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -1232,6 +1657,10 @@ li {
             <button class="main-tab-btn" onclick="switchMainPillar('pillar-secrets')" id="tabPillarSecrets">
                 <span class="tab-icon">👑</span>
                 <span class="tab-text">開局秘技</span>
+            </button>
+            <button class="main-tab-btn" onclick="switchMainPillar('pillar-tracker')" id="tabPillarTracker">
+                <span class="tab-icon">📊</span>
+                <span class="tab-text">跑法戰績</span>
             </button>
         </div>
     </div>
@@ -1786,6 +2215,36 @@ li {
 </tbody>
 </table>
 </div>
+<!-- ==================== 基準交配與成長度精算法 & 仔出し (Foal Potential) ==================== -->
+<h3 style="font-size:1rem; color:var(--gold-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-scale-balanced"></i> 五、基準交配・成長度 (Growth Degree) 與 仔出し (Foal Potential) 深度精算法
+        </h3>
+<p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
+          許多玩家在配種時過度迷信「爆發力（如 +35）」，卻頻頻產出出道時能力殘缺的平庸馬。根據《ウイポ脳》深度解密：<strong>爆發力只決定產駒的「潛力上限」，而【基準交配】與【仔出し】才決定產駒的「成長度（基礎完成度與實力下限）」！</strong>
+</p>
+<div class="table-responsive" style="margin-bottom:20px;">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:160px;">核心機制項目 (日/中)</th>
+<th style="min-width:260px;">遊戲內底層判定邏輯</th>
+<th style="min-width:380px;">繁育實戰影響與避坑指南 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background:rgba(234,179,8,0.08);">
+<td><strong style="color:var(--gold-color);">基準交配の成長度</strong></td>
+<td>由父母雙方的基本能力（スピード、サブパラ均勻度）與相性綜合判定。</td>
+<td><strong>決定產駒出生時的「成長進度條起始點」！</strong> 基準交配良好時，即使爆發力僅 +12，產駒也能快速成熟、早期出道橫掃 2~3 歲重賞；反之基準交配極差時，即使爆發力 +30 也可能因為成長度過低而終生難以達到巔峰。</td>
+</tr>
+<tr style="background:rgba(56,189,248,0.08);">
+<td><strong style="color:#38bdf8;">仔出し (Foal Potential 1~10)</strong></td>
+<td>種牡馬與繁殖牝馬自帶的隱藏大物產出係數（1~10 級）。</td>
+<td><strong>決定產駒覺醒超凡大物的概率！</strong> 仔出高達 9~10 的名種馬（如 Sunday Silence、Deep Impact、China Rock）即使爆發力平平也能連生 G1 怪物；仔出僅 1~3 的種馬若無極致爆發力加成，產駒極易淪為下級條件馬。</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </section>
 <section class="section-card" id="sec-diagrams">
@@ -2275,6 +2734,106 @@ li {
 <li><strong>心法 1：母馬不再只是道具，而是需要悉心培育的能量庫</strong>——2025 以前母馬買來只是工具，2026 透過優質種馬配種、產駒好成績回饋，可將母馬活力逐步養成至 10 格滿格！</li>
 <li><strong>心法 2：優先挑選能提供「永続 (綠格)」與「特大」活力的種馬</strong>——綠色永續活力配種後永不歸零，能永久縮短母馬達到「活力增強」的週期！</li>
 <li><strong>心法 3：毋須為活力犧牲基本配合</strong>——活力的本質是「加分 Boost」，基本盤仍應優先遵循：近親危險度低 ➔ 配合評級 S/A ➔ 爆發力高，在此基礎上追求活力特大增長！</li>
+</ul>
+<!-- ==================== 58 種配合理論之 12 大核心配合全圖鑑 ==================== -->
+<h3 style="font-size:1rem; color:var(--accent-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-list-check"></i> 三、配合理論全 58 種中初學必備 12 大核心理論精分全圖鑑
+        </h3>
+<p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
+          遊戲中配合理論多達 58 種，初學者無需死記全部，只需牢牢掌握以下 <strong>4 大維度共 12 種最關鍵的核心配合</strong> 即可輕鬆產出頂級 G1 冠軍馬：
+        </p>
+<div class="table-responsive" style="margin-bottom:20px;">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:130px;">維度分類</th>
+<th style="min-width:180px;">核心配合理論 (日/中)</th>
+<th style="min-width:140px;">爆發力 / 效果</th>
+<th style="min-width:340px;">核心成立條件與實戰要訣 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<!-- 基礎配合 4 種 -->
+<tr>
+<td rowspan="4"><span class="pill pill-safe">1. 基礎配合 (4種)</span></td>
+<td><strong>ニックス (相性配合 / Single~Triple)</strong></td>
+<td>+2 ~ +8</td>
+<td>父系統與母父系統之間具備相性關係（最容易觸發的穩健爆發來源）。</td>
+</tr>
+<tr>
+<td><strong>血脈活性化配合 (8親系/完全活性)</strong></td>
+<td>+4 ~ +8</td>
+<td>4 代 8 親系全互異；提升產駒健康、競走壽命與活力。</td>
+</tr>
+<tr>
+<td><strong>活力源化種牡馬 (因子累積)</strong></td>
+<td>+1 ~ +6</td>
+<td>祖先血統表內持有大量遺傳因子，直接轉換為純粹爆發力。</td>
+</tr>
+<tr>
+<td><strong>インブリード (奇蹟的血量 3×4)</strong></td>
+<td>+3 ~ +5 (SP)</td>
+<td>同匹名馬在 3 代與 4 代同時出現（血量剛好 18.75%），大幅刺激特定能力。</td>
+</tr>
+<!-- 系統與母父 3 種 -->
+<tr style="background:rgba(56,189,248,0.06);">
+<td rowspan="3"><span class="pill pill-cyan">2. 系統/母父 (3種)</span></td>
+<td><strong>母父◎ (母父大活躍配合)</strong></td>
+<td>+2 ~ +4</td>
+<td>母父為系統確立之頂級大種馬，大幅補正母系遺傳強度。</td>
+</tr>
+<tr style="background:rgba(56,189,248,0.06);">
+<td><strong>ラインブリード (子系統同系配合)</strong></td>
+<td>+3 ~ +6</td>
+<td>父系與母系均為同一優秀子系統，在低危險度下極限提純基因。</td>
+</tr>
+<tr style="background:rgba(56,189,248,0.06);">
+<td><strong>三冠配合 (Triple Crown)</strong></td>
+<td>+4 ~ +6</td>
+<td>父馬與母馬均為三冠馬（春三冠/秋三冠/經典三冠/歐美三冠）。</td>
+</tr>
+<!-- 特性配合 2 種 -->
+<tr>
+<td rowspan="2"><span class="pill pill-gold">3. 特性配合 (2種)</span></td>
+<td><strong>特性昇華配合 (SP/ST 昇華配合)</strong></td>
+<td>+4 ~ +8 (含特性)</td>
+<td>世代交替中連續使用具備 SP/ST 因子之確立種馬，產駒自動繼承上位特性。</td>
+</tr>
+<tr>
+<td><strong>お笑い配合 / お似合い配合 (名駒登對)</strong></td>
+<td>+5 ~ +8</td>
+<td>種馬與母馬能力達到特定極致組合（搞笑配合/高評價登對配合）。</td>
+</tr>
+<!-- 2026 新要素 3 種 -->
+<tr style="background:rgba(234,179,8,0.1);">
+<td rowspan="3"><span class="pill pill-version" style="background:#eab308; color:#000;">4. 2026 新要素 (3種)</span></td>
+<td><strong>ヒストリカル因子 (歷史因子配合)</strong></td>
+<td>+2 ~ +6 (固有傳承)</td>
+<td>喚醒先祖歷史名馬的ドラマ因子 (Drama 因子)，高機率繼承固有特性！</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.1);">
+<td><strong>世界始祖配合 (World Sire)</strong></td>
+<td>+4 ~ +8</td>
+<td>父系或母系被確立為世界始祖系統，全適應能力與世界大賽戰力全開。</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.1);">
+<td><strong>活力増強配合 (Vitality 10格)</strong></td>
+<td>100% 受胎 + Boost</td>
+<td>母馬活力累積滿 10 格引爆，受胎率 100% 且打破爆發力固定上限！</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ==================== 土壤型育種 5 步心法 ==================== -->
+<h3 style="font-size:1rem; color:var(--gold-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-tree"></i> 四、告別單代極限配合！跨世代「土壤型 (土壌づくり)」育種 5 步心法
+        </h3>
+<ul style="font-size:0.85rem; line-height:1.8; color:var(--text-color); margin-bottom:16px;">
+<li><strong>步驟 1：母本打底</strong>——蒐集具有「成長力持続」的優質繁殖牝馬（如 1968 的オーハヤブサ、ピア、キャッスルフォーブス）。</li>
+<li><strong>步驟 2：初代表母馬洗出</strong>——使用國內高仔出種馬（如 China Rock / Tesco Boy）配種，將產出的優秀雌駒全數留作次世代繁殖牝馬。</li>
+<li><strong>步驟 3：設施升級與海外引進</strong>——名聲破 1000 升級種牡馬設施 Lv3，引入 Northern Dancer、Bold Ruler 等世界巨頭。</li>
+<li><strong>步驟 4：確立自主父系與名牝系</strong>——讓自家王牌產駒引退當種馬並壟斷重賞，達成 5% 國內支配率自立系統。</li>
+<li><strong>步驟 5：牧場自給自足高相性閉環</strong>——自家 4 大支系互為相性（ニックス），實現無論怎麼配都是爆發力 +30 以上的永動機王朝！</li>
 </ul>
 </div>
 </section>
@@ -3286,6 +3845,135 @@ li {
 <td><strong>消耗戦 (消耗戰適應)</strong></td>
 <td>快步速 (ハイペース)、重/不良馬場、極限死鬥</td>
 <td>突破後在暴雨泥濘爛地或超快步速死鬥中鬥志永不衰竭。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ==================== 三、實戰 13 大跑法作戰全圖鑑 (作戦の種類・特殊作戰・發動條件) ==================== -->
+<h3 style="font-size:1rem; color:var(--accent-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag-checkered"></i> 三、官方賽事實戰 13 大跑法作戰全圖鑑 (作戦の種類・特殊作戰・發動條件完全對照表)
+        </h3>
+<p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
+          根據光榮特庫摩《Winning Post 10 2026》官方手冊，比賽日作戰包含<strong>通常作戰</strong>、<strong>特殊作戰（紅色標示）</strong>與<strong>條件限定作戰</strong>。選擇特殊作戰能在該場比賽中臨時提升特定適應能力（同時伴隨其他適應力下降），賽後有機率使適應能力大幅成長（但累積疲勞度較高）：
+        </p>
+<div class="table-responsive" style="margin-bottom:20px;">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:160px;">作戰名稱 (日/中)</th>
+<th style="min-width:110px;">作戰類別</th>
+<th style="min-width:130px;">隊列位置</th>
+<th style="min-width:320px;">戰術執行內容與走位 (日/中對照)</th>
+<th style="min-width:240px;">適應能力影響 / 疲勞變化</th>
+<th style="min-width:260px;">發動限制與特殊條件</th>
+</tr>
+</thead>
+<tbody>
+<!-- 前方戰術 -->
+<tr>
+<td><strong>大逃げ (狂奔大逃)</strong></td>
+<td><span class="pill pill-safe">通常作戰</span></td>
+<td>最前列先頭</td>
+<td>立於隊列最先頭，以拉開後續馬群極大差距的方式先行並直接逃領到底。</td>
+<td>消耗戰要求高 / 疲勞正常</td>
+<td>需具備大逃適性或極高スピード</td>
+</tr>
+<tr>
+<td><strong>逃げ (領放逃領)</strong></td>
+<td><span class="pill pill-safe">通常作戰</span></td>
+<td>先頭</td>
+<td>立於隊列先頭放慢步調吸引後續馬匹，掌控節奏並圖謀逃領勝出。</td>
+<td>持久戰/標準 / 疲勞正常</td>
+<td>無限制</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.08);">
+<td><strong style="color:#ef4444;">積極策 (積極搶先)</strong></td>
+<td><span class="pill pill-danger" style="background:#ef4444; color:#fff;">特殊作戰 [赤]</span></td>
+<td>先頭爭奪</td>
+<td>出閘起步後立即以極高積極度強行搶佔前列先頭位置。</td>
+<td><span style="color:#ef4444; font-weight:bold;">特定適應力↑ / 疲勞大</span></td>
+<td>賽後適應能力有機率大幅成長</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.08);">
+<td><strong style="color:#ef4444;">前付け (前位壓制)</strong></td>
+<td><span class="pill pill-danger" style="background:#ef4444; color:#fff;">特殊作戰 [赤]</span></td>
+<td>先頭附近</td>
+<td>在先頭附近壓低步調牽制後續馬匹，圖謀一氣壓制逃領到底。</td>
+<td><span style="color:#ef4444; font-weight:bold;">持久戰↑ / 瞬發戰↓ / 疲勞大</span></td>
+<td>賽後適應能力有機率大幅成長</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.08);">
+<td><strong style="color:#ef4444;">好位抜出 (好位突圍)</strong></td>
+<td><span class="pill pill-danger" style="background:#ef4444; color:#fff;">特殊作戰 [赤]</span></td>
+<td>好位 (先頭後方)</td>
+<td>進入直線時從絕佳好位瞬間突圍而出，直接壓制逃領奪冠。</td>
+<td><span style="color:#ef4444; font-weight:bold;">瞬發戰↑ / 消耗戰↓ / 疲勞大</span></td>
+<td>賽後適應能力有機率大幅成長</td>
+</tr>
+<tr>
+<td><strong>先行 (先行跟前)</strong></td>
+<td><span class="pill pill-safe">通常作戰</span></td>
+<td>中前段</td>
+<td>位於隊列中段偏前方位置，根據賽事步調靈活調整走位以待發力。</td>
+<td>適應力均衡 / 疲勞正常</td>
+<td>無限制</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.08);">
+<td><strong style="color:var(--gold-color);">イン狙い (內線突擊)</strong></td>
+<td><span class="pill pill-gold">條件限定作戰</span></td>
+<td>前目內欄 (內圈)</td>
+<td>沿途貼著前列內欄跑道省力前進，直線亦走內線最短路徑一舉突圍。</td>
+<td>內欄突破 / 疲勞正常</td>
+<td><strong>騎手先行適性 ○ (A) 以上<br/>馬匹抽中 1～3 檔內欄枠<br/>單場賽事最多 2 匹發動</strong></td>
+</tr>
+<!-- 後方戰術 -->
+<tr>
+<td><strong>差し (居中差追)</strong></td>
+<td><span class="pill pill-safe">通常作戰</span></td>
+<td>中後段</td>
+<td>位於隊列中段偏後方，在賽事後半程猛然提速一舉搶佔前列。</td>
+<td>瞬發戰/持久戰 / 疲勞正常</td>
+<td>無限制</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.08);">
+<td><strong style="color:var(--gold-color);">まくり (外側捲入強襲)</strong></td>
+<td><span class="pill pill-gold">條件限定作戰</span></td>
+<td>中後團 ➔ 彎道衝頂</td>
+<td>位於中團至後方的賽駒在第三~四彎道提前大外捲入衝上先頭並強勢壓制到底。</td>
+<td>消耗戰/持久戰↑ / 疲勞正常</td>
+<td><strong>騎手差し適性 ○ (A) 以上<br/>馬匹抽中 6～8 檔外欄枠<br/>單場賽事最多 2 匹發動</strong></td>
+</tr>
+<tr style="background:rgba(239,68,68,0.08);">
+<td><strong style="color:#ef4444;">馬群待機 (馬群待機)</strong></td>
+<td><span class="pill pill-danger" style="background:#ef4444; color:#fff;">特殊作戰 [赤]</span></td>
+<td>馬群內部內圈</td>
+<td>沿途盡可能切入內欄馬群中隱蔽伺機待發，尋找空隙突圍。</td>
+<td><span style="color:#10b981; font-weight:bold;">持久戰適應能力 UP</span><br/><span style="color:#ef4444; font-size:0.75rem;">瞬發戰適應能力 DOWN / 疲勞大</span></td>
+<td>賽後適應能力有機率大幅成長</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.08);">
+<td><strong style="color:#ef4444;">大外一気 (大外一氣)</strong></td>
+<td><span class="pill pill-danger" style="background:#ef4444; color:#fff;">特殊作戰 [赤]</span></td>
+<td>大外路徑</td>
+<td>沿途盡量拉至外側，在最終直線爆發極速進行大外一氣強勢反超。</td>
+<td><span style="color:#10b981; font-weight:bold;">瞬發戰適應能力 UP</span><br/><span style="color:#ef4444; font-size:0.75rem;">消耗戰適應能力 DOWN / 疲勞大</span></td>
+<td>賽後適應能力有機率大幅成長</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.08);">
+<td><strong style="color:#ef4444;">直線強襲 (直線雷霆強襲)</strong></td>
+<td><span class="pill pill-danger" style="background:#ef4444; color:#fff;">特殊作戰 [赤]</span></td>
+<td>離群最後方</td>
+<td>沿途脫離馬群留在最後方沉著蓄力，在最後直線以雷霆之勢一舉反超所有馬匹。</td>
+<td><span style="color:#ef4444; font-weight:bold;">極限瞬發戰↑ / 疲勞大</span></td>
+<td>賽後適應能力有機率大幅成長</td>
+</tr>
+<tr>
+<td><strong>追込 (後追留後)</strong></td>
+<td><span class="pill pill-safe">通常作戰</span></td>
+<td>最後方馬群</td>
+<td>保持在馬群極後方位置，於賽事後半程爆發末腳向前衝刺。</td>
+<td>瞬發戰 / 疲勞正常</td>
+<td>無限制</td>
 </tr>
 </tbody>
 </table>
@@ -6134,7 +6822,7 @@ li {
 </div>
 <!-- ==================== 5. 牧場長一覧與各項能力 ==================== -->
 <h3 id="partner-managers" style="font-size:1.05rem; color:#10b981; margin:28px 0 12px; display:flex; align-items:center; gap:8px; border-bottom:1px solid rgba(16,185,129,0.3); padding-bottom:6px;">
-<i class="fa-solid fa-tractor"></i> 五、牧場長一覧・全能力數值・得意個性與結婚條件 (16 位)
+<i class="fa-solid fa-tractor"></i> 五、牧場長一覧・全能力數值・得意個性與結婚條件 (17 位)
         </h3>
 <p style="font-size:0.83rem; color:var(--text-muted); margin-bottom:12px;">
             牧場長只要未婚且達到適婚年齡，只要友好度達到 100 即可直接求婚結婚。婚後可繼續指派為牧場長或海外牧場負責人！
@@ -6283,7 +6971,7 @@ li {
 <!-- 茅野翠月 -->
 <div class="tool-card" style="background:rgba(30,41,59,0.7);">
 <div style="display:flex; gap:12px; align-items:center; margin-bottom:8px;">
-<div style="width:56px; height:56px; border-radius:50%; background:#065f46; display:flex; align-items:center; justify-content:center; font-weight:bold; color:#6ee7b7; border:2px solid #10b981;">茅野</div>
+<img alt="茅野翠月" src="images/avatars/kayano_mitsuki.png" style="width:56px; height:56px; border-radius:50%; object-fit:cover; border:2px solid #10b981;"/>
 <div>
 <div style="font-weight:bold; font-size:0.95rem; color:#34d399;">茅野翠月 (Mitsuki Kayano)</div>
 <div style="font-size:0.75rem; color:var(--text-muted);">契約金：6,000 萬円 | 特性：力量 (パワー)</div>
@@ -6292,6 +6980,21 @@ li {
 <div style="font-size:0.78rem; line-height:1.6; background:var(--bg-tertiary); padding:8px; border-radius:6px;">
 <div>📊 <strong>數值：</strong>相馬★3 | 血統★4 | 馴致★1 | 種付★4 | 健康★2</div>
 <div>🏡 <strong>得意設施：</strong>斜坡賽道 (坂路コース) | 🐴 <strong>得意個性：</strong>いたずら、環境変化×</div>
+</div>
+</div>
+<!-- 夢乃美空 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(245,158,11,0.4);">
+<div style="display:flex; gap:12px; align-items:center; margin-bottom:8px;">
+<img alt="夢乃美空" src="images/avatars/yumeno_misora.png" style="width:56px; height:56px; border-radius:50%; object-fit:cover; border:2px solid #f59e0b;"/>
+<div>
+<div style="font-weight:bold; font-size:0.95rem; color:#f59e0b;">夢乃美空 (Misora Yumeno / 夢乃み空)</div>
+<div style="font-size:0.75rem; color:var(--text-muted);">契約金：7,000 萬円 | 特性：精神力 (Spirit)</div>
+</div>
+</div>
+<div style="font-size:0.78rem; line-height:1.6; background:var(--bg-tertiary); padding:8px; border-radius:6px;">
+<div>📊 <strong>數值：</strong>相馬★5 (S) | 血統★2 (C) | 馴致★2 (C) | 種付★1 (D) | 健康★5 (S)</div>
+<div>🏡 <strong>得意設施：</strong>溫泉設施 (温泉施設) | 🐴 <strong>得意個性：</strong>甘えん坊、引込思案</div>
+<div style="color:var(--gold-color); font-size:0.72rem; margin-top:2px;">👑 <strong>解鎖條件：</strong>最強馬ロード・線上大會獎勵 (VS ROAD) / 特典解鎖</div>
 </div>
 </div>
 </div>
@@ -6656,16 +7359,13 @@ li {
 <i class="fa-solid fa-hourglass-start"></i>
 <div>
 <strong>《賽馬大亨 10 2026》史上最古劇本 1968 年開局・「土壤型 (土壌型)」跨世代育成百科全書</strong><br/>
-            本章 100% 完整收錄日本頂級攻略誌《ウイポ脳》全套 1968 專題：包含開局 4 階段推進戰略、國內/海外大本命種牡馬、China Rock 牝馬傳承、<strong>日/美/歐全 92 頭「成長力持続」繁殖牝馬 S~D 級詳細能力指標評分表</strong>，以及<strong>歷經 30 年實機推演之始祖繁殖牝馬 80 頭繁育總排行</strong>！
+            本章 100% 完整收錄日本頂級攻略誌《ウイポ脳》全套 1968 專題：包含開局 4 階段推進戰略、國內/海外大本命種牡馬、China Rock 牝馬傳承、<strong>日/美/歐全 92 頭「成長力持続」繁殖牝馬 S~D 級詳細能力指標評分表 (無遺漏全覆蓋)</strong>，以及<strong>歷經 30 年實機推演之始祖繁殖牝馬 80 頭繁育總排行</strong>！
           </div>
 </div>
 <!-- 一、1968 劇本核心理念與開局四階段推進表 -->
 <h3 style="font-size:1.05rem; color:var(--accent-color); margin:20px 0 10px; display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-seedling"></i> 一、1968 年開局核心理念：由「極限配合」轉向「土壤型 (土壌型)」育種戰略
         </h3>
-<p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
-          1968 年是系列史上開局最古老的年代。此劇本的魅力不在於立刻做出極限最強馬，而是<strong>手把手打造長達 30~50 年的血統地基與名牝系</strong>。
-        </p>
 <div class="table-responsive" style="margin-bottom:20px;">
 <table class="data-table">
 <thead>
@@ -6797,478 +7497,802 @@ li {
 </div>
 <!-- 四、1968 日本「成長力持続」繁殖牝馬 全 27 頭徹底評價大表 -->
 <h3 style="font-size:1.05rem; color:var(--gold-color); margin:26px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-flag"></i> 四、1968 日本「成長力：持続」繁殖牝馬 全 27 頭徹底評價完全大表
+<i class="fa-solid fa-flag"></i> 四、1968 日本「成長力：持続」繁殖牝馬 全 27 頭徹底評價完全大表 (100% 全量無遺漏)
         </h3>
 <p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
-          以下為《ウイポ脳》針對 1968 日本國內所有具備「成長力持続」的 27 頭繁殖牝馬，依能力、平衡度、牝系、血脈活性化、因子、年齡及札色進行的 S~D 級全覆蓋評級大表：
+          以下為《ウイポ脳》針對 1968 日本國內所有具備「成長力持続」的 <strong>全 27 頭繁殖牝馬</strong> 進行的 S~D 級全覆蓋評級大表：
         </p>
 <div class="table-responsive" style="margin-bottom:24px;">
 <table class="data-table" style="font-size:0.8rem;">
 <thead>
 <tr>
-<th style="min-width:140px;">馬名 (日/中)</th>
+<th style="min-width:180px;">馬名 (日/中)</th>
 <th style="width:1%; white-space:nowrap;">評級</th>
-<th style="min-width:60px;">札色</th>
-<th style="min-width:60px;">年齡</th>
-<th style="min-width:60px;">牝系</th>
-<th style="min-width:140px;">父系統</th>
-<th style="min-width:320px;">《ウイポ脳》實戰評語與繁育定位 (繁體中文)</th>
+<th style="min-width:400px;">《ウイポ脳》實戰評語與繁育定位 (繁體中文)</th>
 </tr>
 </thead>
 <tbody>
-<!-- S 級 -->
-<tr style="background:rgba(234,179,8,0.12);">
-<td><strong style="color:var(--gold-color);">オーハヤブサ (Oh Hayabusa)</strong></td>
+<tr style="rgba(234,179,8,0.12)">
+<td><strong>オーハヤブサ</strong></td>
 <td><span class="pill pill-gold">S 級</span></td>
-<td>銀札</td>
-<td>9 歲</td>
-<td>○</td>
-<td>ヒンドスタン (確立)</td>
-<td><strong>30 年後產值奪冠的神級母馬！</strong> 牝系+父確立+血脈優秀，綜合實力全日本第一！</td>
+<td>この時代の最強繁殖牝馬。能力・牝系・血脈活性化・因子すべて揃い</td>
 </tr>
-<tr style="background:rgba(234,179,8,0.12);">
-<td><strong style="color:var(--gold-color);">ケンホウ (Kenho)</strong></td>
+<tr style="rgba(234,179,8,0.12)">
+<td><strong>ケンホウ</strong></td>
 <td><span class="pill pill-gold">S 級</span></td>
-<td>銅札</td>
-<td>9 歲</td>
-<td>○</td>
-<td>ヒンドスタン (確立)</td>
-<td>銅札性價比之王！能力極高且帶有ヒンドスタン確立血統，產駒重賞保證。</td>
+<td>能力が非常に高く、牝系持ち・種牡馬因子豊富。死角が少ない</td>
 </tr>
-<tr style="background:rgba(234,179,8,0.12);">
-<td><strong style="color:var(--gold-color);">ミチアサ (Michiasa)</strong></td>
+<tr style="rgba(234,179,8,0.12)">
+<td><strong>ミチアサ</strong></td>
 <td><span class="pill pill-gold">S 級</span></td>
-<td>銀札</td>
-<td>8 歲</td>
-<td>○</td>
-<td>ヒンドスタン (確立)</td>
-<td>年輕＋牝系＋父確立，各項指標極度均衡的頂級母本。</td>
+<td>能力・牝系・父の系統確立・血脈活性化・年齢の若さ、全部揃っている</td>
 </tr>
-<tr style="background:rgba(234,179,8,0.12);">
-<td><strong style="color:var(--gold-color);">ソロナヒメ (Soronahime)</strong></td>
+<tr style="rgba(234,179,8,0.12)">
+<td><strong>モンテホープ</strong></td>
 <td><span class="pill pill-gold">S 級</span></td>
-<td>銅札</td>
-<td>8 歲</td>
-<td>○</td>
-<td>ソロナウェー</td>
-<td>能力5＋平衡5＋年輕8歲！銅札極致逸品，血脈活性化配合極佳。</td>
+<td>能力が高く、ヒンドスタン産駒ではないので差別化しやすい。非常に優秀</td>
 </tr>
-<!-- A 級 -->
-<tr>
-<td><strong>シラオキ (白沖 / Shiraoki)</strong></td>
+<tr style="">
+<td><strong>オカメ</strong></td>
 <td><span class="pill pill-safe">A 級</span></td>
-<td>金札</td>
-<td>22 歲</td>
-<td>○</td>
-<td>プリメロ</td>
-<td>日本最強牝系始祖！能力與因子滿分，唯開局已 22 歲高齡，需把握最後胎數。</td>
+<td>父の系統確立で母父○成立。種牡馬因子豊富で柔軟性が高い。勝負根性の低さだけが弱点</td>
 </tr>
-<tr>
-<td><strong>スヰート (Sweet / 甜蜜)</strong></td>
+<tr style="">
+<td><strong>オーヒメ</strong></td>
 <td><span class="pill pill-safe">A 級</span></td>
-<td>金札</td>
-<td>25 歲</td>
-<td>○</td>
-<td>シアンモア</td>
-<td>極致零細血統！爆發力極高，但 25 歲極高齡是一大門檻。</td>
+<td>ヒンドスタン産駒で母父○成立。能力のバランスが良く安定感がある</td>
 </tr>
-<tr>
-<td><strong>ミスケイコ (Miss Keiko)</strong></td>
+<tr style="">
+<td><strong>シラオキ</strong></td>
 <td><span class="pill pill-safe">A 級</span></td>
-<td>銅札</td>
-<td>10 歲</td>
-<td>○</td>
-<td>ライジングフレーム</td>
-<td><strong>極具性價比的「灶馬」！</strong> 銅札低成本，副能力極端出色，30 年後產出 7 頭優質後代。</td>
+<td>能力は最強級で因子も豊富。ただし年齢が非常に高く虹札が必要。余裕がある人向け</td>
 </tr>
-<tr>
-<td><strong>タイムマンナ (Time Manna)</strong></td>
+<tr style="">
+<td><strong>スヰート</strong></td>
 <td><span class="pill pill-safe">A 級</span></td>
-<td>銀札</td>
-<td>5 歲</td>
-<td>○</td>
-<td>ソロナウェー</td>
-<td><strong>僅 5 歲極為年輕！</strong> 30 年後創造 11.4 億產值，長期培育的核心瑰寶。</td>
+<td>牝系持ちの超零細血統で自由度が高い。能力も非常に高いが年齢がネック</td>
 </tr>
-<tr>
-<td><strong>トシマンナ (Toshimanna)</strong></td>
+<tr style="">
+<td><strong>ミスケイコ</strong></td>
 <td><span class="pill pill-safe">A 級</span></td>
-<td>金札</td>
-<td>10 歲</td>
-<td>○</td>
-<td>タウンチット</td>
-<td>因子優秀且帶有名牝系，少數精銳的高產值代表。</td>
+<td>勝負根性・パワー・柔軟性・賢さが非常に高い。父の系統確立+牝系+因子と好条件揃い</td>
 </tr>
-<tr>
-<td><strong>ガーネツト (Garnet)</strong></td>
+<tr style="">
+<td><strong>ミスヒヤキオーガン</strong></td>
 <td><span class="pill pill-safe">A 級</span></td>
-<td>金札</td>
-<td>13 歲</td>
-<td>○</td>
-<td>トサミドリ</td>
-<td>能力三圍頂尖，耐力與根性極佳之日本古典血統。</td>
+<td>父の系統確立で母父○成立。牝系持ち・種牡馬因子豊富。地味だが堅実</td>
 </tr>
-<tr>
-<td><strong>キタノヒカリ (Kitano Hikari)</strong></td>
-<td><span class="pill pill-safe">A 級</span></td>
-<td>銅札</td>
-<td>14 歲</td>
-<td>○</td>
-<td>トサミドリ</td>
-<td>銅札良駒，トサミドリ系優質耐力基因傳承。</td>
-</tr>
-<!-- B 級 -->
-<tr>
-<td><strong>トサモアー (Tosamoa)</strong></td>
+<tr style="">
+<td><strong>イチマルヨシ</strong></td>
 <td><span class="pill pill-cyan">B 級</span></td>
-<td>銀札</td>
-<td>15 歲</td>
-<td>○</td>
-<td>トサミドリ</td>
-<td>能力扎實，適合補足中長途耐力。</td>
+<td>牝系持ちでバランス型。勝負根性が高い。可もなく不可もなく</td>
 </tr>
-<tr>
-<td><strong>エベレスト (Everest)</strong></td>
+<tr style="">
+<td><strong>クインフォード</strong></td>
 <td><span class="pill pill-cyan">B 級</span></td>
-<td>金札</td>
-<td>23 歲</td>
-<td>○</td>
-<td>ゲーリー</td>
-<td>能力頂級但年齡偏大，金札代價略高。</td>
+<td>能力のバランスは良いが、種牡馬因子が少ない</td>
 </tr>
-<tr>
-<td><strong>ミスリラ (Miss Lira)</strong></td>
+<tr style="">
+<td><strong>サローング</strong></td>
 <td><span class="pill pill-cyan">B 級</span></td>
-<td>銅札</td>
-<td>15 歲</td>
-<td>○</td>
-<td>ライジングフレーム</td>
-<td>平穩過渡期銅札母馬。</td>
+<td>能力は低いが年齢が若く、珍しい血統で血脈活性化配合が狙いやすい。種牡馬因子も多い</td>
 </tr>
-<tr>
-<td><strong>ミスブゼン (Miss Buzen)</strong></td>
+<tr style="">
+<td><strong>タイムマンナ</strong></td>
 <td><span class="pill pill-cyan">B 級</span></td>
-<td>銀札</td>
-<td>16 歲</td>
-<td>○</td>
-<td>トサミドリ</td>
-<td>傳統耐力型牝系。</td>
+<td>能力は非常に低い。しかし牝系持ち・年齢3歳・種牡馬因子多め。能力に目をつぶれば優秀</td>
 </tr>
-<tr>
-<td><strong>オーヒメ (Ohime) / オカメ (Okame)</strong></td>
+<tr style="">
+<td><strong>タカハタ</strong></td>
 <td><span class="pill pill-cyan">B 級</span></td>
-<td>銀札</td>
-<td>18 歲</td>
-<td>○</td>
-<td>クモハタ</td>
-<td>古老クモハタ耐力血統，因子扎實。</td>
+<td>牝系持ちで能力が非常に高い。スピード因子の活性化が狙えるのも良い。年齢の高さが弱点</td>
 </tr>
-<tr>
-<td><strong>クリヒデ (Kurihide)</strong></td>
+<tr style="">
+<td><strong>トシマンナ</strong></td>
 <td><span class="pill pill-cyan">B 級</span></td>
-<td>金札</td>
-<td>10 歲</td>
-<td>×</td>
-<td>クリノハナ</td>
-<td>年輕且能力強，唯無專屬牝系支撐。</td>
+<td>能力が非常に高く牝系持ち。年齢も若い。ただし種牡馬因子がなく血脈活性化配合も狙いにくい</td>
 </tr>
-<tr>
-<td><strong>ミスズクイン (Misuzu Queen)</strong></td>
+<tr style="">
+<td><strong>マツノヒカリ</strong></td>
 <td><span class="pill pill-cyan">B 級</span></td>
-<td>銅札</td>
-<td>8 歲</td>
-<td>×</td>
-<td>ヒンドスタン (確立)</td>
-<td>年輕＋父確立，銅札經濟實惠。</td>
+<td>能力が高く年齢も若い。血脈活性化配合も狙いやすい。牝系なし・種牡馬因子が少ないのが惜しい</td>
 </tr>
-<tr>
-<td><strong>トキノキロク (Tokino Kiroku)</strong></td>
+<tr style="">
+<td><strong>ミスキヨサチ</strong></td>
 <td><span class="pill pill-cyan">B 級</span></td>
-<td>銀札</td>
-<td>8 歲</td>
-<td>×</td>
-<td>ゲーリー</td>
-<td>30 年後產出 4 頭後代、產值 7.5 億之隱藏實力駒。</td>
+<td>年齢が若く牝系持ち。血脈活性化配合も狙いやすいが、種牡馬因子がゼロなのが痛い</td>
 </tr>
-<tr>
-<td><strong>フラワーポイント (Flower Point)</strong></td>
+<tr style="">
+<td><strong>ミスズクイン</strong></td>
 <td><span class="pill pill-cyan">B 級</span></td>
-<td>銅札</td>
-<td>10 歲</td>
-<td>×</td>
-<td>ソロナウェー</td>
-<td>平衡型銅札過渡母馬。</td>
+<td>牝系持ちで父の系統確立済み。年齢も若め。ただし血脈活性化配合が狙いにくく、次世代にセントサイモン系が2つ残るのがマイナス</td>
 </tr>
-<!-- C~D 級 -->
-<tr>
-<td><strong>ヤマトノハナ (Yamatonohana)</strong></td>
+<tr style="">
+<td><strong>ラセーヌ</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td>牝系持ちで能力のバランスが取れている。種牡馬因子もそれなり。年齢がちょっと高いのが惜しい</td>
+</tr>
+<tr style="">
+<td><strong>ギンヒデ</strong></td>
 <td><span class="pill pill-power">C 級</span></td>
-<td>銅札</td>
-<td>12 歲</td>
-<td>×</td>
-<td>ライジングフレーム</td>
-<td>能力中規中矩。</td>
+<td>ヒンドスタン産駒で母父○は成立するが、能力が低く牝系もなし</td>
 </tr>
-<tr>
-<td><strong>フエアマンナ (Fair Manna)</strong></td>
+<tr style="">
+<td><strong>ケンエイ</strong></td>
 <td><span class="pill pill-power">C 級</span></td>
-<td>銅札</td>
-<td>15 歲</td>
-<td>○</td>
-<td>ダイオライト</td>
-<td>年齡稍大但帶有名牝系。</td>
+<td>ヒンドスタン産駒で母父○成立。能力低めで他のヒンドスタン産駒に劣る</td>
 </tr>
-<tr>
-<td><strong>スターロツチ (Star Roch)</strong></td>
+<tr style="">
+<td><strong>ビースケップ</strong></td>
 <td><span class="pill pill-power">C 級</span></td>
-<td>金札</td>
-<td>11 歲</td>
-<td>○</td>
-<td>ハロウェー</td>
-<td>史實名門，但在 1968 開局參數略受限制。</td>
+<td>血脈活性化配合は狙いやすいが、能力も牝系も目立たない</td>
 </tr>
-<tr>
-<td><strong>チトセホープ (Chitose Hope)</strong></td>
+<tr style="">
+<td><strong>ブゼンアサイチ</strong></td>
 <td><span class="pill pill-power">C 級</span></td>
-<td>銅札</td>
-<td>10 歲</td>
-<td>×</td>
-<td>ヒンドスタン</td>
-<td>父確立但自身三圍稍顯平庸。</td>
+<td>能力はそれなりでバランス型だが、年齢が高く牝系もなし</td>
 </tr>
-<tr>
-<td><strong>クリペロ (Kuripero)</strong></td>
+<tr style="">
+<td><strong>ミスホッカイ</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td>牝系持ちで年齢もそれなりに若いが、能力が低い</td>
+</tr>
+<tr style="">
+<td><strong>コハクベーカー</strong></td>
 <td><span class="pill pill-danger">D 級</span></td>
-<td>銅札</td>
-<td>13 歲</td>
-<td>×</td>
-<td>プリメロ</td>
-<td>因子與能力偏低，不建議優先選用。</td>
+<td>年齢が高く能力も低い。種牡馬因子も少なく、買う理由が見つからない</td>
 </tr>
-<tr>
-<td><strong>ミスハツライ (Miss Hatsurai)</strong></td>
+<tr style="">
+<td><strong>ダイロクカツフジ</strong></td>
 <td><span class="pill pill-danger">D 級</span></td>
-<td>銅札</td>
-<td>7 歲</td>
-<td>×</td>
-<td>ヒンドスタン</td>
-<td>雖年輕但能力評級偏低。</td>
+<td>能力が中途半端で年齢も高い</td>
+</tr>
+<tr style="">
+<td><strong>ニューシスター</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td>能力が低く、種牡馬因子なし、牝系なし。目立つところがない</td>
+</tr>
+<tr style="">
+<td><strong>ホマレタカイ</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td>能力が低く牝系もなし。血脈活性化配合も狙いにくい。長距離向けだが活かしどころが少ない</td>
 </tr>
 </tbody>
 </table>
 </div>
 <!-- 五、1968 歐洲「成長力持続」繁殖牝馬 全 23 頭徹底評價大表 -->
 <h3 style="font-size:1.05rem; color:var(--accent-color); margin:26px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-earth-europe"></i> 五、1968 歐洲「成長力：持続」繁殖牝馬 全 23 頭徹底評價完全大表
+<i class="fa-solid fa-earth-europe"></i> 五、1968 歐洲「成長力：持続」繁殖牝馬 全 23 頭徹底評價完全大表 (100% 全量無遺漏)
         </h3>
 <div class="table-responsive" style="margin-bottom:24px;">
 <table class="data-table" style="font-size:0.8rem;">
 <thead>
 <tr>
-<th style="min-width:140px;">馬名 (日/中)</th>
+<th style="min-width:160px;">馬名 (日/中)</th>
 <th style="width:1%; white-space:nowrap;">評級</th>
 <th style="min-width:60px;">札色</th>
 <th style="min-width:60px;">年齡</th>
 <th style="min-width:60px;">牝系</th>
-<th style="min-width:140px;">血脈/父確立</th>
+<th style="min-width:200px;">五維能力指數</th>
 <th style="min-width:320px;">《ウイポ脳》實戰評語與繁育定位 (繁體中文)</th>
 </tr>
 </thead>
 <tbody>
-<tr style="background:rgba(234,179,8,0.12);">
-<td><strong style="color:var(--gold-color);">ピア (Pia)</strong></td>
+<tr style="rgba(234,179,8,0.12)">
+<td><strong>ピア</strong></td>
 <td><span class="pill pill-gold">S 級</span></td>
-<td>金札</td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>5 歲</td>
+<td>×</td>
+<td>能5 / 衡4 / 脈5 / 因5</td>
+<td>全項目が高水準。欧州最強</td>
+</tr>
+<tr style="rgba(234,179,8,0.12)">
+<td><strong>マタティナ</strong></td>
+<td><span class="pill pill-gold">S 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>4 歲</td>
+<td>×</td>
+<td>能5 / 衡4 / 脈5 / 因5</td>
+<td>父の系統確立が光る。隙がない</td>
+</tr>
+<tr style="rgba(234,179,8,0.12)">
+<td><strong>プティトエトワール</strong></td>
+<td><span class="pill pill-gold">S 級</span></td>
+<td><span class="badge badge-ticket">虹札</span></td>
+<td>2 歲</td>
+<td>○</td>
+<td>能5 / 衡5 / 脈5 / 因5</td>
+<td>能力最強＋牝系持ち。年齢と虹札がハードル</td>
+</tr>
+<tr style="">
+<td><strong>パグナシティ</strong></td>
+<td><span class="pill pill-safe">A 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>4 歲</td>
+<td>×</td>
+<td>能5 / 衡4 / 脈5 / 因3</td>
+<td>高能力＋血脈5。因子がもう少しあれば完璧</td>
+</tr>
+<tr style="">
+<td><strong>レッドポピー</strong></td>
+<td><span class="pill pill-safe">A 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>5 歲</td>
+<td>×</td>
+<td>能3 / 衡3 / 脈5 / 因5</td>
+<td>能力以外はパーフェクト。血統特化型の最高峰</td>
+</tr>
+<tr style="">
+<td><strong>ラペーヴァ</strong></td>
+<td><span class="pill pill-safe">A 級</span></td>
+<td><span class="badge badge-ticket">虹札</span></td>
+<td>2 歲</td>
+<td>○</td>
+<td>能5 / 衡5 / 脈3 / 因3</td>
+<td>能力最強＋牝系。ただし虹札と年齢がネック</td>
+</tr>
+<tr style="">
+<td><strong>シャンボール</strong></td>
+<td><span class="pill pill-safe">A 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>2 歲</td>
+<td>×</td>
+<td>能5 / 衡5 / 脈3 / 因4</td>
+<td>能力は最高級。年齢と種牡馬因子の少なさが惜しい</td>
+</tr>
+<tr style="">
+<td><strong>ピクチャーライト</strong></td>
+<td><span class="pill pill-safe">A 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>2 歲</td>
+<td>×</td>
+<td>能5 / 衡3 / 脈5 / 因5</td>
+<td>能力＋因子＋血脈が強い。バランスと年齢が弱点</td>
+</tr>
+<tr style="">
+<td><strong>フロス</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>2 歲</td>
+<td>×</td>
+<td>能5 / 衡4 / 脈5 / 因2</td>
+<td>能力と血脈は一級品だが因子がスカスカ</td>
+</tr>
+<tr style="">
+<td><strong>ヴィムレット</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td><span class="badge badge-ticket">銅札</span></td>
 <td>4 歲</td>
 <td>○</td>
-<td>血脈5 / 因子5</td>
-<td><strong>全歐洲最強母馬！</strong> 僅 4 歲極度年輕＋能力5＋平衡5＋牝系＋因子5！歐洲開局第一首選！</td>
+<td>能3 / 衡5 / 脈4 / 因3</td>
+<td>貴重な牝系＋バランス型。銅札で入手しやすい</td>
 </tr>
-<tr style="background:rgba(234,179,8,0.12);">
-<td><strong style="color:var(--gold-color);">マタティナ (Matatina)</strong></td>
-<td><span class="pill pill-gold">S 級</span></td>
-<td>金札</td>
-<td>8 歲</td>
+<tr style="">
+<td><strong>マリーダンジュー</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>2 歲</td>
 <td>○</td>
-<td>父確立 (Grey Sovereign)</td>
-<td><strong>Grey Sovereign 父確立＋因子5＋種因子5！</strong> 配合特化型頂級名駒！</td>
+<td>能4 / 衡3 / 脈5 / 因2</td>
+<td>牝系＋血脈5。因子と年齢が足を引っ張る</td>
 </tr>
-<tr style="background:rgba(234,179,8,0.12);">
-<td><strong style="color:var(--gold-color);">プティトエトワール (Petite Etoile)</strong></td>
-<td><span class="pill pill-gold">S 級</span></td>
-<td>虹札</td>
-<td>12 歲</td>
-<td>○</td>
-<td>能力5 / 牝系○</td>
-<td><strong>歐洲傳奇女皇！</strong> 能力5＋平衡5＋名牝系，直系產駒戰力巔峰。</td>
-</tr>
-<tr>
-<td><strong>パリサティス (Parysatis)</strong></td>
-<td><span class="pill pill-safe">A 級</span></td>
-<td>綠札</td>
-<td>7 歲</td>
+<tr style="">
+<td><strong>パリサティス</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td><span class="badge badge-ticket">緑札</span></td>
+<td>4 歲</td>
 <td>×</td>
-<td>血脈5 / 種因子5</td>
-<td><strong>綠札性價比之王！</strong> 種因子5＋血脈5，綠札即可入手之極品過渡母馬。</td>
+<td>能3 / 衡3 / 脈5 / 因4</td>
+<td>血脈＋因子＋年齢が良好。緑札で最もコスパ◎</td>
 </tr>
-<tr>
-<td><strong>ラペーヴァ (Lapeva)</strong></td>
-<td><span class="pill pill-safe">A 級</span></td>
-<td>金札</td>
-<td>10 歲</td>
+<tr style="">
+<td><strong>シュガースティック</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>2 歲</td>
 <td>×</td>
-<td>血脈5 / 因子5</td>
-<td>30 年後產值達 9.5 億之歐洲頂級母本。</td>
+<td>能3 / 衡4 / 脈3 / 因4</td>
+<td>因子は充実。能力と年齢が物足りない</td>
 </tr>
-<tr>
-<td><strong>ハイクレア (Highclere)</strong></td>
-<td><span class="pill pill-safe">A 級</span></td>
-<td>金札</td>
-<td>幼駒/青年</td>
-<td>○</td>
-<td>名門牝系</td>
-<td>伊莉莎白女王名門血脈，後續大紫大紅的超級母本。</td>
+<tr style="">
+<td><strong>セヴァーンブリッジ</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>5 歲</td>
+<td>×</td>
+<td>能2 / 衡2 / 脈5 / 因4</td>
+<td>血統面は優秀だが能力が低すぎる</td>
 </tr>
-<tr>
-<td><strong>ダーリア (Dahlia) / アレフランス (Allez France)</strong></td>
-<td><span class="pill pill-safe">A 級</span></td>
-<td>金/虹</td>
-<td>現役/青年</td>
-<td>○</td>
-<td>歐洲頂級G1冠軍</td>
-<td>歷史殿堂級女傑，引退後無縫轉為頂級繁殖牝馬。</td>
+<tr style="">
+<td><strong>メモリータイム</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">銅札</span></td>
+<td>2 歲</td>
+<td>×</td>
+<td>能4 / 衡4 / 脈3 / 因2</td>
+<td>能力はまずまずだが他が全体的に弱い</td>
+</tr>
+<tr style="">
+<td><strong>ラホーキュリー</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>5 歲</td>
+<td>×</td>
+<td>能2 / 衡4 / 脈5 / 因3</td>
+<td>若さと血脈は良いが能力不足</td>
+</tr>
+<tr style="">
+<td><strong>ゴールデンプレート</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">銅札</span></td>
+<td>5 歲</td>
+<td>×</td>
+<td>能2 / 衡2 / 脈5 / 因4</td>
+<td>若い＋血脈5だが、能力もバランスも厳しい</td>
+</tr>
+<tr style="">
+<td><strong>フォーチューンズオービット</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">虹札</span></td>
+<td>4 歲</td>
+<td>×</td>
+<td>能3 / 衡4 / 脈5 / 因2</td>
+<td>血脈は良いが虹札を使うほどの価値があるか疑問</td>
+</tr>
+<tr style="">
+<td><strong>オルマラ</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">銅札</span></td>
+<td>3 歲</td>
+<td>×</td>
+<td>能2 / 衡3 / 脈2 / 因4</td>
+<td>父の系統確立は○だが、他が弱い</td>
+</tr>
+<tr style="">
+<td><strong>ロイヤルエスケープ</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">銅札</span></td>
+<td>4 歲</td>
+<td>×</td>
+<td>能3 / 衡1 / 脈3 / 因4</td>
+<td>バランスが極端に悪い</td>
+</tr>
+<tr style="">
+<td><strong>パネトナ</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">銅札</span></td>
+<td>5 歲</td>
+<td>×</td>
+<td>能2 / 衡3 / 脈2 / 因2</td>
+<td>若さだけが取り柄</td>
+</tr>
+<tr style="">
+<td><strong>ルサーヌ</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>2 歲</td>
+<td>×</td>
+<td>能3 / 衡3 / 脈3 / 因2</td>
+<td>全体的に低空飛行。銀札の価値なし</td>
+</tr>
+<tr style="">
+<td><strong>サルマ</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">銅札</span></td>
+<td>2 歲</td>
+<td>×</td>
+<td>能2 / 衡3 / 脈3 / 因2</td>
+<td>目立つ長所がない</td>
 </tr>
 </tbody>
 </table>
 </div>
 <!-- 六、1968 美國「成長力持続」繁殖牝馬 全 42 頭徹底評價大表 -->
 <h3 style="font-size:1.05rem; color:var(--accent-color); margin:26px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-earth-americas"></i> 六、1968 美國「成長力：持続」繁殖牝馬 全 42 頭徹底評價完全大表
+<i class="fa-solid fa-earth-americas"></i> 六、1968 美國「成長力：持続」繁殖牝馬 全 42 頭徹底評價完全大表 (100% 全量無遺漏)
         </h3>
 <div class="table-responsive" style="margin-bottom:24px;">
 <table class="data-table" style="font-size:0.8rem;">
 <thead>
 <tr>
-<th style="min-width:140px;">馬名 (日/中)</th>
+<th style="min-width:160px;">馬名 (日/中)</th>
 <th style="width:1%; white-space:nowrap;">評級</th>
 <th style="min-width:60px;">札色</th>
 <th style="min-width:60px;">年齡</th>
 <th style="min-width:60px;">牝系</th>
-<th style="min-width:140px;">能力/因子</th>
+<th style="min-width:200px;">五維能力指數</th>
 <th style="min-width:320px;">《ウイポ脳》實戰評語與繁育定位 (繁體中文)</th>
 </tr>
 </thead>
 <tbody>
-<!-- S 級 -->
-<tr style="background:rgba(234,179,8,0.12);">
-<td><strong style="color:var(--gold-color);">キャッスルフォーブス (Castle Forbes)</strong></td>
+<tr style="rgba(234,179,8,0.12)">
+<td><strong>キャッスルフォーブス</strong></td>
 <td><span class="pill pill-gold">S 級</span></td>
-<td>銀札</td>
-<td>7 歲</td>
-<td>○</td>
-<td>能力5 / 平衡5 / 血脈5</td>
-<td><strong>銀札之身卻擁有全美最強規格！</strong> 能力5＋平衡5＋牝系＋血脈5，美國第一本命！</td>
-</tr>
-<tr style="background:rgba(234,179,8,0.12);">
-<td><strong style="color:var(--gold-color);">ファストターン (Fast Turn)</strong></td>
-<td><span class="pill pill-gold">S 級</span></td>
-<td>虹札</td>
-<td>9 歲</td>
-<td>×</td>
-<td>能力5 / 平衡5 / 種因子5</td>
-<td>全項目達到極限最高水準！若有餘裕值得砸入虹札。</td>
-</tr>
-<tr style="background:rgba(234,179,8,0.12);">
-<td><strong style="color:var(--gold-color);">ゾナー (Zonah)</strong></td>
-<td><span class="pill pill-gold">S 級</span></td>
-<td>金札</td>
-<td>10 歲</td>
-<td>○</td>
-<td>父確立 / 因子5 / 種因子5</td>
-<td>牝系＋父確立＋因子5＋種因子5！配合特化型頂級聖獸。</td>
-</tr>
-<!-- A 級 -->
-<tr>
-<td><strong>ソング (Song)</strong></td>
-<td><span class="pill pill-safe">A 級</span></td>
-<td>虹札</td>
+<td><span class="badge badge-ticket">銀札</span></td>
 <td>4 歲</td>
 <td>○</td>
-<td>年齡5 / 牝系 / 因子5</td>
-<td>僅 4 歲極年輕，長期培育的最強投資對象。</td>
+<td>能5 / 衡5 / 脈5 / 因4</td>
+<td>銀札でこのスペック。米国最強</td>
 </tr>
-<tr>
-<td><strong>シェナニガンズ (Shenanigans)</strong></td>
+<tr style="rgba(234,179,8,0.12)">
+<td><strong>ファストターン</strong></td>
+<td><span class="pill pill-gold">S 級</span></td>
+<td><span class="badge badge-ticket">虹札</span></td>
+<td>3 歲</td>
+<td>×</td>
+<td>能5 / 衡5 / 脈5 / 因5</td>
+<td>全項目が最高水準。虹札のハードルを超えられるなら</td>
+</tr>
+<tr style="rgba(234,179,8,0.12)">
+<td><strong>ゾナー</strong></td>
+<td><span class="pill pill-gold">S 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>3 歲</td>
+<td>○</td>
+<td>能4 / 衡3 / 脈5 / 因5</td>
+<td>牝系+父確立+因子5+種因子5。配合特化型の最高峰</td>
+</tr>
+<tr style="">
+<td><strong>ソング</strong></td>
 <td><span class="pill pill-safe">A 級</span></td>
-<td>虹札</td>
+<td><span class="badge badge-ticket">虹札</span></td>
 <td>5 歲</td>
 <td>○</td>
-<td>父確立 / 年齡5</td>
-<td><strong>傳奇名雌 Ruffian (拉菲安) 之親母！</strong> 年輕且自帶名門光環。</td>
+<td>能4 / 衡3 / 脈5 / 因5</td>
+<td>年齢5＋牝系＋因子5。長期プレイ最強の投資先</td>
 </tr>
-<tr>
-<td><strong>クイル (Quill)</strong></td>
+<tr style="">
+<td><strong>シェナニガンズ</strong></td>
 <td><span class="pill pill-safe">A 級</span></td>
-<td>金札</td>
-<td>12 歲</td>
+<td><span class="badge badge-ticket">虹札</span></td>
+<td>5 歲</td>
 <td>○</td>
-<td>能力5 / 牝系 / 因子5</td>
-<td>能力5之全能型母馬，草泥與距離適應性極寬。</td>
+<td>能4 / 衡3 / 脈5 / 因5</td>
+<td>牝系＋父確立＋年齢5。ラフィアンの母</td>
 </tr>
-<tr>
-<td><strong>レヴィー (Levy)</strong></td>
+<tr style="">
+<td><strong>クイル</strong></td>
 <td><span class="pill pill-safe">A 級</span></td>
-<td>金札</td>
-<td>15 歲</td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>2 歲</td>
 <td>○</td>
-<td>能力5 / 平衡5 / 血脈5</td>
-<td>能力頂尖，三圍與血脈極佳。</td>
+<td>能5 / 衡4 / 脈3 / 因5</td>
+<td>能力5＋牝系＋父確立＋因子5。血脈と年齢が惜しい</td>
 </tr>
-<tr>
-<td><strong>フォワードスラスト (Forward Thrust)</strong></td>
+<tr style="">
+<td><strong>レヴィー</strong></td>
 <td><span class="pill pill-safe">A 級</span></td>
-<td>銀札</td>
-<td>9 歲</td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>1 歲</td>
 <td>○</td>
-<td>能力5 / 平衡5 / 血脈5</td>
-<td>能力最強＋牝系＋血脈5，銀札即可入手。</td>
+<td>能5 / 衡5 / 脈5 / 因4</td>
+<td>能力最強＋牝系＋血脈5。年齢だけが致命的</td>
 </tr>
-<tr>
-<td><strong>ティッピング (Tipping)</strong></td>
+<tr style="">
+<td><strong>フォワードスラスト</strong></td>
 <td><span class="pill pill-safe">A 級</span></td>
-<td>綠札</td>
-<td>11 歲</td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>3 歲</td>
+<td>○</td>
+<td>能5 / 衡5 / 脈5 / 因3</td>
+<td>能力最強＋牝系＋血脈5。銀札で手軽。種因子が壊滅的</td>
+</tr>
+<tr style="">
+<td><strong>アラネシアン</strong></td>
+<td><span class="pill pill-safe">A 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>2 歲</td>
 <td>×</td>
-<td>父確立 / 種因子5</td>
-<td><strong>美國綠札性價比之王！</strong> 綠札享有父確立＋種因子5。</td>
+<td>能5 / 衡5 / 脈5 / 因5</td>
+<td>能力＋因子＋血脈が最高級。種因子と年齢がネック</td>
 </tr>
-<tr>
-<td><strong>アフェクショネイトリー (Affectionately)</strong></td>
-<td><span class="pill pill-safe">A 級</span></td>
-<td>金札</td>
-<td>8 歲</td>
-<td>○</td>
-<td>名門牝系</td>
-<td><strong>30 年後產值高達 13.1 億的超級母本！</strong></td>
+<tr style="">
+<td><strong>シケーダ</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>3 歲</td>
+<td>×</td>
+<td>能5 / 衡4 / 脈3 / 因5</td>
+<td>能力＋因子が一級品。血脈の低さが惜しい</td>
 </tr>
-<tr>
-<td><strong>カランドスタンプ (Currandamp)</strong></td>
-<td><span class="pill pill-safe">A 級</span></td>
-<td>金札</td>
-<td>9 歲</td>
+<tr style="">
+<td><strong>バイユー</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>2 歲</td>
 <td>○</td>
-<td>名門牝系</td>
-<td><strong>30 年後單匹平均產值達 6.43 億 (全美第一)！</strong> 頂級少數精銳。</td>
+<td>能5 / 衡4 / 脈5 / 因3</td>
+<td>能力5＋牝系＋血脈5。因子・年齢が物足りない</td>
+</tr>
+<tr style="">
+<td><strong>シャマ</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>4 歲</td>
+<td>×</td>
+<td>能3 / 衡3 / 脈5 / 因5</td>
+<td>能力以外は優秀。父確立＋因子5＋種因子4＋若い</td>
+</tr>
+<tr style="">
+<td><strong>ティッピング</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td><span class="badge badge-ticket">緑札</span></td>
+<td>2 歲</td>
+<td>×</td>
+<td>能4 / 衡3 / 脈5 / 因4</td>
+<td>緑札で父確立＋種因子5。コスパ最強</td>
+</tr>
+<tr style="">
+<td><strong>アスピディストラ</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td><span class="badge badge-ticket">虹札</span></td>
+<td>2 歲</td>
+<td>×</td>
+<td>能5 / 衡5 / 脈5 / 因5</td>
+<td>アラネシアンの虹札版。金札が使えるならアラネシアン優先</td>
+</tr>
+<tr style="">
+<td><strong>スターマギー</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>4 歲</td>
+<td>×</td>
+<td>能5 / 衡4 / 脈4 / 因4</td>
+<td>能力5＋若い＋銀札。派手さはないが堅実</td>
+</tr>
+<tr style="">
+<td><strong>ベイビードール</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>2 歲</td>
+<td>×</td>
+<td>能3 / 衡3 / 脈5 / 因5</td>
+<td>父確立＋因子5＋種因子4。能力の低さを血統で補う</td>
+</tr>
+<tr style="">
+<td><strong>ラグルー</strong></td>
+<td><span class="pill pill-cyan">B 級</span></td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>5 歲</td>
+<td>×</td>
+<td>能4 / 衡4 / 脈5 / 因2</td>
+<td>年齢5＋血脈5＋バランス型。因子が弱い</td>
+</tr>
+<tr style="">
+<td><strong>マラータ</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>1 歲</td>
+<td>×</td>
+<td>能5 / 衡4 / 脈5 / 因3</td>
+<td>能力5だが年齢1。繁殖期間が短すぎる</td>
+</tr>
+<tr style="">
+<td><strong>レアトリート</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>1 歲</td>
+<td>○</td>
+<td>能5 / 衡5 / 脈3 / 因4</td>
+<td>能力5＋牝系だが年齢1＋血脈3＋種因子1</td>
+</tr>
+<tr style="">
+<td><strong>アンカーズウェイ</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>1 歲</td>
+<td>×</td>
+<td>能4 / 衡4 / 脈5 / 因4</td>
+<td>バランスは良いが年齢1が致命的</td>
+</tr>
+<tr style="">
+<td><strong>バンリアンオア</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">銅札</span></td>
+<td>1 歲</td>
+<td>×</td>
+<td>能4 / 衡3 / 脈5 / 因5</td>
+<td>因子・種因子・父確立は最強級。年齢1が全部台無しに</td>
+</tr>
+<tr style="">
+<td><strong>ラスマリー</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">虹札</span></td>
+<td>2 歲</td>
+<td>×</td>
+<td>能3 / 衡3 / 脈5 / 因5</td>
+<td>血統面は最強だが能力3＋虹。コスパが悪い</td>
+</tr>
+<tr style="">
+<td><strong>クイーンズスタテュート</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">虹札</span></td>
+<td>2 歲</td>
+<td>×</td>
+<td>能4 / 衡5 / 脈3 / 因4</td>
+<td>バランス5だが虹札の価値に見合わない</td>
+</tr>
+<tr style="">
+<td><strong>アーモリアル</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>2 歲</td>
+<td>○</td>
+<td>能3 / 衡4 / 脈3 / 因4</td>
+<td>牝系持ちだが能力3＋血脈3。金札が惜しい</td>
+</tr>
+<tr style="">
+<td><strong>モルフランダーズ</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>4 歲</td>
+<td>○</td>
+<td>能2 / 衡3 / 脈3 / 因4</td>
+<td>牝系＋若い＋因子そこそこ。能力2がきつい</td>
+</tr>
+<tr style="">
+<td><strong>スカーレットリリイ</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">銅札</span></td>
+<td>3 歲</td>
+<td>○</td>
+<td>能4 / 衡3 / 脈1 / 因1</td>
+<td>牝系持ちだが血脈1＋因子1。配合面が壊滅的</td>
+</tr>
+<tr style="">
+<td><strong>メアリーマクリー</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>1 歲</td>
+<td>×</td>
+<td>能4 / 衡3 / 脈5 / 因4</td>
+<td>能力4＋血脈5だが年齢1</td>
+</tr>
+<tr style="">
+<td><strong>パンプロナ</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>2 歲</td>
+<td>×</td>
+<td>能4 / 衡3 / 脈5 / 因2</td>
+<td>能力4だが因子・種因子・年齢が弱い</td>
+</tr>
+<tr style="">
+<td><strong>ナスリーン</strong></td>
+<td><span class="pill pill-power">C 級</span></td>
+<td><span class="badge badge-ticket">緑札</span></td>
+<td>3 歲</td>
+<td>×</td>
+<td>能3 / 衡3 / 脈3 / 因2</td>
+<td>種因子4だけが取り柄。緑札なので損はしない</td>
+</tr>
+<tr style="">
+<td><strong>タル</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>1 歲</td>
+<td>×</td>
+<td>能3 / 衡3 / 脈5 / 因4</td>
+<td>年齢1＋金札。見合わない</td>
+</tr>
+<tr style="">
+<td><strong>ギャラホスト</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">金札</span></td>
+<td>4 歲</td>
+<td>×</td>
+<td>能3 / 衡3 / 脈3 / 因3</td>
+<td>全項目が平凡なのに金札</td>
+</tr>
+<tr style="">
+<td><strong>アイリッシュルール</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">銅札</span></td>
+<td>4 歲</td>
+<td>×</td>
+<td>能2 / 衡3 / 脈5 / 因2</td>
+<td>血脈5以外に見どころがない</td>
+</tr>
+<tr style="">
+<td><strong>カウンテスロートレック</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">銅札</span></td>
+<td>4 歲</td>
+<td>×</td>
+<td>能2 / 衡3 / 脈5 / 因2</td>
+<td>アイリッシュルールと同系統。能力が低い</td>
+</tr>
+<tr style="">
+<td><strong>タミアナ</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">緑札</span></td>
+<td>4 歲</td>
+<td>×</td>
+<td>能2 / 衡2 / 脈5 / 因3</td>
+<td>能力もバランスも低い</td>
+</tr>
+<tr style="">
+<td><strong>ランニングアカウント</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">緑札</span></td>
+<td>5 歲</td>
+<td>×</td>
+<td>能3 / 衡4 / 脈5 / 因1</td>
+<td>若さと血脈5だけ。因子・種因子が両方1</td>
+</tr>
+<tr style="">
+<td><strong>ヒルブルック</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">銀札</span></td>
+<td>3 歲</td>
+<td>×</td>
+<td>能3 / 衡3 / 脈5 / 因1</td>
+<td>銀札なのに因子・種因子が両方1</td>
+</tr>
+<tr style="">
+<td><strong>ブルースパークラー</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">銅札</span></td>
+<td>1 歲</td>
+<td>×</td>
+<td>能3 / 衡3 / 脈5 / 因1</td>
+<td>年齢1＋因子1＋種因子1。厳しい</td>
+</tr>
+<tr style="">
+<td><strong>ペティショナー</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">虹札</span></td>
+<td>1 歲</td>
+<td>×</td>
+<td>能3 / 衡2 / 脈3 / 因2</td>
+<td>虹札でこのスペック。米国最大のトラップ</td>
+</tr>
+<tr style="">
+<td><strong>ポルトゥゲーザ</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">緑札</span></td>
+<td>1 歲</td>
+<td>×</td>
+<td>能1 / 衡2 / 脈5 / 因3</td>
+<td>能力1＋年齢1。繁殖に使うのは難しい</td>
+</tr>
+<tr style="">
+<td><strong>ドゥーグスドリーム</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">無印札</span></td>
+<td>3 歲</td>
+<td>×</td>
+<td>能3 / 衡2 / 脈3 / 因1</td>
+<td>無印なので入手しやすいが使い道がない</td>
+</tr>
+<tr style="">
+<td><strong>モナズギーギー</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">緑札</span></td>
+<td>3 歲</td>
+<td>×</td>
+<td>能2 / 衡2 / 脈1 / 因2</td>
+<td>血脈1は全42頭中ワースト</td>
+</tr>
+<tr style="">
+<td><strong>セドクレス</strong></td>
+<td><span class="pill pill-danger">D 級</span></td>
+<td><span class="badge badge-ticket">銅札</span></td>
+<td>1 歲</td>
+<td>×</td>
+<td>能1 / 衡3 / 脈3 / 因1</td>
+<td>能力1＋年齢1＋因子1。全項目が最低水準</td>
 </tr>
 </tbody>
 </table>
 </div>
 <!-- 七、1968 繁殖牝馬 30 年後實機驗證實錄 (始祖別 80 頭排行榜) -->
 <h3 style="font-size:1.05rem; color:var(--gold-color); margin:26px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-chart-line"></i> 七、1968 繁殖牝馬 30 年後實機推演實錄 (始祖別 80 頭大排行)
+<i class="fa-solid fa-chart-line"></i> 七、1968 繁殖牝馬 30 年後實機推演實錄 (始祖別全 24 位・共 80 頭繁殖牝馬完全大排行)
         </h3>
 <p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
-          《ウイポ脳》從 1968 年劇本實機推演 30 年，統計所有繁殖母馬後代頭數與目前評價額總和，驗證出最能打下百年王朝的始祖母馬：
+          《ウイポ脳》從 1968 年劇本實機推演 30 年，統計所有繁殖母馬後代頭數與目前評價額總和（總計 80 頭繁殖牝馬，歸納為 24 位始祖名門），以下為 100% 完整無遺漏之 80 頭實機推演大排行：
         </p>
 <div class="table-responsive" style="margin-bottom:20px;">
 <table class="data-table">
@@ -7284,34 +8308,34 @@ li {
 </thead>
 <tbody>
 <tr style="background:rgba(234,179,8,0.15);">
-<td><strong style="color:var(--gold-color);">👑 第 1 位</strong></td>
-<td><strong style="color:var(--gold-color);">オーハヤブサ (Oh Hayabusa)</strong></td>
+<td><strong>第 1 位</strong></td>
+<td><strong>オーハヤブサ (Oh Hayabusa)</strong></td>
 <td>🇯🇵 日本 (銀札)</td>
 <td><strong>11 頭 (第 1)</strong></td>
 <td><strong>23 億 9000 萬 (第 1)</strong></td>
-<td><strong>頭數與產值雙料總冠軍！</strong> 跨世代繁衍能力完全制霸，1968 最強始祖！</td>
+<td>頭數與產值雙料總冠軍！跨世代繁衍能力完全制霸，1968 最強始祖！</td>
 </tr>
 <tr style="background:rgba(56,189,248,0.08);">
-<td><strong style="color:#38bdf8;">🥈 第 2 位</strong></td>
-<td><strong style="color:#38bdf8;">アフェクショネイトリー</strong></td>
+<td><strong>第 2 位</strong></td>
+<td><strong>ミスケイコ (Miss Keiko)</strong></td>
+<td>🇯🇵 日本 (銅札)</td>
+<td><strong>7 頭 (第 2)</strong></td>
+<td><strong>6 億 5200 萬</strong></td>
+<td>銅札性價比最高代表！7 頭後代遍佈牧場，平民玩家開局救星！</td>
+</tr>
+<tr style="background:rgba(56,189,248,0.08);">
+<td><strong>第 3 位</strong></td>
+<td><strong>アフェクショネイトリー (Affectionately)</strong></td>
 <td>🇺🇸 美國 (金札)</td>
-<td>6 頭</td>
+<td><strong>6 頭 (第 3)</strong></td>
 <td><strong>13 億 1200 萬 (第 2)</strong></td>
 <td>美國產值冠軍！後代 G1 戰力極度強橫。</td>
-</tr>
-<tr style="background:rgba(56,189,248,0.08);">
-<td><strong style="color:#38bdf8;">🥉 第 3 位</strong></td>
-<td><strong style="color:#38bdf8;">カランドスタンプ</strong></td>
-<td>🇺🇸 美國 (金札)</td>
-<td>2 頭</td>
-<td><strong>12 億 8600 萬 (第 3)</strong></td>
-<td><strong>1 頭平均產值約 6.43 億 (效率第 1)！</strong> 真正意義上的少數精銳。</td>
 </tr>
 <tr>
 <td><strong>第 4 位</strong></td>
 <td><strong>タイムマンナ (Time Manna)</strong></td>
 <td>🇯🇵 日本 (銀札)</td>
-<td>5 頭</td>
+<td><strong>5 頭</strong></td>
 <td><strong>11 億 4700 萬</strong></td>
 <td>5 歲開局優勢徹底發揮，產值破 11 億之日本頂級支柱。</td>
 </tr>
@@ -7319,7 +8343,7 @@ li {
 <td><strong>第 5 位</strong></td>
 <td><strong>キャッスルフォーブス (Castle Forbes)</strong></td>
 <td>🇺🇸 美國 (銀札)</td>
-<td>5 頭</td>
+<td><strong>5 頭</strong></td>
 <td><strong>9 億 9100 萬</strong></td>
 <td>銀札超值回報，美國血統奠基主力。</td>
 </tr>
@@ -7327,41 +8351,153 @@ li {
 <td><strong>第 6 位</strong></td>
 <td><strong>ラペーヴァ (Lapeva)</strong></td>
 <td>🇪🇺 歐洲 (金札)</td>
-<td>5 頭</td>
+<td><strong>5 頭</strong></td>
 <td><strong>9 億 5000 萬</strong></td>
 <td>歐洲產值第一母本！</td>
 </tr>
 <tr>
 <td><strong>第 7 位</strong></td>
-<td><strong>トキノキロク (Tokino Kiroku)</strong></td>
-<td>🇯🇵 日本 (銀札)</td>
-<td>4 頭</td>
-<td><strong>7 億 5800 萬</strong></td>
-<td>穩定產出重賞冠軍後代。</td>
+<td><strong>シラオキ (白沖 / Shiraoki)</strong></td>
+<td>🇯🇵 日本 (金札)</td>
+<td><strong>5 頭</strong></td>
+<td><strong>6 億 8200 萬</strong></td>
+<td>高齡產出仍極為出色，日本近代名門之源。</td>
 </tr>
 <tr>
 <td><strong>第 8 位</strong></td>
-<td><strong>シラオキ (白沖 / Shiraoki)</strong></td>
-<td>🇯🇵 日本 (金札)</td>
-<td>5 頭</td>
-<td><strong>6 億 8200 萬</strong></td>
-<td>高齡產出仍極為出色，日本近代名門之源。</td>
+<td><strong>トキノキロク (Tokino Kiroku)</strong></td>
+<td>🇯🇵 日本 (銀札)</td>
+<td><strong>4 頭</strong></td>
+<td><strong>7 億 5800 萬</strong></td>
+<td>穩定產出重賞冠軍後代。</td>
 </tr>
 <tr>
 <td><strong>第 9 位</strong></td>
 <td><strong>ハイクレア (Highclere)</strong></td>
 <td>🇪🇺 歐洲 (金札)</td>
-<td>4 頭</td>
+<td><strong>4 頭</strong></td>
 <td><strong>6 億 5300 萬</strong></td>
 <td>伊莉莎白女王御用名系，後勁十足。</td>
 </tr>
 <tr>
 <td><strong>第 10 位</strong></td>
-<td><strong>ミスケイコ (Miss Keiko)</strong></td>
+<td><strong>ダーリア (Dahlia)</strong></td>
+<td>🇪🇺 歐洲 (金札)</td>
+<td><strong>4 頭</strong></td>
+<td><strong>2 億 8800 萬</strong></td>
+<td>歐洲女皇，直系血統戰力扎實。</td>
+</tr>
+<tr>
+<td><strong>第 11 位</strong></td>
+<td><strong>アレフランス (Allez France)</strong></td>
+<td>🇪🇺 歐洲 (虹札)</td>
+<td><strong>4 頭</strong></td>
+<td><strong>2 億 200 萬</strong></td>
+<td>凱旋門賞冠軍名雌，後代傳承穩定。</td>
+</tr>
+<tr>
+<td><strong>第 12 位</strong></td>
+<td><strong>クレイレッサ (Clayressa)</strong></td>
+<td>🇪🇺 歐洲 (金札)</td>
+<td><strong>3 頭</strong></td>
+<td><strong>3 億 5300 萬</strong></td>
+<td>歐洲優質中堅母本。</td>
+</tr>
+<tr>
+<td><strong>第 13 位</strong></td>
+<td><strong>カランドスタンプ (Currandamp)</strong></td>
+<td>🇺🇸 美國 (金札)</td>
+<td><strong>2 頭</strong></td>
+<td><strong>12 億 8600 萬 (第 3)</strong></td>
+<td>1 頭平均產值約 6.43 億 (效率第 1)！真正意義上的少數精銳。</td>
+</tr>
+<tr>
+<td><strong>第 14 位</strong></td>
+<td><strong>トシマンナ (Toshimanna)</strong></td>
+<td>🇯🇵 日本 (金札)</td>
+<td><strong>2 頭</strong></td>
+<td><strong>6 億 3800 萬</strong></td>
+<td>日本高產值名門代表。</td>
+</tr>
+<tr>
+<td><strong>第 15 位</strong></td>
+<td><strong>ファストターン (Fast Turn)</strong></td>
+<td>🇺🇸 美國 (虹札)</td>
+<td><strong>2 頭</strong></td>
+<td><strong>1 億 5400 萬</strong></td>
+<td>五維頂尖，後續發揮穩健。</td>
+</tr>
+<tr>
+<td><strong>第 16 位</strong></td>
+<td><strong>ピア (Pia)</strong></td>
+<td>🇪🇺 歐洲 (金札)</td>
+<td><strong>2 頭</strong></td>
+<td><strong>1 億 4600 萬</strong></td>
+<td>歐洲名牝系確立支柱。</td>
+</tr>
+<tr>
+<td><strong>第 17 位</strong></td>
+<td><strong>テスコガビー (Tesco Gaby)</strong></td>
+<td>🇯🇵 日本 (金札)</td>
+<td><strong>2 頭</strong></td>
+<td><strong>1 億 2500 萬</strong></td>
+<td>極速一哩名雌後代。</td>
+</tr>
+<tr>
+<td><strong>第 18 位</strong></td>
+<td><strong>ゲイムリー (Gamely)</strong></td>
+<td>🇺🇸 美國 (金札)</td>
+<td><strong>1 頭</strong></td>
+<td><strong>1 億 6900 萬</strong></td>
+<td>單匹即創造 1.69 億高額回報。</td>
+</tr>
+<tr>
+<td><strong>第 19 位</strong></td>
+<td><strong>サバナスターリナ (Sabana Starlina)</strong></td>
+<td>🇪🇺 歐洲 (金札)</td>
+<td><strong>1 頭</strong></td>
+<td><strong>4800 萬</strong></td>
+<td>平穩傳承。</td>
+</tr>
+<tr>
+<td><strong>第 20 位</strong></td>
+<td><strong>ラフィアン (Ruffian / 拉菲安)</strong></td>
+<td>🇺🇸 美國 (虹札)</td>
+<td><strong>1 頭</strong></td>
+<td><strong>4600 萬</strong></td>
+<td>傳奇不敗女帝。</td>
+</tr>
+<tr>
+<td><strong>第 21 位</strong></td>
+<td><strong>ミスズクイン (Misuzu Queen)</strong></td>
 <td>🇯🇵 日本 (銅札)</td>
-<td><strong>7 頭 (頭數第 2)</strong></td>
-<td><strong>6 億 5200 萬</strong></td>
-<td><strong>銅札性價比最高代表！</strong> 7 頭後代遍佈牧場，平民玩家開局救星！</td>
+<td><strong>1 頭</strong></td>
+<td><strong>4100 萬</strong></td>
+<td>銅札經濟實惠。</td>
+</tr>
+<tr>
+<td><strong>第 22 位</strong></td>
+<td><strong>ゾナー (Zonah)</strong></td>
+<td>🇺🇸 美國 (金札)</td>
+<td><strong>1 頭</strong></td>
+<td><strong>3700 萬</strong></td>
+<td>配合特化型頂級聖獸。</td>
+</tr>
+<tr>
+<td><strong>第 23 位</strong></td>
+<td><strong>トサモアー (Tosamoa)</strong></td>
+<td>🇯🇵 日本 (銀札)</td>
+<td><strong>1 頭</strong></td>
+<td><strong>3500 萬</strong></td>
+<td>傳統耐力血脈。</td>
+</tr>
+<tr>
+<td><strong>第 24 位</strong></td>
+<td><strong>クイル (Quill)</strong></td>
+<td>🇺🇸 美國 (金札)</td>
+<td><strong>1 頭</strong></td>
+<td><strong>3000 萬</strong></td>
+<td>全能型草泥母本。</td>
 </tr>
 </tbody>
 </table>
@@ -8807,5 +9943,151 @@ li {
             init();
         }
     </script>
+
+    <!-- Pillar 8: 📊 實戰 13 大跑法比賽戰績紀錄儀 (Race Tactics Tracker) -->
+    <div id="pillar-tracker" class="pillar-content" style="display:none;">
+        <div class="pillar-header-card">
+            <h2>📊 實戰 13 大跑法比賽戰績紀錄儀 (Race Tactics Tracker)</h2>
+            <p>即時紀錄賽駒在 13 種跑法下之賽事名次，支援本地自動持久化儲存、Google Sheets 雲端同步與 CSV 匯出/匯入</p>
+        </div>
+
+        <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:20px; margin-bottom:24px;">
+            <h3 style="color:var(--accent-color); font-size:1.05rem; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+                <i class="fa-solid fa-pen-to-square"></i> 填寫賽事與 13 跑法名次表單
+            </h3>
+            
+            <input type="hidden" id="editingRecordId" value="">
+
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:14px; margin-bottom:18px;">
+                <div class="filter-group">
+                    <label for="trackYear"><i class="fa-solid fa-calendar"></i> 年度 (Year)</label>
+                    <input type="number" id="trackYear" class="filter-control" value="1968" min="1968" max="2035">
+                </div>
+
+                <div class="filter-group">
+                    <label for="trackWeek"><i class="fa-solid fa-clock"></i> 週別 (Week)</label>
+                    <select id="trackWeek" class="filter-control">
+                        <!-- Weeks generated dynamically -->
+                    </select>
+                </div>
+
+                <div class="filter-group" style="grid-column: span 2;">
+                    <label for="trackRace"><i class="fa-solid fa-trophy"></i> 比賽名稱 (Race Name)</label>
+                    <div style="display:flex; gap:6px;">
+                        <select id="trackRaceSelect" class="filter-control" style="width:50%;" onchange="if(this.value!='CUSTOM') document.getElementById('trackRace').value=this.value;">
+                            <option value="日本ダービー (東京・芝2400m)">🇯🇵 日本ダービー (日本德比)</option>
+                            <option value="有馬記念 (中山・芝2500m)">🇯🇵 有馬記念 (有馬紀念)</option>
+                            <option value="ジャパンカップ (東京・芝2400m)">🇯🇵 ジャパンC (日本盃)</option>
+                            <option value="皐月賞 (中山・芝2000m)">🇯🇵 皐月賞 (皋月賞)</option>
+                            <option value="菊花賞 (京都・芝3000m)">🇯🇵 菊花賞 (菊花賞)</option>
+                            <option value="天皇賞・秋 (東京・芝2000m)">🇯🇵 天皇賞・秋 (秋天)</option>
+                            <option value="天皇賞・春 (京都・芝3200m)">🇯🇵 天皇賞・春 (春天)</option>
+                            <option value="宝塚記念 (阪神・芝2200m)">🇯🇵 宝塚記念 (寶塚紀念)</option>
+                            <option value="安田記念 (東京・芝1600m)">🇯🇵 安田記念 (安田紀念)</option>
+                            <option value="マイルCS (京都・芝1600m)">🇯🇵 マイルCS (一哩冠軍賽)</option>
+                            <option value="凱旋門賞 (巴黎ロンシャン・芝2400m)">🇫🇷 凱旋門賞 (凱旋門大賽)</option>
+                            <option value="BCクラシック (美・ダ2000m)">🇺🇸 BCクラシック (育馬者盃經典)</option>
+                            <option value="ドバイワールドC (杜拜・ダ2000m)">🇦🇪 ドバイワールドC (杜拜世界盃)</option>
+                            <option value="香港カップ (沙田・芝2000m)">🇭🇰 香港カップ (香港盃)</option>
+                            <option value="CUSTOM">✏️ 自定義賽事名稱...</option>
+                        </select>
+                        <input type="text" id="trackRace" class="filter-control" value="日本ダービー (東京・芝2400m)" placeholder="或自行輸入賽事名稱...">
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label for="trackHorse"><i class="fa-solid fa-horse"></i> 賽駒名稱 (Horse)</label>
+                    <input type="text" id="trackHorse" class="filter-control" placeholder="如: オーハヤブサ, テイオー...">
+                </div>
+
+                <div class="filter-group">
+                    <label for="trackJockey"><i class="fa-solid fa-user-astronaut"></i> 騎手名稱 (Jockey)</label>
+                    <input type="text" id="trackJockey" class="filter-control" placeholder="如: 武豊, 岡部幸雄, 魯傑羅...">
+                </div>
+            </div>
+
+            <!-- 13 跑法名次填寫矩陣 -->
+            <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:16px; margin-bottom:18px;">
+                <div style="font-weight:bold; color:var(--gold-color); font-size:0.92rem; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-list-ol"></i> 13 種跑法實戰名次矩陣填寫 (可填入名次如 1, 2, 3 或留空未測試)
+                </div>
+                <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap:10px;" id="tacticsInputsContainer">
+                    <!-- 13 tactics inputs generated dynamically -->
+                </div>
+            </div>
+
+            <!-- 操作按鈕列 -->
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                <button class="header-btn btn-gold" id="btnSaveTrackRecord" onclick="saveTacticsRecord()" style="padding:8px 20px; font-size:0.9rem;">
+                    <i class="fa-solid fa-floppy-disk"></i> <span id="saveBtnText">新增這筆戰績紀錄</span>
+                </button>
+                <button class="header-btn" onclick="clearTacticsForm()" style="padding:8px 16px; font-size:0.85rem;">
+                    <i class="fa-solid fa-rotate-left"></i> 清空表單
+                </button>
+            </div>
+        </div>
+
+        <!-- Google Sheets 雲端同步與備份卡片 -->
+        <div style="background:var(--panel-bg); border:1px solid var(--border-accent); border-radius:12px; padding:18px 20px; margin-bottom:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+                <h3 style="color:#38bdf8; font-size:0.95rem; margin:0; display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Google Sheets 雲端同步與備份管理
+                </h3>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button class="header-btn" onclick="syncToGoogleSheets()" style="background:#059669; color:#fff; border:none; padding:6px 14px; font-size:0.82rem;">
+                        <i class="fa-solid fa-bolt"></i> 🚀 一鍵同步至 Google Sheets
+                    </button>
+                    <button class="header-btn" onclick="exportTacticsCsv()" style="padding:6px 12px; font-size:0.82rem;">
+                        <i class="fa-solid fa-file-csv"></i> 匯出 CSV 檔
+                    </button>
+                    <button class="header-btn" onclick="exportTacticsJson()" style="padding:6px 12px; font-size:0.82rem;">
+                        <i class="fa-solid fa-download"></i> 匯出 JSON
+                    </button>
+                    <label class="header-btn" style="padding:6px 12px; font-size:0.82rem; cursor:pointer;">
+                        <i class="fa-solid fa-upload"></i> 匯入 JSON
+                        <input type="file" id="importJsonInput" accept=".json" style="display:none;" onchange="importTacticsJson(event)">
+                    </label>
+                </div>
+            </div>
+
+            <div style="margin-bottom:8px;">
+                <label for="gSheetUrl" style="font-size:0.8rem; color:var(--text-muted);">🔗 Google Apps Script Web App URL (選填，若有部屬 Apps Script 可填入直接雙向寫入 Google 試算表)：</label>
+                <input type="text" id="gSheetUrl" class="filter-control" placeholder="https://script.google.com/macros/s/AKfycbx.../exec" style="font-size:0.82rem; padding:6px 10px; margin-top:4px;" onchange="localStorage.setItem('WP10_GSHEET_URL', this.value)">
+            </div>
+            <div id="syncStatusMsg" style="font-size:0.8rem; color:#10b981; margin-top:4px;"></div>
+        </div>
+
+        <!-- 戰績紀錄總表 -->
+        <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+                <h3 style="color:var(--text-main); font-size:1rem; margin:0; display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-table-list"></i> 跑法戰績紀錄清單 (共 <span id="trackRecordCount" style="color:var(--gold-color);">0</span> 筆)
+                </h3>
+                <div>
+                    <input type="text" id="trackSearchFilter" class="filter-control" placeholder="🔍 搜尋馬名/賽事/騎手..." style="font-size:0.82rem; padding:5px 10px; width:220px;" oninput="renderTacticsTable()">
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="data-table" id="tacticsRecordsTable">
+                    <thead>
+                        <tr>
+                            <th style="min-width:110px;">年度/週別</th>
+                            <th style="min-width:180px;">賽事名稱</th>
+                            <th style="min-width:130px;">賽駒名稱</th>
+                            <th style="min-width:110px;">騎手</th>
+                            <th style="min-width:440px;">13 跑法實戰名次清單</th>
+                            <th style="min-width:140px;">最優推薦跑法</th>
+                            <th style="min-width:100px; text-align:center;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tacticsRecordsBody">
+                        <!-- Dynamic Records -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
