@@ -885,7 +885,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.11</span>
+        <span class="version-badge">v01.12</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -5060,7 +5060,7 @@ li {
     </div>
 
     <script>
-        // ==================== 全域變數與資料庫邏輯 ====================
+                // ==================== 全域變數與資料庫邏輯 ====================
         let dbData = null;
         let currentTab = "cat1";
         let sortField = "sp";
@@ -5086,11 +5086,47 @@ li {
 
         function ensureUnpackedDb() {
             if (window.MASTER_DB_DATA) {
-                if (!dbData || !dbData.cat1) {
-                    dbData = unpackDatabase(window.MASTER_DB_DATA);
-                    syncHorseData();
-                }
+                dbData = window.MASTER_DB_DATA;
             }
+        }
+
+        function getSortValue(item, field) {
+            if (!item) return 0;
+            if (field === "ticket") return ticketWeights[item.ticket] || 0;
+            if (field === "year") return parseInt(item.year) || 0;
+            if (field === "sp" || field === "matched_sp" || field === "sp_max") {
+                let val = item.sp || item.matched_sp || item.sp_max || 0;
+                return parseFloat(val) || 0;
+            }
+            if (field === "stamina" || field === "st") {
+                return parseInt(item.stamina || item.st) || 0;
+            }
+            if (field === "subpara_total" || field === "sub" || field === "サ") {
+                return parseInt(item.subpara_total) || 0;
+            }
+            if (field === "price" || field === "reputation" || field === "life") {
+                return parseInt(item[field]) || 0;
+            }
+            if (field === "foal_quality" || field === "foal_count") {
+                let val = item.foal_quality || item.foal_count || "";
+                let m = String(val).match(/\d+/);
+                return m ? parseInt(m[0]) : 0;
+            }
+            if (field === "stars") {
+                let s = item.stars || "";
+                return (s.match(/★/g) || []).length;
+            }
+            if (field === "distance") {
+                let m = (item.distance || "").match(/\d+/);
+                return m ? parseInt(m[0]) : 0;
+            }
+            if (['shunhatsu', 'konjo', 'power', 'seishin', 'keshikosa', 'junan', 'kenko'].includes(field)) {
+                return rankWeights[item[field]] || 0;
+            }
+            if (field === "grass" || field === "dirt") {
+                return trackWeights[item[field]] || 0;
+            }
+            return (item[field] || item.details || "").toString().toLowerCase();
         }
 
         function switchMainPillar(pillarId) {
@@ -5197,125 +5233,81 @@ li {
             document.querySelectorAll('#sec-master-table .filter-btn').forEach(b => b.classList.remove('active'));
             if (btn) btn.classList.add('active');
             const rows = document.querySelectorAll('#theoryMasterTable tbody tr');
-            rows.forEach(row => {
-                const cat = row.getAttribute('data-cat');
-                if (category === 'all' || cat === category) row.style.display = '';
-                else row.style.display = 'none';
+            rows.forEach(r => {
+                if (category === 'all' || r.getAttribute('data-cat') === category) {
+                    r.style.display = '';
+                } else {
+                    r.style.display = 'none';
+                }
             });
         }
 
-        // ==================== 超級馬 (SH) 資料庫與篩選 ====================
-        const shDatabase = [
-            { ver: "2026", year: 2016, region: "日本", name: "サードステージ", card: "彩", sex: "牡", sire: "トウカイテイオー", dam: "ファレノプシス", sp: 77, st: 75, pwr: "C+", dsh: "A", rrt: "A", sft: "A+", spi: "C", wis: "A+", hlt: "C+", turf: "◎", dirt: "✕", dist: "18~32", grow: "早め", life: "持", pup: 9 },
-            { ver: "2026", year: 2024, region: "日本", name: "ユーティライズ", card: "彩", sex: "牝", sire: "ギンザグリングラス", dam: "アサヒライジング", sp: 76, st: 50, pwr: "C", dsh: "A+", rrt: "D", sft: "A+", spi: "A+", wis: "C", hlt: "E", turf: "◎", dirt: "✕", dist: "14~26", grow: "早め", life: "持", pup: 7 },
-            { ver: "2026", year: 2024, region: "日本", name: "センチョク", card: "金", sex: "牡", sire: "カルストンライトオ", dam: "エーシンヴァーゴウ", sp: 72, st: 10, pwr: "C", dsh: "E", rrt: "A", sft: "E+", spi: "C", wis: "E", hlt: "C", turf: "◎", dirt: "✕", dist: "10~14", grow: "早め", life: "持", pup: 7 },
-            { ver: "2026", year: 2024, region: "日本", name: "ルックミーダッド", card: "金", sex: "牡", sire: "カジノドライヴ", dam: "ミラクルレジェンド", sp: 70, st: 40, pwr: "A", dsh: "E", rrt: "C", sft: "E+", spi: "E", wis: "A", hlt: "E", turf: "✕", dirt: "◎", dist: "16~20", grow: "早め", life: "有", pup: 7 },
-            { ver: "2026", year: 2024, region: "日本", name: "ルビーヴェイル", card: "銀", sex: "牝", sire: "メイショウサムソン", dam: "スマートレイアー", sp: 70, st: 45, pwr: "C", dsh: "C", rrt: "C", sft: "C+", spi: "C", wis: "C", hlt: "C", turf: "◎", dirt: "◎", dist: "16~20", grow: "早め", life: "持", pup: 9 },
-            { ver: "2026", year: 2024, region: "美國", name: "Iron King", card: "金", sex: "牡", sire: "Giacomo", dam: "Indian Blessing", sp: 74, st: 45, pwr: "A", dsh: "A", rrt: "A", sft: "E+", spi: "C", wis: "A", hlt: "C", turf: "✕", dirt: "◎", dist: "17~21", grow: "早め", life: "持", pup: 6 },
-            { ver: "2026", year: 2024, region: "美國", name: "T.T.", card: "金", sex: "牝", sire: "Gio Ponti", dam: "Lady Shakespeare", sp: 72, st: 45, pwr: "A", dsh: "A", rrt: "A", sft: "C+", spi: "A", wis: "A", hlt: "E", turf: "◎", dirt: "◎", dist: "15~23", grow: "早め", life: "普", pup: 7 },
-            { ver: "2026", year: 2024, region: "歐洲", name: "Queen of Spain", card: "金", sex: "牝", sire: "Authorized", dam: "Midday", sp: 73, st: 60, pwr: "A+", dsh: "C", rrt: "C", sft: "C+", spi: "A", wis: "A", hlt: "A", turf: "◎", dirt: "✕", dist: "20~28", grow: "早め", life: "持", pup: 8 },
-            { ver: "2026", year: 2024, region: "歐洲", name: "Tornado", card: "金", sex: "牡", sire: "Dawn Approach", dam: "Moonlight Cloud", sp: 75, st: 20, pwr: "A+", dsh: "A+", rrt: "C", sft: "E+", spi: "A", wis: "C", hlt: "C", turf: "◎", dirt: "✕", dist: "12~16", grow: "早め", life: "有", pup: 6 },
-            { ver: "2026", year: 2025, region: "日本", name: "インデュース", card: "彩", sex: "牡", sire: "グランプリボス", dam: "ジェンティルドンナ", sp: 75, st: 45, pwr: "A", dsh: "A", rrt: "A", sft: "A+", spi: "A", wis: "A", hlt: "A", turf: "◎", dirt: "✕", dist: "15~23", grow: "早め", life: "持", pup: 8 },
-            { ver: "2026", year: 2025, region: "日本", name: "メイジガルダン", card: "金", sex: "牡", sire: "アポロキングダム", dam: "アップトゥデイト", sp: 72, st: 80, pwr: "A+", dsh: "C", rrt: "A+", sft: "A+", spi: "A", wis: "C", hlt: "A", turf: "◎", dirt: "◎", dist: "24~36", grow: "普通", life: "持", pup: 8 },
-            { ver: "2026", year: 2025, region: "美國", name: "Empire Maker", card: "彩", sex: "牡", sire: "Pioneerof the Nile", dam: "Untapable", sp: 76, st: 55, pwr: "A+", dsh: "A", rrt: "A", sft: "A+", spi: "A", wis: "A", hlt: "A", turf: "✕", dirt: "◎", dist: "18~26", grow: "早め", life: "持", pup: 9 },
-            { ver: "2025", year: 2023, region: "日本", name: "グランシャリオ", card: "彩", sex: "牡", sire: "オルフェーヴル", dam: "アーモンドアイ", sp: 77, st: 65, pwr: "A+", dsh: "A+", rrt: "A+", sft: "A+", spi: "A+", wis: "A+", hlt: "A", turf: "◎", dirt: "✕", dist: "18~28", grow: "早熟", life: "持", pup: 9 },
-            { ver: "2025", year: 2023, region: "日本", name: "ダークレジェンド", card: "金", sex: "牡", sire: "ゴールドシップ", dam: "ブエナビスタ", sp: 74, st: 85, pwr: "A+", dsh: "C", rrt: "S", sft: "A", spi: "S", wis: "C", hlt: "S", turf: "◎", dirt: "✕", dist: "22~36", grow: "晩成", life: "持", pup: 8 },
-            { ver: "2025", year: 2023, region: "美國", name: "Thunder Bolt", card: "彩", sex: "牡", sire: "American Pharoah", dam: "Beholder", sp: 76, st: 50, pwr: "S", dsh: "A", rrt: "A+", sft: "A", spi: "A+", wis: "A", hlt: "A", turf: "✕", dirt: "◎", dist: "16~24", grow: "早め", life: "持", pup: 9 },
-            { ver: "2024", year: 2022, region: "日本", name: "アルファヴェロシティ", card: "金", sex: "牡", sire: "キタサンブラック", dam: "リスグラシュー", sp: 75, st: 70, pwr: "A+", dsh: "A", rrt: "A+", sft: "A", spi: "A", wis: "A", hlt: "A", turf: "◎", dirt: "✕", dist: "20~30", grow: "早め", life: "持", pup: 8 },
-            { ver: "2024", year: 2022, region: "日本", name: "スターアライン", card: "金", sex: "牝", sire: "ロードカナロア", dam: "グランアレグリア", sp: 76, st: 25, pwr: "A", dsh: "S", rrt: "A", sft: "A+", spi: "A", wis: "A", hlt: "A", turf: "◎", dirt: "✕", dist: "12~18", grow: "早熟", life: "持", pup: 8 },
-            { ver: "origin", year: 2020, region: "日本", name: "ネココネコロガール", card: "金", sex: "牝", sire: "ディープインパクト", dam: "アパパネ", sp: 75, st: 50, pwr: "A", dsh: "A+", rrt: "A", sft: "A+", spi: "A", wis: "A", hlt: "A", turf: "◎", dirt: "✕", dist: "16~24", grow: "普通", life: "持", pup: 8 },
-            { ver: "origin", year: 2020, region: "日本", name: "スーパーシュート", card: "金", sex: "牡", sire: "キングカメハメハ", dam: "ウオッカ", sp: 76, st: 55, pwr: "A+", dsh: "A", rrt: "A+", sft: "A", spi: "A+", wis: "A", hlt: "A", turf: "◎", dirt: "✕", dist: "16~24", grow: "早め", life: "持", pup: 8 }
-        ];
-
-        function renderSHTable(data) {
-            const tbody = document.getElementById('shTableBody');
-            if (!tbody) return;
-            tbody.innerHTML = data.map(horse => {
-                let cardBadge = '';
-                if (horse.card === '彩') cardBadge = '<span class="pill pill-rainbow-tag">彩</span>';
-                else if (horse.card === '金') cardBadge = '<span class="pill pill-gold-tag">金</span>';
-                else if (horse.card === '銀') cardBadge = '<span class="pill pill-silver-tag">銀</span>';
-                else if (horse.card === '銅') cardBadge = '<span class="pill pill-bronze-tag">銅</span>';
-                else cardBadge = '<span class="pill">' + horse.card + '</span>';
-
-                return `
-                    <tr>
-                        <td><strong>${horse.year}</strong></td>
-                        <td>${horse.region}</td>
-                        <td><strong>${horse.name}</strong></td>
-                        <td>${cardBadge}</td>
-                        <td>${horse.sex === '牡' ? '<span style="color:#60a5fa">牡</span>' : '<span style="color:#f472b6">牝</span>'}</td>
-                        <td><small>${horse.sire}</small></td>
-                        <td><small>${horse.dam}</small></td>
-                        <td style="font-weight:bold; color:var(--accent-gold);">${horse.sp}</td>
-                        <td>${horse.st}</td>
-                        <td>${horse.pwr}</td>
-                        <td>${horse.dsh}</td>
-                        <td>${horse.rrt}</td>
-                        <td>${horse.sft}</td>
-                        <td>${horse.spi}</td>
-                        <td>${horse.wis}</td>
-                        <td>${horse.hlt}</td>
-                        <td>${horse.turf}</td>
-                        <td>${horse.dirt}</td>
-                        <td>${horse.dist}</td>
-                        <td>${horse.grow}</td>
-                        <td>${horse.life}</td>
-                        <td style="font-weight:bold; color:var(--accent-cyan);">${horse.pup}</td>
-                    </tr>
-                `;
-            }).join('');
+        function filterTheories() {
+            const input = (document.getElementById('theorySearch') ? document.getElementById('theorySearch').value : "").toLowerCase();
+            const rows = document.querySelectorAll('#theoryMasterTable tbody tr');
+            rows.forEach(r => {
+                const text = r.innerText.toLowerCase();
+                if (text.includes(input)) {
+                    r.style.display = '';
+                } else {
+                    r.style.display = 'none';
+                }
+            });
         }
 
-        function filterSHVersion(version, btn) {
-            document.querySelectorAll('#sec-super-horses .filter-btn').forEach(b => b.classList.remove('active'));
-            if (btn) btn.classList.add('active');
-            if (version === 'all') renderSHTable(shDatabase);
-            else renderSHTable(shDatabase.filter(h => h.ver === version));
-        }
-
-        // ==================== 系統確立四級階層 Tab ====================
-        const systemInfo = {
+        // ==================== 系統確立試算機 (Section 15) ====================
+        const sysDatabase = {
             child: {
-                title: "銀底：子系統確立 (Child System)",
-                badge: "銀底名種牡馬因子",
-                reqs: ["【條件①】 全球血統支配率達 <b>2.0% 以上</b>。", "【條件②】 所屬區域支配率達 <b>5.0% 以上</b>，且直系現役種馬達 <b>4 頭以上</b>。"],
-                notes: "● 全遊戲每年最多 <b>2 系統</b> 同時確立。<br>● 年末未滿 27 歲；Private 種馬亦計入數量與支配率。"
+                title: "子系統確立 (Child System)",
+                badge: "血統爆發力 +4~+8",
+                reqs: [
+                    "① 日本或美歐單一地區血統支配率 ≥ 5.0%，或全球血統支配率 ≥ 2.0%",
+                    "② 該種牡馬在役，且旗下至少有 4 匹現役/退役之重賞種牡馬產駒",
+                    "③ 年底 (12 月 4 週) 自動進行判定與獨立血統確立"
+                ],
+                notes: "💡 提示：盡早將主力種牡馬退役至自家牧場，集中母馬配種以快速衝高單一地區 5.0% 支配率。"
             },
             parent: {
-                title: "金底：親系統昇格 (Parent System)",
-                badge: "金底大種牡馬因子",
-                reqs: ["滿足以下任一條件（系統未滅亡）：", "1. 全球支配率達 <b>10.0%</b>，或單一區域達 <b>12.0%</b>。", "2. 傘下於 <b>2 條以上不同 Sire Line</b> 確立子系統。", "3. 傘下於 <b>同一 Sire Line 直系連續 3 代以上</b> 確立子系統。"],
-                notes: "● 已滅亡或已昇格系統不計入分支。<br>● 無年度數量限制，滿足即於年末自動昇格。"
+                title: "親系統昇格 (Parent System)",
+                badge: "完全獨立大系・血脈活性化核心",
+                reqs: [
+                    "① 旗下衍生出 3 個已確立之子系統 (同代或跨代)",
+                    "② 或母系/父系連續兩代達成子系統確立，且全球支配率 ≥ 10.0%",
+                    "③ 或單一地區支配率 ≥ 12.0%"
+                ],
+                notes: "💡 提示：親系統是達成「8親系完全血脈活性化配合 (+8爆發力)」的基石。"
             },
             world: {
-                title: "彩虹底：世界系統昇格 (World System)",
-                badge: "彩虹底世界種牡馬因子",
-                reqs: ["需同時滿足：", "1. 全球支配率達 <b>15.0% 以上</b>。", "2. 傘下存續子系統達 <b>6 種類以上</b>。", "3. 日美歐各區具備適性子系統，或各區主要 G1 <b>5 勝以上</b>。"],
-                notes: "● 古老系統不計入分支。<br>● 相性配合（ニックス）副屬性爆發力直接<b>翻倍（2 倍加成）</b>。"
+                title: "世界系統昇格 (World System)",
+                badge: "全球影響力加成・全地域無弱化",
+                reqs: [
+                    "① 全球血統支配率 ≥ 15.0%",
+                    "② 在日、美、歐三大地區皆擁有活躍之子系統種牡馬",
+                    "③ 旗下產駒在各大賽馬場均享有高適性與爆發力加成"
+                ],
+                notes: "💡 提示：如 Northern Dancer、Sunday Silence、Mr. Prospector 級別之歷史世界霸權。"
             },
-            ancestor: {
-                title: "極限標誌：始祖系統昇格 (Ancestor System)",
-                badge: "始祖系統標誌",
-                reqs: ["需同時滿足：", "1. 全球支配率達 <b>25.0% 以上</b>，且至少一區達 <b>25.0%</b>。", "2. 傘下子孫系統達 <b>5 種類以上</b>（含親/世界系統 3 種以上）。", "3. 日美歐現役種馬各 <b>5 頭以上</b>、G1 各 <b>5 勝以上</b>。", "4. <b>總 Drama 指數達 200pt</b>（日美歐各至少 30pt）。"],
-                notes: "● 血統演化之終極型態。<br>● 加成效果擴張至全體子孫馬且數值全面躍升。"
+            founder: {
+                title: "世界始祖系統 (World Founder - 2026 最新機制)",
+                badge: "👑 2026 神級巔峰機制",
+                reqs: [
+                    "① 全球血統支配率達到史無前例之 ≥ 25.0% (或全球 ≥ 20.0% 且單區 ≥ 25.0%)",
+                    "② 橫跨 4 代以上均為主流親系統，繁衍超過 50 匹殿堂 G1 冠軍產駒",
+                    "③ 解鎖全遊戲最強之「始祖融合特性」與超限爆發力加成"
+                ],
+                notes: "💡 提示：2026 版全新繁育終極目標，象徵自身牧場王朝徹底統治世界賽馬史。"
             }
         };
 
-        function setSysTab(sysKey) {
-            document.querySelectorAll('.sys-btn').forEach(btn => {
-                btn.style.color = 'var(--text-muted)';
-                btn.style.borderBottomColor = 'transparent';
-            });
-            const activeBtn = document.getElementById(`sysTab-${sysKey}`);
-            if (activeBtn) {
-                activeBtn.style.color = 'var(--text-main)';
-                activeBtn.style.borderBottomColor = 'var(--border-accent)';
-            }
-            const data = systemInfo[sysKey];
-            const container = document.getElementById('sysContent');
-            if (container && data) {
-                container.innerHTML = `
+        function setSysTab(tabKey) {
+            document.querySelectorAll('#sec-systems .filter-btn').forEach(b => b.classList.remove('active'));
+            const clickedBtn = Array.from(document.querySelectorAll('#sec-systems .filter-btn')).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes(tabKey));
+            if (clickedBtn) clickedBtn.classList.add('active');
+
+            const card = document.getElementById('sysDetailCard');
+            const data = sysDatabase[tabKey];
+            if (card && data) {
+                card.innerHTML = `
                     <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
                         <h4 style="font-size:13px; font-weight:800; color:var(--text-highlight);">${data.title}</h4>
                         <span class="pill pill-version">${data.badge}</span>
@@ -5388,272 +5380,51 @@ li {
                     maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
                     scales: {
-                        x: { title: { display: true, text: '實際速度加成 (b + 設施加成)', font: { size: 10 }, color: '#94a3b8' }, ticks: { font: { size: 9 }, color: '#94a3b8' } },
-                        y: { title: { display: true, text: '抽中頻率 (共1000次)', font: { size: 10 }, color: '#94a3b8' }, ticks: { font: { size: 9 }, color: '#94a3b8' } }
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } },
+                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } }
                     }
                 }
             });
-            runSimulation();
         }
 
-        function runSimulation() {
-            const baseB = parseInt(document.getElementById('inputB') ? document.getElementById('inputB').value : 30) || 30;
-            const facilityAdd = parseInt(document.getElementById('facilityLv') ? document.getElementById('facilityLv').value : 3) || 0;
-            const totalB = baseB + facilityAdd;
-            const counts = new Array(totalB).fill(0);
-            for (let i = 0; i < 1000; i++) {
-                counts[Math.floor(Math.random() * totalB)]++;
+        function runExplosionSimulation() {
+            const B = parseInt(document.getElementById('simB') ? document.getElementById('simB').value : 30) || 30;
+            const N = parseInt(document.getElementById('simN') ? document.getElementById('simN').value : 5000) || 5000;
+            const dist = new Array(B + 1).fill(0);
+
+            for (let i = 0; i < N; i++) {
+                const b = Math.floor(Math.random() * (B + 1));
+                dist[b]++;
             }
+
+            let sum = 0, countBgte15 = 0, countBgte25 = 0, countMax = dist[B];
+            for (let b = 0; b <= B; b++) {
+                sum += b * dist[b];
+                if (b >= 15) countBgte15 += dist[b];
+                if (b >= 25) countBgte25 += dist[b];
+            }
+            const avg = (sum / N).toFixed(2);
+            const p15 = ((countBgte15 / N) * 100).toFixed(1);
+            const p25 = ((countBgte25 / N) * 100).toFixed(1);
+            const pMax = ((countMax / N) * 100).toFixed(2);
+
+            const simResEl = document.getElementById('simResults');
+            if (simResEl) {
+                simResEl.innerHTML = `
+                    <div style="font-size:0.85rem; line-height:1.6; color:var(--text-color);">
+                        <div>📊 <strong>模擬抽樣總次數</strong>：${N.toLocaleString()} 次 | 設定爆發力上限 B = ${B}</div>
+                        <div>📈 <strong>平均實質爆發力加成</strong>：<span style="color:var(--accent-color); font-weight:bold;">${avg}</span></div>
+                        <div>🎯 <strong>加成值 ≥ 15 機率</strong>：<span style="color:var(--safe-color); font-weight:bold;">${p15}%</span> | <strong>≥ 25 機率</strong>：<span style="color:var(--gold-color); font-weight:bold;">${p25}%</span></div>
+                        <div>🏆 <strong>滿貫極限 (b = ${B}) 命中率</strong>：<span style="color:#c084fc; font-weight:bold;">${pMax}%</span></div>
+                    </div>
+                `;
+            }
+
             if (explosionChartInstance) {
-                explosionChartInstance.data.labels = Array.from({ length: totalB }, (_, i) => i);
-                explosionChartInstance.data.datasets[0].data = counts;
+                explosionChartInstance.data.labels = Array.from({ length: B + 1 }, (_, i) => `${i}`);
+                explosionChartInstance.data.datasets[0].data = dist;
                 explosionChartInstance.update();
             }
-        }
-
-        // ==================== 馬庫輔助轉換函數 ====================
-        function parseTrack(trackStr) {
-            if (!trackStr || trackStr === "-") return { grass: "-", dirt: "-" };
-            let grass = "-";
-            let dirt = "-";
-            if (trackStr.includes("芝◎") || trackStr.includes("芝:◎")) grass = "◎";
-            else if (trackStr.includes("芝○") || trackStr.includes("芝:○")) grass = "○";
-            else if (trackStr.includes("芝△") || trackStr.includes("芝:△")) grass = "△";
-            else if (trackStr.includes("芝×") || trackStr.includes("芝:×")) grass = "×";
-            else if (trackStr.includes("芝")) grass = "○";
-
-            if (trackStr.includes("ダ◎") || trackStr.includes("ダ:◎") || trackStr.includes("泥◎")) dirt = "◎";
-            else if (trackStr.includes("ダ○") || trackStr.includes("ダ:○") || trackStr.includes("泥○")) dirt = "○";
-            else if (trackStr.includes("ダ△") || trackStr.includes("ダ:△") || trackStr.includes("泥△")) dirt = "△";
-            else if (trackStr.includes("ダ×") || trackStr.includes("ダ:×") || trackStr.includes("泥×")) dirt = "×";
-            else if (trackStr.includes("ダ") || trackStr.includes("泥")) dirt = "○";
-            return { grass, dirt };
-        }
-
-                        // ==================== 14 大分類解包與渲染引擎 ====================
-        let currentTab = "cat1";
-
-        function ensureUnpackedDb() {
-            if (window.MASTER_DB_DATA) {
-                dbData = window.MASTER_DB_DATA;
-            }
-        }
-
-        function getSortValue(item, field) {
-            if (!item) return 0;
-            if (field === "ticket") return ticketWeights[item.ticket] || 0;
-            if (field === "year") return parseInt(item.year) || 0;
-            if (field === "sp" || field === "matched_sp" || field === "sp_max") {
-                let val = item.sp || item.matched_sp || item.sp_max || 0;
-                return parseFloat(val) || 0;
-            }
-            if (field === "stamina" || field === "st") {
-                return parseInt(item.stamina || item.st) || 0;
-            }
-            if (field === "subpara_total" || field === "sub" || field === "サ") {
-                return parseInt(item.subpara_total) || 0;
-            }
-            if (field === "price" || field === "reputation" || field === "life") {
-                return parseInt(item[field]) || 0;
-            }
-            if (field === "foal_quality" || field === "foal_count") {
-                let val = item.foal_quality || item.foal_count || "";
-                let m = String(val).match(/\d+/);
-                return m ? parseInt(m[0]) : 0;
-            }
-            if (field === "stars") {
-                let s = item.stars || "";
-                return (s.match(/★/g) || []).length;
-            }
-            if (field === "distance") {
-                let m = (item.distance || "").match(/\d+/);
-                return m ? parseInt(m[0]) : 0;
-            }
-            if (['shunhatsu', 'konjo', 'power', 'seishin', 'keshikosa', 'junan', 'kenko'].includes(field)) {
-                return rankWeights[item[field]] || 0;
-            }
-            if (field === "grass" || field === "dirt") {
-                return trackWeights[item[field]] || 0;
-            }
-            return (item[field] || item.details || "").toString().toLowerCase();
-        }
-
-        function renderGuideCategory(catKey) {
-            const tableWrap = document.getElementById("tableViewWrapper");
-            const guideWrap = document.getElementById("guideViewWrapper");
-            const filterPanel = document.querySelector(".filter-panel");
-            const statsBar = document.querySelector(".stats-bar");
-            
-            if (tableWrap) tableWrap.style.display = "none";
-            if (filterPanel) filterPanel.style.display = "none";
-            if (statsBar) statsBar.style.display = "none";
-            if (guideWrap) {
-                guideWrap.style.display = "block";
-                guideWrap.innerHTML = "";
-            }
-
-            if (!dbData) return;
-
-            if (catKey === "cat2") {
-                // 2. に入手すべきおすすめ馬について (各年代總論)
-                const list = dbData.cat2 || [];
-                const headerCard = document.createElement("div");
-                headerCard.className = "callout callout-gold";
-                headerCard.innerHTML = `<i class="fa-solid fa-scroll fa-lg"></i><div><strong>📜 に入手すべきおすすめ馬について (1968~2023 全年代戰略指南)</strong><p style="font-size:0.82rem; margin-top:4px; margin-bottom:0;">包含各歷史年代開局核心目標、優先引進名駒、系統確立方向與繁殖策略解讀。</p></div>`;
-                guideWrap.appendChild(headerCard);
-
-                list.forEach(item => {
-                    const card = document.createElement("div");
-                    card.className = "section-card";
-                    card.style.marginBottom = "14px";
-                    card.innerHTML = `
-                        <div class="section-header" style="background:rgba(56,189,248,0.08);">
-                            <div class="section-title"><i class="fa-solid fa-calendar-days"></i> ${item.title || item.year + '年'}</div>
-                            <span class="pill pill-safe">${item.year} 年</span>
-                        </div>
-                        <div class="section-body">
-                            <p style="margin:0; line-height:1.7; color:var(--text-color); font-size:0.88rem;">${item.strategy_zh || item.strategy || "本年度史實產駒與拍賣會名駒具備高即戰力，建議依牧場配種設施與馬札存量妥善安排收購。"}</p>
-                        </div>
-                    `;
-                    guideWrap.appendChild(card);
-                });
-            } else if (catKey === "cat11") {
-                // 11. スーパースターホースとは (巨星解析)
-                const g = dbData.cat11 || {};
-                const card = document.createElement("div");
-                card.className = "section-card";
-                card.innerHTML = `
-                    <div class="section-header" style="background:rgba(245,158,11,0.1);">
-                        <div class="section-title" style="color:var(--gold-color);"><i class="fa-solid fa-star"></i> ${g.title || "スーパースターホースとは (超級巨星名駒解析)"}</div>
-                    </div>
-                    <div class="section-body">
-                        <div class="callout callout-gold"><i class="fa-solid fa-trophy"></i><div><strong>定義與特徵</strong><p style="margin:4px 0 0 0;">${g.definition || "《賽馬大亨 10 2026》中具備歷史級統治力之頂級史實名駒 (SP 76+ 或 虹札神駒)。"}</p></div></div>
-                        <h4 style="color:var(--accent-color); margin-top:14px;">⚡ 核心四大優勢</h4>
-                        <ul style="line-height:1.8;">
-                            ${(g.key_traits || []).map(t => `<li>${t}</li>`).join('')}
-                        </ul>
-                        <h4 style="color:var(--gold-color); margin-top:14px;">🎯 主要獲取途徑</h4>
-                        <ul style="line-height:1.8;">
-                            ${(g.how_to_acquire || []).map(a => `<li>${a}</li>`).join('')}
-                        </ul>
-                    </div>
-                `;
-                guideWrap.appendChild(card);
-            } else if (catKey === "cat12") {
-                // 12. おすすめ虹札馬について (虹札總論)
-                const g = dbData.cat12 || {};
-                const card = document.createElement("div");
-                card.className = "section-card";
-                card.innerHTML = `
-                    <div class="section-header" style="background:linear-gradient(90deg, rgba(239,68,68,0.15), rgba(59,130,246,0.15));">
-                        <div class="section-title" style="color:#f472b6;"><i class="fa-solid fa-rainbow"></i> ${g.title || "おすすめ虹札馬について (虹札兌換戰略與優先級總覽)"}</div>
-                    </div>
-                    <div class="section-body">
-                        <div class="callout callout-info"><i class="fa-solid fa-award"></i><div><strong>虹札運用黃金法則</strong><p style="margin:4px 0 0 0;">${g.description || "虹札 (虹のお守り) 是遊戲中最珍貴之最高階道具。合理運用能在 10~20 年內徹底確立自家牧場之絕對支配地位。"}</p></div></div>
-                        <h4 style="color:var(--accent-color); margin-top:14px;">👑 三大優先收購準則</h4>
-                        <ul style="line-height:1.8;">
-                            ${(g.rules || []).map(r => `<li>${r}</li>`).join('')}
-                        </ul>
-                    </div>
-                `;
-                guideWrap.appendChild(card);
-            }
-        }
-
-        function renderTable() {
-            ensureUnpackedDb();
-
-            // Check if current tab is a guide category
-            if (["cat2", "cat11", "cat12"].includes(currentTab)) {
-                renderGuideCategory(currentTab);
-                return;
-            }
-
-            // Otherwise, render horse table
-            const tableWrap = document.getElementById("tableViewWrapper");
-            const guideWrap = document.getElementById("guideViewWrapper");
-            const filterPanel = document.querySelector(".filter-panel");
-            const statsBar = document.querySelector(".stats-bar");
-            
-            if (tableWrap) tableWrap.style.display = "block";
-            if (filterPanel) filterPanel.style.display = "grid";
-            if (statsBar) statsBar.style.display = "flex";
-            if (guideWrap) guideWrap.style.display = "none";
-
-            const yearVal = document.getElementById("filterYear") ? document.getElementById("filterYear").value : "ALL";
-            const ticketVal = document.getElementById("filterTicket") ? document.getElementById("filterTicket").value : "ALL";
-            const sexVal = document.getElementById("filterSex") ? document.getElementById("filterSex").value : "ALL";
-            const spVal = document.getElementById("filterSp") ? (parseInt(document.getElementById("filterSp").value) || 0) : 0;
-            const distVal = document.getElementById("filterDistance") ? document.getElementById("filterDistance").value : "ALL";
-            const regionVal = document.getElementById("filterRegion") ? document.getElementById("filterRegion").value : "ALL";
-            const searchVal = document.getElementById("filterSearch") ? document.getElementById("filterSearch").value.trim().toLowerCase() : "";
-
-            let dataset = [];
-            if (dbData) {
-                dataset = dbData[currentTab] || dbData.cat1 || [];
-            }
-
-            let filtered = dataset.filter(item => {
-                if (!item) return false;
-                if (yearVal !== "ALL" && item.year != yearVal) return false;
-                if (ticketVal !== "ALL") {
-                    const t = item.ticket || "";
-                    if (!t.includes(ticketVal)) return false;
-                }
-                if (sexVal !== "ALL") {
-                    const s = item.sex || "";
-                    if (!s.includes(sexVal)) return false;
-                }
-                
-                const sp = parseInt(item.sp || item.matched_sp) || 0;
-                if (spVal > 0 && sp < spVal) return false;
-
-                if (distVal !== "ALL") {
-                    const targetDist = parseInt(distVal);
-                    const m = (item.distance || "").match(/(\d+)/);
-                    const itemMinDist = m ? parseInt(m[1]) : 0;
-                    if (distVal === "2500") {
-                        if (itemMinDist < 2500) return false;
-                    } else {
-                        if (itemMinDist !== targetDist) return false;
-                    }
-                }
-
-                if (regionVal !== "ALL") {
-                    const r = item.region || item.country || "";
-                    if (regionVal === "日本") {
-                        if (!r.includes("日")) return false;
-                    } else if (regionVal === "米") {
-                        if (!r.includes("米") && !r.includes("美") && !r.includes("US")) return false;
-                    } else if (regionVal === "欧") {
-                        if (!r.includes("欧") && !r.includes("歐") && !r.includes("EU") && !r.includes("Europe")) return false;
-                    }
-                }
-
-                if (searchVal) {
-                    const name = (item.name || "").toLowerCase();
-                    const sire = (item.sire || "").toLowerCase();
-                    if (!name.includes(searchVal) && !sire.includes(searchVal)) return false;
-                }
-                return true;
-            });
-
-            filtered.sort((a, b) => {
-                let valA = getSortValue(a, sortField);
-                let valB = getSortValue(b, sortField);
-                if (typeof valA === "number" && typeof valB === "number") {
-                    return sortAsc ? valA - valB : valB - valA;
-                }
-                if (valA < valB) return sortAsc ? -1 : 1;
-                if (valA > valB) return sortAsc ? 1 : -1;
-                return 0;
-            });
-
-            const matchCountEl = document.getElementById("matchCount");
-            if (matchCountEl) matchCountEl.textContent = filtered.length.toLocaleString();
-
-            renderHeader();
-            renderBody(filtered);
         }
 
 
