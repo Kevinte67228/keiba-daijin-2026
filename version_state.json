@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.27",
+  "current_version": "v01.28",
   "history": [
     {
       "version": "v01.01",
@@ -135,6 +135,11 @@
       "version": "v01.27",
       "date": "2026-08-29",
       "description": "Feature: Integrate 5 guides (Ranch staffing & building order priority, Foal Historical Training, and Unique Traits catalog)"
+    },
+    {
+      "version": "v01.28",
+      "date": "2026-08-29",
+      "description": "Feature: Integrate 4 guides (Hall of Fame Nicknames & S+ Limit Break, Umasona 5 categories & EXP, Acquired Boost Traits, and Global Triple Crowns)"
     }
   ]
 }
