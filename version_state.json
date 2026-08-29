@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.07",
+  "current_version": "v01.08",
   "history": [
     {
       "version": "v01.01",
@@ -35,6 +35,11 @@
       "version": "v01.07",
       "date": "2026-08-29",
       "description": "Fix: Populate 海外トレーニングセール category data in master DB and match tab filter"
+    },
+    {
+      "version": "v01.08",
+      "date": "2026-08-29",
+      "description": "Architecture: Build pristine data/ directory with all 14 strictly validated categories and manifest"
     }
   ]
 }
