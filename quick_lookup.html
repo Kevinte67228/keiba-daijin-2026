@@ -885,7 +885,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.13</span>
+        <span class="version-badge">v01.14</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 36 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
@@ -5427,6 +5427,181 @@ li {
             }
         }
 
+
+        // ==================== 14 大分類渲染引擎 ====================
+        function renderGuideCategory(catKey) {
+            const tableWrap = document.getElementById("tableViewWrapper");
+            const guideWrap = document.getElementById("guideViewWrapper");
+            const filterPanel = document.querySelector(".filter-panel");
+            const statsBar = document.querySelector(".stats-bar");
+
+            if (tableWrap) tableWrap.style.display = "none";
+            if (filterPanel) filterPanel.style.display = "none";
+            if (statsBar) statsBar.style.display = "none";
+            if (guideWrap) {
+                guideWrap.style.display = "block";
+                guideWrap.innerHTML = "";
+            }
+
+            if (!dbData) return;
+
+            if (catKey === "cat2") {
+                const list = Array.isArray(dbData.cat2) ? dbData.cat2 : [];
+                const headerCard = document.createElement("div");
+                headerCard.className = "callout callout-gold";
+                headerCard.innerHTML = `<i class="fa-solid fa-scroll fa-lg"></i><div><strong>📜 に入手すべきおすすめ馬について (1968~2023 全年代戰略指南)</strong><p style="font-size:0.82rem; margin-top:4px; margin-bottom:0;">包含各歷史年代開局核心目標、優先引進名駒、系統確立方向與繁殖策略解讀。</p></div>`;
+                guideWrap.appendChild(headerCard);
+
+                list.forEach(item => {
+                    const card = document.createElement("div");
+                    card.className = "section-card";
+                    card.style.marginBottom = "14px";
+                    card.innerHTML = `
+                        <div class="section-header" style="background:rgba(56,189,248,0.08);">
+                            <div class="section-title"><i class="fa-solid fa-calendar-days"></i> ${item.title || item.year + '年'}</div>
+                            <span class="pill pill-safe">${item.year} 年</span>
+                        </div>
+                        <div class="section-body">
+                            <p style="margin:0; line-height:1.7; color:var(--text-color); font-size:0.88rem;">${item.strategy_zh || item.strategy || "本年度史實產駒與拍賣會名駒具備高即戰力，建議依牧場配種設施與馬札存量妥善安排收購。"}</p>
+                        </div>
+                    `;
+                    guideWrap.appendChild(card);
+                });
+            } else if (catKey === "cat11") {
+                const g = dbData.cat11 || {};
+                const card = document.createElement("div");
+                card.className = "section-card";
+                card.innerHTML = `
+                    <div class="section-header" style="background:rgba(245,158,11,0.1);">
+                        <div class="section-title" style="color:var(--gold-color);"><i class="fa-solid fa-star"></i> ${g.title || "スーパースターホースとは (超級巨星名駒解析)"}</div>
+                    </div>
+                    <div class="section-body">
+                        <div class="callout callout-gold"><i class="fa-solid fa-trophy"></i><div><strong>定義與特徵</strong><p style="margin:4px 0 0 0;">${g.definition || "《賽馬大亨 10 2026》中具備歷史級統治力之頂級史實名駒 (SP 76+ 或 虹札神駒)。"}</p></div></div>
+                        <h4 style="color:var(--accent-color); margin-top:14px;">⚡ 核心四大優勢</h4>
+                        <ul style="line-height:1.8;">
+                            ${(g.key_traits || []).map(t => `<li>${t}</li>`).join('')}
+                        </ul>
+                        <h4 style="color:var(--gold-color); margin-top:14px;">🎯 主要獲取途徑</h4>
+                        <ul style="line-height:1.8;">
+                            ${(g.how_to_acquire || []).map(a => `<li>${a}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                guideWrap.appendChild(card);
+            } else if (catKey === "cat12") {
+                const g = dbData.cat12 || {};
+                const card = document.createElement("div");
+                card.className = "section-card";
+                card.innerHTML = `
+                    <div class="section-header" style="background:linear-gradient(90deg, rgba(239,68,68,0.15), rgba(59,130,246,0.15));">
+                        <div class="section-title" style="color:#f472b6;"><i class="fa-solid fa-rainbow"></i> ${g.title || "おすすめ虹札馬について (虹札兌換戰略與優先級總覽)"}</div>
+                    </div>
+                    <div class="section-body">
+                        <div class="callout callout-info"><i class="fa-solid fa-award"></i><div><strong>虹札運用黃金法則</strong><p style="margin:4px 0 0 0;">${g.description || "虹札 (虹のお守り) 是遊戲中最珍貴之最高階道具。合理運用能在 10~20 年內徹底確立自家牧場之絕對支配地位。"}</p></div></div>
+                        <h4 style="color:var(--accent-color); margin-top:14px;">👑 三大優先收購準則</h4>
+                        <ul style="line-height:1.8;">
+                            ${(g.rules || []).map(r => `<li>${r}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                guideWrap.appendChild(card);
+            }
+        }
+
+        function renderTable() {
+            ensureUnpackedDb();
+
+            if (["cat2", "cat11", "cat12"].includes(currentTab)) {
+                renderGuideCategory(currentTab);
+                return;
+            }
+
+            const tableWrap = document.getElementById("tableViewWrapper");
+            const guideWrap = document.getElementById("guideViewWrapper");
+            const filterPanel = document.querySelector(".filter-panel");
+            const statsBar = document.querySelector(".stats-bar");
+
+            if (tableWrap) tableWrap.style.display = "block";
+            if (filterPanel) filterPanel.style.display = "grid";
+            if (statsBar) statsBar.style.display = "flex";
+            if (guideWrap) guideWrap.style.display = "none";
+
+            const yearVal = document.getElementById("filterYear") ? document.getElementById("filterYear").value : "ALL";
+            const ticketVal = document.getElementById("filterTicket") ? document.getElementById("filterTicket").value : "ALL";
+            const sexVal = document.getElementById("filterSex") ? document.getElementById("filterSex").value : "ALL";
+            const spVal = document.getElementById("filterSp") ? (parseInt(document.getElementById("filterSp").value) || 0) : 0;
+            const distVal = document.getElementById("filterDistance") ? document.getElementById("filterDistance").value : "ALL";
+            const regionVal = document.getElementById("filterRegion") ? document.getElementById("filterRegion").value : "ALL";
+            const searchVal = document.getElementById("filterSearch") ? document.getElementById("filterSearch").value.trim().toLowerCase() : "";
+
+            let dataset = [];
+            if (dbData) {
+                dataset = dbData[currentTab] || dbData.cat1 || [];
+            }
+            if (!Array.isArray(dataset)) dataset = [];
+
+            let filtered = dataset.filter(item => {
+                if (!item) return false;
+                if (yearVal !== "ALL" && String(item.year) !== String(yearVal)) return false;
+                if (ticketVal !== "ALL") {
+                    const t = item.ticket || "";
+                    if (!t.includes(ticketVal)) return false;
+                }
+                if (sexVal !== "ALL") {
+                    const s = item.sex || "";
+                    if (!s.includes(sexVal)) return false;
+                }
+
+                const sp = parseInt(item.sp || item.matched_sp) || 0;
+                if (spVal > 0 && sp < spVal) return false;
+
+                if (distVal !== "ALL") {
+                    const targetDist = parseInt(distVal);
+                    const m = (item.distance || "").match(/(\d+)/);
+                    const itemMinDist = m ? parseInt(m[1]) : 0;
+                    if (distVal === "2500") {
+                        if (itemMinDist < 2500) return false;
+                    } else {
+                        if (itemMinDist !== targetDist) return false;
+                    }
+                }
+
+                if (regionVal !== "ALL") {
+                    const r = item.region || item.country || "";
+                    if (regionVal === "日本") {
+                        if (!r.includes("日")) return false;
+                    } else if (regionVal === "米") {
+                        if (!r.includes("米") && !r.includes("美") && !r.includes("US")) return false;
+                    } else if (regionVal === "欧") {
+                        if (!r.includes("欧") && !r.includes("歐") && !r.includes("EU") && !r.includes("Europe")) return false;
+                    }
+                }
+
+                if (searchVal) {
+                    const name = (item.name || "").toLowerCase();
+                    const sire = (item.sire || "").toLowerCase();
+                    if (!name.includes(searchVal) && !sire.includes(searchVal)) return false;
+                }
+                return true;
+            });
+
+            filtered.sort((a, b) => {
+                let valA = getSortValue(a, sortField);
+                let valB = getSortValue(b, sortField);
+                if (typeof valA === "number" && typeof valB === "number") {
+                    return sortAsc ? valA - valB : valB - valA;
+                }
+                if (valA < valB) return sortAsc ? -1 : 1;
+                if (valA > valB) return sortAsc ? 1 : -1;
+                return 0;
+            });
+
+            const matchCountEl = document.getElementById("matchCount");
+            if (matchCountEl) matchCountEl.textContent = filtered.length.toLocaleString();
+
+            renderHeader();
+            renderBody(filtered);
+        }
 
         // ==================== 徽章與樣式輔助函數 ====================
         function renderStarsBadge(stars) {
