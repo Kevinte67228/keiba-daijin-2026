@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.56",
+  "current_version": "v01.57",
   "history": [
     {
       "version": "v01.01",
@@ -280,6 +280,11 @@
       "version": "v01.56",
       "date": "2026-08-29",
       "description": "Feature: Add Chapter 37 - 1968 Scenario Complete Guide (1968年シナリオ攻略・元祖三強・日美歐持続牝馬全書・種牡馬施設Lv3解鎖)"
+    },
+    {
+      "version": "v01.57",
+      "date": "2026-08-29",
+      "description": "Feature: 1:1 Complete Full Replica of all uipo-nou 1968 Scenario Sub-Guides in Chapter 37 (92 Broodmares, Sires, 30-Year After Simulation Ranking)"
     }
   ]
 }
