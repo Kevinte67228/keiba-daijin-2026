@@ -305,9 +305,20 @@
             const weekOpts = [1,2,3,4,5].map(w => `<option value="${w}週"${r.week === `${w}週` ? ' selected' : ''}>${w}週</option>`).join('');
 
             const matchedRaces = getMatchedRacesForDate(r.month || '5月', r.week || '5週');
-            let raceOpts = matchedRaces.map(rc => {
+            let raceGroupOpts = matchedRaces.map(rc => {
                 let fullLabel = `[${rc.grade}] ${rc.name} (${rc.course || rc.region})`;
                 return `<option value="${fullLabel}"${r.race === fullLabel ? ' selected' : ''}>${fullLabel}</option>`;
+            }).join('');
+
+            const fixedClasses = [
+                '新馬',
+                '未勝利',
+                '500万下',
+                '1000万下',
+                '1600万下'
+            ];
+            let classGroupOpts = fixedClasses.map(cls => {
+                return `<option value="${cls}"${r.race === cls ? ' selected' : ''}>${cls}</option>`;
             }).join('');
 
             let bestTactic = '未測試';
@@ -353,11 +364,18 @@
                     <td>
                         <div style="display:flex; gap:4px; align-items:center;">
                             <select class="filter-control" style="width:46%; min-width:110px; padding:4px 2px; font-size:0.78rem;" onchange="onRaceDropdownChange('${r.id}', this.value)">
-                                <option value="">-- 選定重賞 --</option>
-                                ${raceOpts}
-                                <option value="CUSTOM">✏️ 手動自填...</option>
+                                <option value="">-- 選擇賽事/條件 --</option>
+                                <optgroup label="📋 常設條件戰 (每週固定)">
+                                    ${classGroupOpts}
+                                </optgroup>
+                                <optgroup label="🏆 當週重賞/公開賽">
+                                    ${raceGroupOpts}
+                                </optgroup>
+                                <optgroup label="✏️ 自定義">
+                                    <option value="CUSTOM">✏️ 手動自填...</option>
+                                </optgroup>
                             </select>
-                            <input type="text" id="race_input_${r.id}" value="${r.race || ''}" placeholder="自定賽事名稱..." class="filter-control" style="width:54%; min-width:130px; padding:4px 6px; font-size:0.82rem; font-weight:bold; color:var(--accent-color);" oninput="onGridRowFieldChange('${r.id}', 'race', this.value)">
+                            <input type="text" id="race_input_${r.id}" value="${r.race || ''}" placeholder="賽事/條件名稱..." class="filter-control" style="width:54%; min-width:130px; padding:4px 6px; font-size:0.82rem; font-weight:bold; color:var(--accent-color);" oninput="onGridRowFieldChange('${r.id}', 'race', this.value)">
                         </div>
                     </td>
                     <td>
@@ -398,17 +416,18 @@
 
         if (statusEl) statusEl.innerHTML = '⏳ 正在同步傳輸至 Google Sheets...';
         try {
-            const resp = await fetch(url, {
+            await fetch(url, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify({ action: 'sync_tactics', records: records, timestamp: new Date().toISOString() })
             });
             if (statusEl) statusEl.innerHTML = '✅ 成功將全部戰績同步寫入 Google Sheets！';
-            alert('✅ 成功將全部戰績同步寫入 Google Sheets！');
+            alert('✅ 成功將全部戰績同步寫入 Google Sheets！請前往您的 Google 試算表檢視最新資料。');
         } catch (e) {
             console.error(e);
-            if (statusEl) statusEl.innerHTML = '⚠️ 雲端傳輸請求已送出 (若遇跨域 CORS，數據已發送至 Google 或可使用 CSV 匯出)。';
-            alert('提示：已發送同步請求。若 Google Apps Script 有回傳請確認試算表，或點擊「匯出 CSV 檔」直接匯入！');
+            if (statusEl) statusEl.innerHTML = '⚠️ 傳輸請求已發送至 Google Sheets。';
+            alert('提示：已發送同步請求！請至您的 Google 試算表確認更新。');
         }
     }
 
@@ -484,11 +503,58 @@
         reader.readAsText(file);
     }
 
-    function initTacticsTracker() {
-        const gUrlInput = document.getElementById('gSheetUrl');
-        if (gUrlInput) {
-            gUrlInput.value = localStorage.getItem('WP10_GSHEET_URL') || '';
+    function toggleGSheetConfig() {
+        const panel = document.getElementById('gSheetConfigPanel');
+        if (!panel) return;
+        panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function updateGSheetBadge() {
+        const badge = document.getElementById('gSheetStatusBadge');
+        const url = (localStorage.getItem('WP10_GSHEET_URL') || '').trim();
+        if (badge) {
+            if (url) {
+                badge.textContent = '已綁定';
+                badge.className = 'pill pill-safe';
+            } else {
+                badge.textContent = '未綁定';
+                badge.className = 'pill';
+            }
         }
+        const gUrlInput = document.getElementById('gSheetUrl');
+        if (gUrlInput) gUrlInput.value = url;
+    }
+
+    function saveGSheetUrl() {
+        const gUrlInput = document.getElementById('gSheetUrl');
+        const url = (gUrlInput?.value || '').trim();
+        if (!url) {
+            alert('請先貼上有效的 Google Apps Script 網址！');
+            return;
+        }
+        localStorage.setItem('WP10_GSHEET_URL', url);
+        updateGSheetBadge();
+        const statusEl = document.getElementById('syncStatusMsg');
+        if (statusEl) statusEl.innerHTML = '✅ 雲端 Web App 網址已儲存並已鎖定保護！';
+        alert('✅ Google Sheets Web App URL 儲存成功！已自動保護隱藏。');
+        setTimeout(() => {
+            const panel = document.getElementById('gSheetConfigPanel');
+            if (panel) panel.style.display = 'none';
+        }, 800);
+    }
+
+    function clearGSheetUrl() {
+        if (!confirm('確定要清除已儲存的 Google Sheets 網址嗎？')) return;
+        localStorage.removeItem('WP10_GSHEET_URL');
+        const gUrlInput = document.getElementById('gSheetUrl');
+        if (gUrlInput) gUrlInput.value = '';
+        updateGSheetBadge();
+        const statusEl = document.getElementById('syncStatusMsg');
+        if (statusEl) statusEl.innerHTML = '⚪ 已清除網址綁定。';
+    }
+
+    function initTacticsTracker() {
+        updateGSheetBadge();
         renderTacticsGrid();
     }
 
@@ -1597,13 +1663,13 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.69</span>
+        <span class="version-badge">v01.73</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
-        <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
-            <button class="header-btn btn-gold" onclick="openChapterModal()"><i class="fa-solid fa-list-ol"></i> 📑 章節快速跳轉</button>
-            <button class="header-btn" onclick="clearPwaCache()"><i class="fa-solid fa-broom"></i> 清除快取重載</button>
-            <button class="header-btn" onclick="toggleAppTheme()"><i class="fa-solid fa-moon"></i> 主題切換</button>
+        <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
+            <button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">章節快速跳轉</button>
+            <button class="header-btn" onclick="clearPwaCache()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">清除快取重載</button>
+            <button class="header-btn" onclick="toggleAppTheme()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">主題切換</button>
         </div>
     </div>
 
@@ -9939,41 +10005,57 @@ li {
         </div>
 
         <!-- 頂部快速操作與 Google Sheets 管理欄 -->
-        <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:18px 20px; margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.2);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
-                <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                    <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.95rem; font-weight:bold; padding:10px 22px; border:none; border-radius:8px; box-shadow:0 2px 10px rgba(2,132,199,0.35); cursor:pointer;">
-                        <i class="fa-solid fa-plus"></i> ➕ 新增一列賽事紀錄 (Add Row)
+        <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:16px 18px; margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.2);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                <div style="display:flex; align-items:center; gap:8px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
+                    <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.85rem; font-weight:bold; padding:8px 14px; border:none; border-radius:8px; box-shadow:0 2px 8px rgba(2,132,199,0.3); white-space:nowrap !important; cursor:pointer;">
+                        新增紀錄 (Add Row)
                     </button>
-                    <button class="header-btn" onclick="saveAllTacticsRows()" style="background:linear-gradient(135deg, #eab308, #ca8a04); color:#000; font-size:0.95rem; font-weight:bold; padding:10px 22px; border:none; border-radius:8px; box-shadow:0 2px 10px rgba(234,179,8,0.35); cursor:pointer;">
-                        <i class="fa-solid fa-floppy-disk"></i> 💾 全部儲存 (Save All)
+                    <button class="header-btn" onclick="saveAllTacticsRows()" style="background:linear-gradient(135deg, #eab308, #ca8a04); color:#000; font-size:0.85rem; font-weight:bold; padding:8px 14px; border:none; border-radius:8px; box-shadow:0 2px 8px rgba(234,179,8,0.3); white-space:nowrap !important; cursor:pointer;">
+                        全部儲存 (Save All)
                     </button>
-                    <button class="header-btn" onclick="syncToGoogleSheets()" style="background:#059669; color:#fff; font-size:0.92rem; font-weight:bold; padding:10px 20px; border:none; border-radius:8px; box-shadow:0 2px 10px rgba(5,150,105,0.35); cursor:pointer;">
-                        <i class="fa-solid fa-cloud-arrow-up"></i> 🚀 一鍵同步至 Google Sheets
+                    <button class="header-btn" onclick="syncToGoogleSheets()" style="background:#059669; color:#fff; font-size:0.85rem; font-weight:bold; padding:8px 14px; border:none; border-radius:8px; box-shadow:0 2px 8px rgba(5,150,105,0.3); white-space:nowrap !important; cursor:pointer;">
+                        同步 Google Sheets
+                    </button>
+                    <button class="header-btn" onclick="toggleGSheetConfig()" style="background:#334155; color:#e2e8f0; font-size:0.82rem; font-weight:bold; padding:8px 12px; border:none; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2); white-space:nowrap !important; cursor:pointer;" id="btnToggleGSheet">
+                        雲端設定 <span id="gSheetStatusBadge" class="pill" style="font-size:0.65rem; padding:1px 5px; margin-left:2px;">未綁定</span>
                     </button>
                 </div>
-                <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                    <button class="header-btn" onclick="exportTacticsCsv()" style="padding:8px 14px; font-size:0.85rem;">
-                        <i class="fa-solid fa-file-csv"></i> 匯出 CSV 檔
+                <div style="display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
+                    <button class="header-btn" onclick="exportTacticsCsv()" style="padding:6px 10px; font-size:0.8rem; white-space:nowrap !important;">
+                        匯出 CSV
                     </button>
-                    <button class="header-btn" onclick="exportTacticsJson()" style="padding:8px 14px; font-size:0.85rem;">
-                        <i class="fa-solid fa-download"></i> 匯出 JSON
+                    <button class="header-btn" onclick="exportTacticsJson()" style="padding:6px 10px; font-size:0.8rem; white-space:nowrap !important;">
+                        匯出 JSON
                     </button>
-                    <label class="header-btn" style="padding:8px 14px; font-size:0.85rem; cursor:pointer;">
-                        <i class="fa-solid fa-upload"></i> 匯入 JSON
+                    <label class="header-btn" style="padding:6px 10px; font-size:0.8rem; white-space:nowrap !important; cursor:pointer;">
+                        匯入 JSON
                         <input type="file" id="importJsonInput" accept=".json" style="display:none;" onchange="importTacticsJson(event)">
                     </label>
-                    <button class="header-btn" onclick="clearAllTacticsRows()" style="background:#ef4444; color:#fff; border:none; padding:8px 14px; font-size:0.85rem;">
-                        <i class="fa-solid fa-trash-can"></i> 清空全部
+                    <button class="header-btn" onclick="clearAllTacticsRows()" style="background:#ef4444; color:#fff; border:none; padding:6px 10px; font-size:0.8rem; white-space:nowrap !important;">
+                        清空全部
                     </button>
                 </div>
             </div>
 
-            <!-- Google Sheets Webhook 配置 -->
-            <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-accent); border-radius:8px; padding:10px 14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                <label for="gSheetUrl" style="font-size:0.82rem; color:var(--text-muted); white-space:nowrap;"><i class="fa-solid fa-link"></i> Google Apps Script Web App URL：</label>
-                <input type="text" id="gSheetUrl" class="filter-control" placeholder="https://script.google.com/macros/s/AKfycbx.../exec" style="flex:1; min-width:240px; font-size:0.82rem; padding:6px 10px;" onchange="localStorage.setItem('WP10_GSHEET_URL', this.value)">
-                <div id="syncStatusMsg" style="font-size:0.82rem; color:#10b981; font-weight:bold;"></div>
+            <!-- Google Sheets 隱藏式折疊設定面板 (預設隱藏，防誤觸) -->
+            <div id="gSheetConfigPanel" style="display:none; background:rgba(15,23,42,0.95); border:1px solid var(--border-accent); border-radius:10px; padding:14px 16px; margin-top:14px; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <div style="font-size:0.85rem; font-weight:bold; color:var(--gold-color);">
+                        Google Apps Script Web App URL 雲端綁定設定
+                    </div>
+                    <button onclick="toggleGSheetConfig()" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.1rem; padding:2px 6px;">✕</button>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                    <input type="text" id="gSheetUrl" class="filter-control" placeholder="貼上 Google Web App 網址 (https://script.google.com/macros/s/.../exec)" style="flex:1; min-width:260px; font-size:0.82rem; padding:7px 10px;">
+                    <button class="header-btn" onclick="saveGSheetUrl()" style="background:#059669; color:#fff; font-size:0.82rem; font-weight:bold; padding:7px 16px; border:none; border-radius:6px; white-space:nowrap !important; cursor:pointer;">
+                        儲存設定
+                    </button>
+                    <button class="header-btn" onclick="clearGSheetUrl()" style="background:#ef4444; color:#fff; font-size:0.82rem; padding:7px 12px; border:none; border-radius:6px; white-space:nowrap !important; cursor:pointer;">
+                        清除
+                    </button>
+                </div>
+                <div id="syncStatusMsg" style="font-size:0.8rem; color:#10b981; font-weight:bold; margin-top:6px;"></div>
             </div>
         </div>
 
@@ -10011,8 +10093,8 @@ li {
             </div>
 
             <div style="margin-top:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-                <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.9rem; font-weight:bold; padding:8px 20px; border:none; border-radius:6px;">
-                    <i class="fa-solid fa-plus"></i> ➕ 新增一列賽事紀錄
+                <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.85rem; font-weight:bold; padding:8px 18px; border:none; border-radius:6px; white-space:nowrap !important;">
+                    新增紀錄 (Add Row)
                 </button>
                 <div style="font-size:0.8rem; color:var(--text-muted);">
                     提示：左側選單可快速套用重賞，右側文字框可自由輸入任何自定賽事名稱！

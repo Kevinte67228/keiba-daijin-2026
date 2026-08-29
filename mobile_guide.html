@@ -503,11 +503,58 @@
         reader.readAsText(file);
     }
 
-    function initTacticsTracker() {
-        const gUrlInput = document.getElementById('gSheetUrl');
-        if (gUrlInput) {
-            gUrlInput.value = localStorage.getItem('WP10_GSHEET_URL') || '';
+    function toggleGSheetConfig() {
+        const panel = document.getElementById('gSheetConfigPanel');
+        if (!panel) return;
+        panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function updateGSheetBadge() {
+        const badge = document.getElementById('gSheetStatusBadge');
+        const url = (localStorage.getItem('WP10_GSHEET_URL') || '').trim();
+        if (badge) {
+            if (url) {
+                badge.textContent = '已綁定';
+                badge.className = 'pill pill-safe';
+            } else {
+                badge.textContent = '未綁定';
+                badge.className = 'pill';
+            }
         }
+        const gUrlInput = document.getElementById('gSheetUrl');
+        if (gUrlInput) gUrlInput.value = url;
+    }
+
+    function saveGSheetUrl() {
+        const gUrlInput = document.getElementById('gSheetUrl');
+        const url = (gUrlInput?.value || '').trim();
+        if (!url) {
+            alert('請先貼上有效的 Google Apps Script 網址！');
+            return;
+        }
+        localStorage.setItem('WP10_GSHEET_URL', url);
+        updateGSheetBadge();
+        const statusEl = document.getElementById('syncStatusMsg');
+        if (statusEl) statusEl.innerHTML = '✅ 雲端 Web App 網址已儲存並已鎖定保護！';
+        alert('✅ Google Sheets Web App URL 儲存成功！已自動保護隱藏。');
+        setTimeout(() => {
+            const panel = document.getElementById('gSheetConfigPanel');
+            if (panel) panel.style.display = 'none';
+        }, 800);
+    }
+
+    function clearGSheetUrl() {
+        if (!confirm('確定要清除已儲存的 Google Sheets 網址嗎？')) return;
+        localStorage.removeItem('WP10_GSHEET_URL');
+        const gUrlInput = document.getElementById('gSheetUrl');
+        if (gUrlInput) gUrlInput.value = '';
+        updateGSheetBadge();
+        const statusEl = document.getElementById('syncStatusMsg');
+        if (statusEl) statusEl.innerHTML = '⚪ 已清除網址綁定。';
+    }
+
+    function initTacticsTracker() {
+        updateGSheetBadge();
         renderTacticsGrid();
     }
 
@@ -1616,7 +1663,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.72</span>
+        <span class="version-badge">v01.73</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
@@ -9959,7 +10006,7 @@ li {
 
         <!-- 頂部快速操作與 Google Sheets 管理欄 -->
         <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:16px 18px; margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.2);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
                 <div style="display:flex; align-items:center; gap:8px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
                     <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.85rem; font-weight:bold; padding:8px 14px; border:none; border-radius:8px; box-shadow:0 2px 8px rgba(2,132,199,0.3); white-space:nowrap !important; cursor:pointer;">
                         新增紀錄 (Add Row)
@@ -9969,6 +10016,9 @@ li {
                     </button>
                     <button class="header-btn" onclick="syncToGoogleSheets()" style="background:#059669; color:#fff; font-size:0.85rem; font-weight:bold; padding:8px 14px; border:none; border-radius:8px; box-shadow:0 2px 8px rgba(5,150,105,0.3); white-space:nowrap !important; cursor:pointer;">
                         同步 Google Sheets
+                    </button>
+                    <button class="header-btn" onclick="toggleGSheetConfig()" style="background:#334155; color:#e2e8f0; font-size:0.82rem; font-weight:bold; padding:8px 12px; border:none; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2); white-space:nowrap !important; cursor:pointer;" id="btnToggleGSheet">
+                        雲端設定 <span id="gSheetStatusBadge" class="pill" style="font-size:0.65rem; padding:1px 5px; margin-left:2px;">未綁定</span>
                     </button>
                 </div>
                 <div style="display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
@@ -9988,11 +10038,24 @@ li {
                 </div>
             </div>
 
-            <!-- Google Sheets Webhook 配置 -->
-            <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-accent); border-radius:8px; padding:10px 14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                <label for="gSheetUrl" style="font-size:0.82rem; color:var(--text-muted); white-space:nowrap;"><i class="fa-solid fa-link"></i> Google Apps Script Web App URL：</label>
-                <input type="text" id="gSheetUrl" class="filter-control" placeholder="https://script.google.com/macros/s/AKfycbx.../exec" style="flex:1; min-width:240px; font-size:0.82rem; padding:6px 10px;" onchange="localStorage.setItem('WP10_GSHEET_URL', this.value)">
-                <div id="syncStatusMsg" style="font-size:0.82rem; color:#10b981; font-weight:bold;"></div>
+            <!-- Google Sheets 隱藏式折疊設定面板 (預設隱藏，防誤觸) -->
+            <div id="gSheetConfigPanel" style="display:none; background:rgba(15,23,42,0.95); border:1px solid var(--border-accent); border-radius:10px; padding:14px 16px; margin-top:14px; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <div style="font-size:0.85rem; font-weight:bold; color:var(--gold-color);">
+                        Google Apps Script Web App URL 雲端綁定設定
+                    </div>
+                    <button onclick="toggleGSheetConfig()" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.1rem; padding:2px 6px;">✕</button>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                    <input type="text" id="gSheetUrl" class="filter-control" placeholder="貼上 Google Web App 網址 (https://script.google.com/macros/s/.../exec)" style="flex:1; min-width:260px; font-size:0.82rem; padding:7px 10px;">
+                    <button class="header-btn" onclick="saveGSheetUrl()" style="background:#059669; color:#fff; font-size:0.82rem; font-weight:bold; padding:7px 16px; border:none; border-radius:6px; white-space:nowrap !important; cursor:pointer;">
+                        儲存設定
+                    </button>
+                    <button class="header-btn" onclick="clearGSheetUrl()" style="background:#ef4444; color:#fff; font-size:0.82rem; padding:7px 12px; border:none; border-radius:6px; white-space:nowrap !important; cursor:pointer;">
+                        清除
+                    </button>
+                </div>
+                <div id="syncStatusMsg" style="font-size:0.8rem; color:#10b981; font-weight:bold; margin-top:6px;"></div>
             </div>
         </div>
 
