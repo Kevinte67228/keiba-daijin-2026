@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.89",
+  "current_version": "v01.90",
   "history": [
     {
       "version": "v01.01",
@@ -445,6 +445,11 @@
       "version": "v01.89",
       "date": "2026-08-29",
       "description": "Fix: Fixed premature closing tag in Chapter 2 (sec-metrics) ensuring all Vitality content is properly enclosed within section-card and section-body"
+    },
+    {
+      "version": "v01.90",
+      "date": "2026-08-29",
+      "description": "Refactor: Removed the top banner image in Marriage and Acquaintances section (sec-marriage-secrets)"
     }
   ]
 }
