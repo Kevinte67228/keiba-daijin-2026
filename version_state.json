@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.41",
+  "current_version": "v01.42",
   "history": [
     {
       "version": "v01.01",
@@ -205,6 +205,11 @@
       "version": "v01.41",
       "date": "2026-08-29",
       "description": "Content: Supplement exact text paragraphs and '情況 vs 加成' table for Historical Training from WPStud guide"
+    },
+    {
+      "version": "v01.42",
+      "date": "2026-08-29",
+      "description": "Fix: Completely replace and verify Chapter 2 explosion simulator chart runtime and Chapter 15 system establishment tabs"
     }
   ]
 }
