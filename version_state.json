@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.25",
+  "current_version": "v01.26",
   "history": [
     {
       "version": "v01.01",
@@ -125,6 +125,11 @@
       "version": "v01.25",
       "date": "2026-08-29",
       "description": "Fix: Enforce strict 3-column alignment (fixed icon, fixed gold chapter num, and aligned title) for all 36 chapter jump buttons"
+    },
+    {
+      "version": "v01.26",
+      "date": "2026-08-29",
+      "description": "Feature: Integrate 25+ Ranch Facilities guide with unlock conditions, areas, and staff bonuses into Chapter 29"
     }
   ]
 }
