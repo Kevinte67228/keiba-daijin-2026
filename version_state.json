@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.68",
+  "current_version": "v01.69",
   "history": [
     {
       "version": "v01.01",
@@ -340,6 +340,11 @@
       "version": "v01.68",
       "date": "2026-08-29",
       "description": "Fix: Allow 0-records state when deleting all rows so default sample rows do not re-appear"
+    },
+    {
+      "version": "v01.69",
+      "date": "2026-08-29",
+      "description": "Feature: Removed stars from race names and upgraded race column to Dual Pick + Free Custom Input Box"
     }
   ]
 }
