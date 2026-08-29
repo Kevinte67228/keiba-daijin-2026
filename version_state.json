@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.57",
+  "current_version": "v01.58",
   "history": [
     {
       "version": "v01.01",
@@ -285,6 +285,11 @@
       "version": "v01.57",
       "date": "2026-08-29",
       "description": "Feature: 1:1 Complete Full Replica of all uipo-nou 1968 Scenario Sub-Guides in Chapter 37 (92 Broodmares, Sires, 30-Year After Simulation Ranking)"
+    },
+    {
+      "version": "v01.58",
+      "date": "2026-08-29",
+      "description": "Content: Integrate 13 Race Tactics (作戦の種類・特殊作戦・適応能力・限定条件) from official manual 5200.html into Chapter 19"
     }
   ]
 }
