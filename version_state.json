@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.28",
+  "current_version": "v01.29",
   "history": [
     {
       "version": "v01.01",
@@ -140,6 +140,11 @@
       "version": "v01.28",
       "date": "2026-08-29",
       "description": "Feature: Integrate 4 guides (Hall of Fame Nicknames & S+ Limit Break, Umasona 5 categories & EXP, Acquired Boost Traits, and Global Triple Crowns)"
+    },
+    {
+      "version": "v01.29",
+      "date": "2026-08-29",
+      "description": "Feature: Integrate WPStud Historical Training guide (4 acquisition methods, precise Great Success modifiers, cooldown penalties, and SP training)"
     }
   ]
 }
