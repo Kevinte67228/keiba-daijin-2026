@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.92",
+  "current_version": "v01.93",
   "history": [
     {
       "version": "v01.01",
@@ -460,6 +460,11 @@
       "version": "v01.92",
       "date": "2026-08-29",
       "description": "Refactor: Shifted overseas ranch step and advantage list content leftward to eliminate excess left padding"
+    },
+    {
+      "version": "v01.93",
+      "date": "2026-08-29",
+      "description": "Fix: Fixed missing icon in Chapter 13 by replacing fa-sparkles with fa-wand-magic-sparkles"
     }
   ]
 }
