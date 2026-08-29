@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.67",
+  "current_version": "v01.68",
   "history": [
     {
       "version": "v01.01",
@@ -335,6 +335,11 @@
       "version": "v01.67",
       "date": "2026-08-29",
       "description": "Fix: Solved JavaScript String.fromCharCode syntax issue, tabPillarTracker linkage, and interactive Add Row rendering"
+    },
+    {
+      "version": "v01.68",
+      "date": "2026-08-29",
+      "description": "Fix: Allow 0-records state when deleting all rows so default sample rows do not re-appear"
     }
   ]
 }
