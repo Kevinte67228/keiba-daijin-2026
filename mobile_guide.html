@@ -1668,7 +1668,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.74</span>
+        <span class="version-badge">v01.75</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
@@ -1788,6 +1788,30 @@ li {
                         <option value="75">SP >= 75 (S級超級名馬)</option>
                         <option value="70">SP >= 70 (A級一線名馬)</option>
                         <option value="65">SP >= 65 (B級主力名馬)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterSt">🐎 最小基本 ST (耐力 >=)</label>
+                    <select id="filterSt" class="filter-control">
+                        <option value="0">全部 ST 耐力</option>
+                        <option value="80">ST >= 80 (超長途 3000m+)</option>
+                        <option value="70">ST >= 70 (長距離 2400m+)</option>
+                        <option value="50">ST >= 50 (經典中長途 2000m+)</option>
+                        <option value="30">ST >= 30 (一哩/中距離 1600m+)</option>
+                        <option value="15">ST >= 15 (短途快馬)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterTrack">🌱 馬場適性 (芝 / ダ)</label>
+                    <select id="filterTrack" class="filter-control">
+                        <option value="ALL">全部馬場適性</option>
+                        <option value="芝">◎ (芝) / × (ダ) (芝專用)</option>
+                        <option value="ダ">× (芝) / ◎ (ダ) (泥地專用)</option>
+                        <option value="万能">◎ (芝) / ◎ (ダ) (芝ダ萬能)</option>
+                        <option value="芝可能">芝適性良好 (芝◎/○)</option>
+                        <option value="ダ可能">泥地適性良好 (ダ◎/○)</option>
                     </select>
                 </div>
 
@@ -9318,6 +9342,8 @@ li {
             const ticketVal = document.getElementById("filterTicket") ? document.getElementById("filterTicket").value : "ALL";
             const sexVal = document.getElementById("filterSex") ? document.getElementById("filterSex").value : "ALL";
             const spVal = document.getElementById("filterSp") ? (parseInt(document.getElementById("filterSp").value) || 0) : 0;
+            const stVal = document.getElementById("filterSt") ? (parseInt(document.getElementById("filterSt").value) || 0) : 0;
+            const trackVal = document.getElementById("filterTrack") ? document.getElementById("filterTrack").value : "ALL";
             const distVal = document.getElementById("filterDistance") ? document.getElementById("filterDistance").value : "ALL";
             const regionVal = document.getElementById("filterRegion") ? document.getElementById("filterRegion").value : "ALL";
             const searchVal = document.getElementById("filterSearch") ? document.getElementById("filterSearch").value.trim().toLowerCase() : "";
@@ -9342,6 +9368,28 @@ li {
 
                 const sp = parseInt(item.sp || item.matched_sp) || 0;
                 if (spVal > 0 && sp < spVal) return false;
+
+                const st = parseInt(item.stamina || item.st) || 0;
+                if (stVal > 0 && st < stVal) return false;
+
+                if (trackVal !== "ALL") {
+                    const grass = item.grass || item.turf || item.芝 || "";
+                    const dirt = item.dirt || item.ダ || "";
+                    const isGrassGood = grass === "◎" || grass === "○";
+                    const isDirtGood = dirt === "◎" || dirt === "○";
+
+                    if (trackVal === "芝") {
+                        if (!isGrassGood || isDirtGood) return false;
+                    } else if (trackVal === "ダ") {
+                        if (!isDirtGood || isGrassGood) return false;
+                    } else if (trackVal === "万能") {
+                        if (!isGrassGood || !isDirtGood) return false;
+                    } else if (trackVal === "芝可能") {
+                        if (!isGrassGood) return false;
+                    } else if (trackVal === "ダ可能") {
+                        if (!isDirtGood) return false;
+                    }
+                }
 
                 if (distVal !== "ALL") {
                     const targetDist = parseInt(distVal);
@@ -9955,6 +10003,8 @@ li {
             bindChange("filterTicket");
             bindChange("filterSex");
             bindChange("filterSp");
+            bindChange("filterSt");
+            bindChange("filterTrack");
             bindChange("filterDistance");
             bindChange("filterRegion");
 

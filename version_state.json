@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.74",
+  "current_version": "v01.75",
   "history": [
     {
       "version": "v01.01",
@@ -370,6 +370,11 @@
       "version": "v01.74",
       "date": "2026-08-29",
       "description": "UI: Removed duplicate bottom Add Row button and increased padding/opacity for FAB buttons to prevent blocking Copy/Delete actions"
+    },
+    {
+      "version": "v01.75",
+      "date": "2026-08-29",
+      "description": "Feature: Added ST (耐力) and Track Aptitude (芝/ダ/万能) filters directly after SP filter in Horse DB"
     }
   ]
 }

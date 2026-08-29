@@ -416,17 +416,18 @@
 
         if (statusEl) statusEl.innerHTML = '⏳ 正在同步傳輸至 Google Sheets...';
         try {
-            const resp = await fetch(url, {
+            await fetch(url, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify({ action: 'sync_tactics', records: records, timestamp: new Date().toISOString() })
             });
             if (statusEl) statusEl.innerHTML = '✅ 成功將全部戰績同步寫入 Google Sheets！';
-            alert('✅ 成功將全部戰績同步寫入 Google Sheets！');
+            alert('✅ 成功將全部戰績同步寫入 Google Sheets！請前往您的 Google 試算表檢視最新資料。');
         } catch (e) {
             console.error(e);
-            if (statusEl) statusEl.innerHTML = '⚠️ 雲端傳輸請求已送出 (若遇跨域 CORS，數據已發送至 Google 或可使用 CSV 匯出)。';
-            alert('提示：已發送同步請求。若 Google Apps Script 有回傳請確認試算表，或點擊「匯出 CSV 檔」直接匯入！');
+            if (statusEl) statusEl.innerHTML = '⚠️ 傳輸請求已發送至 Google Sheets。';
+            alert('提示：已發送同步請求！請至您的 Google 試算表確認更新。');
         }
     }
 
@@ -502,11 +503,58 @@
         reader.readAsText(file);
     }
 
-    function initTacticsTracker() {
-        const gUrlInput = document.getElementById('gSheetUrl');
-        if (gUrlInput) {
-            gUrlInput.value = localStorage.getItem('WP10_GSHEET_URL') || '';
+    function toggleGSheetConfig() {
+        const panel = document.getElementById('gSheetConfigPanel');
+        if (!panel) return;
+        panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function updateGSheetBadge() {
+        const badge = document.getElementById('gSheetStatusBadge');
+        const url = (localStorage.getItem('WP10_GSHEET_URL') || '').trim();
+        if (badge) {
+            if (url) {
+                badge.textContent = '已綁定';
+                badge.className = 'pill pill-safe';
+            } else {
+                badge.textContent = '未綁定';
+                badge.className = 'pill';
+            }
         }
+        const gUrlInput = document.getElementById('gSheetUrl');
+        if (gUrlInput) gUrlInput.value = url;
+    }
+
+    function saveGSheetUrl() {
+        const gUrlInput = document.getElementById('gSheetUrl');
+        const url = (gUrlInput?.value || '').trim();
+        if (!url) {
+            alert('請先貼上有效的 Google Apps Script 網址！');
+            return;
+        }
+        localStorage.setItem('WP10_GSHEET_URL', url);
+        updateGSheetBadge();
+        const statusEl = document.getElementById('syncStatusMsg');
+        if (statusEl) statusEl.innerHTML = '✅ 雲端 Web App 網址已儲存並已鎖定保護！';
+        alert('✅ Google Sheets Web App URL 儲存成功！已自動保護隱藏。');
+        setTimeout(() => {
+            const panel = document.getElementById('gSheetConfigPanel');
+            if (panel) panel.style.display = 'none';
+        }, 800);
+    }
+
+    function clearGSheetUrl() {
+        if (!confirm('確定要清除已儲存的 Google Sheets 網址嗎？')) return;
+        localStorage.removeItem('WP10_GSHEET_URL');
+        const gUrlInput = document.getElementById('gSheetUrl');
+        if (gUrlInput) gUrlInput.value = '';
+        updateGSheetBadge();
+        const statusEl = document.getElementById('syncStatusMsg');
+        if (statusEl) statusEl.innerHTML = '⚪ 已清除網址綁定。';
+    }
+
+    function initTacticsTracker() {
+        updateGSheetBadge();
         renderTacticsGrid();
     }
 
@@ -1339,26 +1387,31 @@
         /* 浮動按鈕群 (跳轉目錄 + 回頂部) */
         .floating-btn-group {
             position: fixed;
-            bottom: 22px;
-            right: 18px;
+            bottom: 16px;
+            right: 12px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             z-index: 999;
+            opacity: 0.7;
+            transition: opacity 0.25s ease;
+        }
+        .floating-btn-group:hover, .floating-btn-group:active {
+            opacity: 1;
         }
         .btn-floating {
             background: var(--accent-color);
             color: #0f172a;
-            width: 44px;
-            height: 44px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             border: none;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.35);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             transition: transform 0.2s ease, background-color 0.2s ease;
         }
         .btn-floating:hover { transform: scale(1.08); background: #38bdf8; }
@@ -1615,7 +1668,7 @@ li {
 
     <!-- 頁首 -->
     <div class="header">
-        <span class="version-badge">v01.71</span>
+        <span class="version-badge">v01.75</span>
         <h1>🏇 賽馬大亨 10 2026 終極 PWA 掌上速查與大百科</h1>
         <p>15,381 匹全史實馬庫 ＋ 7 大年度推薦 ＋ 5 大核心完全對照攻略大百科 (全 37 大章節)</p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
@@ -1735,6 +1788,30 @@ li {
                         <option value="75">SP >= 75 (S級超級名馬)</option>
                         <option value="70">SP >= 70 (A級一線名馬)</option>
                         <option value="65">SP >= 65 (B級主力名馬)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterSt">🐎 最小基本 ST (耐力 >=)</label>
+                    <select id="filterSt" class="filter-control">
+                        <option value="0">全部 ST 耐力</option>
+                        <option value="80">ST >= 80 (超長途 3000m+)</option>
+                        <option value="70">ST >= 70 (長距離 2400m+)</option>
+                        <option value="50">ST >= 50 (經典中長途 2000m+)</option>
+                        <option value="30">ST >= 30 (一哩/中距離 1600m+)</option>
+                        <option value="15">ST >= 15 (短途快馬)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterTrack">🌱 馬場適性 (芝 / ダ)</label>
+                    <select id="filterTrack" class="filter-control">
+                        <option value="ALL">全部馬場適性</option>
+                        <option value="芝">◎ (芝) / × (ダ) (芝專用)</option>
+                        <option value="ダ">× (芝) / ◎ (ダ) (泥地專用)</option>
+                        <option value="万能">◎ (芝) / ◎ (ダ) (芝ダ萬能)</option>
+                        <option value="芝可能">芝適性良好 (芝◎/○)</option>
+                        <option value="ダ可能">泥地適性良好 (ダ◎/○)</option>
                     </select>
                 </div>
 
@@ -9265,6 +9342,8 @@ li {
             const ticketVal = document.getElementById("filterTicket") ? document.getElementById("filterTicket").value : "ALL";
             const sexVal = document.getElementById("filterSex") ? document.getElementById("filterSex").value : "ALL";
             const spVal = document.getElementById("filterSp") ? (parseInt(document.getElementById("filterSp").value) || 0) : 0;
+            const stVal = document.getElementById("filterSt") ? (parseInt(document.getElementById("filterSt").value) || 0) : 0;
+            const trackVal = document.getElementById("filterTrack") ? document.getElementById("filterTrack").value : "ALL";
             const distVal = document.getElementById("filterDistance") ? document.getElementById("filterDistance").value : "ALL";
             const regionVal = document.getElementById("filterRegion") ? document.getElementById("filterRegion").value : "ALL";
             const searchVal = document.getElementById("filterSearch") ? document.getElementById("filterSearch").value.trim().toLowerCase() : "";
@@ -9289,6 +9368,28 @@ li {
 
                 const sp = parseInt(item.sp || item.matched_sp) || 0;
                 if (spVal > 0 && sp < spVal) return false;
+
+                const st = parseInt(item.stamina || item.st) || 0;
+                if (stVal > 0 && st < stVal) return false;
+
+                if (trackVal !== "ALL") {
+                    const grass = item.grass || item.turf || item.芝 || "";
+                    const dirt = item.dirt || item.ダ || "";
+                    const isGrassGood = grass === "◎" || grass === "○";
+                    const isDirtGood = dirt === "◎" || dirt === "○";
+
+                    if (trackVal === "芝") {
+                        if (!isGrassGood || isDirtGood) return false;
+                    } else if (trackVal === "ダ") {
+                        if (!isDirtGood || isGrassGood) return false;
+                    } else if (trackVal === "万能") {
+                        if (!isGrassGood || !isDirtGood) return false;
+                    } else if (trackVal === "芝可能") {
+                        if (!isGrassGood) return false;
+                    } else if (trackVal === "ダ可能") {
+                        if (!isDirtGood) return false;
+                    }
+                }
 
                 if (distVal !== "ALL") {
                     const targetDist = parseInt(distVal);
@@ -9902,6 +10003,8 @@ li {
             bindChange("filterTicket");
             bindChange("filterSex");
             bindChange("filterSp");
+            bindChange("filterSt");
+            bindChange("filterTrack");
             bindChange("filterDistance");
             bindChange("filterRegion");
 
@@ -9950,7 +10053,7 @@ li {
 
     
     <!-- Pillar 8: 📊 實戰 13 大跑法比賽戰績紀錄儀 (橫向試算表批次錄入版) -->
-    <div id="pillar-tracker" class="pillar-content" style="display:none;">
+    <div id="pillar-tracker" class="pillar-content" style="display:none; padding-bottom:110px;">
         <div class="pillar-header-card">
             <h2>📊 實戰 13 大跑法比賽戰績紀錄儀 (橫向即時批次錄入大表)</h2>
             <p>橫向一行對應一匹馬的一場比賽戰績，支援同時進行多匹馬的 13 種跑法即時輸入、切換月份週別自動推薦重賞、自動計算最優跑法、以及 Google Sheets 雙向同步</p>
@@ -9958,7 +10061,7 @@ li {
 
         <!-- 頂部快速操作與 Google Sheets 管理欄 -->
         <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:16px 18px; margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.2);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
                 <div style="display:flex; align-items:center; gap:8px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
                     <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.85rem; font-weight:bold; padding:8px 14px; border:none; border-radius:8px; box-shadow:0 2px 8px rgba(2,132,199,0.3); white-space:nowrap !important; cursor:pointer;">
                         新增紀錄 (Add Row)
@@ -9968,6 +10071,9 @@ li {
                     </button>
                     <button class="header-btn" onclick="syncToGoogleSheets()" style="background:#059669; color:#fff; font-size:0.85rem; font-weight:bold; padding:8px 14px; border:none; border-radius:8px; box-shadow:0 2px 8px rgba(5,150,105,0.3); white-space:nowrap !important; cursor:pointer;">
                         同步 Google Sheets
+                    </button>
+                    <button class="header-btn" onclick="toggleGSheetConfig()" style="background:#334155; color:#e2e8f0; font-size:0.82rem; font-weight:bold; padding:8px 12px; border:none; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2); white-space:nowrap !important; cursor:pointer;" id="btnToggleGSheet">
+                        雲端設定 <span id="gSheetStatusBadge" class="pill" style="font-size:0.65rem; padding:1px 5px; margin-left:2px;">未綁定</span>
                     </button>
                 </div>
                 <div style="display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
@@ -9987,11 +10093,24 @@ li {
                 </div>
             </div>
 
-            <!-- Google Sheets Webhook 配置 -->
-            <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-accent); border-radius:8px; padding:10px 14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                <label for="gSheetUrl" style="font-size:0.82rem; color:var(--text-muted); white-space:nowrap;"><i class="fa-solid fa-link"></i> Google Apps Script Web App URL：</label>
-                <input type="text" id="gSheetUrl" class="filter-control" placeholder="https://script.google.com/macros/s/AKfycbx.../exec" style="flex:1; min-width:240px; font-size:0.82rem; padding:6px 10px;" onchange="localStorage.setItem('WP10_GSHEET_URL', this.value)">
-                <div id="syncStatusMsg" style="font-size:0.82rem; color:#10b981; font-weight:bold;"></div>
+            <!-- Google Sheets 隱藏式折疊設定面板 (預設隱藏，防誤觸) -->
+            <div id="gSheetConfigPanel" style="display:none; background:rgba(15,23,42,0.95); border:1px solid var(--border-accent); border-radius:10px; padding:14px 16px; margin-top:14px; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <div style="font-size:0.85rem; font-weight:bold; color:var(--gold-color);">
+                        Google Apps Script Web App URL 雲端綁定設定
+                    </div>
+                    <button onclick="toggleGSheetConfig()" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.1rem; padding:2px 6px;">✕</button>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                    <input type="text" id="gSheetUrl" class="filter-control" placeholder="貼上 Google Web App 網址 (https://script.google.com/macros/s/.../exec)" style="flex:1; min-width:260px; font-size:0.82rem; padding:7px 10px;">
+                    <button class="header-btn" onclick="saveGSheetUrl()" style="background:#059669; color:#fff; font-size:0.82rem; font-weight:bold; padding:7px 16px; border:none; border-radius:6px; white-space:nowrap !important; cursor:pointer;">
+                        儲存設定
+                    </button>
+                    <button class="header-btn" onclick="clearGSheetUrl()" style="background:#ef4444; color:#fff; font-size:0.82rem; padding:7px 12px; border:none; border-radius:6px; white-space:nowrap !important; cursor:pointer;">
+                        清除
+                    </button>
+                </div>
+                <div id="syncStatusMsg" style="font-size:0.8rem; color:#10b981; font-weight:bold; margin-top:6px;"></div>
             </div>
         </div>
 
@@ -10028,12 +10147,9 @@ li {
                 </table>
             </div>
 
-            <div style="margin-top:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-                <button class="header-btn" onclick="addNewTacticsRow()" style="background:#0284c7; color:#fff; font-size:0.85rem; font-weight:bold; padding:8px 18px; border:none; border-radius:6px; white-space:nowrap !important;">
-                    新增紀錄 (Add Row)
-                </button>
-                <div style="font-size:0.8rem; color:var(--text-muted);">
-                    提示：左側選單可快速套用重賞，右側文字框可自由輸入任何自定賽事名稱！
+            <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:0.82rem; color:var(--text-muted);">
+                    💡 提示：左側選單可快速套用重賞/條件戰，右側文字框可自由輸入任何自定賽事名稱！
                 </div>
             </div>
         </div>
