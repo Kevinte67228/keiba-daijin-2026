@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.78",
+  "current_version": "v01.79",
   "history": [
     {
       "version": "v01.01",
@@ -390,6 +390,11 @@
       "version": "v01.78",
       "date": "2026-08-29",
       "description": "Fix: Corrected Chapter 38 column alignments, removed summary table leaks, and enabled chronological month+week table sorting"
+    },
+    {
+      "version": "v01.79",
+      "date": "2026-08-29",
+      "description": "Feature: 1:1 perfect replica of alnasgames series.html with all 36 Triple Crowns & Series, interactive two-tier category switcher, turf gauges, historical winners, and in-depth Traditional Chinese strategy guides"
     }
   ]
 }
