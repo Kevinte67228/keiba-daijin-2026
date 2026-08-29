@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.02",
+  "current_version": "v01.03",
   "history": [
     {
       "version": "v01.01",
@@ -10,6 +10,11 @@
       "version": "v01.02",
       "date": "2026-08-29",
       "description": "Add 1967 year, align outer table columns with image, and support full wp10-26-new2.html detail fields in modal"
+    },
+    {
+      "version": "v01.03",
+      "date": "2026-08-29",
+      "description": "Fix modal open execution and permanently embed generateAIComment"
     }
   ]
 }
