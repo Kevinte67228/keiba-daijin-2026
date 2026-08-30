@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.95",
+  "current_version": "v01.96",
   "history": [
     {
       "version": "v01.01",
@@ -475,6 +475,11 @@
       "version": "v01.95",
       "date": "2026-08-29",
       "description": "Fix: Eliminate empty holes in Ahogame Breeding Theory Matrix Grid & Add Floating Navigation History Back Button"
+    },
+    {
+      "version": "v01.96",
+      "date": "2026-08-29",
+      "description": "Layout: Set Breeding Theory Matrix Grid to strict 3 items per row"
     }
   ]
 }
