@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.45</span>
+        <span class="version-badge">v02.46</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -28522,6 +28522,7 @@ function changeMasterLivePage(delta) {
         };
 
         function filterCh40Category(catType, btn) {
+            ch40HasUserInteracted = true;
             ch40CategoryFilter = catType;
             ch40LetterFilter = null;
             ch40KanaFilter = null;
@@ -28535,6 +28536,7 @@ function changeMasterLivePage(delta) {
         }
 
         function filterCh40Letter(letter, btn) {
+            ch40HasUserInteracted = true;
             if (ch40LetterFilter === letter) {
                 ch40LetterFilter = null;
                 if (btn) btn.classList.remove('active');
@@ -28549,6 +28551,7 @@ function changeMasterLivePage(delta) {
         }
 
         function filterCh40Kana(kanaRow, btn) {
+            ch40HasUserInteracted = true;
             if (ch40KanaFilter === kanaRow) {
                 ch40KanaFilter = null;
                 if (btn) btn.classList.remove('active');
@@ -28563,6 +28566,7 @@ function changeMasterLivePage(delta) {
         }
 
         function resetCh40Filters() {
+            ch40HasUserInteracted = true;
             ch40CategoryFilter = 'all';
             ch40LetterFilter = null;
             ch40KanaFilter = null;
@@ -28796,6 +28800,7 @@ function changeMasterLivePage(delta) {
 
         let ch40CurrentPage = 1;
         const ch40PageSize = 25;
+        let ch40HasUserInteracted = false;
         let ch40FilteredList = [];
 
         function jumpCh40Page() {
@@ -29147,6 +29152,7 @@ function changeMasterLivePage(delta) {
                     btns.forEach(b => b.classList.remove("active"));
                     btn.classList.add("active");
                     currentTab = btn.getAttribute("data-cat");
+                    ch40HasUserInteracted = true;
                     renderTable();
                 });
             });
