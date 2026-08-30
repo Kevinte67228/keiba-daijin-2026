@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.16</span>
+        <span class="version-badge">v02.17</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -27020,117 +27020,87 @@ li {
 <div>
 <strong style="color:var(--gold-color); font-size:1rem;">📖《賽馬大亨 10 2026》三大馬匹資料庫全子網址・全層級完全展開 (allhorseprofiles 終極履歷庫)</strong><br/>
 <p style="margin:4px 0 0 0; font-size:0.85rem; line-height:1.75;">
-                    本獨立專題章節 100% 全量無遺漏展開 Alnasgames 旗下 <code>allhorseprofiles/</code>、<code>racehorse/</code>、<code>stallion/</code>、<code>broodmare/</code> 的所有專屬子資料庫！所有下方晶片按鈕均<strong>已完全綁定即時數據庫</strong>，點擊即可即時調閱數千筆完整大表與 18 欄位終極履歷！
+                    本章專門獨立完整展開 Alnasgames 旗下 <code>allhorseprofiles/</code>、<code>racehorse/</code>、<code>stallion/</code>、<code>broodmare/</code> 的所有專屬子資料庫！所有下方晶片按鈕均<strong>已完全綁定即時數據庫</strong>，點擊即可即時調閱數千筆完整大表與 18 欄位終極履歷！
                 </p>
 </div>
 </div>
 <!-- ==================== 三大馬匹資料庫切換頁籤 ==================== -->
-<div class="category-tabs-wrapper" style="margin-bottom:20px;">
-<div class="category-tabs" id="threeHorsesTabs" style="display:flex; gap:10px; overflow-x:auto; padding-bottom:6px;">
-<button class="tab-btn active" id="tabBtnRace" onclick="switchThreeHorsesTab('racehorse')" style="font-size:0.88rem; padding:10px 20px; border-radius:8px; display:flex; align-items:center; gap:8px;">
+<div class="category-tabs-wrapper" style="margin-bottom:16px;">
+<div class="category-tabs" id="threeHorsesMainTabs" style="display:flex; gap:10px; overflow-x:auto; padding-bottom:6px;">
+<button class="tab-btn active" id="btnTabRace" onclick="switchMasterHorseTab('race')" style="font-size:0.88rem; padding:10px 20px; border-radius:8px; display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-horse-head" style="color:#60a5fa;"></i> 🏇 1. 競走馬データ (Racehorse Data)
         </button>
-<button class="tab-btn" id="tabBtnStallion" onclick="switchThreeHorsesTab('stallion')" style="font-size:0.88rem; padding:10px 20px; border-radius:8px; display:flex; align-items:center; gap:8px;">
+<button class="tab-btn" id="btnTabStallion" onclick="switchMasterHorseTab('stallion')" style="font-size:0.88rem; padding:10px 20px; border-radius:8px; display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-mars" style="color:#4ade80;"></i> 🧬 2. 種牡馬データ (Stallion Data)
         </button>
-<button class="tab-btn" id="tabBtnBrood" onclick="switchThreeHorsesTab('broodmare')" style="font-size:0.88rem; padding:10px 20px; border-radius:8px; display:flex; align-items:center; gap:8px;">
+<button class="tab-btn" id="btnTabBrood" onclick="switchMasterHorseTab('broodmare')" style="font-size:0.88rem; padding:10px 20px; border-radius:8px; display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-venus" style="color:#fb7185;"></i> 🌸 3. 繁殖牝馬データ (Broodmare Data)
         </button>
 </div>
 </div>
-<!-- ==================== TAB 1: 競走馬データ (Racehorse Data) ==================== -->
-<div class="three-horses-view" id="tab-racehorse-content" style="display:block;">
-<div class="tool-card" style="background:rgba(30,58,138,0.25); border:1px solid #3b82f6; border-radius:10px; padding:16px; margin-bottom:18px;">
-<div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-<i class="fa-solid fa-horse-head" style="font-size:1.6rem; color:#60a5fa;"></i>
-<div>
-<h4 style="margin:0; font-size:1.1rem; color:#93c5fd;">🏇 競走馬データ (Racehorse Complete Sub-Database)</h4>
-<div style="font-size:0.8rem; color:var(--text-muted);">收錄生年別、SP74+神駒、固有特性、馬房老大、預後不良拯救名冊、白毛蘆毛、移籍馬與超級馬完全展開</div>
+<!-- ==================== 子專題切換晶片列 (依當前頁籤切換) ==================== -->
+<div class="tool-card" style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:18px;">
+<!-- 競走馬專屬晶片 -->
+<div class="chips-group" id="chipsGroupRace" style="display:flex; flex-wrap:wrap; gap:6px;">
+<button class="pill pill-power active" onclick="activateSubTable('race_sp74', '⚡ SP 74 以上頂級歷史競走馬完全名冊 (206匹 S+/S/A+ 級神駒)', this)">⚡ SP74+ 頂級神駒 (206匹)</button>
+<button class="pill pill-gold" onclick="activateSubTable('race_koyu', '👑 32 匹持有固有歷史特性名馬名單與技能描述', this)">👑 固有特性名馬 (32匹)</button>
+<button class="pill pill-purple" onclick="activateSubTable('race_boss', '🐴 34 匹初生自帶「馬房老大 (厩舎のボス)」名馬名單', this)">🐴 初始馬房老大 (34匹)</button>
+<button class="pill pill-danger" onclick="activateSubTable('race_rescue', '🚑 歷史事故「予後不良」及早拯救名馬名單 (51匹)', this)">🚑 事故拯救名冊 (38匹)</button>
+<button class="pill pill-safe" onclick="activateSubTable('race_iseki', '✈️ 現役途中移籍海外名馬清單 (41匹)', this)">✈️ 現役海外移籍馬 (41匹)</button>
+<button class="pill pill-gold" onclick="activateSubTable('race_sh', '🌟 歷代超級巨星馬 (Super Horse) 完全名錄 (33匹)', this)">🌟 歷代超級巨星馬 (SH)</button>
+<button class="pill pill-safe" onclick="activateSubTable('race_init', '🎁 全年代劇本初期讓渡馬名錄 (19匹)', this)">🎁 初期讓渡馬名錄</button>
+<button class="pill pill-cyan" onclick="filterMasterKeyword('芦灰毛', '🦄 全 1,178 匹白毛・蘆毛名駒數據庫', this)">🦄 白毛・蘆毛馬庫 (1,178匹)</button>
+</div>
+<!-- 種牡馬專屬晶片 -->
+<div class="chips-group" id="chipsGroupStallion" style="display:none; flex-wrap:wrap; gap:6px;">
+<button class="pill pill-gold active" onclick="activateSubTable('sy_kodashi10', '🧬 仔出し 10 滿分種牡馬完全名單 (28匹神級產駒爆發力)', this)">🧬 仔出 10 滿分種馬 (28匹)</button>
+<button class="pill pill-power" onclick="activateSubTable('sy_kodashi9', '⭐ 仔出し 9 頂級種牡馬名單 (95匹)', this)">⭐ 仔出 9 頂級種馬 (95匹)</button>
+<button class="pill pill-safe" onclick="activateSubTable('sy_kodashi8', '✨ 仔出し 8 優秀種牡馬名單 (119匹)', this)">✨ 仔出 8 優秀種馬 (119匹)</button>
+<button class="pill pill-purple" onclick="activateSubTable('sy_iseki', '✈️ 移籍海外名種牡馬完全名冊 (273匹)', this)">✈️ 海外移籍名種馬 (273匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('sy_1973', '📅 1973 年開局初年度種牡馬大表 (453匹)', this)">1973 開局種馬 (453匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('sy_1984', '📅 1984 年開局初年度種牡馬大表 (256匹)', this)">1984 開局種馬 (256匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('sy_1991', '📅 1991 年開局初年度種牡馬大表 (486匹)', this)">1991 開局種馬 (486匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('sy_1998', '📅 1998 年開局初年度種牡馬大表 (460匹)', this)">1998 開局種馬 (460匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('sy_2005', '📅 2005 年開局初年度種牡馬大表 (463匹)', this)">2005 開局種馬 (463匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('sy_2012', '📅 2012 年開局初年度種牡馬大表 (427匹)', this)">2012 開局種馬 (427匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('sy_2024', '📅 2024 年開局初年度種牡馬大表 (436匹)', this)">2024 開局種馬 (436匹)</button>
+</div>
+<!-- 繁殖牝馬專屬晶片 -->
+<div class="chips-group" id="chipsGroupBrood" style="display:none; flex-wrap:wrap; gap:6px;">
+<button class="pill pill-gold active" onclick="activateSubTable('hs_1970', '🌸 1970 年代繁殖專用牝馬完全名冊 (1,918匹)', this)">🌸 1970年代繁殖専用 (1,918匹)</button>
+<button class="pill pill-gold" onclick="activateSubTable('hs_1980', '🌸 1980 年代繁殖專用牝馬完全名冊 (1,038匹)', this)">🌸 1980年代繁殖専用 (1,038匹)</button>
+<button class="pill pill-gold" onclick="activateSubTable('hs_1990', '🌸 1990 年代繁殖專用牝馬完全名冊 (700匹)', this)">🌸 1990年代繁殖専用 (700匹)</button>
+<button class="pill pill-gold" onclick="activateSubTable('hs_2000', '🌸 2000 年代繁殖專用牝馬完全名冊 (989匹)', this)">🌸 2000年代繁殖専用 (989匹)</button>
+<button class="pill pill-gold" onclick="activateSubTable('hs_2010', '🌸 2010 年代繁殖專用牝馬完全名冊 (759匹)', this)">🌸 2010年代繁殖専用 (759匹)</button>
+<button class="pill pill-purple" onclick="activateSubTable('hs_iseki', '✈️ 移籍海外繁殖牝馬名冊 (616匹)', this)">✈️ 海外移籍名母馬 (616匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('hs_1973', '📅 1973 年開局初年度繁殖牝馬大表 (1,196匹)', this)">1973 開局母馬 (1,196匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('hs_1984', '📅 1984 年開局初年度繁殖牝馬大表 (2,279匹)', this)">1984 開局母馬 (2,279匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('hs_1991', '📅 1991 年開局初年度繁殖牝馬大表 (2,669匹)', this)">1991 開局母馬 (2,669匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('hs_1998', '📅 1998 年開局初年度繁殖牝馬大表 (2,860匹)', this)">1998 開局母馬 (2,860匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('hs_2005', '📅 2005 年開局初年度繁殖牝馬大表 (3,321匹)', this)">2005 開局母馬 (3,321匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('hs_2012', '📅 2012 年開局初年度繁殖牝馬大表 (3,888匹)', this)">2012 開局母馬 (3,888匹)</button>
+<button class="pill pill-cyan" onclick="activateSubTable('hs_2024', '📅 2024 年開局初年度繁殖牝馬大表 (3,617匹)', this)">2024 開局母馬 (3,617匹)</button>
 </div>
 </div>
-<!-- 競走馬專屬子專題跳轉膠囊 -->
-<div id="raceSubChips" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;">
-<button class="pill pill-power active" onclick="loadSubTable('race_sp74', '⚡ SP 74 以上頂級歷史競走馬完全名冊 (206匹 S+/S/A+ 級神駒)', this)" style="cursor:pointer; font-size:0.78rem;">⚡ SP74+ 頂級神駒 (206匹)</button>
-<button class="pill pill-gold" onclick="loadSubTable('race_koyu', '👑 32 匹持有固有歷史特性名馬名單與技能描述', this)" style="cursor:pointer; font-size:0.78rem;">👑 固有特性名馬 (32匹)</button>
-<button class="pill pill-purple" onclick="loadSubTable('race_boss', '🐴 34 匹初生自帶「馬房老大 (厩舎のボス)」名馬名單', this)" style="cursor:pointer; font-size:0.78rem;">🐴 初始馬房老大 (34匹)</button>
-<button class="pill pill-danger" onclick="loadSubTable('race_rescue', '🚑 歷史事故「予後不良」及早拯救名馬名單 (51匹)', this)" style="cursor:pointer; font-size:0.78rem;">🚑 事故拯救名冊 (38匹)</button>
-<button class="pill pill-safe" onclick="loadSubTable('race_iseki', '✈️ 現役途中移籍海外名馬清單 (41匹)', this)" style="cursor:pointer; font-size:0.78rem;">✈️ 現役海外移籍馬 (41匹)</button>
-<button class="pill pill-gold" onclick="loadSubTable('race_sh', '🌟 歷代超級巨星馬 (Super Horse) 完全名錄 (33匹)', this)" style="cursor:pointer; font-size:0.78rem;">🌟 歷代超級巨星馬 (SH)</button>
-<button class="pill pill-safe" onclick="loadSubTable('race_init', '🎁 全年代劇本初期讓渡馬名錄 (19匹)', this)" style="cursor:pointer; font-size:0.78rem;">🎁 初期讓渡馬名錄</button>
-<button class="pill pill-cyan" onclick="filterMasterByKeyword('芦灰毛', '🦄 全 1,178 匹白毛・蘆毛名駒數據庫', this)" style="cursor:pointer; font-size:0.78rem;">🦄 白毛・蘆毛馬庫 (1,178匹)</button>
-</div>
-</div>
-</div>
-<!-- ==================== TAB 2: 種牡馬データ (Stallion Data) ==================== -->
-<div class="three-horses-view" id="tab-stallion-content" style="display:none;">
-<div class="tool-card" style="background:rgba(20,83,45,0.25); border:1px solid #22c55e; border-radius:10px; padding:16px; margin-bottom:18px;">
-<div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-<i class="fa-solid fa-mars" style="font-size:1.6rem; color:#4ade80;"></i>
-<div>
-<h4 style="margin:0; font-size:1.1rem; color:#86efac;">🧬 種牡馬データ (Stallion Complete Sub-Database)</h4>
-<div style="font-size:0.8rem; color:var(--text-muted);">收錄仔出し 10~1 滿分種馬、各年代開局初年度種牡馬、SP 種馬與海外移籍種牡馬完全名錄</div>
-</div>
-</div>
-<!-- 種牡馬子專題跳轉膠囊 -->
-<div id="stallionSubChips" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;">
-<button class="pill pill-gold active" onclick="loadSubTable('sy_kodashi10', '🧬 仔出し 10 滿分種牡馬完全名單 (28匹神級產駒爆發力)', this)" style="cursor:pointer; font-size:0.78rem;">🧬 仔出 10 滿分種馬 (28匹)</button>
-<button class="pill pill-power" onclick="loadSubTable('sy_kodashi9', '⭐ 仔出し 9 頂級種牡馬名單 (95匹)', this)" style="cursor:pointer; font-size:0.78rem;">⭐ 仔出 9 頂級種馬 (95匹)</button>
-<button class="pill pill-safe" onclick="loadSubTable('sy_kodashi8', '✨ 仔出し 8 優秀種牡馬名單 (119匹)', this)" style="cursor:pointer; font-size:0.78rem;">✨ 仔出 8 優秀種馬 (119匹)</button>
-<button class="pill pill-purple" onclick="loadSubTable('sy_iseki', '✈️ 移籍海外名種牡馬完全名冊 (273匹)', this)" style="cursor:pointer; font-size:0.78rem;">✈️ 海外移籍名種馬 (273匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('sy_1973', '📅 1973 年開局初年度種牡馬大表 (453匹)', this)" style="cursor:pointer; font-size:0.78rem;">1973 開局種馬 (453匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('sy_1984', '📅 1984 年開局初年度種牡馬大表 (256匹)', this)" style="cursor:pointer; font-size:0.78rem;">1984 開局種馬 (256匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('sy_1991', '📅 1991 年開局初年度種牡馬大表 (486匹)', this)" style="cursor:pointer; font-size:0.78rem;">1991 開局種馬 (486匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('sy_1998', '📅 1998 年開局初年度種牡馬大表 (460匹)', this)" style="cursor:pointer; font-size:0.78rem;">1998 開局種馬 (460匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('sy_2005', '📅 2005 年開局初年度種牡馬大表 (463匹)', this)" style="cursor:pointer; font-size:0.78rem;">2005 開局種馬 (463匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('sy_2012', '📅 2012 年開局初年度種牡馬大表 (427匹)', this)" style="cursor:pointer; font-size:0.78rem;">2012 開局種馬 (427匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('sy_2024', '📅 2024 年開局初年度種牡馬大表 (436匹)', this)" style="cursor:pointer; font-size:0.78rem;">2024 開局種馬 (436匹)</button>
-</div>
-</div>
-</div>
-<!-- ==================== TAB 3: 繁殖牝馬データ (Broodmare Data) ==================== -->
-<div class="three-horses-view" id="tab-broodmare-content" style="display:none;">
-<div class="tool-card" style="background:rgba(136,19,55,0.25); border:1px solid #f43f5e; border-radius:10px; padding:16px; margin-bottom:18px;">
-<div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-<i class="fa-solid fa-venus" style="font-size:1.6rem; color:#fb7185;"></i>
-<div>
-<h4 style="margin:0; font-size:1.1rem; color:#fda4af;">🌸 繁殖牝馬データ (Broodmare Complete Sub-Database)</h4>
-<div style="font-size:0.8rem; color:var(--text-muted);">收錄仔出し 10~1 名門奠基母馬、繁殖專用牝馬年代名冊 (1970~2010s)、各年代初年度母馬與移籍名冊</div>
-</div>
-</div>
-<!-- 繁殖牝馬專屬子專題跳轉膠囊 -->
-<div id="broodSubChips" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;">
-<button class="pill pill-gold active" onclick="loadSubTable('hs_1970', '🌸 1970 年代繁殖專用牝馬完全名冊 (1,918匹)', this)" style="cursor:pointer; font-size:0.78rem;">🌸 1970年代繁殖専用 (1,918匹)</button>
-<button class="pill pill-gold" onclick="loadSubTable('hs_1980', '🌸 1980 年代繁殖專用牝馬完全名冊 (1,038匹)', this)" style="cursor:pointer; font-size:0.78rem;">🌸 1980年代繁殖専用 (1,038匹)</button>
-<button class="pill pill-gold" onclick="loadSubTable('hs_1990', '🌸 1990 年代繁殖專用牝馬完全名冊 (700匹)', this)" style="cursor:pointer; font-size:0.78rem;">🌸 1990年代繁殖専用 (700匹)</button>
-<button class="pill pill-gold" onclick="loadSubTable('hs_2000', '🌸 2000 年代繁殖專用牝馬完全名冊 (989匹)', this)" style="cursor:pointer; font-size:0.78rem;">🌸 2000年代繁殖専用 (989匹)</button>
-<button class="pill pill-gold" onclick="loadSubTable('hs_2010', '🌸 2010 年代繁殖專用牝馬完全名冊 (759匹)', this)" style="cursor:pointer; font-size:0.78rem;">🌸 2010年代繁殖専用 (759匹)</button>
-<button class="pill pill-purple" onclick="loadSubTable('hs_iseki', '✈️ 移籍海外繁殖牝馬名冊 (616匹)', this)" style="cursor:pointer; font-size:0.78rem;">✈️ 海外移籍名母馬 (616匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('hs_1973', '📅 1973 年開局初年度繁殖牝馬大表 (1,196匹)', this)" style="cursor:pointer; font-size:0.78rem;">1973 開局母馬 (1,196匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('hs_1984', '📅 1984 年開局初年度繁殖牝馬大表 (2,279匹)', this)" style="cursor:pointer; font-size:0.78rem;">1984 開局母馬 (2,279匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('hs_1991', '📅 1991 年開局初年度繁殖牝馬大表 (2,669匹)', this)" style="cursor:pointer; font-size:0.78rem;">1991 開局母馬 (2,669匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('hs_1998', '📅 1998 年開局初年度繁殖牝馬大表 (2,860匹)', this)" style="cursor:pointer; font-size:0.78rem;">1998 開局母馬 (2,860匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('hs_2005', '📅 2005 年開局初年度繁殖牝馬大表 (3,321匹)', this)" style="cursor:pointer; font-size:0.78rem;">2005 開局母馬 (3,321匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('hs_2012', '📅 2012 年開局初年度繁殖牝馬大表 (3,888匹)', this)" style="cursor:pointer; font-size:0.78rem;">2012 開局母馬 (3,888匹)</button>
-<button class="pill pill-cyan" onclick="loadSubTable('hs_2024', '📅 2024 年開局初年度繁殖牝馬大表 (3,617匹)', this)" style="cursor:pointer; font-size:0.78rem;">2024 開局母馬 (3,617匹)</button>
-</div>
-</div>
-</div>
-<!-- ==================== 子專題動態大表展示容器 ==================== -->
-<div id="dynamicSubTableCard" style="background:rgba(15,23,42,0.9); border:1px solid var(--accent-color); border-radius:10px; padding:16px; margin-bottom:28px;">
+<!-- ==================== 動態子資料庫大表容器 (緊跟在晶片下方) ==================== -->
+<div class="tool-card" id="subTableDisplayCard" style="background:rgba(15,23,42,0.95); border:1px solid var(--accent-color); border-radius:10px; padding:16px; margin-bottom:28px;">
 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:10px; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
-<h4 id="dynamicSubTableTitle" style="margin:0; font-size:1.05rem; color:var(--gold-color);">⚡ SP 74 以上頂級歷史競走馬完全名冊 (206匹 S+/S/A+ 級神駒)</h4>
-<div id="dynamicSubTableRowCount" style="font-size:0.8rem; color:var(--text-muted);">共 206 匹數據</div>
+<h4 id="subTableTitleText" style="margin:0; font-size:1.05rem; color:var(--gold-color);">⚡ SP 74 以上頂級歷史競走馬完全名冊 (206匹 S+/S/A+ 級神駒)</h4>
+<div id="subTableRowCountText" style="font-size:0.8rem; color:var(--text-muted);">共 206 匹數據</div>
 </div>
-<!-- 大表搜尋與過濾 -->
+<!-- 大表即時搜尋 -->
 <div style="display:flex; gap:10px; margin-bottom:12px;">
-<input id="subTableSearchInput" oninput="filterCurrentSubTable()" placeholder="在此子大表中快速過濾馬名、生年、SP、特性..." style="flex:1; padding:8px 12px; background:rgba(30,41,59,0.8); border:1px solid var(--border-color); border-radius:6px; color:#fff; font-size:0.82rem; outline:none;" type="text"/>
+<div style="position:relative; flex:1;">
+<i class="fa-solid fa-magnifying-glass" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--text-muted);"></i>
+<input id="subTableLiveFilterInput" oninput="onSubTableFilterInput()" placeholder="在此子大表中快速過濾馬名、生年、SP、特性..." style="width:100%; padding:8px 12px 8px 32px; background:rgba(30,41,59,0.8); border:1px solid var(--border-color); border-radius:6px; color:#fff; font-size:0.82rem; outline:none;" type="text"/>
+</div>
 </div>
 <div class="table-responsive" style="max-height:550px; overflow-y:auto;">
-<table class="data-table" id="dynamicSubTable">
-<thead id="dynamicSubTableHead">
+<table class="data-table">
+<thead id="subTableHeadContent">
 <!-- 動態注入表頭 -->
 </thead>
-<tbody id="dynamicSubTableBody">
+<tbody id="subTableBodyContent">
 <!-- 動態注入數據行 -->
 </tbody>
 </table>
@@ -27234,7 +27204,7 @@ li {
 </div>
 </div>
 </div>
-<!-- ==================== 三、全 17,885 匹史實馬 Profile 索引與快速跳轉庫 ==================== -->
+<!-- ==================== 三、全 17,885 匹史實馬 Profile 索引與即時檢索 ==================== -->
 <h3 style="font-size:1.05rem; color:var(--accent-purple); margin:28px 0 12px; display:flex; align-items:center; gap:8px; border-bottom:1px solid rgba(168,85,247,0.3); padding-bottom:6px;">
 <i class="fa-solid fa-magnifying-glass-location"></i> 三、全 17,885 匹史實馬 Profile 索引與快速跳轉庫 (Universal Live Explorer)
 </h3>
