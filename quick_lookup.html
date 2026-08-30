@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.21</span>
+        <span class="version-badge">v02.22</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -27055,8 +27055,11 @@ li {
     box-shadow: 0 0 12px rgba(2, 132, 199, 0.4) !important;
 }
 
-/* 2. 子專題 3*3 網格配置 (平板/桌面完美 3 等分) */
-.ch41-sub-grid-3x3 {
+/* 2. 子專題晶片群組：預設隱藏，僅 active 狀態顯示為 3*3 網格 */
+.chips-group {
+    display: none !important;
+}
+.chips-group.active {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 8px !important;
@@ -27237,10 +27240,10 @@ li {
 <i class="fa-solid fa-venus" style="color:#fb7185;"></i> 🌸 3. 繁殖牝馬データ
     </button>
 </div>
-<!-- ==================== 2. 子專題晶片列 (3*3 網格配置) ==================== -->
+<!-- ==================== 2. 子專題晶片列 (依第一層選擇顯示對應組別，3*3 網格配置) ==================== -->
 <div class="tool-card" style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:12px 14px; margin-bottom:18px;">
-<!-- 競走馬 8 顆晶片 (3*3 網格) -->
-<div class="ch41-sub-grid-3x3 chips-group" id="chipsGroupRace">
+<!-- 競走馬 8 顆晶片 (預設 active) -->
+<div class="chips-group active" id="chipsGroupRace">
 <button class="ch41-sub-chip active" onclick="activateSubTable('race_sp74', '⚡ SP 74 以上頂級歷史競走馬完全名冊 (206匹 S+/S/A+ 級神駒)', this)">⚡ SP74+ 頂級神駒 (206匹)</button>
 <button class="ch41-sub-chip" onclick="activateSubTable('race_koyu', '👑 32 匹持有固有歷史特性名馬名單與技能描述', this)">👑 固有特性名馬 (32匹)</button>
 <button class="ch41-sub-chip" onclick="activateSubTable('race_boss', '🐴 34 匹初生自帶「馬房老大 (厩舎のボス)」名馬名單', this)">🐴 初始馬房老大 (34匹)</button>
@@ -27250,8 +27253,8 @@ li {
 <button class="ch41-sub-chip" onclick="activateSubTable('race_init', '🎁 全年代劇本初期讓渡名駒名錄 (19匹)', this)">🎁 初期讓渡名駒 (19匹)</button>
 <button class="ch41-sub-chip" onclick="filterMasterKeyword('芦灰毛', '🦄 全 1,178 匹白毛・蘆毛名駒數據庫', this)">🦄 白毛・蘆毛名駒庫 (1,178匹)</button>
 </div>
-<!-- 種牡馬晶片 (3*3 網格) -->
-<div class="ch41-sub-grid-3x3 chips-group" id="chipsGroupStallion" style="display:none;">
+<!-- 種牡馬晶片 -->
+<div class="chips-group" id="chipsGroupStallion">
 <button class="ch41-sub-chip active" onclick="activateSubTable('sy_kodashi10', '🧬 仔出し 10 滿分種牡馬完全名單 (28匹神級產駒爆發力)', this)">🧬 仔出 10 滿分種馬 (28匹)</button>
 <button class="ch41-sub-chip" onclick="activateSubTable('sy_kodashi9', '⭐ 仔出し 9 頂級種牡馬名單 (95匹)', this)">⭐ 仔出 9 頂級種馬 (95匹)</button>
 <button class="ch41-sub-chip" onclick="activateSubTable('sy_kodashi8', '✨ 仔出し 8 優秀種牡馬名單 (119匹)', this)">✨ 仔出 8 優秀種馬 (119匹)</button>
@@ -27264,8 +27267,8 @@ li {
 <button class="ch41-sub-chip" onclick="activateSubTable('sy_2012', '📅 2012 年開局初年度種牡馬大表 (427匹)', this)">📅 2012 開局種馬 (427匹)</button>
 <button class="ch41-sub-chip" onclick="activateSubTable('sy_2024', '📅 2024 年開局初年度種牡馬大表 (436匹)', this)">📅 2024 開局種馬 (436匹)</button>
 </div>
-<!-- 繁殖牝馬晶片 (3*3 網格) -->
-<div class="ch41-sub-grid-3x3 chips-group" id="chipsGroupBrood" style="display:none;">
+<!-- 繁殖牝馬晶片 -->
+<div class="chips-group" id="chipsGroupBrood">
 <button class="ch41-sub-chip active" onclick="activateSubTable('hs_1970', '🌸 1970 年代繁殖專用牝馬完全名冊 (1,918匹)', this)">🌸 1970年代繁殖專用 (1,918匹)</button>
 <button class="ch41-sub-chip" onclick="activateSubTable('hs_1980', '🌸 1980 年代繁殖專用牝馬完全名冊 (1,038匹)', this)">🌸 1980年代繁殖專用 (1,038匹)</button>
 <button class="ch41-sub-chip" onclick="activateSubTable('hs_1990', '🌸 1990 年代繁殖專用牝馬完全名冊 (700匹)', this)">🌸 1990年代繁殖專用 (700匹)</button>
