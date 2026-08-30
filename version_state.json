@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.96",
+  "current_version": "v01.97",
   "history": [
     {
       "version": "v01.01",
@@ -480,6 +480,11 @@
       "version": "v01.96",
       "date": "2026-08-29",
       "description": "Layout: Set Breeding Theory Matrix Grid to strict 3 items per row"
+    },
+    {
+      "version": "v01.97",
+      "date": "2026-08-29",
+      "description": "Layout: Enable Tablet 3-col & Desktop auto-fit responsive layout for Breeding Theory Matrix Grid"
     }
   ]
 }
