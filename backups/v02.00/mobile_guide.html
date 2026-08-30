@@ -18,9 +18,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-    <script src="master_lookup_db.js?v=v01.13"></script>
-    <script src="core_guides_data.js?v=v01.13"></script>
-    <script src="yearly_recs_db.js?v=v01.13"></script>
+    <script src="master_lookup_db.js?v=v02.00"></script>
+    <script src="core_guides_data.js?v=v02.00"></script>
+    <script src="yearly_recs_db.js?v=v02.00"></script>
     <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1696,7 +1696,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v01.97</span>
+        <span class="version-badge">v02.00</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 38 大章節)
@@ -4064,7 +4064,7 @@ li {
 <thead>
 <tr>
 <th style="min-width:140px;">期待度等級</th>
-<th style="min-width:360px;">牧場長日文原版評語</th>
+<th style="min-width:px;">牧場長日文原版評語</th>
 <th style="min-width:340px;">中文對照與實力潛能評估</th>
 </tr>
 </thead>
@@ -20382,7 +20382,7 @@ li {
     <div id="pillar-secrets" class="pillar-content" style="display:none;">
         <div class="pillar-header-card">
             <h2>👑 開局劇本・守護符日曆・超級巨星馬與通關秘技 (Secrets & Superhorses)</h2>
-            <p>【第 33 章 ~ 第 38 章】開局劇本年代與史實名馬選拔指南、守護符 (御守) 獲得全圖鑑與兌換日曆、超級巨星名駒 (スーパースターホース) 機制解析與歷代 SH 完全名單、+40 爆發力滿貫公式、版本演進剖析與 1968 年最古開局劇本完全攻略</p>
+            <p>【第 33 章 ~ 第 39 章】開局劇本年代與史實名馬選拔指南、守護符 (御守) 獲得全圖鑑與兌換日曆、超級巨星名駒 (スーパースターホース) 機制解析與歷代 SH 完全名單、+40 爆發力滿貫公式、版本演進剖析與 1968 年最古開局劇本完全攻略</p>
         </div>
         <section class="section-card" id="sec-start-guide">
 <div class="section-header">
@@ -20416,6 +20416,8 @@ li {
 <div id="yearlyRecsContainer">
 <!-- Dynamic Tables generated via JS -->
 </div>
+<!-- 年代切換水平軌道 -->
+<!-- 年代內容展示容器 -->
 </div>
 </section>
 <section class="section-card" id="sec-amulets">
@@ -20485,6 +20487,37 @@ li {
 <button class="filter-btn active" onclick="switchMainPillar('pillar-db'); setTimeout(() =&gt; { const btn = document.querySelector('[data-cat=cat13]'); if(btn) btn.click(); }, 100);" style="padding:8px 20px; font-size:0.88rem;">
 <i class="fa-solid fa-magnifying-glass"></i> 前往馬庫速查：檢視 虹札推薦日本馬 / 海外馬
             </button>
+</div>
+<!--  引繼存檔速刷心法 -->
+<div style="margin-top:20px; border-top:1px solid var(--border-color); padding-top:16px;">
+<h3 style="font-size:1rem; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">高階引繼存檔製作法：半天速刷虹札/金札開局完美存檔 SOP</h3>
+<p style="font-size:0.83rem; color:var(--text-color); line-height:1.6; margin-bottom:12px;">
+                新開檔前，先花 1 小時或半天建立一個「專門用來引繼資源」的存檔，即可在新周目開局直接繼承 <strong>虹札 2~7 枚、金札 10~30 枚、數百億資金與 Lv3 滿級牧場設施</strong>：
+            </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; margin-bottom:16px;">
+<!-- 速度重視版 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3); border-radius:10px; padding:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--accent-color); margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-bolt"></i> 方案 A：速度重視版（1 小時速刷 虹札2枚＋金札10枚）
+                    </div>
+<ol style="font-size:0.8rem; line-height:1.75; margin:0; padding-left:18px; color:var(--text-color);">
+<li><strong>環境設定：</strong>比賽全跳過 (Skip)、對話全自動高速推進。</li>
+<li><strong>核心原則：</strong>每年 <strong>3月5週</strong> 購買「當年即將誕生之有力史實馬的懷孕母馬」，產下幼駒後自動計入自牧生產，<strong>每年穩定霸榜「最優秀生產者賞」賺取金札與巨額獎金</strong>！</li>
+<li><strong>拍賣會撿漏：</strong>每年 8月1週 (國內) 與 12月3週 (海外) 拍賣會，以低價搶購スーパークリーク (超級小溪) 等低札頂級名馬，橫掃 G1 與金殿堂！</li>
+</ol>
+</div>
+<!-- 效率重視版 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(234,179,8,0.4); border-radius:10px; padding:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-crown"></i> 方案 B：效率重視版（半天深度刷 虹札7枚＋金札30枚）
+                    </div>
+<ol style="font-size:0.8rem; line-height:1.75; margin:0; padding-left:18px; color:var(--text-color);">
+<li><strong>入廄指定與主戰綁定：</strong>將自產名馬全數委託高勝率調教師，並由同一名騎手長年專屬策騎，迅速將「絆等級」拉滿 Lv5 覺醒上位絆特性。</li>
+<li><strong>海外銅札馬在日泥地洗分：</strong>引進海外銅札名馬（如 ブーシーリス），在競爭較弱的日本國內泥地重賞全勝，低成本達成<strong>金殿堂 (金札回饋)</strong>！</li>
+<li><strong>年末種馬買賣：</strong>自牧產駒奪三冠引退後以數十億高價售出種權，資金迅速突破 500 億上限！</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -20630,9 +20663,7 @@ li {
           </div>
 </div>
 <!-- 一、1968 劇本核心理念與開局四階段推進表 -->
-<h3 style="font-size:1.05rem; color:var(--accent-color); margin:20px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-seedling"></i> 一、1968 年開局核心理念：由「極限配合」轉向「土壤型 (土壌型)」育種戰略
-        </h3>
+<h3 style="font-size:1.05rem; color:var(--accent-color); margin:20px 0 10px; display:flex; align-items:center; gap:8px;">一、1968 年開局核心理念：由「極限配合」轉向「土壤型 (土壌型)」育種戰略</h3>
 <div class="table-responsive" style="margin-bottom:20px;">
 <table class="data-table">
 <thead>
@@ -20667,9 +20698,7 @@ li {
 </table>
 </div>
 <!-- 二、1968 國內種牡馬戰略 -->
-<h3 style="font-size:1.05rem; color:var(--gold-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-horse-head"></i> 二、1968 國內種牡馬選拔：迷茫時首選這 3 頭 ＋ 後續接力 2 頭
-        </h3>
+<h3 style="font-size:1.05rem; color:var(--gold-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">二、1968 國內種牡馬選拔：迷茫時首選這 3 頭 ＋ 後續接力 2 頭</h3>
 <div class="table-responsive" style="margin-bottom:16px;">
 <table class="data-table">
 <thead>
@@ -20715,9 +20744,7 @@ li {
 </table>
 </div>
 <!-- 三、1968 海外種牡馬 5 大本命 -->
-<h3 style="font-size:1.05rem; color:var(--accent-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-globe"></i> 三、1968 海外種牡馬 5 大本命 (種牡馬設施 Lv3 解鎖後首選)
-        </h3>
+<h3 style="font-size:1.05rem; color:var(--accent-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">三、1968 海外種牡馬 5 大本命 (種牡馬設施 Lv3 解鎖後首選)</h3>
 <div class="table-responsive" style="margin-bottom:20px;">
 <table class="data-table">
 <thead>
@@ -20763,9 +20790,7 @@ li {
 </table>
 </div>
 <!-- 四、1968 日本「成長力持続」繁殖牝馬 全 27 頭徹底評價大表 -->
-<h3 style="font-size:1.05rem; color:var(--gold-color); margin:26px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-flag"></i> 四、1968 日本「成長力：持続」繁殖牝馬 全 27 頭徹底評價完全大表 (100% 全量無遺漏)
-        </h3>
+<h3 style="font-size:1.05rem; color:var(--gold-color); margin:26px 0 10px; display:flex; align-items:center; gap:8px;">四、1968 日本「成長力：持続」繁殖牝馬 全 27 頭徹底評價完全大表 (100% 全量無遺漏)</h3>
 <p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
           以下為《ウイポ脳》針對 1968 日本國內所有具備「成長力持続」的 <strong>全 27 頭繁殖牝馬</strong> 進行的 S~D 級全覆蓋評級大表：
         </p>
@@ -20928,9 +20953,7 @@ li {
 </table>
 </div>
 <!-- 五、1968 歐洲「成長力持続」繁殖牝馬 全 23 頭徹底評價大表 -->
-<h3 style="font-size:1.05rem; color:var(--accent-color); margin:26px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-earth-europe"></i> 五、1968 歐洲「成長力：持続」繁殖牝馬 全 23 頭徹底評價完全大表 (100% 全量無遺漏)
-        </h3>
+<h3 style="font-size:1.05rem; color:var(--accent-color); margin:26px 0 10px; display:flex; align-items:center; gap:8px;">五、1968 歐洲「成長力：持続」繁殖牝馬 全 23 頭徹底評價完全大表 (100% 全量無遺漏)</h3>
 <div class="table-responsive" style="margin-bottom:24px;">
 <table class="data-table" style="font-size:0.8rem;">
 <thead>
@@ -21156,9 +21179,7 @@ li {
 </table>
 </div>
 <!-- 六、1968 美國「成長力持続」繁殖牝馬 全 42 頭徹底評價大表 -->
-<h3 style="font-size:1.05rem; color:var(--accent-color); margin:26px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-earth-americas"></i> 六、1968 美國「成長力：持続」繁殖牝馬 全 42 頭徹底評價完全大表 (100% 全量無遺漏)
-        </h3>
+<h3 style="font-size:1.05rem; color:var(--accent-color); margin:26px 0 10px; display:flex; align-items:center; gap:8px;">六、1968 美國「成長力：持続」繁殖牝馬 全 42 頭徹底評價完全大表 (100% 全量無遺漏)</h3>
 <div class="table-responsive" style="margin-bottom:24px;">
 <table class="data-table" style="font-size:0.8rem;">
 <thead>
@@ -21555,9 +21576,7 @@ li {
 </table>
 </div>
 <!-- 七、1968 繁殖牝馬 30 年後實機驗證實錄 (始祖別 80 頭排行榜) -->
-<h3 style="font-size:1.05rem; color:var(--gold-color); margin:26px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-chart-line"></i> 七、1968 繁殖牝馬 30 年後實機推演實錄 (始祖別全 24 位・共 80 頭繁殖牝馬完全大排行)
-        </h3>
+<h3 style="font-size:1.05rem; color:var(--gold-color); margin:26px 0 10px; display:flex; align-items:center; gap:8px;">七、1968 繁殖牝馬 30 年後實機推演實錄 (始祖別全 24 位・共 80 頭繁殖牝馬完全大排行)</h3>
 <p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
           《ウイポ脳》從 1968 年劇本實機推演 30 年，統計所有繁殖母馬後代頭數與目前評價額總和（總計 80 頭繁殖牝馬，歸納為 24 位始祖名門），以下為 100% 完整無遺漏之 80 頭實機推演大排行：
         </p>
@@ -21769,6 +21788,2634 @@ li {
 </tbody>
 </table>
 </div>
+<!--  1968 初期馬與繁殖牝馬深度圖文攻略 -->
+<div style="margin-top:20px; border-top:1px solid var(--border-color); padding-top:16px;">
+<h3 style="font-size:1rem; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">1968 開局初期馬（ファインローズ vs タニノハローモア）與最強母母「ヴァーヴ」深度實戰攻略</h3>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; margin-bottom:16px;">
+<!-- ファインローズ 攻略卡 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(244,114,182,0.3); border-radius:10px; padding:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:#f472b6; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-venus"></i> 牝馬首選：ファインローズ (優雅玫瑰) 實戰全攻略
+                    </div>
+<p style="font-size:0.82rem; color:var(--text-color); line-height:1.6; margin-bottom:8px;">
+                        • <strong>首年戰績回報：</strong>首年出走即穩奪 <strong>4 場 G1 勝利</strong>，包辦「最優秀 3 歲牝馬」與「最優秀短途馬 (スプリンター)」雙料大獎！<br/>
+                        • <strong>推薦輪轉出賽路線：</strong>2月2週 京都 エルフィンS ➔ 4月 櫻花賞 (G1) ➔ 5月 橡樹大賽 (G1) ➔ 秋季 短途馬錦標 (G1) / 一哩冠軍賽！<br/>
+                        • <strong>退役價值：</strong>退役後直升自牧殿堂級繁殖牝馬，為次世代自產馬打下最高相性母本基礎。
+                    </p>
+</div>
+<!-- タニノハローモア 攻略卡 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3); border-radius:10px; padding:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--accent-color); margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-mars"></i> 牡馬首選：タニノハローモア (谷野哈囉摩亞) 實戰全攻略
+                    </div>
+<p style="font-size:0.82rem; color:var(--text-color); line-height:1.6; margin-bottom:8px;">
+                        • <strong>首年戰績回報：</strong>首年狂攬 <strong>7 場 G1 ＋ 3 場 Jpn1</strong>，直接鎖定<strong>「金殿堂」</strong>資格！<br/>
+                        • <strong>特殊效益：</strong>首年即刻引爆「競馬熱潮 (競馬ブーム)」，榮登世界 100 傑名馬榜第 78 位！<br/>
+                        • <strong>推薦攻略要訣：</strong>2月2週 きさらぎ賞 (G3) 壓制マーチス ➔ 皐月賞 ➔ 日本德比 (東京優駿) ➔ 菊花賞，全速衝刺三冠榮耀！
+                    </p>
+</div>
+</div>
+<!-- 最強繁殖牝馬 ヴァーヴ 攻略卡 -->
+<div class="tool-card" style="background:rgba(15,23,42,0.7); border:1px solid rgba(234,179,8,0.4); border-radius:10px; padding:16px; margin-bottom:16px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-gem"></i> 1968 開局必買銀札神級母母：ヴァーヴ (Verve) 繁育秘技
+                </div>
+<p style="font-size:0.83rem; color:var(--text-color); line-height:1.6; margin-bottom:10px;">
+                    ヴァーヴ 是 1968 年開局能夠買到的<strong>極其珍貴的 Nearco (ネアルコ) 直仔繁殖牝馬</strong>。自帶母父◎（爆發力+4），且 Nearco 擁有速度因子與極大種牡馬血統群，零細血統適性極佳：
+                </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px; font-size:0.82rem;">
+<div style="background:rgba(30,41,59,0.8); padding:10px 12px; border-radius:6px;">
+<strong style="color:var(--gold-color);">💡 神級配合推薦 1：</strong><br/>
+<strong>Northern Dancer 直仔種馬 × 零細血統種馬 × ヴァーヴ</strong><br/>
+<small style="color:var(--text-muted);">例：シャリーフダンサー 配種 ➔ 評價 A / 爆發力 43 / 近親危險度僅 1！</small>
+</div>
+<div style="background:rgba(30,41,59,0.8); padding:10px 12px; border-radius:6px;">
+<strong style="color:var(--accent-color);">💡 神級配合推薦 2：</strong><br/>
+<strong>Secretariat (秘書處) × チャイナロック (China Rock) × ヴァーヴ</strong><br/>
+<small style="color:var(--text-muted);">雙重大種牡馬相性 ＋ 雄系活性化，輕鬆誕出 SP 75+ 的世界級自產怪物！</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section-card" id="sec-era-horses-guide">
+<div class="section-header">
+<div class="section-title"><i class="fa-solid fa-calendar-days"></i> 第 39 章：按年代史實攻略與 1967~1975 各年代推薦名馬完全指南</div>
+<div class="section-meta">
+<span class="pill pill-gold">1967~1975 全世代深度解析</span>
+<span class="pill pill-safe">14 欄獨立齊頭大表</span>
+<span class="pill pill-magic">繁中攻略のポイント</span>
+</div>
+</div>
+<div class="section-body">
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-calendar-days" style="font-size:1.3rem; color:var(--gold-color);"></i>
+<div>
+<strong>《按年代史實攻略與 1967~1975 各年代推薦名馬完全指南》 (官方劇本全世代深度解析)</strong><br/>
+                精準彙整 1967 至 1975 各年代出生史實名馬的<strong>世代格局、經典三冠戰線、牝馬三冠、古馬王道與泥地路線佈局</strong>，並依 <strong>⦿ 世代唯一霸主、◎ 一線頂級名駒、○ 高性價比潛力馬、▲ 專項奇兵</strong> 提供推薦 10 選完全大表、1:1 繁體中文化【攻略のポイント】實戰深度攻略要點、名馬專屬評析卡片、以及 3 月 5 週必買繁殖牝馬情報！
+            </div>
+</div>
+<!-- 年代切換水平軌道 -->
+<div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:12px; padding:14px 16px; margin-bottom:16px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-timeline"></i> 選擇欲檢視之史實年代 (1967 ~ 1975 年)
+                </div>
+<span class="pill pill-gold" style="font-size:0.75rem;">支援即時排序與日/中對照 (共 9 大年代)</span>
+</div>
+<div style="display:flex; gap:8px; overflow-x:auto; padding-bottom:6px; -webkit-overflow-scrolling:touch;">
+<button class="filter-btn active" onclick="switchEraRecsTab(1967, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+        📅 1967 年出生世代
+    </button>
+<button class="filter-btn" onclick="switchEraRecsTab(1968, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+        📅 1968 年出生世代
+    </button>
+<button class="filter-btn" onclick="switchEraRecsTab(1969, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+        📅 1969 年出生世代
+    </button>
+<button class="filter-btn" onclick="switchEraRecsTab(1970, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+        📅 1970 年出生世代
+    </button>
+<button class="filter-btn" onclick="switchEraRecsTab(1971, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+        📅 1971 年出生世代
+    </button>
+<button class="filter-btn" onclick="switchEraRecsTab(1972, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+        📅 1972 年出生世代
+    </button>
+<button class="filter-btn" onclick="switchEraRecsTab(1973, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+        📅 1973 年出生世代
+    </button>
+<button class="filter-btn" onclick="switchEraRecsTab(1974, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+        📅 1974 年出生世代
+    </button>
+<button class="filter-btn" onclick="switchEraRecsTab(1975, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+        📅 1975 年出生世代
+    </button>
+</div>
+</div>
+<!-- 年代內容展示容器 -->
+<div id="eraRecsContainer">
+<div class="era-recs-pane" id="paneEraRecs_1967" style="display:block;">
+<!-- 世代格局情報 -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1967 年出生世代】時代格局與各賽線核心情報
+            </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                1968年最古劇本開局時可於 1 歲幼駒階段直接購入的黃金世代。長途長距離王、短途一哩好手與殿堂級名牝齊聚！
+            </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> タニノムーティエ (谷野穆提埃) 皐月賞與德比獨壇場；菊花賞由 ダテテンリュウ (伊達天龍) 與 メジロムサシ (目白武藏) 爭雄！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> 短距離 タマミ (玉美)、經典中長距離 ジュピック (珠匹克) 實力出眾；全能均衡首選 ケイサンタ (京三太)！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #38bdf8;">
+<strong style="color:var(--accent-color);">⚡ 短途一哩：</strong> アローエクスプレス (神箭特快) 短途一哩世代無敵；高性價比首選 エリモシルバー (襟裳銀)！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> タマミ、エリモシルバー 具備泥地 ◎ 適性。
+                </div>
+</div>
+</div>
+<!-- 推薦史實馬大表 (完整 14 欄獨立齊頭) -->
+<div class="table-responsive" style="margin-bottom:16px; -webkit-overflow-scrolling:touch; overflow-x:auto;">
+<table class="data-table" style="min-width:1300px; width:100%; font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:45px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:130px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:65px;">符札</th>
+<th class="sortable-th" style="width:50px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:110px;">父馬</th>
+<th class="sortable-th" style="min-width:110px;">母馬</th>
+<th class="sortable-th" style="width:55px;">SP</th>
+<th class="sortable-th" style="width:55px;">ST</th>
+<th class="sortable-th" style="width:65px;">輔助評分</th>
+<th class="sortable-th" style="width:45px; text-align:center;">芝</th>
+<th class="sortable-th" style="width:45px; text-align:center;">泥</th>
+<th class="sortable-th" style="width:65px;">成長型</th>
+<th class="sortable-th" style="width:65px;">成長力</th>
+<th class="sortable-th" style="min-width:320px;">實戰特徵與攻略要點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">アローエクスプレス</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>スパニッシュイクスプレス</td>
+<td>ソーダストリーム</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">70</span></td>
+<td>30</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>早め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">サブパラ優秀なマイラー。距離適性も広い</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">メジロムサシ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ワラビー</td>
+<td>キヨハ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>80</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>遅め</td>
+<td>普通</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">天皇賞(春)馬。豊富なスタミナ</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ケイサンタ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>キノー</td>
+<td>バインドウィード</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>45</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>早め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">牝馬三冠候補。距離適性が広く選択肢が多い</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">エリモシルバー</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>キノー</td>
+<td>シルヴァーファー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>25</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">◎</td>
+<td>遅め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">短距離逃げ馬</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">タニノムーティエ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ムーティエ</td>
+<td>タニノチェリ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>50</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">○</td>
+<td>早め</td>
+<td>普通</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ダービーまでの本命。ダート○が地味に嬉しい</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">タマミ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>カリム</td>
+<td>グランドフォード</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">68</span></td>
+<td>20</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">◎</td>
+<td>早め</td>
+<td>普通</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">短距離マイルで強い。桜花賞はこの馬。</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ジュピック</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>トロピーク</td>
+<td>ジュデラ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>60</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>早め</td>
+<td>普通</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">史実のオークス馬。距離適性に難あり。</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ジョセツ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>シーフュリュー</td>
+<td>セッシュウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>60</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">△</td>
+<td>早め</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">牝馬三冠候補② 非根幹距離持ちがネック</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ヒダプレジデント</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ダラノーア</td>
+<td>ヒダノタカラ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>55</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">△</td>
+<td>早熟</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">2歳から活躍できる中距離馬</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">プランジャー</strong></td>
+<td><span class="pill pill-safe">無</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ムーティエ</td>
+<td>シンキロク</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">63</span></td>
+<td>40</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">○</td>
+<td>早め</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">早期の賞金稼ぎに</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 💡【攻略のポイント】(實戰深度攻略要點繁體中文專區) -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid rgba(234,179,8,0.3); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-lightbulb"></i> 💡【攻略のポイント】1967 年代實戰深度攻略要點
+            </div>
+<div style="color:var(--text-color); margin-bottom:12px;">
+<p style="margin-bottom:8px; line-height:1.65; font-size:0.83rem;">
+• <strong>世代最強馬為 タニノムーティエ (谷野穆提埃)：</strong>然而其距離適性為 1600m～2400m，受限於耐力長度，要達成經典三冠（拿下菊花賞）在事實上幾乎不可能。若想取得金札，必須轉戰秋古馬三冠（秋季天皇賞、日本盃、有馬紀念）或一哩 G1 路線，難度較高。<br/>
+• <strong>推薦 No.1 首選為 アローエクスプレス (神箭特快)：</strong>輔助能力極其全面優異，活躍於短距離至中距離 G1 戰線。金殿堂入定如同囊中之物！更重要的是，退役轉任種牡馬後的遺傳因子非常優秀，對自家生產幫助極大。<br/>
+• <strong>次選推薦為 メジロムサシ (目白武藏)：</strong>長距離耐力充沛（ST 80），在長距離戰線大有可為。若將眼光放至競爭較弱的海外長途 G1 賽事，達成金殿堂亦十拿九穩。<br/>
+• <strong>牝馬首選推薦 ケイサンタ (京三太)：</strong>距離適性範圍廣，成長型為「早め / ある (早熟持績)」，妥善調教育成完全具備爭奪牝馬三冠的實力。且僅需銅札，最差情況下藉由稱霸夏季系列賽也能迅速回本。<br/>
+• <strong>無繼承存檔開局首選 プランジャー (活塞)：</strong>0 札/無印名駒，早熟持績＋芝◎泥○，賽事適應力極高，是初期累積獎金與資金的最強提款機！
+</p>
+</div>
+<div style="font-size:0.86rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px;">
+                🏆 世代精選名馬 評級深度剖析與專屬攻略方針：
+            </div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ アローエクスプレス (神箭特快 - 銀札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                輔助能力超群的一哩王者。距離適性廣，短中距離 G1 橫掃奪冠，金殿堂入定必備，退役後遺傳因子優秀，為自家繁育核心。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ メジロムサシ (目白武藏 - 銀札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                天皇賞（春）冠軍馬。擁有 ST 80 的豐富長途耐力，遠征海外長途 G1 奪冠難度低，輕鬆鎖定金殿堂。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ ケイサンタ (京三太 - 銅札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                牝馬三冠強力候補。距離適性極廣，早熟成長力強，銅札高性價比，夏季系列賽與牝馬 G1 提款機。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ エリモシルバー (襟裳銀 - 綠札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                短距離狂奔逃馬。芝◎泥◎全天候適應，晚成成長力佳，低消耗快速回收符札與獎金。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ▲ タニノムーティエ (谷野穆提埃 - 銀札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                德比大熱門。SP 72 高速，但距離適性僅至 2400m，需轉戰秋古馬三冠與一哩 G1。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ▲ タマミ (玉美 - 銀札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                短途一哩女皇。芝◎泥◎，櫻花賞絕對主力。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> △ ジュピック (珠匹克 - 銀札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                史實橡樹大賽馬。距離適性較偏，需針對性安排賽程。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> △ プランジャー (活塞 - 無札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                無繼承存檔必買。早熟持績、芝◎泥○，早期累積數十億資金神駒。
+            </div>
+</div>
+</div>
+</div>
+<!-- 3月5週繁殖牝馬情報 -->
+</div>
+<div class="era-recs-pane" id="paneEraRecs_1968" style="display:none;">
+<!-- 世代格局情報 -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1968 年出生世代】時代格局與各賽線核心情報
+            </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                1968年開局當歲幼駒世代。ヒカルイマイ (光今井) 與 ベルワイド (鈴寬) 雙雄爭霸！
+            </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> ヒカルイマイ 擁有世代最高 SP 73，為經典三冠主力；ベルワイド 耐力 85，專攻菊花賞與長距離死鬥！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> 櫻花賞馬 ナスノカオリ (那須香織) 與 橡樹大賽馬 カネヒムロ (金冰室) 雙牝爭輝。
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #38bdf8;">
+<strong style="color:var(--accent-color);">⚡ 短途一哩：</strong> スズランパス (鈴蘭小徑) 短途一哩爆發力強。
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> イナボレス (稻天馬) 覺醒型超強體力，全天候泥地遠征提款機！
+                </div>
+</div>
+</div>
+<!-- 推薦史實馬大表 (完整 14 欄獨立齊頭) -->
+<div class="table-responsive" style="margin-bottom:16px; -webkit-overflow-scrolling:touch; overflow-x:auto;">
+<table class="data-table" style="min-width:1300px; width:100%; font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:45px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:130px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:65px;">符札</th>
+<th class="sortable-th" style="width:50px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:110px;">父馬</th>
+<th class="sortable-th" style="min-width:110px;">母馬</th>
+<th class="sortable-th" style="width:55px;">SP</th>
+<th class="sortable-th" style="width:55px;">ST</th>
+<th class="sortable-th" style="width:65px;">輔助評分</th>
+<th class="sortable-th" style="width:45px; text-align:center;">芝</th>
+<th class="sortable-th" style="width:45px; text-align:center;">泥</th>
+<th class="sortable-th" style="width:65px;">成長型</th>
+<th class="sortable-th" style="width:65px;">成長力</th>
+<th class="sortable-th" style="min-width:320px;">實戰特徵與攻略要點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">ナスノカオリ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>パーソロン</td>
+<td>ナスノホシ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>30</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>早め</td>
+<td>普通</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">桜花賞馬。 母馬からの所有が◎</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">ベルワイド</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>インディアナ</td>
+<td>コランディア</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">69</span></td>
+<td>85</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>遅め</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">天皇賞(春)馬。豊富なスタミナ</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">オンワードガイ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>オンワードゼア</td>
+<td>リナウン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>75</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">◎</td>
+<td>覚醒</td>
+<td>普通</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">芝・ダート万能の覚醒型</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">ラファール</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>テッソ</td>
+<td>オーブメント</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>50</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>遅め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">古馬牝馬路線の主役</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">カネヒムロ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>パーソロン</td>
+<td>カネタチバナ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>50</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">△</td>
+<td>早め</td>
+<td>ない</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">史実のオークス馬。鋭い切れ味</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ロングワン</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>サウンドトラック</td>
+<td>ウインジェスト</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>40</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">◎</td>
+<td>早鍋</td>
+<td>普通</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">早期から芝・ダートで活躍可能</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">シバクサ</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>キノー</td>
+<td>レッドクロバー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>40</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">△</td>
+<td>覚醒</td>
+<td>普通</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">貴重な覚醒型。長く稼げる</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">ヒカルイマイ</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>シプリアニ</td>
+<td>セイシュン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">73</span></td>
+<td>55</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>早め</td>
+<td>普通</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">世代最強SP。クラシック二冠馬</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ミリオンパラ</strong></td>
+<td><span class="pill pill-safe">無</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>バウンドレス</td>
+<td>コンゴーセキ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>85</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">△</td>
+<td>晩成</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">長距離適性が高いステイヤー</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">メジロゲッコウ</strong></td>
+<td><span class="pill pill-safe">無</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーソロン</td>
+<td>メジロボサツ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>45</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>早め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">弥生賞馬。早期の賞金稼ぎに</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 💡【攻略のポイント】(實戰深度攻略要點繁體中文專區) -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid rgba(234,179,8,0.3); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-lightbulb"></i> 💡【攻略のポイント】1968 年代實戰深度攻略要點
+            </div>
+<div style="color:var(--text-color); margin-bottom:12px;">
+<p style="margin-bottom:8px; line-height:1.65; font-size:0.83rem;">
+• <strong>本年度首選推薦 ナスノカオリ (那須香織)：</strong>由於上一世代的 アローエクスプレス 實力強勁，3 歲秋冬的 G1 戰線較為激烈；但 4 歲之後同世代缺乏突出對手，可在短距離至一哩 G1 路線連戰連勝奪取大量榮耀！<br/>
+• <strong>次選推薦 ベルワイド (鈴寬)：</strong>同時也是 1971 年劇本的知名初期馬，長途耐力高達 85，古馬時期才是其完全發揮實力的黃金期，非常適合耐心培養成為長距離霸主。<br/>
+• <strong>泥地提款機推薦 オンワードガイ (前進之星)：</strong>覺醒型中長距離馬，芝◎泥◎全天候適性，可出賽的重賞極多。在草地賽事歷練提升能力後，轉戰泥地 G1 即可輕鬆達成殿堂入定！
+</p>
+</div>
+<div style="font-size:0.86rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px;">
+                🏆 世代精選名馬 評級深度剖析與專屬攻略方針：
+            </div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ ナスノカオリ (那須香織 - 銀札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                短途一哩名牝。櫻花賞主力，4 歲後統治短哩 G1 戰線，退役後產駒優秀。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ ベルワイド (鈴寬 - 銀札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                菊花賞與春春天皇賞長途之王。ST 85 極高耐力，古馬長途王道絕對核心。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ イナボレス (稻天馬 - 銅札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                覺醒型鐵人。出賽次數極多，泥地長距離賞金提款機。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ カネヒムロ (金冰室 - 銅札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                史實橡樹馬。距離適性 2000~2400m，退役後作為母馬可誕出金札/銀札名駒。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ▲ ヒカルイマイ (光今井 - 銀札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                世代最高 SP 73，皐月賞與日本德比雙冠王，爆發力驚人。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ▲ オンワードガイ (前進之星 - 銅札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                覺醒型芝泥雙修，耐磨耐戰，泥地 G1 殿堂馬。
+            </div>
+</div>
+</div>
+</div>
+<!-- 3月5週繁殖牝馬情報 -->
+<div style="background:rgba(15,23,42,0.75); border:1px solid rgba(244,114,182,0.4); border-radius:10px; padding:14px 16px; margin-top:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:#f472b6; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-heart"></i> 🌸 3月5週必買繁殖牝馬情報（最優秀生產者賞助攻・春雷事件與名駒產出）
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.65;">
+                🌸 <strong>3月5週必買繁殖牝馬：カネケヤキ (金櫸) / カネヒムロ之母</strong><br/>• 購買懷孕母馬產下 カネヒムロ，可直接奪取最優秀生產者賞，並為後代繁育奠定堅實母系。
+            </div>
+</div>
+</div>
+<div class="era-recs-pane" id="paneEraRecs_1969" style="display:none;">
+<!-- 世代格局情報 -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1969 年出生世代】時代格局與各賽線核心情報
+            </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                以イシノヒカル、タニノチカラ為首的花之47組三冠年代，泥地隱藏神駒大放異彩！
+            </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> イシノヒカル (石之光) 菊花賞與有馬紀念稱霸；タニノチカラ (谷野力量) 具備金札級實力 SP 72/ST 75，古馬王道全能；タイテエム (大天龍) 春季早熟優勢奪春二冠！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> タカエノカオリ (高江香織) 領銜牝馬三冠戰線。
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #38bdf8;">
+<strong style="color:var(--accent-color);">⚡ 短途一哩：</strong> スガノホマレ (菅野譽) 一哩重賞主力。
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> ネロ (尼祿) 銅札神級泥地名馬，覺醒型＋タフネス (韌性)，泥地無敵連勝！
+                </div>
+</div>
+</div>
+<!-- 推薦史實馬大表 (完整 14 欄獨立齊頭) -->
+<div class="table-responsive" style="margin-bottom:16px; -webkit-overflow-scrolling:touch; overflow-x:auto;">
+<table class="data-table" style="min-width:1300px; width:100%; font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:45px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:130px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:65px;">符札</th>
+<th class="sortable-th" style="width:50px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:110px;">父馬</th>
+<th class="sortable-th" style="min-width:110px;">母馬</th>
+<th class="sortable-th" style="width:55px;">SP</th>
+<th class="sortable-th" style="width:55px;">ST</th>
+<th class="sortable-th" style="width:65px;">輔助評分</th>
+<th class="sortable-th" style="width:45px; text-align:center;">芝</th>
+<th class="sortable-th" style="width:45px; text-align:center;">泥</th>
+<th class="sortable-th" style="width:65px;">成長型</th>
+<th class="sortable-th" style="width:65px;">成長力</th>
+<th class="sortable-th" style="min-width:320px;">實戰特徵與攻略要點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">ネロ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーソロン</td>
+<td>オクタヴィア</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>70</td>
+<td>-</td>
+<td style="text-align:center;">×</td>
+<td style="text-align:center;">◎</td>
+<td>覚醒</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">知る人ぞ知るダート界の名馬。タフネス持ち</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">タニノチカラ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ブランブルー</td>
+<td>タニノチェリ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>75</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">○</td>
+<td>遅め</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">世代屈指のSP。金札馬と同等以上の能力</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">タイテエム</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>セントクレスピン</td>
+<td>テーシルダ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">71</span></td>
+<td>75</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>早め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">春の完成度を活かして三冠制覇を狙える</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">タケフブキ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>パーソロン</td>
+<td>ハヤフブキ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>50</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>早め</td>
+<td>普通</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">牝馬三冠の筆頭候補。母からタケホープも狙える</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ハクホオショウ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ヒンドスタン</td>
+<td>ステラパーダリス</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">70</span></td>
+<td>35</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">○</td>
+<td>遅め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">短〜マイル路線で無双できるSP70の快速馬</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">キョウエイグリーン</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>マタドア</td>
+<td>リュウカオル</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>25</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">○</td>
+<td>早め</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">2025初期2歳馬。経験を積めば金殿堂が可能</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">ソロナオール</strong></td>
+<td><span class="pill pill-safe">無</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>フェリオール</td>
+<td>ソロナコメット</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>75</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">△</td>
+<td>早め</td>
+<td>普通</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">お守り無しで入手可能。SP66は大きな魅力</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">パラマス</strong></td>
+<td><span class="pill pill-safe">無</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>エイトラックス</td>
+<td>カツアサヒ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">62</span></td>
+<td>40</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">○</td>
+<td>遅め</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">サマーマイルやダート短距離でお守り稼ぎ</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">イシノヒカル</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>マロット</td>
+<td>キヨツバメ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>75</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>遅め</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">世代最強馬。金札だが海外遠征も視野</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ノボルトウコウ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーソロン</td>
+<td>サンピュロー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>30</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">○</td>
+<td>覚醒</td>
+<td>普通</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">芝・ダート万能の覚醒型。距離適性も広い</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 💡【攻略のポイント】(實戰深度攻略要點繁體中文專區) -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid rgba(234,179,8,0.3); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-lightbulb"></i> 💡【攻略のポイント】1969 年代實戰深度攻略要點
+            </div>
+<div style="color:var(--text-color); margin-bottom:12px;">
+<p style="margin-bottom:8px; line-height:1.65; font-size:0.83rem;">
+• <strong>花之47組「四強」之中，最優先入手覺醒泥地名馬 ネロ (尼祿)：</strong>在國內泥地路線可長期連勝活躍，金殿堂入定毫無懸念！搭配僅需銅札的極高性價比，當之無愧為該世代 No.1 首選。<br/>
+• <strong>短途一哩首選 ハクホオショウ (白鳳翔)：</strong>該世代短距離對手較少，本馬擁有 SP 70 的強大速度，能理所當然地橫掃短途與一哩 G1！<br/>
+• <strong>古馬王道雙雄 タニノチカラ vs イシノヒカル：</strong>兩者性能幾乎相同（SP 72/ST 75），但 タニノチカラ 僅需銀札即可入手，性價比更勝一籌。若在國內與對手撞期，也可派遣至海外中長距離 G1 輕鬆奪金殿堂！
+</p>
+</div>
+<div style="font-size:0.86rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px;">
+                🏆 世代精選名馬 評級深度剖析與專屬攻略方針：
+            </div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ⦿ ネロ (尼祿 - 銅札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                銅札神級泥地馬！覺醒型＋韌性特性，國內泥地連勝提款機，100% 達成金殿堂。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ タニノチカラ (谷野力量 - 銀札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                具備金札級戰力（SP 72/ST 75）。古馬秋古馬三冠與海外 G1 統治級表現。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ ハクホオショウ (白鳳翔 - 銀札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                SP 70 短途一哩霸主。早熟持績，輕鬆橫掃短哩 G1 賽事。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ イシノヒカル (石之光 - 金札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                菊花賞與有馬紀念雙冠馬，實力強橫。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ▲ タイテエム (大天龍 - 銀札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                春季早熟經典馬，皐月賞與日本德比爭冠主力。
+            </div>
+</div>
+</div>
+</div>
+<!-- 3月5週繁殖牝馬情報 -->
+<div style="background:rgba(15,23,42,0.75); border:1px solid rgba(244,114,182,0.4); border-radius:10px; padding:14px 16px; margin-top:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:#f472b6; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-heart"></i> 🌸 3月5週必買繁殖牝馬情報（最優秀生產者賞助攻・春雷事件與名駒產出）
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.65;">
+                🌸 <strong>3月5週必買繁殖牝馬：タニノチェリ (谷野櫻桃)</strong><br/>• 產下 タニノチカラ，直接鎖定最優秀生產者賞金札獎勵！
+            </div>
+</div>
+</div>
+<div class="era-recs-pane" id="paneEraRecs_1970" style="display:none;">
+<!-- 世代格局情報 -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1970 年出生世代】時代格局與各賽線核心情報
+            </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                昭和偶像馬「ハイセイコー (海セイコー)」掀起全日本第一波賽馬熱潮的傳奇年代！
+            </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> ハイセイコー (海セイコー，早熟/芝泥萬能) vs タケホープ (竹希望，SP 72/ST 80 長距離王者) 兩強世紀死鬥！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> ニットウチドリ (日東千鳥) 與 ナスノチグサ (那須千草) 爭奪牝馬三冠。
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #38bdf8;">
+<strong style="color:var(--accent-color);">⚡ 短途一哩：</strong> キシュウローレル (紀州月桂) 短途女皇。
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> ハイセイコー 芝泥皆為 ◎，專攻國內泥地可 100% 穩定達成金殿堂！
+                </div>
+</div>
+</div>
+<!-- 推薦史實馬大表 (完整 14 欄獨立齊頭) -->
+<div class="table-responsive" style="margin-bottom:16px; -webkit-overflow-scrolling:touch; overflow-x:auto;">
+<table class="data-table" style="min-width:1300px; width:100%; font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:45px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:130px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:65px;">符札</th>
+<th class="sortable-th" style="width:50px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:110px;">父馬</th>
+<th class="sortable-th" style="min-width:110px;">母馬</th>
+<th class="sortable-th" style="width:55px;">SP</th>
+<th class="sortable-th" style="width:55px;">ST</th>
+<th class="sortable-th" style="width:65px;">輔助評分</th>
+<th class="sortable-th" style="width:45px; text-align:center;">芝</th>
+<th class="sortable-th" style="width:45px; text-align:center;">泥</th>
+<th class="sortable-th" style="width:65px;">成長型</th>
+<th class="sortable-th" style="width:65px;">成長力</th>
+<th class="sortable-th" style="min-width:320px;">實戰特徵與攻略要點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">ハイセイコー</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>チャイナロック</td>
+<td>ハイユウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">71</span></td>
+<td>70</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">◎</td>
+<td>早め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">芝・ダート万能。国内ダート専念で金殿堂が可能</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">タケホープ</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>インディアナ</td>
+<td>ハヤフブキ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>80</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>遅め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">世代最高SPと豊富なスタミナ。古馬王道制覇も狙える</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ナスノチグサ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>パーソロン</td>
+<td>ナスノホシ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">69</span></td>
+<td>50</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">○</td>
+<td>遅め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">晩成気味だが高いポテンシャル。牝馬三冠候補</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ニットウチドリ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ダラノーア</td>
+<td>テルギク</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">68</span></td>
+<td>50</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>早め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">桜花賞・オークスの最有力候補。早期から活躍</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ケイスパーコ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>キノー</td>
+<td>シルヴァーファー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">64</span></td>
+<td>30</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">○</td>
+<td>遅め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">短距離・マイル路線で重賞を稼ぎ、銅札を回収可能</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">レッドイーグル</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>サウンドトラック</td>
+<td>ビースケップ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>20</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>早熟</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">最優秀2歳牡馬の有力候補。早期の賞金稼ぎに最適</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">ホワイトフォンテン</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ノーアリバイ</td>
+<td>レベッカノニ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>85</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>晩成超</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">高いスタミナで長距離戦に強い。サマー2000も守備範囲</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">マルサンファイヤ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>マツカゼオー</td>
+<td>第ニカツラユウホウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>50</td>
+<td>-</td>
+<td style="text-align:center;">×</td>
+<td style="text-align:center;">◎</td>
+<td>早鍋</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ダート路線の有力馬。鍋底による競争寿命の復活が魅力</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">レデースポート</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ムーティエ</td>
+<td>ヤマトサクヤ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">63</span></td>
+<td>45</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>早熟</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">最優秀2歳牝馬候補。産駒に牝馬三冠候補のテンモンを持つ</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ホッカイダイヤ</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>Waidwerk</td>
+<td>パラモア</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">64</span></td>
+<td>95</td>
+<td>-</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>遅め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">緑札ながら高いスタミナと優秀なサブパラで長距離安定</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 💡【攻略のポイント】(實戰深度攻略要點繁體中文專區) -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid rgba(234,179,8,0.3); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-lightbulb"></i> 💡【攻略のポイント】1970 年代實戰深度攻略要點
+            </div>
+<div style="color:var(--text-color); margin-bottom:12px;">
+<p style="margin-bottom:8px; line-height:1.65; font-size:0.83rem;">
+• <strong>海外強敵環伺，建議專注國內賽線：</strong>海外泥地有 Secretariat (秘書處)、Mr. Prospector (淘金者)、Forego (前進)；草地有 Dahlia (大麗花)、Allez France 等世界超怪物，遠征難度極高。<br/>
+• <strong>ハイセイコー (海セイコー) 與 タケホープ (竹希望) 雙持分流戰略：</strong>若兩匹均持有，建議將 ハイセイコー 安排在國內泥地路線（芝泥皆◎無敵橫掃），將 タケホープ 安排在經典三冠＋草地古馬王道，兩匹皆能高機率奪得金殿堂！<br/>
+• <strong>牝馬三冠線 ナスノチグサ vs ニットウチドリ：</strong>兩匹實力相當，建議錯開賽程或專注攻堅各自擅長的距離以收割最多 G1。
+</p>
+</div>
+<div style="font-size:0.86rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px;">
+                🏆 世代精選名馬 評級深度剖析與專屬攻略方針：
+            </div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ⦿ ハイセイコー (海セイコー - 金札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                昭和第一偶像馬！芝◎泥◎，早熟完成度高，專攻國內泥地必登金殿堂並引爆賽馬熱潮。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ タケホープ (竹希望 - 金札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                世代最高 SP 72 / ST 80！日本德比、菊花賞與春春天皇賞長途之王。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ ナスノチグサ (那須千草 - 銀札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                優質銀札名牝。橡樹大賽與古馬女王盃主力，退役後母系價值高。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ ニットウチドリ (日東千鳥 - 銀札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                櫻花賞與秋華路線主力，早熟速度快。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ▲ キシュウローレル (紀州月桂 - 銅札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                短距離快馬，阪神 JF 與短途重賞奪冠好手。
+            </div>
+</div>
+</div>
+</div>
+<!-- 3月5週繁殖牝馬情報 -->
+<div style="background:rgba(15,23,42,0.75); border:1px solid rgba(244,114,182,0.4); border-radius:10px; padding:14px 16px; margin-top:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:#f472b6; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-heart"></i> 🌸 3月5週必買繁殖牝馬情報（最優秀生產者賞助攻・春雷事件與名駒產出）
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.65;">
+                🌸 <strong>3月5週必買繁殖牝馬：ハイユウ (華勇) / ハヤフブキ (早吹)</strong><br/>• 分別為 ハイセイコー 與 タケホープ 之母，購買後立即奪下最優秀生產者賞！
+            </div>
+</div>
+</div>
+<div class="era-recs-pane" id="paneEraRecs_1971" style="display:none;">
+<!-- 世代格局情報 -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1971 年出生世代】時代格局與各賽線核心情報
+            </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                早期高性價比銀札/銅札名馬雲集年代，3月5週購買孕母更可助攻最優秀生產者賞！
+            </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> キタノカチドキ (北方勝鬨) 領銜春季經典，コーネルランサー (康奈爾槍騎) 德比突圍！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> イットー (一刀) 金札名牝，早熟持績，退役後晉升母系神級繁殖牝馬！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #38bdf8;">
+<strong style="color:var(--accent-color);">⚡ 短途一哩：</strong> スルガスンプジョウ 短途一哩爆發。
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> トドロキムサシ (轟武藏) 銅札泥地霸主。
+                </div>
+</div>
+</div>
+<!-- 推薦史實馬大表 (完整 14 欄獨立齊頭) -->
+<div class="table-responsive" style="margin-bottom:16px; -webkit-overflow-scrolling:touch; overflow-x:auto;">
+<table class="data-table" style="min-width:1300px; width:100%; font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:45px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:130px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:65px;">符札</th>
+<th class="sortable-th" style="width:50px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:110px;">父馬</th>
+<th class="sortable-th" style="min-width:110px;">母馬</th>
+<th class="sortable-th" style="width:55px;">SP</th>
+<th class="sortable-th" style="width:55px;">ST</th>
+<th class="sortable-th" style="width:65px;">輔助評分</th>
+<th class="sortable-th" style="width:45px; text-align:center;">芝</th>
+<th class="sortable-th" style="width:45px; text-align:center;">泥</th>
+<th class="sortable-th" style="width:65px;">成長型</th>
+<th class="sortable-th" style="width:65px;">成長力</th>
+<th class="sortable-th" style="min-width:320px;">實戰特徵與攻略要點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">イットー</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ヴェンチア</td>
+<td>ミスマルミチ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>40</td>
+<td>-</td>
+<td style="text-align:center;">70</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">キタノカチドキ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>テスコボーイ</td>
+<td>ライトフレーム</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">69</span></td>
+<td>70</td>
+<td>-</td>
+<td style="text-align:center;">75</td>
+<td style="text-align:center;">◎</td>
+<td>○</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">トドロキムサシ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>シプリアニ</td>
+<td>トシテル</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>75</td>
+<td>-</td>
+<td style="text-align:center;">67</td>
+<td style="text-align:center;">○</td>
+<td>◎</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">バンブトンオール</strong></td>
+<td><span class="pill pill-safe">無</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>セダン</td>
+<td>マルセイユ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>70</td>
+<td>-</td>
+<td style="text-align:center;">37</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>早熟</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">マルイチダイオー</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>チャイナロック</td>
+<td>リンカーン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>60</td>
+<td>-</td>
+<td style="text-align:center;">55</td>
+<td style="text-align:center;">△</td>
+<td>◎</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">スピードパーシア</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーシア</td>
+<td>イチキヨサチ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>70</td>
+<td>-</td>
+<td style="text-align:center;">59</td>
+<td style="text-align:center;">△</td>
+<td>◎</td>
+<td>早熟鍋</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">チュウオキャプテン</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ファラモンド</td>
+<td>オルヴィダダ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>85</td>
+<td>-</td>
+<td style="text-align:center;">49</td>
+<td style="text-align:center;">◎</td>
+<td>◎</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">フジノパーシア</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーシア</td>
+<td>チエクイン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">71</span></td>
+<td>85</td>
+<td>-</td>
+<td style="text-align:center;">74</td>
+<td style="text-align:center;">◎</td>
+<td>◎</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">タカエノカオリ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ヴェンチア</td>
+<td>タカエミドリ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>35</td>
+<td>-</td>
+<td style="text-align:center;">51</td>
+<td style="text-align:center;">◎</td>
+<td>△</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">トウコウエルザ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>パーソロン</td>
+<td>ベニサイ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>75</td>
+<td>-</td>
+<td style="text-align:center;">66</td>
+<td style="text-align:center;">◎</td>
+<td>△</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">普通</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 💡【攻略のポイント】(實戰深度攻略要點繁體中文專區) -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid rgba(234,179,8,0.3); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-lightbulb"></i> 💡【攻略のポイント】1971 年代實戰深度攻略要點
+            </div>
+<div style="color:var(--text-color); margin-bottom:12px;">
+<p style="margin-bottom:8px; line-height:1.65; font-size:0.83rem;">
+• <strong>母系神神級名牝 イットー (一刀)：</strong>雖然競賽期能力偶爾受制於對手，但自己持有悉心調教可奪牝馬三冠；真正的核心價值在於退役繁殖：直仔產出傳奇名牝「ハギノトップレディ (萩野頂級女士)」，並繁衍出第一紅寶 (Daiichi Ruby) 等無數 G1 殿堂巨星！<br/>
+• <strong>經典領袖 キタノカチドキ (北方勝鬨)：</strong>早熟高速，皐月賞與菊花賞雙冠主力，配合良好賽程規劃輕鬆達成金殿堂。<br/>
+• <strong>銅札泥地之王 トドロキムサシ (轟武藏)：</strong>早熟泥地 ◎，在地方交流重賞與泥地 G1 穩定掠奪獎金。
+</p>
+</div>
+<div style="font-size:0.86rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px;">
+                🏆 世代精選名馬 評級深度剖析與專屬攻略方針：
+            </div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ⦿ イットー (一刀 - 金札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                華麗一族始祖母！自身奪牝馬 G1，退役產出ハギノトップレディ等一眾超級名駒。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ キタノカチドキ (北方勝鬨 - 銀札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                春季三冠王道核心。SP 69 / ST 70，皐月賞與菊花賞統治力。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ トドロキムサシ (轟武藏 - 銅札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                銅札泥地霸主。芝○泥◎，地方交流與中央泥地重賞提款機。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ カーネルシンボリ (上校象徵 - 銅札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                長途耐力好手，菊花賞與長距離重賞有力競爭者。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ▲ コーネルランサー (康奈爾槍騎 - 銅札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                日本德比冠軍馬，中長距離爆發力強。
+            </div>
+</div>
+</div>
+</div>
+<!-- 3月5週繁殖牝馬情報 -->
+<div style="background:rgba(15,23,42,0.75); border:1px solid rgba(244,114,182,0.4); border-radius:10px; padding:14px 16px; margin-top:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:#f472b6; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-heart"></i> 🌸 3月5週必買繁殖牝馬情報（最優秀生產者賞助攻・春雷事件與名駒產出）
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.65;">
+                🌸 <strong>3月5週必買繁殖牝馬：ミスマルミチ (Miss Marumichi) / ライトフレーム</strong><br/>• ミスマルミチ 為 イットー 之母；購買即鎖定華麗一族繁育源流！
+            </div>
+</div>
+</div>
+<div class="era-recs-pane" id="paneEraRecs_1972" style="display:none;">
+<!-- 世代格局情報 -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1972 年出生世代】時代格局與各賽線核心情報
+            </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                「狂奔大逃」領放狂潮！史上最強逃馬 テスコガビー 與 狂暴雙冠馬 カブラヤオー 震撼世代！
+            </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> カブラヤオー (鏑矢王) SP 73 狂奔大逃連奪皐月賞與德比！エリモジョージ 晚成稱霸天皇賞春！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> テスコガビー (特斯可加比) 史上最強牝馬之一，櫻花賞拉開後馬 30 馬位狂勝！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #38bdf8;">
+<strong style="color:var(--accent-color);">⚡ 短途一哩：</strong> グレートセイカン 穿插短中距離重賞。
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> スリーパレード、ヒデノアラシ 統治泥地中長途。
+                </div>
+</div>
+</div>
+<!-- 推薦史實馬大表 (完整 14 欄獨立齊頭) -->
+<div class="table-responsive" style="margin-bottom:16px; -webkit-overflow-scrolling:touch; overflow-x:auto;">
+<table class="data-table" style="min-width:1300px; width:100%; font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:45px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:130px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:65px;">符札</th>
+<th class="sortable-th" style="width:50px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:110px;">父馬</th>
+<th class="sortable-th" style="min-width:110px;">母馬</th>
+<th class="sortable-th" style="width:55px;">SP</th>
+<th class="sortable-th" style="width:55px;">ST</th>
+<th class="sortable-th" style="width:65px;">輔助評分</th>
+<th class="sortable-th" style="width:45px; text-align:center;">芝</th>
+<th class="sortable-th" style="width:45px; text-align:center;">泥</th>
+<th class="sortable-th" style="width:65px;">成長型</th>
+<th class="sortable-th" style="width:65px;">成長力</th>
+<th class="sortable-th" style="min-width:320px;">實戰特徵與攻略要點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">テスコガビー</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>テスコボーイ</td>
+<td>キタノリュウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">73</span></td>
+<td>45</td>
+<td>-</td>
+<td style="text-align:center;">74</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">カブラヤオー</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ファラモンド</td>
+<td>カブラヤ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">73</span></td>
+<td>55</td>
+<td>-</td>
+<td style="text-align:center;">70</td>
+<td style="text-align:center;">◎</td>
+<td>○</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">ロングホーク</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ハードリドン</td>
+<td>エスタブリッシュメント</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>75</td>
+<td>-</td>
+<td style="text-align:center;">69</td>
+<td style="text-align:center;">◎</td>
+<td>△</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">タイホウヒーロー</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>アイアンリージ</td>
+<td>リュウジクネ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>70</td>
+<td>-</td>
+<td style="text-align:center;">59</td>
+<td style="text-align:center;">◎</td>
+<td>◎</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">スリーパレード</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ネヴァービート</td>
+<td>タカローズィ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>60</td>
+<td>-</td>
+<td style="text-align:center;">71</td>
+<td style="text-align:center;">△</td>
+<td>◎</td>
+<td>晩成超</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">エリモジョージ</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>セントクレスピン</td>
+<td>パッシングミドリ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>75</td>
+<td>-</td>
+<td style="text-align:center;">69</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>晩成</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">ヒデノアラシ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>フィダルゴ</td>
+<td>トヨトシ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>70</td>
+<td>-</td>
+<td style="text-align:center;">62</td>
+<td style="text-align:center;">×</td>
+<td>◎</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">ゴールデンリボー</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ファラモンド</td>
+<td>オルヴィダダ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>60</td>
+<td>-</td>
+<td style="text-align:center;">51</td>
+<td style="text-align:center;">△</td>
+<td>◎</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">グレートセイカン</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーシア</td>
+<td>トクユウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>40</td>
+<td>-</td>
+<td style="text-align:center;">63</td>
+<td style="text-align:center;">◎</td>
+<td>○</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">リュウフブキ</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>リュウズキ</td>
+<td>ヒヤママンナ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">63</span></td>
+<td>35</td>
+<td>-</td>
+<td style="text-align:center;">53</td>
+<td style="text-align:center;">◎</td>
+<td>△</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">普通</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 💡【攻略のポイント】(實戰深度攻略要點繁體中文專區) -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid rgba(234,179,8,0.3); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-lightbulb"></i> 💡【攻略のポイント】1972 年代實戰深度攻略要點
+            </div>
+<div style="color:var(--text-color); margin-bottom:12px;">
+<p style="margin-bottom:8px; line-height:1.65; font-size:0.83rem;">
+• <strong>史上最強逃牝馬 テスコガビー (特斯可加比)：</strong>櫻花賞大差（30馬位）狂勝傳奇！短中距離適性極強，甚至可在「The Everest」等高額賞金國際 G1 爭雄並衝刺世界 100 傑！退役後配種推薦 Secretariat (秘書處)，評價 S / 爆發力 28，雙方均可進化為雙速度因子名馬！<br/>
+• <strong>狂暴逃王 カブラヤオー (鏑矢王)：</strong>牡馬頂點，一哩 G1 至有馬紀念通吃，由於下一世代 TTG 過於強大，建議在 4 歲秋季前盡情收割 G1 榮耀！<br/>
+• <strong>菊花賞最有力候補 ロングホーク (長鷹)：</strong>銅札高回報，菊花賞與天皇賞（春）主力，為最優秀馬主賞立下汗馬功勞。
+</p>
+</div>
+<div style="font-size:0.86rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px;">
+                🏆 世代精選名馬 評級深度剖析與專屬攻略方針：
+            </div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ⦿ テスコガビー (特斯可加比 - 金札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                狂逃女皇！牝馬三冠＋短哩世界 G1，退役配 Secretariat 爆發力 28 雙速度因子！
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ カブラヤオー (鏑矢王 - 金札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                狂暴大逃雙冠王！SP 73 高速，4 歲前橫掃中長途與泥地 G1。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ ロングホーク (長鷹 - 銅札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                銅札長途奇兵。菊花賞與春春天皇賞爭冠好手。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ タイホウヒーロー (大寶英雄 - 銅札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                韌性特性泥地中長途馬，芝◎泥◎，賽程選擇極多。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ スリーパレード (三連巡遊 - 銅札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                超晚成持績泥地好手，長期穩定賺取獎金。
+            </div>
+</div>
+</div>
+</div>
+<!-- 3月5週繁殖牝馬情報 -->
+<div style="background:rgba(15,23,42,0.75); border:1px solid rgba(244,114,182,0.4); border-radius:10px; padding:14px 16px; margin-top:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:#f472b6; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-heart"></i> 🌸 3月5週必買繁殖牝馬情報（最優秀生產者賞助攻・春雷事件與名駒產出）
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.65;">
+                🌸 <strong>3月5週必買繁殖牝馬：キタノリュウ (北方龍)</strong><br/>• 產下金札 テスコガビー 與銅札 トドロキヒリュウ；在自牧產下可直接解鎖「春雷事件」！
+            </div>
+</div>
+</div>
+<div class="era-recs-pane" id="paneEraRecs_1973" style="display:none;">
+<!-- 世代格局情報 -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1973 年出生世代】時代格局與各賽線核心情報
+            </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                日本賽馬史上最壯烈傳奇「TTG 三強鼎立世代」(トウショウボーイ、テンポイント、グリーングラス)！
+            </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> トウショウボーイ (天馬東商小子 SP 74) 皐月賞/有馬狂飆；テンポイント (貴公子十點 SP 74) 宿命對決；グリーングラス (青草 ST 90) 菊花賞突襲！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> シービークイン (CB Queen) 早期金牝，必買作為千明代表 (Mr. C.B.) 之母；テイタニヤ 早熟奪牝馬雙冠！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #38bdf8;">
+<strong style="color:var(--accent-color);">⚡ 短途一哩：</strong> ニッポーキング、ジャンボキング 橫掃短中距離。
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> エビチカラ、ファインポート 泥地分庭抗禮。
+                </div>
+</div>
+</div>
+<!-- 推薦史實馬大表 (完整 14 欄獨立齊頭) -->
+<div class="table-responsive" style="margin-bottom:16px; -webkit-overflow-scrolling:touch; overflow-x:auto;">
+<table class="data-table" style="min-width:1300px; width:100%; font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:45px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:130px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:65px;">符札</th>
+<th class="sortable-th" style="width:50px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:110px;">父馬</th>
+<th class="sortable-th" style="min-width:110px;">母馬</th>
+<th class="sortable-th" style="width:55px;">SP</th>
+<th class="sortable-th" style="width:55px;">ST</th>
+<th class="sortable-th" style="width:65px;">輔助評分</th>
+<th class="sortable-th" style="width:45px; text-align:center;">芝</th>
+<th class="sortable-th" style="width:45px; text-align:center;">泥</th>
+<th class="sortable-th" style="width:65px;">成長型</th>
+<th class="sortable-th" style="width:65px;">成長力</th>
+<th class="sortable-th" style="min-width:320px;">實戰特徵與攻略要點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">シービークイン</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>トピオ</td>
+<td>メイドウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>50</td>
+<td>-</td>
+<td style="text-align:center;">62</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">トウショウボーイ</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>テスコボーイ</td>
+<td>ソシアルバターフライ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">74</span></td>
+<td>55</td>
+<td>-</td>
+<td style="text-align:center;">80</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">テンポイント</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>コントライト</td>
+<td>ワカクモ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">74</span></td>
+<td>75</td>
+<td>-</td>
+<td style="text-align:center;">78</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">グリーングラス</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>インターメゾ</td>
+<td>ダーリングヒメ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>90</td>
+<td>-</td>
+<td style="text-align:center;">71</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">エビチカラ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>マロット</td>
+<td>タカハロウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>60</td>
+<td>-</td>
+<td style="text-align:center;">47</td>
+<td style="text-align:center;">×</td>
+<td>◎</td>
+<td>晩成</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">ジャンボキング</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>カシム</td>
+<td>ダイゴホーザン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>25</td>
+<td>-</td>
+<td style="text-align:center;">45</td>
+<td style="text-align:center;">◎</td>
+<td>○</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">ニッポーキング</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>プロント</td>
+<td>ミスマルミチ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>35</td>
+<td>-</td>
+<td style="text-align:center;">51</td>
+<td style="text-align:center;">◎</td>
+<td>△</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ベロナスポート</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>テッソ</td>
+<td>リボーンターフ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>30</td>
+<td>-</td>
+<td style="text-align:center;">53</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">テイタニヤ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>アローエクスプレス</td>
+<td>ダイニトモコ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">70</span></td>
+<td>50</td>
+<td>-</td>
+<td style="text-align:center;">71</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>早熟</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ない</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ファインポート</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>シプリアニ</td>
+<td>リーデングパート</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>60</td>
+<td>-</td>
+<td style="text-align:center;">61</td>
+<td style="text-align:center;">×</td>
+<td>◎</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">普通</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 💡【攻略のポイント】(實戰深度攻略要點繁體中文專區) -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid rgba(234,179,8,0.3); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-lightbulb"></i> 💡【攻略のポイント】1973 年代實戰深度攻略要點
+            </div>
+<div style="color:var(--text-color); margin-bottom:12px;">
+<p style="margin-bottom:8px; line-height:1.65; font-size:0.83rem;">
+• <strong>天馬 トウショウボーイ (東商小子)：</strong>世代 SP 74 最高速！世界百傑入榜可晉升「雙速度因子」，且後續 Tesco Boy 與 Tosho Boy 系統確立極其容易，為自家生產建立最強速度血統核心！<br/>
+• <strong>貴公子 テンポイント (十點)：</strong>自帶固有特質的三冠候選！如果不自己擁有將無法轉任種馬。若想追求浪漫，可與東商小子一同持有並遠征海外，開拓歐洲三冠戰場！<br/>
+• <strong>三冠母神 シービークイン (CB Queen)：</strong>本馬自身在古馬期能奪取 G1，但其最偉大之處在於能產下後來的經典三冠馬「ミスターシービー (千明代表)」！
+</p>
+</div>
+<div style="font-size:0.86rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px;">
+                🏆 世代精選名馬 評級深度剖析與專屬攻略方針：
+            </div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ⦿ シービークイン (CB Queen - 金札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                三冠母神！產下日本賽馬史上第三匹三冠馬千明代表 (Mr. C.B.)，必買金牝。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ⦿ トウショウボーイ (東商小子 - 金札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                天馬！SP 74，世界百傑雙速度因子，Tesco Boy 系統確立核心。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ テンポイント (十點 - 金札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                流星貴公子！SP 74 / ST 75，固有特質三冠好手，必須自持以保留種馬資格。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ グリーングラス (青草 - 金札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                TTG 第三雄！ST 90 長途怪物，菊花賞、天皇賞（春）、有馬紀念長途霸主。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ テイタニヤ (泰坦妮亞 - 銀札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                早熟牝馬雙冠馬，櫻花賞與橡樹大賽主力。
+            </div>
+</div>
+</div>
+</div>
+<!-- 3月5週繁殖牝馬情報 -->
+<div style="background:rgba(15,23,42,0.75); border:1px solid rgba(244,114,182,0.4); border-radius:10px; padding:14px 16px; margin-top:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:#f472b6; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-heart"></i> 🌸 3月5週必買繁殖牝馬情報（最優秀生產者賞助攻・春雷事件與名駒產出）
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.65;">
+                🌸 <strong>3月5週必買繁殖牝馬：メイドウ (明道) / ソシアルバターフライ</strong><br/>• メイドウ 為 シービークイン 之母；ソシアルバターフライ 為 トウショウボーイ 之母！
+            </div>
+</div>
+</div>
+<div class="era-recs-pane" id="paneEraRecs_1974" style="display:none;">
+<!-- 世代格局情報 -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1974 年出生世代】時代格局與各賽線核心情報
+            </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                外國產超級怪物「マルゼンスキー (丸善斯基)」君臨天下的年代！
+            </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> マルゼンスキー (丸善斯基) SP 75 / 輔助 85 絕對統治力，大差狂勝！カネミノブ 奪有馬紀念！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> インターグロリア (國際榮耀) 橫掃牝馬重賞，メイワキミコ 泥地雙修！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #38bdf8;">
+<strong style="color:var(--accent-color);">⚡ 短途一哩：</strong> メイワキミコ、リキタイコー 短哩雙修。
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> マルゼンスキー 泥地亦為 ○，ブレーブボーイ 泥地專長。
+                </div>
+</div>
+</div>
+<!-- 推薦史實馬大表 (完整 14 欄獨立齊頭) -->
+<div class="table-responsive" style="margin-bottom:16px; -webkit-overflow-scrolling:touch; overflow-x:auto;">
+<table class="data-table" style="min-width:1300px; width:100%; font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:45px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:130px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:65px;">符札</th>
+<th class="sortable-th" style="width:50px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:110px;">父馬</th>
+<th class="sortable-th" style="min-width:110px;">母馬</th>
+<th class="sortable-th" style="width:55px;">SP</th>
+<th class="sortable-th" style="width:55px;">ST</th>
+<th class="sortable-th" style="width:65px;">輔助評分</th>
+<th class="sortable-th" style="width:45px; text-align:center;">芝</th>
+<th class="sortable-th" style="width:45px; text-align:center;">泥</th>
+<th class="sortable-th" style="width:65px;">成長型</th>
+<th class="sortable-th" style="width:65px;">成長力</th>
+<th class="sortable-th" style="min-width:320px;">實戰特徵與攻略要點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">マルゼンスキー</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>Nijinsky</td>
+<td>シル</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">75</span></td>
+<td>50</td>
+<td>-</td>
+<td style="text-align:center;">85</td>
+<td style="text-align:center;">◎</td>
+<td>○</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">カネミノブ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>バーバー</td>
+<td>カネヒムロ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">71</span></td>
+<td>60</td>
+<td>-</td>
+<td style="text-align:center;">64</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">インターグロリア</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ネヴァービート</td>
+<td>ヒダカチェリー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">68</span></td>
+<td>40</td>
+<td>-</td>
+<td style="text-align:center;">66</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">メイワキミコ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>Gallant Man</td>
+<td>ハワイアンドーン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>10</td>
+<td>-</td>
+<td style="text-align:center;">55</td>
+<td style="text-align:center;">◎</td>
+<td>◎</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">セーヌスポート</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ボールドアンドエイブル</td>
+<td>Tamiana</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">63</span></td>
+<td>25</td>
+<td>-</td>
+<td style="text-align:center;">33</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ブレーブボーイ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ボールドアンドブレーヴ</td>
+<td>ギンヒデ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>60</td>
+<td>-</td>
+<td style="text-align:center;">67</td>
+<td style="text-align:center;">△</td>
+<td>◎</td>
+<td>早め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">リキタイコー</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ミンシオ</td>
+<td>ソーシークレット</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>20</td>
+<td>-</td>
+<td style="text-align:center;">39</td>
+<td style="text-align:center;">◎</td>
+<td>◎</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">プレストウコウ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>グスタフ</td>
+<td>サンピュロー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">68</span></td>
+<td>75</td>
+<td>-</td>
+<td style="text-align:center;">64</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">テンメイ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ルイスデール</td>
+<td>トウメイ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>80</td>
+<td>-</td>
+<td style="text-align:center;">64</td>
+<td style="text-align:center;">◎</td>
+<td>○</td>
+<td>遅め</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">リュウキコウ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>リュウファーロス</td>
+<td>リュウアイアンス</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>75</td>
+<td>-</td>
+<td style="text-align:center;">55</td>
+<td style="text-align:center;">◎</td>
+<td>×</td>
+<td>早熟鍋</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ない</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 💡【攻略のポイント】(實戰深度攻略要點繁體中文專區) -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid rgba(234,179,8,0.3); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-lightbulb"></i> 💡【攻略のポイント】1974 年代實戰深度攻略要點
+            </div>
+<div style="color:var(--text-color); margin-bottom:12px;">
+<p style="margin-bottom:8px; line-height:1.65; font-size:0.83rem;">
+• <strong>世代唯一超級怪物 マルゼンスキー (丸善斯基)：</strong>SP 75、輔助 85，實質具備虹札級破格能力！由於史實限制與距離上限（2200m），若想追求歷史成就可遠征歐洲挑戰歐洲三冠與海外 G1，輕鬆大差狂勝！<br/>
+• <strong>長途戰線要角 プレストウコウ (普雷斯托光)：</strong>菊花賞奪冠主力，古馬時期國內面臨上一世代 グリーングラス 壓制，建議遠征澳洲與香港等手薄海外 G1 達成金殿堂。<br/>
+• <strong>短途芝泥雙棲 メイワキミコ (明和貴美子)：</strong>SP 66 / 芝◎泥◎，夏季短途系列賽（Summer Sprint）霸榜首選，獎金回報率極高。
+</p>
+</div>
+<div style="font-size:0.86rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px;">
+                🏆 世代精選名馬 評級深度剖析與專屬攻略方針：
+            </div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ⦿ マルゼンスキー (丸善斯基 - 金札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                超級跑車！SP 75 / 輔助 85 絕對統治力，大差狂勝，世界級自產母父核心！
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ カネミノブ (金之祿 - 銀札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                有馬紀念冠軍馬，中長距離實力派。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ インターグロリア (國際榮耀 - 銀札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                牝馬 G1 主力，櫻花賞與秋季女王盃冠軍。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ メイワキミコ (明和貴美子 - 銅札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                芝◎泥◎短途提款機，夏季系列賽王者。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ▲ プレストウコウ (普雷斯托光 - 銀札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                菊花賞冠軍，海外 G1 金殿堂候選。
+            </div>
+</div>
+</div>
+</div>
+<!-- 3月5週繁殖牝馬情報 -->
+</div>
+<div class="era-recs-pane" id="paneEraRecs_1975" style="display:none;">
+<!-- 世代格局情報 -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1975 年出生世代】時代格局與各賽線核心情報
+            </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                古馬王道長途霸主與短途快馬並起的豐富世代！
+            </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> サクラショウリ (櫻花勝利) 早熟奪春二冠；ホウヨウボーイ (鳳凰小子 SP 72/ST 80) 晚成統治菊花賞與秋古馬三冠！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> オヤマテスコ、モデルスポート 橫掃短哩與牝馬三冠前二關，ファイブホープ 奪秋華/エリザベス女王杯！
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #38bdf8;">
+<strong style="color:var(--accent-color);">⚡ 短途一哩：</strong> モデルスポート、タケデン 短哩高回報。
+                </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> ハツシバオー (初芝王)、タガワエース (田川王牌) 雙雄稱霸泥地交流重賞！
+                </div>
+</div>
+</div>
+<!-- 推薦史實馬大表 (完整 14 欄獨立齊頭) -->
+<div class="table-responsive" style="margin-bottom:16px; -webkit-overflow-scrolling:touch; overflow-x:auto;">
+<table class="data-table" style="min-width:1300px; width:100%; font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:45px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:130px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:65px;">符札</th>
+<th class="sortable-th" style="width:50px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:110px;">父馬</th>
+<th class="sortable-th" style="min-width:110px;">母馬</th>
+<th class="sortable-th" style="width:55px;">SP</th>
+<th class="sortable-th" style="width:55px;">ST</th>
+<th class="sortable-th" style="width:65px;">輔助評分</th>
+<th class="sortable-th" style="width:45px; text-align:center;">芝</th>
+<th class="sortable-th" style="width:45px; text-align:center;">泥</th>
+<th class="sortable-th" style="width:65px;">成長型</th>
+<th class="sortable-th" style="width:65px;">成長力</th>
+<th class="sortable-th" style="min-width:320px;">實戰特徵與攻略要點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">ホウヨウボーイ</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ファーストファミリー</td>
+<td>ホウヨウクイン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>80</td>
+<td>62</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>遅め</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">大舞台 鉄砲</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">モデルスポート</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>モデルフール</td>
+<td>Magic Goddess</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>25</td>
+<td>58</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">△</td>
+<td>早め</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">叩き良</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">タケデン</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>セダン</td>
+<td>シルバーギニー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>25</td>
+<td>45</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>早熟鍋</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">大駆け</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">インターグシケン</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>テスコボーイ</td>
+<td>キョウエイパンセ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">70</span></td>
+<td>70</td>
+<td>68</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>遅め</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">根幹距 距離延 叩き良</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">サクラショウリ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーソロン</td>
+<td>シリネラ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">70</span></td>
+<td>60</td>
+<td>65</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>早熟鍋</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">大舞台 強心臓</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#10b981; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ハツシバオー</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>タケシバオー</td>
+<td>ハツイチコ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>70</td>
+<td>58</td>
+<td style="text-align:center;">×</td>
+<td style="text-align:center;">◎</td>
+<td>遅め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">交流巧 根幹距 スター 鉄砲</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">グレートタイタン</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>シンザン</td>
+<td>リレントデーター</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>75</td>
+<td>58</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">△</td>
+<td>遅め</td>
+<td>普通</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">直一気 軽ハン</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">シービークロス</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>フォルティノ</td>
+<td>ズイショウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>75</td>
+<td>61</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">×</td>
+<td>遅め</td>
+<td>ある</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">鉄砲 決め打 完全燃</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">マイエルフ</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ミンスキー</td>
+<td>マキノカツラ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">63</span></td>
+<td>35</td>
+<td>53</td>
+<td style="text-align:center;">◎</td>
+<td style="text-align:center;">△</td>
+<td>早め</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">ローカ</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">タガワエース</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>アザーストーンウッド</td>
+<td>コーホール</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>55</td>
+<td>63</td>
+<td style="text-align:center;">×</td>
+<td style="text-align:center;">◎</td>
+<td>早め鍋</td>
+<td>持続</td>
+<td style="color:var(--text-color); font-size:0.8rem; line-height:1.4;">タフネ 冬競馬 クラギ</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 💡【攻略のポイント】(實戰深度攻略要點繁體中文專區) -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid rgba(234,179,8,0.3); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-lightbulb"></i> 💡【攻略のポイント】1975 年代實戰深度攻略要點
+            </div>
+<div style="color:var(--text-color); margin-bottom:12px;">
+<p style="margin-bottom:8px; line-height:1.65; font-size:0.83rem;">
+• <strong>世代金札之王 ホウヨウボーイ (鳳凰小子)：</strong>具備金札實至名歸的頂級實力！成長型雖為晚成，但自己擁有精心培育亦可奪取三冠；古馬時期更是全面接管 グリーングラス 世代王位，統治秋季古馬王道！<br/>
+• <strong>綜合評價極高名牝 モデルスポート (模範體育)：</strong>SP 66 短距離牝馬，早熟持績，2 歲即可奪取阪神 JF、櫻花賞與 NHK 一哩賽。其最大價值在於退役繁殖——產出傳奇名牝「ダイナアクトレス (Dyna Actress)」，後代更孕育出日本盃冠軍「スクリーンヒーロー (銀幕英雄)」與「滿樂時 (Maurice)」黃金血系！<br/>
+• <strong>快速春二冠王 サクラショウリ (櫻花勝利)：</strong>早熟鍋型快速馬，皋月賞與日本德比實力最強，德比奪冠後即可自動進行並輕鬆達成金殿堂。
+</p>
+</div>
+<div style="font-size:0.86rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px;">
+                🏆 世代精選名馬 評級深度剖析與專屬攻略方針：
+            </div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px;">
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ⦿ ホウヨウボーイ (鳳凰小子 - 金札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                晚成長途大帝！SP 72 / ST 80，接替 TTG 統治秋古馬三冠與長距離重賞。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ モデルスポート (模範體育 - 銀札/牝)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                高回報名牝！短哩 G1 金殿堂，產下ダイナアクトレス，為滿樂時 (Maurice) 祖先！
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ サクラショウリ (櫻花勝利 - 銀札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                早熟鍋春二冠王！皐月賞與日本德比主力，金殿堂容易。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ◎ インターグシケン (國際剛健 - 銀札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                Tesco Boy 重要後嗣，菊花賞爭霸與世界百傑雙速度因子培育馬。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ○ ハツシバオー (初芝王 - 銅札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                世代泥地最強馬！長途泥地交流重賞無敵連勝。
+            </div>
+</div>
+<div style="background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;">
+<div style="font-weight:bold; color:var(--gold-color); font-size:0.88rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-trophy"></i> ▲ タガワエース (田川王牌 - 銅札/牡)
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.6;">
+                3 歲泥地三冠候選，早熟鍋型＋韌性特性，早期獎金收割機。
+            </div>
+</div>
+</div>
+</div>
+<!-- 3月5週繁殖牝馬情報 -->
+<div style="background:rgba(15,23,42,0.75); border:1px solid rgba(244,114,182,0.4); border-radius:10px; padding:14px 16px; margin-top:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:#f472b6; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-heart"></i> 🌸 3月5週必買繁殖牝馬情報（最優秀生產者賞助攻・春雷事件與名駒產出）
+            </div>
+<div style="font-size:0.82rem; color:var(--text-color); line-height:1.65;">
+                🌸 <strong>3月5週必買繁殖牝馬：コーホール (Kohal)</strong><br/>• 產下銅札泥地王 タガワエース 後，連續 3 年產出綠札泥地名駒（タガワキング、タガワテツオー、タガワリュウオー），性價比極高！
+            </div>
+</div>
+</div>
+</div>
 </div>
 </section>
     </div>
@@ -21786,7 +24433,7 @@ li {
     <div class="modal-backdrop" id="chapterModal" onclick="closeChapterModal(event)">
         <div class="chapter-modal-card" onclick="event.stopPropagation()">
             <div class="chapter-modal-header">
-                <h2><i class="fa-solid fa-list-ol"></i> 📑 全 38 大章節快速跳轉</h2>
+                <h2><i class="fa-solid fa-list-ol"></i> 📑 全 39 大章節快速跳轉</h2>
                 <span class="modal-close" onclick="closeChapterModal()">&times;</span>
             </div>
             <div class="chapter-search-box">
@@ -22029,6 +24676,11 @@ li {
                             <span class="jump-icon"><i class="fa-solid fa-hourglass-start"></i></span>
                             <span class="jump-num">第 38 章</span>
                             <span class="jump-title">1968 年最古開局劇本完全攻略</span>
+                        </button>
+                        <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-era-horses-guide')">
+                            <span class="jump-icon"><i class="fa-solid fa-calendar-days"></i></span>
+                            <span class="jump-num">第 39 章</span>
+                            <span class="jump-title">按年代史實攻略與 1967~1975 各年代推薦名馬完全指南</span>
                         </button>
                     </div>
                 </div>
@@ -23305,7 +25957,19 @@ li {
     }
 
 
-    function switchStakesSubTab(tabId) {
+    function switchEraRecsTab(year, btn) {
+            document.querySelectorAll('.era-recs-pane').forEach(el => el.style.display = 'none');
+            const target = document.getElementById('paneEraRecs_' + year);
+            if (target) target.style.display = 'block';
+            
+            if (btn && btn.parentElement) {
+                btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            }
+            makeTablesSortable();
+        }
+
+        function switchStakesSubTab(tabId) {
         document.querySelectorAll('.stakes-subtab-pane').forEach(el => el.style.display = 'none');
         const target = document.getElementById(tabId);
         if (target) target.style.display = 'block';
