@@ -1384,6 +1384,24 @@
             color: #fff;
         }
 
+        /* 配合理論矩陣導航板：電腦端自適應、平板端每行3個、手機端2個 */
+        .theory-matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 10px;
+        }
+        @media (min-width: 641px) and (max-width: 1200px) {
+            .theory-matrix-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+        }
+        @media (max-width: 640px) {
+            .theory-matrix-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+        }
+
         /* 浮動按鈕群 (跳轉目錄 + 回頂部) */
         .floating-btn-group {
             position: fixed;
@@ -1678,7 +1696,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v01.96</span>
+        <span class="version-badge">v01.97</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 38 大章節)
@@ -2061,18 +2079,18 @@ li {
 <div class="section-title"><i class="fa-solid fa-table-list"></i> 第 3 章：全配合理論速查與加成總覽表 (全 36+ 條目)</div>
 </div>
 <div class="section-body">
-<!-- Ahogame 1:1 復刻 配合理論矩陣導航大板 (固定每行 3 個呈現) -->
+<!-- Ahogame 1:1 復刻 配合理論矩陣導航大板 (電腦自適應 / 平板固定3欄) -->
 <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:12px; padding:16px; margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:10px; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
 <div style="font-size:0.95rem; font-weight:bold; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-table-cells"></i> 【配合理論】完全目次矩陣速查導航板 (ウイニングポスト 10 2026 全 33 大理論對照)
             </div>
-<span class="pill pill-gold" style="font-size:0.75rem;">日/中並行對照 (共 33 條理論・3 欄整齊排列)</span>
+<span class="pill pill-gold" style="font-size:0.75rem;">日/中並行對照 (共 33 條理論)</span>
 </div>
 <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px; line-height:1.5;">
             點擊任一配合理論卡片即可瞬間直通該理論之專屬深度章節、爆發力公式、成立要件與實戰血統範例表（包含 2026 全新始祖血脈融合、Drama 因子融合及三大區域限定配合）。
         </p>
-<div class="theory-matrix-3col-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px;">
+<div class="theory-matrix-grid">
 <div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'sec-metrics')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
 <div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">配合理論基礎知識</div>
 <div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">配合理論の基礎知識</div>
@@ -2217,6 +2235,7 @@ li {
 </div>
 </div>
 </div>
+<!-- Ahogame 1:1 復刻 配合理論矩陣導航大板 (固定每行 3 個呈現) -->
 <!-- Ahogame 1:1 復刻 配合理論矩陣導航大板 (無破洞、完美自適應) -->
 <!-- Ahogame 1:1 復刻 配合理論矩陣導航大板 -->
 <div class="filter-bar">
