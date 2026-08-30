@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.20</span>
+        <span class="version-badge">v02.21</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -27012,81 +27012,204 @@ li {
     
 <section class="section-card" id="sec-allhorseprofiles-db">
 <style>
-/* ===== 第 41 章 同區塊晶片尺寸統一規範 ===== */
-#threeHorsesMainTabs .tab-btn {
-    height: 38px !important;
-    min-height: 38px !important;
-    padding: 0 18px !important;
-    font-size: 0.86rem !important;
-    font-weight: 700 !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    border-radius: 8px !important;
-    white-space: nowrap !important;
-    word-break: keep-all !important;
-    cursor: pointer !important;
+/* ===== 第 41 章 平板極致適配佈局規範 ===== */
+
+/* 1. 頂部三大主頁籤：3 等分等寬網格 */
+.ch41-main-tabs-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-bottom: 16px !important;
 }
 
-.ch41-sub-chips-block .pill {
-    height: 32px !important;
-    min-height: 32px !important;
-    line-height: 30px !important;
-    padding: 0 12px !important;
-    font-size: 0.78rem !important;
-    font-weight: 600 !important;
-    display: inline-flex !important;
+.ch41-tab-btn {
+    display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 4px !important;
-    border-radius: 6px !important;
+    gap: 8px !important;
+    height: 44px !important;
+    padding: 0 12px !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--border-color) !important;
+    background: rgba(15, 23, 42, 0.85) !important;
+    color: #94a3b8 !important;
+    cursor: pointer !important;
     white-space: nowrap !important;
     word-break: keep-all !important;
-    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.ch41-tab-btn:hover {
+    border-color: var(--accent-gold) !important;
+    color: #ffffff !important;
+    background: rgba(30, 58, 138, 0.4) !important;
+}
+.ch41-tab-btn.active {
+    background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+    border-color: #38bdf8 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 12px rgba(2, 132, 199, 0.4) !important;
+}
+
+/* 2. 子專題 3*3 網格配置 (平板/桌面完美 3 等分) */
+.ch41-sub-grid-3x3 {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
     box-sizing: border-box !important;
 }
 
-.ch41-letter-btns-block .pill {
-    height: 28px !important;
-    min-height: 28px !important;
-    min-width: 28px !important;
-    padding: 0 6px !important;
-    font-size: 0.75rem !important;
-    font-weight: 700 !important;
-    display: inline-flex !important;
+.ch41-sub-chip {
+    display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    border-radius: 5px !important;
+    gap: 6px !important;
+    height: 38px !important;
+    padding: 0 10px !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--border-color) !important;
+    background: rgba(30, 41, 59, 0.8) !important;
+    color: #cbd5e1 !important;
     cursor: pointer !important;
     white-space: nowrap !important;
+    word-break: keep-all !important;
+    transition: all 0.18s ease !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.ch41-sub-chip:hover {
+    border-color: var(--accent-gold) !important;
+    color: #ffffff !important;
+    background: rgba(59, 130, 246, 0.25) !important;
+}
+.ch41-sub-chip.active {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+    border-color: #60a5fa !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.4) !important;
 }
 
-.ch41-kana-btns-block .pill {
-    height: 28px !important;
-    min-height: 28px !important;
-    min-width: 44px !important;
-    padding: 0 6px !important;
-    font-size: 0.75rem !important;
-    font-weight: 700 !important;
-    display: inline-flex !important;
+/* 3. Section 3「全部名駒」7 晶片同一排 (7 等分網格) */
+.ch41-filter-grid-7 {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 6px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 14px !important;
+}
+
+.ch41-filter-chip {
+    display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    border-radius: 5px !important;
-    cursor: pointer !important;
-    white-space: nowrap !important;
-}
-
-#universalQuickFilters .tab-btn {
-    height: 30px !important;
-    min-height: 30px !important;
-    padding: 0 12px !important;
-    font-size: 0.76rem !important;
+    height: 34px !important;
+    padding: 0 6px !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
     border-radius: 6px !important;
+    border: 1px solid var(--border-color) !important;
+    background: var(--panel-bg, rgba(30,41,59,0.8)) !important;
+    color: var(--text-color, #cbd5e1) !important;
+    cursor: pointer !important;
     white-space: nowrap !important;
-    display: inline-flex !important;
+    word-break: keep-all !important;
+    transition: all 0.15s ease !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.ch41-filter-chip:hover {
+    border-color: var(--accent-gold) !important;
+    color: #ffffff !important;
+}
+.ch41-filter-chip.active {
+    background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+    border-color: #38bdf8 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 8px rgba(2, 132, 199, 0.4) !important;
+}
+
+/* 4. 英文首字母 13*2 兩排網格 */
+.ch41-alphabet-grid-13x2 {
+    display: grid !important;
+    grid-template-columns: repeat(13, 1fr) !important;
+    gap: 4px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.ch41-letter-btn {
+    display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    height: 30px !important;
+    padding: 0 !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    border-radius: 5px !important;
+    border: 1px solid var(--border-color) !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+    color: #93c5fd !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    transition: all 0.15s ease !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.ch41-letter-btn:hover {
+    border-color: #60a5fa !important;
+    color: #ffffff !important;
+    background: rgba(37, 99, 235, 0.3) !important;
+}
+.ch41-letter-btn.active {
+    background: #2563eb !important;
+    border-color: #60a5fa !important;
+    color: #ffffff !important;
+}
+
+/* 5. 五十音行別 10 等分網格 */
+.ch41-kana-grid-10 {
+    display: grid !important;
+    grid-template-columns: repeat(10, 1fr) !important;
+    gap: 4px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.ch41-kana-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 30px !important;
+    padding: 0 !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    border-radius: 5px !important;
+    border: 1px solid var(--border-color) !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+    color: #fcd34d !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    transition: all 0.15s ease !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.ch41-kana-btn:hover {
+    border-color: #eab308 !important;
+    color: #ffffff !important;
+    background: rgba(234, 179, 8, 0.25) !important;
+}
+.ch41-kana-btn.active {
+    background: #ca8a04 !important;
+    border-color: #facc15 !important;
+    color: #ffffff !important;
 }
 </style>
 <div class="section-header" style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(147,51,234,0.2)); border-bottom: 2px solid var(--accent-gold);">
@@ -27102,62 +27225,60 @@ li {
                 </p>
 </div>
 </div>
-<!-- ==================== 三大馬匹資料庫切換頁籤 ==================== -->
-<div class="category-tabs-wrapper" style="margin-bottom:16px;">
-<div class="category-tabs" id="threeHorsesMainTabs" style="display:flex; gap:8px; overflow-x:auto; padding-bottom:4px;">
-<button class="tab-btn active" id="btnTabRace" onclick="switchMasterHorseTab('race')">
-<i class="fa-solid fa-horse-head" style="color:#60a5fa;"></i> 🏇 1. 競走馬數據庫 (競走馬データ)
-        </button>
-<button class="tab-btn" id="btnTabStallion" onclick="switchMasterHorseTab('stallion')">
-<i class="fa-solid fa-mars" style="color:#4ade80;"></i> 🧬 2. 種牡馬數據庫 (種牡馬データ)
-        </button>
-<button class="tab-btn" id="btnTabBrood" onclick="switchMasterHorseTab('broodmare')">
-<i class="fa-solid fa-venus" style="color:#fb7185;"></i> 🌸 3. 繁殖牝馬數據庫 (繁殖牝馬データ)
-        </button>
+<!-- ==================== 1. 頂部三大主頁籤 (純日文描述，無中文贅字，3 等分等寬) ==================== -->
+<div class="ch41-main-tabs-grid" id="threeHorsesMainTabs">
+<button class="ch41-tab-btn active" id="btnTabRace" onclick="switchMasterHorseTab('race')">
+<i class="fa-solid fa-horse-head" style="color:#60a5fa;"></i> 🏇 1. 競走馬データ
+    </button>
+<button class="ch41-tab-btn" id="btnTabStallion" onclick="switchMasterHorseTab('stallion')">
+<i class="fa-solid fa-mars" style="color:#4ade80;"></i> 🧬 2. 種牡馬データ
+    </button>
+<button class="ch41-tab-btn" id="btnTabBrood" onclick="switchMasterHorseTab('broodmare')">
+<i class="fa-solid fa-venus" style="color:#fb7185;"></i> 🌸 3. 繁殖牝馬データ
+    </button>
 </div>
+<!-- ==================== 2. 子專題晶片列 (3*3 網格配置) ==================== -->
+<div class="tool-card" style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:12px 14px; margin-bottom:18px;">
+<!-- 競走馬 8 顆晶片 (3*3 網格) -->
+<div class="ch41-sub-grid-3x3 chips-group" id="chipsGroupRace">
+<button class="ch41-sub-chip active" onclick="activateSubTable('race_sp74', '⚡ SP 74 以上頂級歷史競走馬完全名冊 (206匹 S+/S/A+ 級神駒)', this)">⚡ SP74+ 頂級神駒 (206匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('race_koyu', '👑 32 匹持有固有歷史特性名馬名單與技能描述', this)">👑 固有特性名馬 (32匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('race_boss', '🐴 34 匹初生自帶「馬房老大 (厩舎のボス)」名馬名單', this)">🐴 初始馬房老大 (34匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('race_rescue', '🚑 歷史事故「予後不良」及早拯救名馬名單 (51匹)', this)">🚑 事故拯救名冊 (38匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('race_iseki', '✈️ 現役途中移籍海外名馬清單 (41匹)', this)">✈️ 現役海外移籍馬 (41匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('race_sh', '🌟 歷代超級巨星名駒完全名錄 (33匹)', this)">🌟 歷代超級巨星馬 (33匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('race_init', '🎁 全年代劇本初期讓渡名駒名錄 (19匹)', this)">🎁 初期讓渡名駒 (19匹)</button>
+<button class="ch41-sub-chip" onclick="filterMasterKeyword('芦灰毛', '🦄 全 1,178 匹白毛・蘆毛名駒數據庫', this)">🦄 白毛・蘆毛名駒庫 (1,178匹)</button>
 </div>
-<!-- ==================== 子專題切換晶片列 ==================== -->
-<div class="tool-card ch41-sub-chips-block" style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:12px 14px; margin-bottom:18px;">
-<!-- 競走馬專屬晶片 -->
-<div class="chips-group" id="chipsGroupRace" style="display:flex; flex-wrap:wrap; gap:6px;">
-<button class="pill pill-power active" onclick="activateSubTable('race_sp74', '⚡ SP 74 以上頂級歷史競走馬完全名冊 (206匹 S+/S/A+ 級神駒)', this)">⚡ SP74+ 頂級神駒 (206匹)</button>
-<button class="pill pill-gold" onclick="activateSubTable('race_koyu', '👑 32 匹持有固有歷史特性名馬名單與技能描述', this)">👑 固有特性名馬 (32匹)</button>
-<button class="pill pill-purple" onclick="activateSubTable('race_boss', '🐴 34 匹初生自帶「馬房老大 (厩舎のボス)」名馬名單', this)">🐴 初始馬房老大 (34匹)</button>
-<button class="pill pill-danger" onclick="activateSubTable('race_rescue', '🚑 歷史事故「予後不良」及早拯救名馬名單 (51匹)', this)">🚑 事故拯救名冊 (38匹)</button>
-<button class="pill pill-safe" onclick="activateSubTable('race_iseki', '✈️ 現役途中移籍海外名馬清單 (41匹)', this)">✈️ 現役海外移籍馬 (41匹)</button>
-<button class="pill pill-gold" onclick="activateSubTable('race_sh', '🌟 歷代超級巨星名駒完全名錄 (33匹)', this)">🌟 歷代超級巨星馬 (33匹)</button>
-<button class="pill pill-safe" onclick="activateSubTable('race_init', '🎁 全年代劇本初期讓渡名駒名錄 (19匹)', this)">🎁 初期讓渡名駒 (19匹)</button>
-<button class="pill pill-cyan" onclick="filterMasterKeyword('芦灰毛', '🦄 全 1,178 匹白毛・蘆毛名駒數據庫', this)">🦄 白毛・蘆毛名駒庫 (1,178匹)</button>
+<!-- 種牡馬晶片 (3*3 網格) -->
+<div class="ch41-sub-grid-3x3 chips-group" id="chipsGroupStallion" style="display:none;">
+<button class="ch41-sub-chip active" onclick="activateSubTable('sy_kodashi10', '🧬 仔出し 10 滿分種牡馬完全名單 (28匹神級產駒爆發力)', this)">🧬 仔出 10 滿分種馬 (28匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('sy_kodashi9', '⭐ 仔出し 9 頂級種牡馬名單 (95匹)', this)">⭐ 仔出 9 頂級種馬 (95匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('sy_kodashi8', '✨ 仔出し 8 優秀種牡馬名單 (119匹)', this)">✨ 仔出 8 優秀種馬 (119匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('sy_iseki', '✈️ 移籍海外名種牡馬完全名冊 (273匹)', this)">✈️ 移籍海外種牡馬 (273匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('sy_1973', '📅 1973 年開局初年度種牡馬大表 (453匹)', this)">📅 1973 開局種馬 (453匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('sy_1984', '📅 1984 年開局初年度種牡馬大表 (256匹)', this)">📅 1984 開局種馬 (256匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('sy_1991', '📅 1991 年開局初年度種牡馬大表 (486匹)', this)">📅 1991 開局種馬 (486匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('sy_1998', '📅 1998 年開局初年度種牡馬大表 (460匹)', this)">📅 1998 開局種馬 (460匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('sy_2005', '📅 2005 年開局初年度種牡馬大表 (463匹)', this)">📅 2005 開局種馬 (463匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('sy_2012', '📅 2012 年開局初年度種牡馬大表 (427匹)', this)">📅 2012 開局種馬 (427匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('sy_2024', '📅 2024 年開局初年度種牡馬大表 (436匹)', this)">📅 2024 開局種馬 (436匹)</button>
 </div>
-<!-- 種牡馬專屬晶片 -->
-<div class="chips-group" id="chipsGroupStallion" style="display:none; flex-wrap:wrap; gap:6px;">
-<button class="pill pill-gold active" onclick="activateSubTable('sy_kodashi10', '🧬 仔出し 10 滿分種牡馬完全名單 (28匹神級產駒爆發力)', this)">🧬 仔出 10 滿分種馬 (28匹)</button>
-<button class="pill pill-power" onclick="activateSubTable('sy_kodashi9', '⭐ 仔出し 9 頂級種牡馬名單 (95匹)', this)">⭐ 仔出 9 頂級種馬 (95匹)</button>
-<button class="pill pill-safe" onclick="activateSubTable('sy_kodashi8', '✨ 仔出し 8 優秀種牡馬名單 (119匹)', this)">✨ 仔出 8 優秀種馬 (119匹)</button>
-<button class="pill pill-purple" onclick="activateSubTable('sy_iseki', '✈️ 移籍海外名種牡馬完全名冊 (273匹)', this)">✈️ 移籍海外種牡馬 (273匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('sy_1973', '📅 1973 年開局初年度種牡馬大表 (453匹)', this)">📅 1973 開局種馬 (453匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('sy_1984', '📅 1984 年開局初年度種牡馬大表 (256匹)', this)">📅 1984 開局種馬 (256匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('sy_1991', '📅 1991 年開局初年度種牡馬大表 (486匹)', this)">📅 1991 開局種馬 (486匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('sy_1998', '📅 1998 年開局初年度種牡馬大表 (460匹)', this)">📅 1998 開局種馬 (460匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('sy_2005', '📅 2005 年開局初年度種牡馬大表 (463匹)', this)">📅 2005 開局種馬 (463匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('sy_2012', '📅 2012 年開局初年度種牡馬大表 (427匹)', this)">📅 2012 開局種馬 (427匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('sy_2024', '📅 2024 年開局初年度種牡馬大表 (436匹)', this)">📅 2024 開局種馬 (436匹)</button>
-</div>
-<!-- 繁殖牝馬專屬晶片 -->
-<div class="chips-group" id="chipsGroupBrood" style="display:none; flex-wrap:wrap; gap:6px;">
-<button class="pill pill-gold active" onclick="activateSubTable('hs_1970', '🌸 1970 年代繁殖專用牝馬完全名冊 (1,918匹)', this)">🌸 1970年代繁殖專用 (1,918匹)</button>
-<button class="pill pill-gold" onclick="activateSubTable('hs_1980', '🌸 1980 年代繁殖專用牝馬完全名冊 (1,038匹)', this)">🌸 1980年代繁殖專用 (1,038匹)</button>
-<button class="pill pill-gold" onclick="activateSubTable('hs_1990', '🌸 1990 年代繁殖專用牝馬完全名冊 (700匹)', this)">🌸 1990年代繁殖專用 (700匹)</button>
-<button class="pill pill-gold" onclick="activateSubTable('hs_2000', '🌸 2000 年代繁殖專用牝馬完全名冊 (989匹)', this)">🌸 2000年代繁殖專用 (989匹)</button>
-<button class="pill pill-gold" onclick="activateSubTable('hs_2010', '🌸 2010 年代繁殖專用牝馬完全名冊 (759匹)', this)">🌸 2010年代繁殖專用 (759匹)</button>
-<button class="pill pill-purple" onclick="activateSubTable('hs_iseki', '✈️ 移籍海外繁殖牝馬名冊 (616匹)', this)">✈️ 移籍海外繁殖母馬 (616匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('hs_1973', '📅 1973 年開局初年度繁殖牝馬大表 (1,196匹)', this)">📅 1973 開局母馬 (1,196匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('hs_1984', '📅 1984 年開局初年度繁殖牝馬大表 (2,279匹)', this)">📅 1984 開局母馬 (2,279匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('hs_1991', '📅 1991 年開局初年度繁殖牝馬大表 (2,669匹)', this)">📅 1991 開局母馬 (2,669匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('hs_1998', '📅 1998 年開局初年度繁殖牝馬大表 (2,860匹)', this)">📅 1998 開局母馬 (2,860匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('hs_2005', '📅 2005 年開局初年度繁殖牝馬大表 (3,321匹)', this)">📅 2005 開局母馬 (3,321匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('hs_2012', '📅 2012 年開局初年度繁殖牝馬大表 (3,888匹)', this)">📅 2012 開局母馬 (3,888匹)</button>
-<button class="pill pill-cyan" onclick="activateSubTable('hs_2024', '📅 2024 年開局初年度繁殖牝馬大表 (3,617匹)', this)">📅 2024 開局母馬 (3,617匹)</button>
+<!-- 繁殖牝馬晶片 (3*3 網格) -->
+<div class="ch41-sub-grid-3x3 chips-group" id="chipsGroupBrood" style="display:none;">
+<button class="ch41-sub-chip active" onclick="activateSubTable('hs_1970', '🌸 1970 年代繁殖專用牝馬完全名冊 (1,918匹)', this)">🌸 1970年代繁殖專用 (1,918匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('hs_1980', '🌸 1980 年代繁殖專用牝馬完全名冊 (1,038匹)', this)">🌸 1980年代繁殖專用 (1,038匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('hs_1990', '🌸 1990 年代繁殖專用牝馬完全名冊 (700匹)', this)">🌸 1990年代繁殖專用 (700匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('hs_2000', '🌸 2000 年代繁殖專用牝馬完全名冊 (989匹)', this)">🌸 2000年代繁殖專用 (989匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('hs_2010', '🌸 2010 年代繁殖專用牝馬完全名冊 (759匹)', this)">🌸 2010年代繁殖專用 (759匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('hs_iseki', '✈️ 移籍海外繁殖牝馬名冊 (616匹)', this)">✈️ 移籍海外繁殖母馬 (616匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('hs_1973', '📅 1973 年開局初年度繁殖牝馬大表 (1,196匹)', this)">📅 1973 開局母馬 (1,196匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('hs_1984', '📅 1984 年開局初年度繁殖牝馬大表 (2,279匹)', this)">📅 1984 開局母馬 (2,279匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('hs_1991', '📅 1991 年開局初年度繁殖牝馬大表 (2,669匹)', this)">📅 1991 開局母馬 (2,669匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('hs_1998', '📅 1998 年開局初年度繁殖牝馬大表 (2,860匹)', this)">📅 1998 開局母馬 (2,860匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('hs_2005', '📅 2005 年開局初年度繁殖牝馬大表 (3,321匹)', this)">📅 2005 開局母馬 (3,321匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('hs_2012', '📅 2012 年開局初年度繁殖牝馬大表 (3,888匹)', this)">📅 2012 開局母馬 (3,888匹)</button>
+<button class="ch41-sub-chip" onclick="activateSubTable('hs_2024', '📅 2024 年開局初年度繁殖牝馬大表 (3,617匹)', this)">📅 2024 開局母馬 (3,617匹)</button>
 </div>
 </div>
 <!-- ==================== 動態子資料庫大表容器 (緊跟在晶片下方) ==================== -->
@@ -27293,58 +27414,66 @@ li {
         點擊下方任一字母、假名或標籤，將<strong>直接對全書 15,389 匹史實馬庫進行即時動態過濾</strong>並分頁呈現！點擊任一匹馬即可查看 18 欄位終極履歷！
     </div>
 </div>
-<!-- 快速篩選膠囊列 -->
-<div id="universalQuickFilters" style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;">
-<button class="tab-btn active" onclick="filterMasterCategory('all', this)">🌟 全部名駒</button>
-<button class="tab-btn" onclick="filterMasterCategory('虹', this)">🌈 虹札神駒</button>
-<button class="tab-btn" onclick="filterMasterCategory('金', this)">🥇 金札名駒</button>
-<button class="tab-btn" onclick="filterMasterCategory('銀', this)">🥈 銀札名駒</button>
-<button class="tab-btn" onclick="filterMasterCategory('銅', this)">🥉 銅札名駒</button>
-<button class="tab-btn" onclick="filterMasterCategory('sp74', this)">⚡ SP 74+ 級</button>
-<button class="tab-btn" onclick="filterMasterCategory('kodashi10', this)">🧬 仔出 10 滿分</button>
+<!-- 3. 「全部名駒」區塊：7 個晶片放同一排 (7 等分網格，改名「滿分仔出」) -->
+<div class="ch41-filter-grid-7" id="universalQuickFilters">
+<button class="ch41-filter-chip active" onclick="filterMasterCategory('all', this)">🌟 全部名駒</button>
+<button class="ch41-filter-chip" onclick="filterMasterCategory('虹', this)">🌈 虹札神駒</button>
+<button class="ch41-filter-chip" onclick="filterMasterCategory('金', this)">🥇 金札名駒</button>
+<button class="ch41-filter-chip" onclick="filterMasterCategory('銀', this)">🥈 銀札名駒</button>
+<button class="ch41-filter-chip" onclick="filterMasterCategory('銅', this)">🥉 銅札名駒</button>
+<button class="ch41-filter-chip" onclick="filterMasterCategory('sp74', this)">⚡ SP 74+ 級</button>
+<button class="ch41-filter-chip" onclick="filterMasterCategory('kodashi10', this)">🧬 滿分仔出</button>
 </div>
-<!-- 字母與五十音快捷軌道 -->
+<!-- 4. 英文首字母 13*2 兩排網格 與 五十音 10 等分網格 -->
 <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; margin-bottom:16px;">
-<div class="ch41-letter-btns-block" style="display:flex; align-items:center; gap:6px; margin-bottom:8px; flex-wrap:wrap;">
-<span style="font-size:0.78rem; font-weight:bold; color:var(--accent-color); white-space:nowrap;">🔤 英文首字母：</span>
-<div id="letterBtns" style="display:flex; flex-wrap:wrap; gap:4px;">
-<button class="pill pill-safe" onclick="filterMasterLetter('A')">A</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('B')">B</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('C')">C</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('D')">D</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('E')">E</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('F')">F</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('G')">G</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('H')">H</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('I')">I</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('J')">J</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('K')">K</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('L')">L</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('M')">M</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('N')">N</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('O')">O</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('P')">P</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('R')">R</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('S')">S</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('T')">T</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('V')">V</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('W')">W</button>
-<button class="pill pill-safe" onclick="filterMasterLetter('Z')">Z</button>
+<!-- 英文首字母 (13*2 兩排) -->
+<div style="margin-bottom:10px;">
+<div style="font-size:0.78rem; font-weight:bold; color:var(--accent-color); margin-bottom:6px;">🔤 英文首字母 (13 × 2 排列)：</div>
+<div class="ch41-alphabet-grid-13x2" id="letterBtns">
+<!-- Row 1: A ~ M (13顆) -->
+<button class="ch41-letter-btn" onclick="filterMasterLetter('A')">A</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('B')">B</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('C')">C</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('D')">D</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('E')">E</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('F')">F</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('G')">G</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('H')">H</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('I')">I</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('J')">J</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('K')">K</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('L')">L</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('M')">M</button>
+<!-- Row 2: N ~ Z (13顆) -->
+<button class="ch41-letter-btn" onclick="filterMasterLetter('N')">N</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('O')">O</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('P')">P</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('Q')">Q</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('R')">R</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('S')">S</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('T')">T</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('U')">U</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('V')">V</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('W')">W</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('X')">X</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('Y')">Y</button>
+<button class="ch41-letter-btn" onclick="filterMasterLetter('Z')">Z</button>
 </div>
 </div>
-<div class="ch41-kana-btns-block" style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
-<span style="font-size:0.78rem; font-weight:bold; color:var(--gold-color); white-space:nowrap;">🇯🇵 五十音行別：</span>
-<div id="kanaBtns" style="display:flex; flex-wrap:wrap; gap:4px;">
-<button class="pill pill-gold" onclick="filterMasterKana('ア')">ア行</button>
-<button class="pill pill-gold" onclick="filterMasterKana('カ')">カ行</button>
-<button class="pill pill-gold" onclick="filterMasterKana('サ')">サ行</button>
-<button class="pill pill-gold" onclick="filterMasterKana('タ')">タ行</button>
-<button class="pill pill-gold" onclick="filterMasterKana('ナ')">ナ行</button>
-<button class="pill pill-gold" onclick="filterMasterKana('ハ')">ハ行</button>
-<button class="pill pill-gold" onclick="filterMasterKana('マ')">マ行</button>
-<button class="pill pill-gold" onclick="filterMasterKana('ヤ')">ヤ行</button>
-<button class="pill pill-gold" onclick="filterMasterKana('ラ')">ラ行</button>
-<button class="pill pill-gold" onclick="filterMasterKana('ワ')">ワ行</button>
+<!-- 五十音行別 (10 等分一排) -->
+<div>
+<div style="font-size:0.78rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px;">🇯🇵 五十音行別 (10 等分排列)：</div>
+<div class="ch41-kana-grid-10" id="kanaBtns">
+<button class="ch41-kana-btn" onclick="filterMasterKana('ア')">ア行</button>
+<button class="ch41-kana-btn" onclick="filterMasterKana('カ')">カ行</button>
+<button class="ch41-kana-btn" onclick="filterMasterKana('サ')">サ行</button>
+<button class="ch41-kana-btn" onclick="filterMasterKana('タ')">タ行</button>
+<button class="ch41-kana-btn" onclick="filterMasterKana('ナ')">ナ行</button>
+<button class="ch41-kana-btn" onclick="filterMasterKana('ハ')">ハ行</button>
+<button class="ch41-kana-btn" onclick="filterMasterKana('マ')">マ行</button>
+<button class="ch41-kana-btn" onclick="filterMasterKana('ヤ')">ヤ行</button>
+<button class="ch41-kana-btn" onclick="filterMasterKana('ラ')">ラ行</button>
+<button class="ch41-kana-btn" onclick="filterMasterKana('ワ')">ワ行</button>
 </div>
 </div>
 </div>
