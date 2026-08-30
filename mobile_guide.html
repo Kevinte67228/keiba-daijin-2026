@@ -21,6 +21,7 @@
     <script src="master_lookup_db.js?v=v02.00"></script>
     <script src="core_guides_data.js?v=v02.00"></script>
     <script src="yearly_recs_db.js?v=v02.00"></script>
+    <script src="horse_subtopics_data.js?v=v02.00"></script>
     <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1736,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.15</span>
+        <span class="version-badge">v02.16</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -27019,20 +27020,20 @@ li {
 <div>
 <strong style="color:var(--gold-color); font-size:1rem;">📖《賽馬大亨 10 2026》三大馬匹資料庫全子網址・全層級完全展開 (allhorseprofiles 終極履歷庫)</strong><br/>
 <p style="margin:4px 0 0 0; font-size:0.85rem; line-height:1.75;">
-                    本章專門獨立完整展開 Alnasgames 旗下 <code>allhorseprofiles/</code>、<code>racehorse/</code>、<code>stallion/</code>、<code>broodmare/</code> 的最深層所有子頁面與數據大表！點擊下方<strong>三大馬匹資料庫標籤</strong>即可即時切換檢視所有專題子網址之完整數據！
+                    本獨立專題章節 100% 全量無遺漏展開 Alnasgames 旗下 <code>allhorseprofiles/</code>、<code>racehorse/</code>、<code>stallion/</code>、<code>broodmare/</code> 的所有專屬子資料庫！所有下方晶片按鈕均<strong>已完全綁定即時數據庫</strong>，點擊即可即時調閱數千筆完整大表與 18 欄位終極履歷！
                 </p>
 </div>
 </div>
 <!-- ==================== 三大馬匹資料庫切換頁籤 ==================== -->
 <div class="category-tabs-wrapper" style="margin-bottom:20px;">
 <div class="category-tabs" id="threeHorsesTabs" style="display:flex; gap:10px; overflow-x:auto; padding-bottom:6px;">
-<button class="tab-btn active" onclick="switchThreeHorsesTab('racehorse')" style="font-size:0.88rem; padding:10px 20px; border-radius:8px; display:flex; align-items:center; gap:8px;">
+<button class="tab-btn active" id="tabBtnRace" onclick="switchThreeHorsesTab('racehorse')" style="font-size:0.88rem; padding:10px 20px; border-radius:8px; display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-horse-head" style="color:#60a5fa;"></i> 🏇 1. 競走馬データ (Racehorse Data)
         </button>
-<button class="tab-btn" onclick="switchThreeHorsesTab('stallion')" style="font-size:0.88rem; padding:10px 20px; border-radius:8px; display:flex; align-items:center; gap:8px;">
+<button class="tab-btn" id="tabBtnStallion" onclick="switchThreeHorsesTab('stallion')" style="font-size:0.88rem; padding:10px 20px; border-radius:8px; display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-mars" style="color:#4ade80;"></i> 🧬 2. 種牡馬データ (Stallion Data)
         </button>
-<button class="tab-btn" onclick="switchThreeHorsesTab('broodmare')" style="font-size:0.88rem; padding:10px 20px; border-radius:8px; display:flex; align-items:center; gap:8px;">
+<button class="tab-btn" id="tabBtnBrood" onclick="switchThreeHorsesTab('broodmare')" style="font-size:0.88rem; padding:10px 20px; border-radius:8px; display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-venus" style="color:#fb7185;"></i> 🌸 3. 繁殖牝馬データ (Broodmare Data)
         </button>
 </div>
@@ -27048,49 +27049,15 @@ li {
 </div>
 </div>
 <!-- 競走馬專屬子專題跳轉膠囊 -->
-<div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;">
-<button class="pill pill-power" onclick="filterRaceSub('sp74')" style="cursor:pointer; font-size:0.78rem;">⚡ SP74+ 頂級神駒 (206匹)</button>
-<button class="pill pill-gold" onclick="filterRaceSub('koyu')" style="cursor:pointer; font-size:0.78rem;">👑 固有特性名馬 (32匹)</button>
-<button class="pill pill-purple" onclick="filterRaceSub('boss')" style="cursor:pointer; font-size:0.78rem;">🐴 初始馬房老大 (34匹)</button>
-<button class="pill pill-danger" onclick="filterRaceSub('rescue')" style="cursor:pointer; font-size:0.78rem;">🚑 事故拯救名冊 (38匹)</button>
-<button class="pill pill-cyan" onclick="filterRaceSub('white')" style="cursor:pointer; font-size:0.78rem;">🦄 白毛・蘆毛馬庫 (1,178匹)</button>
-<button class="pill pill-safe" onclick="filterRaceSub('iseki')" style="cursor:pointer; font-size:0.78rem;">✈️ 現役海外移籍馬</button>
-<button class="pill pill-gold" onclick="filterRaceSub('sh')" style="cursor:pointer; font-size:0.78rem;">🌟 歷代超級巨星馬 (SH)</button>
-<button class="pill pill-safe" onclick="filterRaceSub('init')" style="cursor:pointer; font-size:0.78rem;">🎁 初期讓渡馬名錄</button>
-</div>
-</div>
-<!-- 競走馬子專題 1: SP74+ 神駒大表 -->
-<div class="sub-race-block" id="sub-race-sp74" style="margin-bottom:20px;">
-<h4 style="color:#eab308; font-size:0.95rem; margin-bottom:8px;"><i class="fa-solid fa-bolt"></i> ⚡ SP 74 以上頂級歷史競走馬完全名冊 (S+/S/A+ 級神駒)</h4>
-<div class="table-responsive">
-<table class="data-table">
-<thead>
-<tr>
-<th style="min-width:140px;">馬名 (日/中)</th>
-<th style="width:60px;">札別</th>
-<th style="width:70px;">生年</th>
-<th style="width:70px;">SP</th>
-<th style="min-width:130px;">距離適性</th>
-<th style="min-width:110px;">腳質/成長</th>
-<th style="min-width:160px;">固有技能 / 關鍵特性</th>
-<th style="width:110px;">操作</th>
-</tr>
-</thead>
-<tbody>
-<tr><td><strong>アメリカンファラオ (美國法老)</strong></td><td><span class="badge badge-gold">虹</span></td><td>2012</td><td><span class="pill pill-power">79 (S+)</span></td><td>1600~2400m (泥)</td><td>逃げ (早熟)</td><td>海外雄飛 / 根幹の鬼</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/American%20Pharoah.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>セクレタリアト (秘書處)</strong></td><td><span class="badge badge-gold">虹</span></td><td>1970</td><td><span class="pill pill-power">79 (S+)</span></td><td>1600~2600m (泥)</td><td>先行 (早熟)</td><td>大舞台 / 晴れ舞台</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Secretariat.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>ダンシングブレーヴ (勇舞)</strong></td><td><span class="badge badge-gold">虹</span></td><td>1983</td><td><span class="pill pill-power">79 (S+)</span></td><td>1600~2400m (芝)</td><td>差し (早め)</td><td>大舞台 / 凱旋門制霸</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Dancing%20Brave.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>フランケル (范高爾)</strong></td><td><span class="badge badge-gold">虹</span></td><td>2008</td><td><span class="pill pill-power">79 (S+)</span></td><td>1400~2100m (芝)</td><td>先行 (早め)</td><td>大舞台 / 14戰全勝</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Frankel.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>シアトルスルー (西雅圖麗斯)</strong></td><td><span class="badge badge-gold">虹</span></td><td>1974</td><td><span class="pill pill-power">78 (S)</span></td><td>1400~2400m (泥)</td><td>逃げ (早め)</td><td>大舞台 / 無敗三冠 (仔出10)</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Seattle%20Slew.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>ディープインパクト (大震撼)</strong></td><td><span class="badge badge-gold">虹</span></td><td>2002</td><td><span class="pill pill-power">77 (A+)</span></td><td>1800~3200m (芝)</td><td>差し (早め持續)</td><td>固有：衝撃の末脚 (仔出10)</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Deep%20Impact.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>エルコンドルパサー (神鷹)</strong></td><td><span class="badge badge-gold">虹</span></td><td>1995</td><td><span class="pill pill-power">77 (A+)</span></td><td>1400~2600m (芝泥)</td><td>先行 (早め)</td><td>固有：頂きへの飛翔</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/El%20CondorPasa.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>ナリタブライアン (成田白仁)</strong></td><td><span class="badge badge-gold">虹</span></td><td>1991</td><td><span class="pill pill-power">77 (A+)</span></td><td>1800~3200m (芝)</td><td>差し (鍋底)</td><td>固有：怪物の孤高</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Narita%20Brian.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>シンボリルドルフ (魯道夫象徵)</strong></td><td><span class="badge badge-gold">虹</span></td><td>1981</td><td><span class="pill pill-power">77 (A+)</span></td><td>1800~3200m (芝)</td><td>先行 (早め持續)</td><td>固有：絶対皇帝</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Symboli%20Rudolf.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>キタサンブラック (北部玄駒)</strong></td><td><span class="badge badge-gold">虹</span></td><td>2012</td><td><span class="pill pill-power">76 (A+)</span></td><td>2000~3200m (芝)</td><td>逃げ (遲め持續)</td><td>固有：祭囃子 (仔出9)</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Kitasan%20Black.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>オグリキャップ (小栗帽)</strong></td><td><span class="badge badge-gold">虹</span></td><td>1985</td><td><span class="pill pill-power">76 (A+)</span></td><td>1600~2500m (芝泥)</td><td>差し (早め持續)</td><td>固有：オグリコール</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Oguri%20Cap.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>オルフェーヴル (黃金巨匠)</strong></td><td><span class="badge badge-gold">虹</span></td><td>2008</td><td><span class="pill pill-power">76 (A+)</span></td><td>1800~3000m (芝)</td><td>追込 (早め持續)</td><td>固有：金色の暴脚</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Orfevre.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-</tbody>
-</table>
+<div id="raceSubChips" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;">
+<button class="pill pill-power active" onclick="loadSubTable('race_sp74', '⚡ SP 74 以上頂級歷史競走馬完全名冊 (206匹 S+/S/A+ 級神駒)', this)" style="cursor:pointer; font-size:0.78rem;">⚡ SP74+ 頂級神駒 (206匹)</button>
+<button class="pill pill-gold" onclick="loadSubTable('race_koyu', '👑 32 匹持有固有歷史特性名馬名單與技能描述', this)" style="cursor:pointer; font-size:0.78rem;">👑 固有特性名馬 (32匹)</button>
+<button class="pill pill-purple" onclick="loadSubTable('race_boss', '🐴 34 匹初生自帶「馬房老大 (厩舎のボス)」名馬名單', this)" style="cursor:pointer; font-size:0.78rem;">🐴 初始馬房老大 (34匹)</button>
+<button class="pill pill-danger" onclick="loadSubTable('race_rescue', '🚑 歷史事故「予後不良」及早拯救名馬名單 (51匹)', this)" style="cursor:pointer; font-size:0.78rem;">🚑 事故拯救名冊 (38匹)</button>
+<button class="pill pill-safe" onclick="loadSubTable('race_iseki', '✈️ 現役途中移籍海外名馬清單 (41匹)', this)" style="cursor:pointer; font-size:0.78rem;">✈️ 現役海外移籍馬 (41匹)</button>
+<button class="pill pill-gold" onclick="loadSubTable('race_sh', '🌟 歷代超級巨星馬 (Super Horse) 完全名錄 (33匹)', this)" style="cursor:pointer; font-size:0.78rem;">🌟 歷代超級巨星馬 (SH)</button>
+<button class="pill pill-safe" onclick="loadSubTable('race_init', '🎁 全年代劇本初期讓渡馬名錄 (19匹)', this)" style="cursor:pointer; font-size:0.78rem;">🎁 初期讓渡馬名錄</button>
+<button class="pill pill-cyan" onclick="filterMasterByKeyword('芦灰毛', '🦄 全 1,178 匹白毛・蘆毛名駒數據庫', this)" style="cursor:pointer; font-size:0.78rem;">🦄 白毛・蘆毛馬庫 (1,178匹)</button>
 </div>
 </div>
 </div>
@@ -27105,40 +27072,18 @@ li {
 </div>
 </div>
 <!-- 種牡馬子專題跳轉膠囊 -->
-<div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;">
-<button class="pill pill-gold" onclick="filterStallionSub('kodashi10')" style="cursor:pointer; font-size:0.78rem;">🧬 仔出 10 滿分種馬</button>
-<button class="pill pill-power" onclick="filterStallionSub('kodashi9')" style="cursor:pointer; font-size:0.78rem;">⭐ 仔出 9 頂級種馬</button>
-<button class="pill pill-safe" onclick="filterStallionSub('init-sy')" style="cursor:pointer; font-size:0.78rem;">📅 各劇本開局初年度種馬</button>
-<button class="pill pill-cyan" onclick="filterStallionSub('sp-sy')" style="cursor:pointer; font-size:0.78rem;">🌟 各年代 SP 種牡馬</button>
-<button class="pill pill-purple" onclick="filterStallionSub('iseki-sy')" style="cursor:pointer; font-size:0.78rem;">✈️ 海外移籍名種馬名冊</button>
-</div>
-</div>
-<!-- 仔出 10 滿分種馬大表 -->
-<div id="sub-sy-kodashi10" style="margin-bottom:20px;">
-<h4 style="color:#4ade80; font-size:0.95rem; margin-bottom:8px;"><i class="fa-solid fa-dna"></i> 🧬 仔出し 10 滿分種牡馬完全名單 (神級產駒爆發力)</h4>
-<div class="table-responsive">
-<table class="data-table">
-<thead>
-<tr>
-<th style="min-width:140px;">種牡馬名 (日/中)</th>
-<th style="width:60px;">札別</th>
-<th style="width:70px;">生年</th>
-<th style="width:70px;">SP</th>
-<th style="min-width:130px;">配種雙因子</th>
-<th style="min-width:160px;">父系血脈 / 系統確立順位</th>
-<th style="min-width:200px;">代表產駒陣容</th>
-<th style="width:110px;">操作</th>
-</tr>
-</thead>
-<tbody>
-<tr><td><strong>ディープインパクト (大震撼)</strong></td><td><span class="badge badge-gold">虹</span></td><td>2002</td><td>77 (A+)</td><td><span class="pill pill-safe">瞬發</span>+<span class="pill pill-cyan">柔軟</span></td><td>サンデーサイレンス系第1順位</td><td>ジェンティルドンナ, コントレイル</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Deep%20Impact.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>トウショウボーイ (東商小子)</strong></td><td><span class="badge badge-gold">金</span></td><td>1973</td><td>74 (A)</td><td><span class="pill pill-gold">速度</span>+<span class="pill pill-safe">瞬發</span></td><td>テスコボーイ系親系統昇格</td><td>ミスターシービー, サクラスターオー</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Tosho%20Boy.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>シアトルスルー (西雅圖麗斯)</strong></td><td><span class="badge badge-gold">虹</span></td><td>1974</td><td>78 (S)</td><td><span class="pill pill-gold">速度</span>+<span class="pill pill-power">勝負</span></td><td>Bold Reasoning 系 / 世界始祖</td><td>エーピーインディ (A.P. Indy)</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Seattle%20Slew.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>ノーザンテースト (北方風味)</strong></td><td><span class="badge badge-gold">金</span></td><td>1971</td><td>73 (B+)</td><td><span class="pill pill-power">勝負</span>+<span class="pill pill-gold">速度</span></td><td>Northern Dancer 系第1後繼</td><td>アンバーシャダイ, ダイナガリバー</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Northern%20Taste.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>サンデーサイレンス (週日寧靜)</strong></td><td><span class="badge badge-gold">虹</span></td><td>1986</td><td>77 (A+)</td><td><span class="pill pill-safe">瞬發</span>+<span class="pill pill-power">勝負</span></td><td>Halo 系親系統昇格 / 日本大繁榮</td><td>ディープインパクト, スペシャルウィーク</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Sunday%20Silence.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>キングカメハメハ (夏威夷王)</strong></td><td><span class="badge badge-gold">虹</span></td><td>2001</td><td>75 (A)</td><td><span class="pill pill-power">力量</span>+<span class="pill pill-gold">速度</span></td><td>Kingmambo 系後繼 / 雙主流確立</td><td>ロードカナロア, ドゥラメンテ</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/King%20Kamehameha.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-</tbody>
-</table>
+<div id="stallionSubChips" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;">
+<button class="pill pill-gold active" onclick="loadSubTable('sy_kodashi10', '🧬 仔出し 10 滿分種牡馬完全名單 (28匹神級產駒爆發力)', this)" style="cursor:pointer; font-size:0.78rem;">🧬 仔出 10 滿分種馬 (28匹)</button>
+<button class="pill pill-power" onclick="loadSubTable('sy_kodashi9', '⭐ 仔出し 9 頂級種牡馬名單 (95匹)', this)" style="cursor:pointer; font-size:0.78rem;">⭐ 仔出 9 頂級種馬 (95匹)</button>
+<button class="pill pill-safe" onclick="loadSubTable('sy_kodashi8', '✨ 仔出し 8 優秀種牡馬名單 (119匹)', this)" style="cursor:pointer; font-size:0.78rem;">✨ 仔出 8 優秀種馬 (119匹)</button>
+<button class="pill pill-purple" onclick="loadSubTable('sy_iseki', '✈️ 移籍海外名種牡馬完全名冊 (273匹)', this)" style="cursor:pointer; font-size:0.78rem;">✈️ 海外移籍名種馬 (273匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('sy_1973', '📅 1973 年開局初年度種牡馬大表 (453匹)', this)" style="cursor:pointer; font-size:0.78rem;">1973 開局種馬 (453匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('sy_1984', '📅 1984 年開局初年度種牡馬大表 (256匹)', this)" style="cursor:pointer; font-size:0.78rem;">1984 開局種馬 (256匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('sy_1991', '📅 1991 年開局初年度種牡馬大表 (486匹)', this)" style="cursor:pointer; font-size:0.78rem;">1991 開局種馬 (486匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('sy_1998', '📅 1998 年開局初年度種牡馬大表 (460匹)', this)" style="cursor:pointer; font-size:0.78rem;">1998 開局種馬 (460匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('sy_2005', '📅 2005 年開局初年度種牡馬大表 (463匹)', this)" style="cursor:pointer; font-size:0.78rem;">2005 開局種馬 (463匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('sy_2012', '📅 2012 年開局初年度種牡馬大表 (427匹)', this)" style="cursor:pointer; font-size:0.78rem;">2012 開局種馬 (427匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('sy_2024', '📅 2024 年開局初年度種牡馬大表 (436匹)', this)" style="cursor:pointer; font-size:0.78rem;">2024 開局種馬 (436匹)</button>
 </div>
 </div>
 </div>
@@ -27153,41 +27098,42 @@ li {
 </div>
 </div>
 <!-- 繁殖牝馬專屬子專題跳轉膠囊 -->
-<div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;">
-<button class="pill pill-gold" onclick="filterBroodSub('kodashi10-hs')" style="cursor:pointer; font-size:0.78rem;">🏆 仔出 10 奠基母馬</button>
-<button class="pill pill-power" onclick="filterBroodSub('decades-hs')" style="cursor:pointer; font-size:0.78rem;">🌸 各年代繁殖專用牝馬 (1970~2010s)</button>
-<button class="pill pill-safe" onclick="filterBroodSub('init-hs')" style="cursor:pointer; font-size:0.78rem;">📅 各劇本開局初年度母馬</button>
-<button class="pill pill-cyan" onclick="filterBroodSub('sp-hs')" style="cursor:pointer; font-size:0.78rem;">🌟 各年代 SP 繁殖牝馬</button>
-<button class="pill pill-purple" onclick="filterBroodSub('iseki-hs')" style="cursor:pointer; font-size:0.78rem;">✈️ 海外移籍名母馬名冊</button>
+<div id="broodSubChips" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;">
+<button class="pill pill-gold active" onclick="loadSubTable('hs_1970', '🌸 1970 年代繁殖專用牝馬完全名冊 (1,918匹)', this)" style="cursor:pointer; font-size:0.78rem;">🌸 1970年代繁殖専用 (1,918匹)</button>
+<button class="pill pill-gold" onclick="loadSubTable('hs_1980', '🌸 1980 年代繁殖專用牝馬完全名冊 (1,038匹)', this)" style="cursor:pointer; font-size:0.78rem;">🌸 1980年代繁殖専用 (1,038匹)</button>
+<button class="pill pill-gold" onclick="loadSubTable('hs_1990', '🌸 1990 年代繁殖專用牝馬完全名冊 (700匹)', this)" style="cursor:pointer; font-size:0.78rem;">🌸 1990年代繁殖専用 (700匹)</button>
+<button class="pill pill-gold" onclick="loadSubTable('hs_2000', '🌸 2000 年代繁殖專用牝馬完全名冊 (989匹)', this)" style="cursor:pointer; font-size:0.78rem;">🌸 2000年代繁殖専用 (989匹)</button>
+<button class="pill pill-gold" onclick="loadSubTable('hs_2010', '🌸 2010 年代繁殖專用牝馬完全名冊 (759匹)', this)" style="cursor:pointer; font-size:0.78rem;">🌸 2010年代繁殖専用 (759匹)</button>
+<button class="pill pill-purple" onclick="loadSubTable('hs_iseki', '✈️ 移籍海外繁殖牝馬名冊 (616匹)', this)" style="cursor:pointer; font-size:0.78rem;">✈️ 海外移籍名母馬 (616匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('hs_1973', '📅 1973 年開局初年度繁殖牝馬大表 (1,196匹)', this)" style="cursor:pointer; font-size:0.78rem;">1973 開局母馬 (1,196匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('hs_1984', '📅 1984 年開局初年度繁殖牝馬大表 (2,279匹)', this)" style="cursor:pointer; font-size:0.78rem;">1984 開局母馬 (2,279匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('hs_1991', '📅 1991 年開局初年度繁殖牝馬大表 (2,669匹)', this)" style="cursor:pointer; font-size:0.78rem;">1991 開局母馬 (2,669匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('hs_1998', '📅 1998 年開局初年度繁殖牝馬大表 (2,860匹)', this)" style="cursor:pointer; font-size:0.78rem;">1998 開局母馬 (2,860匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('hs_2005', '📅 2005 年開局初年度繁殖牝馬大表 (3,321匹)', this)" style="cursor:pointer; font-size:0.78rem;">2005 開局母馬 (3,321匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('hs_2012', '📅 2012 年開局初年度繁殖牝馬大表 (3,888匹)', this)" style="cursor:pointer; font-size:0.78rem;">2012 開局母馬 (3,888匹)</button>
+<button class="pill pill-cyan" onclick="loadSubTable('hs_2024', '📅 2024 年開局初年度繁殖牝馬大表 (3,617匹)', this)" style="cursor:pointer; font-size:0.78rem;">2024 開局母馬 (3,617匹)</button>
 </div>
 </div>
-<!-- 仔出 10 滿分繁殖母馬大表 -->
-<div id="sub-hs-kodashi10" style="margin-bottom:20px;">
-<h4 style="color:#fb7185; font-size:0.95rem; margin-bottom:8px;"><i class="fa-solid fa-heart"></i> 🌸 仔出し 10 頂級名門繁殖牝馬完全名單 (名門母系奠基首選)</h4>
-<div class="table-responsive">
-<table class="data-table">
-<thead>
-<tr>
-<th style="min-width:140px;">繁殖牝馬名 (日/中)</th>
-<th style="width:60px;">札別</th>
-<th style="width:70px;">生年</th>
-<th style="width:70px;">SP</th>
-<th style="min-width:130px;">所屬牝系家族</th>
-<th style="min-width:160px;">父系血統 / 母父</th>
-<th style="min-width:200px;">代表著名子嗣</th>
-<th style="width:110px;">操作</th>
-</tr>
+</div>
+<!-- ==================== 子專題動態大表展示容器 ==================== -->
+<div id="dynamicSubTableCard" style="background:rgba(15,23,42,0.9); border:1px solid var(--accent-color); border-radius:10px; padding:16px; margin-bottom:28px;">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:10px; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+<h4 id="dynamicSubTableTitle" style="margin:0; font-size:1.05rem; color:var(--gold-color);">⚡ SP 74 以上頂級歷史競走馬完全名冊 (206匹 S+/S/A+ 級神駒)</h4>
+<div id="dynamicSubTableRowCount" style="font-size:0.8rem; color:var(--text-muted);">共 206 匹數據</div>
+</div>
+<!-- 大表搜尋與過濾 -->
+<div style="display:flex; gap:10px; margin-bottom:12px;">
+<input id="subTableSearchInput" oninput="filterCurrentSubTable()" placeholder="在此子大表中快速過濾馬名、生年、SP、特性..." style="flex:1; padding:8px 12px; background:rgba(30,41,59,0.8); border:1px solid var(--border-color); border-radius:6px; color:#fff; font-size:0.82rem; outline:none;" type="text"/>
+</div>
+<div class="table-responsive" style="max-height:550px; overflow-y:auto;">
+<table class="data-table" id="dynamicSubTable">
+<thead id="dynamicSubTableHead">
+<!-- 動態注入表頭 -->
 </thead>
-<tbody>
-<tr><td><strong>パシフィカス (Pacificus)</strong></td><td><span class="badge badge-gold">金</span></td><td>1981</td><td>60</td><td>パシフィカス系 (始祖)</td><td>Northern Dancer × Roberto</td><td>ナリタブライアン, ビワハヤヒデ</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Pacificus.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>ウインドインハーヘア (風暴之髮)</strong></td><td><span class="badge badge-gold">金</span></td><td>1991</td><td>70</td><td>ハイクレア系</td><td>Alzao × Burghclere</td><td>ディープインパクト, ブラックタイド</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Wind%20in%20Her%20Hair.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>ビワハイジ (琵琶海蒂)</strong></td><td><span class="badge badge-gold">金</span></td><td>1993</td><td>71</td><td>アストニシメント系</td><td>Caerleon × アギラ</td><td>ブエナビスタ, ジョワドヴィーヴル</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Biwa%20Haiji.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>スカーレットブーケ (緋紅花束)</strong></td><td><span class="badge badge-gold">金</span></td><td>1988</td><td>69</td><td>スカーレットインク系</td><td>ノーザンテースト × スカーレットインク</td><td>ダイワスカーレット, ダイワメジャー</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Scarlet%20Bouquet.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>オリエンタルアート (東方藝術)</strong></td><td><span class="badge badge-gold">金</span></td><td>1997</td><td>63</td><td>オリエンタル系</td><td>メジロマックイーン × エレクトロアート</td><td>オルフェーヴル, ドリームジャーニー</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Oriental%20Art.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
-<tr><td><strong>シーザリオ (西沙里奧)</strong></td><td><span class="badge badge-gold">虹</span></td><td>2002</td><td>74</td><td>キロフプレミエール系</td><td>スペシャルウィーク × キロフプレミエール</td><td>エピファネイア, リオンディーズ, サートゥルナーリア</td><td><a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Cesario.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18欄履歷</a></td></tr>
+<tbody id="dynamicSubTableBody">
+<!-- 動態注入數據行 -->
 </tbody>
 </table>
-</div>
 </div>
 </div>
 <!-- ==================== 一、18 欄位終極履歷模組規格解析 ==================== -->
@@ -27229,139 +27175,128 @@ li {
 <h3 style="font-size:1.05rem; color:var(--accent-color); margin:28px 0 12px; display:flex; align-items:center; gap:8px; border-bottom:1px solid rgba(59,130,246,0.3); padding-bottom:6px;">
 <i class="fa-solid fa-star"></i> 二、傳奇名駒 18 欄位深度檔案展示 (Deep Profiles Showcase)
 </h3>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; margin-bottom:24px;">
 <!-- 1. 大震撼 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid #eab308; border-radius:12px; padding:16px; margin-bottom:20px;">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:10px; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.1rem; font-weight:bold; color:var(--gold-color);">
-            👑 ディープインパクト (Deep Impact / 大震撼) <span class="badge badge-gold">虹札 / 牡</span>
+<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid #eab308; border-radius:12px; padding:16px;">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:8px; margin-bottom:10px;">
+<div style="font-size:1.05rem; font-weight:bold; color:var(--gold-color);">
+                👑 ディープインパクト (大震撼) <span class="badge badge-gold">虹 / 牡</span>
 </div>
-<div style="font-size:0.8rem; color:var(--text-muted);">生年：2002年 | 生產國：日本 | 育成地域：栗東</div>
+<span class="pill pill-power" style="font-size:0.75rem;">SP 77 (A+)</span>
 </div>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; font-size:0.82rem; line-height:1.7; margin-bottom:12px;">
-<div>• <strong>速度/耐力：</strong><span style="color:#eab308; font-weight:bold;">SP 77 (A+)</span> / ST 80</div>
-<div>• <strong>距離適性：</strong>1800m ～ 3200m</div>
-<div>• <strong>固有特性：</strong><span class="badge badge-gold">衝撃の末脚</span> (2000~3000m中央G1居中後追爆速)</div>
-<div>• <strong>馬之個性：</strong><span class="badge badge-blue">秀才肌</span> (調教成功率+10%, 智商高)</div>
-<div>• <strong>腳質/成長：</strong>差し (居中) / 早め (持續)</div>
-<div>• <strong>配種因子：</strong><span class="pill pill-safe">瞬發</span> + <span class="pill pill-cyan">柔軟</span></div>
-<div>• <strong>仔出し評級：</strong><span style="color:#ef4444; font-weight:bold; font-size:0.95rem;">10 (滿分頂級)</span></div>
-<div>• <strong>系統確立：</strong>サンデーサイレンス系繼承第 1 順位</div>
+<div style="font-size:0.8rem; line-height:1.6; margin-bottom:10px;">
+            • <strong>距離/腳質：</strong>1800~3200m / 差し (早め持續)<br/>
+            • <strong>固有特性：</strong><span style="color:#eab308; font-weight:bold;">衝撃の末脚</span> | <strong>個性：</strong>秀才肌<br/>
+            • <strong>配種因子：</strong>瞬發+柔軟 | <span style="color:#ef4444; font-weight:bold;">仔出 10 (滿分)</span><br/>
+            • <strong>系統確立：</strong>サンデーサイレンス系繼承第 1 順位
+        </div>
+<div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.08); padding-top:8px;">
+<span style="font-size:0.72rem; color:#93c5fd;">產駒：貴婦人、鐵鳥翱天</span>
+<a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Deep%20Impact.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18 欄官方原檔 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
 </div>
-<div style="background:rgba(30,41,59,0.7); border-radius:8px; padding:10px; font-size:0.8rem; line-height:1.6;">
-<strong>4代血統：</strong>父：サンデーサイレンス (Halo) ➔ 母：ウインドインハーヘア (Alzao ➔ Lyphard ➔ Northern Dancer)<br/>
-<strong>主要歷史產駒：</strong>ジェンティルドンナ (貴婦人, 75A), コントレイル (鐵鳥翱天, 75A), グランアレグリア (放聲歡呼, 74A), キズナ (絆, 73B+), サトノダイヤモンド (里見光鑽, 73B+)
-    </div>
 </div>
 <!-- 2. 神鷹 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid #eab308; border-radius:12px; padding:16px; margin-bottom:20px;">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:10px; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.1rem; font-weight:bold; color:var(--gold-color);">
-            👑 エルコンドルパサー (El Condor Pasa / 神鷹) <span class="badge badge-gold">虹札 / 牡</span>
+<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid #eab308; border-radius:12px; padding:16px;">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:8px; margin-bottom:10px;">
+<div style="font-size:1.05rem; font-weight:bold; color:var(--gold-color);">
+                👑 エルコンドルパサー (神鷹) <span class="badge badge-gold">虹 / 牡</span>
 </div>
-<div style="font-size:0.8rem; color:var(--text-muted);">生年：1995年 | 生產國：美國 | 育成地域：美浦</div>
+<span class="pill pill-power" style="font-size:0.75rem;">SP 77 (A+)</span>
 </div>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; font-size:0.82rem; line-height:1.7; margin-bottom:12px;">
-<div>• <strong>速度/耐力：</strong><span style="color:#eab308; font-weight:bold;">SP 77 (A+)</span> / ST 65</div>
-<div>• <strong>距離適性：</strong>1400m ～ 2600m (芝◎ / 泥○)</div>
-<div>• <strong>固有特性：</strong><span class="badge badge-gold">頂きへの飛翔</span> (海外遠征1800~2400m先行爆速)</div>
-<div>• <strong>馬之個性：</strong><span class="badge badge-gold">エンターテイナー</span> (人氣上升, 大賽爆發)</div>
-<div>• <strong>腳質/成長：</strong>先行 (跟前) / 早め</div>
-<div>• <strong>配種因子：</strong><span class="pill pill-safe">瞬發</span> + <span class="pill pill-power">勝負根性</span></div>
-<div>• <strong>仔出し評級：</strong>5 (拯救早逝後可達 8+)</div>
-<div>• <strong>系統確立：</strong>Kingmambo 系後繼 / 世界始祖確立首選</div>
+<div style="font-size:0.8rem; line-height:1.6; margin-bottom:10px;">
+            • <strong>距離/腳質：</strong>1400~2600m (芝◎泥○) / 先行 (早め)<br/>
+            • <strong>固有特性：</strong><span style="color:#eab308; font-weight:bold;">頂きへの飛翔</span> | <strong>個性：</strong>エンターテイナー<br/>
+            • <strong>配種因子：</strong>瞬發+勝負 | 仔出 5 (拯救後 8+)<br/>
+            • <strong>系統確立：</strong>Kingmambo 系後繼 / 世界始祖確立首選
+        </div>
+<div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.08); padding-top:8px;">
+<span style="font-size:0.72rem; color:#93c5fd;">產駒：赤兔馬、風之歌</span>
+<a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/El%20CondorPasa.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18 欄官方原檔 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
 </div>
-<div style="background:rgba(30,41,59,0.7); border-radius:8px; padding:10px; font-size:0.8rem; line-height:1.6;">
-<strong>4代血統：</strong>父：Kingmambo (Mr. Prospector) ➔ 母：サドラーズギャル (Sadler's Wells ➔ Northern Dancer)<br/>
-<strong>主要歷史產駒：</strong>ヴァーミリアン (赤兔馬, 73B+), ソングオブウインド (風之歌, 71B), アロンダイト (阿隆達, 70B)
-    </div>
 </div>
-<!-- 3. 東商小子/天馬 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid #eab308; border-radius:12px; padding:16px; margin-bottom:20px;">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:10px; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.1rem; font-weight:bold; color:var(--gold-color);">
-            👑 トウショウボーイ (Tosho Boy / 東商小子/天馬) <span class="badge badge-gold">金札 / 牡</span>
+<!-- 3. 東商小子 -->
+<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid #eab308; border-radius:12px; padding:16px;">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:8px; margin-bottom:10px;">
+<div style="font-size:1.05rem; font-weight:bold; color:var(--gold-color);">
+                👑 トウショウボーイ (天馬/東商小子) <span class="badge badge-gold">金 / 牡</span>
 </div>
-<div style="font-size:0.8rem; color:var(--text-muted);">生年：1973年 | 生產國：日本 | 育成地域：美浦</div>
+<span class="pill pill-power" style="font-size:0.75rem;">SP 74 (A)</span>
 </div>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; font-size:0.82rem; line-height:1.7; margin-bottom:12px;">
-<div>• <strong>速度/耐力：</strong><span style="color:#eab308; font-weight:bold;">SP 74 (A)</span> / ST 60</div>
-<div>• <strong>距離適性：</strong>1600m ～ 2600m</div>
-<div>• <strong>固有特性：</strong><span class="badge badge-gold">天馬の羽ばたき</span> (2000~2500m中央G1先行爆發天馬極速)</div>
-<div>• <strong>馬之個性：</strong><span class="badge badge-blue">目立ちたがり</span> (1番人氣爆發)</div>
-<div>• <strong>腳質/成長：</strong>先行 / 早め (持續)</div>
-<div>• <strong>配種因子：</strong><span class="pill pill-gold">速度</span> + <span class="pill pill-safe">瞬發</span> (極品雙因子)</div>
-<div>• <strong>仔出し評級：</strong><span style="color:#ef4444; font-weight:bold; font-size:0.95rem;">10 (滿分天馬)</span></div>
-<div>• <strong>系統確立：</strong>テスコボーイ系親系統昇格主力</div>
+<div style="font-size:0.8rem; line-height:1.6; margin-bottom:10px;">
+            • <strong>距離/腳質：</strong>1600~2600m / 先行 (早め持續)<br/>
+            • <strong>固有特性：</strong><span style="color:#eab308; font-weight:bold;">天馬の羽ばたき</span> | <strong>個性：</strong>目立ちたがり<br/>
+            • <strong>配種因子：</strong>速度+瞬發 | <span style="color:#ef4444; font-weight:bold;">仔出 10 (滿分)</span><br/>
+            • <strong>系統確立：</strong>テスコボーイ系親系統昇格主力
+        </div>
+<div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.08); padding-top:8px;">
+<span style="font-size:0.72rem; color:#93c5fd;">產駒：千明代表、櫻花星王</span>
+<a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Tosho%20Boy.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">18 欄官方原檔 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
 </div>
-<div style="background:rgba(30,41,59,0.7); border-radius:8px; padding:10px; font-size:0.8rem; line-height:1.6;">
-<strong>4代血統：</strong>父：テスコボーイ (Princely Gift ➔ Nasrullah) ➔ 母：ソシアルバターフライ (Your Host)<br/>
-<strong>主要歷史產駒：</strong>ミスターシービー (千明代表, 74A 三冠), サクラスターオー (櫻花星王, 72B+ 雙冠), ダイゼンキング (70B)
-    </div>
+</div>
 </div>
 <!-- ==================== 三、全 17,885 匹史實馬 Profile 索引與快速跳轉庫 ==================== -->
 <h3 style="font-size:1.05rem; color:var(--accent-purple); margin:28px 0 12px; display:flex; align-items:center; gap:8px; border-bottom:1px solid rgba(168,85,247,0.3); padding-bottom:6px;">
-<i class="fa-solid fa-magnifying-glass-location"></i> 三、全 17,885 匹史實馬 Profile 索引與快速跳轉庫 (Interactive Deep Explorer)
+<i class="fa-solid fa-magnifying-glass-location"></i> 三、全 17,885 匹史實馬 Profile 索引與快速跳轉庫 (Universal Live Explorer)
 </h3>
 <div class="callout callout-gold" style="font-size:0.83rem; line-height:1.7; margin-bottom:16px;">
 <i class="fa-solid fa-circle-info" style="color:var(--accent-gold);"></i>
 <div>
-<strong>💡 深度履歷檢索提示：</strong><br/>
-        每一匹史實馬在 <code>allhorseprofiles/</code> 均具備專屬 18 欄位檔案。您可利用下方<strong>「多維分類篩選標籤」</strong>、<strong>「五十音 / 英文字母 / 年代導航軌道」</strong>與<strong>「即時搜尋框」</strong>，一鍵調閱任何名馬的 18 模組數據與血統譜！
+<strong>💡 深度全庫即時搜尋引擎：</strong><br/>
+        點擊下方任一字母、假名或標籤，將<strong>直接對全書 15,389 匹史實馬庫進行即時動態過濾</strong>並分頁呈現！點擊任一匹馬即可查看 18 欄位終極履歷！
     </div>
 </div>
 <!-- 快速篩選膠囊列 -->
-<div id="profileQuickFilters" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px;">
-<button class="tab-btn active" onclick="filterProfileCards('all')" style="font-size:0.78rem; padding:5px 12px;">🌟 全部名駒</button>
-<button class="tab-btn" onclick="filterProfileCards('rainbow')" style="font-size:0.78rem; padding:5px 12px;">🌈 虹札神駒</button>
-<button class="tab-btn" onclick="filterProfileCards('gold')" style="font-size:0.78rem; padding:5px 12px;">🥇 金札名駒</button>
-<button class="tab-btn" onclick="filterProfileCards('sp74')" style="font-size:0.78rem; padding:5px 12px;">⚡ SP 74+ (S/A+級)</button>
-<button class="tab-btn" onclick="filterProfileCards('kodashi10')" style="font-size:0.78rem; padding:5px 12px;">🧬 仔出 10 (滿分繁育)</button>
-<button class="tab-btn" onclick="filterProfileCards('koyu')" style="font-size:0.78rem; padding:5px 12px;">👑 固有技能名駒 (32匹)</button>
-<button class="tab-btn" onclick="filterProfileCards('boss')" style="font-size:0.78rem; padding:5px 12px;">🐴 馬房老大 (34匹)</button>
-<button class="tab-btn" onclick="filterProfileCards('rescue')" style="font-size:0.78rem; padding:5px 12px;">🚑 歷史拯救名單 (38匹)</button>
+<div id="universalQuickFilters" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px;">
+<button class="tab-btn active" onclick="filterMasterCategory('all', this)" style="font-size:0.78rem; padding:5px 12px;">🌟 全部名駒</button>
+<button class="tab-btn" onclick="filterMasterCategory('虹', this)" style="font-size:0.78rem; padding:5px 12px;">🌈 虹札神駒</button>
+<button class="tab-btn" onclick="filterMasterCategory('金', this)" style="font-size:0.78rem; padding:5px 12px;">🥇 金札名駒</button>
+<button class="tab-btn" onclick="filterMasterCategory('銀', this)" style="font-size:0.78rem; padding:5px 12px;">🥈 銀札名駒</button>
+<button class="tab-btn" onclick="filterMasterCategory('銅', this)" style="font-size:0.78rem; padding:5px 12px;">🥉 銅札名駒</button>
+<button class="tab-btn" onclick="filterMasterCategory('sp74', this)" style="font-size:0.78rem; padding:5px 12px;">⚡ SP 74+ (S/A+級)</button>
+<button class="tab-btn" onclick="filterMasterCategory('kodashi10', this)" style="font-size:0.78rem; padding:5px 12px;">🧬 仔出 10 (滿分繁育)</button>
 </div>
 <!-- 字母與五十音快捷軌道 -->
 <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; margin-bottom:16px;">
 <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap;">
 <span style="font-size:0.78rem; font-weight:bold; color:var(--accent-color); white-space:nowrap;">🔤 英文首字母：</span>
-<div style="display:flex; flex-wrap:wrap; gap:4px;">
-<button class="pill pill-safe" onclick="searchProfileLetter('A')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">A</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('B')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">B</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('C')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">C</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('D')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">D</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('E')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">E</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('F')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">F</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('G')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">G</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('H')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">H</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('I')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">I</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('J')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">J</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('K')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">K</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('L')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">L</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('M')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">M</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('N')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">N</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('O')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">O</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('P')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">P</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('R')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">R</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('S')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">S</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('T')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">T</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('V')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">V</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('W')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">W</button>
-<button class="pill pill-safe" onclick="searchProfileLetter('Z')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">Z</button>
+<div id="letterBtns" style="display:flex; flex-wrap:wrap; gap:4px;">
+<button class="pill pill-safe" onclick="filterMasterLetter('A')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">A</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('B')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">B</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('C')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">C</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('D')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">D</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('E')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">E</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('F')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">F</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('G')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">G</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('H')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">H</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('I')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">I</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('J')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">J</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('K')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">K</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('L')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">L</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('M')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">M</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('N')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">N</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('O')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">O</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('P')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">P</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('R')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">R</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('S')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">S</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('T')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">T</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('V')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">V</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('W')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">W</button>
+<button class="pill pill-safe" onclick="filterMasterLetter('Z')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">Z</button>
 </div>
 </div>
 <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
 <span style="font-size:0.78rem; font-weight:bold; color:var(--gold-color); white-space:nowrap;">🇯🇵 五十音行別：</span>
-<div style="display:flex; flex-wrap:wrap; gap:4px;">
-<button class="pill pill-gold" onclick="searchProfileKana('ア')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">ア行</button>
-<button class="pill pill-gold" onclick="searchProfileKana('カ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">カ行</button>
-<button class="pill pill-gold" onclick="searchProfileKana('サ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">サ行</button>
-<button class="pill pill-gold" onclick="searchProfileKana('タ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">タ行</button>
-<button class="pill pill-gold" onclick="searchProfileKana('ナ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">ナ行</button>
-<button class="pill pill-gold" onclick="searchProfileKana('ハ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">ハ行</button>
-<button class="pill pill-gold" onclick="searchProfileKana('マ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">マ行</button>
-<button class="pill pill-gold" onclick="searchProfileKana('ヤ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">ヤ行</button>
-<button class="pill pill-gold" onclick="searchProfileKana('ラ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">ラ行</button>
-<button class="pill pill-gold" onclick="searchProfileKana('ワ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">ワ行</button>
+<div id="kanaBtns" style="display:flex; flex-wrap:wrap; gap:4px;">
+<button class="pill pill-gold" onclick="filterMasterKana('ア')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">ア行</button>
+<button class="pill pill-gold" onclick="filterMasterKana('カ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">カ行</button>
+<button class="pill pill-gold" onclick="filterMasterKana('サ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">サ行</button>
+<button class="pill pill-gold" onclick="filterMasterKana('タ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">タ行</button>
+<button class="pill pill-gold" onclick="filterMasterKana('ナ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">ナ行</button>
+<button class="pill pill-gold" onclick="filterMasterKana('ハ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">ハ行</button>
+<button class="pill pill-gold" onclick="filterMasterKana('マ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">マ行</button>
+<button class="pill pill-gold" onclick="filterMasterKana('ヤ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">ヤ行</button>
+<button class="pill pill-gold" onclick="filterMasterKana('ラ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">ラ行</button>
+<button class="pill pill-gold" onclick="filterMasterKana('ワ')" style="cursor:pointer; font-size:0.72rem; padding:2px 7px;">ワ行</button>
 </div>
 </div>
 </div>
@@ -27369,90 +27304,44 @@ li {
 <div style="display:flex; gap:10px; margin-bottom:16px;">
 <div style="position:relative; flex:1;">
 <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted);"></i>
-<input id="profileSearchInput" oninput="onProfileSearchInput()" placeholder="即時搜尋名馬 (日文名 / 英文名 / 中文譯名 / 生年 / 父系 / 母父，如: ディープインパクト, Secretariat, 天馬, 1995)..." style="width:100%; padding:10px 12px 10px 36px; background:rgba(30,41,59,0.8); border:1px solid var(--border-color); border-radius:8px; color:#fff; font-size:0.85rem; outline:none;" type="text"/>
+<input id="masterLiveSearchInput" oninput="onMasterLiveSearchInput()" placeholder="全庫即時搜尋 (輸入日文名、英文名、中文譯名、生年、父系、母父，如: ディープインパクト, 1995, Secretariat)..." style="width:100%; padding:10px 12px 10px 36px; background:rgba(30,41,59,0.8); border:1px solid var(--border-color); border-radius:8px; color:#fff; font-size:0.85rem; outline:none;" type="text"/>
 </div>
-<button class="header-btn btn-gold" onclick="resetProfileFilter()" style="white-space:nowrap; padding:0 16px; font-size:0.82rem;">重設搜尋</button>
+<button class="header-btn btn-gold" onclick="resetMasterLiveFilter()" style="white-space:nowrap; padding:0 16px; font-size:0.82rem;">重設全庫搜尋</button>
 </div>
-<!-- 深度檔案卡片網格 -->
-<div id="profileCardsGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; margin-bottom:24px;">
-<!-- 卡片 1: 大震撼 -->
-<div class="tool-card profile-item" data-name="ディープインパクト deep impact 大震撼" data-tags="rainbow sp74 kodashi10 koyu" style="background:rgba(15,23,42,0.85); border:1px solid rgba(234,179,8,0.4); border-radius:10px; padding:14px;">
-<div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-<div>
-<span class="badge badge-gold">虹札</span> <strong style="font-size:0.98rem; color:var(--gold-color);">ディープインパクト (大震撼)</strong>
-<div style="font-size:0.75rem; color:var(--text-muted);">Deep Impact | 2002年 牡 (日本)</div>
+<!-- 全庫即時搜尋結果大表 -->
+<div class="tool-card" style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:16px; margin-bottom:24px;">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:8px; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+<h4 id="masterLiveResultTitle" style="margin:0; font-size:1rem; color:var(--gold-color);">🔍 全庫即時檢索結果</h4>
+<div id="masterLiveResultCount" style="font-size:0.8rem; color:var(--text-muted);">正在載入全庫數據...</div>
 </div>
-<span class="pill pill-power" style="font-size:0.75rem;">SP 77 (A+)</span>
+<div class="table-responsive" style="max-height:550px; overflow-y:auto;">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:140px;">馬名 (日/中)</th>
+<th style="width:60px;">札別</th>
+<th style="width:70px;">生年</th>
+<th style="width:60px;">性別</th>
+<th style="width:70px;">SP</th>
+<th style="min-width:120px;">距離適性</th>
+<th style="min-width:100px;">腳質/成長</th>
+<th style="min-width:130px;">父系血統</th>
+<th style="min-width:130px;">母父血統</th>
+<th style="width:70px;">仔出</th>
+<th style="width:110px;">操作</th>
+</tr>
+</thead>
+<tbody id="masterLiveResultBody">
+<!-- 動態注入 1.5 萬匹馬即時過濾結果 -->
+</tbody>
+</table>
 </div>
-<div style="font-size:0.8rem; line-height:1.6; color:var(--text-color); margin-bottom:10px;">
-            • <strong>距離/腳質：</strong>1800~3200m / 差し (早め持續)<br/>
-            • <strong>固有技能：</strong><span style="color:#eab308; font-weight:bold;">衝撃の末脚</span> | <strong>個性：</strong>秀才肌<br/>
-            • <strong>因子/仔出：</strong>瞬發+柔軟 | <span style="color:#ef4444; font-weight:bold;">仔出 10 (滿分)</span><br/>
-            • <strong>血統：</strong>サンデーサイレンス × ウインドインハーヘア
-        </div>
-<div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.08); padding-top:8px;">
-<span style="font-size:0.72rem; color:#93c5fd;">確立：SS系繼承第1順位</span>
-<a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Deep%20Impact.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">查看官方 18 欄位原檔 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-</div>
-</div>
-<!-- 卡片 2: 神鷹 -->
-<div class="tool-card profile-item" data-name="エルコンドルパサー el condor pasa 神鷹" data-tags="rainbow sp74 koyu rescue" style="background:rgba(15,23,42,0.85); border:1px solid rgba(234,179,8,0.4); border-radius:10px; padding:14px;">
-<div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-<div>
-<span class="badge badge-gold">虹札</span> <strong style="font-size:0.98rem; color:var(--gold-color);">エルコンドルパサー (神鷹)</strong>
-<div style="font-size:0.75rem; color:var(--text-muted);">El Condor Pasa | 1995年 牡 (美國)</div>
-</div>
-<span class="pill pill-power" style="font-size:0.75rem;">SP 77 (A+)</span>
-</div>
-<div style="font-size:0.8rem; line-height:1.6; color:var(--text-color); margin-bottom:10px;">
-            • <strong>距離/腳質：</strong>1400~2600m (芝◎泥○) / 先行 (早め)<br/>
-            • <strong>固有技能：</strong><span style="color:#eab308; font-weight:bold;">頂きへの飛翔</span> | <strong>個性：</strong>エンターテイナー<br/>
-            • <strong>因子/仔出：</strong>瞬發+勝負 | 仔出 5 (拯救後 8+)<br/>
-            • <strong>血統：</strong>Kingmambo × サドラーズギャル
-        </div>
-<div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.08); padding-top:8px;">
-<span style="font-size:0.72rem; color:#93c5fd;">確立：世界始祖確立首選</span>
-<a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/El%20CondorPasa.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">查看官方 18 欄位原檔 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-</div>
-</div>
-<!-- 卡片 3: 東商小子 -->
-<div class="tool-card profile-item" data-name="トウショウボーイ tosho boy 東商小子 天馬" data-tags="gold sp74 kodashi10 koyu" style="background:rgba(15,23,42,0.85); border:1px solid rgba(234,179,8,0.4); border-radius:10px; padding:14px;">
-<div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-<div>
-<span class="badge badge-gold">金札</span> <strong style="font-size:0.98rem; color:var(--gold-color);">トウショウボーイ (天馬/東商小子)</strong>
-<div style="font-size:0.75rem; color:var(--text-muted);">Tosho Boy | 1973年 牡 (日本)</div>
-</div>
-<span class="pill pill-power" style="font-size:0.75rem;">SP 74 (A)</span>
-</div>
-<div style="font-size:0.8rem; line-height:1.6; color:var(--text-color); margin-bottom:10px;">
-            • <strong>距離/腳質：</strong>1600~2600m / 先行 (早め持續)<br/>
-            • <strong>固有技能：</strong><span style="color:#eab308; font-weight:bold;">天馬の羽ばたき</span> | <strong>個性：</strong>目立ちたがり<br/>
-            • <strong>因子/仔出：</strong>速度+瞬發 | <span style="color:#ef4444; font-weight:bold;">仔出 10 (滿分)</span><br/>
-            • <strong>血統：</strong>テスコボーイ × ソシアルバターフライ
-        </div>
-<div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.08); padding-top:8px;">
-<span style="font-size:0.72rem; color:#93c5fd;">確立：テスコボーイ親系統昇格主力</span>
-<a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Tosho%20Boy.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">查看官方 18 欄位原檔 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-</div>
-</div>
-<!-- 卡片 4: 成田白仁 -->
-<div class="tool-card profile-item" data-name="ナリタブライアン narita brian 成田白仁 怪物" data-tags="rainbow sp74 koyu" style="background:rgba(15,23,42,0.85); border:1px solid rgba(234,179,8,0.4); border-radius:10px; padding:14px;">
-<div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-<div>
-<span class="badge badge-gold">虹札</span> <strong style="font-size:0.98rem; color:var(--gold-color);">ナリタブライアン (成田白仁)</strong>
-<div style="font-size:0.75rem; color:var(--text-muted);">Narita Brian | 1991年 牡 (日本)</div>
-</div>
-<span class="pill pill-power" style="font-size:0.75rem;">SP 77 (A+)</span>
-</div>
-<div style="font-size:0.8rem; line-height:1.6; color:var(--text-color); margin-bottom:10px;">
-            • <strong>距離/腳質：</strong>1800~3200m / 差し (早熟鍋底)<br/>
-            • <strong>固有技能：</strong><span style="color:#eab308; font-weight:bold;">怪物の孤高</span> | <strong>個性：</strong>エンターテイナー<br/>
-            • <strong>因子/仔出：</strong>勝負+柔軟 | 仔出 8<br/>
-            • <strong>血統：</strong>ブライアンズタイム × パシフィカス
-        </div>
-<div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.08); padding-top:8px;">
-<span style="font-size:0.72rem; color:#93c5fd;">確立：Brian's Time 系主力後繼</span>
-<a class="pill pill-safe" href="https://alnasgames.com/wp10/horses/allhorseprofiles/Narita%20Brian.html" style="font-size:0.72rem; text-decoration:none;" target="_blank">查看官方 18 欄位原檔 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+<!-- 分頁導航 -->
+<div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; flex-wrap:wrap; gap:8px;">
+<div id="masterLivePageInfo" style="font-size:0.8rem; color:var(--text-muted);">第 1 / 1 頁</div>
+<div style="display:flex; gap:6px;">
+<button class="pill pill-safe" id="btnPrevPage" onclick="changeMasterLivePage(-1)" style="cursor:pointer; font-size:0.75rem; padding:4px 10px;">◀ 上一頁</button>
+<button class="pill pill-safe" id="btnNextPage" onclick="changeMasterLivePage(1)" style="cursor:pointer; font-size:0.75rem; padding:4px 10px;">下一頁 ▶</button>
 </div>
 </div>
 </div>
