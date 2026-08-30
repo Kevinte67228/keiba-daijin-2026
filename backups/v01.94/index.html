@@ -1416,6 +1416,16 @@
         }
         .btn-floating:hover { transform: scale(1.08); background: #38bdf8; }
         .btn-floating.btn-jump { background: var(--gold-color); color: #0f172a; }
+        .btn-floating.btn-history-back {
+            background: #6366f1;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        .btn-floating.btn-history-back:hover {
+            background: #4f46e5;
+            transform: scale(1.1);
+        }
     
 
 
@@ -1668,7 +1678,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v01.91</span>
+        <span class="version-badge">v01.95</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 38 大章節)
@@ -2051,6 +2061,163 @@ li {
 <div class="section-title"><i class="fa-solid fa-table-list"></i> 第 3 章：全配合理論速查與加成總覽表 (全 36+ 條目)</div>
 </div>
 <div class="section-body">
+<!-- Ahogame 1:1 復刻 配合理論矩陣導航大板 (無破洞、完美自適應) -->
+<div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:12px; padding:16px; margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:10px; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+<div style="font-size:0.95rem; font-weight:bold; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-table-cells"></i> 【配合理論】完全目次矩陣速查導航板 (ウイニングポスト 10 2026 全 33 大理論對照)
+            </div>
+<span class="pill pill-gold" style="font-size:0.75rem;">日/中並行對照 (共 33 條理論)</span>
+</div>
+<p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px; line-height:1.5;">
+            點擊任一配合理論卡片即可瞬間直通該理論之專屬深度章節、爆發力公式、成立要件與實戰血統範例表（包含 2026 全新始祖血脈融合、Drama 因子融合及三大區域限定配合）。
+        </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:10px;">
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'sec-metrics')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">配合理論基礎知識</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">配合理論の基礎知識</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-nicks')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">副屬性因子爆發</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">サブパラ爆発力</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'sec-gene-factors')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">因子活性 (父/牝/Drama)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">因子(父系/牝系/ドラマ)</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 UPDATE]</span>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">近親交配 / 奇跡之血量</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">インブリード/奇跡の血量</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">全兄弟姐妹近親</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">全きょうだいインブリード</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">母系近親交配</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">母系インブリード</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">完全異系交配</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">アウトブリード</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-linebreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">系統交配 (親/子/始祖/爆發)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ラインブリード(親/子/始祖/爆発型)</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 UPDATE]</span>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">1/4 異系配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">1/4異系配合</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-nicks')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">相性配合 (單/雙/三/四重)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ニックス</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-nicks')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">母父◎ (BMS 因子)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">母父〇</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-activation')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">血脈活性化配合 (6~8親系)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">血脈活性化配合</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-vitality')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">活力源化因子</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">活力源化因子</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 UPDATE]</span>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-vitality')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">活力補完 (零細血統)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">活力補完</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 UPDATE]</span>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-vitality')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">隔世遺傳 (祖父因子)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">隔世遺伝</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-lines')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">雄系活性化 (Male Line)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">メールライン活性配合</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-lines')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">雌系活性化 (Bottom Line)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ボトムライン活性配合</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-traits')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">系統特性 昇華/融合配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">系統特性 昇華/融合配合</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">搞笑配合 / 佳偶天成配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">お笑い、お似合い配合</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">告別配合 / W告別配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">サヨナラ/Wサヨナラ配合</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">閃電配合 / 疾風配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">稲妻配合/疾風配合</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">三冠配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">3冠配合</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">牝系 / 名牝系 / W名牝系</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">牝系/名牝系/W名牝系配合</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">初次亮相配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">お披露目配合</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">雷嵐配合 (春嵐 × 春雷)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">雷嵐配合</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">神似配合 (同毛色白斑)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">そっくりさん配合</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">宿敵配合 / 宿敵母父配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ライバル配合/ライバル配合母父</div>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">基準交配 (日本限定)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">基準交配</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[日本限定]</span>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">Dosage 理論 (歐洲限定)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ドサージュ理論</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[歐洲限定]</span>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">Rasmussen 因子 (美國限定)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ラスムッセン・ファクター</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[美國限定]</span>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-2026new')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">始祖血脈融合配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">始祖血脈融合配合</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 NEW]</span>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-2026new')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">戲劇因子 Line 配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ドラマ因子ライン配合</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 NEW]</span>
+</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-2026new')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">戲劇因子融合配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ドラマ因子融合配合</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 NEW]</span>
+</div>
+</div>
+</div>
+<!-- Ahogame 1:1 復刻 配合理論矩陣導航大板 -->
 <div class="filter-bar">
 <button class="filter-btn active" onclick="filterCategory('all', this)">全部理論 (36+)</button>
 <button class="filter-btn" onclick="filterCategory('basic', this)">相性與基礎</button>
@@ -2623,25 +2790,98 @@ li {
 <div class="section-title"><i class="fa-solid fa-sun"></i> 第 9 章：活力源化・活力補完與隔世遺傳</div>
 </div>
 <div class="section-body">
-<div class="checklist-grid">
-<div class="checklist-card">
-<div class="checklist-card-header"><i class="fa-solid fa-award"></i> 活力源化因子</div>
-<p style="font-size:12px; color:var(--text-muted);">
-              父系與母系血統中同時出現金/銀/世界種馬因子。金/銀因子每個 +1，世界因子每個 +2（上限 +8）。
+<div class="callout callout-info" style="margin-bottom:14px;">
+<strong>🧬 活力源化因子・活力補完與隔世遺傳機制全解 (Vitality Heritage)</strong>
+<p style="font-size:0.84rem; margin:4px 0 0; line-height:1.6;">
+                透過祖先馬之「大種牡馬因子」、「名種牡馬因子」與「能力因子」之積累，以及利用零細血統提供活力補完，可在不引發近親交配副作用的前提下，為幼駒注入極高爆發力加成！
             </p>
 </div>
-<div class="checklist-card">
-<div class="checklist-card-header"><i class="fa-solid fa-heart"></i> 活力補完 (完全型 +3)</div>
-<p style="font-size:12px; color:var(--text-muted);">
-              第 3 代 8 匹祖先全數符合名種馬、名牝或零細異系血統時成立。大幅延長產駒競走壽命並提供爆發 +3。
+<!-- 一、活力源化因子 (10 2026 UPDATE) -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:10px; padding:16px; margin-bottom:16px;">
+<h3 style="font-size:0.95rem; font-weight:bold; color:var(--gold-color); margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-sun"></i> 一、活力源化因子 (大種牡馬・名種牡馬・能力因子)
+            </h3>
+<p style="font-size:0.83rem; color:var(--text-color); line-height:1.6; margin-bottom:10px;">
+                種牡馬(父)與繁殖牝馬(母)的 4 代祖先馬（共 14 匹祖先）若帶有因子，配種時將轉化為活力源化因子提供爆發力：
             </p>
+<div class="table-responsive" style="margin-bottom:10px;">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:200px;">因子類型 (日/中)</th>
+<th class="sortable-th" style="width:120px;">爆發力加成</th>
+<th class="sortable-th">成立條件與機制細節 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>大種牡馬因子 (金因子)</strong></td>
+<td><span class="pill pill-gold" style="font-weight:bold;">每匹 +1</span></td>
+<td>祖先馬確立為<strong>親系統</strong>時自動賦予金桃色因子。</td>
+</tr>
+<tr>
+<td><strong>名種牡馬因子 (銀因子)</strong></td>
+<td><span class="pill pill-silver" style="font-weight:bold;">每匹 +1</span></td>
+<td>祖先馬確立為<strong>子系統</strong>時自動賦予銀色因子。</td>
+</tr>
+<tr>
+<td><strong>能力因子 (能力因子)</strong></td>
+<td><span class="pill pill-power" style="font-weight:bold;">每匹 +1</span></td>
+<td>祖先馬具備速度、瞬發、根性、柔軟、力量等能力因子時提供（若同時具備金/銀因子，爆發力累加！）。</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.06);">
+<td><strong style="color:var(--gold-color);">活力源化極致上限</strong></td>
+<td><span class="pill pill-gold" style="font-weight:bold;">最高 +15</span></td>
+<td>若 4 代祖先 14 匹全部具備大種牡馬或名種牡馬因子，最高可提供 +15 點巨大速度爆發！</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="checklist-card">
-<div class="checklist-card-header"><i class="fa-solid fa-angles-down"></i> 隔世遺傳 (Generation Gap)</div>
-<p style="font-size:12px; color:var(--text-muted);">
-              父母皆無能力因子，但【父父】或【母父】帶因子時觸發。因子效果直接 <strong>×3 倍爆發！</strong>
-</p>
 </div>
+<!-- 二、活力補完 (零細血統活性化 10 2026 UPDATE) -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:10px; padding:16px; margin-bottom:16px;">
+<h3 style="font-size:0.95rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-battery-half"></i> 二、活力補完 (零細血統活力補完配合)
+            </h3>
+<p style="font-size:0.83rem; color:var(--text-color); line-height:1.6; margin-bottom:10px;">
+                當父馬或母馬的 3 代祖先（父父、父母、母父、母母等）包含多個<strong>零細血統（零細系統）</strong>時，觸發活力補完效果：
+            </p>
+<div class="table-responsive" style="margin-bottom:10px;">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:160px;">零細血統數量</th>
+<th class="sortable-th" style="width:120px;">爆發力加成</th>
+<th class="sortable-th">實戰繁育效益</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3 代祖先 2~3 本零細</strong></td>
+<td><span class="pill pill-safe">+2 ~ +4</span></td>
+<td>提供穩定速度補完，並大幅降低近親交配之危險度。</td>
+</tr>
+<tr>
+<td><strong>3 代祖先 4 本以上零細</strong></td>
+<td><span class="pill pill-power">+6 ~ +8</span></td>
+<td>極大化零細血統能量，拯救瀕危絕滅系統之最佳繁育戰略。</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- 三、隔世遺傳 (祖父因子直接繼承) -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:10px; padding:16px;">
+<h3 style="font-size:0.95rem; font-weight:bold; color:#a855f7; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-dna"></i> 三、隔世遺傳 (隔世遺伝)
+            </h3>
+<p style="font-size:0.83rem; color:var(--text-color); line-height:1.6; margin-bottom:10px;">
+                當父馬本身<strong>沒有任何能力因子</strong>，但祖父（父之父）具備優秀能力因子時，祖父的能力因子將<strong>跳過父馬直接遺傳給幼駒</strong>！
+            </p>
+<ul style="font-size:0.82rem; line-height:1.7; color:var(--text-color); margin:0; padding-left:18px;">
+<li><strong>爆發力加成：</strong>固定提供 <strong>+3</strong> 爆發力。</li>
+<li><strong>特性繼承：</strong>祖父所持有的速度、瞬發、根性等正面特性，直接跨代活性化傳承給幼駒。</li>
+</ul>
 </div>
 </div>
 </section>
@@ -2650,28 +2890,94 @@ li {
 <div class="section-title"><i class="fa-solid fa-arrow-down-up-across-line"></i> 第 10 章：雄系活性化與雌系活性化配合</div>
 </div>
 <div class="section-body">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="tool-card">
-<h4 style="font-size:13px; font-weight:800; color:var(--text-highlight); margin-bottom:5px;">
-<i class="fa-solid fa-mars"></i> メールライン活性配合 (雄系活性)
-            </h4>
-<p style="font-size:12px; color:var(--text-muted); line-height:1.6;">
-              種牡馬為主流流行系統，母系端為零細系統。<br/>
-              • <strong>Lv1：</strong> 母+母母+母母母零細 → <span class="pill pill-power">+3</span><br/>
-              • <strong>Lv2：</strong> 母系至第 3 代全零細 → <span class="pill pill-power">+6</span><br/>
-              • <strong>Lv3：</strong> 全血統除父直系外全零細 → <span class="pill pill-power">+10 (極致)</span>
-</p>
+<div class="callout callout-info" style="margin-bottom:14px;">
+<strong>⚡ 雄系活性化與雌系活性化配合全覽 (Line Activation)</strong>
+<p style="font-size:0.84rem; margin:4px 0 0; line-height:1.6;">
+                透過調配父系（Male Line）或母系（Bottom Line）與對象血統之「流行 / 零細」極性關係，激發特定性別系譜的潛能爆發！
+            </p>
 </div>
-<div class="tool-card">
-<h4 style="font-size:13px; font-weight:800; color:var(--accent-purple); margin-bottom:5px;">
-<i class="fa-solid fa-venus"></i> ボトムライン活性配合 (雌系/底線活性)
-            </h4>
-<p style="font-size:12px; color:var(--text-muted); line-height:1.6;">
-              母線（母、母母、母母母）為流行或帶因子，種馬為零細。<br/>
-              • <strong>Lv1：</strong> 母線流行/帶因子，種馬零細 → <span class="pill pill-power">+3</span><br/>
-              • <strong>Lv2：</strong> 種馬至第 3 代全零細 → <span class="pill pill-power">+6</span><br/>
-              • <strong>Lv3：</strong> 母系至 3 代全流行，父系全零細 → <span class="pill pill-power">+10 (極致)</span>
-</p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; margin-bottom:14px; align-items:stretch;">
+<!-- メールライン活性配合 (Male Line) -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3); border-radius:10px; padding:16px;">
+<h3 style="font-size:0.95rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-mars"></i> メールライン活性配合 (雄系活性化)
+                </h3>
+<p style="font-size:0.82rem; color:var(--text-color); line-height:1.6; margin-bottom:10px;">
+                    當種牡馬父系為<strong>零細血統</strong>，且母馬之 3 代祖先（母父、母母父等）均為<strong>流行血統</strong>時成立：
+                </p>
+<div class="table-responsive">
+<table class="data-table" style="font-size:0.8rem; text-align:left !important;">
+<thead>
+<tr>
+<th>等級</th>
+<th>成立條件</th>
+<th>爆發力</th>
+<th>副屬性強化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lv.1</strong></td>
+<td>父系零細 ＋ 母方流行</td>
+<td><span class="pill pill-safe">+2</span></td>
+<td>瞬發力・勝負根性上升</td>
+</tr>
+<tr>
+<td><strong>Lv.2</strong></td>
+<td>父與父父均為零細 ＋ 母方流行</td>
+<td><span class="pill pill-power">+4</span></td>
+<td>瞬發・根性・力量顯著上升</td>
+</tr>
+<tr>
+<td><strong>Lv.3</strong></td>
+<td>父系3代連續零細 ＋ 母方全流行</td>
+<td><span class="pill pill-gold">+6</span></td>
+<td>全副屬性全面大幅提升</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- ボトムライン活性配合 (Bottom Line) -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(244,114,182,0.3); border-radius:10px; padding:16px;">
+<h3 style="font-size:0.95rem; font-weight:bold; color:#f472b6; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-venus"></i> ボトムライン活性配合 (雌系活性化)
+                </h3>
+<p style="font-size:0.82rem; color:var(--text-color); line-height:1.6; margin-bottom:10px;">
+                    當繁殖牝馬母系為<strong>零細血統</strong>，且父馬之 3 代祖先均為<strong>流行血統</strong>時成立（若母馬帶能力因子，非流行血統亦可成立）：
+                </p>
+<div class="table-responsive">
+<table class="data-table" style="font-size:0.8rem; text-align:left !important;">
+<thead>
+<tr>
+<th>等級</th>
+<th>成立條件</th>
+<th>爆發力</th>
+<th>副屬性強化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lv.1</strong></td>
+<td>母系零細 ＋ 父方流行</td>
+<td><span class="pill pill-safe">+2</span></td>
+<td>柔軟性・精神力上升</td>
+</tr>
+<tr>
+<td><strong>Lv.2</strong></td>
+<td>母與母母均為零細 ＋ 父方流行</td>
+<td><span class="pill pill-power">+4</span></td>
+<td>柔軟・精神・健康顯著上升</td>
+</tr>
+<tr>
+<td><strong>Lv.3</strong></td>
+<td>母系3代連續零細 ＋ 父方全流行</td>
+<td><span class="pill pill-gold">+6</span></td>
+<td>全副屬性 ＋ 幼駒智商大幅躍升</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -2681,25 +2987,71 @@ li {
 <div class="section-title"><i class="fa-solid fa-fire-flame-curved"></i> 第 11 章：特性昇華配合與母系融合</div>
 </div>
 <div class="section-body">
-<div class="checklist-grid">
-<div class="checklist-card">
-<div class="checklist-card-header"><i class="fa-solid fa-gauge-high" style="color:var(--accent-cyan)"></i> SP 昇華配合 (Lv1~3)</div>
-<p style="font-size:12px; color:var(--text-muted);">
-              父母及祖先世代皆為 SP 系統。Lv1 爆發 +1；Lv2 爆發 +3；Lv3 爆發 <strong>+5 且瞬發力大幅躍升</strong>！
+<div class="callout callout-info" style="margin-bottom:14px;">
+<strong>✨ 系統特性 昇華配合與融合配合全書 (Traits Sublimation &amp; Fusion)</strong>
+<p style="font-size:0.84rem; margin:4px 0 0; line-height:1.6;">
+                依據父系與母系所屬子系統的<strong>「SP 系統 (速度特性)」</strong>與<strong>「ST 系統 (耐力特性)」</strong>屬性配置，激發極限能力昇華！
             </p>
 </div>
-<div class="checklist-card">
-<div class="checklist-card-header"><i class="fa-solid fa-shield" style="color:var(--accent-red)"></i> ST 昇華配合 (Lv1~3)</div>
-<p style="font-size:12px; color:var(--text-muted);">
-              父母及祖先世代皆為 ST 系統。Lv1 爆發 +1；Lv2 爆發 +2；Lv3 爆發 <strong>+3 且柔軟/力量/根性極大提升</strong>！
-            </p>
-</div>
-<div class="checklist-card">
-<div class="checklist-card-header"><i class="fa-solid fa-yin-yang" style="color:var(--accent-gold)"></i> SP・ST 融合配合</div>
-<p style="font-size:12px; color:var(--text-muted);">
-              一方至 3 代全為 SP 系，另一方至 3 代全為 ST 系。爆發力 <strong>+5</strong> 且力量 (Power) 大幅躍升！
-            </p>
-</div>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:180px;">配合理論名稱 (日/中)</th>
+<th class="sortable-th" style="width:80px;">等級</th>
+<th class="sortable-th">成立條件與系統特性配置</th>
+<th class="sortable-th" style="width:85px;">爆發力</th>
+<th class="sortable-th">副屬性與能力強化效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3"><strong style="color:var(--gold-color);">SP系統昇華配合</strong><br/><small>SP系統昇華</small></td>
+<td><span class="pill pill-safe">Lv.1</span></td>
+<td>父、母父均為 <strong>SP系統</strong></td>
+<td><span class="pill pill-safe">+2</span></td>
+<td>精神力・力量上升</td>
+</tr>
+<tr>
+<td><span class="pill pill-power">Lv.2</span></td>
+<td>父、母父、母母父均為 <strong>SP系統</strong></td>
+<td><span class="pill pill-power">+4</span></td>
+<td>精神力・力量・勝負根性上升</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.06);">
+<td><span class="pill pill-gold">Lv.3</span></td>
+<td>4 代祖先 8 支親系全部為 <strong>SP系統</strong></td>
+<td><span class="pill pill-gold">+6</span></td>
+<td><strong style="color:var(--gold-color);">瞬發力極致突破</strong> ＋ 速度上限顯著提升！</td>
+</tr>
+<tr>
+<td rowspan="3"><strong style="color:#10b981;">ST系統昇華配合</strong><br/><small>ST系統昇華</small></td>
+<td><span class="pill pill-safe">Lv.1</span></td>
+<td>父、母父均為 <strong>ST系統</strong></td>
+<td><span class="pill pill-safe">+2</span></td>
+<td>勝負根性・健康度上升</td>
+</tr>
+<tr>
+<td><span class="pill pill-power">Lv.2</span></td>
+<td>父、母父、母母父均為 <strong>ST系統</strong></td>
+<td><span class="pill pill-power">+4</span></td>
+<td>勝負根性・健康・柔軟性上升</td>
+</tr>
+<tr style="background:rgba(16,185,129,0.06);">
+<td><span class="pill pill-gold">Lv.3</span></td>
+<td>4 代祖先 8 支親系全部為 <strong>ST系統</strong></td>
+<td><span class="pill pill-gold">+6</span></td>
+<td><strong style="color:#10b981;">勝負根性・持久力極致突破</strong> ＋ 長距離適性爆發！</td>
+</tr>
+<tr>
+<td><strong style="color:#a855f7;">SP・ST 融合配合</strong><br/><small>系統特性融合</small></td>
+<td><span class="pill pill-power">融合</span></td>
+<td>父與母分別各具 SP 系統與 ST 系統特性</td>
+<td><span class="pill pill-power">+3 ~ +5</span></td>
+<td>力量、柔軟性與全天候跑道適性全面提升。</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </section>
@@ -2708,121 +3060,281 @@ li {
 <div class="section-title"><i class="fa-solid fa-trophy"></i> 第 12 章：特殊名馬配合與彩蛋配合</div>
 </div>
 <div class="section-body">
+<div class="callout callout-info" style="margin-bottom:14px;">
+<strong>🏆 特殊名馬配合・彩蛋配合與三大地域限定歷史理論 (Special &amp; Regional Theories)</strong>
+<p style="font-size:0.84rem; margin:4px 0 0; line-height:1.6;">
+                收錄閃電疾風、告別/W告別、三冠、宿敵、雷嵐神級配合，以及《賽馬大亨 10 2026》獨創之<strong>日本「基準交配」、歐洲「Dosage 理論」與美國「Rasmussen 因子」</strong>三大地域限定歷史繁育理論！
+            </p>
+</div>
+<!-- 一、三大地域限定歷史繁育理論 (Regional Exclusive Theories) -->
+<div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:16px; margin-bottom:16px;">
+<h3 style="font-size:0.95rem; font-weight:bold; color:var(--gold-color); margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-earth-americas"></i> 一、三大地域限定歷史繁育理論 (日本 / 歐洲 / 美國專屬)
+            </h3>
 <div class="table-responsive">
-<table class="data-table">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
 <thead>
 <tr>
-<th>配合名稱</th>
-<th style="text-align: left;">爆發力</th>
-<th>成立條件與屬性加成</th>
+<th class="sortable-th" style="width:160px;">理論名稱 (日/中)</th>
+<th class="sortable-th" style="width:90px;">限定地域</th>
+<th class="sortable-th">成立條件與機制判定</th>
+<th class="sortable-th" style="width:85px;">爆發力</th>
+<th class="sortable-th">專屬戰略加成 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background:rgba(239,68,68,0.04);">
+<td><strong>基準交配</strong><br/><small>基準交配</small></td>
+<td><span class="pill pill-gold">🇯🇵 日本牧場</span></td>
+<td>母馬繫養於日本牧場；父母其中一方帶有 <strong>3×3 以上近親 (Inbreed)</strong>，另一方則<strong>完全無 3×3 以上近親</strong>。</td>
+<td><span class="pill pill-safe" style="font-weight:bold;">+2</span></td>
+<td><strong>瞬發戰適應能力大幅上升</strong>，產駒成長上限更容易突破極限！</td>
+</tr>
+<tr style="background:rgba(59,130,246,0.04);">
+<td><strong>ドサージュ理論</strong><br/><small>Dosage 理論</small></td>
+<td><span class="pill pill-power">🇪🇺 歐洲牧場</span></td>
+<td>母馬繫養於歐洲牧場；血統表內已確立系統之牡馬計分加總 <strong>≧ 32 點</strong>（父16點、祖父8點、曾祖父4點、高祖父2點）。</td>
+<td><span class="pill pill-safe" style="font-weight:bold;">+2</span></td>
+<td><strong>持久戰適應能力大幅上升</strong>，並依血統牡馬所帶因子觸發<strong>副屬性因子全面爆發</strong>！</td>
+</tr>
+<tr style="background:rgba(16,185,129,0.04);">
+<td><strong>ラスムッセン・ファクター</strong><br/><small>Rasmussen 因子</small></td>
+<td><span class="pill pill-safe">🇺🇸 美國牧場</span></td>
+<td>母馬繫養於美國牧場；母馬成立<strong>牝馬近親交配 (母系近親)</strong> 或 <strong>3×3 以上全兄弟姐妹近親</strong>。</td>
+<td><span class="pill pill-safe" style="font-weight:bold;">+2</span></td>
+<td><strong>消耗戰適應能力大幅上升</strong>；產駒高機率直接繼承該祖先牝馬之<strong>名牝系特性</strong>！</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- 二、特殊名馬與彩蛋配合總表 -->
+<div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:16px;">
+<h3 style="font-size:0.95rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-wand-magic-sparkles"></i> 二、特殊名馬與趣味彩蛋配合完全速查表
+            </h3>
+<div class="table-responsive">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:160px;">配合名稱 (日/中)</th>
+<th class="sortable-th">成立條件與原型背景</th>
+<th class="sortable-th" style="width:85px;">爆發力</th>
+<th class="sortable-th">特殊效果與實戰價值</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>搞笑配合 (お笑い)</strong></td>
-<td style="text-align: left;"><span class="pill pill-power">+5</span></td>
-<td>配種費 ≤ 100 萬種牡馬 × 評價額 ≥ 1 億且賢度 ≥ C 牝馬（精神/賢度/根性↑）</td>
+<td><strong>稲妻配合 (閃電配合)</strong></td>
+<td>父母雙方均為 <strong>瞬發力 A+ 且 勝負根性 D-</strong>（白毛/蘆毛額外加成）。</td>
+<td><span class="pill pill-power" style="font-weight:bold;">+6 ~ +8</span></td>
+<td>產駒極端強化末腳爆發力與瞬發戰適性。</td>
 </tr>
 <tr>
-<td><strong>門當戶對 (お似合い)</strong></td>
-<td style="text-align: left;"><span class="pill pill-power">+5</span></td>
-<td>配種費 ≤ 200 萬且賢度 ≥ A 種馬 × 評價額 ≥ 1000 萬且賢度 ≥ A 牝馬（精神/賢度/根性↑）</td>
+<td><strong>疾風配合 (疾風配合)</strong></td>
+<td>父母雙方均為 <strong>勝負根性 A+ 且 瞬發力 D-</strong>（黑鹿毛/青毛額外加成）。</td>
+<td><span class="pill pill-power" style="font-weight:bold;">+6 ~ +8</span></td>
+<td>產駒極端強化鬥心、領放根性與持久戰適性。</td>
 </tr>
 <tr>
-<td><strong>告別配合 / 雙重告別 (サヨナラ)</strong></td>
-<td style="text-align: left;"><span class="pill pill-power">+5 / +8</span></td>
-<td>種馬 24 歲以上且同區唯一同子系種馬（雙重告別需母馬 18 歲以上，副屬性全面躍升）</td>
+<td><strong>サヨナラ / Wサヨナラ</strong></td>
+<td>父馬年齡 <strong>24歲以上</strong> 且為同地域唯一現役種馬（Wサヨナラ需母馬18歲以上零細）。</td>
+<td><span class="pill pill-gold" style="font-weight:bold;">+5 ~ +8</span></td>
+<td>健康、精神力顯著上升，老齡絕版種馬退役前最後神產駒！</td>
 </tr>
 <tr>
-<td><strong>稻妻配合 / 真稻妻配合</strong></td>
-<td style="text-align: left;"><span class="pill pill-power">+6 / +12</span></td>
-<td>父母瞬發 ≥ A 且根性 ≤ D+（真稻妻需雙方皆白毛或蘆毛，瞬發/柔軟↑，根性↓）</td>
+<td><strong>お笑い / お似合い配合</strong></td>
+<td>父馬種付料低廉 (100萬以下) 但智商高，母馬高身價/高智商 (お似合い為雙方均低價高智商)。</td>
+<td><span class="pill pill-safe" style="font-weight:bold;">+5</span></td>
+<td>大幅提升幼駒智商 (賢さ) 與精神力，新手開局超高性價比神技。</td>
 </tr>
 <tr>
-<td><strong>疾風配合 / 真疾風配合</strong></td>
-<td style="text-align: left;"><span class="pill pill-power">+6 / +12</span></td>
-<td>父母根性 ≥ A 且瞬發 ≤ D+（真疾風需雙方皆黑鹿/青鹿/青毛，根性/精神↑，瞬發↓）</td>
+<td><strong>3冠配合 (三冠配合)</strong></td>
+<td>父母雙方均為 <strong>3冠馬</strong>（經典三冠、牝馬三冠、秋古馬三冠、歐洲/美國三冠等）。</td>
+<td><span class="pill pill-gold" style="font-weight:bold;">+4</span></td>
+<td>殿堂級名駒強強聯合，配合春嵐/春雷事件產出超神駒。</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.06);">
+<td><strong style="color:var(--gold-color);">雷嵐配合 (春嵐 × 春雷)</strong></td>
+<td>春嵐事件達成之三冠牡馬 × 春雷事件達成之三冠牝馬配種。</td>
+<td><span class="pill pill-gold" style="font-weight:bold;">+14</span></td>
+<td><strong>遊戲內最強彩蛋配合</strong>（含三冠配合共 +14 爆發力），極高機率誕生白毛怪物神駒！</td>
 </tr>
 <tr>
-<td><strong>3冠配合</strong></td>
-<td style="text-align: left;"><span class="pill pill-power">+4</span></td>
-<td>種馬與母馬皆曾勝出指定三冠路線（日/美/歐三冠皆適用）</td>
+<td><strong>お披露目配合</strong></td>
+<td>父母雙方均為<strong>初年度繁育馬匹</strong>，且現役時代均曾贏得 <strong>G1 勝利</strong>。</td>
+<td><span class="pill pill-safe" style="font-weight:bold;">+2</span></td>
+<td>新晉種馬與新晉名牝退役首年配種之專屬加成。</td>
 </tr>
 <tr>
-<td><strong>雷嵐配合 (Lv1~3)</strong></td>
-<td style="text-align: left;"><span class="pill pill-power">+6 / +8 / +10</span></td>
-<td>春嵐種馬 × 春雷繁殖牝馬首 3 年內配種（依事件完成度提升爆發力）</td>
+<td><strong>そっくりさん配合</strong></td>
+<td>父馬與母馬之<strong>毛色與臉部白斑特徵完全相同</strong>。</td>
+<td><span class="pill pill-safe" style="font-weight:bold;">+2</span></td>
+<td>遺傳外觀特徵高度一致。</td>
 </tr>
 <tr>
-<td><strong>宿敵配合 (ライバル)</strong></td>
-<td style="text-align: left;"><span class="pill pill-power">+3 / +6</span></td>
-<td>父母現役互為宿敵，或種馬與【母父】互為宿敵（勝負根性大幅上升）</td>
+<td><strong>ライバル配合 / 母父配合</strong></td>
+<td>父與母、或父與母父（現役種馬）在現役時代為<strong>同世代宿敵關係</strong>。</td>
+<td><span class="pill pill-power" style="font-weight:bold;">+3 ~ +5</span></td>
+<td>大幅提升幼駒勝負根性與大賽人氣。</td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 </section>
 <section class="section-card" id="mod-2026new">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-sparkles"></i> 第 13 章：2024~2026 最新繁育理論 (歷史因子/世界始祖/Drama融合)</div>
+<div class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> 第 13 章：2024~2026 最新繁育理論 (歷史因子/世界始祖/Drama融合)</div>
 </div>
 <div class="section-body">
-<div class="callout callout-gold">
-<i class="fa-solid fa-sparkles"></i>
+<div class="callout callout-gold" style="margin-bottom:14px;">
+<i class="fa-solid fa-wand-magic-sparkles" style="font-size:1.3rem; color:var(--gold-color);"></i>
 <div>
-<strong>《賽馬大亨 10 2026》全新繁育體系三大支柱 (日/中雙語)</strong><br/>
-            2026 年繁育機制迎來重大變革：由「歷史因子」喚醒傳奇先祖潛能、「世界始祖馬」確立全新世界級血脈，以及顛覆過往配種邏輯的<strong>「繁殖牝馬活力培育 (Vitality) 系統」</strong>！
-          </div>
+<strong>《賽馬大亨 10 2026》全新三大繁育革新理論 (2026 NEW Breeding System)</strong><br/>
+        2026 年繁育機制迎來重大變革：由<strong>「始祖血脈融合」</strong>喚醒遠古四大始祖潛能、<strong>「Drama 因子 Line 配合」</strong>串聯連續 4 代宿命傳承，以及引爆全血統潛能的<strong>「Drama 因子融合配合」</strong>，搭配<strong>「繁殖牝馬活力 (Vitality) 培育」</strong>顛覆傳統育馬極限！
+    </div>
 </div>
-<h3 style="font-size:1rem; color:var(--accent-color); margin:16px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-dna"></i> 一、2024~2026 最新三大配合理論總覽 (日/中對照)
-        </h3>
+<!-- ==================== 一、2026 全新三大配合理論大表 ==================== -->
+<h3 style="font-size:1rem; color:var(--gold-color); margin:18px 0 10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-dna"></i> 一、2026 最新三大配合理論機制與加成全覽表 (日/中對照)
+</h3>
 <div class="table-responsive" style="margin-bottom:20px;">
-<table class="data-table">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
 <thead>
 <tr>
-<th style="min-width:180px;">新配合理論 (日/中)</th>
-<th style="min-width:280px;">成立條件 (日/中對照)</th>
-<th style="min-width:380px;">爆發力與實戰效益 (繁體中文)</th>
+<th class="sortable-th" style="width:200px;">配合理論名稱 (日/中)</th>
+<th class="sortable-th" style="width:300px;">成立詳細條件 (日/中對照)</th>
+<th class="sortable-th" style="width:100px;">爆發力</th>
+<th class="sortable-th">實戰神級加成效益 (繁體中文)</th>
 </tr>
 </thead>
 <tbody>
-<tr style="background:rgba(234,179,8,0.08);">
-<td><strong style="color:var(--gold-color);">ヒストリカル因子 (歷史因子配合)</strong></td>
-<td>祖先血統中包含擁有「歷史/戲劇因子 (ドラマ因子)」的傳奇名馬。</td>
-<td><strong>爆發力 +2 ~ +6</strong>，高機率遺傳先祖的傳奇固有特性與名駒精神！</td>
+<tr style="background:rgba(234,179,8,0.06);">
+<td><strong style="color:var(--gold-color);">始祖血脈融合配合</strong><br/><small class="text-muted">始祖血脈融合配合 [2026 NEW]</small></td>
+<td>
+                    幼駒 <strong>2 代前 (父母、祖父母)</strong> 所屬之始祖系統達 <strong>2 種類以上</strong>。<br/>
+<small style="color:var(--text-muted);">※ 注意：若僅單方親代包含 2 種始祖系統，則不成立。</small>
+</td>
+<td><span class="pill pill-gold" style="font-weight:bold;">能力突破</span></td>
+<td>
+                    • <strong>2 種類以上</strong>：隨機部分副屬性上升<br/>
+                    • <strong>3 種類以上</strong>：全體副屬性全面大幅上升<br/>
+                    • <strong>4 種類全部</strong>：<strong style="color:var(--gold-color);">速度 (Speed) 上限直接躍升！</strong>
+</td>
 </tr>
-<tr style="background:rgba(56,189,248,0.08);">
-<td><strong style="color:#38bdf8;">世界始祖配合 (World Sire)</strong></td>
-<td>父系或母系被確立為「世界始祖 (世界系統)」之頂級種牡馬。</td>
-<td><strong>爆發力 +4 ~ +8</strong>，全適應能力與世界大賽適性全面飆升！</td>
+<tr style="background:rgba(56,189,248,0.06);">
+<td><strong style="color:var(--accent-color);">ドラマ因子ライン配合</strong><br/><small class="text-muted">Drama 因子 Line 配合 [2026 NEW]</small></td>
+<td>
+                    種牡馬(父)或繁殖牝馬(母)的血統表中，<strong>連續 4 代持有相同 Drama 因子且至少 1 個活性化</strong>，且另一方親代血統中亦有帶有該 Drama 因子的先祖馬。<br/>
+<small style="color:var(--text-muted);">※ 每一種 Drama 因子限成立 1 次。</small>
+</td>
+<td><span class="pill pill-power" style="font-weight:bold;">+ 小 (上升)</span></td>
+<td>
+                    • 爆發力上升 (小)<br/>
+                    • <strong>對象 Drama 因子的單體特殊效果發動機率大幅上升！</strong>
+</td>
 </tr>
-<tr style="background:rgba(34,197,94,0.08);">
-<td><strong style="color:#4ade80;">活力増強配合 (Vitality Boost)</strong></td>
-<td><strong>繁殖牝馬的活力計量表達到滿格 10</strong>，進入「活力増強」狀態。</td>
-<td><strong>100% 保證受孕</strong>、部分配合理論爆發力再強化、產駒適應能力全開！</td>
+<tr style="background:rgba(168,85,247,0.06);">
+<td><strong style="color:#c084fc;">ドラマ因子融合配合</strong><br/><small class="text-muted">Drama 因子融合配合 [2026 NEW]</small></td>
+<td>
+                    父母雙方 4 代血統內合計包含 <strong>7 種類以上</strong> 的 Drama 因子，且在父方與母方血統中 <strong>各自至少有 1 個 Drama 因子活性化</strong>！血統內所含種類越多效果越強。
+                </td>
+<td><span class="pill pill-gold" style="font-weight:bold;">極大爆發</span></td>
+<td>
+                    • <strong>爆發力極大上升</strong> (依活性化先祖馬數量加乘)<br/>
+                    • 全體 Drama 因子單體效果發動機率暴增<br/>
+                    • <strong style="color:#c084fc;">極高機率誕生適應能力超群之神級幼駒！</strong>
+</td>
 </tr>
 </tbody>
 </table>
 </div>
+<!-- ==================== 二、ドラマ因子融合配合 4 代血統矩陣範例 ==================== -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:10px; padding:16px; margin-bottom:20px;">
+<h3 style="font-size:0.95rem; font-weight:bold; color:var(--gold-color); margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-sitemap"></i> 二、Drama 因子融合配合 (ドラマ因子融合配合) 4 代 16 祖先血統圖譜範例
+    </h3>
+<p style="font-size:0.83rem; color:var(--text-color); line-height:1.6; margin-bottom:12px;">
+        只要血統表中分佈 7 種以上不同的 Drama 因子（例如因子 A ~ 因子 G），且父母兩側各有活性化因子，即可引爆全遊戲最強複合增益：
+    </p>
+<div class="table-responsive">
+<table class="data-table" style="font-size:0.8rem; text-align:left !important;">
+<thead>
+<tr style="background:rgba(15,23,42,0.9);">
+<th style="width:110px;">第 1 代</th>
+<th style="width:120px;">第 2 代</th>
+<th style="width:140px;">第 3 代</th>
+<th>第 4 代 (高祖父母) 與 Drama 因子分佈</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="8" style="background:rgba(59,130,246,0.08); font-weight:bold; color:#60a5fa;">父 (種牡馬)</td>
+<td rowspan="4">父父</td>
+<td rowspan="2">父父父</td>
+<td>父父父父 <span class="badge badge-gold" style="font-size:0.72rem; padding:1px 5px; margin-left:4px;">✨ ドラマ因子 A (活性)</span></td>
+</tr>
+<tr><td>父父父母</td></tr>
+<tr>
+<td rowspan="2">父父母</td>
+<td>父父母父 <span class="badge" style="background:rgba(56,189,248,0.2); color:var(--accent-color); font-size:0.72rem; padding:1px 5px; margin-left:4px;">ドラマ因子 B</span></td>
+</tr>
+<tr><td>父父母母</td></tr>
+<tr>
+<td rowspan="4">父母 <span class="badge" style="background:rgba(56,189,248,0.2); color:var(--accent-color); font-size:0.72rem; padding:1px 5px; margin-left:4px;">ドラマ因子 C</span></td>
+<td rowspan="2">父母父</td>
+<td>父母父父</td>
+</tr>
+<tr><td>父母父母</td></tr>
+<tr>
+<td rowspan="2">父母母 <span class="badge" style="background:rgba(56,189,248,0.2); color:var(--accent-color); font-size:0.72rem; padding:1px 5px; margin-left:4px;">ドラマ因子 D</span></td>
+<td>父母母父</td>
+</tr>
+<tr><td>父母母母</td></tr>
+<tr style="border-top:2px solid var(--accent-color);">
+<td rowspan="8" style="background:rgba(244,114,182,0.08); font-weight:bold; color:#f472b6;">母 (繁殖牝馬)</td>
+<td rowspan="4">母父 <span class="badge" style="background:rgba(244,114,182,0.2); color:#f472b6; font-size:0.72rem; padding:1px 5px; margin-left:4px;">ドラマ因子 E</span></td>
+<td rowspan="2">母父父 <span class="badge" style="background:rgba(244,114,182,0.2); color:#f472b6; font-size:0.72rem; padding:1px 5px; margin-left:4px;">ドラマ因子 F</span></td>
+<td>母父父父 <span class="badge badge-gold" style="font-size:0.72rem; padding:1px 5px; margin-left:4px;">✨ ドラマ因子 G (活性)</span></td>
+</tr>
+<tr><td>母父父母</td></tr>
+<tr>
+<td rowspan="2">母父母</td>
+<td>母父母父</td>
+</tr>
+<tr><td>母父母母</td></tr>
+<tr>
+<td rowspan="4">母母</td>
+<td rowspan="2">母母父</td>
+<td>母母父父</td>
+</tr>
+<tr><td>母母父母</td></tr>
+<tr>
+<td rowspan="2">母母母</td>
+<td>母母母父</td>
+</tr>
+<tr><td>母母母母</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- ==================== 三、繁殖牝馬「活力育成」三大實戰心法 ==================== -->
 <h3 style="font-size:1rem; color:var(--gold-color); margin:20px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-heart-pulse"></i> 二、繁殖牝馬「活力育成」三大實戰心法
-        </h3>
+<i class="fa-solid fa-heart-pulse"></i> 三、繁殖牝馬「活力育成」三大實戰心法
+</h3>
 <ul style="font-size:0.85rem; line-height:1.8; color:var(--text-color); margin-bottom:16px;">
 <li><strong>心法 1：母馬不再只是道具，而是需要悉心培育的能量庫</strong>——2025 以前母馬買來只是工具，2026 透過優質種馬配種、產駒好成績回饋，可將母馬活力逐步養成至 10 格滿格！</li>
 <li><strong>心法 2：優先挑選能提供「永続 (綠格)」與「特大」活力的種馬</strong>——綠色永續活力配種後永不歸零，能永久縮短母馬達到「活力增強」的週期！</li>
 <li><strong>心法 3：毋須為活力犧牲基本配合</strong>——活力的本質是「加分 Boost」，基本盤仍應優先遵循：近親危險度低 ➔ 配合評級 S/A ➔ 爆發力高，在此基礎上追求活力特大增長！</li>
 </ul>
-<!-- ==================== 58 種配合理論之 12 大核心配合全圖鑑 ==================== -->
+<!-- ==================== 四、初學必備 12 大核心配合精分 ==================== -->
 <h3 style="font-size:1rem; color:var(--accent-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-list-check"></i> 三、配合理論全 58 種中初學必備 12 大核心理論精分全圖鑑
-        </h3>
-<p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
-          遊戲中配合理論多達 58 種，初學者無需死記全部，只需牢牢掌握以下 <strong>4 大維度共 12 種最關鍵的核心配合</strong> 即可輕鬆產出頂級 G1 冠軍馬：
-        </p>
+<i class="fa-solid fa-list-check"></i> 四、配合理論全 58 種中初學必備 12 大核心理論精分全圖鑑
+</h3>
 <div class="table-responsive" style="margin-bottom:20px;">
-<table class="data-table">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
 <thead>
 <tr>
 <th style="min-width:130px;">維度分類</th>
@@ -2832,7 +3344,6 @@ li {
 </tr>
 </thead>
 <tbody>
-<!-- 基礎配合 4 種 -->
 <tr>
 <td rowspan="4"><span class="pill pill-safe">1. 基礎配合 (4種)</span></td>
 <td><strong>ニックス (相性配合 / Single~Triple)</strong></td>
@@ -2854,7 +3365,6 @@ li {
 <td>+3 ~ +5 (SP)</td>
 <td>同匹名馬在 3 代與 4 代同時出現（血量剛好 18.75%），大幅刺激特定能力。</td>
 </tr>
-<!-- 系統與母父 3 種 -->
 <tr style="background:rgba(56,189,248,0.06);">
 <td rowspan="3"><span class="pill pill-cyan">2. 系統/母父 (3種)</span></td>
 <td><strong>母父◎ (母父大活躍配合)</strong></td>
@@ -2871,7 +3381,6 @@ li {
 <td>+4 ~ +6</td>
 <td>父馬與母馬均為三冠馬（春三冠/秋三冠/經典三冠/歐美三冠）。</td>
 </tr>
-<!-- 特性配合 2 種 -->
 <tr>
 <td rowspan="2"><span class="pill pill-gold">3. 特性配合 (2種)</span></td>
 <td><strong>特性昇華配合 (SP/ST 昇華配合)</strong></td>
@@ -2883,17 +3392,16 @@ li {
 <td>+5 ~ +8</td>
 <td>種馬與母馬能力達到特定極致組合（搞笑配合/高評價登對配合）。</td>
 </tr>
-<!-- 2026 新要素 3 種 -->
 <tr style="background:rgba(234,179,8,0.1);">
 <td rowspan="3"><span class="pill pill-version" style="background:#eab308; color:#000;">4. 2026 新要素 (3種)</span></td>
-<td><strong>ヒストリカル因子 (歷史因子配合)</strong></td>
-<td>+2 ~ +6 (固有傳承)</td>
-<td>喚醒先祖歷史名馬的ドラマ因子 (Drama 因子)，高機率繼承固有特性！</td>
+<td><strong>始祖血脈融合配合 [2026 NEW]</strong></td>
+<td>全副屬性/速度↑</td>
+<td>2 代前包含 2~4 種始祖系統，全副屬性暴漲且速度上限直接躍升！</td>
 </tr>
 <tr style="background:rgba(234,179,8,0.1);">
-<td><strong>世界始祖配合 (World Sire)</strong></td>
-<td>+4 ~ +8</td>
-<td>父系或母系被確立為世界始祖系統，全適應能力與世界大賽戰力全開。</td>
+<td><strong>ドラマ因子ライン / 融合配合 [2026 NEW]</strong></td>
+<td>+大 (機率暴增)</td>
+<td>連續 4 代同因子或全血統 7 種 Drama 因子融合，誕生超適應力怪物神駒！</td>
 </tr>
 <tr style="background:rgba(234,179,8,0.1);">
 <td><strong>活力増強配合 (Vitality 10格)</strong></td>
@@ -2903,17 +3411,6 @@ li {
 </tbody>
 </table>
 </div>
-<!-- ==================== 土壤型育種 5 步心法 ==================== -->
-<h3 style="font-size:1rem; color:var(--gold-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-tree"></i> 四、告別單代極限配合！跨世代「土壤型 (土壌づくり)」育種 5 步心法
-        </h3>
-<ul style="font-size:0.85rem; line-height:1.8; color:var(--text-color); margin-bottom:16px;">
-<li><strong>步驟 1：母本打底</strong>——蒐集具有「成長力持続」的優質繁殖牝馬（如 1968 的オーハヤブサ、ピア、キャッスルフォーブス）。</li>
-<li><strong>步驟 2：初代表母馬洗出</strong>——使用國內高仔出種馬（如 China Rock / Tesco Boy）配種，將產出的優秀雌駒全數留作次世代繁殖牝馬。</li>
-<li><strong>步驟 3：設施升級與海外引進</strong>——名聲破 1000 升級種牡馬設施 Lv3，引入 Northern Dancer、Bold Ruler 等世界巨頭。</li>
-<li><strong>步驟 4：確立自主父系與名牝系</strong>——讓自家王牌產駒引退當種馬並壟斷重賞，達成 5% 國內支配率自立系統。</li>
-<li><strong>步驟 5：牧場自給自足高相性閉環</strong>——自家 4 大支系互為相性（ニックス），實現無論怎麼配都是爆發力 +30 以上的永動機王朝！</li>
-</ul>
 </div>
 </section>
 <section class="section-card" id="sec-gene-factors">
@@ -18633,51 +19130,51 @@ li {
 </tbody>
 </table>
 </div>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; margin-top:14px; margin-bottom:18px; align-items:stretch;">
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px; margin-top:12px; margin-bottom:16px; align-items:stretch;">
 <!-- 卡片 1：海外牧場開設 4 大步驟 -->
-<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(234,179,8,0.3); border-radius:10px; padding:16px; display:flex; flex-direction:column; justify-content:flex-start; margin:0;">
-<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(234,179,8,0.3); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; justify-content:flex-start; margin:0;">
+<div style="font-size:0.9rem; font-weight:bold; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:6px;">
 <i class="fa-solid fa-list-check" style="color:var(--accent-gold);"></i> 海外牧場開設 4 大步驟 (流程圖)
     </div>
-<ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; flex:1;">
-<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.6;">
-<span class="pill pill-gold" style="display:inline-flex; width:68px; min-width:68px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:3px 0; margin-right:10px; flex-shrink:0;">步驟 ①</span>
-<span><strong>【6月1週】</strong>滿足上述條件後，國內牧場長親自提案設立海外牧場（請勿使用 Auto 跳過）。</span>
+<ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px; flex:1;">
+<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.55;">
+<span class="pill pill-gold" style="display:inline-flex; width:54px; min-width:54px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:2px 0; margin-right:6px; flex-shrink:0; border-radius:4px;">步驟 ①</span>
+<span><strong>【6月1週】</strong>滿足條件後，國內牧場長親自提案設立海外牧場（請勿使用 Auto 跳過）。</span>
 </li>
-<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.6;">
-<span class="pill pill-gold" style="display:inline-flex; width:68px; min-width:68px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:3px 0; margin-right:10px; flex-shrink:0;">步驟 ②</span>
-<span><strong>【7~11月各月1週】</strong>エマ・トラド 或 アリス・リード 親訪牧場提議，選擇「はい (是)」確認設立。</span>
+<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.55;">
+<span class="pill pill-gold" style="display:inline-flex; width:54px; min-width:54px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:2px 0; margin-right:6px; flex-shrink:0; border-radius:4px;">步驟 ②</span>
+<span><strong>【7~11月各月1週】</strong>エマ 或 アリス 親訪牧場提議，選擇「はい (是)」確認設立。</span>
 </li>
-<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.6;">
-<span class="pill pill-gold" style="display:inline-flex; width:68px; min-width:68px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:3px 0; margin-right:10px; flex-shrink:0;">步驟 ③</span>
-<span><strong>【若暫拒】</strong>若暫時資金不足選擇拒絕，只要條件仍滿足，次年同一時期會再度來訪。</span>
+<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.55;">
+<span class="pill pill-gold" style="display:inline-flex; width:54px; min-width:54px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:2px 0; margin-right:6px; flex-shrink:0; border-radius:4px;">步驟 ③</span>
+<span><strong>【若暫拒】</strong>若資金不足選擇拒絕，只要條件仍滿足，次年同時間會再度來訪。</span>
 </li>
-<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.6;">
-<span class="pill pill-gold" style="display:inline-flex; width:68px; min-width:68px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:3px 0; margin-right:10px; flex-shrink:0;">步驟 ④</span>
-<span><strong>【1個月後開業】</strong>支付 15 億日圓，1 個月後エマ或アリス再度到訪宣布海外牧場正式落成開業！</span>
+<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.55;">
+<span class="pill pill-gold" style="display:inline-flex; width:54px; min-width:54px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:2px 0; margin-right:6px; flex-shrink:0; border-radius:4px;">步驟 ④</span>
+<span><strong>【1月後開業】</strong>支付 15 億日圓，1 個月後エマ或アリス再度到訪宣布海外牧場正式開業！</span>
 </li>
 </ul>
 </div>
 <!-- 卡片 2：海外牧場優劣勢對比分析 -->
-<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3); border-radius:10px; padding:16px; display:flex; flex-direction:column; justify-content:flex-start; margin:0;">
-<div style="font-size:0.92rem; font-weight:bold; color:var(--accent-color); margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; justify-content:flex-start; margin:0;">
+<div style="font-size:0.9rem; font-weight:bold; color:var(--accent-color); margin-bottom:10px; display:flex; align-items:center; gap:6px;">
 <i class="fa-solid fa-scale-balanced" style="color:var(--accent-color);"></i> 海外牧場優劣勢對比分析
     </div>
-<ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; flex:1;">
-<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.6;">
-<span class="pill pill-safe" style="display:inline-flex; width:68px; min-width:68px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:3px 0; margin-right:10px; flex-shrink:0;">優勢 1</span>
+<ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px; flex:1;">
+<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.55;">
+<span class="pill pill-safe" style="display:inline-flex; width:54px; min-width:54px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:2px 0; margin-right:6px; flex-shrink:0; border-radius:4px;">優勢 1</span>
 <span><strong>突破持有上限</strong>：日本 (20牝/20種) ＋ 歐洲 (10牝/20種) ＋ 美國 (10牝/20種)。</span>
 </li>
-<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.6;">
-<span class="pill pill-safe" style="display:inline-flex; width:68px; min-width:68px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:3px 0; margin-right:10px; flex-shrink:0;">優勢 2</span>
+<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.55;">
+<span class="pill pill-safe" style="display:inline-flex; width:54px; min-width:54px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:2px 0; margin-right:6px; flex-shrink:0; border-radius:4px;">優勢 2</span>
 <span><strong>遠征無減益</strong>：當地直接出賽無能力衰減，海外 G1 與三冠制霸大幅簡化。</span>
 </li>
-<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.6;">
-<span class="pill pill-safe" style="display:inline-flex; width:68px; min-width:68px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:3px 0; margin-right:10px; flex-shrink:0;">優勢 3</span>
+<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.55;">
+<span class="pill pill-safe" style="display:inline-flex; width:54px; min-width:54px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:2px 0; margin-right:6px; flex-shrink:0; border-radius:4px;">優勢 3</span>
 <span><strong>庭先平價買馬</strong>：1月2週海外幼駒不再被坑額外馬札，能以最便宜成本收購超級名馬。</span>
 </li>
-<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.6;">
-<span class="pill pill-danger" style="display:inline-flex; width:68px; min-width:68px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:3px 0; margin-right:10px; flex-shrink:0;">限制</span>
+<li style="display:flex; align-items:flex-start; font-size:0.82rem; line-height:1.55;">
+<span class="pill pill-danger" style="display:inline-flex; width:54px; min-width:54px; justify-content:center; text-align:center; font-weight:bold; font-size:0.75rem; padding:2px 0; margin-right:6px; flex-shrink:0; border-radius:4px;">限制</span>
 <span><strong>配種地域限制</strong>：海外繁殖牝馬無法直接配種日本國內種牡馬，需調配當地種馬。</span>
 </li>
 </ul>
@@ -21256,8 +21753,11 @@ li {
 </section>
     </div>
 
-    <!-- 浮動按鈕群 (章節目錄跳轉 + 回頂部) -->
+    <!-- 浮動按鈕群 (返回上一位置 + 章節目錄跳轉 + 回頂部) -->
     <div class="floating-btn-group">
+        <button class="btn-floating btn-history-back" id="btnJumpBackHistory" onclick="jumpBackToPreviousPosition()" title="返回跳轉前位置 (Back)" style="display:none;">
+            <i class="fa-solid fa-arrow-rotate-left"></i>
+        </button>
         <button class="btn-floating btn-jump" onclick="openChapterModal()" title="章節跳轉目錄"><i class="fa-solid fa-list-ol"></i></button>
         <button class="btn-floating" onclick="scrollToTop()" title="回到頂部"><i class="fa-solid fa-arrow-up"></i></button>
     </div>
@@ -21346,7 +21846,7 @@ li {
                             <span class="jump-title">特殊名馬配合與彩蛋配合</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-2026new')">
-                            <span class="jump-icon"><i class="fa-solid fa-sparkles"></i></span>
+                            <span class="jump-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
                             <span class="jump-num">第 13 章</span>
                             <span class="jump-title">2024~2026 最新繁育理論 (歷史因子/世界始祖)</span>
                         </button>
@@ -21642,7 +22142,95 @@ li {
             }
         }
 
+        // ==================== 頁面導航歷史與返回上一位置 (Navigation History Stack) ====================
+        let jumpHistory = [];
+
+        function recordCurrentPosition() {
+            let activePillar = 'pillar-db';
+            const activeNav = document.querySelector('.main-tab-btn.active');
+            if (activeNav) {
+                const idAttr = activeNav.id || '';
+                const revMap = {
+                    'tabPillarDb': 'pillar-db',
+                    'tabPillarBreed': 'pillar-breed',
+                    'tabPillarFoals': 'pillar-foals',
+                    'tabPillarTrain': 'pillar-train',
+                    'tabPillarRaces': 'pillar-races',
+                    'tabPillarRanch': 'pillar-ranch',
+                    'tabPillarSecrets': 'pillar-secrets',
+                    'tabPillarTracker': 'pillar-tracker'
+                };
+                if (revMap[idAttr]) activePillar = revMap[idAttr];
+            }
+            const pos = {
+                scrollX: window.scrollX || window.pageXOffset || 0,
+                scrollY: window.scrollY || window.pageYOffset || 0,
+                pillarId: activePillar
+            };
+            
+            if (jumpHistory.length > 0) {
+                const last = jumpHistory[jumpHistory.length - 1];
+                if (Math.abs(last.scrollY - pos.scrollY) < 50 && last.pillarId === pos.pillarId) {
+                    return;
+                }
+            }
+            jumpHistory.push(pos);
+            if (jumpHistory.length > 25) jumpHistory.shift();
+            updateBackHistoryBtnVisibility();
+        }
+
+        function updateBackHistoryBtnVisibility() {
+            const btn = document.getElementById('btnJumpBackHistory');
+            if (btn) {
+                btn.style.display = (jumpHistory.length > 0) ? 'flex' : 'none';
+            }
+        }
+
+        function jumpBackToPreviousPosition() {
+            if (jumpHistory.length === 0) return;
+            const lastPos = jumpHistory.pop();
+            updateBackHistoryBtnVisibility();
+            if (lastPos) {
+                if (lastPos.pillarId) {
+                    document.querySelectorAll('.pillar-content').forEach(el => {
+                        el.style.display = 'none';
+                        el.classList.remove('active');
+                    });
+                    document.querySelectorAll('.main-tab-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    const target = document.getElementById(lastPos.pillarId);
+                    if (target) {
+                        target.style.display = 'block';
+                        target.classList.add('active');
+                    }
+                    const btnMap = {
+                        'pillar-db': 'tabPillarDb',
+                        'pillar-breed': 'tabPillarBreed',
+                        'pillar-foals': 'tabPillarFoals',
+                        'pillar-train': 'tabPillarTrain',
+                        'pillar-races': 'tabPillarRaces',
+                        'pillar-ranch': 'tabPillarRanch',
+                        'pillar-secrets': 'tabPillarSecrets',
+                        'pillar-tracker': 'tabPillarTracker'
+                    };
+                    const b = document.getElementById(btnMap[lastPos.pillarId]);
+                    if (b) b.classList.add('active');
+                }
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: lastPos.scrollY,
+                        left: lastPos.scrollX,
+                        behavior: 'smooth'
+                    });
+                }, 40);
+            }
+        }
+
         function scrollToTop() {
+            if ((window.scrollY || window.pageYOffset || 0) > 250) {
+                recordCurrentPosition();
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -21678,6 +22266,7 @@ li {
         }
 
         function jumpToChapter(pillarId, sectionId) {
+            recordCurrentPosition();
             switchMainPillar(pillarId);
             closeChapterModal();
             setTimeout(() => {
