@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.30</span>
+        <span class="version-badge">v02.31</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -26428,20 +26428,21 @@ li {
 <div id="masterLiveResultCount" style="font-size:0.8rem; color:var(--text-muted);">正在載入全庫數據...</div>
 </div>
 <div class="table-responsive" style="max-height:550px; overflow-y:auto;">
-<table class="data-table">
+<table class="data-table" id="masterLiveTable">
 <thead>
 <tr>
-<th style="min-width:140px;">馬名 (日/中)</th>
-<th style="width:60px;">札別</th>
-<th style="width:70px;">生年</th>
-<th style="width:60px;">性別</th>
-<th style="width:70px;">SP</th>
-<th style="min-width:120px;">距離適性</th>
-<th style="min-width:100px;">腳質/成長</th>
-<th style="min-width:130px;">父系血統</th>
-<th style="min-width:130px;">母父血統</th>
-<th style="width:70px;">仔出</th>
-<th style="width:105px;">操作</th>
+<th style="min-width:140px; text-align:left !important;">馬名 (日文)</th>
+<th style="min-width:130px; text-align:left !important;">原名 / 英文 (EN)</th>
+<th style="width:65px; text-align:left !important;">札別</th>
+<th style="width:70px; text-align:left !important;">生年</th>
+<th style="width:60px; text-align:left !important;">性別</th>
+<th style="width:75px; text-align:left !important;">SP</th>
+<th style="min-width:120px; text-align:left !important;">距離適性</th>
+<th style="min-width:110px; text-align:left !important;">腳質/成長</th>
+<th style="min-width:130px; text-align:left !important;">父系種馬</th>
+<th style="min-width:130px; text-align:left !important;">母馬</th>
+<th style="width:65px; text-align:left !important;">仔出</th>
+<th style="width:110px; text-align:left !important;">18 欄檔案</th>
 </tr>
 </thead>
 <tbody id="masterLiveResultBody">
@@ -27091,32 +27092,37 @@ function initUniversalMasterLive() {
     filterMasterCategory('all');
 }
 
-function filterMasterCategory(catType) {
+function filterMasterCategory(catType, btn) {
     if (!window.MASTER_DB_DATA || !window.MASTER_DB_DATA.cat1) return;
     const all = window.MASTER_DB_DATA.cat1;
     
     if (catType === 'all') {
         liveList = [...all];
-    } else if (catType === 'rainbow') {
+    } else if (catType === '虹' || catType === 'rainbow') {
         liveList = all.filter(h => h.ticket === '虹');
-    } else if (catType === 'gold') {
+    } else if (catType === '金' || catType === 'gold') {
         liveList = all.filter(h => h.ticket === '金');
-    } else if (catType === 'silver') {
+    } else if (catType === '銀' || catType === 'silver') {
         liveList = all.filter(h => h.ticket === '銀');
-    } else if (catType === 'copper') {
-        liveList = all.filter(h => h.ticket === '銅' || h.ticket === '緑');
+    } else if (catType === '銅' || catType === 'copper') {
+        liveList = all.filter(h => h.ticket === '銅' || h.ticket === '綠' || h.ticket === '緑');
     } else if (catType === 'sp74') {
         liveList = all.filter(h => h.sp >= 74);
     } else if (catType === 'kodashi10') {
         liveList = all.filter(h => String(h.foal_quality) === '10');
     }
     
-    // Update active button
-    document.querySelectorAll('.ch41-cat-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-cat') === catType);
-    });
-    document.querySelectorAll('.ch41-letter-btn').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('.ch41-kana-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.ch41-filter-chip').forEach(b => b.classList.remove('active'));
+    if (btn) {
+        btn.classList.add('active');
+    } else {
+        document.querySelectorAll('.ch41-filter-chip').forEach(b => {
+            const oc = b.getAttribute('onclick') || '';
+            if (oc.includes(`'${catType}'`)) b.classList.add('active');
+        });
+    }
+    document.querySelectorAll('.ch41-letter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.ch41-kana-btn').forEach(b => b.classList.remove('active'));
     
     livePage = 1;
     renderMasterLiveResults();
