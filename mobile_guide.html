@@ -758,12 +758,12 @@
         .tab-text { font-size: 0.88rem; }
         .pillar-content { width: 100%; }
 
-        /* 11大核心分類頁籤 - 滑動晶片佈局 (平板 3X2 滑動軌道) */
+        /* 11大核心分類頁籤 - 滑動晶片佈局 (緊湊縮小晶片 + 平板/常規螢幕 3X2 流暢滑動軌道) */
         .category-tabs-wrapper {
             overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch;
-            margin-bottom: 12px;
-            padding-bottom: 6px;
+            -webkit-overflow-scrolling: touch !important;
+            margin-bottom: 10px;
+            padding-bottom: 4px;
             scrollbar-width: thin;
             scrollbar-color: rgba(56, 189, 248, 0.4) rgba(15, 23, 42, 0.5);
             scroll-behavior: smooth;
@@ -784,26 +784,28 @@
         }
         .category-tabs {
             display: grid;
-            grid-template-rows: repeat(2, 32px);
+            grid-template-rows: repeat(2, 29px);
             grid-auto-flow: column;
             grid-auto-columns: calc((100% - 6px) / 2);
             gap: 6px;
             min-width: 100%;
         }
-        @media (min-width: 768px) {
+        /* 平板與寬螢幕（>= 480px，支援所有直向與橫向平板）：完美 3X2 滑動晶片軌道 */
+        @media (min-width: 480px) {
             .category-tabs-wrapper {
                 overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
             }
             .category-tabs {
-                grid-template-rows: repeat(2, 34px);
+                grid-template-rows: repeat(2, 30px);
                 grid-auto-flow: column;
-                grid-auto-columns: calc((100% - 16px) / 3);
-                gap: 8px;
+                grid-auto-columns: calc((100% - 12px) / 3);
+                gap: 6px;
             }
         }
         @media (min-width: 1280px) {
             .category-tabs {
-                grid-auto-columns: calc((100% - 24px) / 4);
+                grid-auto-columns: calc((100% - 18px) / 4);
             }
         }
         .category-tabs .tab-btn,
@@ -811,30 +813,30 @@
             background: var(--panel-bg);
             border: 1px solid var(--border-color);
             color: var(--text-color);
-            padding: 4px 8px !important;
-            border-radius: 6px;
+            padding: 2px 6px !important;
+            border-radius: 5px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.76rem;
-            transition: all 0.2s ease;
+            font-size: 0.72rem !important;
+            transition: all 0.18s ease;
             text-align: center;
             white-space: nowrap !important;
             word-break: keep-all !important;
             overflow: hidden;
             text-overflow: ellipsis;
-            height: 32px;
-            min-height: 32px;
+            height: 29px;
+            min-height: 29px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 3px;
         }
-        @media (min-width: 768px) {
+        @media (min-width: 480px) {
             .category-tabs .tab-btn {
-                height: 34px;
-                min-height: 34px;
-                font-size: 0.78rem;
-                padding: 4px 10px !important;
+                height: 30px;
+                min-height: 30px;
+                font-size: 0.74rem !important;
+                padding: 3px 8px !important;
             }
         }
         .category-tabs .tab-btn:hover,
@@ -1734,7 +1736,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.02</span>
+        <span class="version-badge">v02.03</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 38 大章節)
