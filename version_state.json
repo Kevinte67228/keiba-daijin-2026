@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.100",
+  "current_version": "v02.00",
   "history": [
     {
       "version": "v01.01",
@@ -500,6 +500,11 @@
       "version": "v01.100",
       "date": "2026-08-29",
       "description": "Fix: Chapter 33 Single Clean Era Section, Authentic 1:1 攻略のポイント Text and 3月5週 Broodmare Cards"
+    },
+    {
+      "version": "v02.00",
+      "date": "2026-08-30",
+      "description": "Milestone: Standalone Chapter 39 (1967-1975 Era Guide) with 100% Traditional Chinese Strategy Points (攻略のポイント), 14-Col Left-Aligned Tables and Zero Citation Artifacts"
     }
   ]
 }
