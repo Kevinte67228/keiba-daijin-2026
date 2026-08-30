@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.35</span>
+        <span class="version-badge">v02.36</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -25937,6 +25937,15 @@ li {
 <style>
 /* ===== 第 41 章 平板極致適配佈局規範 ===== */
 
+#masterLiveTable th, #masterLiveTable td {
+    padding: 6px 6px !important;
+    white-space: nowrap !important;
+}
+#masterLiveTable td strong {
+    white-space: nowrap !important;
+}
+
+
 /* 1. 頂部三大主頁籤：3 等分等寬網格 */
 .ch41-main-tabs-grid {
     display: grid !important;
@@ -26432,26 +26441,26 @@ li {
 <div id="masterLiveResultCount" style="font-size:0.8rem; color:var(--text-muted);">正在載入全庫數據...</div>
 </div>
 <div class="table-responsive" style="max-height:550px; overflow-y:auto;">
-<table class="data-table" id="masterLiveTable" style="min-width:1480px !important;">
+<table class="data-table" id="masterLiveTable" style="min-width:1160px !important; width:100% !important;">
 <thead>
 <tr>
-<th style="min-width:135px; text-align:left !important;">馬名 (日文)</th>
-<th style="min-width:130px; text-align:left !important;">原名 / 英文 (EN)</th>
-<th style="width:60px; text-align:left !important;">札別</th>
-<th style="width:65px; text-align:left !important;">生年</th>
-<th style="width:55px; text-align:left !important;">性別</th>
-<th style="width:75px; text-align:left !important;">SP</th>
-<th style="width:55px; text-align:left !important;">ST</th>
-<th style="width:60px; text-align:left !important;">サ</th>
-<th style="min-width:110px; text-align:left !important;">成型(力)</th>
-<th style="width:50px; text-align:left !important;">芝</th>
-<th style="width:50px; text-align:left !important;">ダ</th>
-<th style="min-width:115px; text-align:left !important;">距離適性</th>
-<th style="width:65px; text-align:left !important;">腳質</th>
-<th style="min-width:125px; text-align:left !important;">父系種馬</th>
-<th style="min-width:125px; text-align:left !important;">母馬</th>
-<th style="width:60px; text-align:left !important;">仔出</th>
-<th style="width:105px; text-align:left !important;">18 欄檔案</th>
+<th style="min-width:125px; text-align:left !important;">馬名 (日文)</th>
+<th style="min-width:120px; text-align:left !important;">原名 / 英文 (EN)</th>
+<th style="width:48px; min-width:48px; max-width:50px; text-align:left !important;">札別</th>
+<th style="width:52px; min-width:52px; max-width:55px; text-align:left !important;">生年</th>
+<th style="width:42px; min-width:42px; max-width:45px; text-align:left !important;">性別</th>
+<th style="width:62px; min-width:62px; max-width:65px; text-align:left !important;">SP</th>
+<th style="width:42px; min-width:42px; max-width:45px; text-align:left !important;">ST</th>
+<th style="width:42px; min-width:42px; max-width:45px; text-align:left !important;">サ</th>
+<th style="width:82px; min-width:80px; max-width:85px; text-align:left !important;">成型(力)</th>
+<th style="width:36px; min-width:36px; max-width:38px; text-align:left !important;">芝</th>
+<th style="width:36px; min-width:36px; max-width:38px; text-align:left !important;">ダ</th>
+<th style="min-width:105px; text-align:left !important;">距離適性</th>
+<th style="width:60px; min-width:60px; text-align:left !important;">腳質</th>
+<th style="min-width:115px; text-align:left !important;">父系種馬</th>
+<th style="min-width:115px; text-align:left !important;">母馬</th>
+<th style="width:45px; min-width:45px; max-width:48px; text-align:left !important;">仔出</th>
+<th style="width:100px; min-width:100px; text-align:left !important;">18 欄檔案</th>
 </tr>
 </thead>
 <tbody id="masterLiveResultBody">
