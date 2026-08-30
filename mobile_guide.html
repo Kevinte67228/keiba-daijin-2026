@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.18</span>
+        <span class="version-badge">v02.19</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -27012,99 +27012,175 @@ li {
     
 <section class="section-card" id="sec-allhorseprofiles-db">
 <style>
-/* ===== 第 41 章 專屬統一晶片規範 ===== */
+/* ===== 第 41 章 晶片 100% 絕對像素級對齊規範 ===== */
+.ch41-tabs-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 16px !important;
+}
+@media (max-width: 768px) {
+    .ch41-tabs-grid {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+    }
+}
+
 .ch41-tab-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    height: 42px;
-    padding: 0 20px;
-    font-size: 0.88rem;
-    font-weight: 700;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    background: rgba(15, 23, 42, 0.85);
-    color: #94a3b8;
-    cursor: pointer;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    padding: 0 16px !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--border-color) !important;
+    background: rgba(15, 23, 42, 0.85) !important;
+    color: #94a3b8 !important;
+    cursor: pointer !important;
     white-space: nowrap !important;
     word-break: keep-all !important;
-    transition: all 0.2s ease;
-    box-sizing: border-box;
-    line-height: 1;
+    transition: all 0.2s ease !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
 }
 .ch41-tab-btn:hover {
-    border-color: var(--accent-gold);
-    color: #fff;
-    background: rgba(30, 58, 138, 0.4);
+    border-color: var(--accent-gold) !important;
+    color: #ffffff !important;
+    background: rgba(30, 58, 138, 0.4) !important;
 }
 .ch41-tab-btn.active {
     background: linear-gradient(135deg, #0284c7, #0369a1) !important;
     border-color: #38bdf8 !important;
     color: #ffffff !important;
-    box-shadow: 0 0 12px rgba(2, 132, 199, 0.4);
+    box-shadow: 0 0 12px rgba(2, 132, 199, 0.4) !important;
+}
+
+/* 子專題膠囊軌道 (單行水平滑動，絕對齊平) */
+.ch41-chips-rail {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 8px !important;
+    padding: 4px 2px 8px 2px !important;
+    align-items: center !important;
+}
+.ch41-chips-rail::-webkit-scrollbar {
+    height: 5px !important;
+}
+.ch41-chips-rail::-webkit-scrollbar-thumb {
+    background: #3b82f6 !important;
+    border-radius: 4px !important;
 }
 
 .ch41-sub-chip {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    height: 36px;
-    padding: 0 14px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    background: rgba(30, 41, 59, 0.75);
-    color: #cbd5e1;
-    cursor: pointer;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    padding: 0 16px !important;
+    font-size: 0.83rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--border-color) !important;
+    background: rgba(30, 41, 59, 0.8) !important;
+    color: #cbd5e1 !important;
+    cursor: pointer !important;
     white-space: nowrap !important;
     word-break: keep-all !important;
-    transition: all 0.18s ease;
-    box-sizing: border-box;
-    line-height: 1;
+    flex-shrink: 0 !important;
+    transition: all 0.18s ease !important;
+    box-sizing: border-box !important;
 }
 .ch41-sub-chip:hover {
-    border-color: var(--accent-gold);
-    color: #fff;
-    background: rgba(59, 130, 246, 0.25);
+    border-color: var(--accent-gold) !important;
+    color: #ffffff !important;
+    background: rgba(59, 130, 246, 0.25) !important;
 }
 .ch41-sub-chip.active {
     background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
     border-color: #60a5fa !important;
     color: #ffffff !important;
-    box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.4) !important;
 }
 
+/* 字母與五十音等寬等高網格 */
 .ch41-letter-chip {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 30px;
-    min-width: 32px;
-    padding: 0 6px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-    background: rgba(15, 23, 42, 0.8);
-    color: #93c5fd;
-    cursor: pointer;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    width: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
+    padding: 0 !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    border-radius: 6px !important;
+    border: 1px solid var(--border-color) !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+    color: #93c5fd !important;
+    cursor: pointer !important;
     white-space: nowrap !important;
     word-break: keep-all !important;
-    transition: all 0.15s ease;
-    box-sizing: border-box;
+    transition: all 0.15s ease !important;
+    box-sizing: border-box !important;
 }
 .ch41-letter-chip:hover {
-    border-color: #60a5fa;
-    color: #fff;
-    background: rgba(37, 99, 235, 0.3);
+    border-color: #60a5fa !important;
+    color: #ffffff !important;
+    background: rgba(37, 99, 235, 0.3) !important;
 }
 .ch41-letter-chip.active {
     background: #2563eb !important;
     border-color: #60a5fa !important;
-    color: #fff !important;
+    color: #ffffff !important;
+}
+
+.ch41-kana-chip {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    width: 48px !important;
+    min-width: 48px !important;
+    max-width: 48px !important;
+    padding: 0 !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    border-radius: 6px !important;
+    border: 1px solid var(--border-color) !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+    color: #fcd34d !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    transition: all 0.15s ease !important;
+    box-sizing: border-box !important;
+}
+.ch41-kana-chip:hover {
+    border-color: #eab308 !important;
+    color: #ffffff !important;
+    background: rgba(234, 179, 8, 0.25) !important;
+}
+.ch41-kana-chip.active {
+    background: #ca8a04 !important;
+    border-color: #facc15 !important;
+    color: #ffffff !important;
 }
 </style>
 <div class="section-header" style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(147,51,234,0.2)); border-bottom: 2px solid var(--accent-gold);">
@@ -27120,24 +27196,22 @@ li {
                 </p>
 </div>
 </div>
-<!-- ==================== 三大馬匹資料庫切換頁籤 ==================== -->
-<div class="category-tabs-wrapper" style="margin-bottom:16px;">
-<div class="category-tabs" id="threeHorsesMainTabs" style="display:flex; gap:10px; overflow-x:auto; padding-bottom:6px;">
+<!-- ==================== 三大馬匹資料庫等寬網格切換頁籤 ==================== -->
+<div class="ch41-tabs-grid" id="threeHorsesMainTabs">
 <button class="ch41-tab-btn active" id="btnTabRace" onclick="switchMasterHorseTab('race')">
 <i class="fa-solid fa-horse-head" style="color:#60a5fa;"></i> 🏇 1. 競走馬數據庫 (競走馬データ)
-        </button>
+    </button>
 <button class="ch41-tab-btn" id="btnTabStallion" onclick="switchMasterHorseTab('stallion')">
 <i class="fa-solid fa-mars" style="color:#4ade80;"></i> 🧬 2. 種牡馬數據庫 (種牡馬データ)
-        </button>
+    </button>
 <button class="ch41-tab-btn" id="btnTabBrood" onclick="switchMasterHorseTab('broodmare')">
 <i class="fa-solid fa-venus" style="color:#fb7185;"></i> 🌸 3. 繁殖牝馬數據庫 (繁殖牝馬データ)
-        </button>
+    </button>
 </div>
-</div>
-<!-- ==================== 子專題切換晶片列 (依當前頁籤切換) ==================== -->
-<div class="tool-card" style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:18px;">
+<!-- ==================== 子專題切換晶片列 (單行水平平滑軌道) ==================== -->
+<div class="tool-card" style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:12px 14px; margin-bottom:18px;">
 <!-- 競走馬專屬晶片 -->
-<div class="chips-group" id="chipsGroupRace" style="display:flex; flex-wrap:wrap; gap:8px;">
+<div class="ch41-chips-rail chips-group" id="chipsGroupRace" style="display:flex;">
 <button class="ch41-sub-chip active" onclick="activateSubTable('race_sp74', '⚡ SP 74 以上頂級歷史競走馬完全名冊 (206匹 S+/S/A+ 級神駒)', this)">⚡ SP74+ 頂級神駒 (206匹)</button>
 <button class="ch41-sub-chip" onclick="activateSubTable('race_koyu', '👑 32 匹持有固有歷史特性名馬名單與技能描述', this)">👑 固有特性名馬 (32匹)</button>
 <button class="ch41-sub-chip" onclick="activateSubTable('race_boss', '🐴 34 匹初生自帶「馬房老大 (厩舎のボス)」名馬名單', this)">🐴 初始馬房老大 (34匹)</button>
@@ -27148,7 +27222,7 @@ li {
 <button class="ch41-sub-chip" onclick="filterMasterKeyword('芦灰毛', '🦄 全 1,178 匹白毛・蘆毛名駒數據庫', this)">🦄 白毛・蘆毛名駒庫 (1,178匹)</button>
 </div>
 <!-- 種牡馬專屬晶片 -->
-<div class="chips-group" id="chipsGroupStallion" style="display:none; flex-wrap:wrap; gap:8px;">
+<div class="ch41-chips-rail chips-group" id="chipsGroupStallion" style="display:none;">
 <button class="ch41-sub-chip active" onclick="activateSubTable('sy_kodashi10', '🧬 仔出し 10 滿分種牡馬完全名單 (28匹神級產駒爆發力)', this)">🧬 仔出 10 滿分種馬 (28匹)</button>
 <button class="ch41-sub-chip" onclick="activateSubTable('sy_kodashi9', '⭐ 仔出し 9 頂級種牡馬名單 (95匹)', this)">⭐ 仔出 9 頂級種馬 (95匹)</button>
 <button class="ch41-sub-chip" onclick="activateSubTable('sy_kodashi8', '✨ 仔出し 8 優秀種牡馬名單 (119匹)', this)">✨ 仔出 8 優秀種馬 (119匹)</button>
@@ -27162,7 +27236,7 @@ li {
 <button class="ch41-sub-chip" onclick="activateSubTable('sy_2024', '📅 2024 年開局初年度種牡馬大表 (436匹)', this)">📅 2024 開局種馬 (436匹)</button>
 </div>
 <!-- 繁殖牝馬專屬晶片 -->
-<div class="chips-group" id="chipsGroupBrood" style="display:none; flex-wrap:wrap; gap:8px;">
+<div class="ch41-chips-rail chips-group" id="chipsGroupBrood" style="display:none;">
 <button class="ch41-sub-chip active" onclick="activateSubTable('hs_1970', '🌸 1970 年代繁殖專用牝馬完全名冊 (1,918匹)', this)">🌸 1970年代繁殖專用 (1,918匹)</button>
 <button class="ch41-sub-chip" onclick="activateSubTable('hs_1980', '🌸 1980 年代繁殖專用牝馬完全名冊 (1,038匹)', this)">🌸 1980年代繁殖專用 (1,038匹)</button>
 <button class="ch41-sub-chip" onclick="activateSubTable('hs_1990', '🌸 1990 年代繁殖專用牝馬完全名冊 (700匹)', this)">🌸 1990年代繁殖專用 (700匹)</button>
@@ -27311,8 +27385,8 @@ li {
         點擊下方任一字母、假名或標籤，將<strong>直接對全書 15,389 匹史實馬庫進行即時動態過濾</strong>並分頁呈現！點擊任一匹馬即可查看 18 欄位終極履歷！
     </div>
 </div>
-<!-- 快速篩選膠囊列 (統一晶片尺寸) -->
-<div id="universalQuickFilters" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px;">
+<!-- 快速篩選膠囊列 (水平平滑軌道) -->
+<div class="ch41-chips-rail" id="universalQuickFilters" style="margin-bottom:14px;">
 <button class="ch41-sub-chip active" onclick="filterMasterCategory('all', this)">🌟 全部名駒</button>
 <button class="ch41-sub-chip" onclick="filterMasterCategory('虹', this)">🌈 虹札神駒</button>
 <button class="ch41-sub-chip" onclick="filterMasterCategory('金', this)">🥇 金札名駒</button>
@@ -27353,16 +27427,16 @@ li {
 <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
 <span style="font-size:0.78rem; font-weight:bold; color:var(--gold-color); white-space:nowrap;">🇯🇵 五十音行別：</span>
 <div id="kanaBtns" style="display:flex; flex-wrap:wrap; gap:4px;">
-<button class="ch41-letter-chip" onclick="filterMasterKana('ア')">ア行</button>
-<button class="ch41-letter-chip" onclick="filterMasterKana('カ')">カ行</button>
-<button class="ch41-letter-chip" onclick="filterMasterKana('サ')">サ行</button>
-<button class="ch41-letter-chip" onclick="filterMasterKana('タ')">タ行</button>
-<button class="ch41-letter-chip" onclick="filterMasterKana('ナ')">ナ行</button>
-<button class="ch41-letter-chip" onclick="filterMasterKana('ハ')">ハ行</button>
-<button class="ch41-letter-chip" onclick="filterMasterKana('マ')">マ行</button>
-<button class="ch41-letter-chip" onclick="filterMasterKana('ヤ')">ヤ行</button>
-<button class="ch41-letter-chip" onclick="filterMasterKana('ラ')">ラ行</button>
-<button class="ch41-letter-chip" onclick="filterMasterKana('ワ')">ワ行</button>
+<button class="ch41-kana-chip" onclick="filterMasterKana('ア')">ア行</button>
+<button class="ch41-kana-chip" onclick="filterMasterKana('カ')">カ行</button>
+<button class="ch41-kana-chip" onclick="filterMasterKana('サ')">サ行</button>
+<button class="ch41-kana-chip" onclick="filterMasterKana('タ')">タ行</button>
+<button class="ch41-kana-chip" onclick="filterMasterKana('ナ')">ナ行</button>
+<button class="ch41-kana-chip" onclick="filterMasterKana('ハ')">ハ行</button>
+<button class="ch41-kana-chip" onclick="filterMasterKana('マ')">マ行</button>
+<button class="ch41-kana-chip" onclick="filterMasterKana('ヤ')">ヤ行</button>
+<button class="ch41-kana-chip" onclick="filterMasterKana('ラ')">ラ行</button>
+<button class="ch41-kana-chip" onclick="filterMasterKana('ワ')">ワ行</button>
 </div>
 </div>
 </div>
