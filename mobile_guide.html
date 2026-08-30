@@ -1736,7 +1736,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.09</span>
+        <span class="version-badge">v02.10</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 38 大章節)
@@ -1797,7 +1797,7 @@ li {
         </div>
         <section class="section-card" id="sec-start-guide">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-play"></i> 第 01 章：開局劇本年代與史實名馬選拔指南 (1970~2022 全年代數據庫)</div>
+<div class="section-title"><i class="fa-solid fa-play"></i> 第 01 章：開局劇本年代選拔・初年度52週圖文通關與全年代初期讓渡馬完全指南</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom:16px;">
@@ -8928,9 +8928,621 @@ li {
             <h2>🏋️ 調教培育・基礎能力・個性進化與關係性 (Training & Traits)</h2>
             <p>【第 25 章 ~ 第 28 章】賽馬五維基礎能力・四大比賽展開・適應能力與固有特性全書、史實調教全 40+ 種效果與 SP 雙馬合練、ウマソナ (馬之個性) 克服與進化、2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</p>
         </div>
-        <section class="section-card" id="sec-skills-traits">
+        <section class="section-card" id="sec-status-encyclopedia">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-medal"></i> 第 25 章：基礎能力・四大比賽展開・適應能力與名馬固有特性全書</div>
+<div class="section-title"><i class="fa-solid fa-id-card-clip"></i> 第 25 章：五大人物與賽馬數值能力完全百科 (競走馬・騎手・調教師・牧場長・子孫結婚知人)</div>
+</div>
+<div class="section-body">
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-address-card" style="font-size:1.2rem; color:var(--accent-gold);"></i>
+<div>
+<strong>《賽馬大亨 10 2026》全角色五大維度能力數值・特性與隱藏參數完全圖鑑 (100% 完整解析)</strong><br/>
+                系統化剖析遊戲內全部 5 大實體面板：① <strong>競走馬</strong>（速度 40 階對照、八大副屬性、特徵壽命、隱藏仔出與賽事經驗）、② <strong>騎手</strong>（戰法距離與 20 大騎手特性）、③ <strong>調教師</strong>（五大能力與 20 大練馬師特性）、④ <strong>牧場長</strong>（五大能力、得意設施與育成方針）、⑤ <strong>子孫・結婚知人</strong>（三大素質、職業進路與家系傳承）。
+            </div>
+</div>
+<!-- ==================== 1. 競走馬能力與狀態 ==================== -->
+<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--accent-gold); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+<div style="font-size:1.15rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-horse"></i> 1. 競走馬ステータス解説 (競走馬能力・適性・體調與特徵完全解析)
+        </div>
+<span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">選單：競走馬 ➔ 能力 / 備忘錄</span>
+</div>
+<div style="text-align:center; margin-bottom:16px;">
+<img alt="競走馬能力面板" src="https://alnasgames.com/wp10/articleimages/Stats1.PNG" style="max-width:100%; border-radius:8px; border:1px solid var(--border-color); box-shadow:0 4px 12px rgba(0,0,0,0.5);"/>
+</div>
+<p style="font-size:0.84rem; line-height:1.7; color:var(--text-main); margin-bottom:14px;">
+        競走馬的各項能力可於<strong>「選單 ➔ 競走馬 ➔ 能力」</strong>檢視，點擊「備忘錄 (メモ)」可查看更深層的特徵與隱藏參數。綠色條狀為先天固有能力，黃色部分為調教成長值，綠色進度條為「育成度」（集滿一格能力提升 1 級）。
+    </p>
+<!-- ① 基本能力 -->
+<h4 style="color:var(--accent-color); font-size:0.95rem; margin:16px 0 8px;"><i class="fa-solid fa-bolt"></i> ① 競走馬八大基本能力詳解</h4>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:140px;">能力項目 (日/中)</th>
+<th style="min-width:100px;">顯示評級</th>
+<th style="min-width:420px;">機制影響與底層邏輯 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong style="color:var(--gold-color);">スピード (速度 / SP)</strong></td>
+<td><span class="badge badge-gold">G ~ S+ (16階)</span></td>
+<td><strong>遊戲中最重要的核心能力</strong>。表面顯示為 G~S+ 16 級，<strong>內部數值實際存在 45~85 共有 40 個細分階級</strong>。通常 75+ 為傳奇級神駒、70 左右為 G1 馬、60 以上為重賞級。</td>
+</tr>
+<tr>
+<td><strong>勝負根性 (勝負根性)</strong></td>
+<td><span class="badge badge-blue">G ~ S+</span></td>
+<td>勝負根性越高，採取<strong>「領放 (逃げ)」、「先行」</strong>跑法時的突圍與抗壓能力越強。</td>
+</tr>
+<tr>
+<td><strong>瞬発力 (瞬發力)</strong></td>
+<td><span class="badge badge-blue">G ~ S+</span></td>
+<td>瞬發力越高，採取<strong>「居中 (差し)」、「後追 (追込)」</strong>跑法時的直線末腳爆發力越強。</td>
+</tr>
+<tr>
+<td><strong>パワー (力量 / Power)</strong></td>
+<td><span class="badge badge-blue">G ~ S+</span></td>
+<td>力量偏低時，於重馬場 (爛地) 或有險峻陡坡 (急坂，如中山、阪神、中京) 的賽馬場能力將大幅下滑，<strong>建議至少需達 C 以上</strong>。</td>
+</tr>
+<tr>
+<td><strong>柔軟性 (柔軟性)</strong></td>
+<td><span class="badge badge-blue">G ~ S+</span></td>
+<td>直接擴大馬匹的適性距離範圍，高等級柔軟性<strong>最多可擴展距離適性達 ±1000m</strong>！</td>
+</tr>
+<tr>
+<td><strong>精神力 (精神力)</strong></td>
+<td><span class="badge badge-blue">G ~ S+</span></td>
+<td>精神力偏低時，在遠征或海外大賽將因「重壓」而大幅失常，<strong>遠征主力建議至少達 C+ 以上</strong>。</td>
+</tr>
+<tr>
+<td><strong>賢さ (智力)</strong></td>
+<td><span class="badge badge-blue">G ~ S+</span></td>
+<td>智力越高，賽前狀態 (調子) 越容易自然上升，且比賽中能更精準敏捷地響應騎師的戰術指示。</td>
+</tr>
+<tr>
+<td><strong>健康 (健康)</strong></td>
+<td><span class="badge badge-blue">G ~ S+</span></td>
+<td>健康越高，比賽故障與骨折機率越低；在斯巴達調教師手下比賽直覺上升更快；<strong>達 A+ 以上時更可在配種時降低配合危險度</strong>！</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 速度 40 階與英文字母完整對照表 -->
+<h4 style="color:var(--text-highlight); font-size:0.9rem; margin:14px 0 6px;"><i class="fa-solid fa-calculator"></i> 速度 (SP 45~85) 與英文字母 16 級精確對照表</h4>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table" style="text-align:left;">
+<thead>
+<tr>
+<th>S+</th><th>S</th><th>A+</th><th>A</th><th>B+</th><th>B</th><th>C+</th><th>C</th><th>D+</th><th>D</th><th>E+</th><th>E</th><th>F+</th><th>F</th><th>G+</th><th>G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>85~80</strong></td><td><strong>79~78</strong></td><td><strong>77~76</strong></td><td><strong>75~74</strong></td><td><strong>73~72</strong></td><td><strong>71~70</strong></td><td><strong>69~68</strong></td><td><strong>67~66</strong></td><td><strong>65~64</strong></td><td><strong>63~62</strong></td><td><strong>61~60</strong></td><td><strong>59~58</strong></td><td><strong>57~56</strong></td><td><strong>55~54</strong></td><td><strong>53~52</strong></td><td><strong>51~45</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;">
+        💡 <strong>實用技巧</strong>：若想探查 A 與 A+ 的精準數值，可在賽前執行「芝當週追」（成功速度+1）。若由 A 升至 A+ 則代表原本 SP 為 75；若依然為 A 則代表原本 SP 為 74。
+    </p>
+<!-- ② 適性 -->
+<h4 style="color:var(--accent-color); font-size:0.95rem; margin:16px 0 8px;"><i class="fa-solid fa-compass"></i> ② 適性 (距離・馬場・芝質・跑法腳質)</h4>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:140px;">適性項目</th>
+<th style="min-width:150px;">細分指標</th>
+<th style="min-width:400px;">實戰影響與機制說明 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>距離適性</strong></td>
+<td>適性上下限 (如 1800~2400m)</td>
+<td>若跑超過上限距離會急劇失速；若跑低於下限距離影響相對較小。</td>
+</tr>
+<tr>
+<td rowspan="3"><strong>馬場與芝質</strong></td>
+<td><strong>草地 (芝)</strong> (◎＞〇＞△＞×)</td>
+<td>草地賽事能力發揮，適性為 × 時實質 SP 約下降 10 點。</td>
+</tr>
+<tr>
+<td><strong>泥地 (ダート)</strong> (◎＞〇＞△＞×)</td>
+<td>泥地賽事能力發揮，適性為 × 時實質 SP 約下降 10 點。</td>
+</tr>
+<tr>
+<td><strong>芝質適性</strong> (黃/綠/黑)</td>
+<td><strong>黃色 (得意)</strong>：實質 SP 約 +5；<strong>綠色 (普通)</strong>；<strong>黑色 (苦手)</strong>：實質 SP 約 -5。配種時決定。</td>
+</tr>
+<tr>
+<td rowspan="8"><strong>腳質適性</strong></td>
+<td><strong>大逃 (大逃げ)</strong></td>
+<td>擅長大幅拉開領先優勢的大逃跑法。</td>
+</tr>
+<tr>
+<td><strong>逃げ (領放)</strong></td>
+<td>擅長前方領放領跑。</td>
+</tr>
+<tr>
+<td><strong>先行 (先行)</strong></td>
+<td>擅長緊跟領放馬身後的先行跑法。</td>
+</tr>
+<tr>
+<td><strong>差し (居中)</strong></td>
+<td>擅長馬群中段伺機而動的居中跑法。</td>
+</tr>
+<tr>
+<td><strong>追込 (後追)</strong></td>
+<td>擅長後方蓄力、最後直線極限衝刺的後追跑法。</td>
+</tr>
+<tr>
+<td><strong>自在先行</strong></td>
+<td>主擅逃/先行，視對手步速亦能靈活切換居中（逃與先行同時點亮）。</td>
+</tr>
+<tr>
+<td><strong>自在差し</strong></td>
+<td>主擅差/追込，視對手步速亦能切換先行（差與追込同時點亮）。</td>
+</tr>
+<tr>
+<td><strong>自在 (全能自在)</strong></td>
+<td>能臨機應變適應任何賽事展開（除大逃外全跑法皆點亮）。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ③ 體調 -->
+<h4 style="color:var(--accent-color); font-size:0.95rem; margin:16px 0 8px;"><i class="fa-solid fa-heart-pulse"></i> ③ 體調 (氣合・疲勞・調子・體重)</h4>
+<div style="text-align:center; margin-bottom:12px;">
+<img alt="體調面板" src="https://alnasgames.com/wp10/articleimages/Stats3.PNG" style="max-width:100%; border-radius:8px; border:1px solid var(--border-color);"/>
+</div>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:130px;">體調指標</th>
+<th style="min-width:130px;">等級階梯</th>
+<th style="min-width:420px;">詳細運作機制與管理要點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>氣合 (気合乗り)</strong></td>
+<td>4 階段計量表</td>
+<td>出賽意願與鬥志。<strong>第 3 階段為最完美頂峰</strong>！長期不參賽、落敗或放牧會下降；連勝或激戰獲勝會上升。第 4 階段過高時可能暴衝。</td>
+</tr>
+<tr>
+<td><strong>疲勞 (疲労)</strong></td>
+<td>◎ ＞ 〇 ＞ △ ＞ ×</td>
+<td>◎ 表示完全無疲勞，× 表示極度疲勞。<strong>在 × 狀態下強行出賽極易發生骨折重傷甚至死亡</strong>！需透過短期放牧或溫泉消除。</td>
+</tr>
+<tr>
+<td><strong>狀態 (調子)</strong></td>
+<td>◎ ＞ 〇 ＞ △ ＞ × (含箭頭)</td>
+<td>臨場狀態，箭頭方向代表調子的生物週期 (上升中 ↗、持平 ➔、下降中 ↘)。</td>
+</tr>
+<tr>
+<td><strong>馬體重</strong></td>
+<td>實時數值 (如 480kg)</td>
+<td>調教完成度指標。過重或過輕時可透過針對性調教調節。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ④ 特徵備忘錄與隱藏參數 -->
+<h4 style="color:var(--accent-color); font-size:0.95rem; margin:16px 0 8px;"><i class="fa-solid fa-clipboard-list"></i> ④ 特徵備忘錄 (成長型・競走壽命・氣性・走法・弱點・隱藏參數)</h4>
+<div style="text-align:center; margin-bottom:12px;">
+<img alt="特徵面板" src="https://alnasgames.com/wp10/articleimages/Stats2.PNG" style="max-width:100%; border-radius:8px; border:1px solid var(--border-color);"/>
+</div>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:140px;">特徵類別</th>
+<th style="min-width:180px;">具體分項</th>
+<th style="min-width:400px;">機制詳解 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>競走壽命</strong></td>
+<td>初期值 100~60 (內部隱藏)</td>
+<td>賽駒維持顛峰發揮的期間。月底與賽後自然消耗，耗盡歸 0 後成長度開始衰退。</td>
+</tr>
+<tr>
+<td><strong>成長度 &amp; 限界</strong></td>
+<td>成長度 (%) / 限界 (100~110%)</td>
+<td>實質 SP 乘算百分比。史實馬極限固定為 110%（即 SP85 × 110% = 實質 93.5 極限戰力！）。</td>
+</tr>
+<tr>
+<td><strong>成長力</strong></td>
+<td>無 / 普通 / 有 / 持續</td>
+<td><strong>「持續」</strong>壽命初期值高達 90~100 且消耗極慢，<strong>可出戰賽事場次為「無」的 2 倍以上</strong>！</td>
+</tr>
+<tr>
+<td><strong>成長型 (8大類)</strong></td>
+<td>早熟 / 早め / 遲め / 晚成 / 超晚成 / 覺醒 / 早熟鍋底 / 早め鍋底</td>
+<td>早熟巔峰在 2歲末~3歲春 (約10戰)；晚成巔峰在 4~5歲 (約30戰)；<strong>覺醒終生不衰退</strong>；<strong>鍋底衰退後可滿血復活 1 次</strong>。</td>
+</tr>
+<tr>
+<td><strong>氣性 (脾氣)</strong></td>
+<td>激 / 荒い / 普通 / 大人</td>
+<td>激與荒い較易暴衝搶口（掛かり）；大人與普通則極度冷靜穩定。</td>
+</tr>
+<tr>
+<td><strong>重馬場 (爛地)</strong></td>
+<td>苦手 / 普通 / 得意 / 鬼</td>
+<td><strong>「鬼」</strong>在重・不良馬場能力完全不減；苦手則大幅失速。</td>
+</tr>
+<tr>
+<td><strong>走法</strong></td>
+<td>Pitch (ピッチ) / 普通 / 大跳 (大跳び)</td>
+<td><strong>Pitch</strong>：起步出閘快、爛地能力強；<strong>大跳び</strong>：草地良馬場超水準發揮，其他馬場略微受限。</td>
+</tr>
+<tr>
+<td><strong>弱點與持病</strong></td>
+<td>右迴× / 左迴× / 小迴× / 喉鳴 / 腳部不安 / 腰甘 / 慢閘</td>
+<td>喉鳴長途失速（雨天減輕）；腳部不安易故障；腰甘扣力量；慢閘出閘落後。</td>
+</tr>
+<tr>
+<td><strong>隱藏參數</strong></td>
+<td><strong>仔出 (0~10)</strong><br/><strong>賽事直覺 (0~100)</strong><br/><strong>名氣評價 (0~100)</strong></td>
+<td><strong>仔出 (仔出し)</strong>：決定產駒高能力遺傳機率，現役戰績出色可提升；<br/><strong>賽事直覺 (レース勘)</strong>：出賽增加、放牧減少，影響臨場發力時機；<br/><strong>評判</strong>：影響拍賣會估價與俱樂部會員購買熱度。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ⑤ 賽事經驗 -->
+<h4 style="color:var(--accent-color); font-size:0.95rem; margin:16px 0 8px;"><i class="fa-solid fa-chart-simple"></i> ⑤ 賽事經驗 (レース経験)</h4>
+<div style="text-align:center; margin-bottom:12px;">
+<img alt="賽事經驗面板" src="https://alnasgames.com/wp10/articleimages/Stats4.PNG" style="max-width:100%; border-radius:8px; border:1px solid var(--border-color);"/>
+</div>
+<p style="font-size:0.83rem; line-height:1.7; color:var(--text-main); margin:0;">
+        包含多頭數、少頭數、本命、冷門、輸送競馬、快步速、慢步速、接戰、更換騎手等情境經驗。在該情境賽事好走經驗值迅速增加，經驗豐富能讓馬匹在該賽事條件下發揮 120% 的實力！
+    </p>
+</div>
+<!-- ==================== 2. 騎手能力與特性 ==================== -->
+<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+<div style="font-size:1.15rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-user-astronaut"></i> 2. 騎手ステータス解説 (戰法・距離能力與 20 大騎手特性)
+        </div>
+<span class="badge badge-blue" style="font-size:0.8rem; padding:4px 8px;">選單：人情報 ➔ 騎手</span>
+</div>
+<div style="text-align:center; margin-bottom:16px;">
+<img alt="騎手面板" src="https://alnasgames.com/wp10/articleimages/Stats6.PNG" style="max-width:100%; border-radius:8px; border:1px solid var(--border-color); box-shadow:0 4px 12px rgba(0,0,0,0.5);"/>
+</div>
+<div class="grid-cols-1-mobile" style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
+<div style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:12px;">
+<h4 style="color:var(--gold-color); margin:0 0 6px; font-size:0.9rem;">🏇 戰法能力 (5 階段：◉ ＞ ◎ ＞ 〇 ＞ △ ＞ ×)</h4>
+<ul style="font-size:0.83rem; line-height:1.7; margin:0; padding-left:18px;">
+<li><strong>逃先 (領放/先行)</strong>：策騎逃與先行馬的能力。</li>
+<li><strong>先差 (先行/居中)</strong>：策騎先行與居中馬的能力。</li>
+<li><strong>差追 (居中/後追)</strong>：策騎居中與後追馬的能力。</li>
+</ul>
+</div>
+<div style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:12px;">
+<h4 style="color:var(--gold-color); margin:0 0 6px; font-size:0.9rem;">📏 距離能力 (5 階段：S ＞ A ＞ B ＞ C ＞ D)</h4>
+<ul style="font-size:0.83rem; line-height:1.7; margin:0; padding-left:18px;">
+<li><strong>短距離 (≤1400m)</strong> / <strong>一哩 (1401~1800m)</strong></li>
+<li><strong>中距離 (1801~2400m)</strong>：主戰騎手此項高最令人安心。</li>
+<li><strong>長距離 (≥2401m)</strong>：極少數騎手具備長距離 S。</li>
+</ul>
+</div>
+</div>
+<h4 style="color:var(--accent-color); font-size:0.95rem; margin:14px 0 8px;"><i class="fa-solid fa-award"></i> 20 大騎手特性全圖鑑 (每位騎師上限習得 10 個)</h4>
+<div class="table-responsive">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:140px;">騎手特性 (日/中)</th>
+<th style="min-width:440px;">具體觸發條件與實戰效果 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>大レース (大賽)</strong></td>
+<td>除經典三冠及雌馬三冠以外之全部 G1 賽事能力充分發揮。</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.06);">
+<td><strong style="color:var(--gold-color);">クラシック (經典賽)</strong></td>
+<td><strong>所有 G1 賽事皆能發揮能力</strong>（為「大賽」之上位互換特性，兩者不可同時持有）。</td>
+</tr>
+<tr>
+<td><strong>交流重賞</strong></td>
+<td>地方交流重賞賽事中發揮實力。</td>
+</tr>
+<tr>
+<td><strong>ローカル (地方小場)</strong></td>
+<td>於地方賽事舉辦場地 (函館、福島、新潟、小倉等) 能力提升。</td>
+</tr>
+<tr>
+<td><strong>海外経験</strong></td>
+<td>海外遠征時能力充分發揮，大幅降低遠征懲罰。</td>
+</tr>
+<tr>
+<td><strong>芝 (草地) / ダート (泥地)</strong></td>
+<td>分別於草地賽事 / 泥地賽事發揮出色策騎能力。</td>
+</tr>
+<tr>
+<td><strong>重馬場 (爛地)</strong></td>
+<td>於重・不良馬場中精準走位發揮實力。</td>
+</tr>
+<tr>
+<td><strong>新馬教育</strong></td>
+<td>策騎新馬出戰前幾場賽事時，大幅促進賽駒賽後成長度上升。</td>
+</tr>
+<tr>
+<td><strong>牝馬 (雌馬)</strong></td>
+<td>策騎雌馬時能力大幅提升。</td>
+</tr>
+<tr>
+<td><strong>風車鞭 (風車鞭)</strong></td>
+<td>居中、後追末腳大幅提升；與個性「風車鞭〇」相契合。</td>
+</tr>
+<tr>
+<td><strong>剛腕 (剛腕)</strong></td>
+<td>領放、先行推騎力大幅提升；與個性「剛腕〇」相契合。</td>
+</tr>
+<tr>
+<td><strong>折り合い (折合留氣)</strong></td>
+<td>放寬距離適性上限，安撫賽駒暴衝並大幅減少耐力消耗。</td>
+</tr>
+<tr>
+<td><strong>本命 (熱門)</strong></td>
+<td>作為 1 番人氣且單勝賠率 3.0 倍以下時能力全面發揮。</td>
+</tr>
+<tr>
+<td><strong>穴馬 (黑馬)</strong></td>
+<td>策騎冷門黑馬時能力超水準發揮。</td>
+</tr>
+<tr>
+<td><strong>乗替 (初次策騎)</strong></td>
+<td>初次策騎 (テン乗り) 即能發揮全部能力。</td>
+</tr>
+<tr>
+<td><strong>熟練 (老練)</strong></td>
+<td>隨年齡增長的能力下滑幅度大幅減緩。</td>
+</tr>
+<tr>
+<td><strong>イン突き (內側突擊)</strong></td>
+<td>內檔居中/後追馬於最後直線精準切入內道突圍。</td>
+</tr>
+<tr>
+<td><strong>直線競馬</strong></td>
+<td>新潟直線 1000m 等純直線賽道發揮極致實力。</td>
+</tr>
+<tr>
+<td><strong>マーク屋 (緊盯死咬)</strong></td>
+<td>同場有前位人氣勁敵馬出賽時發動，死咬對手並於最後反超。</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- ==================== 3. 調教師能力與特性 ==================== -->
+<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+<div style="font-size:1.15rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-user-tie"></i> 3. 調教師ステータス解説 (調教五圍能力與 20 大練馬師特性)
+        </div>
+<span class="badge badge-purple" style="font-size:0.8rem; padding:4px 8px;">選單：人情報 ➔ 調教師</span>
+</div>
+<div style="text-align:center; margin-bottom:16px;">
+<img alt="調教師面板" src="https://alnasgames.com/wp10/articleimages/Stats7.PNG" style="max-width:100%; border-radius:8px; border:1px solid var(--border-color); box-shadow:0 4px 12px rgba(0,0,0,0.5);"/>
+</div>
+<h4 style="color:var(--gold-color); font-size:0.95rem; margin:0 0 8px;">🎩 調教師五大基礎能力 (評級：S ＞ A ＞ B ＞ C ＞ D ＞ E)</h4>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:130px;">能力項目</th>
+<th style="min-width:440px;">機制影響與說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>調教 (調教)</strong></td>
+<td>越高越能提早引導賽駒潛力，使其及早開花結果。</td>
+</tr>
+<tr>
+<td><strong>相馬眼 (相馬眼)</strong></td>
+<td>越高越能精準看破馬匹的真實素質與隱藏極限。</td>
+</tr>
+<tr>
+<td><strong>閃き (拍賣會直覺)</strong></td>
+<td>越高在各類幼駒/拍賣會上的洞察直覺越敏銳。</td>
+</tr>
+<tr>
+<td><strong>體調 (體況管理)</strong></td>
+<td>越高越容易提升管理馬的狀態 (調子)，且調子不易下滑。</td>
+</tr>
+<tr>
+<td><strong>體重 (馬體重調整)</strong></td>
+<td>越高越能將馬匹體重精準調整至理想競賽體重。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color:var(--accent-color); font-size:0.95rem; margin:14px 0 8px;"><i class="fa-solid fa-award"></i> 20 大調教師特性全圖鑑</h4>
+<div class="table-responsive">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:140px;">調教師特性 (日/中)</th>
+<th style="min-width:440px;">具體訓練加成與實戰效果 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2歲戰 / 3歲戰 / 古馬戰</strong></td>
+<td>分別在 2歲馬 / 3歲馬 / 4歲以上古馬調教與賽事中大幅提升能力發揮。</td>
+</tr>
+<tr>
+<td><strong>牝馬 (雌馬)</strong></td>
+<td>極擅長調教與管理雌馬。</td>
+</tr>
+<tr>
+<td><strong>大レース (大賽) / クラシック (經典賽)</strong></td>
+<td>經典賽適用於全部 G1 賽事；大賽適用於三冠除外之 G1。</td>
+</tr>
+<tr>
+<td><strong>交流重賞 / ローカル</strong></td>
+<td>分別於地方交流賽事 / 地方小場賽事提升能力。</td>
+</tr>
+<tr>
+<td><strong>海外遠征</strong></td>
+<td>遠征海外時大幅減輕賽駒能力折損。</td>
+</tr>
+<tr>
+<td><strong>芝 / ダート</strong></td>
+<td>分別專精草地馬匹 / 泥地馬匹之育成調教。</td>
+</tr>
+<tr>
+<td><strong>輸送競馬</strong></td>
+<td>跨地域輸送出賽時（如美浦馬去阪神/京都）大幅減輕能力折損。</td>
+</tr>
+<tr>
+<td><strong>休み明け (久休初出)</strong></td>
+<td>放牧休養後復出的第 1 戰能力爆發。</td>
+</tr>
+<tr>
+<td><strong>叩き一変 (熱身第二戰)</strong></td>
+<td>復出後的第 2 戰能力大幅飆升。</td>
+</tr>
+<tr>
+<td><strong>スパルタ (斯巴達魔鬼訓練)</strong></td>
+<td>高強度調教大幅提升能力，適合健康極高之賽駒；配合個性「スパルタ調整向き」。</td>
+</tr>
+<tr>
+<td><strong>軽め調教 (溫和輕度調教)</strong></td>
+<td>溫和調教保護馬體，適合健康偏低或腳部不安之賽駒；配合個性「ソフト調整向き」。</td>
+</tr>
+<tr>
+<td><strong>気性難 (脾氣調教)</strong></td>
+<td>極擅長安撫調教氣性為「激」或「荒い」的暴躁賽駒。</td>
+</tr>
+<tr>
+<td><strong>本命 (熱門)</strong></td>
+<td>單勝 3.0 倍且 1 番人氣時使管理馬全力爆發。</td>
+</tr>
+<tr>
+<td><strong>外国産馬</strong></td>
+<td>在外國產馬的調教與賽事中發揮專屬加成。</td>
+</tr>
+<tr>
+<td><strong>気合鼓舞</strong></td>
+<td>管理馬的氣合 (鬥志) 極易上升並長期維持在最佳狀態！</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- ==================== 4. 牧場長能力與育成方針 ==================== -->
+<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+<div style="font-size:1.15rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-house-chimney-user"></i> 4. 牧場長ステータス解説 (五大能力・得意設施與育成方針)
+        </div>
+<span class="badge badge-safe" style="font-size:0.8rem; padding:4px 8px;">選單：人情報 ➔ 牧場長</span>
+</div>
+<div style="text-align:center; margin-bottom:16px;">
+<img alt="牧場長面板" src="https://alnasgames.com/wp10/articleimages/Stats8.PNG" style="max-width:100%; border-radius:8px; border:1px solid var(--border-color); box-shadow:0 4px 12px rgba(0,0,0,0.5);"/>
+</div>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:150px;">能力項目</th>
+<th style="min-width:440px;">機制影響與說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>相馬眼 (相馬眼)</strong></td>
+<td>越高越能精準看破自家幼駒的潛力與真實評語。</td>
+</tr>
+<tr>
+<td><strong>血統知識 (血統知識)</strong></td>
+<td>越高在委託其自動配種（種付けお任せ）時的效果與爆發力越高。</td>
+</tr>
+<tr>
+<td><strong>馴致 (幼駒馴化)</strong></td>
+<td>越高使幼駒在進入賽事階段的馴化與適應速度越快。</td>
+</tr>
+<tr>
+<td><strong style="color:var(--gold-color);">健康管理 (健康管理)</strong></td>
+<td><strong>最關鍵核心數值</strong>！越高使牧場幼駒基礎健康度越高，大幅降低生病受傷機率。</td>
+</tr>
+<tr>
+<td><strong>種付け (配種技術)</strong></td>
+<td>越高使每年 5 月春季配種的受胎成功率越高。</td>
+</tr>
+<tr>
+<td><strong>得意施設</strong></td>
+<td>牧場長專精之設施（如坂路、草地、放牧場），<strong>必須實際建造該設施才能觸發加成</strong>。</td>
+</tr>
+<tr>
+<td><strong>得意ウマソナ</strong></td>
+<td>牧場長專精之個性，顯著加速持有該個性之 1 歲幼駒與未入廄 2 歲馬的成長。</td>
+</tr>
+<tr>
+<td><strong>育成方針</strong></td>
+<td>速度重視、瞬發重視等方向（僅玩家自營牧場之牧場長可自訂）。</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- ==================== 5. 子孫・結婚對象・知人 ==================== -->
+<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+<div style="font-size:1.15rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-people-roof"></i> 5. 子孫・結婚相手・知人ステータス解説 (三大能力・職業進路與家系傳承)
+        </div>
+<span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">選單：知人 / 家系圖 ➔ 表示切替</span>
+</div>
+<div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:16px;">
+<img alt="知人面板" src="https://alnasgames.com/wp10/articleimages/tijin.png" style="max-width:320px; border-radius:8px; border:1px solid var(--border-color);"/>
+<img alt="結婚能力面板" src="https://alnasgames.com/wp10/articleimages/mariage-stat.png" style="max-width:320px; border-radius:8px; border:1px solid var(--border-color);"/>
+<img alt="家系圖面板" src="https://alnasgames.com/wp10/articleimages/tijin2.PNG" style="max-width:320px; border-radius:8px; border:1px solid var(--border-color);"/>
+</div>
+<p style="font-size:0.84rem; line-height:1.7; color:var(--text-main); margin-bottom:12px;">
+        知人的好感度與結婚年限可於「選單 ➔ 人情報 ➔ 知人」查看；具體能力數值可於<strong>結婚求婚介面</strong>或<strong>「家系圖 ➔ 表示切替」</strong>查看。
+    </p>
+<div class="table-responsive">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:140px;">基本能力項目</th>
+<th style="min-width:440px;">職業選擇與後續傳承影響 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>勉強 (學習智力)</strong></td>
+<td>直接決定子孫在求學升學、選擇職業（如調教師、秘書、偶像、實業家、一般就職）以及成為調教師/牧場長時的智力與管理數值。</td>
+</tr>
+<tr>
+<td><strong>運動 (運動素質)</strong></td>
+<td>直接決定子孫選擇騎手學校、成為<strong>頂級騎手</strong>時的初始戰法能力與身體素質成長上限。</td>
+</tr>
+<tr>
+<td><strong>牧場 (牧場實務)</strong></td>
+<td>直接決定子孫成為<strong>頂級牧場長</strong>時的健康管理、馴致與相馬眼數值。</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section class="section-card" id="sec-skills-traits">
+<div class="section-header">
+<div class="section-title"><i class="fa-solid fa-medal"></i> 第 26 章：基礎能力・四大比賽展開・適應能力與名馬固有特性全書</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -9148,7 +9760,7 @@ li {
 </section>
 <section class="section-card" id="sec-historical-train">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-dumbbell"></i> 第 26 章：史實調教・SP 雙馬合練・大成功量表與全 40+ 種調教效果全圖鑑</div>
+<div class="section-title"><i class="fa-solid fa-dumbbell"></i> 第 27 章：史實調教・SP 雙馬合練・大成功量表與全 40+ 種調教效果全圖鑑</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -9921,7 +10533,7 @@ li {
 </div></section>
 <section class="section-card" id="sec-umasona">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-face-smile"></i> 第 27 章：ウマソナ (馬之個性) 克服與進化秘技</div>
+<div class="section-title"><i class="fa-solid fa-face-smile"></i> 第 28 章：ウマソナ (馬之個性) 全圖鑑・克服進化秘技與 14 大性格分佈矩陣</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom:16px;">
@@ -10992,7 +11604,7 @@ li {
 </section>
 <section class="section-card" id="sec-relations-2026">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-hands-holding-circle"></i> 第 28 章：2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</div>
+<div class="section-title"><i class="fa-solid fa-hands-holding-circle"></i> 第 29 章：2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -11054,7 +11666,7 @@ li {
     <!-- 第 23 章：全重賞日程・全球三冠系列賽・G1 頂級攻略與競馬場特性大百科 -->
     <section id="sec-stakes-master" class="section-card" style="margin-bottom:24px;">
         <div class="section-header">
-            <div class="section-title"><i class="fa-solid fa-trophy"></i> 第 29 章：全重賞日程・全球三冠系列賽・G1 頂級攻略與競馬場特性大百科</div>
+            <div class="section-title"><i class="fa-solid fa-trophy"></i> 第 30 章：全重賞日程・全球三冠系列賽・G1 頂級攻略與競馬場特性大百科</div>
         </div>
         <div class="section-body">
             <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px; line-height:1.6;">
@@ -23697,7 +24309,7 @@ li {
 
 <section class="section-card" id="sec-triple-crowns">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-crown"></i> 第 30 章：全球三冠路線與夏季系列賽完全對照</div>
+<div class="section-title"><i class="fa-solid fa-crown"></i> 第 31 章：全球三冠路線與夏季系列賽完全對照</div>
 </div>
 <div class="section-body">
 <div class="callout callout-info">
@@ -24131,7 +24743,7 @@ li {
 </section>
 <section class="section-card" id="sec-racecourses">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-flag-checkered"></i> 第 31 章：全球賽馬場特性與跑道數據庫</div>
+<div class="section-title"><i class="fa-solid fa-flag-checkered"></i> 第 32 章：全球賽馬場特性與跑道數據庫</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -24298,7 +24910,7 @@ li {
 </section>
 <section class="section-card" id="sec-turf-adapt">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-seedling"></i> 第 32 章：全球草質 (Turf 1~11) 與適應能力對照</div>
+<div class="section-title"><i class="fa-solid fa-seedling"></i> 第 33 章：全球草質 (Turf 1~11) 與適應能力對照</div>
 </div>
 <div class="section-body">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -24339,7 +24951,7 @@ li {
 </section>
 <section class="section-card" id="sec-keiba-boom">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-fire"></i> 第 33 章：偶像馬地圖・賽馬熱潮・傳奇特性與顯彰馬</div>
+<div class="section-title"><i class="fa-solid fa-fire"></i> 第 34 章：偶像馬地圖・賽馬熱潮・傳奇特性與顯彰馬</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -24411,7 +25023,7 @@ li {
 </section>
 <section class="section-card" id="sec-nicknames">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-award"></i> 第 34 章：殿堂馬稱號 (異名)・人氣加成 (Boost) 與獲得條件全圖鑑</div>
+<div class="section-title"><i class="fa-solid fa-award"></i> 第 35 章：殿堂馬稱號 (異名)・人氣加成 (Boost) 與獲得條件全圖鑑</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -24526,7 +25138,7 @@ li {
 </div></section>
 <section class="section-card" id="sec-historia">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-book-journal-whills"></i> 第 35 章：競馬歷史事件 (Historia) 名場面與觸發條件</div>
+<div class="section-title"><i class="fa-solid fa-book-journal-whills"></i> 第 36 章：競馬歷史事件 (Historia) 名場面與觸發條件</div>
 </div>
 <div class="section-body">
 <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">
@@ -24588,7 +25200,7 @@ li {
         </div>
         <section class="section-card" id="sec-farm-facilities">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-warehouse"></i> 第 36 章：牧場設施升級與美歐海外分場規劃</div>
+<div class="section-title"><i class="fa-solid fa-warehouse"></i> 第 37 章：牧場設施升級與美歐海外分場規劃</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -25083,7 +25695,7 @@ li {
 </div></section>
 <section class="section-card" id="sec-personnel">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-user-gear"></i> 第 37 章：騎手・調教師・牧場長 18 大人物技能全書</div>
+<div class="section-title"><i class="fa-solid fa-user-gear"></i> 第 38 章：騎手・調教師・牧場長 18 大人物技能全書</div>
 </div>
 <div class="section-body">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -25128,7 +25740,7 @@ li {
 </section>
 <section class="section-card" id="sec-marriage-secrets">
 <div class="section-header" style="background: linear-gradient(135deg, rgba(236,72,153,0.15), rgba(168,85,247,0.15)); border-bottom: 1px solid rgba(236,72,153,0.3);">
-<div class="section-title"><i class="fa-solid fa-ring"></i> 第 38 章：知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</div>
+<div class="section-title"><i class="fa-solid fa-ring"></i> 第 39 章：知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom: 20px;">
@@ -26161,28 +26773,33 @@ li {
                     </div>
                 </div>
 
-                <!-- Group 4: 🏋️ 調教能力 -->
+                                <!-- Group 4: 🏋️ 調教能力 -->
                 <div class="chapter-pillar-group">
-                    <div class="chapter-pillar-title">🏋️ 第四專題：調教能力 (第 25 章 ~ 第 28 章)</div>
+                    <div class="chapter-pillar-title">🏋️ 第四專題：調教能力 (第 25 章 ~ 第 29 章)</div>
                     <div class="chapter-items-grid">
+                        <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-status-encyclopedia')">
+                            <span class="jump-icon"><i class="fa-solid fa-id-card-clip"></i></span>
+                            <span class="jump-num">第 25 章</span>
+                            <span class="jump-title">五大人物與賽馬數值能力完全百科 (五大面板詳解)</span>
+                        </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-skills-traits')">
                             <span class="jump-icon"><i class="fa-solid fa-medal"></i></span>
-                            <span class="jump-num">第 25 章</span>
+                            <span class="jump-num">第 26 章</span>
                             <span class="jump-title">基礎能力・四大比賽展開・適應能力與固有特性全書</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-historical-train')">
                             <span class="jump-icon"><i class="fa-solid fa-dumbbell"></i></span>
-                            <span class="jump-num">第 26 章</span>
+                            <span class="jump-num">第 27 章</span>
                             <span class="jump-title">史實調教・SP 雙馬合練・大成功量表全圖鑑</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-umasona')">
                             <span class="jump-icon"><i class="fa-solid fa-face-smile"></i></span>
-                            <span class="jump-num">第 27 章</span>
-                            <span class="jump-title">ウマソナ (馬之個性) 克服與進化秘技</span>
+                            <span class="jump-num">第 28 章</span>
+                            <span class="jump-title">ウマソナ (馬之個性) 全圖鑑・克服進化與14大性格矩陣</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-relations-2026')">
                             <span class="jump-icon"><i class="fa-solid fa-hands-holding-circle"></i></span>
-                            <span class="jump-num">第 28 章</span>
+                            <span class="jump-num">第 29 章</span>
                             <span class="jump-title">2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</span>
                         </button>
                     </div>
@@ -26190,41 +26807,41 @@ li {
 
                 <!-- Group 5: 🏆 賽事實戰 -->
                 <div class="chapter-pillar-group">
-                    <div class="chapter-pillar-title">🏆 第五專題：賽事實戰 (第 29 章 ~ 第 35 章)</div>
+                    <div class="chapter-pillar-title">🏆 第五專題：賽事實戰 (第 30 章 ~ 第 36 章)</div>
                     <div class="chapter-items-grid">
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-stakes-master')">
                             <span class="jump-icon"><i class="fa-solid fa-trophy"></i></span>
-                            <span class="jump-num">第 29 章</span>
+                            <span class="jump-num">第 30 章</span>
                             <span class="jump-title">全重賞賽事・全球三冠系列賽・競馬場特性・G1全攻略大百科</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-triple-crowns')">
                             <span class="jump-icon"><i class="fa-solid fa-crown"></i></span>
-                            <span class="jump-num">第 30 章</span>
+                            <span class="jump-num">第 31 章</span>
                             <span class="jump-title">全球三冠路線與夏季系列賽完全對照</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-racecourses')">
                             <span class="jump-icon"><i class="fa-solid fa-flag-checkered"></i></span>
-                            <span class="jump-num">第 31 章</span>
+                            <span class="jump-num">第 32 章</span>
                             <span class="jump-title">全球賽馬場特性與跑道數據庫</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-turf-adapt')">
                             <span class="jump-icon"><i class="fa-solid fa-seedling"></i></span>
-                            <span class="jump-num">第 32 章</span>
+                            <span class="jump-num">第 33 章</span>
                             <span class="jump-title">全球草質 (Turf 1~11) 與適應能力對照</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-keiba-boom')">
                             <span class="jump-icon"><i class="fa-solid fa-fire"></i></span>
-                            <span class="jump-num">第 33 章</span>
+                            <span class="jump-num">第 34 章</span>
                             <span class="jump-title">賽馬熱潮 (競馬ブーム) 極致爆發指南</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-nicknames')">
                             <span class="jump-icon"><i class="fa-solid fa-award"></i></span>
-                            <span class="jump-num">第 34 章</span>
+                            <span class="jump-num">第 35 章</span>
                             <span class="jump-title">殿堂馬稱號 (異名) 圖鑑與特殊效果</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-historia')">
                             <span class="jump-icon"><i class="fa-solid fa-book-journal-whills"></i></span>
-                            <span class="jump-num">第 35 章</span>
+                            <span class="jump-num">第 36 章</span>
                             <span class="jump-title">競馬歷史事件 (Historia) 名場面與觸發條件</span>
                         </button>
                     </div>
@@ -26232,21 +26849,21 @@ li {
 
                 <!-- Group 6: 🏰 牧場家族 -->
                 <div class="chapter-pillar-group">
-                    <div class="chapter-pillar-title">🏰 第六專題：牧場家族 (第 36 章 ~ 第 38 章)</div>
+                    <div class="chapter-pillar-title">🏰 第六專題：牧場家族 (第 37 章 ~ 第 39 章)</div>
                     <div class="chapter-items-grid">
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-farm-facilities')">
                             <span class="jump-icon"><i class="fa-solid fa-warehouse"></i></span>
-                            <span class="jump-num">第 36 章</span>
+                            <span class="jump-num">第 37 章</span>
                             <span class="jump-title">牧場設施升級與美歐海外分場規劃</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-personnel')">
                             <span class="jump-icon"><i class="fa-solid fa-user-gear"></i></span>
-                            <span class="jump-num">第 37 章</span>
+                            <span class="jump-num">第 38 章</span>
                             <span class="jump-title">騎手・調教師・牧場長 18 大人物技能全書</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-marriage-secrets')">
                             <span class="jump-icon"><i class="fa-solid fa-ring"></i></span>
-                            <span class="jump-num">第 38 章</span>
+                            <span class="jump-num">第 39 章</span>
                             <span class="jump-title">知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</span>
                         </button>
                     </div>
@@ -26254,11 +26871,11 @@ li {
 
                 <!-- Group 7: 🏇 馬庫速查 -->
                 <div class="chapter-pillar-group">
-                    <div class="chapter-pillar-title">🏇 第七專題：馬庫速查 (第 39 章)</div>
+                    <div class="chapter-pillar-title">🏇 第七專題：馬庫速查 (第 40 章)</div>
                     <div class="chapter-items-grid">
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-horse-db')">
                             <span class="jump-icon"><i class="fa-solid fa-horse"></i></span>
-                            <span class="jump-num">第 39 章</span>
+                            <span class="jump-num">第 40 章</span>
                             <span class="jump-title">1.5 萬匹全史實馬與 11 大年度推薦速查庫</span>
                         </button>
                     </div>
