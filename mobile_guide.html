@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.38</span>
+        <span class="version-badge">v02.39</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -28361,6 +28361,7 @@ function changeMasterLivePage(delta) {
 
         function renderTable() {
             ensureUnpackedDb();
+            ch40CurrentPage = 1;
 
             if (["cat2", "cat11", "cat12"].includes(currentTab)) {
                 renderGuideCategory(currentTab);
@@ -28566,6 +28567,17 @@ function changeMasterLivePage(delta) {
             });
         }
 
+        let ch40CurrentPage = 1;
+        const ch40PageSize = 25;
+        let ch40FilteredList = [];
+
+        function changeCh40Page(delta) {
+            ch40CurrentPage += delta;
+            renderBody(ch40FilteredList);
+            const tbl = document.getElementById("horseTable");
+            if (tbl) tbl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
         function renderThead() {
             renderHeader();
         }
@@ -28577,20 +28589,28 @@ function changeMasterLivePage(delta) {
         }
 
         function renderBody(items) {
+            ch40FilteredList = items;
             const tbody = document.getElementById("tableBody");
             if (!tbody) return;
             tbody.innerHTML = "";
 
-            if (items.length === 0) {
+            const total = items.length;
+            const totalPages = Math.max(1, Math.ceil(total / ch40PageSize));
+            ch40CurrentPage = Math.min(Math.max(1, ch40CurrentPage), totalPages);
+
+            if (total === 0) {
                 window._CURRENT_RENDERED_ITEMS = [];
                 const tr = document.createElement("tr");
                 tr.innerHTML = `<td colspan="14" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
                 tbody.appendChild(tr);
+                
+                const oldPag = document.getElementById("ch40Pagination");
+                if (oldPag) oldPag.remove();
                 return;
             }
 
-            const displayLimit = 200;
-            const slice = items.slice(0, displayLimit);
+            const start = (ch40CurrentPage - 1) * ch40PageSize;
+            const slice = items.slice(start, start + ch40PageSize);
             window._CURRENT_RENDERED_ITEMS = slice;
 
             slice.forEach((item, idx) => {
@@ -28626,10 +28646,23 @@ function changeMasterLivePage(delta) {
                 tbody.appendChild(tr);
             });
 
-            if (items.length > displayLimit) {
-                const trMore = document.createElement("tr");
-                trMore.innerHTML = `<td colspan="14" style="text-align:center; padding:15px; color:var(--accent-color); font-weight:bold;">已顯示前 200 筆（共 ${items.length.toLocaleString()} 筆）。請縮小篩選條件以精確瀏覽。</td>`;
-                tbody.appendChild(trMore);
+            // Update or create pagination container below table
+            let pagEl = document.getElementById("ch40Pagination");
+            if (!pagEl) {
+                const tableWrap = document.getElementById("tableViewWrapper");
+                if (tableWrap) {
+                    pagEl = document.createElement("div");
+                    pagEl.id = "ch40Pagination";
+                    tableWrap.appendChild(pagEl);
+                }
+            }
+            if (pagEl) {
+                pagEl.style.cssText = "display:flex; justify-content:center; align-items:center; gap:12px; margin-top:16px; margin-bottom:20px; font-size:0.85rem;";
+                pagEl.innerHTML = `
+                    <button onclick="changeCh40Page(-1)" class="btn btn-secondary" style="padding:6px 14px; cursor:pointer; border-radius:6px;" ${ch40CurrentPage <= 1 ? 'disabled style="opacity:0.4; cursor:not-allowed; padding:6px 14px;"' : ''}><i class="fa-solid fa-chevron-left"></i> 上一頁</button>
+                    <span style="color:var(--text-color); font-weight:600;">第 ${ch40CurrentPage} / ${totalPages} 頁 (每頁 25 筆，總計 ${total.toLocaleString()} 匹)</span>
+                    <button onclick="changeCh40Page(1)" class="btn btn-secondary" style="padding:6px 14px; cursor:pointer; border-radius:6px;" ${ch40CurrentPage >= totalPages ? 'disabled style="opacity:0.4; cursor:not-allowed; padding:6px 14px;"' : ''}>下一頁 <i class="fa-solid fa-chevron-right"></i></button>
+                `;
             }
         }
 
