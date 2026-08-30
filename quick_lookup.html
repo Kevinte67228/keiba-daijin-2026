@@ -1736,7 +1736,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.08</span>
+        <span class="version-badge">v02.09</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 38 大章節)
@@ -9924,146 +9924,1069 @@ li {
 <div class="section-title"><i class="fa-solid fa-face-smile"></i> 第 27 章：ウマソナ (馬之個性) 克服與進化秘技</div>
 </div>
 <div class="section-body">
-<div class="callout callout-gold">
-<i class="fa-solid fa-masks-theater"></i>
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-masks-theater" style="font-size:1.2rem; color:var(--accent-gold);"></i>
 <div>
-<strong>《賽馬大亨 10 2026》ウマソナ (馬之個性) 進化與克服機制</strong><br/>
-            個性分為正面加成（藍色）、負面缺陷（紅色/灰色克服）。出賽 3 次後可觸發個性專屬事件（每匹馬最多 5 次）。透過特定戰術、信賴度提升或史實調教大成功，可將缺陷性格完全克服甚至進化為神級上位個性！全個性名稱與效果皆採<strong>「日/中並行」</strong>呈現。
-          </div>
+<strong>《賽馬大亨 10 2026》ウマソナ (馬之個性 / Umasonality) 100% 完全數據庫與底層機制手冊</strong><br/>
+                個性是決定賽駒臨場發揮、能力上下限、調教成功率與人馬相性的核心系統。本章全量收錄 40+ 種個性效果、觸發條件、賽事經驗箭頭、克服與進化途徑、對應史實調教清單，以及 14 大先天性格之個性出現機率分佈矩陣！
+            </div>
 </div>
-<div class="table-responsive" style="margin-bottom:24px;">
+<!-- ==================== 一、ウマソナ四大核心底層機制全解 ==================== -->
+<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--accent-gold); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+<h3 style="color:var(--gold-color); font-size:1.1rem; margin-top:0; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:8px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-brain"></i> 一、ウマソナ (馬之個性) 四大底層運作機制
+    </h3>
+<div class="grid-cols-1-mobile" style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px;">
+<div style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:12px;">
+<h4 style="color:var(--accent-color); margin:0 0 6px; font-size:0.9rem;"><i class="fa-solid fa-eye"></i> 1. 個性識別與圖示法則</h4>
+<ul style="font-size:0.83rem; line-height:1.7; margin:0; padding-left:18px;">
+<li><strong>檢視路徑</strong>：「馬情報」➔「ウマーソナリティ」查看賽駒持有的個性。</li>
+<li><span class="badge badge-blue">🟦 藍色圖示</span>：<strong>正面加成效果 (Plus)</strong>，提供能力爆發、調教加成或抗壓。</li>
+<li><span class="badge badge-pink">🟥 紅色圖示</span>：<strong>負面缺陷 (Minus)</strong>，在特定條件下失速、扣育成度或調教失敗。</li>
+<li><span class="badge badge-purple">🟪 藍紅雙色</span>：<strong>雙向效果</strong>（有利有弊，如看報紙的馬、群體一員）。</li>
+<li><strong>關聯圖示</strong>：中央顯示 <strong>馬匹</strong> 為馬匹自身特性；顯示 <strong>人物 (騎手/調教師)</strong> 則需與特定特性的騎師/練馬師搭配。</li>
+<li><strong>人馬相性</strong>：透過人物臉部表情圖示可即時判別相性契合度。</li>
+</ul>
+</div>
+<div style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:12px;">
+<h4 style="color:var(--accent-color); margin:0 0 6px; font-size:0.9rem;"><i class="fa-solid fa-layer-group"></i> 2. 個性持有槽位與習得規則</h4>
+<ul style="font-size:0.83rem; line-height:1.7; margin:0; padding-left:18px;">
+<li><strong>出生自帶</strong>：每匹馬出生必自帶 1 個初始個性（由 14 大先天性格決定出現機率）。</li>
+<li><strong>虛擬架空馬</strong>：初始預定個體最多 3 個，第 2~3 個在成長後必定解鎖。</li>
+<li><strong>史實名馬</strong>：初始預定個體 1~4 個，第 2~4 個隨成長後續陸續解鎖。</li>
+<li><strong>槽位上限</strong>：<strong>每匹馬最多可持有 6 個個性</strong>！同名個性不重複，正負相反個性（如環境變化〇與環境變化×）不會同時習得。</li>
+</ul>
+</div>
+<div style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:12px;">
+<h4 style="color:var(--accent-color); margin:0 0 6px; font-size:0.9rem;"><i class="fa-solid fa-chart-line"></i> 3. 賽事經驗 (レース経験) 與箭頭加成</h4>
+<ul style="font-size:0.83rem; line-height:1.7; margin:0; padding-left:18px;">
+<li><strong>檢視路徑</strong>：「馬情報」➔「所有競走馬」➔「備忘錄 (メモ)」➔「賽事經驗」。</li>
+<li><strong>累積機制</strong>：在對應條件（如多頭數、本命、非熱門、輸送競馬、接戰等）好走會提升該條件經驗值。</li>
+<li><strong>影響度箭頭</strong>：個性決定賽事經驗的上升幅度（<strong>1~4 級箭頭，4 級箭頭影響最大</strong>）。</li>
+<li><strong>實戰效果</strong>：該條件賽事經驗越豐富，賽駒在該情境下的能力發揮越充分！</li>
+</ul>
+</div>
+<div style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:12px;">
+<h4 style="color:var(--accent-color); margin:0 0 6px; font-size:0.9rem;"><i class="fa-solid fa-handshake"></i> 4. 信任度 (信頼度) 與個性事件 S/L</h4>
+<ul style="font-size:0.83rem; line-height:1.7; margin:0; padding-left:18px;">
+<li><strong>信任度累積</strong>：賽事跑入前 5 名或觸發個性事件增加。<strong>G1 大概 3 勝可提升 1 級信任度</strong>。</li>
+<li><strong>進化與克服</strong>：信任度達 Lv1 可克服負面缺陷；達 Lv2 可將正面特性進化為神級上位個性！</li>
+<li><strong>個性事件 (ウマソナイベント)</strong>：<strong>每出賽 3 次觸發 1 次，每匹馬上限 5 次</strong>（首回固定為「愛馬撫育」）。</li>
+<li><strong>S/L 洗事件</strong>：可透過賽前存檔讀檔（S/L）隨機刷新互動內容與獎勵。</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- ==================== 二、全 40+ 種個性完全數據庫大表 ==================== -->
+<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+<div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-table-list"></i> 二、ウマソナ (馬之個性) 全量數據庫完全對照表
+        </div>
+<span class="badge badge-gold" style="font-size:0.78rem; padding:3px 8px;">日中並行・零遺漏完整收錄</span>
+</div>
+<div class="table-responsive">
 <table class="data-table">
 <thead>
 <tr>
 <th style="min-width:180px;">個性名稱 (日/中)</th>
-<th style="min-width:130px;">個性類型 (日/中)</th>
-<th style="min-width:320px;">能力與實戰效果說明 (繁體中文)</th>
-<th style="min-width:160px;">上位進化名稱 (日/中)</th>
-<th style="min-width:340px;">克服條件 / 上位進化條件 (繁體中文)</th>
+<th style="min-width:120px;">分類 (日/中)</th>
+<th style="min-width:90px;">效果類型</th>
+<th style="min-width:260px;">詳細具體數值效果 (繁體中文)</th>
+<th style="min-width:200px;">發動條件 (日/中)</th>
+<th style="min-width:130px;">對應賽事經驗</th>
+<th style="min-width:90px;">影響度</th>
+<th style="min-width:90px;">種類</th>
+<th style="min-width:280px;">進化 / 克服條件說明 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<!-- 領導力 -->
+<tr style="background:rgba(239,68,68,0.06);">
+<td><strong style="color:#f87171;">引っ込み思案 (內向)</strong></td>
+<td>領導力 (リーダーシップ)</td>
+<td><span class="badge badge-pink">負面</span></td>
+<td>能力發揮程度下降 (中)</td>
+<td>比賽中為 1 番人氣</td>
+<td>冷門 (人気薄)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>通常</td>
+<td>信任 Lv1 以上，以 1 番人氣獲勝 或 執行對應史實調教克服</td>
+</tr>
+<tr style="background:rgba(148,163,184,0.06);">
+<td><strong>引っ込み思案 (克服)</strong></td>
+<td>領導力 (リーダーシップ)</td>
+<td><span class="badge badge-silver">克服</span></td>
+<td>無負面減益 (消除缺陷)</td>
+<td>無</td>
+<td>冷門 (人気薄)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>克服</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(59,130,246,0.06);">
+<td><strong style="color:var(--gold-color);">目立ちたがり (愛出風頭)</strong></td>
+<td>領導力 (リーダーシップ)</td>
+<td><span class="badge badge-blue">正面</span></td>
+<td>能力充分發揮 (中)</td>
+<td>1 番人氣 或 採取極端作戰 (如大逃)</td>
+<td>本命 (本命)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>通常</td>
+<td>信任 Lv2 以上，在觸發個性的賽事中取得多次勝利進化</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.08);">
+<td><strong style="color:var(--gold-color);">エンターテイナー (頂級娛樂家)</strong></td>
+<td>領導力 (リーダーシップ)</td>
+<td><span class="badge badge-gold">進化</span></td>
+<td>能力大幅發揮 (大)，賽事人氣上升</td>
+<td>上位人氣 或 採取引人注目的作戰 (如內側突擊)</td>
+<td>本命 (本命)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>進化</td>
+<td>由「目立ちたがり (愛出風頭)」上位進化</td>
+</tr>
+<!-- 勝負心/負けん気 -->
+<tr style="background:rgba(239,68,68,0.06);">
+<td><strong style="color:#f87171;">詰めが甘い (後勁不足)</strong></td>
+<td>勝負心 (負けん気)</td>
+<td><span class="badge badge-pink">負面</span></td>
+<td>終點線前衝刺速度下降</td>
+<td>有宿敵勁敵馬 (ライバル) 同場出戰</td>
+<td>對戰下位馬 (vs格下)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>通常</td>
+<td>信任 Lv1 以上，在接戰中獲勝 / 連勝 / 史實調教克服</td>
+</tr>
+<tr style="background:rgba(148,163,184,0.06);">
+<td><strong>詰めが甘い (克服)</strong></td>
+<td>勝負心 (負けん気)</td>
+<td><span class="badge badge-silver">克服</span></td>
+<td>無負面減益 (消除終點失速)</td>
+<td>無</td>
+<td>對戰下位馬 (vs格下)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>克服</td>
+<td>信任 Lv2 以上，在接戰中取得多次勝利進化為「ど根性」</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.08);">
+<td><strong style="color:var(--gold-color);">ど根性 (超強韌性)</strong></td>
+<td>勝負心 (負けん気)</td>
+<td><span class="badge badge-gold">進化</span></td>
+<td>終點前速度大幅上升，勝負根性上升</td>
+<td>無</td>
+<td>接戰 (接戦)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>進化</td>
+<td>由「詰めが甘い (克服)」上位進化</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.06);">
+<td><strong style="color:#f87171;">反抗的 (反叛逆反)</strong></td>
+<td>勝負心 (負けん気)</td>
+<td><span class="badge badge-pink">負面</span></td>
+<td>比賽中可能不遵從既定作戰指示</td>
+<td>無</td>
+<td>更換騎手 (乗り替わり)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>通常</td>
+<td>信任 Lv1 以上，按作戰指示獲勝 或 史實調教克服</td>
+</tr>
+<tr style="background:rgba(148,163,184,0.06);">
+<td><strong>反抗的 (克服)</strong></td>
+<td>勝負心 (負けん気)</td>
+<td><span class="badge badge-silver">克服</span></td>
+<td>無負面減益 (完全服從指示)</td>
+<td>無</td>
+<td>更換騎手 (乗り替わり)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>克服</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(59,130,246,0.06);">
+<td><strong style="color:var(--gold-color);">負けず嫌い (不服輸)</strong></td>
+<td>勝負心 (負けん気)</td>
+<td><span class="badge badge-blue">正面</span></td>
+<td>能力發揮 (小)</td>
+<td>勁敵馬人氣高於自身</td>
+<td>對戰上位馬 (vs格上 GⅠ級)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>通常</td>
+<td>信任 Lv2 以上，擊敗高格位或高度勁敵馬後進化</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.08);">
+<td><strong style="color:var(--gold-color);">不撓不屈 (不屈不撓)</strong></td>
+<td>勝負心 (負けん気)</td>
+<td><span class="badge badge-gold">進化</span></td>
+<td>能力大幅發揮 (大)，勝負根性顯著上升</td>
+<td>勁敵馬人氣高於自身</td>
+<td>對戰上位馬 (vs格上 GⅠ級)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>進化</td>
+<td>由「負けず嫌い (不服輸)」上位進化</td>
+</tr>
+<!-- 協調性 -->
+<tr style="background:rgba(59,130,246,0.06);">
+<td><strong style="color:var(--gold-color);">甘えん坊 (撒嬌鬼)</strong></td>
+<td>協調性 (協調性)</td>
+<td><span class="badge badge-blue">正面</span></td>
+<td>不易出現暴衝失控 (掛かりづらくなる・小)</td>
+<td>於所屬地域之賽事出走 (非遠征)</td>
+<td>多頭數 (多頭数)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>通常</td>
+<td>信任 Lv2 以上，於非遠征賽事取得多次勝利進化</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.08);">
+<td><strong style="color:var(--gold-color);">甘え上手 (撒嬌高手)</strong></td>
+<td>協調性 (協調性)</td>
+<td><span class="badge badge-gold">進化</span></td>
+<td>極不易暴衝失控 (大)，出賽精神力上升</td>
+<td>於所屬地域之賽事出走 (非遠征)</td>
+<td>多頭數 (多頭数)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>進化</td>
+<td>由「甘えん坊 (撒嬌鬼)」上位進化</td>
+</tr>
+<tr style="background:rgba(59,130,246,0.06);">
+<td><strong style="color:var(--gold-color);">人懐っこい (親人溫馴)</strong></td>
+<td>協調性 (協調性)</td>
+<td><span class="badge badge-blue">正面</span></td>
+<td>幼駒育成度上升量增加</td>
+<td>無</td>
+<td>更換騎手 (乗り替わり)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>通常</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.06);">
+<td><strong style="color:#f87171;">わがまま (任性自私)</strong></td>
+<td>協調性 (協調性)</td>
+<td><span class="badge badge-pink">負面</span></td>
+<td>幼駒育成度上升量減少</td>
+<td>無</td>
+<td>快步速 (ハイペース)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>通常</td>
+<td>信任 Lv1 以上，執行對應史實調教克服</td>
+</tr>
+<tr style="background:rgba(148,163,184,0.06);">
+<td><strong>わがまま (克服)</strong></td>
+<td>協調性 (協調性)</td>
+<td><span class="badge badge-silver">克服</span></td>
+<td>無負面減益 (育成度恢復正常)</td>
+<td>無</td>
+<td>快步速 (ハイペース)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>克服</td>
+<td>信任 Lv2 以上，在同廄舍中活躍度居於前列進化</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.08);">
+<td><strong style="color:var(--gold-color);">厩舎のボス (馬房老大)</strong></td>
+<td>協調性 (協調性)</td>
+<td><span class="badge badge-gold">進化</span></td>
+<td>同廄舍持有「群體一員」賽駒育成度上升，自身鬥志上升量大幅增加</td>
+<td>無</td>
+<td>蓄力領放 (溜め逃げ)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>進化</td>
+<td>由「わがまま (克服)」上位進化</td>
+</tr>
+<tr style="background:rgba(168,85,247,0.06);">
+<td><strong style="color:#c084fc;">群れの一員 (群體一員)</strong></td>
+<td>協調性 (協調性)</td>
+<td><span class="badge badge-purple">雙向</span></td>
+<td>廄舍有「馬房老大」時育成度大幅上升；若無則育成度上升量減少</td>
+<td>同廄舍存在持有「厩舎のボス」之賽馬</td>
+<td>多頭數 (多頭数)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>通常</td>
+<td>/</td>
+</tr>
+<!-- 集中力 -->
+<tr style="background:rgba(239,68,68,0.06);">
+<td><strong style="color:#f87171;">手抜き癖 (偷工偷懶)</strong></td>
+<td>集中力 (集中力)</td>
+<td><span class="badge badge-pink">負面</span></td>
+<td>史實調教成功率下降 5%</td>
+<td>無</td>
+<td>慢步速 (スローペース)</td>
+<td><span class="pill pill-version">1 級</span></td>
+<td>通常</td>
+<td>信任 Lv1 以上，執行史實調教克服</td>
+</tr>
+<tr style="background:rgba(148,163,184,0.06);">
+<td><strong>手抜き癖 (克服)</strong></td>
+<td>集中力 (集中力)</td>
+<td><span class="badge badge-silver">克服</span></td>
+<td>無負面減益 (史實調教機率正常)</td>
+<td>無</td>
+<td>慢步速 (スローペース)</td>
+<td><span class="pill pill-version">1 級</span></td>
+<td>克服</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(59,130,246,0.06);">
+<td><strong style="color:var(--gold-color);">努力上手 (勤奮努力)</strong></td>
+<td>集中力 (集中力)</td>
+<td><span class="badge badge-blue">正面</span></td>
+<td>史實調教成功率上升 5%</td>
+<td>無</td>
+<td>平均步速 (平均ペース)</td>
+<td><span class="pill pill-safe">2 級</span></td>
+<td>通常</td>
+<td>信任 Lv2 以上，執行上位史實調教 (評級 A) 達成大成功進化</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.08);">
+<td><strong style="color:var(--gold-color);">秀才肌 (天賦秀才)</strong></td>
+<td>集中力 (集中力)</td>
+<td><span class="badge badge-gold">進化</span></td>
+<td>史實調教成功率上升 10%，智力 (賢さ) 上升</td>
+<td>無</td>
+<td>平均步速 (平均ペース)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>進化</td>
+<td>由「努力上手 (勤奮努力)」上位進化</td>
+</tr>
+<tr style="background:rgba(168,85,247,0.06);">
+<td><strong style="color:#c084fc;">ムラっ気 (情緒起伏)</strong></td>
+<td>集中力 (集中力)</td>
+<td><span class="badge badge-purple">雙向</span></td>
+<td>賽事當天鬥志大幅上下波動（若騎師持續策騎則較易提升）</td>
+<td>無</td>
+<td>冷門 (人気薄)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>通常</td>
+<td>信任 Lv1 以上，近走成績穩定（5著以內）獲勝 或 史實調教克服</td>
+</tr>
+<tr style="background:rgba(148,163,184,0.06);">
+<td><strong>ムラっ気 (克服)</strong></td>
+<td>集中力 (集中力)</td>
+<td><span class="badge badge-silver">克服</span></td>
+<td>無負面減益 (賽事鬥志穩定)</td>
+<td>無</td>
+<td>冷門 (人気薄)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>克服</td>
+<td>信任 Lv2 以上，近走 3 著以內且高鬥志下獲勝進化</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.08);">
+<td><strong style="color:var(--gold-color);">気合充分 (鬥志昂揚)</strong></td>
+<td>集中力 (集中力)</td>
+<td><span class="badge badge-gold">進化</span></td>
+<td>鬥志上升量增加（放牧時除外），比賽當週鬥志自動提升</td>
+<td>無</td>
+<td>冷門 (人気薄)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>進化</td>
+<td>由「ムラっ気 (克服)」上位進化</td>
+</tr>
+<!-- 壓力耐性 -->
+<tr style="background:rgba(239,68,68,0.06);">
+<td><strong style="color:#f87171;">環境変化× (環境不適)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-pink">負面</span></td>
+<td>能力發揮程度下降 (中)</td>
+<td>遠征出賽 或 於初次出走的賽馬場作賽</td>
+<td>輸送賽事 (輸送競馬)</td>
+<td><span class="pill pill-safe">2 級</span></td>
+<td>通常</td>
+<td>信任 Lv1 以上，遠征或初次作賽獲勝 / 史實調教克服</td>
+</tr>
+<tr style="background:rgba(148,163,184,0.06);">
+<td><strong>環境変化× (克服)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-silver">克服</span></td>
+<td>無負面減益 (消除遠征不適)</td>
+<td>無</td>
+<td>輸送賽事 (輸送競馬)</td>
+<td><span class="pill pill-safe">2 級</span></td>
+<td>克服</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(59,130,246,0.06);">
+<td><strong style="color:var(--gold-color);">環境変化〇 (環境適應)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-blue">正面</span></td>
+<td>完全免疫遠征與陌生賽場的能力下降惩罰</td>
+<td>無</td>
+<td>輸送賽事 (輸送競馬)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>通常</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.06);">
+<td><strong style="color:#f87171;">剛腕× (不適剛腕騎手)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-pink">負面</span></td>
+<td>能力發揮程度下降 (中)</td>
+<td>策騎騎師持有「剛腕」特性</td>
+<td>內側突擊 (イン狙い)</td>
+<td><span class="pill pill-safe">2 級</span></td>
+<td>通常</td>
+<td>信任 Lv1 以上，由「剛腕〇」騎手策騎獲勝 / 史實調教克服</td>
+</tr>
+<tr style="background:rgba(148,163,184,0.06);">
+<td><strong>剛腕× (克服)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-silver">克服</span></td>
+<td>無負面減益</td>
+<td>無</td>
+<td>內側突擊 (イン狙い)</td>
+<td><span class="pill pill-safe">2 級</span></td>
+<td>克服</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(59,130,246,0.06);">
+<td><strong style="color:var(--gold-color);">剛腕〇 (適應剛腕騎手)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-blue">正面</span></td>
+<td>能力發揮更加充分 (中)</td>
+<td>策騎騎師持有「剛腕」特性</td>
+<td>蓄力領放 (溜め逃げ)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>通常</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.06);">
+<td><strong style="color:#f87171;">風車鞭× (恐懼風車鞭)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-pink">負面</span></td>
+<td>能力發揮程度下降 (中)</td>
+<td>策騎騎師持有「風車鞭」特性</td>
+<td>最後方強襲</td>
+<td><span class="pill pill-safe">2 級</span></td>
+<td>通常</td>
+<td>信任 Lv1 以上，由「風車鞭〇」騎手策騎獲勝 / 史實調教克服</td>
+</tr>
+<tr style="background:rgba(148,163,184,0.06);">
+<td><strong>風車鞭× (克服)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-silver">克服</span></td>
+<td>無負面減益</td>
+<td>策騎騎師持有「風車鞭」特性</td>
+<td>最後方強襲</td>
+<td><span class="pill pill-safe">2 級</span></td>
+<td>克服</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(59,130,246,0.06);">
+<td><strong style="color:var(--gold-color);">風車鞭〇 (適應風車鞭)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-blue">正面</span></td>
+<td>能力發揮更加充分 (中)</td>
+<td>策騎騎師持有「風車鞭」特性</td>
+<td>中段推進 (まくり)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>通常</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(59,130,246,0.06);">
+<td><strong style="color:var(--gold-color);">スパルタ調整向き (魔鬼調整)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-blue">正面</span></td>
+<td>狀態 (調子) 更易上升</td>
+<td>練馬師持有「スパルタ (斯巴達魔鬼訓練)」特性</td>
+<td>賽事間隔密集 (厳しい)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>通常</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(59,130,246,0.06);">
+<td><strong style="color:var(--gold-color);">ソフト調整向き (溫和調整)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-blue">正面</span></td>
+<td>狀態 (調子) 更易上升</td>
+<td>練馬師持有「輕度調教 (軽め調教)」特性</td>
+<td>賽事間隔寬鬆 (ゆったり)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>通常</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.06);">
+<td><strong style="color:#f87171;">使い詰め× (連戰不耐)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-pink">負面</span></td>
+<td>賽後疲勞累積速度大幅加快</td>
+<td>賽程表 (Rotation) 間隔顯示為紅色緊湊</td>
+<td>賽事間隔寬鬆 (ゆったり)</td>
+<td><span class="pill pill-version">1 級</span></td>
+<td>通常</td>
+<td>信任 Lv1 以上，在緊湊賽程下獲勝 / 史實調教克服</td>
+</tr>
+<tr style="background:rgba(148,163,184,0.06);">
+<td><strong>使い詰め× (克服)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-silver">克服</span></td>
+<td>無負面減益 (疲勞正常)</td>
+<td>無</td>
+<td>賽事間隔寬鬆 (ゆったり)</td>
+<td><span class="pill pill-version">1 級</span></td>
+<td>克服</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(59,130,246,0.06);">
+<td><strong style="color:var(--gold-color);">使い詰め〇 (連戰剛健)</strong></td>
+<td>抗壓 (ストレス耐性)</td>
+<td><span class="badge badge-blue">正面</span></td>
+<td>疲勞不易上升，狀態維持極度穩定</td>
+<td>賽程表 (Rotation) 間隔顯示為紅色緊湊</td>
+<td>賽事間隔密集 (厳しい)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>通常</td>
+<td>/</td>
+</tr>
+<!-- 意外性 & 其他 -->
+<tr style="background:rgba(59,130,246,0.06);">
+<td><strong style="color:var(--gold-color);">いたずら好き (愛惡作劇)</strong></td>
+<td>意外性 (意外性)</td>
+<td><span class="badge badge-blue">正面</span></td>
+<td>狀態 (調子) 更易自然上升</td>
+<td>無</td>
+<td>最後方強襲</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>通常</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(168,85,247,0.06);">
+<td><strong style="color:#c084fc;">新聞を読む馬 (看報紙的馬)</strong></td>
+<td>意外性 (意外性)</td>
+<td><span class="badge badge-purple">雙向</span></td>
+<td>為冷門馬時能力超水準發揮；但成為 1 番人氣時能力反而下降</td>
+<td>處於非熱門 (人気薄)</td>
+<td>本命 (本命)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>通常</td>
+<td>/</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.06);">
+<td><strong style="color:#f87171;">スランプ (低潮低迷)</strong></td>
+<td>其他 (その他)</td>
+<td><span class="badge badge-pink">負面</span></td>
+<td>狀態大幅滑落且難以回升</td>
+<td>遭遇大敗 (慘敗) 後觸發</td>
+<td>少頭數 (少頭数)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>通常</td>
+<td>信任 Lv1 以上，前 2 戰跑入三甲 (馬券圈) 獲勝 / 史實調教克服</td>
+</tr>
+<tr style="background:rgba(148,163,184,0.06);">
+<td><strong>スランプ (克服)</strong></td>
+<td>其他 (その他)</td>
+<td><span class="badge badge-silver">克服</span></td>
+<td>無負面減益 (狀態正常)</td>
+<td>無</td>
+<td>少頭數 (少頭数)</td>
+<td><span class="pill pill-safe">3 級</span></td>
+<td>克服</td>
+<td>信任 Lv2 以上，於狀態極佳下連勝進化</td>
+</tr>
+<tr style="background:rgba(234,179,8,0.08);">
+<td><strong style="color:var(--gold-color);">絶好調 (絕佳狀態)</strong></td>
+<td>其他 (その他)</td>
+<td><span class="badge badge-gold">進化</span></td>
+<td>狀態極易上升，比賽當週調子直接升至頂點</td>
+<td>賽事獲勝</td>
+<td>賽事間隔密集 (厳しい)</td>
+<td><span class="pill pill-power">4 級</span></td>
+<td>進化</td>
+<td>由「スランプ (克服)」上位進化</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- ==================== 三、全個性習得條件與適性史實調教 ==================== -->
+<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+<div style="font-size:1.1rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-dumbbell"></i> 三、個性習得條件・初期狀態與適性史實調教對照
+        </div>
+<span class="badge badge-blue" style="font-size:0.78rem; padding:3px 8px;">史實調教專屬適性</span>
+</div>
+<div class="table-responsive">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:180px;">ウマソナ (馬之個性)</th>
+<th style="min-width:180px;">習得觸發條件</th>
+<th style="min-width:100px;">初期所有</th>
+<th style="min-width:380px;">適性／克服專用之史實調教清單 (日/中)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><span class="pill pill-safe">甘えん坊 (撒嬌鬼)</span></td>
-<td>協調性 (協調性)</td>
-<td>非遠征賽事時情緒較為冷靜。</td>
-<td><strong style="color:var(--gold-color);">甘え上手 (撒嬌高手)</strong></td>
-<td>信賴 Lv2 以上，多次勝出非遠征賽事後進化。</td>
+<td><strong>引っ込み思案 (內向)</strong></td>
+<td>/ (隨機或初期固有)</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>障礙調教 (障害調教)・實踐障礙飛越 (実践障害飛越)、蝮蛇團子 (マムシ団子)・飼育員 (フィードマン)、角馬場調教・馬術式調教</td>
 </tr>
 <tr>
-<td><span class="pill pill-gold">甘え上手 (撒嬌高手)</span></td>
-<td>協調性 (協調性)</td>
-<td>非遠征賽事保持冷靜，出賽時精神力顯著上升。</td>
-<td>/</td>
-<td>由「甘えん坊 (撒嬌鬼)」上位進化。</td>
+<td><strong>目立ちたがり (愛出風頭)</strong></td>
+<td>1 番人氣下獲勝</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>音樂鑑賞 (音楽鑑賞)・大歡聲模擬 (大歓声シミュレーション)、入廄巡禮 (スクーリング)・海外遠征現地追</td>
 </tr>
 <tr>
-<td><span class="pill pill-safe">いたずら好き (愛惡作劇)</span></td>
-<td>意外性 (意外性)</td>
-<td>狀態 (調子) 機率自然上升。</td>
-<td><strong style="color:var(--gold-color);">自由気まま (隨心所欲)</strong></td>
-<td>進化為 2024 版「自由気まま」。</td>
+<td><strong>詰めが甘い (後勁不足)</strong></td>
+<td>於接戰 (微小差距) 中落敗</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>5化朗追 (5ハロン追い)・木屑道追 (ウッドチップ追い)、芝當週追 (芝当週追い)・芝當週長距離追、蝮蛇團子 (マムシ団子)・飼育員 (フィードマン)</td>
 </tr>
 <tr>
-<td><span class="pill pill-gold">自由気まま (隨心所欲)</span></td>
-<td>意外性 (意外性)</td>
-<td>在廄舍中進一步大幅加強調子上升機率，並減緩競走壽命消耗。</td>
-<td>/</td>
-<td>由「いたずら好き (愛惡作劇)」上位進化。</td>
+<td><strong>反抗的 (反叛逆反)</strong></td>
+<td>/ (隨機或初期固有)</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>游泳池 (プール)・水中毒木跑步機 (水中トレッドミル)</td>
 </tr>
 <tr>
-<td><span class="pill pill-danger">馬込み× (群馬恐懼)</span><br/><span class="pill pill-cyan">馬込み× (克服)</span></td>
-<td>ストレス耐性 (抗壓)</td>
-<td>內檔被群馬包圍時發揮不佳。</td>
-<td><strong style="color:var(--gold-color);">馬群割り (馬群突圍)</strong></td>
-<td><strong>克服</strong>：信賴 Lv1+，多次以先行/差作戰於內檔取勝或史實調教。<br/><strong>進化</strong>：信賴 Lv2+，多次於內檔取勝。</td>
+<td><strong>負けず嫌い (不服輸)</strong></td>
+<td>戰勝人氣高於自身的勁敵馬</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>調教蹄鐵 (調教鉄)・新山鐵 (シンザン鉄)、坂路調教先鋒・坂路當週斯巴達訓練 (坂路当週スパルタ仕上げ)</td>
 </tr>
 <tr>
-<td><span class="pill pill-gold">馬群割り (馬群突圍)</span></td>
-<td>ストレス耐性 (抗壓)</td>
-<td>內檔被包圍時發揮更佳，比賽時瞬發力顯著上升！</td>
-<td>/</td>
-<td>由「馬込み× (克服)」上位進化。</td>
+<td><strong>甘えん坊 (撒嬌鬼)</strong></td>
+<td>/ (隨機或初期固有)</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>隨意集體調教 (馬なり集団調教)・菁英集體調教 (エリート集団調教)、四點裝蹄 (フォーポイント)・接著裝蹄</td>
 </tr>
 <tr>
-<td><span class="pill pill-safe">目立ちたがり (愛出風頭)</span></td>
-<td>リーダーシップ (領導力)</td>
-<td>第 1 人氣且使用極端作戰時能力稍為上升。</td>
-<td><strong style="color:var(--gold-color);">エンタテイナー (演藝巨星)</strong></td>
-<td>信賴 Lv2+，多次在第 1 人氣以極端作戰取勝。</td>
+<td><strong>人懐っこい (親人溫馴)</strong></td>
+<td>/ (隨機或初期固有)</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>隨意集體調教・菁英集體調教、坂路縱列調教・坂路分道追 (坂路セパレート追い)</td>
 </tr>
 <tr>
-<td><span class="pill pill-gold">エンタテイナー (演藝巨星)</span></td>
-<td>リーダーシップ (領導力)</td>
-<td>第 1 人氣且使用極端作戰時能力大幅上升，賽事人氣上升。</td>
-<td>/</td>
-<td>由「目立ちたがり (愛出風頭)」上位進化。</td>
+<td><strong>わがまま (任性自私)</strong></td>
+<td>/ (隨機或初期固有)</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>游泳池・水中毒木跑步機、閘門練習 (ゲート練習)・閘門特訓 (ゲート特訓)</td>
 </tr>
 <tr>
-<td><span class="pill pill-danger">噛みつき癖 (咬人惡癖)</span></td>
-<td>集中力 (專注力)</td>
-<td>中檔會因想咬對手而失速（配備ブリンカー眼罩可改善）。</td>
-<td><strong style="color:var(--gold-color);">厩舎のボス (馬房老大)</strong></td>
-<td><strong>克服</strong>：信賴 Lv1+，先行/差作戰取勝。<br/><strong>進化</strong>：信賴 Lv2+，馬房活躍並獲勝或稀有史實調教大成功。</td>
+<td><strong>群れの一員 (群體一員)</strong></td>
+<td>/ (隨機或初期固有)</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>隨意集體調教 (馬なり集団調教)・菁英集體調教 (エリート集団調教)</td>
 </tr>
 <tr>
-<td><span class="pill pill-danger">環境変化× (環境不適)</span></td>
-<td>ストレス耐性 (抗壓)</td>
-<td>遠征等轉換環境情況時能力下降。</td>
-<td>/</td>
-<td><strong>克服</strong>：信賴 Lv1+，多次遠征獲勝或對應史實調教。</td>
+<td><strong>スパルタ調整向き (魔鬼調整)</strong></td>
+<td>/ (隨機或初期固有)</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>坂路調教先鋒・坂路當週斯巴達訓練 (坂路当週スパルタ仕上げ)</td>
 </tr>
 <tr>
-<td><span class="pill pill-safe">環境変化○ (環境適應)</span></td>
-<td>ストレス耐性 (抗壓)</td>
-<td>遠征等轉換環境情況時能力不受任何影響。</td>
-<td>/</td>
-<td>先天固有或調教養成。</td>
+<td><strong>ソフト調整向き (溫和調整)</strong></td>
+<td>/ (隨機或初期固有)</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>游泳池 (プール)・水中毒木跑步機 (水中トレッドミル)</td>
 </tr>
 <tr>
-<td><span class="pill pill-danger">わがまま (任性暴躁)</span></td>
-<td>協調性 (協調性)</td>
-<td>育成度難以上升。</td>
-<td><strong style="color:var(--gold-color);">厩舎のボス (馬房老大)</strong></td>
-<td><strong>克服</strong>：信賴 Lv1+，史實調教。<br/><strong>進化</strong>：信賴 Lv2+，馬房活躍並多次獲勝。</td>
+<td><strong>手抜き癖 (偷工偷懶)</strong></td>
+<td>/ (隨機或初期固有)</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>音樂鑑賞 (音楽鑑賞)・大歡聲模擬 (大歓声シミュレーション)</td>
 </tr>
 <tr>
-<td><span class="pill pill-gold">厩舎のボス (馬房老大)</span></td>
-<td>協調性 (協調性)</td>
-<td>同馬房帶有「群れの一員」之馬匹育成度上升，自身鬥志 (気合) 上升！</td>
-<td>/</td>
-<td>由「わがまま (克服)」或「噛みつき癖 (克服)」進化。</td>
+<td><strong>努力上手 (勤奮努力)</strong></td>
+<td>/ (隨機或初期固有)</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>無特定調教限制（直接執行上位調教即可）</td>
 </tr>
 <tr>
-<td><span class="pill pill-power">群れの一員 (群體一員)</span></td>
-<td>協調性 (協調性)</td>
-<td>同馬房有「厩舎のボス」時育成度上升；無ボス時上升幅度較差。</td>
-<td>/</td>
-<td>與「厩舎のボス」搭配產生良性化學反應。</td>
+<td><strong>ムラっ気 (情緒起伏)</strong></td>
+<td>/ (隨機或初期固有)</td>
+<td><span class="pill pill-safe">〇 必有</span></td>
+<td>森林馬道・森林馬道傾斜運動、角馬場調教・馬術式調教</td>
 </tr>
 <tr>
-<td><span class="pill pill-danger">ズブい (加速遲鈍)</span></td>
-<td>集中力 (專注力)</td>
-<td>加速力較慢，不利短途及短直路賽道。</td>
-<td><strong style="color:var(--gold-color);">瞬間の反応 (瞬間反應)</strong></td>
-<td><strong>克服</strong>：配搭「剛腕」或「風車鞭」騎手取勝。<br/><strong>進化</strong>：信賴 Lv2+，非逃作戰獲勝進化為「瞬間の反応」。</td>
+<td><strong>いたずら好き (愛惡作劇)</strong></td>
+<td>/ (潛在解鎖)</td>
+<td><span class="pill pill-power">第 2 個起潛在</span></td>
+<td>閘門練習・閘門特訓、森林馬道・森林馬道傾斜運動</td>
 </tr>
 <tr>
-<td><span class="pill pill-safe">努力上手 (勤奮好學)</span></td>
-<td>集中力 (專注力)</td>
-<td>提升史實調教成功機率。</td>
-<td><strong style="color:var(--gold-color);">秀才肌 (天賦秀才)</strong></td>
-<td>信賴 Lv2+，多次稀有史實調教大成功。</td>
+<td><strong>新聞を読む馬 (看報紙的馬)</strong></td>
+<td>/ (潛在解鎖)</td>
+<td><span class="pill pill-power">第 2 個起潛在</span></td>
+<td>音樂鑑賞 (音楽鑑賞)・大歡聲模擬 (大歓声シミュレーション)</td>
 </tr>
 <tr>
-<td><span class="pill pill-gold">秀才肌 (天賦秀才)</span></td>
-<td>集中力 (專注力)</td>
-<td>大幅提升史實調教大成功機率！</td>
-<td>/</td>
-<td>由「努力上手 (勤奮好學)」上位進化。</td>
+<td><strong>スランプ (低潮低迷)</strong></td>
+<td>連勝中斷或遭遇慘敗</td>
+<td><span class="pill pill-power">第 2 個起潛在</span></td>
+<td>芝當週追・芝當週長距離追、障礙調教・實踐障礙飛越</td>
+</tr>
+<tr>
+<td><strong>環境変化× (環境不適)</strong></td>
+<td>遠征賽事中落敗</td>
+<td><span class="pill pill-danger">後天習得</span></td>
+<td>整體治療 (整体治療)・最先端機械治療</td>
+</tr>
+<tr>
+<td><strong>環境変化〇 (環境適應)</strong></td>
+<td>遠征賽事中獲勝</td>
+<td><span class="pill pill-danger">後天習得</span></td>
+<td>入廄巡禮 (スクーリング)・海外遠征現地追</td>
+</tr>
+<tr>
+<td><strong>剛腕× (不適剛腕騎手)</strong></td>
+<td>由持有剛腕之騎手策騎落敗</td>
+<td><span class="pill pill-danger">後天習得</span></td>
+<td>整體治療 (整体治療)・最先端機械治療</td>
+</tr>
+<tr>
+<td><strong>剛腕〇 (適應剛腕騎手)</strong></td>
+<td>由持有剛腕之騎手策騎獲勝</td>
+<td><span class="pill pill-danger">後天習得</span></td>
+<td>坂路調教先鋒・坂路當週斯巴達訓練、坂路縱列調教・坂路分道追</td>
+</tr>
+<tr>
+<td><strong>風車鞭× (恐懼風車鞭)</strong></td>
+<td>由持有風車鞭之騎手策騎落敗</td>
+<td><span class="pill pill-danger">後天習得</span></td>
+<td>蝮蛇團子 (マムシ団子)・飼育員 (フィードマン)</td>
+</tr>
+<tr>
+<td><strong>風車鞭〇 (適應風車鞭)</strong></td>
+<td>由持有風車鞭之騎手策騎獲勝</td>
+<td><span class="pill pill-danger">後天習得</span></td>
+<td>5化朗追・木屑道追、Polytrack當週追 (ポリトラック当週追い)・Polytrack當週仕上げ</td>
+</tr>
+<tr>
+<td><strong>使い詰め× (連戰不耐)</strong></td>
+<td>緊湊賽程下落敗</td>
+<td><span class="pill pill-danger">後天習得</span></td>
+<td>整體治療・最先端機械治療、四點裝蹄・接著裝蹄</td>
+</tr>
+<tr>
+<td><strong>使い詰め〇 (連戰剛健)</strong></td>
+<td>緊湊賽程下獲勝</td>
+<td><span class="pill pill-danger">後天習得</span></td>
+<td>調教蹄鐵 (調教鉄)・新山鐵 (シンザン鉄)、Polytrack當週追・Polytrack當週仕上げ</td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<!-- ==================== 四、14 大幼駒先天性格與初始個性出現機率矩陣 ==================== -->
+<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+<div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-dice"></i> 四、14 大幼駒先天性格與初期個性出現機率分佈矩陣 (100% 完整對照)
+        </div>
+<span class="badge badge-gold" style="font-size:0.78rem; padding:3px 8px;">大數據統計矩陣</span>
+</div>
+<p style="font-size:0.83rem; line-height:1.7; color:var(--text-main); margin-bottom:12px;">
+        幼駒誕生時的 14 大「先天性格」（如熱血、從順、認真、孤高、領袖等）直接決定其出生時帶有何種初始個性。若幼駒兼具多個潛在個性，出現機率彼此獨立：
+    </p>
+<div class="table-responsive">
+<table class="data-table">
+<thead>
+<tr>
+<th style="min-width:110px;">先天性格</th>
+<th style="min-width:75px;">努力上手</th>
+<th style="min-width:75px;">負けず嫌い</th>
+<th style="min-width:75px;">反抗的</th>
+<th style="min-width:75px;">わがまま</th>
+<th style="min-width:75px;">群れの一員</th>
+<th style="min-width:85px;">目立ちたがり</th>
+<th style="min-width:75px;">甘えん坊</th>
+<th style="min-width:75px;">人懐こい</th>
+<th style="min-width:75px;">引込思案</th>
+<th style="min-width:75px;">詰めが甘い</th>
+<th style="min-width:75px;">手抜き癖</th>
+<th style="min-width:75px;">ムラっ気</th>
+<th style="min-width:75px;">ソフト</th>
+<th style="min-width:75px;">スパルタ</th>
+<th style="min-width:75px;">スランプ</th>
+<th style="min-width:85px;">新聞を読む</th>
+<th style="min-width:85px;">いたずら好き</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>熱血 (熱血)</strong></td>
+<td>25%</td>
+<td>25%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>25%</td>
+<td>15%</td>
+<td>15%</td>
+<td>25%</td>
+<td>25%</td>
+<td>25%</td>
+<td>25%</td>
+<td>10%</td>
+<td>10%</td>
+<td>3%</td>
+<td>3%</td>
+<td>10%</td>
+</tr>
+<tr>
+<td><strong>頑固 (頑固)</strong></td>
+<td>15%</td>
+<td>15%</td>
+<td>25%</td>
+<td>30%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>10%</td>
+<td>10%</td>
+<td>15%</td>
+<td>15%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td><strong>強氣 (強気)</strong></td>
+<td>25%</td>
+<td>25%</td>
+<td>25%</td>
+<td>10%</td>
+<td>30%</td>
+<td>30%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>10%</td>
+<td>10%</td>
+<td>5%</td>
+<td>5%</td>
+<td>5%</td>
+</tr>
+<tr>
+<td><strong>從順 (従順)</strong></td>
+<td>1%</td>
+<td>30%</td>
+<td>30%</td>
+<td>30%</td>
+<td>30%</td>
+<td>1%</td>
+<td>15%</td>
+<td>30%</td>
+<td>1%</td>
+<td>35%</td>
+<td>1%</td>
+<td>1%</td>
+<td>25%</td>
+<td>25%</td>
+<td>1%</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td><strong>膽小 (臆病)</strong></td>
+<td>10%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>25%</td>
+<td>25%</td>
+<td>20%</td>
+<td>20%</td>
+<td>10%</td>
+<td>15%</td>
+<td>3%</td>
+<td>3%</td>
+<td>3%</td>
+<td>3%</td>
+</tr>
+<tr>
+<td><strong>認真 (真面目)</strong></td>
+<td>30%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>20%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td><strong>普通 (普通)</strong></td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>7%</td>
+<td>7%</td>
+<td>3%</td>
+<td>3%</td>
+<td>3%</td>
+</tr>
+<tr>
+<td><strong>我行我素 (マイペース)</strong></td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>30%</td>
+<td>20%</td>
+<td>25%</td>
+<td>15%</td>
+<td>15%</td>
+<td>5%</td>
+<td>5%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td><strong>隨興 (気まぐれ)</strong></td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>10%</td>
+<td>10%</td>
+<td>5%</td>
+<td>5%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td><strong>細膩敏感 (繊細)</strong></td>
+<td>30%</td>
+<td>30%</td>
+<td>30%</td>
+<td>30%</td>
+<td>30%</td>
+<td>30%</td>
+<td>30%</td>
+<td>15%</td>
+<td>35%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>10%</td>
+<td>10%</td>
+<td>5%</td>
+<td>5%</td>
+</tr>
+<tr>
+<td><strong>寂寞 (寂しがりや)</strong></td>
+<td>10%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>15%</td>
+<td>20%</td>
+<td>10%</td>
+<td>10%</td>
+<td>15%</td>
+<td>15%</td>
+<td>7%</td>
+<td>7%</td>
+<td>7%</td>
+<td>7%</td>
+</tr>
+<tr>
+<td><strong>孤高 (孤高)</strong></td>
+<td>35%</td>
+<td>25%</td>
+<td>30%</td>
+<td>35%</td>
+<td>1%</td>
+<td>1%</td>
+<td>1%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>1%</td>
+<td>1%</td>
+<td>1%</td>
+</tr>
+<tr>
+<td><strong>領袖 (リーダー)</strong></td>
+<td>35%</td>
+<td>30%</td>
+<td>30%</td>
+<td>30%</td>
+<td>30%</td>
+<td>30%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>10%</td>
+<td>0%</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td><strong>努力派 (がんばり屋)</strong></td>
+<td>30%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>15%</td>
+<td>10%</td>
+<td>25%</td>
+<td>15%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>10%</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </section>
