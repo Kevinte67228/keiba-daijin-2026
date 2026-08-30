@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.98",
+  "current_version": "v01.99",
   "history": [
     {
       "version": "v01.01",
@@ -490,6 +490,11 @@
       "version": "v01.98",
       "date": "2026-08-29",
       "description": "Content: Integrate 365game Yearly Recommendation Guide (1967-1975), 1968 Starting Horses & Carryover Amulet SOP"
+    },
+    {
+      "version": "v01.99",
+      "date": "2026-08-29",
+      "description": "Refactor: Clean 14-col layout for Ch33 Yearly Recs Tables, Add Dedicated Strategy Points Cards (攻略のポイント) and Remove all External Citation References"
     }
   ]
 }
