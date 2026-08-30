@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.93",
+  "current_version": "v01.94",
   "history": [
     {
       "version": "v01.01",
@@ -465,6 +465,11 @@
       "version": "v01.93",
       "date": "2026-08-29",
       "description": "Fix: Fixed missing icon in Chapter 13 by replacing fa-sparkles with fa-wand-magic-sparkles"
+    },
+    {
+      "version": "v01.94",
+      "date": "2026-08-29",
+      "description": "Feature: 100% Full Coverage Integration of Ahogame Breeding Theory (haigou.html) with 1:1 TOC Matrix Navigation Grid, Regional Theories & 2026 New Formulas"
     }
   ]
 }
