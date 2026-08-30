@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.37</span>
+        <span class="version-badge">v02.38</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -25937,13 +25937,25 @@ li {
 <style>
 /* ===== 第 41 章 平板極致適配佈局規範 ===== */
 
+#masterLiveTable {
+    border-collapse: collapse !important;
+}
 #masterLiveTable th, #masterLiveTable td {
-    padding: 6px 6px !important;
+    padding: 6px 8px !important;
+    white-space: nowrap !important;
+    text-align: left !important;
+}
+#masterLiveTable th.sortable-th {
     white-space: nowrap !important;
 }
-#masterLiveTable td strong {
-    white-space: nowrap !important;
+#masterLiveTable .sort-icon {
+    margin-left: 3px !important;
+    font-size: 0.75rem !important;
 }
+
+
+
+
 
 
 /* 1. 頂部三大主頁籤：3 等分等寬網格 */
@@ -26441,26 +26453,26 @@ li {
 <div id="masterLiveResultCount" style="font-size:0.8rem; color:var(--text-muted);">正在載入全庫數據...</div>
 </div>
 <div class="table-responsive" style="max-height:550px; overflow-y:auto;">
-<table class="data-table" id="masterLiveTable" style="min-width:1160px !important; width:100% !important;">
+<table class="data-table" id="masterLiveTable" style="width:100% !important; min-width:980px !important;">
 <thead>
 <tr>
-<th class="sortable-th" onclick="sortMasterLive('name', this)" style="min-width:125px; text-align:left !important; cursor:pointer;">馬名 (日文) <i class="fa-solid fa-sort sort-icon"></i></th>
-<th class="sortable-th" onclick="sortMasterLive('en_name', this)" style="min-width:120px; text-align:left !important; cursor:pointer;">原名 / 英文 (EN) <i class="fa-solid fa-sort sort-icon"></i></th>
-<th class="sortable-th" onclick="sortMasterLive('ticket', this)" style="width:48px; min-width:48px; max-width:50px; text-align:left !important; cursor:pointer;">札別 <i class="fa-solid fa-sort sort-icon"></i></th>
-<th class="sortable-th" onclick="sortMasterLive('year', this)" style="width:52px; min-width:52px; max-width:55px; text-align:left !important; cursor:pointer;">生年 <i class="fa-solid fa-sort sort-icon"></i></th>
-<th class="sortable-th" onclick="sortMasterLive('sex', this)" style="width:42px; min-width:42px; max-width:45px; text-align:left !important; cursor:pointer;">性別 <i class="fa-solid fa-sort sort-icon"></i></th>
-<th class="sortable-th" onclick="sortMasterLive('sp', this)" style="width:62px; min-width:62px; max-width:65px; text-align:left !important; cursor:pointer;">SP <i class="fa-solid fa-sort sort-icon"></i></th>
-<th class="sortable-th" onclick="sortMasterLive('stamina', this)" style="width:42px; min-width:42px; max-width:45px; text-align:left !important; cursor:pointer;">ST <i class="fa-solid fa-sort sort-icon"></i></th>
-<th class="sortable-th" onclick="sortMasterLive('subpara_total', this)" style="width:42px; min-width:42px; max-width:45px; text-align:left !important; cursor:pointer;">サ <i class="fa-solid fa-sort sort-icon"></i></th>
-<th class="sortable-th" onclick="sortMasterLive('growth', this)" style="width:82px; min-width:80px; max-width:85px; text-align:left !important; cursor:pointer;">成型(力) <i class="fa-solid fa-sort sort-icon"></i></th>
-<th class="sortable-th" onclick="sortMasterLive('grass', this)" style="width:36px; min-width:36px; max-width:38px; text-align:left !important; cursor:pointer;">芝 <i class="fa-solid fa-sort sort-icon"></i></th>
-<th class="sortable-th" onclick="sortMasterLive('dirt', this)" style="width:36px; min-width:36px; max-width:38px; text-align:left !important; cursor:pointer;">ダ <i class="fa-solid fa-sort sort-icon"></i></th>
-<th class="sortable-th" onclick="sortMasterLive('distance', this)" style="min-width:105px; text-align:left !important; cursor:pointer;">距離適性 <i class="fa-solid fa-sort sort-icon"></i></th>
-<th class="sortable-th" onclick="sortMasterLive('running_style', this)" style="width:60px; min-width:60px; text-align:left !important; cursor:pointer;">腳質 <i class="fa-solid fa-sort sort-icon"></i></th>
+<th class="sortable-th" onclick="sortMasterLive('name', this)" style="min-width:130px; text-align:left !important; cursor:pointer;">馬名 (日文) <i class="fa-solid fa-sort sort-icon"></i></th>
+<th class="sortable-th" onclick="sortMasterLive('en_name', this)" style="min-width:125px; text-align:left !important; cursor:pointer;">原名 / 英文 (EN) <i class="fa-solid fa-sort sort-icon"></i></th>
+<th class="sortable-th" onclick="sortMasterLive('ticket', this)" style="width:1% !important; white-space:nowrap !important; text-align:left !important; cursor:pointer; padding:6px 6px !important;">札別 <i class="fa-solid fa-sort sort-icon"></i></th>
+<th class="sortable-th" onclick="sortMasterLive('year', this)" style="width:1% !important; white-space:nowrap !important; text-align:left !important; cursor:pointer; padding:6px 6px !important;">生年 <i class="fa-solid fa-sort sort-icon"></i></th>
+<th class="sortable-th" onclick="sortMasterLive('sex', this)" style="width:1% !important; white-space:nowrap !important; text-align:left !important; cursor:pointer; padding:6px 6px !important;">性別 <i class="fa-solid fa-sort sort-icon"></i></th>
+<th class="sortable-th" onclick="sortMasterLive('sp', this)" style="width:1% !important; white-space:nowrap !important; text-align:left !important; cursor:pointer; padding:6px 6px !important;">SP <i class="fa-solid fa-sort sort-icon"></i></th>
+<th class="sortable-th" onclick="sortMasterLive('stamina', this)" style="width:1% !important; white-space:nowrap !important; text-align:left !important; cursor:pointer; padding:6px 6px !important;">ST <i class="fa-solid fa-sort sort-icon"></i></th>
+<th class="sortable-th" onclick="sortMasterLive('subpara_total', this)" style="width:1% !important; white-space:nowrap !important; text-align:left !important; cursor:pointer; padding:6px 6px !important;">サ <i class="fa-solid fa-sort sort-icon"></i></th>
+<th class="sortable-th" onclick="sortMasterLive('growth', this)" style="width:1% !important; white-space:nowrap !important; text-align:left !important; cursor:pointer; padding:6px 6px !important;">成型(力) <i class="fa-solid fa-sort sort-icon"></i></th>
+<th class="sortable-th" onclick="sortMasterLive('grass', this)" style="width:1% !important; white-space:nowrap !important; text-align:left !important; cursor:pointer; padding:6px 6px !important;">芝 <i class="fa-solid fa-sort sort-icon"></i></th>
+<th class="sortable-th" onclick="sortMasterLive('dirt', this)" style="width:1% !important; white-space:nowrap !important; text-align:left !important; cursor:pointer; padding:6px 6px !important;">ダ <i class="fa-solid fa-sort sort-icon"></i></th>
+<th class="sortable-th" onclick="sortMasterLive('distance', this)" style="width:1% !important; white-space:nowrap !important; min-width:100px; text-align:left !important; cursor:pointer; padding:6px 6px !important;">距離適性 <i class="fa-solid fa-sort sort-icon"></i></th>
+<th class="sortable-th" onclick="sortMasterLive('running_style', this)" style="width:1% !important; white-space:nowrap !important; text-align:left !important; cursor:pointer; padding:6px 6px !important;">腳質 <i class="fa-solid fa-sort sort-icon"></i></th>
 <th class="sortable-th" onclick="sortMasterLive('sire', this)" style="min-width:115px; text-align:left !important; cursor:pointer;">父系種馬 <i class="fa-solid fa-sort sort-icon"></i></th>
 <th class="sortable-th" onclick="sortMasterLive('dam', this)" style="min-width:115px; text-align:left !important; cursor:pointer;">母馬 <i class="fa-solid fa-sort sort-icon"></i></th>
-<th class="sortable-th" onclick="sortMasterLive('foal_quality', this)" style="width:45px; min-width:45px; max-width:48px; text-align:left !important; cursor:pointer;">仔出 <i class="fa-solid fa-sort sort-icon"></i></th>
-<th style="width:100px; min-width:100px; text-align:left !important;">18 欄檔案</th>
+<th class="sortable-th" onclick="sortMasterLive('foal_quality', this)" style="width:1% !important; white-space:nowrap !important; text-align:left !important; cursor:pointer; padding:6px 6px !important;">仔出 <i class="fa-solid fa-sort sort-icon"></i></th>
+<th style="width:1% !important; white-space:nowrap !important; text-align:left !important; padding:6px 6px !important;">18 欄檔案</th>
 </tr>
 </thead>
 <tbody id="masterLiveResultBody">
