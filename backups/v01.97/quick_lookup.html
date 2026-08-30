@@ -1384,6 +1384,24 @@
             color: #fff;
         }
 
+        /* 配合理論矩陣導航板：電腦端自適應、平板端每行3個、手機端2個 */
+        .theory-matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 10px;
+        }
+        @media (min-width: 641px) and (max-width: 1200px) {
+            .theory-matrix-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+        }
+        @media (max-width: 640px) {
+            .theory-matrix-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+        }
+
         /* 浮動按鈕群 (跳轉目錄 + 回頂部) */
         .floating-btn-group {
             position: fixed;
@@ -1416,6 +1434,16 @@
         }
         .btn-floating:hover { transform: scale(1.08); background: #38bdf8; }
         .btn-floating.btn-jump { background: var(--gold-color); color: #0f172a; }
+        .btn-floating.btn-history-back {
+            background: #6366f1;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        .btn-floating.btn-history-back:hover {
+            background: #4f46e5;
+            transform: scale(1.1);
+        }
     
 
 
@@ -1668,7 +1696,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v01.94</span>
+        <span class="version-badge">v01.98</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 38 大章節)
@@ -2051,163 +2079,165 @@ li {
 <div class="section-title"><i class="fa-solid fa-table-list"></i> 第 3 章：全配合理論速查與加成總覽表 (全 36+ 條目)</div>
 </div>
 <div class="section-body">
-<!-- Ahogame 1:1 復刻 配合理論矩陣導航大板 -->
-<div style="background:rgba(15,23,42,0.8); border:1px solid var(--border-color); border-radius:12px; padding:16px; margin-bottom:18px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:10px; margin-bottom:12px;">
+<!-- Ahogame 1:1 復刻 配合理論矩陣導航大板 (電腦自適應 / 平板固定3欄) -->
+<div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:12px; padding:16px; margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:10px; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
 <div style="font-size:0.95rem; font-weight:bold; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-table-cells"></i> 【配合理論】完全目次矩陣速查導航板 (ウイニングポスト 10 2026 全 35+ 理論對照)
+<i class="fa-solid fa-table-cells"></i> 【配合理論】完全目次矩陣速查導航板 (ウイニングポスト 10 2026 全 33 大理論對照)
             </div>
-<span class="pill pill-gold" style="font-size:0.75rem;">日/中並行對照</span>
+<span class="pill pill-gold" style="font-size:0.75rem;">日/中並行對照 (共 33 條理論)</span>
 </div>
 <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px; line-height:1.5;">
             點擊任一配合理論卡片即可瞬間直通該理論之專屬深度章節、爆發力公式、成立要件與實戰血統範例表（包含 2026 全新始祖血脈融合、Drama 因子融合及三大區域限定配合）。
         </p>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px;">
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'sec-metrics')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">配合理論基礎知識</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">配合理論の基礎知識</div>
+<div class="theory-matrix-grid">
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'sec-metrics')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">配合理論基礎知識</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">配合理論の基礎知識</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-nicks')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">副屬性因子爆發</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">サブパラ爆発力</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-nicks')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">副屬性因子爆發</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">サブパラ爆発力</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'sec-gene-factors')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">因子活性 (父/牝/Drama)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">因子(父系/牝系/ドラマ)</div>
-<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 4px; margin-top:2px; display:inline-block;">[2026 UPDATE]</span>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'sec-gene-factors')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">因子活性 (父/牝/Drama)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">因子(父系/牝系/ドラマ)</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 UPDATE]</span>
 </div>
-<div class="theory-matrix-cell empty" style="border:1px dashed rgba(255,255,255,0.08); border-radius:6px; min-height:56px; background:rgba(0,0,0,0.1);"></div><div class="theory-matrix-cell empty" style="border:1px dashed rgba(255,255,255,0.08); border-radius:6px; min-height:56px; background:rgba(0,0,0,0.1);"></div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">近親交配/奇跡之血量</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">インブリード/奇跡の血量</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">近親交配 / 奇跡之血量</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">インブリード/奇跡の血量</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">全兄弟姐妹近親</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">全きょうだいインブリード</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">全兄弟姐妹近親</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">全きょうだいインブリード</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">母系近親交配</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">母系インブリード</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">母系近親交配</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">母系インブリード</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">完全異系交配</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">アウトブリード</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">完全異系交配</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">アウトブリード</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-linebreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">系統交配 (親/子/始祖/爆發)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">ラインブリード(親/子/始祖/爆発型)</div>
-<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 4px; margin-top:2px; display:inline-block;">[2026 UPDATE]</span>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-linebreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">系統交配 (親/子/始祖/爆發)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ラインブリード(親/子/始祖/爆発型)</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 UPDATE]</span>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">1/4 異系配合</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">1/4異系配合</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">1/4 異系配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">1/4異系配合</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-nicks')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">相性配合 (單/雙/三/四重)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">ニックス</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-nicks')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">相性配合 (單/雙/三/四重)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ニックス</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-nicks')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">母父◎ (BMS 因子)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">母父〇</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-nicks')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">母父◎ (BMS 因子)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">母父〇</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-activation')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">血脈活性化配合 (6~8親系)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">血脈活性化配合</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-activation')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">血脈活性化配合 (6~8親系)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">血脈活性化配合</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-vitality')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">活力源化因子</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">活力源化因子</div>
-<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 4px; margin-top:2px; display:inline-block;">[2026 UPDATE]</span>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-vitality')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">活力源化因子</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">活力源化因子</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 UPDATE]</span>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-vitality')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">活力補完 (零細血統)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">活力補完</div>
-<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 4px; margin-top:2px; display:inline-block;">[2026 UPDATE]</span>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-vitality')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">活力補完 (零細血統)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">活力補完</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 UPDATE]</span>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-vitality')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">隔世遺傳 (祖父因子)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">隔世遺伝</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-vitality')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">隔世遺傳 (祖父因子)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">隔世遺伝</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-lines')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">雄系活性化 (Male Line)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">メールライン活性配合</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-lines')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">雄系活性化 (Male Line)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">メールライン活性配合</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-lines')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">雌系活性化 (Bottom Line)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">ボトムライン活性配合</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-lines')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">雌系活性化 (Bottom Line)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ボトムライン活性配合</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-traits')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">系統特性 昇華/融合配合</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">系統特性 昇華/融合配合</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-traits')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">系統特性 昇華/融合配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">系統特性 昇華/融合配合</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">搞笑配合 / 佳偶天成配合</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">お笑い、お似合い配合</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">搞笑配合 / 佳偶天成配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">お笑い、お似合い配合</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">告別配合 / W告別配合</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">サヨナラ/Wサヨナラ配合</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">告別配合 / W告別配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">サヨナラ/Wサヨナラ配合</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">閃電配合 / 疾風配合</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">稲妻配合/疾風配合</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">閃電配合 / 疾風配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">稲妻配合/疾風配合</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">三冠配合</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">3冠配合</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">三冠配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">3冠配合</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">牝系 / 名牝系 / W名牝系</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">牝系/名牝系/W名牝系配合</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">牝系 / 名牝系 / W名牝系</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">牝系/名牝系/W名牝系配合</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">初次亮相配合</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">お披露目配合</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">初次亮相配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">お披露目配合</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">雷嵐配合 (春嵐 × 春雷)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">雷嵐配合</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">雷嵐配合 (春嵐 × 春雷)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">雷嵐配合</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">神似配合 (同毛色白斑)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">そっくりさん配合</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">神似配合 (同毛色白斑)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">そっくりさん配合</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">宿敵配合 / 宿敵母父配合</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">ライバル配合/ライバル配合母父</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">宿敵配合 / 宿敵母父配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ライバル配合/ライバル配合母父</div>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">基準交配 (日本限定)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">基準交配</div>
-<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 4px; margin-top:2px; display:inline-block;">[日本限定]</span>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">基準交配 (日本限定)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">基準交配</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[日本限定]</span>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">Dosage 理論 (歐洲限定)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">ドサージュ理論</div>
-<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 4px; margin-top:2px; display:inline-block;">[歐洲限定]</span>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">Dosage 理論 (歐洲限定)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ドサージュ理論</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[歐洲限定]</span>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">Rasmussen 因子 (美國限定)</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">ラスムッセン・ファクター</div>
-<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 4px; margin-top:2px; display:inline-block;">[美國限定]</span>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-special')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">Rasmussen 因子 (美國限定)</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ラスムッセン・ファクター</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[美國限定]</span>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-2026new')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">始祖血脈融合配合</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">始祖血脈融合配合</div>
-<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 4px; margin-top:2px; display:inline-block;">[2026 NEW]</span>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-2026new')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">始祖血脈融合配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">始祖血脈融合配合</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 NEW]</span>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-2026new')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">戲劇因子 Line 配合</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">ドラマ因子ライン配合</div>
-<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 4px; margin-top:2px; display:inline-block;">[2026 NEW]</span>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-2026new')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">戲劇因子 Line 配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ドラマ因子ライン配合</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 NEW]</span>
 </div>
-<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-2026new')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)';" style="cursor:pointer; background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.15s; text-align:left !important;">
-<div style="font-size:0.8rem; font-weight:bold; color:var(--text-main); line-height:1.3; text-align:left !important;">戲劇因子融合配合</div>
-<div style="font-size:0.7rem; color:var(--text-muted); line-height:1.2; margin-top:2px; text-align:left !important;">ドラマ因子融合配合</div>
-<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 4px; margin-top:2px; display:inline-block;">[2026 NEW]</span>
-</div>
+<div class="theory-matrix-cell" onclick="jumpToChapter('pillar-breed', 'mod-2026new')" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(56,189,248,0.2)';" style="cursor:pointer; background:rgba(30,41,59,0.75); border:1px solid var(--border-color); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; transition:all 0.18s cubic-bezier(0.4, 0, 0.2, 1); text-align:left !important; min-height:68px;">
+<div style="font-size:0.84rem; font-weight:bold; color:var(--text-main); line-height:1.35; text-align:left !important;">戲劇因子融合配合</div>
+<div style="font-size:0.72rem; color:var(--text-muted); line-height:1.25; margin-top:2px; text-align:left !important;">ドラマ因子融合配合</div>
+<span class="badge badge-gold" style="font-size:0.65rem; padding:1px 5px; margin-top:3px; display:inline-block; white-space:nowrap !important;">[2026 NEW]</span>
 </div>
 </div>
+</div>
+<!-- Ahogame 1:1 復刻 配合理論矩陣導航大板 (固定每行 3 個呈現) -->
+<!-- Ahogame 1:1 復刻 配合理論矩陣導航大板 (無破洞、完美自適應) -->
+<!-- Ahogame 1:1 復刻 配合理論矩陣導航大板 -->
 <div class="filter-bar">
 <button class="filter-btn active" onclick="filterCategory('all', this)">全部理論 (36+)</button>
 <button class="filter-btn" onclick="filterCategory('basic', this)">相性與基礎</button>
@@ -20386,6 +20416,1404 @@ li {
 <div id="yearlyRecsContainer">
 <!-- Dynamic Tables generated via JS -->
 </div>
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-calendar-days" style="font-size:1.3rem; color:var(--gold-color);"></i>
+<div>
+<strong>《按年代史實攻略與 1967~1975 各年代推薦名馬完全指南》 (365Game 深度圖文攻略收錄)</strong><br/>
+                精準彙整 1967 至 1975 各年代出生史實名馬的<strong>世代格局、經典三冠戰線、牝馬三冠、古馬王道與泥地路線佈局</strong>，並依 <strong>⦿ 世代唯一霸主、◎ 一線頂級名駒、○ 高性價比潛力馬、▲ 專項奇兵</strong> 提供推薦 10 選完全大表與深度戰略評語！
+            </div>
+</div>
+<!-- 年代切換水平軌道 -->
+<div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:12px; padding:14px 16px; margin-bottom:16px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-timeline"></i> 選擇欲檢視之史實年代 (1967 ~ 1975 年)
+                </div>
+<span class="pill pill-gold" style="font-size:0.75rem;">支援即時排序與日/中對照</span>
+</div>
+<div style="display:flex; gap:8px; overflow-x:auto; padding-bottom:6px; -webkit-overflow-scrolling:touch;">
+<button class="filter-btn active" onclick="switch365EraTab(1967, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+                📅 1967 年出生世代
+            </button>
+<button class="filter-btn" onclick="switch365EraTab(1968, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+                📅 1968 年出生世代
+            </button>
+<button class="filter-btn" onclick="switch365EraTab(1969, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+                📅 1969 年出生世代
+            </button>
+<button class="filter-btn" onclick="switch365EraTab(1970, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+                📅 1970 年出生世代
+            </button>
+<button class="filter-btn" onclick="switch365EraTab(1971, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+                📅 1971 年出生世代
+            </button>
+<button class="filter-btn" onclick="switch365EraTab(1972, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+                📅 1972 年出生世代
+            </button>
+<button class="filter-btn" onclick="switch365EraTab(1973, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+                📅 1973 年出生世代
+            </button>
+<button class="filter-btn" onclick="switch365EraTab(1974, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+                📅 1974 年出生世代
+            </button>
+<button class="filter-btn" onclick="switch365EraTab(1975, this)" style="padding:6px 14px; font-size:0.82rem; font-weight:bold; white-space:nowrap !important;">
+                📅 1975 年出生世代
+            </button>
+</div>
+</div>
+<!-- 年代內容展示容器 -->
+<div id="era365Container">
+<div class="era-365-pane" id="pane365Era_1967" style="display:block;">
+<div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1967 年出生世代】時代格局與各賽線核心情報
+                    </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                        1968年開局劇本中可於 1 歲幼駒階段直接購入的黃金世代。長距離長途王、名牝以及各路線王者齊聚！
+                    </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> アカネテンリュウ (赤根天龍) 具備 3400m 超長距離耐力，菊花賞及長距離重賞無敵；メジロアサマ (目白淺間) 世代最高 SP 72，天皇賞秋季秋古馬王道霸主！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> トウメイ (東明) 芝泥雙修 (芝◎/ダ◎)，牝馬三冠與古馬混合 G1 橫掃全場；ヒデコトブキ 為櫻花賞大熱門！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> トウメイ、スピーディワンダー 於泥地路線戰力超群。
+                        </div>
+</div>
+</div>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:50px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:140px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:70px;">符札</th>
+<th class="sortable-th" style="width:60px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:120px;">父馬</th>
+<th class="sortable-th" style="min-width:120px;">母馬</th>
+<th class="sortable-th" style="width:65px;">SP</th>
+<th class="sortable-th" style="width:65px;">ST</th>
+<th class="sortable-th">副屬性 / 芝ダ / 成長力 / 特性與戰略特徵評語</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">アローエクスプレス</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>スパニッシュイクスプレス</td>
+<td>ソーダストリーム</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">70</span></td>
+<td>30</td>
+<td>◎</td><td>×</td><td>早め</td><td>ある</td><td>サブパラ優秀なマイラー。距離適性も広い</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">メジロムサシ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ワラビー</td>
+<td>キヨハ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>80</td>
+<td>◎</td><td>×</td><td>遅め</td><td>普通</td><td>天皇賞(春)馬。豊富なスタミナ</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ケイサンタ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>キノー</td>
+<td>バインドウィード</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>45</td>
+<td>◎</td><td>×</td><td>早め</td><td>ある</td><td>牝馬三冠候補。距離適性が広く選択肢が多い</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">エリモシルバー</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>キノー</td>
+<td>シルヴァーファー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>25</td>
+<td>◎</td><td>◎</td><td>遅め</td><td>ある</td><td>短距離逃げ馬</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">タニノムーティエ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ムーティエ</td>
+<td>タニノチェリ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>50</td>
+<td>◎</td><td>○</td><td>早め</td><td>普通</td><td>ダービーまでの本命。ダート○が地味に嬉しい</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">タマミ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>カリム</td>
+<td>グランドフォード</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">68</span></td>
+<td>20</td>
+<td>◎</td><td>◎</td><td>早め</td><td>普通</td><td>短距離マイルで強い。桜花賞はこの馬。</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ジュピック</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>トロピーク</td>
+<td>ジュデラ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>60</td>
+<td>◎</td><td>×</td><td>早め</td><td>普通</td><td>史実のオークス馬。距離適性に難あり。</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ジョセツ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>シーフュリュー</td>
+<td>セッシュウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>60</td>
+<td>◎</td><td>△</td><td>早め</td><td>持続</td><td>牝馬三冠候補② 非根幹距離持ちがネック</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ヒダプレジデント</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ダラノーア</td>
+<td>ヒダノタカラ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>55</td>
+<td>◎</td><td>△</td><td>早熟</td><td>持続</td><td>2歳から活躍できる中距離馬</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">プランジャー</strong></td>
+<td><span class="pill pill-safe">無</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ムーティエ</td>
+<td>シンキロク</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">63</span></td>
+<td>40</td>
+<td>◎</td><td>○</td><td>早め</td><td>持続</td><td>早期の賞金稼ぎに</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="era-365-pane" id="pane365Era_1968" style="display:none;">
+<div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1968 年出生世代】時代格局與各賽線核心情報
+                    </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                        1968年開局當歲幼駒世代。ヒカルイマイ (光今井) 與 ベルワイド (鈴寬) 雙雄爭霸！
+                    </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> ヒカルイマイ 擁有世代最高的 SP 73，為經典三冠主力；ベルワイド 耐力 85，專攻菊花賞與長距離死鬥！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> 櫻花賞馬 ナスノカオリ (那須香織) 與 橡樹大賽馬 カネヒムロ (金冰室) 雙牝爭輝。
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> イナボレス (稻天馬) 覺醒型超強體力，全天候泥地遠征提款機！
+                        </div>
+</div>
+</div>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:50px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:140px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:70px;">符札</th>
+<th class="sortable-th" style="width:60px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:120px;">父馬</th>
+<th class="sortable-th" style="min-width:120px;">母馬</th>
+<th class="sortable-th" style="width:65px;">SP</th>
+<th class="sortable-th" style="width:65px;">ST</th>
+<th class="sortable-th">副屬性 / 芝ダ / 成長力 / 特性與戰略特徵評語</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">ナスノカオリ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>パーソロン</td>
+<td>ナスノホシ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>30</td>
+<td>◎</td><td>×</td><td>早め</td><td>普通</td><td>桜花賞馬。 母馬からの所有が◎</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">ベルワイド</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>インディアナ</td>
+<td>コランディア</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">69</span></td>
+<td>85</td>
+<td>◎</td><td>×</td><td>遅め</td><td>持続</td><td>天皇賞(春)馬。豊富なスタミナ</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">オンワードガイ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>オンワードゼア</td>
+<td>リナウン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>75</td>
+<td>◎</td><td>◎</td><td>覚醒</td><td>普通</td><td>芝・ダート万能の覚醒型</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">ラファール</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>テッソ</td>
+<td>オーブメント</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>50</td>
+<td>◎</td><td>×</td><td>遅め</td><td>ある</td><td>古馬牝馬路線の主役</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">カネヒムロ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>パーソロン</td>
+<td>カネタチバナ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>50</td>
+<td>◎</td><td>△</td><td>早め</td><td>ない</td><td>史実のオークス馬。鋭い切れ味</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ロングワン</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>サウンドトラック</td>
+<td>ウインジェスト</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>40</td>
+<td>◎</td><td>◎</td><td>早鍋</td><td>普通</td><td>早期から芝・ダートで活躍可能</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">シバクサ</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>キノー</td>
+<td>レッドクロバー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>40</td>
+<td>◎</td><td>△</td><td>覚醒</td><td>普通</td><td>貴重な覚醒型。長く稼げる</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">ヒカルイマイ</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>シプリアニ</td>
+<td>セイシュン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">73</span></td>
+<td>55</td>
+<td>◎</td><td>×</td><td>早め</td><td>普通</td><td>世代最強SP。クラシック二冠馬</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ミリオンパラ</strong></td>
+<td><span class="pill pill-safe">無</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>バウンドレス</td>
+<td>コンゴーセキ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>85</td>
+<td>◎</td><td>△</td><td>晩成</td><td>ある</td><td>長距離適性が高いステイヤー</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">メジロゲッコウ</strong></td>
+<td><span class="pill pill-safe">無</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーソロン</td>
+<td>メジロボサツ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>45</td>
+<td>◎</td><td>×</td><td>早め</td><td>ある</td><td>弥生賞馬。早期の賞金稼ぎに</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="era-365-pane" id="pane365Era_1969" style="display:none;">
+<div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1969 年出生世代】時代格局與各賽線核心情報
+                    </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                        以イシノヒカル、タニノチカラ為首的激烈三冠年代，泥地隱藏名馬大放異彩！
+                    </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> イシノヒカル (石之光) 菊花賞與有馬紀念稱霸；タニノチカラ (谷野力量) 具備金札級實力 SP 72/ST 75，古馬王道全能；タイテエム (大天龍) 春季早熟優勢奪春二冠！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> タカエノカオリ (高江香織) 領銜牝馬三冠戰線。
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> ネロ (尼祿) 銅札神級泥地名馬，覺醒型＋タフネス (韌性)，泥地無敵連勝！
+                        </div>
+</div>
+</div>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:50px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:140px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:70px;">符札</th>
+<th class="sortable-th" style="width:60px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:120px;">父馬</th>
+<th class="sortable-th" style="min-width:120px;">母馬</th>
+<th class="sortable-th" style="width:65px;">SP</th>
+<th class="sortable-th" style="width:65px;">ST</th>
+<th class="sortable-th">副屬性 / 芝ダ / 成長力 / 特性與戰略特徵評語</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">ネロ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーソロン</td>
+<td>オクタヴィア</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>70</td>
+<td>×</td><td>◎</td><td>覚醒</td><td>ある</td><td>知る人ぞ知るダート界の名馬。タフネス持ち</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">タニノチカラ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ブランブルー</td>
+<td>タニノチェリ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>75</td>
+<td>◎</td><td>○</td><td>遅め</td><td>持続</td><td>世代屈指のSP。金札馬と同等以上の能力</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">タイテエム</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>セントクレスピン</td>
+<td>テーシルダ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">71</span></td>
+<td>75</td>
+<td>◎</td><td>×</td><td>早め</td><td>ある</td><td>春の完成度を活かして三冠制覇を狙える</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">タケフブキ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>パーソロン</td>
+<td>ハヤフブキ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>50</td>
+<td>◎</td><td>×</td><td>早め</td><td>普通</td><td>牝馬三冠の筆頭候補。母からタケホープも狙える</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ハクホオショウ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ヒンドスタン</td>
+<td>ステラパーダリス</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">70</span></td>
+<td>35</td>
+<td>◎</td><td>○</td><td>遅め</td><td>ある</td><td>短〜マイル路線で無双できるSP70の快速馬</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">キョウエイグリーン</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>マタドア</td>
+<td>リュウカオル</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>25</td>
+<td>◎</td><td>○</td><td>早め</td><td>持続</td><td>2025初期2歳馬。経験を積めば金殿堂が可能</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">ソロナオール</strong></td>
+<td><span class="pill pill-safe">無</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>フェリオール</td>
+<td>ソロナコメット</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>75</td>
+<td>◎</td><td>△</td><td>早め</td><td>普通</td><td>お守り無しで入手可能。SP66は大きな魅力</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">パラマス</strong></td>
+<td><span class="pill pill-safe">無</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>エイトラックス</td>
+<td>カツアサヒ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">62</span></td>
+<td>40</td>
+<td>◎</td><td>○</td><td>遅め</td><td>持続</td><td>サマーマイルやダート短距離でお守り稼ぎ</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">イシノヒカル</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>マロット</td>
+<td>キヨツバメ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>75</td>
+<td>◎</td><td>×</td><td>遅め</td><td>持続</td><td>世代最強馬。金札だが海外遠征も視野</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ノボルトウコウ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーソロン</td>
+<td>サンピュロー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>30</td>
+<td>◎</td><td>○</td><td>覚醒</td><td>普通</td><td>芝・ダート万能の覚醒型。距離適性も広い</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="era-365-pane" id="pane365Era_1970" style="display:none;">
+<div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1970 年出生世代】時代格局與各賽線核心情報
+                    </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                        昭和偶像馬「ハイセイコー (海セイコー)」掀起全日本第一波賽馬熱潮的傳奇年代！
+                    </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> ハイセイコー (海セイコー，早熟/芝泥萬能) vs タケホープ (竹希望，SP 72/ST 80 長距離王者) 兩強世紀死鬥！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> ニットウチドリ (日東千鳥) 與 ナスノチグサ (那須千草) 爭奪牝馬三冠。
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> ハイセイコー 芝泥皆為 ◎，專攻國內泥地可 100% 穩定達成金殿堂！
+                        </div>
+</div>
+</div>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:50px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:140px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:70px;">符札</th>
+<th class="sortable-th" style="width:60px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:120px;">父馬</th>
+<th class="sortable-th" style="min-width:120px;">母馬</th>
+<th class="sortable-th" style="width:65px;">SP</th>
+<th class="sortable-th" style="width:65px;">ST</th>
+<th class="sortable-th">副屬性 / 芝ダ / 成長力 / 特性與戰略特徵評語</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">ハイセイコー</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>チャイナロック</td>
+<td>ハイユウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">71</span></td>
+<td>70</td>
+<td>◎</td><td>◎</td><td>早め</td><td>芝・ダート万能。国内ダート専念で金殿堂が可能</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">タケホープ</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>インディアナ</td>
+<td>ハヤフブキ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>80</td>
+<td>◎</td><td>×</td><td>遅め</td><td>世代最高SPと豊富なスタミナ。古馬王道制覇も狙える</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ナスノチグサ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>パーソロン</td>
+<td>ナスノホシ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">69</span></td>
+<td>50</td>
+<td>◎</td><td>○</td><td>遅め</td><td>晩成気味だが高いポテンシャル。牝馬三冠候補</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ニットウチドリ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ダラノーア</td>
+<td>テルギク</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">68</span></td>
+<td>50</td>
+<td>◎</td><td>×</td><td>早め</td><td>桜花賞・オークスの最有力候補。早期から活躍</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ケイスパーコ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>キノー</td>
+<td>シルヴァーファー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">64</span></td>
+<td>30</td>
+<td>◎</td><td>○</td><td>遅め</td><td>短距離・マイル路線で重賞を稼ぎ、銅札を回収可能</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">レッドイーグル</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>サウンドトラック</td>
+<td>ビースケップ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>20</td>
+<td>◎</td><td>×</td><td>早熟</td><td>最優秀2歳牡馬の有力候補。早期の賞金稼ぎに最適</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">ホワイトフォンテン</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ノーアリバイ</td>
+<td>レベッカノニ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>85</td>
+<td>◎</td><td>×</td><td>晩成超</td><td>高いスタミナで長距離戦に強い。サマー2000も守備範囲</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">マルサンファイヤ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>マツカゼオー</td>
+<td>第ニカツラユウホウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>50</td>
+<td>×</td><td>◎</td><td>早鍋</td><td>ダート路線の有力馬。鍋底による競争寿命の復活が魅力</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">レデースポート</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ムーティエ</td>
+<td>ヤマトサクヤ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">63</span></td>
+<td>45</td>
+<td>◎</td><td>×</td><td>早熟</td><td>最優秀2歳牝馬候補。産駒に牝馬三冠候補のテンモンを持つ</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">△</td>
+<td><strong style="color:var(--text-highlight);">ホッカイダイヤ</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>Waidwerk</td>
+<td>パラモア</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">64</span></td>
+<td>95</td>
+<td>◎</td><td>×</td><td>遅め</td><td>緑札ながら高いスタミナと優秀なサブパラで長距離安定</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="era-365-pane" id="pane365Era_1971" style="display:none;">
+<div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1971 年出生世代】時代格局與各賽線核心情報
+                    </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                        早期高性價比銀札/銅札名馬雲集年代，3月5週購買孕母更可助攻最優秀生產者賞！
+                    </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> キタノカチドキ (北方勝鬨) 領銜春季經典，コーネルランサー (康奈爾槍騎) 德比突圍！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> イットー (一刀) 金札名牝，早熟持績，退役後晉升母系神級繁殖牝馬！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> トドロキムサシ (轟武藏) 銅札泥地霸主。
+                        </div>
+</div>
+</div>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:50px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:140px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:70px;">符札</th>
+<th class="sortable-th" style="width:60px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:120px;">父馬</th>
+<th class="sortable-th" style="min-width:120px;">母馬</th>
+<th class="sortable-th" style="width:65px;">SP</th>
+<th class="sortable-th" style="width:65px;">ST</th>
+<th class="sortable-th">副屬性 / 芝ダ / 成長力 / 特性與戰略特徵評語</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">イットー</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ヴェンチア</td>
+<td>ミスマルミチ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>40</td>
+<td>70</td><td>◎</td><td>×</td><td>早め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">キタノカチドキ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>テスコボーイ</td>
+<td>ライトフレーム</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">69</span></td>
+<td>70</td>
+<td>75</td><td>◎</td><td>○</td><td>早め</td><td>ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">トドロキムサシ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>シプリアニ</td>
+<td>トシテル</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>75</td>
+<td>67</td><td>○</td><td>◎</td><td>早め</td><td>ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">バンブトンオール</strong></td>
+<td><span class="pill pill-safe">無</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>セダン</td>
+<td>マルセイユ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>70</td>
+<td>37</td><td>◎</td><td>×</td><td>早熟</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">マルイチダイオー</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>チャイナロック</td>
+<td>リンカーン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>60</td>
+<td>55</td><td>△</td><td>◎</td><td>遅め</td><td>ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">スピードパーシア</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーシア</td>
+<td>イチキヨサチ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>70</td>
+<td>59</td><td>△</td><td>◎</td><td>早熟鍋</td><td>普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">チュウオキャプテン</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ファラモンド</td>
+<td>オルヴィダダ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>85</td>
+<td>49</td><td>◎</td><td>◎</td><td>遅め</td><td>ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">フジノパーシア</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーシア</td>
+<td>チエクイン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">71</span></td>
+<td>85</td>
+<td>74</td><td>◎</td><td>◎</td><td>遅め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">タカエノカオリ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ヴェンチア</td>
+<td>タカエミドリ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>35</td>
+<td>51</td><td>◎</td><td>△</td><td>早め</td><td>普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">トウコウエルザ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>パーソロン</td>
+<td>ベニサイ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>75</td>
+<td>66</td><td>◎</td><td>△</td><td>早め</td><td>普通</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="era-365-pane" id="pane365Era_1972" style="display:none;">
+<div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1972 年出生世代】時代格局與各賽線核心情報
+                    </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                        「狂奔大逃」領放狂潮！史上最強逃馬 テスコガビー 與 狂暴雙冠馬 カブラヤオー 震撼世代！
+                    </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> カブラヤオー (鏑矢王) SP 73 狂奔大逃連奪皐月賞與德比！エリモジョージ 晚成稱霸天皇賞春！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> テスコガビー (特斯可加比) 史上最強牝馬之一，櫻花賞拉開後馬 30 馬位狂勝！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> スリーパレード、ヒデノアラシ 統治泥地中長途。
+                        </div>
+</div>
+</div>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:50px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:140px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:70px;">符札</th>
+<th class="sortable-th" style="width:60px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:120px;">父馬</th>
+<th class="sortable-th" style="min-width:120px;">母馬</th>
+<th class="sortable-th" style="width:65px;">SP</th>
+<th class="sortable-th" style="width:65px;">ST</th>
+<th class="sortable-th">副屬性 / 芝ダ / 成長力 / 特性與戰略特徵評語</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">テスコガビー</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>テスコボーイ</td>
+<td>キタノリュウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">73</span></td>
+<td>45</td>
+<td>74</td><td>◎</td><td>×</td><td>早め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">カブラヤオー</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ファラモンド</td>
+<td>カブラヤ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">73</span></td>
+<td>55</td>
+<td>70</td><td>◎</td><td>○</td><td>早め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">ロングホーク</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ハードリドン</td>
+<td>エスタブリッシュメント</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>75</td>
+<td>69</td><td>◎</td><td>△</td><td>早め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">タイホウヒーロー</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>アイアンリージ</td>
+<td>リュウジクネ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>70</td>
+<td>59</td><td>◎</td><td>◎</td><td>遅め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">スリーパレード</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ネヴァービート</td>
+<td>タカローズィ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>60</td>
+<td>71</td><td>△</td><td>◎</td><td>晩成超</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">エリモジョージ</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>セントクレスピン</td>
+<td>パッシングミドリ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>75</td>
+<td>69</td><td>◎</td><td>×</td><td>晩成</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">ヒデノアラシ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>フィダルゴ</td>
+<td>トヨトシ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>70</td>
+<td>62</td><td>×</td><td>◎</td><td>遅め</td><td>普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">ゴールデンリボー</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ファラモンド</td>
+<td>オルヴィダダ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>60</td>
+<td>51</td><td>△</td><td>◎</td><td>早め</td><td>普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">グレートセイカン</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーシア</td>
+<td>トクユウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>40</td>
+<td>63</td><td>◎</td><td>○</td><td>遅め</td><td>ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">リュウフブキ</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>リュウズキ</td>
+<td>ヒヤママンナ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">63</span></td>
+<td>35</td>
+<td>53</td><td>◎</td><td>△</td><td>遅め</td><td>普通</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="era-365-pane" id="pane365Era_1973" style="display:none;">
+<div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1973 年出生世代】時代格局與各賽線核心情報
+                    </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                        日本賽馬史上最壯烈傳奇「TTG 三強鼎立世代」(トウショウボーイ、テンポイント、グリーングラス)！
+                    </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> トウショウボーイ (天馬東商小子 SP 74) 皐月賞/有馬狂飆；テンポイント (貴公子十點 SP 74) 宿命對決；グリーングラス (青草 ST 90) 菊花賞突襲！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> シービークイン (CB Queen) 早期金牝，必買作為千明代表 (Mr. C.B.) 之母；テイタニヤ 早熟奪牝馬雙冠！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> エビチカラ、ファインポート 泥地分庭抗禮。
+                        </div>
+</div>
+</div>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:50px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:140px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:70px;">符札</th>
+<th class="sortable-th" style="width:60px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:120px;">父馬</th>
+<th class="sortable-th" style="min-width:120px;">母馬</th>
+<th class="sortable-th" style="width:65px;">SP</th>
+<th class="sortable-th" style="width:65px;">ST</th>
+<th class="sortable-th">副屬性 / 芝ダ / 成長力 / 特性與戰略特徵評語</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">シービークイン</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>トピオ</td>
+<td>メイドウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>50</td>
+<td>62</td><td>◎</td><td>×</td><td>遅め</td><td>ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">トウショウボーイ</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>テスコボーイ</td>
+<td>ソシアルバターフライ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">74</span></td>
+<td>55</td>
+<td>80</td><td>◎</td><td>×</td><td>早め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">テンポイント</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>コントライト</td>
+<td>ワカクモ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">74</span></td>
+<td>75</td>
+<td>78</td><td>◎</td><td>×</td><td>早め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">グリーングラス</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>インターメゾ</td>
+<td>ダーリングヒメ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>90</td>
+<td>71</td><td>◎</td><td>×</td><td>遅め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">エビチカラ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>マロット</td>
+<td>タカハロウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>60</td>
+<td>47</td><td>×</td><td>◎</td><td>晩成</td><td>ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">ジャンボキング</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>カシム</td>
+<td>ダイゴホーザン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>25</td>
+<td>45</td><td>◎</td><td>○</td><td>早め</td><td>普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">ニッポーキング</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>プロント</td>
+<td>ミスマルミチ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>35</td>
+<td>51</td><td>◎</td><td>△</td><td>早め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ベロナスポート</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>テッソ</td>
+<td>リボーンターフ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>30</td>
+<td>53</td><td>◎</td><td>×</td><td>遅め</td><td>ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">テイタニヤ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>アローエクスプレス</td>
+<td>ダイニトモコ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">70</span></td>
+<td>50</td>
+<td>71</td><td>◎</td><td>×</td><td>早熟</td><td>ない</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ファインポート</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>シプリアニ</td>
+<td>リーデングパート</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>60</td>
+<td>61</td><td>×</td><td>◎</td><td>遅め</td><td>普通</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="era-365-pane" id="pane365Era_1974" style="display:none;">
+<div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1974 年出生世代】時代格局與各賽線核心情報
+                    </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                        外國產超級怪物「マルゼンスキー (丸善斯基)」君臨天下的年代！
+                    </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> マルゼンスキー (丸善斯基) SP 75 / 輔助 85 絕對統治力，大差狂勝！カネミノブ 奪有馬紀念！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> インターグロリア (國際榮耀) 橫掃牝馬重賞，メイワキミコ 泥地雙修！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> マルゼンスキー 泥地亦為 ○，ブレーブボーイ 泥地專長。
+                        </div>
+</div>
+</div>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:50px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:140px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:70px;">符札</th>
+<th class="sortable-th" style="width:60px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:120px;">父馬</th>
+<th class="sortable-th" style="min-width:120px;">母馬</th>
+<th class="sortable-th" style="width:65px;">SP</th>
+<th class="sortable-th" style="width:65px;">ST</th>
+<th class="sortable-th">副屬性 / 芝ダ / 成長力 / 特性與戰略特徵評語</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">マルゼンスキー</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>Nijinsky</td>
+<td>シル</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">75</span></td>
+<td>50</td>
+<td>85</td><td>◎</td><td>○</td><td>早め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">カネミノブ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>バーバー</td>
+<td>カネヒムロ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">71</span></td>
+<td>60</td>
+<td>64</td><td>◎</td><td>×</td><td>早め</td><td>普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">インターグロリア</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ネヴァービート</td>
+<td>ヒダカチェリー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">68</span></td>
+<td>40</td>
+<td>66</td><td>◎</td><td>×</td><td>早め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">メイワキミコ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>Gallant Man</td>
+<td>ハワイアンドーン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>10</td>
+<td>55</td><td>◎</td><td>◎</td><td>早め</td><td>ある</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">セーヌスポート</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ボールドアンドエイブル</td>
+<td>Tamiana</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">63</span></td>
+<td>25</td>
+<td>33</td><td>◎</td><td>×</td><td>早め</td><td>普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ブレーブボーイ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ボールドアンドブレーヴ</td>
+<td>ギンヒデ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>60</td>
+<td>67</td><td>△</td><td>◎</td><td>早め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">リキタイコー</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ミンシオ</td>
+<td>ソーシークレット</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>20</td>
+<td>39</td><td>◎</td><td>◎</td><td>遅め</td><td>普通</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">プレストウコウ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>グスタフ</td>
+<td>サンピュロー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">68</span></td>
+<td>75</td>
+<td>64</td><td>◎</td><td>×</td><td>遅め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">テンメイ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ルイスデール</td>
+<td>トウメイ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>80</td>
+<td>64</td><td>◎</td><td>○</td><td>遅め</td><td>持続</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">リュウキコウ</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>リュウファーロス</td>
+<td>リュウアイアンス</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>75</td>
+<td>55</td><td>◎</td><td>×</td><td>早熟鍋</td><td>ない</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="era-365-pane" id="pane365Era_1975" style="display:none;">
+<div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:14px 16px; margin-bottom:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-flag"></i> 【1975 年出生世代】時代格局與各賽線核心情報
+                    </div>
+<p style="font-size:0.83rem; color:var(--text-color); margin-bottom:8px; line-height:1.6;">
+                        古馬王道長途霸主與短途快馬並起的豐富世代！
+                    </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:8px; font-size:0.8rem; line-height:1.5;">
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid var(--gold-color);">
+<strong style="color:var(--gold-color);">🏆 三冠路線：</strong> サクラショウリ (櫻花勝利) 早熟奪春二冠；ホウヨウボーイ (鳳凰小子 SP 72/ST 80) 晚成統治菊花賞與秋古馬三冠！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+<strong style="color:#f472b6;">🌸 牝馬三冠：</strong> オヤマテスコ、モデルスポート 橫掃短哩與牝馬三冠前二關，ファイブホープ 奪秋華/エリザベス女王杯！
+                        </div>
+<div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; border-left:3px solid #10b981;">
+<strong style="color:#10b981;">🏜️ 泥地路線：</strong> ハツシバオー (初芝王)、タガワエース (田川王牌) 雙雄稱霸泥地交流重賞！
+                        </div>
+</div>
+</div>
+<div class="table-responsive" style="margin-bottom:14px;">
+<table class="data-table" style="font-size:0.82rem; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="width:50px; text-align:center;">評級</th>
+<th class="sortable-th" style="min-width:140px;">馬名 (日/中)</th>
+<th class="sortable-th" style="width:70px;">符札</th>
+<th class="sortable-th" style="width:60px; text-align:center;">性別</th>
+<th class="sortable-th" style="min-width:120px;">父馬</th>
+<th class="sortable-th" style="min-width:120px;">母馬</th>
+<th class="sortable-th" style="width:65px;">SP</th>
+<th class="sortable-th" style="width:65px;">ST</th>
+<th class="sortable-th">副屬性 / 芝ダ / 成長力 / 特性與戰略特徵評語</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight:bold; color:#eab308; text-align:center;">⦿</td>
+<td><strong style="color:var(--text-highlight);">ホウヨウボーイ</strong></td>
+<td><span class="pill pill-gold">金</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>ファーストファミリー</td>
+<td>ホウヨウクイン</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">72</span></td>
+<td>80</td>
+<td>62</td><td>◎</td><td>×</td><td>遅め</td><td>持続</td><td>大舞台 鉄砲</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">モデルスポート</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>モデルフール</td>
+<td>Magic Goddess</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>25</td>
+<td>58</td><td>◎</td><td>△</td><td>早め</td><td>持続</td><td>叩き良</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">タケデン</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>セダン</td>
+<td>シルバーギニー</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>25</td>
+<td>45</td><td>◎</td><td>×</td><td>早熟鍋</td><td>持続</td><td>大駆け</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">インターグシケン</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>テスコボーイ</td>
+<td>キョウエイパンセ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">70</span></td>
+<td>70</td>
+<td>68</td><td>◎</td><td>×</td><td>遅め</td><td>持続</td><td>根幹距 距離延 叩き良</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#38bdf8; text-align:center;">◎</td>
+<td><strong style="color:var(--text-highlight);">サクラショウリ</strong></td>
+<td><span class="pill pill-silver">銀</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>パーソロン</td>
+<td>シリネラ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">70</span></td>
+<td>60</td>
+<td>65</td><td>◎</td><td>×</td><td>早熟鍋</td><td>持続</td><td>大舞台 強心臓</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">〇</td>
+<td><strong style="color:var(--text-highlight);">ハツシバオー</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>タケシバオー</td>
+<td>ハツイチコ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">67</span></td>
+<td>70</td>
+<td>58</td><td>×</td><td>◎</td><td>遅め</td><td>ある</td><td>交流巧 根幹距 スター 鉄砲</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">グレートタイタン</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>シンザン</td>
+<td>リレントデーター</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">65</span></td>
+<td>75</td>
+<td>58</td><td>◎</td><td>△</td><td>遅め</td><td>普通</td><td>直一気 軽ハン</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">シービークロス</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>フォルティノ</td>
+<td>ズイショウ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>75</td>
+<td>61</td><td>◎</td><td>×</td><td>遅め</td><td>ある</td><td>鉄砲 決め打 完全燃</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">マイエルフ</strong></td>
+<td><span class="pill pill-green">緑</span></td>
+<td style="color:#f472b6; font-weight:bold; text-align:center;">牝</td>
+<td>ミンスキー</td>
+<td>マキノカツラ</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">63</span></td>
+<td>35</td>
+<td>53</td><td>◎</td><td>△</td><td>早め</td><td>持続</td><td>ローカ</td>
+</tr>
+<tr>
+<td style="font-weight:bold; color:#94a3b8; text-align:center;">▲</td>
+<td><strong style="color:var(--text-highlight);">タガワエース</strong></td>
+<td><span class="pill pill-copper">銅</span></td>
+<td style="color:#38bdf8; font-weight:bold; text-align:center;">牡</td>
+<td>アザーストーンウッド</td>
+<td>コーホール</td>
+<td><span class="badge" style="background:rgba(56,189,248,0.15); color:var(--accent-color); font-weight:bold;">66</span></td>
+<td>55</td>
+<td>63</td><td>×</td><td>◎</td><td>早め鍋</td><td>持続</td><td>タフネ 冬競馬 クラギ</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section class="section-card" id="sec-amulets">
@@ -20455,6 +21883,39 @@ li {
 <button class="filter-btn active" onclick="switchMainPillar('pillar-db'); setTimeout(() =&gt; { const btn = document.querySelector('[data-cat=cat13]'); if(btn) btn.click(); }, 100);" style="padding:8px 20px; font-size:0.88rem;">
 <i class="fa-solid fa-magnifying-glass"></i> 前往馬庫速查：檢視 虹札推薦日本馬 / 海外馬
             </button>
+</div>
+<!-- 365game 引繼存檔速刷心法 -->
+<div style="margin-top:20px; border-top:1px solid var(--border-color); padding-top:16px;">
+<h3 style="font-size:1rem; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-floppy-disk"></i> 365Game 獨家引繼存檔製作法：半天速刷虹札/金札開局完美存檔 SOP
+            </h3>
+<p style="font-size:0.83rem; color:var(--text-color); line-height:1.6; margin-bottom:12px;">
+                新開檔前，先花 1 小時或半天建立一個「專門用來引繼資源」的存檔，即可在新周目開局直接繼承 <strong>虹札 2~7 枚、金札 10~30 枚、數百億資金與 Lv3 滿級牧場設施</strong>：
+            </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; margin-bottom:16px;">
+<!-- 速度重視版 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3); border-radius:10px; padding:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--accent-color); margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-bolt"></i> 方案 A：速度重視版（1 小時速刷 虹札2枚＋金札10枚）
+                    </div>
+<ol style="font-size:0.8rem; line-height:1.75; margin:0; padding-left:18px; color:var(--text-color);">
+<li><strong>環境設定：</strong>比賽全跳過 (Skip)、對話全自動高速推進。</li>
+<li><strong>核心原則：</strong>每年 <strong>3月5週</strong> 購買「當年即將誕生之有力史實馬的懷孕母馬」，產下幼駒後自動計入自牧生產，<strong>每年穩定霸榜「最優秀生產者賞」賺取金札與巨額獎金</strong>！</li>
+<li><strong>拍賣會撿漏：</strong>每年 8月1週 (國內) 與 12月3週 (海外) 拍賣會，以低價搶購スーパークリーク (超級小溪) 等低札頂級名馬，橫掃 G1 與金殿堂！</li>
+</ol>
+</div>
+<!-- 效率重視版 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(234,179,8,0.4); border-radius:10px; padding:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-crown"></i> 方案 B：效率重視版（半天深度刷 虹札7枚＋金札30枚）
+                    </div>
+<ol style="font-size:0.8rem; line-height:1.75; margin:0; padding-left:18px; color:var(--text-color);">
+<li><strong>入廄指定與主戰綁定：</strong>將自產名馬全數委託高勝率調教師，並由同一名騎手長年專屬策騎，迅速將「絆等級」拉滿 Lv5 覺醒上位絆特性。</li>
+<li><strong>海外銅札馬在日泥地洗分：</strong>引進海外銅札名馬（如 ブーシーリス），在競爭較弱的日本國內泥地重賞全勝，低成本達成<strong>金殿堂 (金札回饋)</strong>！</li>
+<li><strong>年末種馬買賣：</strong>自牧產駒奪三冠引退後以數十億高價售出種權，資金迅速突破 500 億上限！</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -21739,12 +23200,66 @@ li {
 </tbody>
 </table>
 </div>
+<!-- 365game 1968 初期馬與繁殖牝馬深度圖文攻略 -->
+<div style="margin-top:20px; border-top:1px solid var(--border-color); padding-top:16px;">
+<h3 style="font-size:1rem; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-star"></i> 365Game 權威專題：1968 開局初期馬（ファインローズ vs タニノハローモア）與最強母母「ヴァーヴ」深度實戰攻略
+            </h3>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; margin-bottom:16px;">
+<!-- ファインローズ 攻略卡 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(244,114,182,0.3); border-radius:10px; padding:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:#f472b6; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-venus"></i> 牝馬首選：ファインローズ (優雅玫瑰) 實戰全攻略
+                    </div>
+<p style="font-size:0.82rem; color:var(--text-color); line-height:1.6; margin-bottom:8px;">
+                        • <strong>首年戰績回報：</strong>首年出走即穩奪 <strong>4 場 G1 勝利</strong>，包辦「最優秀 3 歲牝馬」與「最優秀短途馬 (スプリンター)」雙料大獎！<br/>
+                        • <strong>推薦輪轉出賽路線：</strong>2月2週 京都 エルフィンS ➔ 4月 櫻花賞 (G1) ➔ 5月 橡樹大賽 (G1) ➔ 秋季 短途馬錦標 (G1) / 一哩冠軍賽！<br/>
+                        • <strong>退役價值：</strong>退役後直升自牧殿堂級繁殖牝馬，為次世代自產馬打下最高相性母本基礎。
+                    </p>
+</div>
+<!-- タニノハローモア 攻略卡 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3); border-radius:10px; padding:14px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--accent-color); margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-mars"></i> 牡馬首選：タニノハローモア (谷野哈囉摩亞) 實戰全攻略
+                    </div>
+<p style="font-size:0.82rem; color:var(--text-color); line-height:1.6; margin-bottom:8px;">
+                        • <strong>首年戰績回報：</strong>首年狂攬 <strong>7 場 G1 ＋ 3 場 Jpn1</strong>，直接鎖定<strong>「金殿堂」</strong>資格！<br/>
+                        • <strong>特殊效益：</strong>首年即刻引爆「競馬熱潮 (競馬ブーム)」，榮登世界 100 傑名馬榜第 78 位！<br/>
+                        • <strong>推薦攻略要訣：</strong>2月2週 きさらぎ賞 (G3) 壓制マーチス ➔ 皐月賞 ➔ 日本德比 (東京優駿) ➔ 菊花賞，全速衝刺三冠榮耀！
+                    </p>
+</div>
+</div>
+<!-- 最強繁殖牝馬 ヴァーヴ 攻略卡 -->
+<div class="tool-card" style="background:rgba(15,23,42,0.7); border:1px solid rgba(234,179,8,0.4); border-radius:10px; padding:16px; margin-bottom:16px;">
+<div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-gem"></i> 1968 開局必買銀札神級母母：ヴァーヴ (Verve) 繁育秘技
+                </div>
+<p style="font-size:0.83rem; color:var(--text-color); line-height:1.6; margin-bottom:10px;">
+                    ヴァーヴ 是 1968 年開局能夠買到的<strong>極其珍貴的 Nearco (ネアルコ) 直仔繁殖牝馬</strong>。自帶母父◎（爆發力+4），且 Nearco 擁有速度因子與極大種牡馬血統群，零細血統適性極佳：
+                </p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px; font-size:0.82rem;">
+<div style="background:rgba(30,41,59,0.8); padding:10px 12px; border-radius:6px;">
+<strong style="color:var(--gold-color);">💡 神級配合推薦 1：</strong><br/>
+<strong>Northern Dancer 直仔種馬 × 零細血統種馬 × ヴァーヴ</strong><br/>
+<small style="color:var(--text-muted);">例：シャリーフダンサー 配種 ➔ 評價 A / 爆發力 43 / 近親危險度僅 1！</small>
+</div>
+<div style="background:rgba(30,41,59,0.8); padding:10px 12px; border-radius:6px;">
+<strong style="color:var(--accent-color);">💡 神級配合推薦 2：</strong><br/>
+<strong>Secretariat (秘書處) × チャイナロック (China Rock) × ヴァーヴ</strong><br/>
+<small style="color:var(--text-muted);">雙重大種牡馬相性 ＋ 雄系活性化，輕鬆誕出 SP 75+ 的世界級自產怪物！</small>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
     </div>
 
-    <!-- 浮動按鈕群 (章節目錄跳轉 + 回頂部) -->
+    <!-- 浮動按鈕群 (返回上一位置 + 章節目錄跳轉 + 回頂部) -->
     <div class="floating-btn-group">
+        <button class="btn-floating btn-history-back" id="btnJumpBackHistory" onclick="jumpBackToPreviousPosition()" title="返回跳轉前位置 (Back)" style="display:none;">
+            <i class="fa-solid fa-arrow-rotate-left"></i>
+        </button>
         <button class="btn-floating btn-jump" onclick="openChapterModal()" title="章節跳轉目錄"><i class="fa-solid fa-list-ol"></i></button>
         <button class="btn-floating" onclick="scrollToTop()" title="回到頂部"><i class="fa-solid fa-arrow-up"></i></button>
     </div>
@@ -22129,7 +23644,95 @@ li {
             }
         }
 
+        // ==================== 頁面導航歷史與返回上一位置 (Navigation History Stack) ====================
+        let jumpHistory = [];
+
+        function recordCurrentPosition() {
+            let activePillar = 'pillar-db';
+            const activeNav = document.querySelector('.main-tab-btn.active');
+            if (activeNav) {
+                const idAttr = activeNav.id || '';
+                const revMap = {
+                    'tabPillarDb': 'pillar-db',
+                    'tabPillarBreed': 'pillar-breed',
+                    'tabPillarFoals': 'pillar-foals',
+                    'tabPillarTrain': 'pillar-train',
+                    'tabPillarRaces': 'pillar-races',
+                    'tabPillarRanch': 'pillar-ranch',
+                    'tabPillarSecrets': 'pillar-secrets',
+                    'tabPillarTracker': 'pillar-tracker'
+                };
+                if (revMap[idAttr]) activePillar = revMap[idAttr];
+            }
+            const pos = {
+                scrollX: window.scrollX || window.pageXOffset || 0,
+                scrollY: window.scrollY || window.pageYOffset || 0,
+                pillarId: activePillar
+            };
+            
+            if (jumpHistory.length > 0) {
+                const last = jumpHistory[jumpHistory.length - 1];
+                if (Math.abs(last.scrollY - pos.scrollY) < 50 && last.pillarId === pos.pillarId) {
+                    return;
+                }
+            }
+            jumpHistory.push(pos);
+            if (jumpHistory.length > 25) jumpHistory.shift();
+            updateBackHistoryBtnVisibility();
+        }
+
+        function updateBackHistoryBtnVisibility() {
+            const btn = document.getElementById('btnJumpBackHistory');
+            if (btn) {
+                btn.style.display = (jumpHistory.length > 0) ? 'flex' : 'none';
+            }
+        }
+
+        function jumpBackToPreviousPosition() {
+            if (jumpHistory.length === 0) return;
+            const lastPos = jumpHistory.pop();
+            updateBackHistoryBtnVisibility();
+            if (lastPos) {
+                if (lastPos.pillarId) {
+                    document.querySelectorAll('.pillar-content').forEach(el => {
+                        el.style.display = 'none';
+                        el.classList.remove('active');
+                    });
+                    document.querySelectorAll('.main-tab-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    const target = document.getElementById(lastPos.pillarId);
+                    if (target) {
+                        target.style.display = 'block';
+                        target.classList.add('active');
+                    }
+                    const btnMap = {
+                        'pillar-db': 'tabPillarDb',
+                        'pillar-breed': 'tabPillarBreed',
+                        'pillar-foals': 'tabPillarFoals',
+                        'pillar-train': 'tabPillarTrain',
+                        'pillar-races': 'tabPillarRaces',
+                        'pillar-ranch': 'tabPillarRanch',
+                        'pillar-secrets': 'tabPillarSecrets',
+                        'pillar-tracker': 'tabPillarTracker'
+                    };
+                    const b = document.getElementById(btnMap[lastPos.pillarId]);
+                    if (b) b.classList.add('active');
+                }
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: lastPos.scrollY,
+                        left: lastPos.scrollX,
+                        behavior: 'smooth'
+                    });
+                }, 40);
+            }
+        }
+
         function scrollToTop() {
+            if ((window.scrollY || window.pageYOffset || 0) > 250) {
+                recordCurrentPosition();
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -22165,6 +23768,7 @@ li {
         }
 
         function jumpToChapter(pillarId, sectionId) {
+            recordCurrentPosition();
             switchMainPillar(pillarId);
             closeChapterModal();
             setTimeout(() => {
@@ -23183,7 +24787,19 @@ li {
     }
 
 
-    function switchStakesSubTab(tabId) {
+    function switch365EraTab(year, btn) {
+            document.querySelectorAll('.era-365-pane').forEach(el => el.style.display = 'none');
+            const target = document.getElementById('pane365Era_' + year);
+            if (target) target.style.display = 'block';
+            
+            if (btn && btn.parentElement) {
+                btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            }
+            makeTablesSortable();
+        }
+
+        function switchStakesSubTab(tabId) {
         document.querySelectorAll('.stakes-subtab-pane').forEach(el => el.style.display = 'none');
         const target = document.getElementById(tabId);
         if (target) target.style.display = 'block';

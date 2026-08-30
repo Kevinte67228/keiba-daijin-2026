@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.97",
+  "current_version": "v01.98",
   "history": [
     {
       "version": "v01.01",
@@ -485,6 +485,11 @@
       "version": "v01.97",
       "date": "2026-08-29",
       "description": "Layout: Enable Tablet 3-col & Desktop auto-fit responsive layout for Breeding Theory Matrix Grid"
+    },
+    {
+      "version": "v01.98",
+      "date": "2026-08-29",
+      "description": "Content: Integrate 365game Yearly Recommendation Guide (1967-1975), 1968 Starting Horses & Carryover Amulet SOP"
     }
   ]
 }
