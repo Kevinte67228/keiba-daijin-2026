@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.41</span>
+        <span class="version-badge">v02.42</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -28489,6 +28489,117 @@ function changeMasterLivePage(delta) {
                 `;
                 guideWrap.appendChild(card);
             }
+        }
+
+        let ch40CategoryFilter = 'all';
+        let ch40LetterFilter = null;
+        let ch40KanaFilter = null;
+
+        const CH40_LETTER_KANA_MAP = {
+            'A': ['ア', 'イ', 'ウ', 'エ', 'オ', 'ヴ'],
+            'B': ['バ', 'ビ', 'ブ', 'ベ', 'ボ'],
+            'C': ['カ', 'キ', 'ク', 'ケ', 'コ', 'キャ', 'キュ', 'キョ', 'チェ', 'チャ', 'チュ', 'チョ'],
+            'D': ['ダ', 'ヂ', 'ヅ', 'デ', 'ド', 'ディ', 'ドゥ'],
+            'E': ['エ', 'エイ', 'エフ', 'エル', 'エム', 'エン'],
+            'F': ['ファ', 'フィ', 'フ', 'フェ', 'フォ'],
+            'G': ['ガ', 'ギ', 'グ', 'ゲ', 'ゴ'],
+            'H': ['ハ', 'ヒ', 'フ', 'ヘ', 'ホ'],
+            'I': ['イ', 'アイ', 'イン', 'イル'],
+            'J': ['ジャ', 'ジ', 'ジュ', 'ジェ', 'ジョ'],
+            'K': ['カ', 'キ', 'ク', 'ケ', 'コ'],
+            'L': ['ラ', 'リ', 'ル', 'レ', 'ロ'],
+            'M': ['マ', 'ミ', 'ム', 'メ', 'モ'],
+            'N': ['ナ', 'ニ', 'ヌ', 'ネ', 'ノ'],
+            'O': ['オ', 'オー', 'オウ', 'オフ'],
+            'P': ['パ', 'ピ', 'プ', 'ペ', 'ポ'],
+            'Q': ['ク', 'クイ', 'クエ', 'クオ'],
+            'R': ['ラ', 'リ', 'ル', 'レ', 'ロ'],
+            'S': ['サ', 'シ', 'ス', 'セ', 'ソ', 'シャ', 'シュ', 'ショ'],
+            'T': ['タ', 'チ', 'ツ', 'テ', 'ト'],
+            'U': ['ウ', 'ユー', 'ユ', 'ウル'],
+            'V': ['ヴ', 'ヴァ', 'ヴィ', 'ヴ', 'ヴェ', 'ヴォ'],
+            'W': ['ワ', 'ウィ', 'ウェ', 'ウォ', 'ワン'],
+            'X': ['エックス', 'ザ', 'ジ', 'ズ'],
+            'Y': ['ヤ', 'ユ', 'ヨ', 'イエ'],
+            'Z': ['ザ', 'ジ', 'ズ', 'ゼ', 'ゾ']
+        };
+
+        const CH40_KANA_ROW_MAP = {
+            'ア': ['ア', 'イ', 'ウ', 'エ', 'オ', 'ヴ'],
+            'カ': ['カ', 'キ', 'ク', 'ケ', 'コ', 'ガ', 'ギ', 'グ', 'ゲ', 'ゴ'],
+            'サ': ['サ', 'シ', 'ス', 'セ', 'ソ', 'ザ', 'ジ', 'ズ', 'ゼ', 'ゾ'],
+            'タ': ['タ', 'チ', 'ツ', 'テ', 'ト', 'ダ', 'ヂ', 'ヅ', 'デ', 'ド'],
+            'ナ': ['ナ', 'ニ', 'ヌ', 'ネ', 'ノ'],
+            'ハ': ['ハ', 'ヒ', 'フ', 'ヘ', 'ホ', 'バ', 'ビ', 'ブ', 'ベ', 'ボ', 'パ', 'ピ', 'プ', 'ペ', 'ポ'],
+            'マ': ['マ', 'ミ', 'ム', 'メ', 'モ'],
+            'ヤ': ['ヤ', 'ユ', 'ヨ'],
+            'ラ': ['ラ', 'リ', 'ル', 'レ', 'ロ'],
+            'ワ': ['ワ', 'ヲ', 'ン']
+        };
+
+        function filterCh40Category(catType, btn) {
+            ch40CategoryFilter = catType;
+            ch40LetterFilter = null;
+            ch40KanaFilter = null;
+            
+            document.querySelectorAll('#ch40QuickFilters .ch41-filter-chip').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            document.querySelectorAll('#ch40LetterBtns .ch41-letter-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('#ch40KanaBtns .ch41-kana-btn').forEach(b => b.classList.remove('active'));
+            
+            renderTable();
+        }
+
+        function filterCh40Letter(letter, btn) {
+            if (ch40LetterFilter === letter) {
+                ch40LetterFilter = null;
+                if (btn) btn.classList.remove('active');
+            } else {
+                ch40LetterFilter = letter;
+                ch40KanaFilter = null;
+                document.querySelectorAll('#ch40LetterBtns .ch41-letter-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('#ch40KanaBtns .ch41-kana-btn').forEach(b => b.classList.remove('active'));
+                if (btn) btn.classList.add('active');
+            }
+            renderTable();
+        }
+
+        function filterCh40Kana(kanaRow, btn) {
+            if (ch40KanaFilter === kanaRow) {
+                ch40KanaFilter = null;
+                if (btn) btn.classList.remove('active');
+            } else {
+                ch40KanaFilter = kanaRow;
+                ch40LetterFilter = null;
+                document.querySelectorAll('#ch40LetterBtns .ch41-letter-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('#ch40KanaBtns .ch41-kana-btn').forEach(b => b.classList.remove('active'));
+                if (btn) btn.classList.add('active');
+            }
+            renderTable();
+        }
+
+        function resetCh40Filters() {
+            ch40CategoryFilter = 'all';
+            ch40LetterFilter = null;
+            ch40KanaFilter = null;
+            
+            const searchEl = document.getElementById('filterSearch');
+            if (searchEl) searchEl.value = '';
+            const yearEl = document.getElementById('filterYear');
+            if (yearEl) yearEl.value = 'ALL';
+            const ticketEl = document.getElementById('filterTicket');
+            if (ticketEl) ticketEl.value = 'ALL';
+            const sexEl = document.getElementById('filterSex');
+            if (sexEl) sexEl.value = 'ALL';
+
+            document.querySelectorAll('#ch40QuickFilters .ch41-filter-chip').forEach((b, idx) => {
+                if (idx === 0) b.classList.add('active');
+                else b.classList.remove('active');
+            });
+            document.querySelectorAll('#ch40LetterBtns .ch41-letter-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('#ch40KanaBtns .ch41-kana-btn').forEach(b => b.classList.remove('active'));
+
+            renderTable();
         }
 
         function renderTable() {
