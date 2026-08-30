@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.48</span>
+        <span class="version-badge">v02.49</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -28475,125 +28475,6 @@ function changeMasterLivePage(delta) {
             }
         }
 
-        let ch40CategoryFilter = 'all';
-        let ch40LetterFilter = null;
-        let ch40KanaFilter = null;
-
-        const CH40_LETTER_KANA_MAP = {
-            'A': ['ア', 'イ', 'ウ', 'エ', 'オ', 'ヴ'],
-            'B': ['バ', 'ビ', 'ブ', 'ベ', 'ボ'],
-            'C': ['カ', 'キ', 'ク', 'ケ', 'コ', 'キャ', 'キュ', 'キョ', 'チェ', 'チャ', 'チュ', 'チョ'],
-            'D': ['ダ', 'ヂ', 'ヅ', 'デ', 'ド', 'ディ', 'ドゥ'],
-            'E': ['エ', 'エイ', 'エフ', 'エル', 'エム', 'エン'],
-            'F': ['ファ', 'フィ', 'フ', 'フェ', 'フォ'],
-            'G': ['ガ', 'ギ', 'グ', 'ゲ', 'ゴ'],
-            'H': ['ハ', 'ヒ', 'フ', 'ヘ', 'ホ'],
-            'I': ['イ', 'アイ', 'イン', 'イル'],
-            'J': ['ジャ', 'ジ', 'ジュ', 'ジェ', 'ジョ'],
-            'K': ['カ', 'キ', 'ク', 'ケ', 'コ'],
-            'L': ['ラ', 'リ', 'ル', 'レ', 'ロ'],
-            'M': ['マ', 'ミ', 'ム', 'メ', 'モ'],
-            'N': ['ナ', 'ニ', 'ヌ', 'ネ', 'ノ'],
-            'O': ['オ', 'オー', 'オウ', 'オフ'],
-            'P': ['パ', 'ピ', 'プ', 'ペ', 'ポ'],
-            'Q': ['ク', 'クイ', 'クエ', 'クオ'],
-            'R': ['ラ', 'リ', 'ル', 'レ', 'ロ'],
-            'S': ['サ', 'シ', 'ス', 'セ', 'ソ', 'シャ', 'シュ', 'ショ'],
-            'T': ['タ', 'チ', 'ツ', 'テ', 'ト'],
-            'U': ['ウ', 'ユー', 'ユ', 'ウル'],
-            'V': ['ヴ', 'ヴァ', 'ヴィ', 'ヴ', 'ヴェ', 'ヴォ'],
-            'W': ['ワ', 'ウィ', 'ウェ', 'ウォ', 'ワン'],
-            'X': ['エックス', 'ザ', 'ジ', 'ズ'],
-            'Y': ['ヤ', 'ユ', 'ヨ', 'イエ'],
-            'Z': ['ザ', 'ジ', 'ズ', 'ゼ', 'ゾ']
-        };
-
-        const CH40_KANA_ROW_MAP = {
-            'ア': ['ア', 'イ', 'ウ', 'エ', 'オ', 'ヴ'],
-            'カ': ['カ', 'キ', 'ク', 'ケ', 'コ', 'ガ', 'ギ', 'グ', 'ゲ', 'ゴ'],
-            'サ': ['サ', 'シ', 'ス', 'セ', 'ソ', 'ザ', 'ジ', 'ズ', 'ゼ', 'ゾ'],
-            'タ': ['タ', 'チ', 'ツ', 'テ', 'ト', 'ダ', 'ヂ', 'ヅ', 'デ', 'ド'],
-            'ナ': ['ナ', 'ニ', 'ヌ', 'ネ', 'ノ'],
-            'ハ': ['ハ', 'ヒ', 'フ', 'ヘ', 'ホ', 'バ', 'ビ', 'ブ', 'ベ', 'ボ', 'パ', 'ピ', 'プ', 'ペ', 'ポ'],
-            'マ': ['マ', 'ミ', 'ム', 'メ', 'モ'],
-            'ヤ': ['ヤ', 'ユ', 'ヨ'],
-            'ラ': ['ラ', 'リ', 'ル', 'レ', 'ロ'],
-            'ワ': ['ワ', 'ヲ', 'ン']
-        };
-
-        function filterCh40Category(catType, btn) {
-            ch40HasUserInteracted = true;
-            ch40HasUserInteracted = true;
-            ch40CategoryFilter = catType;
-            ch40LetterFilter = null;
-            ch40KanaFilter = null;
-            
-            document.querySelectorAll('#ch40QuickFilters .ch41-filter-chip').forEach(b => b.classList.remove('active'));
-            if (btn) btn.classList.add('active');
-            document.querySelectorAll('#ch40LetterBtns .ch41-letter-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('#ch40KanaBtns .ch41-kana-btn').forEach(b => b.classList.remove('active'));
-            
-            renderTable();
-        }
-
-        function filterCh40Letter(letter, btn) {
-            ch40HasUserInteracted = true;
-            ch40HasUserInteracted = true;
-            if (ch40LetterFilter === letter) {
-                ch40LetterFilter = null;
-                if (btn) btn.classList.remove('active');
-            } else {
-                ch40LetterFilter = letter;
-                ch40KanaFilter = null;
-                document.querySelectorAll('#ch40LetterBtns .ch41-letter-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('#ch40KanaBtns .ch41-kana-btn').forEach(b => b.classList.remove('active'));
-                if (btn) btn.classList.add('active');
-            }
-            renderTable();
-        }
-
-        function filterCh40Kana(kanaRow, btn) {
-            ch40HasUserInteracted = true;
-            ch40HasUserInteracted = true;
-            if (ch40KanaFilter === kanaRow) {
-                ch40KanaFilter = null;
-                if (btn) btn.classList.remove('active');
-            } else {
-                ch40KanaFilter = kanaRow;
-                ch40LetterFilter = null;
-                document.querySelectorAll('#ch40LetterBtns .ch41-letter-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('#ch40KanaBtns .ch41-kana-btn').forEach(b => b.classList.remove('active'));
-                if (btn) btn.classList.add('active');
-            }
-            renderTable();
-        }
-
-        function resetCh40Filters() {
-            ch40HasUserInteracted = true;
-            ch40HasUserInteracted = true;
-            ch40CategoryFilter = 'all';
-            ch40LetterFilter = null;
-            ch40KanaFilter = null;
-            
-            const searchEl = document.getElementById('filterSearch');
-            if (searchEl) searchEl.value = '';
-            const yearEl = document.getElementById('filterYear');
-            if (yearEl) yearEl.value = 'ALL';
-            const ticketEl = document.getElementById('filterTicket');
-            if (ticketEl) ticketEl.value = 'ALL';
-            const sexEl = document.getElementById('filterSex');
-            if (sexEl) sexEl.value = 'ALL';
-
-            document.querySelectorAll('#ch40QuickFilters .ch41-filter-chip').forEach((b, idx) => {
-                if (idx === 0) b.classList.add('active');
-                else b.classList.remove('active');
-            });
-            document.querySelectorAll('#ch40LetterBtns .ch41-letter-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('#ch40KanaBtns .ch41-kana-btn').forEach(b => b.classList.remove('active'));
-
-            renderTable();
-        }
-
         function renderTable() {
             ensureUnpackedDb();
             ch40CurrentPage = 1;
@@ -28607,41 +28488,6 @@ function changeMasterLivePage(delta) {
             const guideWrap = document.getElementById("guideViewWrapper");
             const filterPanel = document.querySelector(".filter-panel");
             const statsBar = document.querySelector(".stats-bar");
-            const pagEl = document.getElementById("paginationControls");
-
-            if (!ch40HasUserInteracted) {
-                if (tableWrap) {
-                    tableWrap.style.display = "block";
-                    const tContainer = tableWrap.querySelector(".table-container");
-                    if (tContainer) tContainer.style.display = "none";
-                    let ph = document.getElementById("ch40InitialPlaceholder");
-                    if (!ph) {
-                        ph = document.createElement("div");
-                        ph.id = "ch40InitialPlaceholder";
-                        ph.style.cssText = "text-align:center; padding:45px 20px; color:var(--text-muted); background:rgba(15,23,42,0.5); border:1px dashed var(--border-color); border-radius:10px; margin:16px 0;";
-                        ph.innerHTML = `
-                            <i class="fa-solid fa-hand-pointer" style="font-size:2rem; color:var(--accent-color); margin-bottom:12px; display:block;"></i>
-                            <div style="font-size:0.95rem; font-weight:bold; color:var(--text-color); margin-bottom:6px;">請點選上方「快速分類晶片」、「字母 / 五十音」或「輸入關鍵字」</div>
-                            <div style="font-size:0.82rem; color:var(--text-muted);">系統將即時載入並呈現篩選後的史實名駒清單（每頁 25 筆，支援半高垂直滑軌）</div>
-                        `;
-                        tableWrap.insertBefore(ph, tContainer);
-                    } else {
-                        ph.style.display = "block";
-                    }
-                }
-                if (pagEl) pagEl.style.display = "none";
-                const countEl = document.getElementById("matchCount");
-                if (countEl) countEl.innerText = "請點選上方條件載入";
-                return;
-            } else {
-                const ph = document.getElementById("ch40InitialPlaceholder");
-                if (ph) ph.style.display = "none";
-                if (tableWrap) {
-                    const tContainer = tableWrap.querySelector(".table-container");
-                    if (tContainer) tContainer.style.display = "block";
-                }
-                if (pagEl) pagEl.style.display = "flex";
-            }
 
             if (tableWrap) tableWrap.style.display = "block";
             if (filterPanel) filterPanel.style.display = "grid";
@@ -28657,11 +28503,11 @@ function changeMasterLivePage(delta) {
             const distVal = document.getElementById("filterDistance") ? document.getElementById("filterDistance").value : "ALL";
             const regionVal = document.getElementById("filterRegion") ? document.getElementById("filterRegion").value : "ALL";
             const searchVal = document.getElementById("filterSearch") ? document.getElementById("filterSearch").value.trim().toLowerCase() : "";
+
             let dataset = [];
             if (dbData) {
-                dataset = dbData[currentTab] || dbData.cat1 || [];
+                dataset = dbData[currentTab] || [];
             }
-            if (!Array.isArray(dataset)) dataset = [];
 
             let filtered = dataset.filter(item => {
                 if (!item) return false;
@@ -28674,127 +28520,58 @@ function changeMasterLivePage(delta) {
                     const s = item.sex || "";
                     if (!s.includes(sexVal)) return false;
                 }
-
-                const sp = parseInt(item.sp || item.matched_sp) || 0;
-                if (spVal > 0 && sp < spVal) return false;
-
-                const st = parseInt(item.stamina || item.st) || 0;
-                if (stVal > 0 && st < stVal) return false;
-
+                if (spVal > 0) {
+                    const itemSp = parseInt(item.sp || item.matched_sp) || 0;
+                    if (itemSp < spVal) return false;
+                }
+                if (stVal > 0) {
+                    const itemSt = parseInt(item.stamina || item.matched_stamina) || 0;
+                    if (itemSt < stVal) return false;
+                }
                 if (trackVal !== "ALL") {
-                    const grass = item.grass || item.turf || item.芝 || "";
-                    const dirt = item.dirt || item.ダ || "";
-                    const isGrassGood = grass === "◎" || grass === "○";
-                    const isDirtGood = dirt === "◎" || dirt === "○";
-
-                    if (trackVal === "芝") {
-                        if (!isGrassGood || isDirtGood) return false;
-                    } else if (trackVal === "ダ") {
-                        if (!isDirtGood || isGrassGood) return false;
-                    } else if (trackVal === "万能") {
-                        if (!isGrassGood || !isDirtGood) return false;
-                    } else if (trackVal === "芝可能") {
-                        if (!isGrassGood) return false;
-                    } else if (trackVal === "ダ可能") {
-                        if (!isDirtGood) return false;
-                    }
+                    const g = item.grass || item.matched_grass || "";
+                    const d = item.dirt || item.matched_dirt || "";
+                    if (trackVal === "芝" && (g !== "◎" || d === "◎")) return false;
+                    if (trackVal === "ダ" && (d !== "◎" || g === "◎")) return false;
+                    if (trackVal === "万能" && (g !== "◎" || d !== "◎")) return false;
+                    if (trackVal === "芝可能" && g !== "◎" && g !== "○") return false;
+                    if (trackVal === "ダ可能" && d !== "◎" && d !== "○") return false;
                 }
-
                 if (distVal !== "ALL") {
-                    const targetDist = parseInt(distVal);
-                    const m = (item.distance || "").match(/(\d+)/);
-                    const itemMinDist = m ? parseInt(m[1]) : 0;
-                    if (distVal === "2500") {
-                        if (itemMinDist < 2500) return false;
-                    } else {
-                        if (itemMinDist !== targetDist) return false;
+                    const distStr = item.distance || item.matched_distance || "";
+                    const m = distStr.match(/(\d+)/);
+                    if (m) {
+                        const minDist = parseInt(m[1]);
+                        const targetDist = parseInt(distVal);
+                        if (targetDist === 2500) {
+                            if (minDist < 2400) return false;
+                        } else {
+                            if (minDist > targetDist || (minDist + 400 < targetDist)) return false;
+                        }
                     }
                 }
-
                 if (regionVal !== "ALL") {
-                    const r = item.region || item.country || "";
-                    if (regionVal === "日本") {
-                        if (!r.includes("日")) return false;
-                    } else if (regionVal === "米") {
-                        if (!r.includes("米") && !r.includes("美") && !r.includes("US")) return false;
-                    } else if (regionVal === "欧") {
-                        if (!r.includes("欧") && !r.includes("歐") && !r.includes("EU") && !r.includes("Europe")) return false;
-                    }
+                    const r = item.region || item.matched_region || "";
+                    if (!r.includes(regionVal)) return false;
                 }
-
                 if (searchVal) {
-                    const name = (item.name || "").toLowerCase();
-                    const sire = (item.sire || "").toLowerCase();
-                    if (!name.includes(searchVal) && !sire.includes(searchVal)) return false;
+                    const n = (item.name || "").toLowerCase();
+                    const s = (item.sire || item.matched_sire || "").toLowerCase();
+                    const en = (item.en_name || "").toLowerCase();
+                    const rz = (item.recommendation_reason || "").toLowerCase();
+                    if (!n.includes(searchVal) && !s.includes(searchVal) && !en.includes(searchVal) && !rz.includes(searchVal)) return false;
                 }
                 return true;
             });
 
-            filtered.sort((a, b) => {
-                let valA = getSortValue(a, sortField);
-                let valB = getSortValue(b, sortField);
-                if (typeof valA === "number" && typeof valB === "number") {
-                    return sortAsc ? valA - valB : valB - valA;
-                }
-                if (valA < valB) return sortAsc ? -1 : 1;
-                if (valA > valB) return sortAsc ? 1 : -1;
-                return 0;
-            });
+            const countEl = document.getElementById("matchCount");
+            if (countEl) countEl.innerText = filtered.length.toLocaleString();
 
-            const matchCountEl = document.getElementById("matchCount");
-            if (matchCountEl) matchCountEl.textContent = filtered.length.toLocaleString();
-
-            renderHeader();
+            renderHeader(currentTab);
             renderBody(filtered);
         }
 
-        // ==================== 徽章與樣式輔助函數 ====================
-        function renderStarsBadge(stars) {
-            if (!stars || stars === "-") return "-";
-            const sStr = String(stars);
-            if (sStr.includes("★")) {
-                return `<span style="color:var(--gold-color); font-weight:bold;">${sStr}</span>`;
-            }
-            const count = parseInt(sStr) || 0;
-            if (count > 0 && count <= 5) {
-                return `<span style="color:var(--gold-color); font-weight:bold;">${"★".repeat(count)}${"☆".repeat(5 - count)}</span>`;
-            }
-            return sStr;
-        }
-
-        function renderTicketBadge(ticket) {
-            if (!ticket || ticket === "-" || ticket === "無") return `<span class="badge" style="background:#334155; color:#94a3b8;">無</span>`;
-            const t = String(ticket).trim();
-            if (t.includes("虹") || t.includes("彩")) return `<span class="badge badge-rainbow">虹</span>`;
-            if (t.includes("金")) return `<span class="badge badge-gold">金</span>`;
-            if (t.includes("銀")) return `<span class="badge badge-silver">銀</span>`;
-            if (t.includes("銅")) return `<span class="badge badge-bronze">銅</span>`;
-            if (t.includes("綠") || t.includes("緑")) return `<span class="badge badge-green">綠</span>`;
-            return `<span class="badge" style="background:#334155; color:#fff;">${t}</span>`;
-        }
-
-        function renderTrackBadge(val) {
-            if (!val || val === "-") return "-";
-            const v = String(val).trim();
-            if (v.includes("◎")) return `<span style="color:#10b981; font-weight:bold;">◎</span>`;
-            if (v.includes("○")) return `<span style="color:#38bdf8; font-weight:bold;">○</span>`;
-            if (v.includes("△")) return `<span style="color:#f59e0b; font-weight:bold;">△</span>`;
-            if (v.includes("×") || v.includes("✕")) return `<span style="color:#ef4444; font-weight:bold;">×</span>`;
-            return v;
-        }
-
-        function renderRankBadge(rank) {
-            if (!rank || rank === "-") return "-";
-            const r = String(rank).trim();
-            if (r.startsWith("S")) return `<span style="color:#eab308; font-weight:bold;">${r}</span>`;
-            if (r.startsWith("A")) return `<span style="color:#f43f5e; font-weight:bold;">${r}</span>`;
-            if (r.startsWith("B")) return `<span style="color:#3b82f6; font-weight:bold;">${r}</span>`;
-            if (r.startsWith("C")) return `<span style="color:#10b981; font-weight:bold;">${r}</span>`;
-            if (r.startsWith("D") || r.startsWith("E") || r.startsWith("G")) return `<span style="color:#94a3b8;">${r}</span>`;
-            return r;
-        }
-
-                function renderHeader() {
+        function renderHeader() {
             const tr = document.getElementById("tableHeader");
             if (!tr) return;
             tr.innerHTML = "";
@@ -28838,7 +28615,7 @@ function changeMasterLivePage(delta) {
 
         let ch40CurrentPage = 1;
         const ch40PageSize = 25;
-        let ch40HasUserInteracted = false;
+        
         let ch40FilteredList = [];
 
         function jumpCh40Page() {
@@ -29657,3 +29434,4 @@ function changeMasterLivePage(delta) {
 
 </body>
 </html>
+
