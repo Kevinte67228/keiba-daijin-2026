@@ -1,5 +1,5 @@
 {
-  "current_version": "v01.99",
+  "current_version": "v01.100",
   "history": [
     {
       "version": "v01.01",
@@ -495,6 +495,11 @@
       "version": "v01.99",
       "date": "2026-08-29",
       "description": "Refactor: Clean 14-col layout for Ch33 Yearly Recs Tables, Add Dedicated Strategy Points Cards (攻略のポイント) and Remove all External Citation References"
+    },
+    {
+      "version": "v01.100",
+      "date": "2026-08-29",
+      "description": "Fix: Chapter 33 Single Clean Era Section, Authentic 1:1 攻略のポイント Text and 3月5週 Broodmare Cards"
     }
   ]
 }
