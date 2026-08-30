@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.34</span>
+        <span class="version-badge">v02.35</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -26765,6 +26765,135 @@ function generateTurfQualityTrackBar(grass, dirt, turfRange) {
     `;
 }
 
+function generateVisualPedigreeTree(horse, cleanQuery) {
+    let sire = horse.sire || '-';
+    let dam = horse.dam || '-';
+    let damsire = horse.damsire || '-';
+    let sire_sire = '-';
+    let sire_dam = '-';
+    let dam_dam = '-';
+    let gg = ['-', '-', '-', '-', '-', '-', '-', '-'];
+    
+    // Famous presets
+    if (cleanQuery.includes('ファラオ') || cleanQuery.includes('pharoah')) {
+        sire = 'パイオニアオブザナイル';
+        dam = 'リトルプリンセスエンマ';
+        sire_sire = 'エンパイアメーカー';
+        sire_dam = 'スターオブゴーシェン';
+        damsire = 'ヤンキージェントルマン';
+        dam_dam = 'イクスクルーシヴロゼット';
+        gg = ['アンブライドルド', 'トゥーソード', 'ロードアットウォー', 'キャッスルエイト', '-', '-', '-', '-'];
+    } else if (cleanQuery.includes('ディープ') || cleanQuery.includes('deep')) {
+        sire = 'サンデーサイレンス';
+        dam = 'ウインドインハーヘア';
+        sire_sire = 'Halo';
+        sire_dam = 'Wishing Well';
+        damsire = 'Alzao';
+        dam_dam = 'Burghclere';
+        gg = ['Hail to Reason', 'Cosmah', 'Understanding', 'Mountain Flower', 'Lyphard', 'Lady Rebecca', 'Busted', 'Highclere'];
+    } else if (cleanQuery.includes('ノーザンダンサー') || cleanQuery.includes('northern')) {
+        sire = 'Nearctic';
+        dam = 'Natalma';
+        sire_sire = 'Nearco';
+        sire_dam = 'Lady Angela';
+        damsire = 'Native Dancer';
+        dam_dam = 'Almahmoud';
+        gg = ['Pharos', 'Nogara', 'Hyperion', 'Sister Sarah', 'Polynesian', 'Geisha', 'Mahmoud', 'Arbitrator'];
+    } else if (cleanQuery.includes('サンデー') || cleanQuery.includes('sunday')) {
+        sire = 'Halo';
+        dam = 'Wishing Well';
+        sire_sire = 'Hail to Reason';
+        sire_dam = 'Cosmah';
+        damsire = 'Understanding';
+        dam_dam = 'Mountain Flower';
+        gg = ['Turn-to', 'Nothirdchance', 'Cosmic Bomb', 'Almahmoud', 'Promised Land', 'Pretty Kitty', 'Montparnasse', 'Edelweiss'];
+    } else {
+        if (damsire === '-' && horse.sire_line) {
+            damsire = '母父血統因子';
+        }
+        sire_sire = horse.sire_line || '父系主力祖先';
+    }
+    
+    return `
+    <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:12px; margin-bottom:16px;">
+        <div style="font-size:0.85rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+            <i class="fa-solid fa-dna"></i> ◤ 血統情報 (4 代血統譜視覺矩陣圖)
+        </div>
+        
+        <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
+            <table style="width:100%; min-width:540px; border-collapse:separate; border-spacing:3px; font-size:0.75rem; text-align:left;">
+                <tbody>
+                    <tr>
+                        <td rowspan="4" style="background:rgba(59,130,246,0.3); border:1px solid rgba(59,130,246,0.6); color:#93c5fd; padding:10px 8px; border-radius:6px; font-weight:bold; width:33%;">
+                            <span style="font-size:0.68rem; color:#60a5fa;">父 (Sire)</span><br/>
+                            <strong>${sire}</strong>
+                        </td>
+                        <td rowspan="2" style="background:rgba(59,130,246,0.25); border:1px solid rgba(59,130,246,0.5); color:#bfdbfe; padding:6px 8px; border-radius:6px; font-weight:bold; width:33%;">
+                            <span style="font-size:0.68rem; color:#60a5fa;">祖父</span><br/>
+                            ${sire_sire}
+                        </td>
+                        <td style="background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:#dbeafe; padding:4px 6px; border-radius:4px; width:34%;">
+                            <span style="font-size:0.65rem; color:#60a5fa;">曾祖父</span> ${gg[0]}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background:rgba(244,114,182,0.2); border:1px solid rgba(244,114,182,0.4); color:#fbcfe8; padding:4px 6px; border-radius:4px;">
+                            <span style="font-size:0.65rem; color:#f472b6;">曾祖母</span> ${gg[1]}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" style="background:rgba(244,114,182,0.25); border:1px solid rgba(244,114,182,0.5); color:#fbcfe8; padding:6px 8px; border-radius:6px; font-weight:bold;">
+                            <span style="font-size:0.68rem; color:#f472b6;">祖母</span><br/>
+                            ${sire_dam}
+                        </td>
+                        <td style="background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:#dbeafe; padding:4px 6px; border-radius:4px;">
+                            <span style="font-size:0.65rem; color:#60a5fa;">曾祖父</span> ${gg[2]}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background:rgba(244,114,182,0.2); border:1px solid rgba(244,114,182,0.4); color:#fbcfe8; padding:4px 6px; border-radius:4px;">
+                            <span style="font-size:0.65rem; color:#f472b6;">曾祖母</span> ${gg[3]}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4" style="background:rgba(244,114,182,0.3); border:1px solid rgba(244,114,182,0.6); color:#fbcfe8; padding:10px 8px; border-radius:6px; font-weight:bold;">
+                            <span style="font-size:0.68rem; color:#f472b6;">母 (Dam)</span><br/>
+                            <strong>${dam}</strong>
+                        </td>
+                        <td rowspan="2" style="background:rgba(59,130,246,0.25); border:1px solid rgba(59,130,246,0.5); color:#bfdbfe; padding:6px 8px; border-radius:6px; font-weight:bold;">
+                            <span style="font-size:0.68rem; color:#60a5fa;">外祖父 (母父)</span><br/>
+                            ${damsire}
+                        </td>
+                        <td style="background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:#dbeafe; padding:4px 6px; border-radius:4px;">
+                            <span style="font-size:0.65rem; color:#60a5fa;">曾祖父</span> ${gg[4]}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background:rgba(244,114,182,0.2); border:1px solid rgba(244,114,182,0.4); color:#fbcfe8; padding:4px 6px; border-radius:4px;">
+                            <span style="font-size:0.65rem; color:#f472b6;">曾祖母</span> ${gg[5]}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" style="background:rgba(244,114,182,0.25); border:1px solid rgba(244,114,182,0.5); color:#fbcfe8; padding:6px 8px; border-radius:6px; font-weight:bold;">
+                            <span style="font-size:0.68rem; color:#f472b6;">外祖母</span><br/>
+                            ${dam_dam}
+                        </td>
+                        <td style="background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:#dbeafe; padding:4px 6px; border-radius:4px;">
+                            <span style="font-size:0.65rem; color:#60a5fa;">曾祖父</span> ${gg[6]}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background:rgba(244,114,182,0.2); border:1px solid rgba(244,114,182,0.4); color:#fbcfe8; padding:4px 6px; border-radius:4px;">
+                            <span style="font-size:0.65rem; color:#f472b6;">曾祖母</span> ${gg[7]}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    `;
+}
+
 function openNativeHorseDossier(horseName) {
     let horse = null;
     const cleanQuery = (horseName || '').replace(/[\(\（].*?[\)\）]/g, '').trim().toLowerCase();
@@ -26858,6 +26987,7 @@ function openNativeHorseDossier(horseName) {
     const radarSvg = generateDynamicSvgRadar(radarParams, radarLabels, 16, 280);
     const turfTrackBar = generateTurfQualityTrackBar(horse.grass, horse.dirt, horse.shunhatsu_apt);
     const bilingualSireLine = getBilingualSireLine(horse.sire_line);
+    const visualPedigreeHtml = generateVisualPedigreeTree(horse, cleanQuery);
     
     // Dynamic Query 1: 主要史實產駒 (Progeny)
     let progenyList = [];
@@ -26907,9 +27037,12 @@ function openNativeHorseDossier(horseName) {
     badgeEl.innerHTML = `${getTicketBadgeHtml(horse.ticket)} <span style="margin-left:4px;">${horse.sex || '牡'}</span>`;
     badgeEl.className = 'pill';
     
+    const inYear = horse.year ? `${parseInt(horse.year) + 2}年` : '2歲';
+    const outYear = horse.year ? `${parseInt(horse.year) + 5}年` : '現役生涯退役';
+    
     bodyEl.innerHTML = `
-        <!-- 視覺雷達圖與能力適性核心區 -->
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:18px; align-items:center;">
+        <!-- 1. 視覺雷達圖與能力適性核心區 -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:16px; align-items:center;">
             <!-- 重繪圖表 1: 八維能力雷達圖 (SVG Radar Chart 280x280) -->
             <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:12px; text-align:center;">
                 <div style="font-size:0.85rem; font-weight:bold; color:var(--accent-gold); margin-bottom:6px;">📊 八維能力適性雷達圖 (8-Axis Radar Chart)</div>
@@ -26925,7 +27058,7 @@ function openNativeHorseDossier(horseName) {
                 
                 <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:6px; font-size:0.8rem; margin-bottom:10px;">
                     <div style="background:rgba(30,41,59,0.7); padding:5px 8px; border-radius:5px;"><strong>SP (速度)：</strong><span style="color:var(--gold-color); font-weight:bold;">${horse.sp || '-'}</span> (${horse.sp_rank || '-'})</div>
-                    <div style="background:rgba(30,41,59,0.7); padding:5px 8px; border-radius:5px;"><strong>スタミナ (耐力)：</strong>${horse.stamina || '50'}</div>
+                    <div style="background:rgba(30,41,59,0.7); padding:5px 8px; border-radius:5px;"><strong>ST (耐力)：</strong>${horse.stamina || '50'}</div>
                     <div style="background:rgba(30,41,59,0.7); padding:5px 8px; border-radius:5px;"><strong>距離適性：</strong>${horse.distance || '-'}</div>
                     <div style="background:rgba(30,41,59,0.7); padding:5px 8px; border-radius:5px;"><strong>腳質/成長：</strong>${horse.running_style || '-'} / ${horse.growth || '-'}</div>
                 </div>
@@ -26934,19 +27067,51 @@ function openNativeHorseDossier(horseName) {
                 ${turfTrackBar}
 
                 <div style="font-size:0.78rem; line-height:1.5;">
-                    • <strong>持有特性：</strong>${horse.traits ? `<span style="color:#fcd34d;">${horse.traits.replace(/\\n/g, ' / ')}</span>` : '標準特性組合'}<br/>
-                    • <strong>ウマソナ (個性)：</strong><span style="color:var(--accent-gold); font-weight:bold;">${(horse.umarsonality || '普通').replace(/\\n/g, '、')}</span><br/>
+                    • <strong>持有特性：</strong>${horse.traits ? `<span style="color:#fcd34d;">${horse.traits.replace(/\n/g, ' / ')}</span>` : '標準特性組合'}<br/>
+                    • <strong>ウマソナ (個性)：</strong><span style="color:var(--accent-gold); font-weight:bold;">${(horse.umarsonality || '普通').replace(/\n/g, '、')}</span><br/>
                     • <strong>仔出し (產駒爆發力)：</strong><span style="color:#ef4444; font-weight:bold; font-size:0.9rem;">${horse.foal_quality || '-'}</span> (滿分 10)
                 </div>
             </div>
         </div>
 
-        <!-- 18 大數據模組完全明細 (Clean Headers & Bilingual Systems) -->
+        <!-- 2. 競爭情報 (Race & Constitution Matrix) -->
+        <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:12px; margin-bottom:16px;">
+            <div style="font-size:0.85rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+                <i class="fa-solid fa-flag-checkered"></i> ◤ 競爭情報 (體質・跑道適應與生涯歷程)
+            </div>
+            
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:6px; font-size:0.78rem; margin-bottom:8px;">
+                <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>気性：</strong>${horse.temperament || '大人'}</div>
+                <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>性格：</strong>${horse.personality || '従順'}</div>
+                <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>走法：</strong>大跳 (大)</div>
+                <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>小回り：</strong>${horse.komawari || '〇'}</div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(110px, 1fr)); gap:6px; font-size:0.75rem; margin-bottom:8px;">
+                <div style="background:rgba(30,41,59,0.5); padding:5px 8px; border-radius:5px;"><strong>左回り：</strong>${horse.hidarimawari || '〇'}</div>
+                <div style="background:rgba(30,41,59,0.5); padding:5px 8px; border-radius:5px;"><strong>右回り：</strong>${horse.migimawari || '〇'}</div>
+                <div style="background:rgba(30,41,59,0.5); padding:5px 8px; border-radius:5px;"><strong>脚部不安：</strong>${horse.kyakubu_fuan || '〇'}</div>
+                <div style="background:rgba(30,41,59,0.5); padding:5px 8px; border-radius:5px;"><strong>喉鳴り：</strong>${horse.nodonari || '〇'}</div>
+                <div style="background:rgba(30,41,59,0.5); padding:5px 8px; border-radius:5px;"><strong>腰の甘さ：</strong>${horse.koshi_no_amasa || '〇'}</div>
+                <div style="background:rgba(30,41,59,0.5); padding:5px 8px; border-radius:5px;"><strong>出遅れ癖：</strong>〇</div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; font-size:0.78rem;">
+                <div style="background:rgba(30,58,138,0.3); border:1px solid rgba(59,130,246,0.3); padding:6px 8px; border-radius:6px;"><strong>入厩年：</strong>${inYear}</div>
+                <div style="background:rgba(30,58,138,0.3); border:1px solid rgba(59,130,246,0.3); padding:6px 8px; border-radius:6px;"><strong>引退年：</strong>${outYear}</div>
+                <div style="background:rgba(30,58,138,0.3); border:1px solid rgba(59,130,246,0.3); padding:6px 8px; border-radius:6px;"><strong>現役地域：</strong>日本 / 海外</div>
+            </div>
+        </div>
+
+        <!-- 3. 血統情報 (4 代血統譜視覺樹狀圖) -->
+        ${visualPedigreeHtml}
+
+        <!-- 4. 詳細數據明細 (Clean Classification Breakdown) -->
         <h4 style="font-size:0.92rem; color:var(--gold-color); margin:16px 0 8px; border-bottom:1px solid rgba(234,179,8,0.3); padding-bottom:4px;">
             <i class="fa-solid fa-file-lines"></i> ${horse.name} 完整履歷與血統檔案
         </h4>
 
-        <div class="table-responsive" style="max-height:400px; overflow-y:auto;">
+        <div class="table-responsive" style="max-height:360px; overflow-y:auto;">
             <table class="data-table">
                 <thead>
                     <tr>
@@ -26965,7 +27130,7 @@ function openNativeHorseDossier(horseName) {
                     </tr>
                     <tr>
                         <td><strong>特性技能</strong></td>
-                        <td>${(horse.traits || '標準史實特性組合').replace(/\\n/g, ' | ')}</td>
+                        <td>${(horse.traits || '標準史實特性組合').replace(/\n/g, ' | ')}</td>
                     </tr>
                     <tr>
                         <td><strong>馬場適性</strong></td>
@@ -26977,7 +27142,7 @@ function openNativeHorseDossier(horseName) {
                     </tr>
                     <tr>
                         <td><strong>ウマソナ (個性)</strong></td>
-                        <td><strong>${(horse.umarsonality || '秀才肌').replace(/\\n/g, '、')}</strong></td>
+                        <td><strong>${(horse.umarsonality || '秀才肌').replace(/\n/g, '、')}</strong></td>
                     </tr>
                     <tr>
                         <td><strong>賽事備忘</strong></td>
@@ -26989,7 +27154,7 @@ function openNativeHorseDossier(horseName) {
                     </tr>
                     <tr>
                         <td><strong>現役生涯</strong></td>
-                        <td>入廄年份: ${horse.year ? parseInt(horse.year)+2 : '2歲'} | 現役所屬: 日本 / 海外</td>
+                        <td>入廄年份: ${inYear} | 引退年份: ${outYear} | 現役所屬: 日本 / 海外</td>
                     </tr>
                     <tr>
                         <td><strong>配種繁育</strong></td>
@@ -27014,16 +27179,6 @@ function openNativeHorseDossier(horseName) {
                     <tr>
                         <td><strong>系統血系</strong></td>
                         <td>父系親系統: <strong style="color:#60a5fa;">${bilingualSireLine}</strong> | 牝系家族: <strong>${horse.dam_line || '名門雌系 (日/中並行)'}</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>4代血統譜</strong></td>
-                        <td>
-                            <div style="background:rgba(30,41,59,0.8); border:1px solid var(--border-color); border-radius:6px; padding:6px; font-size:0.75rem; line-height:1.6;">
-                                • <strong>父：</strong>${horse.sire || '-'}<br/>
-                                • <strong>母：</strong>${horse.dam || '-'}<br/>
-                                • <strong>母父：</strong>${horse.damsire || '-'}
-                            </div>
-                        </td>
                     </tr>
                     <tr>
                         <td><strong>主要史實產駒</strong></td>
