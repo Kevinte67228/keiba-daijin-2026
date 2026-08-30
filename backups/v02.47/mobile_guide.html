@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.47</span>
+        <span class="version-badge">v02.48</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -28523,6 +28523,7 @@ function changeMasterLivePage(delta) {
 
         function filterCh40Category(catType, btn) {
             ch40HasUserInteracted = true;
+            ch40HasUserInteracted = true;
             ch40CategoryFilter = catType;
             ch40LetterFilter = null;
             ch40KanaFilter = null;
@@ -28536,6 +28537,7 @@ function changeMasterLivePage(delta) {
         }
 
         function filterCh40Letter(letter, btn) {
+            ch40HasUserInteracted = true;
             ch40HasUserInteracted = true;
             if (ch40LetterFilter === letter) {
                 ch40LetterFilter = null;
@@ -28552,6 +28554,7 @@ function changeMasterLivePage(delta) {
 
         function filterCh40Kana(kanaRow, btn) {
             ch40HasUserInteracted = true;
+            ch40HasUserInteracted = true;
             if (ch40KanaFilter === kanaRow) {
                 ch40KanaFilter = null;
                 if (btn) btn.classList.remove('active');
@@ -28566,6 +28569,7 @@ function changeMasterLivePage(delta) {
         }
 
         function resetCh40Filters() {
+            ch40HasUserInteracted = true;
             ch40HasUserInteracted = true;
             ch40CategoryFilter = 'all';
             ch40LetterFilter = null;
@@ -28603,6 +28607,41 @@ function changeMasterLivePage(delta) {
             const guideWrap = document.getElementById("guideViewWrapper");
             const filterPanel = document.querySelector(".filter-panel");
             const statsBar = document.querySelector(".stats-bar");
+            const pagEl = document.getElementById("paginationControls");
+
+            if (!ch40HasUserInteracted) {
+                if (tableWrap) {
+                    tableWrap.style.display = "block";
+                    const tContainer = tableWrap.querySelector(".table-container");
+                    if (tContainer) tContainer.style.display = "none";
+                    let ph = document.getElementById("ch40InitialPlaceholder");
+                    if (!ph) {
+                        ph = document.createElement("div");
+                        ph.id = "ch40InitialPlaceholder";
+                        ph.style.cssText = "text-align:center; padding:45px 20px; color:var(--text-muted); background:rgba(15,23,42,0.5); border:1px dashed var(--border-color); border-radius:10px; margin:16px 0;";
+                        ph.innerHTML = `
+                            <i class="fa-solid fa-hand-pointer" style="font-size:2rem; color:var(--accent-color); margin-bottom:12px; display:block;"></i>
+                            <div style="font-size:0.95rem; font-weight:bold; color:var(--text-color); margin-bottom:6px;">請點選上方「快速分類晶片」、「字母 / 五十音」或「輸入關鍵字」</div>
+                            <div style="font-size:0.82rem; color:var(--text-muted);">系統將即時載入並呈現篩選後的史實名駒清單（每頁 25 筆，支援半高垂直滑軌）</div>
+                        `;
+                        tableWrap.insertBefore(ph, tContainer);
+                    } else {
+                        ph.style.display = "block";
+                    }
+                }
+                if (pagEl) pagEl.style.display = "none";
+                const countEl = document.getElementById("matchCount");
+                if (countEl) countEl.innerText = "請點選上方條件載入";
+                return;
+            } else {
+                const ph = document.getElementById("ch40InitialPlaceholder");
+                if (ph) ph.style.display = "none";
+                if (tableWrap) {
+                    const tContainer = tableWrap.querySelector(".table-container");
+                    if (tContainer) tContainer.style.display = "block";
+                }
+                if (pagEl) pagEl.style.display = "flex";
+            }
 
             if (tableWrap) tableWrap.style.display = "block";
             if (filterPanel) filterPanel.style.display = "grid";
@@ -28618,7 +28657,6 @@ function changeMasterLivePage(delta) {
             const distVal = document.getElementById("filterDistance") ? document.getElementById("filterDistance").value : "ALL";
             const regionVal = document.getElementById("filterRegion") ? document.getElementById("filterRegion").value : "ALL";
             const searchVal = document.getElementById("filterSearch") ? document.getElementById("filterSearch").value.trim().toLowerCase() : "";
-
             let dataset = [];
             if (dbData) {
                 dataset = dbData[currentTab] || dbData.cat1 || [];
@@ -28905,11 +28943,13 @@ function changeMasterLivePage(delta) {
                 pagEl.style.cssText = "display:flex; justify-content:center; align-items:center; gap:12px; margin-top:16px; margin-bottom:20px; font-size:0.85rem;";
                 pagEl.innerHTML = `
                     <button onclick="changeCh40Page(-1)" class="btn btn-secondary" style="padding:6px 14px; cursor:pointer; border-radius:6px;" ${ch40CurrentPage <= 1 ? 'disabled style="opacity:0.4; cursor:not-allowed; padding:6px 14px;"' : ''}><i class="fa-solid fa-chevron-left"></i> 上一頁</button>
-                    <span style="color:var(--text-color); font-weight:600;">第 ${ch40CurrentPage} / ${totalPages} 頁 (每頁 25 筆，總計 ${total.toLocaleString()} 匹)</span>
-                    <span style="margin-left:6px; display:inline-flex; align-items:center; gap:4px;">
-                        跳至 <input type="number" id="ch40JumpInput" min="1" max="${totalPages}" value="${ch40CurrentPage}" style="width:50px; height:28px; text-align:center; background:rgba(15,23,42,0.8); color:var(--text-color); border:1px solid var(--border-color); border-radius:4px; font-weight:bold;" onkeydown="if(event.key==='Enter') jumpCh40Page()"> 頁
-                        <button onclick="jumpCh40Page()" class="btn btn-secondary" style="padding:3px 10px; font-size:0.78rem; cursor:pointer; border-radius:4px;">前往</button>
-                    </span>
+                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                        <span style="color:var(--text-color); font-weight:600;">第 ${ch40CurrentPage} / ${totalPages} 頁 (每頁 25 筆，總計 ${total.toLocaleString()} 匹)</span>
+                        <span style="margin-left:8px; display:inline-flex; align-items:center; gap:4px;">
+                            跳至 <input type="number" id="ch40JumpInput" min="1" max="${totalPages}" value="${ch40CurrentPage}" style="width:52px; height:28px; text-align:center; background:rgba(15,23,42,0.8); color:var(--text-color); border:1px solid var(--border-color); border-radius:4px; font-weight:bold;" onkeydown="if(event.key==='Enter') jumpCh40Page()"> 頁
+                            <button onclick="jumpCh40Page()" class="btn btn-secondary" style="padding:3px 10px; font-size:0.78rem; cursor:pointer; border-radius:4px;">前往</button>
+                        </span>
+                    </div>
                     <button onclick="changeCh40Page(1)" class="btn btn-secondary" style="padding:6px 14px; cursor:pointer; border-radius:6px;" ${ch40CurrentPage >= totalPages ? 'disabled style="opacity:0.4; cursor:not-allowed; padding:6px 14px;"' : ''}>下一頁 <i class="fa-solid fa-chevron-right"></i></button>
                 `;
             }
