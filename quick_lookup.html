@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.43</span>
+        <span class="version-badge">v02.44</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -23340,7 +23340,1102 @@ li {
             
 
         </div>
-    </section>
+    
+
+<!-- 4. 競馬場特性庫 (stakesTab4) -->
+<div class="stakes-subtab-pane" id="stakesTab4" style="display:none;">
+    <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:14px 16px; margin-bottom:16px; box-shadow:0 4px 14px rgba(0,0,0,0.15);">
+        <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:10px;">
+            <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+                <!-- 地域篩選 -->
+                <select id="rcFilterOwner" onchange="filterRacecourses()" class="filter-control" style="font-size:0.82rem; padding:5px 10px;">
+                    <option value="ALL">🌍 全部所屬地域 (日本/歐美/澳/中東/港)</option>
+                    <option value="日本">🇯🇵 日本競馬場</option>
+                    <option value="米国">🇺🇸 美國競馬場</option>
+                    <option value="欧州">🇪🇺 歐洲競馬場 (英法愛德)</option>
+                    <option value="豪州">🇦🇺 澳洲競馬場</option>
+                    <option value="サウジ">🇸🇦 沙烏地競馬場</option>
+                    <option value="ドバイ">🇦🇪 杜拜競馬場</option>
+                    <option value="香港">🇭🇰 香港競馬場</option>
+                </select>
+
+                <!-- 坡度篩選 -->
+                <select id="rcFilterSlope" onchange="filterRacecourses()" class="filter-control" style="font-size:0.82rem; padding:5px 10px;">
+                    <option value="ALL">⛰️ 全部坡度地形</option>
+                    <option value="あり">坂あり (有坡道 / 急坂)</option>
+                    <option value="なし">坂なし (平坦賽道)</option>
+                </select>
+            </div>
+
+            <!-- 即時關鍵字搜尋框 -->
+            <div style="flex:1; min-width:240px; max-width:380px;">
+                <input type="text" id="rcSearchInput" oninput="filterRacecourses()" class="search-input" placeholder="🔍 搜尋競馬場名、地區或代表大賽..." style="font-size:0.82rem; padding:6px 12px; width:100%; box-sizing:border-box;">
+            </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.82rem; color:var(--text-muted); padding-top:6px; border-top:1px dashed var(--border-color);">
+            <div>顯示筆數：<strong style="color:var(--accent-color);" id="rcMatchCount">68</strong> / 68 座競馬場</div>
+            <div>💡 點擊表頭可切換排序 | 支援 Turf 草質與坡道即時交叉檢索</div>
+        </div>
+    </div>
+
+    <!-- 競馬場資料大表 -->
+    <div class="table-responsive" style="border:1px solid var(--border-color); border-radius:10px; overflow-x:auto;">
+        <table class="data-table" id="racecourseMasterTable" style="width:100%; min-width:980px; border-collapse:collapse;">
+            <thead>
+                <tr style="background:rgba(15,23,42,0.85);">
+                    <th class="sortable-th" style="text-align:left !important; width:90px;" onclick="sortTable('racecourseMasterTable', 0)">地域 <span class="sort-icon">⇅</span></th>
+                    <th class="sortable-th" style="text-align:left !important; width:160px;" onclick="sortTable('racecourseMasterTable', 1)">競馬場名稱 <span class="sort-icon">⇅</span></th>
+                    <th class="sortable-th" style="text-align:left !important; width:140px;" onclick="sortTable('racecourseMasterTable', 2)">草質適性 <span class="sort-icon">⇅</span></th>
+                    <th class="sortable-th" style="text-align:left !important; width:120px;" onclick="sortTable('racecourseMasterTable', 3)">坡度地形 <span class="sort-icon">⇅</span></th>
+                    <th class="sortable-th" style="text-align:left !important; width:100px;" onclick="sortTable('racecourseMasterTable', 4)">細部區域 <span class="sort-icon">⇅</span></th>
+                    <th class="sortable-th" style="text-align:left !important; width:120px;" onclick="sortTable('racecourseMasterTable', 5)">芝適性距離 <span class="sort-icon">⇅</span></th>
+                    <th class="sortable-th" style="text-align:left !important; width:120px;" onclick="sortTable('racecourseMasterTable', 6)">ダ適性距離 <span class="sort-icon">⇅</span></th>
+                    <th style="text-align:left !important;">主要代表大賽・重賞名覽</th>
+                </tr>
+            </thead>
+            <tbody id="racecourseTableBody">
+                
+    <tr data-owner="日本" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">東京 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#3b82f6; font-size:0.8rem;">Turf 1</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#3b82f6; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">関東</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1400~3400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1300~2400</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">日本ダービー、ジャパンCなど</td>
+    </tr>
+    
+    <tr data-owner="日本" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">阪神 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#06b6d4; font-size:0.8rem;">Turf 2</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#06b6d4; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">関西</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~2600</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~2400</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">桜花賞、宝塚記念など</td>
+    </tr>
+    
+    <tr data-owner="日本" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">中山 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#06b6d4; font-size:0.8rem;">Turf 2</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#06b6d4; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">関東</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~3200</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~1900</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">皐月賞、有馬記念など</td>
+    </tr>
+    
+    <tr data-owner="日本" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">京都 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#3b82f6; font-size:0.8rem;">Turf 1</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#3b82f6; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">関西</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~3000</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~2000</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">菊花賞、天皇賞春など</td>
+    </tr>
+    
+    <tr data-owner="日本" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">中京 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#3b82f6; font-size:0.8rem;">Turf 1</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#3b82f6; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">ローカル</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~2200</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~1900</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">高松宮記念、チャンピオンズカップなど</td>
+    </tr>
+    
+    <tr data-owner="日本" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">新潟 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#3b82f6; font-size:0.8rem;">Turf 1</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#3b82f6; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">ローカル</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1000~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~1800</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">新潟大賞典(G3)、アイビスサマーダッシュ(G3)など</td>
+    </tr>
+    
+    <tr data-owner="日本" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">小倉 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#3b82f6; font-size:0.8rem;">Turf 1</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#3b82f6; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">ローカル</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~2600</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1000~2400</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">小倉大賞典(G3)、小倉記念(G3)など</td>
+    </tr>
+    
+    <tr data-owner="日本" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">福島 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#3b82f6; font-size:0.8rem;">Turf 1</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#3b82f6; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">ローカル</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1000~2600</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1150~2400</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">福島記念(G3)、七夕賞(G3)など</td>
+    </tr>
+    
+    <tr data-owner="日本" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">札幌 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#10b981; font-size:0.8rem;">Turf 3</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#10b981; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">北海道</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~2600</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1000~2400</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">札幌記念(G2)など</td>
+    </tr>
+    
+    <tr data-owner="日本" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">函館 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#10b981; font-size:0.8rem;">Turf 3</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#10b981; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">北海道</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1000~2600</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1000~2400</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">函館記念(G3)、函館スプリントS(G3)など</td>
+    </tr>
+    
+    <tr data-owner="地方" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge">地方</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">大井 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">南関東</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~2000</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">東京大賞典、帝王賞(Jpn1)など</td>
+    </tr>
+    
+    <tr data-owner="地方" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge">地方</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">川崎 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">南関東</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1600~2100</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">川崎記念(Jpn1)、全日本2歳優駿(Jpn2)など</td>
+    </tr>
+    
+    <tr data-owner="地方" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge">地方</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">盛岡 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">東北</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~2000</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">南部杯(Jpn1)など</td>
+    </tr>
+    
+    <tr data-owner="地方" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge">地方</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">船橋 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">南関東</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1600~2400</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">かしわ記念(Jpn1)、ダイオライト記念(Jpn2)など</td>
+    </tr>
+    
+    <tr data-owner="地方" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge">地方</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">名古屋 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">東海</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1400~2500</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">名古屋大賞典(Jpn3)、名古屋グランプリ(Jpn2)など</td>
+    </tr>
+    
+    <tr data-owner="地方" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge">地方</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">園田 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">近畿</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1400~1900</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">兵庫CS(Jpn2)、兵庫ゴールドトロフィー(Jpn2)など</td>
+    </tr>
+    
+    <tr data-owner="地方" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge">地方</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">浦和 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">南関東</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1400~2000</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">浦和記念(Jpn2)、オーバルスプリント(Jpn3)など</td>
+    </tr>
+    
+    <tr data-owner="地方" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge">地方</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">金沢 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">北陸</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">2100</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">白山大賞典(Jpn2)のみ</td>
+    </tr>
+    
+    <tr data-owner="地方" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge">地方</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">佐賀 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">九州</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1400~2000</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">佐賀記念(Jpn3)、サマーチャンピオン(Jpn3)のみ</td>
+    </tr>
+    
+    <tr data-owner="地方" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge">地方</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">門別 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">北海道</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~2000</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">JBC2歳優駿(Jpn3)、ブリーダーズGC(Jpn3)など</td>
+    </tr>
+    
+    <tr data-owner="地方" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge">地方</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">高知 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">四国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1400</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">黒船賞(Jpn3)のみ</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">アケダクト 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#10b981; font-size:0.8rem;">Turf 3</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#10b981; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">東海岸</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">2200</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1400~1800</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">カーターH、シガーマイルHなど</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ベルモントパーク 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#10b981; font-size:0.8rem;">Turf 3</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#10b981; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">東海岸</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~2400</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ベルモントS、メトロポリタンHなど</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">サラトガ 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#06b6d4; font-size:0.8rem;">Turf 2</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#06b6d4; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">東海岸</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1600~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~2000</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ジョッキークラブGC、トラヴァーズSなど</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">モンマスパーク 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#06b6d4; font-size:0.8rem;">Turf 2</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#06b6d4; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">東海岸</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1700~2200</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1700~1800</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ハスケルS、ユナイテッドネーションズSなど</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ピムリコ 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#10b981; font-size:0.8rem;">Turf 3</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#10b981; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">東海岸</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1800</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~1900</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">プリークネスSなど</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ローレルパーク 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">東海岸</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1400</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ジェネラルジョージS(G3)など</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ターフウェーパーク 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">東海岸</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1800</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">スパイラルステークス(G3)</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">チャーチルダウンズ 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#84cc16; font-size:0.8rem;">Turf 4</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#84cc16; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">中央部</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1700~2200</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1400~2000</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ケンタッキーダービー、ケンタッキーオークスなど</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">キーンランド 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#10b981; font-size:0.8rem;">Turf 3</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#10b981; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">中央部</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1600~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~1800</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">キーンランドターフマイルSなど</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ガルフストリームパーク 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#3b82f6; font-size:0.8rem;">Turf 1</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#3b82f6; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">中央部</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1600~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~1800</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ペガサスワールドカップ、フロリダダービーなど</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">フェアグラウンズ 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">中央部</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1700~1800</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">リズンスターS(G2)など</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ルイジアナダウンズ 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">中央部</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1800</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">閉鎖</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">アーリントン 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#84cc16; font-size:0.8rem;">Turf 4</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#84cc16; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">中央部</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1600~2000</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">惜しまれつつ閉鎖</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">オークローンパーク 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">中央部</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~1800</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">アップルブラッサムH、アーカンソーダービーなど</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">デルマー 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#06b6d4; font-size:0.8rem;">Turf 2</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#06b6d4; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">西海岸</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1600~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~2000</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">パシフィッククラシックなど</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ロスアラミトス 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">泥地專用 (無草地)</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">西海岸</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">開催無し</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1300~1800</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">スターレットS、バヤコアSなど</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">サンタアニタ 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#3b82f6; font-size:0.8rem;">Turf 1</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#3b82f6; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">西海岸</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1000~2800</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~2000</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ブリーダーズＣデーなど</td>
+    </tr>
+    
+    <tr data-owner="米国" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ウッドバイン 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#06b6d4; font-size:0.8rem;">Turf 2</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#06b6d4; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">加国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">カナディアン国際Sなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">アスコット 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#f97316; font-size:0.8rem;">Turf 6</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#f97316; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">英国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1000~4000</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ロイヤルアスコット開催、KGⅥ&QES、英チャンピオンズデーなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">エプソムダウンズ 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#ec4899; font-size:0.8rem;">Turf 8</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#ec4899; margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">英国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1700~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">英ダービー、英オークスなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">サンダウンパーク 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#ef4444; font-size:0.8rem;">Turf 7</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#ef4444; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">英国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1600~3300</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">エクリプスSなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">グッドウッド 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#f97316; font-size:0.8rem;">Turf 6</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#f97316; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">英国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1000~3200</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">サセックスS、グッドウッドCなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ニューベリー 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#84cc16; font-size:0.8rem;">Turf 4</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#84cc16; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">英国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~2600</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ロッキンジSなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ニューマーケット 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#eab308; font-size:0.8rem;">Turf 5</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#eab308; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">英国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">英2000ギニー、ジュライCなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ドンカスター 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#eab308; font-size:0.8rem;">Turf 5</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#eab308; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">英国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1400~3600</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">英セントレジャーなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ヨーク 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#84cc16; font-size:0.8rem;">Turf 4</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#84cc16; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">英国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1000~3300</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">インターナショナルS、ヨークシャーオークスなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">チェスター 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#f97316; font-size:0.8rem;">Turf 6</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#f97316; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">英国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">2700</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">オーモンドS(G3)など</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ヘイドックパーク 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#eab308; font-size:0.8rem;">Turf 5</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#eab308; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">英国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1000~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">スプリントCなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">パリロンシャン 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#f97316; font-size:0.8rem;">Turf 6</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#f97316; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">仏国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1000~4000</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ムーランドロンシャン賞、凱旋門賞など</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">サンクルー 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#eab308; font-size:0.8rem;">Turf 5</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#eab308; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">仏国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1600~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">サンクルー大賞典など</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">メゾンラフィット 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#eab308; font-size:0.8rem;">Turf 5</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#eab308; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">仏国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~1400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">セーネワーズ賞(G3)など</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">シャンティイ 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#84cc16; font-size:0.8rem;">Turf 4</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#84cc16; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">仏国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1600~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">仏ダービー、仏オークスなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ドーヴィル 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#84cc16; font-size:0.8rem;">Turf 4</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#84cc16; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">仏国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~3000</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">モーリスドギース賞、ジャックルマロワ賞など</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">カラ 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#f97316; font-size:0.8rem;">Turf 6</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#f97316; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">愛国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~2800</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">愛国三冠、愛国牝馬三冠レースなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">レパーズタウン 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#eab308; font-size:0.8rem;">Turf 5</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#eab308; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">愛国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1400~2000</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">愛チャンピオンSなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="あり" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ナヴァン 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#f97316; font-size:0.8rem;">Turf 6</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#f97316; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-safe" style="font-size:0.75rem;">有坡度 (坂あり)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">愛国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">2800</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ヴィンテージクロップS(G3)など</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ハンブルク 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#84cc16; font-size:0.8rem;">Turf 4</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#84cc16; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">独国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ドイツダービー、ドイツオークスなど</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ホッペガルデン 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#84cc16; font-size:0.8rem;">Turf 4</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#84cc16; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">独国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">3200</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">オレアンダーレネン賞(G3)など</td>
+    </tr>
+    
+    <tr data-owner="欧州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">バーデンバーデン 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#84cc16; font-size:0.8rem;">Turf 4</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#84cc16; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">独国</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">バーデン大賞など</td>
+    </tr>
+    
+    <tr data-owner="豪州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🇦🇺 澳洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ロイヤルランドウィック 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#06b6d4; font-size:0.8rem;">Turf 2</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#06b6d4; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">シドニー</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~3200</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ザチャンピオンシップス開催など</td>
+    </tr>
+    
+    <tr data-owner="豪州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🇦🇺 澳洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ローズヒルガーデンズ 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#06b6d4; font-size:0.8rem;">Turf 2</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#06b6d4; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">シドニー</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1500~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ゴールデンスリッパーカーニバル開催など</td>
+    </tr>
+    
+    <tr data-owner="豪州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🇦🇺 澳洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">フレミントン 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#06b6d4; font-size:0.8rem;">Turf 2</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#06b6d4; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">メルボルン</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1000~3200</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">メルボルンカップなど</td>
+    </tr>
+    
+    <tr data-owner="豪州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🇦🇺 澳洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">ムーニーバレー 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#06b6d4; font-size:0.8rem;">Turf 2</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#06b6d4; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">メルボルン</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~2000</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">コックスプレートなど</td>
+    </tr>
+    
+    <tr data-owner="豪州" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🇦🇺 澳洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">コーフィールド 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#06b6d4; font-size:0.8rem;">Turf 2</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#06b6d4; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">メルボルン</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1400~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">コーフィールドCなど</td>
+    </tr>
+    
+    <tr data-owner="サウジ" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#14532d; color:#86efac;">🇸🇦 沙烏地</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">キングアブドゥルアジーズ 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#84cc16; font-size:0.8rem;">Turf 4</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#84cc16; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">サウジ</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">2100~3000</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~1800</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">サウジカップデーなど</td>
+    </tr>
+    
+    <tr data-owner="ドバイ" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#581c87; color:#e9d5ff;">🇦🇪 杜拜</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">メイダン 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#84cc16; font-size:0.8rem;">Turf 4</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#84cc16; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">ドバイ</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~3200</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">1200~2000</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">ドバイワールドカップデーなど</td>
+    </tr>
+    
+    <tr data-owner="香港" data-slope="なし" class="rc-row">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#991b1b; color:#fecaca;">🇭🇰 香港</span></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color); font-size:0.9rem;">シャティン 競馬場</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:bold; color:#10b981; font-size:0.8rem;">Turf 3</span>
+        <div style="display:inline-flex;"><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:#10b981; margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span><span style="display:inline-block; width:5px; height:12px; border-radius:1px; background:rgba(148,163,184,0.2); margin-right:2px;"></span></div>
+    </div>
+    </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="pill pill-muted" style="font-size:0.75rem;">平坦 (坂なし)</span></td>
+        <td style="text-align:left !important; white-space:nowrap; color:var(--text-muted); font-size:0.82rem;">香港</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#38bdf8;">1200~2400</td>
+        <td style="text-align:left !important; white-space:nowrap; font-family:monospace; font-weight:600; color:#fb923c;">開催無し</td>
+        <td style="text-align:left !important; font-size:0.82rem; color:var(--gold-color); line-height:1.4;">香港国際競走など</td>
+    </tr>
+    
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+function filterRacecourses() {
+    const owner = document.getElementById('rcFilterOwner')?.value || 'ALL';
+    const slope = document.getElementById('rcFilterSlope')?.value || 'ALL';
+    const search = (document.getElementById('rcSearchInput')?.value || '').trim().toLowerCase();
+    
+    const rows = document.querySelectorAll('#racecourseTableBody .rc-row');
+    let count = 0;
+    
+    rows.forEach(tr => {
+        const rowOwner = tr.getAttribute('data-owner') || '';
+        const rowSlope = tr.getAttribute('data-slope') || '';
+        const text = tr.innerText.toLowerCase();
+        
+        let matchOwner = (owner === 'ALL' || rowOwner.includes(owner));
+        let matchSlope = (slope === 'ALL' || rowSlope.includes(slope));
+        let matchSearch = (!search || text.includes(search));
+        
+        if (matchOwner && matchSlope && matchSearch) {
+            tr.style.display = '';
+            count++;
+        } else {
+            tr.style.display = 'none';
+        }
+    });
+    
+    const countEl = document.getElementById('rcMatchCount');
+    if (countEl) countEl.innerText = count;
+}
+</script>
+
+</section>
 
 <section class="section-card" id="sec-triple-crowns">
 <div class="section-header">
