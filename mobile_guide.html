@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.54</span>
+        <span class="version-badge">v02.55</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -8499,52 +8499,72 @@ li {
 </div>
 </div>
 <!-- ==================== 5. 子孫・結婚對象・知人 ==================== -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.15rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-people-roof"></i> 5. 子孫・結婚相手・知人ステータス解説 (三大能力・職業進路與家系傳承)
+<!-- 5. 子孫・結婚相手・知人ステータス解説 (平板適應精緻排版) -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.15rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-people-roof"></i> 5. 子孫・結婚相手・知人ステータス解説 (三大能力・職業進路與家系傳承)
+                </div>
+                <span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">選單：知人 / 家系圖 ➔ 表示切替</span>
+            </div>
 
+            <!-- 平板與手機專屬自適應 3 欄等寬卡片 -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:14px; margin-bottom:16px;">
+                <div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:10px; text-align:center;">
+                    <img src="https://alnasgames.com/wp10/articleimages/tijin.png" alt="知人面板" style="width:100%; max-width:100%; height:auto; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 8px rgba(0,0,0,0.3); display:block; margin:0 auto;">
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:6px;">▲ 知人好感度與關係面板</div>
+                </div>
+                <div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:10px; text-align:center;">
+                    <img src="https://alnasgames.com/wp10/articleimages/mariage-stat.png" alt="結婚能力面板" style="width:100%; max-width:100%; height:auto; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 8px rgba(0,0,0,0.3); display:block; margin:0 auto;">
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:6px;">▲ 結婚對象三大能力面板</div>
+                </div>
+                <div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:10px; text-align:center;">
+                    <img src="https://alnasgames.com/wp10/articleimages/tijin2.PNG" alt="家系圖面板" style="width:100%; max-width:100%; height:auto; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 8px rgba(0,0,0,0.3); display:block; margin:0 auto;">
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:6px;">▲ 家系圖與子孫進路面板</div>
+                </div>
+            </div>
+
+            <p style="font-size:0.84rem; line-height:1.7; color:var(--text-main); margin-bottom:12px; text-align:left !important;">
+                知人的好感度與結婚年限可於「選單 ➔ 人情報 ➔ 知人」查看；具體能力數值可於<strong>結婚求婚介面</strong>或<strong>「家系圖 ➔ 表示切替」</strong>查看。
+            </p>
+
+            <div class="table-responsive" style="margin:0;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="min-width:120px; text-align:left !important;">角色三大能力</th>
+                            <th style="min-width:100px; text-align:left !important;">數值評級</th>
+                            <th style="min-width:320px; text-align:left !important;">對子孫遺傳與職業進路之實戰影響</th>
+                            <th style="min-width:180px; text-align:left !important;">能力提升與培育方式</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align:left !important;"><strong>運動 (運動能力)</strong></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#22c55e; color:#fff;">S ~ C</span></td>
+                            <td style="text-align:left !important;">直接決定子孫成為<strong>【騎手】</strong>時之各項策騎資質與勝負根性。運動 S 之子孫進修騎手學校時起步能力大幅領先！</td>
+                            <td style="text-align:left !important;">幼年期贈送運動器材、私塾進修。</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong>勉強 (學術頭腦)</strong></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#3b82f6; color:#fff;">S ~ C</span></td>
+                            <td style="text-align:left !important;">直接決定子孫成為<strong>【調教師】</strong>或<strong>【牧場長】</strong>時之相馬眼、調教技術與設施管理效率。</td>
+                            <td style="text-align:left !important;">幼年期安排家教、升學大學進修。</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong>牧場 (牧場適性)</strong></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#fff;">S ~ C</span></td>
+                            <td style="text-align:left !important;">直接決定子孫擔任牧場長時之<strong>【幼駒育成度加成】</strong>與<strong>【繁殖牝馬受胎率】</strong>。</td>
+                            <td style="text-align:left !important;">長期於牧場協助繁育、牧場實習。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-<span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">選單：知人 / 家系圖 ➔ 表示切替</span>
-</div>
-<div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:16px;">
-<img alt="知人面板" src="https://alnasgames.com/wp10/articleimages/tijin.png" style="max-width:320px; border-radius:8px; border:1px solid var(--border-color);"/>
-<img alt="結婚能力面板" src="https://alnasgames.com/wp10/articleimages/mariage-stat.png" style="max-width:320px; border-radius:8px; border:1px solid var(--border-color);"/>
-<img alt="家系圖面板" src="https://alnasgames.com/wp10/articleimages/tijin2.PNG" style="max-width:320px; border-radius:8px; border:1px solid var(--border-color);"/>
-</div>
-<p style="font-size:0.84rem; line-height:1.7; color:var(--text-main); margin-bottom:12px;">
-
-        知人的好感度與結婚年限可於「選單 ➔ 人情報 ➔ 知人」查看；具體能力數值可於<strong>結婚求婚介面</strong>或<strong>「家系圖 ➔ 表示切替」</strong>查看。
-
-    </p>
-<div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
-<thead>
-<tr>
-<th style="min-width:140px;">基本能力項目</th>
-<th style="min-width:440px;">職業選擇與後續傳承影響 (繁體中文)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>勉強 (學習智力)</strong></td>
-<td>直接決定子孫在求學升學、選擇職業（如調教師、秘書、偶像、實業家、一般就職）以及成為調教師/牧場長時的智力與管理數值。</td>
-</tr>
-<tr>
-<td><strong>運動 (運動素質)</strong></td>
-<td>直接決定子孫選擇騎手學校、成為<strong>頂級騎手</strong>時的初始戰法能力與身體素質成長上限。</td>
-</tr>
-<tr>
-<td><strong>牧場 (牧場實務)</strong></td>
-<td>直接決定子孫成為<strong>頂級牧場長</strong>時的健康管理、馴致與相馬眼數值。</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+    </div>
 </section>
 
+<!-- ==================== 第 27 章：特性全書・全 223 種通常・上位進化・日本固有與海外專屬特性完全圖鑑 ==================== -->
 <!-- ==================== 第 26 章：基礎能力・四大比賽展開與適應能力機制全書 ==================== -->
 <section id="sec-skills-traits" class="section-card">
     <div class="section-header">
@@ -8684,9 +8704,6 @@ li {
     </div>
 </section>
 
-
-
-<!-- ==================== 第 27 章：特性全書・全 223 種通常・上位進化・日本固有與海外專屬特性完全圖鑑 ==================== -->
 <section id="sec-traits-master" class="section-card">
     <div class="section-header">
         <div class="section-title"><i class="fa-solid fa-bolt"></i> 第 27 章：特性全書・全 223 種通常・上位進化・日本固有與海外專屬特性完全圖鑑</div>
