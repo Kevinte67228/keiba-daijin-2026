@@ -1,6 +1,6 @@
 // 賽馬大亨 10 2026 終極速查 PWA - Service Worker
 // 快取版本號 (每次更新後遞增以強制刷新)
-const CACHE_NAME = 'keiba-lookup-v02.00';
+const CACHE_NAME = 'keiba-lookup-v02.43';
 
 // 首次安裝時快取的核心檔案
 const CORE_ASSETS = [
@@ -9,6 +9,7 @@ const CORE_ASSETS = [
   './master_lookup_db.js',
   './core_guides_data.js',
   './yearly_recs_db.js',
+  './horse_subtopics_data.js',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png'
