@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.49</span>
+        <span class="version-badge">v02.50</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 39 大章節)
@@ -7853,38 +7853,82 @@ li {
 <div class="section-title"><i class="fa-solid fa-id-card-clip"></i> 第 25 章：五大人物與賽馬數值能力完全百科 (競走馬・騎手・調教師・牧場長・子孫結婚知人)</div>
 </div>
 <div class="section-body">
-
-    <!-- 競走馬基本能力與雷達圖解析 -->
-    <div style="margin-bottom:20px; background:rgba(15,23,42,0.65); border:1px solid rgba(56,189,248,0.3); border-radius:12px; padding:16px; box-shadow:0 4px 14px rgba(0,0,0,0.2);">
-        <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:center;">
-            <div style="flex:1; min-width:280px; max-width:380px; text-align:center;">
-                <img src="images/manual/7100_1.png" alt="競走馬基本能力畫面" style="width:100%; border-radius:8px; border:1px solid rgba(148,163,184,0.3); box-shadow:0 4px 12px rgba(0,0,0,0.4);">
-                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:6px;">▲ 競走馬基本能力面板（綠色先天 / 橘色後天）</div>
-            </div>
-            <div style="flex:1.5; min-width:300px;">
-                <div style="color:var(--accent-color); font-weight:bold; font-size:1rem; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
-                    <span class="badge badge-gold">能力解析</span> 競走馬基本能力雷達圖與八大屬性判定心法
+<!-- ==================== 競走馬基本能力雷達圖與八大屬性判定心法 ==================== -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.85); border:1px solid rgba(56,189,248,0.35); border-radius:14px; padding:20px; margin-bottom:24px; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.05rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-chart-pie"></i> 競走馬能力雷達圖與八大屬性判定心法
                 </div>
-                <ul style="font-size:0.84rem; color:var(--text-color); line-height:1.75; padding-left:18px; margin:0;">
-                    <li><strong>能力判明狀態</strong>：未判明時以「??」隱藏顯示，經相馬眼或實戰調教判明後以 <b style="color:var(--gold-color);">S+ ~ G</b> 等級呈現。</li>
-                    <li><strong>先天與後天能力色塊區分</strong>：
-                        <ul style="margin:4px 0;">
-                            <li><span style="color:#22c55e; font-weight:bold;">🟩 綠色部分</span>：出生時由父母血統與遺傳因子繼承之「先天基本能力」。</li>
-                            <li><span style="color:#f97316; font-weight:bold;">🟧 橘色部分</span>：經由後天實戰磨練、幼駒育成與史實調教獲得之「後天成長能力」。</li>
-                        </ul>
-                    </li>
-                    <li><strong>斯巴達調教加成</strong>：若所屬調教師為「斯巴達 (スパルタ)」，賽駒之【健康】屬性越高，累積賽事經驗感 (レース勘) 的速度越顯著提升！</li>
-                    <li><strong>環境抗壓性</strong>：【精神力】越高，遠征美歐海外或陌生賽馬場越能 100% 穩定發揮實力；低於 B 級則容易因環境劇變而大失常。</li>
-                </ul>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                    <span class="pill" style="background:rgba(34,197,94,0.15); color:#4ade80; border:1px solid rgba(34,197,94,0.4); font-size:0.75rem;">🟩 綠色：先天能力</span>
+                    <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem;">🟧 橘色：後天成長</span>
+                    <span class="pill pill-gold" style="font-size:0.75rem;">評級：S+ ~ G (及「??」未判明)</span>
+                </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px; align-items:start;">
+                <!-- 左側：能力面板截圖與核心機制 -->
+                <div style="background:rgba(0,0,0,0.4); border:1px solid var(--border-color); border-radius:10px; padding:14px; text-align:center;">
+                    <img src="images/manual/7100_1.png" alt="競走馬基本能力畫面" style="width:100%; max-width:380px; border-radius:8px; border:1px solid rgba(148,163,184,0.3); box-shadow:0 4px 14px rgba(0,0,0,0.5);">
+                    <div style="font-size:0.78rem; color:var(--text-muted); margin-top:8px; line-height:1.5;">
+                        ▲ <strong>能力雷達圖色塊剖析</strong>：綠色代表出生時血統繼承之先天底子；橘色代表經由實戰與史實調教累積之極限突破。
+                    </div>
+                    
+                    <div style="margin-top:12px; text-align:left; background:rgba(30,41,59,0.7); border-radius:8px; padding:10px 12px; font-size:0.8rem; line-height:1.6; border-left:3px solid var(--gold-color);">
+                        <div>🔥 <strong>斯巴達調教加成</strong>：所屬為斯巴達調教師時，【健康】越高，累積「賽事經驗感 (レース勘)」速度越快。</div>
+                        <div style="margin-top:4px;">🌍 <strong>環境抗壓性</strong>：【精神力】越高，遠征歐美海外或陌生馬場越能穩定發揮；低於 B 級容易嚴重失常。</div>
+                    </div>
+                </div>
+
+                <!-- 右側：八大基本能力實戰影響速查表 -->
+                <div>
+                    <div style="font-weight:bold; font-size:0.88rem; color:var(--gold-color); margin-bottom:10px; display:flex; align-items:center; gap:6px;">
+                        <i class="fa-solid fa-bolt"></i> 八大基本能力實戰影響與跑法對照
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; font-size:0.8rem; text-align:left !important;">
+                            <div style="font-weight:bold; color:#38bdf8;">⚡ 速度 (スピード)</div>
+                            <div style="color:var(--text-muted); font-size:0.75rem; margin-top:2px;">競走馬最核心屬性，直接決定極速上限。</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; font-size:0.8rem; text-align:left !important;">
+                            <div style="font-weight:bold; color:#f87171;">⚔️ 勝負根性 (勝負根性)</div>
+                            <div style="color:var(--text-muted); font-size:0.75rem; margin-top:2px;">決定【逃げ・先行】戰術競爭力與併步死鬥。</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; font-size:0.8rem; text-align:left !important;">
+                            <div style="font-weight:bold; color:#fb923c;">🌪️ 瞬發力 (瞬発力)</div>
+                            <div style="color:var(--text-muted); font-size:0.75rem; margin-top:2px;">決定【差し・追込】戰術終點直路末腳極速爆發。</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; font-size:0.8rem; text-align:left !important;">
+                            <div style="font-weight:bold; color:#eab308;">💪 力量 (パワー)</div>
+                            <div style="color:var(--text-muted); font-size:0.75rem; margin-top:2px;">重馬場與陡坡急坂適應關鍵，過低則嚴重減速。</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; font-size:0.8rem; text-align:left !important;">
+                            <div style="font-weight:bold; color:#4ade80;">❤️ 健康 (健康)</div>
+                            <div style="color:var(--text-muted); font-size:0.75rem; margin-top:2px;">降低故障率；斯巴達調教下加速累積賽事經驗。</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; font-size:0.8rem; text-align:left !important;">
+                            <div style="font-weight:bold; color:#a78bfa;">🧠 聰慧 (賢さ)</div>
+                            <div style="color:var(--text-muted); font-size:0.75rem; margin-top:2px;">調子易升難降；靈活即時反應騎手戰術指示。</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; font-size:0.8rem; text-align:left !important;">
+                            <div style="font-weight:bold; color:#818cf8;">🧘 精神力 (精神力)</div>
+                            <div style="color:var(--text-muted); font-size:0.75rem; margin-top:2px;">海外遠征、客場抗壓性；過低對環境敏感失常。</div>
+                        </div>
+                        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-color); border-radius:8px; padding:8px 10px; font-size:0.8rem; text-align:left !important;">
+                            <div style="font-weight:bold; color:#2dd4bf;">📏 柔軟性 (柔軟性)</div>
+                            <div style="color:var(--text-muted); font-size:0.75rem; margin-top:2px;">拓寬適性距離範圍 (幅)，兼顧一哩與中長途。</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
 <div class="callout callout-gold" style="margin-bottom:16px;">
 <i class="fa-solid fa-address-card" style="font-size:1.2rem; color:var(--accent-gold);"></i>
 <div>
 <strong>《賽馬大亨 10 2026》全角色五大維度能力數值・特性與隱藏參數完全圖鑑 (100% 完整解析)</strong><br/>
+
                 系統化剖析遊戲內全部 5 大實體面板：① <strong>競走馬</strong>（速度 40 階對照、八大副屬性、特徵壽命、隱藏仔出與賽事經驗）、② <strong>騎手</strong>（戰法距離與 20 大騎手特性）、③ <strong>調教師</strong>（五大能力與 20 大練馬師特性）、④ <strong>牧場長</strong>（五大能力、得意設施與育成方針）、⑤ <strong>子孫・結婚知人</strong>（三大素質、職業進路與家系傳承）。
+
             </div>
 </div>
 <!-- ==================== 1. 競走馬能力與狀態 ==================== -->
@@ -7892,6 +7936,7 @@ li {
 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
 <div style="font-size:1.15rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-horse"></i> 1. 競走馬ステータス解説 (競走馬能力・適性・體調與特徵完全解析)
+
         </div>
 <span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">選單：競走馬 ➔ 能力 / 備忘錄</span>
 </div>
@@ -7899,7 +7944,9 @@ li {
 <img alt="競走馬能力面板" src="https://alnasgames.com/wp10/articleimages/Stats1.PNG" style="max-width:100%; border-radius:8px; border:1px solid var(--border-color); box-shadow:0 4px 12px rgba(0,0,0,0.5);"/>
 </div>
 <p style="font-size:0.84rem; line-height:1.7; color:var(--text-main); margin-bottom:14px;">
+
         競走馬的各項能力可於<strong>「選單 ➔ 競走馬 ➔ 能力」</strong>檢視，點擊「備忘錄 (メモ)」可查看更深層的特徵與隱藏參數。綠色條狀為先天固有能力，黃色部分為調教成長值，綠色進度條為「育成度」（集滿一格能力提升 1 級）。
+
     </p>
 <!-- ① 基本能力 -->
 <h4 style="color:var(--accent-color); font-size:0.95rem; margin:16px 0 8px;"><i class="fa-solid fa-bolt"></i> ① 競走馬八大基本能力詳解</h4>
@@ -7973,7 +8020,9 @@ li {
 </table>
 </div>
 <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;">
+
         💡 <strong>實用技巧</strong>：若想探查 A 與 A+ 的精準數值，可在賽前執行「芝當週追」（成功速度+1）。若由 A 升至 A+ 則代表原本 SP 為 75；若依然為 A 則代表原本 SP 為 74。
+
     </p>
 <!-- ② 適性 -->
 <h4 style="color:var(--accent-color); font-size:0.95rem; margin:16px 0 8px;"><i class="fa-solid fa-compass"></i> ② 適性 (距離・馬場・芝質・跑法腳質)</h4>
@@ -8148,7 +8197,9 @@ li {
 <img alt="賽事經驗面板" src="https://alnasgames.com/wp10/articleimages/Stats4.PNG" style="max-width:100%; border-radius:8px; border:1px solid var(--border-color);"/>
 </div>
 <p style="font-size:0.83rem; line-height:1.7; color:var(--text-main); margin:0;">
+
         包含多頭數、少頭數、本命、冷門、輸送競馬、快步速、慢步速、接戰、更換騎手等情境經驗。在該情境賽事好走經驗值迅速增加，經驗豐富能讓馬匹在該賽事條件下發揮 120% 的實力！
+
     </p>
 </div>
 <!-- ==================== 2. 騎手能力與特性 ==================== -->
@@ -8156,6 +8207,7 @@ li {
 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
 <div style="font-size:1.15rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-user-astronaut"></i> 2. 騎手ステータス解説 (戰法・距離能力與 20 大騎手特性)
+
         </div>
 <span class="badge badge-blue" style="font-size:0.8rem; padding:4px 8px;">選單：人情報 ➔ 騎手</span>
 </div>
@@ -8275,6 +8327,7 @@ li {
 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
 <div style="font-size:1.15rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-user-tie"></i> 3. 調教師ステータス解説 (調教五圍能力與 20 大練馬師特性)
+
         </div>
 <span class="badge badge-purple" style="font-size:0.8rem; padding:4px 8px;">選單：人情報 ➔ 調教師</span>
 </div>
@@ -8393,6 +8446,7 @@ li {
 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
 <div style="font-size:1.15rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-house-chimney-user"></i> 4. 牧場長ステータス解説 (五大能力・得意設施與育成方針)
+
         </div>
 <span class="badge badge-safe" style="font-size:0.8rem; padding:4px 8px;">選單：人情報 ➔ 牧場長</span>
 </div>
@@ -8449,6 +8503,7 @@ li {
 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
 <div style="font-size:1.15rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-people-roof"></i> 5. 子孫・結婚相手・知人ステータス解説 (三大能力・職業進路與家系傳承)
+
         </div>
 <span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">選單：知人 / 家系圖 ➔ 表示切替</span>
 </div>
@@ -8458,7 +8513,9 @@ li {
 <img alt="家系圖面板" src="https://alnasgames.com/wp10/articleimages/tijin2.PNG" style="max-width:320px; border-radius:8px; border:1px solid var(--border-color);"/>
 </div>
 <p style="font-size:0.84rem; line-height:1.7; color:var(--text-main); margin-bottom:12px;">
+
         知人的好感度與結婚年限可於「選單 ➔ 人情報 ➔ 知人」查看；具體能力數值可於<strong>結婚求婚介面</strong>或<strong>「家系圖 ➔ 表示切替」</strong>查看。
+
     </p>
 <div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
 <table class="data-table">
@@ -10697,80 +10754,92 @@ li {
 </div>
 </div>
 </section>
-<section class="section-card" id="sec-relations-2026">
-<div class="section-header">
-<div class="section-title"><i class="fa-solid fa-hands-holding-circle"></i> 第 29 章：2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</div>
-</div>
-<div class="section-body">
-<div class="callout callout-gold">
-<i class="fa-solid fa-heart-pulse"></i>
-<div>
-<strong>《賽馬大亨 10 2026》全新「関係性 (賽馬關係性)」系統</strong><br/>
-            馬匹之間透過共同生活、同場出賽死鬥、同週海外遠征、SP 雙馬合練及隨機事件建立深厚關係。關係性將在現役時期提供能力加成，引退後更可轉化為專屬配合理論與血統爆發力！
-          </div>
-</div>
-<div class="table-responsive" style="margin-bottom:24px;">
-<table class="data-table">
-<thead>
-<tr>
-<th style="min-width:160px;">關係性類型 (日/中)</th>
-<th style="min-width:280px;">締結與進展條件 (日/中對照)</th>
-<th style="min-width:380px;">實戰與繁育加成效果 (繁體中文)</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background:rgba(239,68,68,0.08);">
-<td><strong style="color:#f87171;">ライバル (宿敵 / Rival)</strong></td>
-<td>多次在頂級 G1 賽事同場死鬥、勝負差距在 1 馬身以內。</td>
-<td>同場出賽時勝負根性與鬥志大幅提升！引退後可成立<strong>「ライバル配合 (宿敵配合 爆發力+3~+6)」</strong>！</td>
-</tr>
-<tr style="background:rgba(59,130,246,0.08);">
-<td><strong style="color:#60a5fa;">相棒 (搭檔 / Partner)</strong></td>
-<td>同廄舍生活、多次共同執行 SP 雙馬史實調教合練。</td>
-<td>雙馬訓練效率同步提升 20%，調教大成功機率顯著增加。</td>
-</tr>
-<tr style="background:rgba(234,179,8,0.08);">
-<td><strong style="color:var(--gold-color);">憧憬 (憧憬 / Admiration)</strong></td>
-<td>年輕新秀馬與同牧場殿堂級前輩名駒同廄舍或同遠征。</td>
-<td>新秀馬育成度上升速度加快 30%，極高機率繼承前輩之正面特性！</td>
-</tr>
-<tr>
-<td><strong>腐れ縁 (宿命羈絆)</strong></td>
-<td>多次同週同地域海外遠征、海外大賽互有勝負。</td>
-<td>遠征環境適應力大幅提升，消除環境不適之水土不服減成。</td>
-</tr>
-<tr>
-<td><strong>好敵手 (良性競爭)</strong></td>
-<td>同世代馬匹在三冠路線系列賽中持續交鋒競爭。</td>
-<td>雙方在經典三冠賽事中的人氣與戰鬥力同步上升。</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-
-    <!-- 騎手專屬絆特性 -->
-    <div style="margin-top:18px; background:rgba(15,23,42,0.65); border:1px solid rgba(236,72,153,0.3); border-radius:12px; padding:16px; box-shadow:0 4px 14px rgba(0,0,0,0.2);">
-        <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:center;">
-            <div style="flex:1; min-width:260px; max-width:360px; text-align:center;">
-                <img src="images/manual/7100_21.png" alt="絆特性畫面" style="width:100%; border-radius:8px; border:1px solid rgba(148,163,184,0.3); box-shadow:0 4px 12px rgba(0,0,0,0.4);">
-                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:6px;">▲ 專屬主戰騎手「絆特性」解鎖介面</div>
-            </div>
-            <div style="flex:1.4; min-width:280px;">
-                <div style="color:#f472b6; font-weight:bold; font-size:1rem; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
-                    <span class="badge" style="background:#ec4899; color:#fff;">專屬絆特性</span> 騎手專屬「絆特性 (Kizuna Trait)」解鎖與實戰威力
+<!-- 第 29 章：2026 賽馬關係性 (宿敵/搭檔/激勵/絆) -->
+    <!-- 第 29 章：2026 賽馬關係性 (宿敵/搭檔/激勵/絆) -->
+    <section id="sec-relations-2026" class="section-card">
+        <div class="section-header">
+            <div class="section-title"><i class="fa-solid fa-hands-holding-circle"></i> 第 29 章：2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</div>
+        </div>
+        <div class="section-body">
+            <div class="callout callout-gold" style="margin-bottom:18px;">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <div>
+                    <strong>《賽馬大亨 10 2026》全新「関係性 (賽馬關係性)」與騎手牽絆系統</strong><br/>
+                    馬匹之間透過共同生活、同場出賽死鬥、同週海外遠征、SP 雙馬合練及隨機事件建立深厚關係。現役時期提供能力加成，引退後轉化為專屬配合理論；同時賽駒與主戰騎手亦能締結「絆特性」！
                 </div>
-                <ul style="font-size:0.84rem; color:var(--text-color); line-height:1.75; padding-left:18px; margin:0;">
-                    <li><strong>觸發前提</strong>：當競走馬與主戰騎手經過長期搭檔、同甘共苦或連勝締結【深厚牽絆 (絆)】時獲得。</li>
-                    <li><strong>面板呈現</strong>：在賽駒能力頁面的特性欄中將以專屬色框解鎖【絆特性】。</li>
-                    <li><strong>實戰爆發</strong>：只要由該位結下牽絆的專屬騎手策騎出賽，即可在比賽中啟動極高幅度的常駐戰力與逆境爆發加成！</li>
-                </ul>
+            </div>
+
+            <!-- 賽馬關係性五大類型總表 -->
+            <div class="table-responsive" style="margin-bottom:22px;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="min-width:160px; text-align:left !important;">關係性類型 (日/中)</th>
+                            <th style="min-width:280px; text-align:left !important;">締結與進展條件 (日/中對照)</th>
+                            <th style="min-width:380px; text-align:left !important;">實戰與繁育加成效果 (繁體中文)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background:rgba(239,68,68,0.08);">
+                            <td style="text-align:left !important;"><strong style="color:#f87171;">ライバル (宿敵 / Rival)</strong></td>
+                            <td style="text-align:left !important;">多次在頂級 G1 賽事同場死鬥、勝負差距在 1 馬身以內。</td>
+                            <td style="text-align:left !important;">同場出賽時勝負根性與鬥志大幅提升！引退後可成立<strong>「ライバル配合 (宿敵配合 爆發力+3~+6)」</strong>！</td>
+                        </tr>
+                        <tr style="background:rgba(59,130,246,0.08);">
+                            <td style="text-align:left !important;"><strong style="color:#60a5fa;">相棒 (搭檔 / Partner)</strong></td>
+                            <td style="text-align:left !important;">同廄舍生活、多次共同執行 SP 雙馬史實調教合練。</td>
+                            <td style="text-align:left !important;">雙馬訓練效率同步提升 20%，調教大成功機率顯著增加。</td>
+                        </tr>
+                        <tr style="background:rgba(234,179,8,0.08);">
+                            <td style="text-align:left !important;"><strong style="color:var(--gold-color);">憧憬 (憧憬 / Admiration)</strong></td>
+                            <td style="text-align:left !important;">年輕新秀馬與同牧場殿堂級前輩名駒同廄舍或同遠征。</td>
+                            <td style="text-align:left !important;">新秀馬育成度上升速度加快 30%，極高機率繼承前輩之正面特性！</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong>腐れ縁 (宿命羈絆)</strong></td>
+                            <td style="text-align:left !important;">多次同週同地域海外遠征、海外大賽互有勝負。</td>
+                            <td style="text-align:left !important;">遠征環境適應力大幅提升，消除環境不適之水土不服減成。</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong>好敵手 (良性競爭)</strong></td>
+                            <td style="text-align:left !important;">同世代馬匹在三冠路線系列賽中持續交鋒競爭。</td>
+                            <td style="text-align:left !important;">雙方在經典三冠賽事中的人氣與戰鬥力同步上升。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 騎手專屬絆特性深度解析卡片 -->
+            <div class="tool-card" style="background:rgba(15,23,42,0.85); border:1px solid rgba(236,72,153,0.35); border-radius:14px; padding:18px; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                    <div style="font-size:1.05rem; font-weight:800; color:#f472b6; display:flex; align-items:center; gap:8px;">
+                        <i class="fa-solid fa-handshake-angle"></i> 騎手專屬「絆特性 (Kizuna Trait)」解鎖與實戰威力
+                    </div>
+                    <span class="badge" style="background:#ec4899; color:#fff; font-size:0.75rem; padding:4px 10px;">專屬牽絆加成</span>
+                </div>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:18px; align-items:center;">
+                    <!-- 左側：截圖展示 -->
+                    <div style="background:rgba(0,0,0,0.4); border:1px solid var(--border-color); border-radius:10px; padding:12px; text-align:center;">
+                        <img src="images/manual/7100_21.png" alt="絆特性畫面" style="width:100%; max-width:360px; border-radius:8px; border:1px solid rgba(148,163,184,0.3); box-shadow:0 4px 14px rgba(0,0,0,0.5);">
+                        <div style="font-size:0.75rem; color:var(--text-muted); margin-top:6px;">▲ 專屬主戰騎手「絆特性」解鎖介面</div>
+                    </div>
+
+                    <!-- 右側：特性觸發與加成規則 -->
+                    <div>
+                        <div style="background:rgba(30,41,59,0.7); border-radius:8px; padding:12px 14px; font-size:0.84rem; line-height:1.7; border-left:3px solid #ec4899; margin-bottom:10px; text-align:left !important;">
+                            <div style="font-weight:bold; color:#f472b6; margin-bottom:4px;">💫 牽絆締結前提：</div>
+                            當競走馬與主戰騎手經過長期搭檔策騎、同甘共苦、斬獲連勝或共同克服逆境時，將締結專屬【深厚牽絆 (絆)】。
+                        </div>
+                        <div style="background:rgba(30,41,59,0.7); border-radius:8px; padding:12px 14px; font-size:0.84rem; line-height:1.7; border-left:3px solid var(--gold-color); text-align:left !important;">
+                            <div style="font-weight:bold; color:var(--gold-color); margin-bottom:4px;">⚡ 實戰超常爆發：</div>
+                            於賽駒能力面板的特性欄中將以專屬色框解鎖【絆特性】。只要由該位結下牽絆的專屬騎手親自出賽，即可在比賽中啟動極高幅度的常討戰力與逆境逆轉加成！
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-</section>
+    </section>
     </div>
 
     <!-- Pillar 5: 🏆 重賞賽事實戰・賽馬場特性・草質與 Historia -->
