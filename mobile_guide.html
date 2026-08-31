@@ -1737,13 +1737,13 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.53</span>
+        <span class="version-badge">v02.54</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
-            15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 40 大章節)
+            15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
         </p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
-            <button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">📑 40 章快速跳轉</button>
+            <button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">📑 41 章快速跳轉</button>
             <button class="header-btn" onclick="clearPwaCache()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🔄 清除快取重載</button>
             <button class="header-btn" onclick="toggleAppTheme()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🌓 主題切換</button>
         </div>
@@ -8544,915 +8544,1506 @@ li {
 </div>
 </div>
 </section>
-<section class="section-card" id="sec-skills-traits">
-<div class="section-header">
-<div class="section-title"><i class="fa-solid fa-medal"></i> 第 26 章：基礎能力・四大比賽展開・適應能力與名馬固有特性全書</div>
-</div>
-<div class="section-body">
 
-    <!-- 適應能力星級成長與上限突破 -->
-    <div style="margin-bottom:22px; background:rgba(15,23,42,0.65); border:1px solid rgba(234,179,8,0.3); border-radius:12px; padding:16px; box-shadow:0 4px 14px rgba(0,0,0,0.2);">
-        <div style="color:var(--gold-color); font-weight:bold; font-size:1rem; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
-            <span class="badge badge-gold">核心機制</span> 適應能力星級系統・成長進度條與「上限突破 (★10+)」機制
-        </div>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; align-items:start;">
-            <div style="background:rgba(0,0,0,0.35); border-radius:8px; padding:12px; border:1px solid var(--border-color);">
-                <div style="font-weight:bold; color:#38bdf8; font-size:0.85rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
-                    <span>⭐</span> 星級成長與進度條 (成長バー)
-                </div>
-                <img src="images/manual/7100_151.png" alt="適應能力介面" style="width:100%; border-radius:6px; margin-bottom:8px;">
-                <ul style="font-size:0.8rem; color:var(--text-color); line-height:1.6; padding-left:16px; margin:0;">
-                    <li><img src="images/manual/000_icon_star_edge_2.png" style="height:13px; vertical-align:middle;"> <b>藍色星</b>：當前已具備之適應能力。</li>
-                    <li><img src="images/manual/000_icon_star_edge_0.png" style="height:13px; vertical-align:middle;"> <b>灰色星</b>：潛在成長上限（總星數越多潛力越強）。</li>
-                    <li><img src="images/manual/000_icon_star_edge_3.png" style="height:13px; vertical-align:middle;"> <b>橘色星</b>：出賽與史實調教後天成長之星級。</li>
-                    <li><b>名稱下方計量條</b>：累積蓄滿時立即升階一顆星。</li>
-                </ul>
+<!-- ==================== 第 26 章：基礎能力・四大比賽展開與適應能力機制全書 ==================== -->
+<section id="sec-skills-traits" class="section-card">
+    <div class="section-header">
+        <div class="section-title"><i class="fa-solid fa-gauge-high"></i> 第 26 章：基礎能力・四大比賽展開與適應能力機制全書</div>
+    </div>
+    <div class="section-body">
+        <div class="callout callout-gold" style="margin-bottom:20px;">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>
+                <strong>《賽馬大亨 10 2026》官方育成規格：能力槽機制、適應能力上限突破與五大色框特性體系</strong><br/>
+                競走馬能力除速度 (SP) 外，八大副能力（瞬發/根性/力量/柔軟/精神/賢/健康/起步）由綠色先天基礎與橘色後天調教共同構成。結合 2025/2026 全新展開適應機制，賽駒可在極端大賽中實現<strong>「適應能力限界突破 (★10+)」</strong>！
             </div>
-            <div style="background:rgba(0,0,0,0.35); border-radius:8px; padding:12px; border:1px solid var(--border-color);">
-                <div style="font-weight:bold; color:#facc15; font-size:0.85rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
-                    <span>🌟</span> 上限突破 (限界突破) 觸發條件
+        </div>
+
+        <!-- 一、適應能力星級系統與上限突破卡片 -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-star-half-stroke"></i> 一、適應能力星級系統・成長進度條與「上限突破 (★10+)」機制
                 </div>
-                <img src="images/manual/7100_153.png" alt="上限突破畫面" style="width:100%; border-radius:6px; margin-bottom:8px;">
-                <ul style="font-size:0.8rem; color:var(--text-color); line-height:1.6; padding-left:16px; margin:0;">
-                    <li><img src="images/manual/000_icon_star_edge_4.png" style="height:13px; vertical-align:middle;"> <b>璀璨星</b>：突破 ★10 顆星極限後呈現之超能星級。</li>
-                    <li><b>賽事觸發</b>：在標註為「究極の○○戰」或「超○○戰」的極限戰型大賽中奪冠即有機會觸發！</li>
-                    <li><b>調教觸發</b>：執行特定對應戰型之 SP 史實調教，具低機率發生上限突破。</li>
-                </ul>
+                <span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">2026 核心機制</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; align-items:center; margin-bottom:16px;">
+                <div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:center;">
+                    <img src="images/manual/7100_151.png" alt="適應能力星級進度條" style="width:100%; max-width:380px; height:auto; border-radius:6px; border:1px solid var(--border-color); box-shadow:0 2px 10px rgba(0,0,0,0.4); display:block; margin:0 auto;">
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:8px;">▲ 適應能力星級進度條與璀璨金星上限突破 (官方手冊圖示)</div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:10px; font-size:0.84rem; line-height:1.65; color:var(--text-main);">
+                    <div style="background:rgba(30,41,59,0.7); border-radius:8px; padding:10px 14px; border-left:3px solid #38bdf8; text-align:left !important;">
+                        <strong style="color:#38bdf8;">⭐ 星級成長與進度條：</strong>瞬發戰、持久戰、消耗戰適應能力以 <strong>★1 ~ ★10</strong> 呈現。右側進度條隨出賽與調教累積，蓄滿即可升星。
+                    </div>
+                    <div style="background:rgba(30,41,59,0.7); border-radius:8px; padding:10px 14px; border-left:3px solid var(--gold-color); text-align:left !important;">
+                        <strong style="color:var(--gold-color);">🌟 限界突破 (★10+)：</strong>達 ★10 滿星後，若在極端高強度展開賽事中奪冠，進度條蓄滿將觸發<strong>【上限突破】</strong>進化為璀璨金星 (🌟)！
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 二、官方五大特性框色等級卡片 -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-layer-group"></i> 二、官方五大特性框色等級與實戰體系
+                </div>
+                <span class="badge" style="background:var(--accent-color); color:#fff; font-size:0.8rem; padding:4px 8px;">框色階級</span>
+            </div>
+
+            <div class="table-responsive" style="margin:0;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="min-width:140px; text-align:left !important;">特性框色階級</th>
+                            <th style="min-width:160px; text-align:left !important;">對應特性類別</th>
+                            <th style="min-width:320px; text-align:left !important;">效果強度與觸發特徵</th>
+                            <th style="min-width:180px; text-align:left !important;">獲得與進化途徑</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background:rgba(234,179,8,0.08);">
+                            <td style="text-align:left !important;"><strong style="color:var(--gold-color);">🟨 虹金金色框</strong></td>
+                            <td style="text-align:left !important;"><strong style="color:var(--gold-color);">上位進化特性 / 史實固有</strong></td>
+                            <td style="text-align:left !important;">能力翻倍或大幅強化（如「大放異彩」、「鬼之末腳」、「神速領放」），名馬專屬固有特性。</td>
+                            <td style="text-align:left !important;">通常特性進化、史實固有天生持有。</td>
+                        </tr>
+                        <tr style="background:rgba(148,163,184,0.08);">
+                            <td style="text-align:left !important;"><strong style="color:#cbd5e1;">⬜ 銀色框</strong></td>
+                            <td style="text-align:left !important;">通常高級特性</td>
+                            <td style="text-align:left !important;">於特定條件下提供顯著戰力加成（如「大舞台」、「高速領放」、「直線一氣」）。</td>
+                            <td style="text-align:left !important;">重賞連勝、特定史實調教習得。</td>
+                        </tr>
+                        <tr style="background:rgba(180,83,9,0.08);">
+                            <td style="text-align:left !important;"><strong style="color:#d97706;">🟫 銅色框</strong></td>
+                            <td style="text-align:left !important;">通常基礎特性</td>
+                            <td style="text-align:left !important;">提供基礎環境與距離適性加成（如「左回巧者」、「良馬場巧者」）。</td>
+                            <td style="text-align:left !important;">出賽勝出積累經驗習得。</td>
+                        </tr>
+                        <tr style="background:rgba(34,197,94,0.08);">
+                            <td style="text-align:left !important;"><strong style="color:#4ade80;">🟩 綠色框</strong></td>
+                            <td style="text-align:left !important;">固有/特殊個性轉化</td>
+                            <td style="text-align:left !important;">克服負面個性轉化而來之常駐增益（如「大根性」、「剛腕相性佳」）。</td>
+                            <td style="text-align:left !important;">個性事件克服、SP 雙馬合練。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 三、四大比賽展開戰型卡片 -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-flag-checkered"></i> 三、四大比賽展開戰型與臨場判定心法
+                </div>
+                <span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">實戰勝負心法</span>
+            </div>
+
+            <div class="table-responsive" style="margin:0;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="min-width:140px; text-align:left !important;">比賽展開類型</th>
+                            <th style="min-width:120px; text-align:left !important;">官方代表圖標</th>
+                            <th style="min-width:280px; text-align:left !important;">步速節奏與賽道機制</th>
+                            <th style="min-width:280px; text-align:left !important;">關鍵決定屬性與克制戰法</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align:left !important;"><strong style="color:#38bdf8;">瞬發戰 (Sprint)</strong></td>
+                            <td style="text-align:left !important;"><img src="images/manual/000_prt_race_type_0.png" style="height:22px;"></td>
+                            <td style="text-align:left !important;">前中段步速平緩，決勝全在最後 400m 直線爆發。</td>
+                            <td style="text-align:left !important;"><strong>瞬發力、速度、柔軟性</strong>。居中 (差し) 與後追 (追込) 爆發極大優勢。</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong style="color:#4ade80;">持久戰 (Endurance)</strong></td>
+                            <td style="text-align:left !important;"><img src="images/manual/000_prt_race_type_1.png" style="height:22px;"></td>
+                            <td style="text-align:left !important;">中盤即提早加速，展開長途拉鋸與爬坡耐力拼搏。</td>
+                            <td style="text-align:left !important;"><strong>勝負根性、耐力、精神力</strong>。前領 (先行) 與前置 (前付け) 易鎖定勝局。</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong style="color:#fb923c;">消耗戰 (Attrition)</strong></td>
+                            <td style="text-align:left !important;"><img src="images/manual/000_prt_race_type_2.png" style="height:22px;"></td>
+                            <td style="text-align:left !important;">出閘起即高速肉搏，考驗極速與不失速韌性。</td>
+                            <td style="text-align:left !important;"><strong>力量、健康、勝負根性</strong>。大逃、領放與積極策具極高突破力。</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong style="color:#facc15;">綜合戰 (Total)</strong></td>
+                            <td style="text-align:left !important;"><img src="images/manual/000_prt_race_type_3.png" style="height:22px;"></td>
+                            <td style="text-align:left !important;">頂級跨國大賽，三大適應能力全面考驗。</td>
+                            <td style="text-align:left !important;"><strong>全能力綜合素質與適應能力星級 (★8+)</strong>。</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-
-<div class="callout callout-gold">
-<i class="fa-solid fa-award"></i>
-<div>
-<strong>《賽馬大亨 10 2026》官方育成規格：能力槽機制、適應能力上限突破與五大色框特性體系</strong><br/>
-            競走馬能力包含 8 大基礎能力槽、四大比賽展開適應能力（可透過 SP 史實調教觸發<strong>「上限突破」</strong>），以及由通常綠框、上位黃框、固有金框、傳奇青框與主戰騎手絆特性組成的全方位特性體系！
-          </div>
-</div>
-<h3 style="font-size:1rem; color:var(--accent-color); margin:16px 0 10px; display:flex; align-items:center; gap:8px;">一、官方五大特性框色等級與獲得途徑完全大表 (日/中對照)</h3>
-<div class="table-responsive" style="margin-bottom:20px;">
-<table class="data-table">
-<thead>
-<tr>
-<th style="min-width:160px;">特性框色類別 (日/中)</th>
-<th style="width:1%; white-space:nowrap;">持有上限</th>
-<th style="min-width:320px;">獲得途徑與進化方式 (日/中)</th>
-<th style="min-width:300px;">實戰效果與遺傳機制 (繁體中文)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="pill pill-safe">🟩 通常特性 (緑色枠)</span></td>
-<td>最多 8 個<br/><small>(含上位)</small></td>
-<td>比賽獲勝後隨機領悟、牝系遺傳、先祖ドラマ因子 (Drama 因子) 宿命繼承。</td>
-<td>在特定距離、氣候、馬場狀態發揮超常戰力。</td>
-</tr>
-<tr>
-<td><span class="pill pill-gold">🟨 上位特性 (黄土色枠)</span></td>
-<td>最多 3 個</td>
-<td>通常特性持有下，執行對應史實調教或重大比賽大勝進化。</td>
-<td>效果數值翻倍，極致強化衝刺爆發力與抗壓性。</td>
-</tr>
-<tr style="background:rgba(234,179,8,0.08);">
-<td><span class="pill pill-gold" style="background:#eab308; color:#000; font-weight:bold;">👑 固有特性 (金色枠)</span></td>
-<td>史實固有</td>
-<td>部分史實頂級名馬專屬；<strong>勝出凱旋門賞、肯塔基德比、杜拜世界盃</strong>可極稀有獲得海外固有！</td>
-<td>專屬史詩級技能，產駒有一定機率遺傳繼承。</td>
-</tr>
-<tr style="background:rgba(56,189,248,0.08);">
-<td><span class="pill pill-cyan">🟦 レジェンド特性 (傳奇青色枠)</span></td>
-<td>1 個</td>
-<td><strong>現役偶像馬掀起競馬熱潮 (競馬ブーム)</strong> 並在熱潮中勝出 G1 或「ザ・レジェンドマッチ」獲勝領悟！</td>
-<td><strong>玩家可自選 2 個詞彙自由命名</strong>！直仔限定遺傳（效果略微收斂）。</td>
-</tr>
-<tr>
-<td><span class="pill pill-power">🏇 絆特性 (主戦騎手)</span></td>
-<td>騎手專屬</td>
-<td>競走馬與主戰騎手的<strong>「絆等級 (絆レベル)」達到滿級 Lv5</strong> 時自動覺醒。</td>
-<td>直接以「上位特性」規格生效；更換主戰騎手會暫時失效，換回 Lv5 騎手即刻恢復。</td>
-</tr>
-
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">勇者が拓く道</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1600/2000/2400mのＧⅠレースで追込を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">欠点なき豪脚</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の1600～2400mのＧⅠレースで差し・追込を選ぶと、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">偉大なる紅き伝説</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国の1600～2400mのＧⅠレースで力を発揮し、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">天才の舞踏</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の1600～2400mのＧⅠレースでわずかに力を発揮し、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">北の地の至宝</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">ＧⅠレースで力を発揮し、仕掛けどころで速度を上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">最強の怪物</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の1600～2000mのＧⅠレースで逃げ・先行を選ぶと、仕掛けどころで速度を大きく上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">勝利命ず王権</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国の1600～2400mのＧⅠレースで逃げを選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">無敵の超快速</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1000～1600mのダートで大逃げ・逃げを選ぶと、仕掛けどころで速度を大きく上げ、大逃げは粘りやすくなる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">魅了する灰の幻影</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国の1600～2400mのＧⅠレースで差し・追込を選ぶと、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">極めた芸術</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の2000～3200mのＧⅠレースで逃げ・先行を選ぶと、仕掛けどころで速度を大きく上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">支配者の慧眼</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1200～2000mのダートＧⅠレースで先行を選ぶと大きな力を発揮し、他馬がわずかに力を発揮しにくくなる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">千年紀が育んだ偉才</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1600～2000mのＧⅠレースで逃げを選ぶと、レース序盤と仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">描くは栄光の結末</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の2400mのレースで差しを選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">狼煙が導く大攻勢</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">前走勝利かつダートレースを選んだ場合、仕掛けどころで速度を上げ、レース後に疲労が上がりにくくなる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">自由と夢の象徴</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国のダートレースで逃げを選ぶと、スタートが得意になり、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">闘争心の化身</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国のＧⅠで逃げ・先行を選ぶと、他馬がわずかに力を発揮しにくくなり、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">星の海の旅人</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州のレースで差しを選ぶと、仕掛けどころで速度を大きく上げ、レース後に疲労が少し下がる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">勝利へのランディング</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国の1200～2000mのＧⅠレースの仕掛けどころで速度を大きく上げるが、レース後にやや疲労が上がる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">荒き血潮の咆哮</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1600～2000mのＧⅠレースで、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">奇跡の体現者</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の2400mのレースで力を発揮し、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">紅き巨大戦艦</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1400～2400mのレースでスタートが少し苦手になるが、仕掛けどころで速度を大きく上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">咲き誇る名花</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1600～2500mのＧⅠレースで追込を選ぶと、仕掛けどころで速度を上げ、疲労が少し下がることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">最速の誇り</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1000～1400mのＧⅠレースで逃げを選ぶと、スタートが得意になり、仕掛けどころで速度を上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">魂燃やすビッグレッド</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国の1600～2400mのＧⅠレースの仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">全能たる鬼才</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">前走１着かつ米国のＧⅠで大逃げ・逃げを選ぶと、終盤で速度を上げ、大逃げは粘りやすくなることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">堅牢なる王朝</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国のＧⅠレースの仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">燃え滾る逃走本能</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国の1200～2400mのＧⅠレースで大逃げ・逃げを選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">百万馬力の末脚</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国のダートＧⅠレースで差し・追込を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">偉丈夫の七変化</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国の1000～2000mのＧⅠレースの仕掛けどころで速度を上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">革命への進軍</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州のレースで追込を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">敵逃さぬ長距離砲</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の2400m以上のレースで先行・差しを選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">西部のヒットマン</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の1600～4000mのＧⅠレースで先行・差しを選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">海鳥優雅に舞う</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の2000～2500mのＧⅠレースの仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">勇将の鋭き剣技</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の1600～2000mのＧⅠレースの仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">頂極めし脚</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の1400～3000mのＧⅠレースで逃げ・先行を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">至高の脚</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の2000/2400mのＧⅠレースで先行・差しを選ぶと、仕掛けどころで速度を上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">畏怖もたらす閃光</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1800～3200mのＧⅠレースで追込を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">不滅の末脚</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1400～2000mのＧⅠレースで差し・追込を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">純然たる王者</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1400～2400mのＧⅠレースで差し・追込を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">獲物とらえる銃弾</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">ＧⅠレースで逃げ・先行を選ぶと、仕掛けどころで速度を上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">黒真珠の輝き</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1000～1400mのＧⅠレースで逃げ・先行を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">蹴り抜く一閃</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1200～1600mのＧⅠレースで逃げ・先行を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">旭日の導き</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1400～2000mのＧⅠレースで逃げ・先行を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">祝祭彩る歌姫</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">牝馬のみ2000～3200mのＧⅠレースで差し・追込を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">ソニックブーム</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1200～1400mのＧⅠレースで逃げ・先行を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">静寂に閃く脚</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1000～1400mのＧⅠレースで大逃げ・逃げを選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">黄金色に輝く名槍</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1600～2000mのＧⅠレースで追込を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">大いなる浪漫を求め</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">1600～2000mのＧⅠレースで先行を選ぶと、仕掛けどころで速度を大きく上げることがある。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">暴走蒸気機関車</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州のＧⅠレースで、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">千変万化</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国の1400～3200mのＧⅠレースで、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">必然たる奇跡</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州のＧⅠレースで、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">英雄砂海を行く</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国の1200～2000mのダートＧⅠレースで、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">口笛交じりの一蹴</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国の1200～3200mのダートＧⅠレースで追込を選ぶと、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">絶対女王の王威</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">牝馬のみ2000/2400mのＧⅠレースで先行を選ぶと、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">鉄壁の門番</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の1600～2400mのＧⅠレースで差しを選ぶと、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">砂塵まとう暴風雨</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国の1600～2000mのダートＧⅠレースで差し・追込を選ぶと、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">聖女の凱旋</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">牝馬のみ欧州の1600/2000/2400mのＧⅠレースで差しを選ぶと、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">比類なきヒロイン</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">牝馬のみ米国の1200～2400mのＧⅠレースで大逃げ・逃げを選ぶと、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">アークの化身</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">欧州の2400mのレースで、仕掛けどころで速度を上げる。</td>
-    </tr>
-    
-    <tr style="background:rgba(234,179,8,0.06);">
-        <td style="text-align:left !important; white-space:nowrap;">
-            <strong style="color:var(--gold-color);">最速最強の証明</strong>
-            <span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
-        </td>
-        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">海外名馬固有</span></td>
-        <td style="text-align:left !important; line-height:1.6; font-size:0.82rem;">米国の1800～2400mのダートＧⅠレースで大逃げ・逃げを選ぶと、仕掛けどころで速度を上げる。</td>
-    </tr>
-    </tbody>
-</table>
-</div>
-<h3 style="font-size:1rem; color:var(--gold-color); margin:20px 0 10px; display:flex; align-items:center; gap:8px;">二、四大比賽展開適應能力與「上限突破」精算機制</h3>
-<p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
-          適應能力決定賽事進入特定步速與賽況展開時的勝率。當適應能力達到滿格限界時，持續進行對應史實調教（特別是 SP 史實調教大成功），將有低機率觸發<strong>「上限突破」</strong>（瞬發戰、持久戰、消耗戰三者中僅限選擇 1 項突破極限）：
-        </p>
-<div class="table-responsive" style="margin-bottom:20px;">
-<table class="data-table">
-<thead>
-<tr>
-<th style="min-width:160px;">適應能力項目 (日/中)</th>
-<th style="min-width:260px;">對應賽事展開特徵 (日/中)</th>
-<th style="min-width:380px;">上限突破效果與觸發要訣 (繁體中文)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>瞬発戦 (瞬發戰適應)</strong></td>
-<td>慢步速 (スローペース)、直路末腳決戰</td>
-<td>突破後在最後 300m 直路爆發超凡二段加速，剋制逃馬。</td>
-</tr>
-<tr>
-<td><strong>持久戦 (持久戰適應)</strong></td>
-<td>平均步速 (平均ペース)、長距離耐力戰</td>
-<td>突破後在中長途賽事維持高速巡航且心率體力消耗大幅降低。</td>
-</tr>
-<tr>
-<td><strong>消耗戦 (消耗戰適應)</strong></td>
-<td>快步速 (ハイペース)、重/不良馬場、極限死鬥</td>
-<td>突破後在暴雨泥濘爛地或超快步速死鬥中鬥志永不衰竭。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<!-- ==================== 三、實戰 13 大跑法作戰全圖鑑 (作戦の種類・特殊作戰・發動條件) ==================== -->
-<h3 style="font-size:1rem; color:var(--accent-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">三、官方賽事實戰 13 大跑法作戰全圖鑑 (作戦の種類・特殊作戰・發動條件完全對照表)</h3>
-<p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
-          根據光榮特庫摩《Winning Post 10 2026》官方手冊，比賽日作戰包含<strong>通常作戰</strong>、<strong>特殊作戰（紅色標示）</strong>與<strong>條件限定作戰</strong>。選擇特殊作戰能在該場比賽中臨時提升特定適應能力（同時伴隨其他適應力下降），賽後有機率使適應能力大幅成長（但累積疲勞度較高）：
-        </p>
-<div class="table-responsive" style="margin-bottom:20px;">
-<table class="data-table">
-<thead>
-<tr>
-<th style="min-width:160px;">作戰名稱 (日/中)</th>
-<th style="min-width:110px;">作戰類別</th>
-<th style="min-width:130px;">隊列位置</th>
-<th style="min-width:320px;">戰術執行內容與走位 (日/中對照)</th>
-<th style="min-width:240px;">適應能力影響 / 疲勞變化</th>
-<th style="min-width:260px;">發動限制與特殊條件</th>
-</tr>
-</thead>
-<tbody>
-<!-- 前方戰術 -->
-<tr>
-<td><strong>大逃げ (狂奔大逃)</strong></td>
-<td><span class="pill pill-safe">通常作戰</span></td>
-<td>最前列先頭</td>
-<td>立於隊列最先頭，以拉開後續馬群極大差距的方式先行並直接逃領到底。</td>
-<td>消耗戰要求高 / 疲勞正常</td>
-<td>需具備大逃適性或極高スピード</td>
-</tr>
-<tr>
-<td><strong>逃げ (領放逃領)</strong></td>
-<td><span class="pill pill-safe">通常作戰</span></td>
-<td>先頭</td>
-<td>立於隊列先頭放慢步調吸引後續馬匹，掌控節奏並圖謀逃領勝出。</td>
-<td>持久戰/標準 / 疲勞正常</td>
-<td>無限制</td>
-</tr>
-<tr style="background:rgba(239,68,68,0.08);">
-<td><strong style="color:#ef4444;">積極策 (積極搶先)</strong></td>
-<td><span class="pill pill-danger" style="background:#ef4444; color:#fff;">特殊作戰 [赤]</span></td>
-<td>先頭爭奪</td>
-<td>出閘起步後立即以極高積極度強行搶佔前列先頭位置。</td>
-<td><span style="color:#ef4444; font-weight:bold;">特定適應力↑ / 疲勞大</span></td>
-<td>賽後適應能力有機率大幅成長</td>
-</tr>
-<tr style="background:rgba(239,68,68,0.08);">
-<td><strong style="color:#ef4444;">前付け (前位壓制)</strong></td>
-<td><span class="pill pill-danger" style="background:#ef4444; color:#fff;">特殊作戰 [赤]</span></td>
-<td>先頭附近</td>
-<td>在先頭附近壓低步調牽制後續馬匹，圖謀一氣壓制逃領到底。</td>
-<td><span style="color:#ef4444; font-weight:bold;">持久戰↑ / 瞬發戰↓ / 疲勞大</span></td>
-<td>賽後適應能力有機率大幅成長</td>
-</tr>
-<tr style="background:rgba(239,68,68,0.08);">
-<td><strong style="color:#ef4444;">好位抜出 (好位突圍)</strong></td>
-<td><span class="pill pill-danger" style="background:#ef4444; color:#fff;">特殊作戰 [赤]</span></td>
-<td>好位 (先頭後方)</td>
-<td>進入直線時從絕佳好位瞬間突圍而出，直接壓制逃領奪冠。</td>
-<td><span style="color:#ef4444; font-weight:bold;">瞬發戰↑ / 消耗戰↓ / 疲勞大</span></td>
-<td>賽後適應能力有機率大幅成長</td>
-</tr>
-<tr>
-<td><strong>先行 (先行跟前)</strong></td>
-<td><span class="pill pill-safe">通常作戰</span></td>
-<td>中前段</td>
-<td>位於隊列中段偏前方位置，根據賽事步調靈活調整走位以待發力。</td>
-<td>適應力均衡 / 疲勞正常</td>
-<td>無限制</td>
-</tr>
-<tr style="background:rgba(234,179,8,0.08);">
-<td><strong style="color:var(--gold-color);">イン狙い (內線突擊)</strong></td>
-<td><span class="pill pill-gold">條件限定作戰</span></td>
-<td>前目內欄 (內圈)</td>
-<td>沿途貼著前列內欄跑道省力前進，直線亦走內線最短路徑一舉突圍。</td>
-<td>內欄突破 / 疲勞正常</td>
-<td><strong>騎手先行適性 ○ (A) 以上<br/>馬匹抽中 1～3 檔內欄枠<br/>單場賽事最多 2 匹發動</strong></td>
-</tr>
-<!-- 後方戰術 -->
-<tr>
-<td><strong>差し (居中差追)</strong></td>
-<td><span class="pill pill-safe">通常作戰</span></td>
-<td>中後段</td>
-<td>位於隊列中段偏後方，在賽事後半程猛然提速一舉搶佔前列。</td>
-<td>瞬發戰/持久戰 / 疲勞正常</td>
-<td>無限制</td>
-</tr>
-<tr style="background:rgba(234,179,8,0.08);">
-<td><strong style="color:var(--gold-color);">まくり (外側捲入強襲)</strong></td>
-<td><span class="pill pill-gold">條件限定作戰</span></td>
-<td>中後團 ➔ 彎道衝頂</td>
-<td>位於中團至後方的賽駒在第三~四彎道提前大外捲入衝上先頭並強勢壓制到底。</td>
-<td>消耗戰/持久戰↑ / 疲勞正常</td>
-<td><strong>騎手差し適性 ○ (A) 以上<br/>馬匹抽中 6～8 檔外欄枠<br/>單場賽事最多 2 匹發動</strong></td>
-</tr>
-<tr style="background:rgba(239,68,68,0.08);">
-<td><strong style="color:#ef4444;">馬群待機 (馬群待機)</strong></td>
-<td><span class="pill pill-danger" style="background:#ef4444; color:#fff;">特殊作戰 [赤]</span></td>
-<td>馬群內部內圈</td>
-<td>沿途盡可能切入內欄馬群中隱蔽伺機待發，尋找空隙突圍。</td>
-<td><span style="color:#10b981; font-weight:bold;">持久戰適應能力 UP</span><br/><span style="color:#ef4444; font-size:0.75rem;">瞬發戰適應能力 DOWN / 疲勞大</span></td>
-<td>賽後適應能力有機率大幅成長</td>
-</tr>
-<tr style="background:rgba(239,68,68,0.08);">
-<td><strong style="color:#ef4444;">大外一気 (大外一氣)</strong></td>
-<td><span class="pill pill-danger" style="background:#ef4444; color:#fff;">特殊作戰 [赤]</span></td>
-<td>大外路徑</td>
-<td>沿途盡量拉至外側，在最終直線爆發極速進行大外一氣強勢反超。</td>
-<td><span style="color:#10b981; font-weight:bold;">瞬發戰適應能力 UP</span><br/><span style="color:#ef4444; font-size:0.75rem;">消耗戰適應能力 DOWN / 疲勞大</span></td>
-<td>賽後適應能力有機率大幅成長</td>
-</tr>
-<tr style="background:rgba(239,68,68,0.08);">
-<td><strong style="color:#ef4444;">直線強襲 (直線雷霆強襲)</strong></td>
-<td><span class="pill pill-danger" style="background:#ef4444; color:#fff;">特殊作戰 [赤]</span></td>
-<td>離群最後方</td>
-<td>沿途脫離馬群留在最後方沉著蓄力，在最後直線以雷霆之勢一舉反超所有馬匹。</td>
-<td><span style="color:#ef4444; font-weight:bold;">極限瞬發戰↑ / 疲勞大</span></td>
-<td>賽後適應能力有機率大幅成長</td>
-</tr>
-<tr>
-<td><strong>追込 (後追留後)</strong></td>
-<td><span class="pill pill-safe">通常作戰</span></td>
-<td>最後方馬群</td>
-<td>保持在馬群極後方位置，於賽事後半程爆發末腳向前衝刺。</td>
-<td>瞬發戰 / 疲勞正常</td>
-<td>無限制</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<!-- ==================== 四、全 52 大通常特性 ➔ 52 大上位進化特性完全對照表 ==================== -->
-<h3 style="font-size:1.05rem; color:var(--gold-color); margin:28px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-wand-magic-sparkles"></i> 四、全 52 大通常特性 ➔ 52 大上位進化特性完全對照表 (100% 完整解析)
-</h3>
-<p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
-    賽駒持有通常特性時，透過<strong>「信任度達到 Lv2~3 於對應賽事大勝」</strong>或<strong>「執行上位評級 A 之史實調教大成功」</strong>，可將通常特性進化為<strong>上位特性（黃金色框）</strong>，效果數值翻倍！
-</p>
-<div class="table-responsive" style="margin-bottom:24px;">
-<table class="data-table">
-<thead>
-<tr>
-<th style="min-width:140px;">通常特性 (日/中)</th>
-<th style="min-width:140px;">上位進化特性 (日/中)</th>
-<th style="min-width:420px;">詳細具體數值與實戰效果 (繁體中文)</th>
-</tr>
-</thead>
-<tbody>
-<tr><td><strong>大舞台 (大舞台)</strong></td><td><strong style="color:var(--gold-color);">晴れ舞台 (大放異彩)</strong></td><td>於 G1 大賽中發揮出（更加）強大驚人的戰鬥力。</td></tr>
-<tr><td><strong>GⅡ対象 (G2大將)</strong></td><td><strong style="color:var(--gold-color);">GⅡの守護者 (G2守護神)</strong></td><td>於 G2 級別賽事中發揮出（更加）強大的實力。</td></tr>
-<tr><td><strong>交流重賞巧者</strong></td><td><strong style="color:var(--gold-color);">交流重賞ハンター (交流獵人)</strong></td><td>於地方交流重賞賽事中發揮出（巨大）力量。</td></tr>
-<tr><td><strong>ローカル (地方小場)</strong></td><td><strong style="color:var(--gold-color);">全国行脚 (全國巡迴)</strong></td><td>於地方賽事舉辦場地 (函館、福島、新潟、小倉等) 發揮出（巨大）力量。</td></tr>
-<tr><td><strong>海外遠征</strong></td><td><strong style="color:var(--gold-color);">海外雄飛 (海外稱雄)</strong></td><td>海外遠征出戰時，能力折損獲得（更加）大幅度的減輕。</td></tr>
-<tr><td><strong>根幹距離</strong></td><td><strong style="color:var(--gold-color);">根幹の鬼 (根幹之鬼)</strong></td><td>於 1200 / 1600 / 2000 / 2400 / 3000m 的經典根幹距離賽事中發揮（巨大）力量。</td></tr>
-<tr><td><strong>非根幹距離</strong></td><td><strong style="color:var(--gold-color);">非根幹の鬼 (非根幹之鬼)</strong></td><td>於上述以外之非根幹距離 (如 1400/1800/2200/2500m) 賽事中發揮（巨大）力量。</td></tr>
-<tr><td><strong>超長距離</strong></td><td><strong style="color:var(--gold-color);">長距離砲 (長途巨砲)</strong></td><td>於 3000m 以上的超長途馬拉松大賽中爆發極限力量。</td></tr>
-<tr><td><strong>鉄砲 (久休復出)</strong></td><td><strong style="color:var(--gold-color);">狙い撃ち (精準狙擊)</strong></td><td>放牧休養後的復出初戰發揮強大力量。</td></tr>
-<tr><td><strong>叩き良化 (熱身提升)</strong></td><td><strong style="color:var(--gold-color);">右肩上がり (步步高升)</strong></td><td>復出初戰、第 2 戰後的狀態 (調子) 獲得（大幅）上升。</td></tr>
-<tr><td><strong>乾坤一擲</strong></td><td><strong style="color:var(--gold-color);">渾身の激走 (渾身奔馳)</strong></td><td>於 G1 大賽中有機率爆發出（更加）驚人的超越極限潛力。</td></tr>
-<tr><td><strong>大駆け (黑馬爆發)</strong></td><td><strong style="color:var(--gold-color);">大番狂わせ (驚天大逆轉)</strong></td><td>於 4 番人氣以下時，有機率發揮出（更加）強大的黑馬逆轉實力。</td></tr>
-<tr><td><strong>タフネス (強韌耐戰)</strong></td><td><strong style="color:var(--gold-color);">超回復 (超強恢復)</strong></td><td>賽後疲勞累積速度大幅減緩，且賽後育成度提升幅度增加。</td></tr>
-<tr><td><strong>牡馬混合</strong></td><td><strong style="color:var(--gold-color);">女王降臨 (女王降臨)</strong></td><td>出戰雄雌混合賽事時發揮強大力量（雌馬限定）。</td></tr>
-<tr><td><strong>軽ハンデ (輕讓磅)</strong></td><td><strong style="color:var(--gold-color);">魅惑の軽斤量 (絕佳輕負磅)</strong></td><td>讓磅賽 (Handicap) 獲評輕負磅時發揮出（更加）強大的實力。</td></tr>
-<tr><td><strong>スタート (起步出閘)</strong></td><td><strong style="color:var(--gold-color);">ロケットスタート (火箭起步)</strong></td><td>起步出閘成功率（更加）大幅上升，極不易慢閘。</td></tr>
-<tr><td><strong>高速逃げ (高速領放)</strong></td><td><strong style="color:var(--gold-color);">神速逃げ (神速領放)</strong></td><td>採取大逃、領放跑法時發揮出（巨大）的領跑優勢。</td></tr>
-<tr><td><strong>二の足 (二之腳)</strong></td><td><strong style="color:var(--gold-color);">横綱相撲 (橫綱相撲)</strong></td><td>採取先行跑法時發揮出（巨大）的壓制奪冠實力。</td></tr>
-<tr><td><strong>直一気 (直線一氣)</strong></td><td><strong style="color:var(--gold-color);">鬼脚 (鬼之末腳)</strong></td><td>採取居中、後追跑法時爆發出（巨大）的直線衝刺末腳。</td></tr>
-<tr><td><strong>強心臓</strong></td><td><strong style="color:var(--gold-color);">鋼の心臓 (鋼鐵之心)</strong></td><td>即使跑超過自身適性距離上限的超長程賽事亦能維持穩定發揮。</td></tr>
-<tr><td><strong>距離短縮</strong></td><td><strong style="color:var(--gold-color);">短縮一変 (縮程爆發)</strong></td><td>前戰跑入 5 著以外時，出戰比前戰縮短 200m 以上賽事爆發（巨大）力量。</td></tr>
-<tr><td><strong>距離延長</strong></td><td><strong style="color:var(--gold-color);">延長一変 (增程爆發)</strong></td><td>前戰跑入 5 著以外時，出戰比前戰增加 200m 以上賽事爆發（巨大）力量。</td></tr>
-<tr><td><strong>完全燃焼</strong></td><td><strong style="color:var(--gold-color);">全身全霊 (全身全靈)</strong></td><td>久休復出首戰發揮出（巨大）力量，但賽後疲勞會（略微）上升。</td></tr>
-<tr><td><strong>学習能力</strong></td><td><strong style="color:var(--gold-color);">勝利の再現 (勝利再現)</strong></td><td>近 4 戰曾在同賽馬場贏得重賞時發揮（巨大）實力，且賽後育成度提升。</td></tr>
-<tr><td><strong>春競馬 / 夏競馬</strong></td><td><strong style="color:var(--gold-color);">春満開 (春滿開) / 夏馬 (夏之霸者)</strong></td><td>分別於春季 (3~5月) / 夏季 (6~8月) 舉辦的賽事中發揮出色力量。</td></tr>
-<tr><td><strong>秋競馬 / 冬競馬</strong></td><td><strong style="color:var(--gold-color);">秋の嵐 (秋之風暴) / 冬将軍 (冬將軍)</strong></td><td>分別於秋季 (9~11月) / 冬季 (12~2月) 舉辦的賽事中發揮出色力量。</td></tr>
-<tr><td><strong>東京 / 中山巧者</strong></td><td><strong style="color:var(--gold-color);">府中の申し子 (府中天子) / 中山の申し子</strong></td><td>分別於東京賽馬場 / 中山賽馬場發揮出專精之超常實力。</td></tr>
-<tr><td><strong>京都 / 阪神巧者</strong></td><td><strong style="color:var(--gold-color);">淀の申し子 (淀之神子) / 仁川の申し子</strong></td><td>分別於京都賽馬場 / 阪神賽馬場發揮出專精之超常實力。</td></tr>
-<tr><td><strong>坂越え (克服陡坡)</strong></td><td><strong style="color:var(--gold-color);">タフランナー (強悍跑者)</strong></td><td>於最終直線具備險峻急坂的賽馬場發揮出（巨大）的力量。</td></tr>
-<tr><td><strong>平坦巧者</strong></td><td><strong style="color:var(--gold-color);">フラットランナー (平坦跑者)</strong></td><td>於最終直線平坦無坡的賽馬場發揮出（巨大）的極限速度。</td></tr>
-<tr><td><strong>行きっぷり (衝勁十足)</strong></td><td><strong style="color:var(--gold-color);">前身気勢 (全速衝鋒)</strong></td><td>即使出戰低於自身適性距離下限的短途賽事亦能發揮強大力量。</td></tr>
-<tr><td><strong>一人旅 (獨走千里)</strong></td><td><strong style="color:var(--gold-color);">唯我独尊 (唯我獨尊)</strong></td><td>採取大逃跑法時維持強大領先，並大幅增強直線黏著堅持力。</td></tr>
-<tr><td><strong>ペースメイク (掌控節奏)</strong></td><td><strong style="color:var(--gold-color);">レースメイク (賽事主宰)</strong></td><td>採取蓄力領放 (溜め逃げ) 跑法時精準掌控全場步速節奏。</td></tr>
-<tr><td><strong>最短距離 (內欄省力)</strong></td><td><strong style="color:var(--gold-color);">インベタ張り付き (貼欄飛馳)</strong></td><td>採取內線突擊 (イン狙い) 作戰時沿著最內欄路徑省力突圍。</td></tr>
-<tr><td><strong>ロングスパート (長距離加速)</strong></td><td><strong style="color:var(--gold-color);">ひとまくり (大外捲入)</strong></td><td>採取捲入強襲 (まくり) 作戰時於第三~四彎道提前爆發長末腳。</td></tr>
-<tr><td><strong>決め打ち (孤注一擲)</strong></td><td><strong style="color:var(--gold-color);">丁半博打 (博徒豪賭)</strong></td><td>採取最後方強襲作戰時於直線末段爆發雷霆萬鈞的極限末腳。</td></tr>
-<tr><td><strong>香港 / ドバイ巧者</strong></td><td><strong style="color:var(--gold-color);">香港マイスター (香港大師) / ドバイマイスター</strong></td><td>分別於香港沙田賽馬場 / 杜拜美丹賽馬場發揮出（巨大）力量。</td></tr>
-<tr><td><strong>ロンシャン / アスコット巧者</strong></td><td><strong style="color:var(--gold-color);">ロンシャンマイスター / アスコットマイスター</strong></td><td>分別於法國巴黎隆尚 / 英國皇家雅士谷賽馬場發揮出（巨大）力量。</td></tr>
-<tr><td><strong>スプリントギア (短途齒輪)</strong></td><td><strong style="color:var(--gold-color);">激流チェイス (激流追擊)</strong></td><td>於 1400m 以下賽事之序盤至中盤（大幅）提升巡航速度。</td></tr>
-<tr><td><strong>スプリントターボ (短途渦輪)</strong></td><td><strong style="color:var(--gold-color);">光速スパート (光速衝刺)</strong></td><td>於 1400m 以下賽事之發力衝刺點（大幅）提升極限速度。</td></tr>
-<tr><td><strong>マイルギア (一哩齒輪)</strong></td><td><strong style="color:var(--gold-color);">勇猛邁進 (勇猛邁進)</strong></td><td>於 1401~1800m 賽事之序盤至中盤（大幅）提升巡航速度。</td></tr>
-<tr><td><strong>マイルターボ (一哩渦輪)</strong></td><td><strong style="color:var(--gold-color);">疾風迅雷 (疾風迅雷)</strong></td><td>於 1401~1800m 賽事之發力衝刺點（大幅）提升極限速度。</td></tr>
-<tr><td><strong>クラシックギア (經典齒輪)</strong></td><td><strong style="color:var(--gold-color);">王者の行軍 (王者行軍)</strong></td><td>於 1801~2400m 經典賽事之序盤至中盤（大幅）提升巡航速度。</td></tr>
-<tr><td><strong>クラシックターボ (經典渦輪)</strong></td><td><strong style="color:var(--gold-color);">王者の進撃 (王者進擊)</strong></td><td>於 1801~2400m 經典賽事之發力衝刺點（大幅）提升極限速度。</td></tr>
-<tr><td><strong>長距離ギア (長程齒輪)</strong></td><td><strong style="color:var(--gold-color);">長駆追走 (長驅追走)</strong></td><td>於 2401m 以上長程賽事之序盤至中盤（大幅）提升巡航速度。</td></tr>
-<tr><td><strong>長距離ターボ (長程渦輪)</strong></td><td><strong style="color:var(--gold-color);">長駆突入 (長驅突入)</strong></td><td>於 2401m 以上長程賽事之發力衝刺點（大幅）提升極限速度。</td></tr>
-</tbody>
-</table>
-</div>
-<!-- ==================== 五、32 匹歷史名駒固有特性技能完全圖鑑 ==================== -->
-<h3 style="font-size:1.05rem; color:var(--gold-color); margin:28px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-crown"></i> 五、32 匹歷史名駒固有特性技能完全圖鑑 (100% 官方技能描述)
-</h3>
-<div class="table-responsive" style="margin-bottom:20px;">
-<table class="data-table">
-<thead>
-<tr>
-<th style="min-width:160px;">名駒姓名 (日/中)</th>
-<th style="min-width:180px;">固有特性名稱 (日/中)</th>
-<th style="min-width:440px;">專屬技能觸發條件與實戰效果描述 (繁體中文)</th>
-</tr>
-</thead>
-<tbody>
-<tr><td><strong>アーモンドアイ (杏目)</strong></td><td><strong style="color:var(--gold-color);">栄冠を映す瞳 (映照榮冠之瞳)</strong></td><td>東京賽馬場 G1 賽事採取居中、後追跑法時，於發力點大幅提升速度（賽後疲勞略微上升）。</td></tr>
-<tr><td><strong>アグネスデジタル (愛麗數碼)</strong></td><td><strong style="color:var(--gold-color);">異能の末脚 (異能末腳)</strong></td><td>於 1600~2000m G1 賽事之發力點有機率大幅提升衝刺速度。</td></tr>
-<tr><td><strong>ウォッカ (伏特加)</strong></td><td><strong style="color:var(--gold-color);">心酔の府中 (心醉府中)</strong></td><td>東京賽馬場 G1 賽事採取居中、後追跑法時，於發力點大幅提升衝刺速度。</td></tr>
-<tr><td><strong>エルコンドルパサー (神鷹)</strong></td><td><strong style="color:var(--gold-color);">頂きへの飛翔 (飛向巔峰)</strong></td><td>於 1800~2400m 海外遠征大賽採取先行跑法時，於發力點大幅飆升極限速度。</td></tr>
-<tr><td><strong>オグリキャップ (小栗帽)</strong></td><td><strong style="color:var(--gold-color);">オグリコール (小栗呼聲)</strong></td><td>於 1600m 以上中央 G1 賽事之發力點有機率大幅提升衝刺速度。</td></tr>
-<tr><td><strong>オルフェーヴル (黃金巨匠)</strong></td><td><strong style="color:var(--gold-color);">金色の暴脚 (金色暴腳)</strong></td><td>於 2000/2400/3000m 中央 G1 採取居中、後追時，於發力點有機率爆發極速。</td></tr>
-<tr><td><strong>キタサンブラック (北部玄駒)</strong></td><td><strong style="color:var(--gold-color);">祭囃子 (祭典之聲)</strong></td><td>於 2000m 以上中央 G1 賽事採取逃領跑法時，於發力點大幅提升巡航速度。</td></tr>
-<tr><td><strong>グラスワンダー (草上飛)</strong></td><td><strong style="color:var(--gold-color);">不死鳥の一閃 (不死鳥之一閃)</strong></td><td>於 1800m 以上中央非根幹距離賽事（如有馬紀念、寶塚紀念）之發力點大幅飆速。</td></tr>
-<tr><td><strong>グランアレグリア (放聲歡呼)</strong></td><td><strong style="color:var(--gold-color);">大歓声より速く (比歡呼更快)</strong></td><td>中央 1600m G1 賽事採取居中、後追跑法時，於發力點爆發超凡極速。</td></tr>
-<tr><td><strong>ゴールドシップ (黃金船)</strong></td><td><strong style="color:var(--gold-color);">破天荒 (破天荒)</strong></td><td>於 2000m 以上中央 G1 採取居中、捲入 (まくり)、後追時，於發力點大幅提升速度。</td></tr>
-<tr><td><strong>コントレイル (鐵鳥翱天)</strong></td><td><strong style="color:var(--gold-color);">白雲の軌跡 (白雲軌跡)</strong></td><td>前走獲勝且於 2000m 以上中央 G1 賽事之發力點大幅提速（賽後疲勞略微上升）。</td></tr>
-<tr><td><strong>サイレンススズカ (無聲鈴鹿)</strong></td><td><strong style="color:var(--gold-color);">異次元の逃走劇 (異次元逃走劇)</strong></td><td>於 1800~2200m 賽事之發力點大幅提速，採取大逃跑法時更能維持領先直到最後！</td></tr>
-<tr><td><strong>ジェンティルドンナ (貴婦人)</strong></td><td><strong style="color:var(--gold-color);">受け継がれし輝き (承繼之光芒)</strong></td><td>於 2000~2500m G1 賽事採取先行、居中跑法時，於發力點大幅提升衝刺速度。</td></tr>
-<tr><td><strong>シンボリルドルフ (魯道夫象徵)</strong></td><td><strong style="color:var(--gold-color);">絶対皇帝 (絕對皇帝)</strong></td><td>於 2000m 以上中央 G1 賽事採取逃領、先行跑法時，於發力點大幅飆升王者之速。</td></tr>
-<tr><td><strong>スペシャルウィーク (特別週)</strong></td><td><strong style="color:var(--gold-color);">熱血王道 (熱血王道)</strong></td><td>於 2000m 以上中央 G1 發力點大幅提速，且賽後疲勞度稍微減輕。</td></tr>
-<tr><td><strong>ゼンノロブロイ (荒漠英雄)</strong></td><td><strong style="color:var(--gold-color);">義賊活劇譚 (義賊活劇譚)</strong></td><td>於 2000~2500m G1 賽事採取先行、居中跑法時，於發力點大幅提升速度。</td></tr>
-<tr><td><strong>タイキシャトル (大樹快車)</strong></td><td><strong style="color:var(--gold-color);">黄金の翼 (黃金之翼)</strong></td><td>於 1600m 一哩 G1 賽事採取先行跑法時，於發力點爆發如飛雙翼之極速。</td></tr>
-<tr><td><strong>ダイワスカーレット (大和赤驥)</strong></td><td><strong style="color:var(--gold-color);">緋色の煌めき (緋色閃耀)</strong></td><td>於 1600~2500m 中央 G1 賽事之發力點有機率大幅提升衝刺速度。</td></tr>
-<tr><td><strong>タケホープ (竹希望)</strong></td><td><strong style="color:var(--gold-color);">人気より実力 (實力凌駕人氣)</strong></td><td>於 2400m 以上中央 G1 賽事之發力點大幅提升衝刺速度。</td></tr>
-<tr><td><strong>ディープインパクト (大震撼)</strong></td><td><strong style="color:var(--gold-color);">衝撃の末脚 (衝擊末腳)</strong></td><td>於 2000/2400/3000m 中央 G1 採取居中、後追時，於發力點爆發震撼全場之極速！</td></tr>
-<tr><td><strong>テイエムオペラオー (好歌劇)</strong></td><td><strong style="color:var(--gold-color);">覇道 (霸道)</strong></td><td>於 2000m 以上中央 G1 採取先行、居中、後追時，於發力點大幅提升速度。</td></tr>
-<tr><td><strong>テンポイント (十點)</strong></td><td><strong style="color:var(--gold-color);">流星の貴公子 (流星貴公子)</strong></td><td>於 2400m 以上中央 G1 賽事之發力點大幅提升衝刺速度。</td></tr>
-<tr><td><strong>トウカイテイオー (東海帝皇)</strong></td><td><strong style="color:var(--gold-color);">究極テイオーステップ (帝皇舞步)</strong></td><td>於 2000m 以上中央 G1 發力點大幅提速（賽後疲勞略微上升）。</td></tr>
-<tr><td><strong>トウショウボーイ (東商小子/天馬)</strong></td><td><strong style="color:var(--gold-color);">天馬の羽ばたき (天馬展翼)</strong></td><td>於 2000~2500m 中央 G1 採取先行跑法時，於發力點爆發天馬展翼般之極速！</td></tr>
-<tr><td><strong>ナリタブライアン (成田白仁)</strong></td><td><strong style="color:var(--gold-color);">怪物の孤高 (怪物之孤高)</strong></td><td>於 2000~3000m 根幹距離 G1 採取居中、後追時，於發力點大幅提升速度。</td></tr>
-<tr><td><strong>ハーツクライ (真心呼喚)</strong></td><td><strong style="color:var(--gold-color);">覚醒の鼓動 (覺醒鼓動)</strong></td><td>於 2200~2500m G1 賽事採取先行、居中跑法時，於發力點大幅提升速度。</td></tr>
-<tr><td><strong>ハイセイコー (喜光)</strong></td><td><strong style="color:var(--gold-color);">アイドルホースの熱狂</strong></td><td>於 1800~2400m 中央 G1 賽事之發力點大幅提升衝刺速度。</td></tr>
-<tr><td><strong>ブエナビスタ (迷人景致)</strong></td><td><strong style="color:var(--gold-color);">絶景の王道 (絕景王道)</strong></td><td>於 2000m 以上中央 G1 採取先行、居中、後追時，於發力點大幅提升速度。</td></tr>
-<tr><td><strong>ミスターシービー (千明代表)</strong></td><td><strong style="color:var(--gold-color);">大地が弾んで (大地躍動)</strong></td><td>於 2000~3000m 根幹距離 G1 採取後追、最後方強襲時，於發力點有機率大幅提速。</td></tr>
-<tr><td><strong>メジロマックイーン (目白麥昆)</strong></td><td><strong style="color:var(--gold-color);">堂々たる主演 (堂皇主演)</strong></td><td>於 2200m 以上中央 G1 賽事之發力點大幅飆升王者之速。</td></tr>
-<tr><td><strong>モーリス (滿樂時)</strong></td><td><strong style="color:var(--gold-color);">未知なる進化 (未知進化)</strong></td><td>於 1600~2000m 賽事採取先行、居中跑法時，於發力點有機率大幅提速。</td></tr>
-<tr><td><strong>ロードカナロア (龍王)</strong></td><td><strong style="color:var(--gold-color);">快速竜王 (快速龍王)</strong></td><td>於 1200m 以下短途 G1 採取先行、居中跑法時，於發力點爆發極限龍王之速！</td></tr>
-</tbody>
-</table>
-</div>
 </section>
+
+
+
+<!-- ==================== 第 27 章：特性全書・全 223 種通常・上位進化・日本固有與海外專屬特性完全圖鑑 ==================== -->
+<section id="sec-traits-master" class="section-card">
+    <div class="section-header">
+        <div class="section-title"><i class="fa-solid fa-bolt"></i> 第 27 章：特性全書・全 223 種通常・上位進化・日本固有與海外專屬特性完全圖鑑</div>
+    </div>
+    <div class="section-body">
+        <div class="callout callout-gold" style="margin-bottom:20px;">
+            <i class="fa-solid fa-book-sparkles"></i>
+            <div>
+                <strong>《賽馬大亨 10 2026》光榮官方 Web 手冊特性一覧 (7400) 100% 完整全量收錄</strong><br/>
+                賽駒最多可裝備 <strong>8 個特性</strong>。包含全 52 大通常特性與上位進化特性（金色框數值翻倍）、全 59 種日本史實名駒專屬固有特性，以及 2026 全新追加之 <strong>60 種全球海外殿堂名駒專屬固有特性</strong>，全量繁體中日雙語對照！
+            </div>
+        </div>
+
+        <!-- 一、全 52 大通常特性 ➔ 52 大上位進化特性卡片 (有完整邊框) -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-arrow-up-right-dots"></i> 一、全 52 大通常特性 ➔ 52 大上位進化特性完全對照表 (100% 完整解析)
+                </div>
+                <span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">共 52 組 (104 種)</span>
+            </div>
+            <p style="font-size:0.84rem; line-height:1.7; color:var(--text-main); margin-bottom:14px; text-align:left !important;">
+                賽駒持有通常特性時，透過<strong>「信任度達到 Lv2~3 於對應賽事大勝」</strong>或<strong>「執行上位評級 A 之史實調教大成功」</strong>，可將通常特性進化為上位特性（黃金框），效果數值翻倍！
+            </p>
+            <div class="table-responsive" style="margin:0;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th class="sortable-th" style="min-width:180px; text-align:left !important;">通常特性 (日/中) ⇅</th>
+                            <th class="sortable-th" style="min-width:180px; text-align:left !important;">上位進化特性 (日/中) ⇅</th>
+                            <th style="min-width:360px; text-align:left !important;">詳細具體數值與實戰效果 (繁體中文)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">大舞台 (大舞台)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">晴れ舞台 (大放異彩)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">G1 賽事で、さらに大きな力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">ＧⅡ大将 (G2大將)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">ＧⅡの守護者 (G2守護神)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">G2 賽事で、さらに大きな力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">交流重賞巧者 (交流重賞巧者)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">交流重賞ハンター (交流重賞獵人)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">地方交流重賞で、大きな力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">ローカル (地方小場)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">全国行脚 (全國巡迴)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">ローカル開催で、大きな力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">海外遠征 (海外遠征)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">海外雄飛 (海外稱雄)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">海外遠征時に能力のロスをさらに軽減する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">根幹距離 (根幹之鬼)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">根幹の鬼 (根幹の鬼)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1200/1600/2000 / 2400 / 3000m 的レースで、大きな力を発揮することがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">非根幹距離 (非根幹之鬼)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">非根幹の鬼 (非根幹の鬼)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1200/1600/2000/2400/3000m以外のレースで、大きな力を発揮することがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">超長距離 (超長距離)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">長距離砲 (長途巨砲)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">3000m以上のレースで、大きな力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">鉄砲 (久休復出)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">狙い撃ち (精準狙擊)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">鉄砲（休み明け）で、力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">叩き良化 (熟身提升)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">右肩上がり (步步高升)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">休み明け初戦、2戦目の後に調子が大きく上昇することがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">乾坤一擲 (乾坤一擲)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">渾身の激走 (渾身奔馳)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">G1 賽事で、さらに大きな力を発揮することがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">大駆け (黑馬爆發)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">大番狂わせ (驚天大逆轉)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">人気薄（4番人気以降）のときに、さらに大きな力を発揮することがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">タフネス (強韌耐戰)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">超回復 (超強恢復)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">レース後に疲労が上がりにくくなり、レース後に育成度が上がることがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">牡馬混合 (雄馬混合)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">女王君臨 (女王君臨)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">牝馬のみ牡牝混合のG1 賽事で、大きな力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">軽ハンデ (輕磅巧者)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">魅惑の軽斤量 (絕佳輕負磅)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">ハンデ戦で軽ハンデに恵まれたときに、さらに大きな力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">スタート (起步出閘)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">ロケットスタート (火箭起步)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">スタートがさらに得意になる。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">高速逃げ (高速領放)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">神速逃げ (神速領放)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">大逃げ、逃げで大きな力を発揮する（特殊作戦（前方）では発揮されない）。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">二の脚 (二の脚)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">横綱相撲 (橫綱相撲)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">先行で大きな力を発揮する（イン狙いでは発揮されない）。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">直一気 (直一気)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">鬼脚 (鬼之末腳)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">差し、追込で大きな力を発揮する（まくり、特殊作戦（後方）では発揮されない）。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">強心臓 (強心臟)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">鋼の心臓 (鋼鐵之心)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">距離適性の上限以上のレースでも、力を発揮することがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">距離短縮 (距離短縮)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">短縮一変 (短縮一変)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">前走（5着以下）よりも200ｍ以上短い距離のレースで、大きな力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">距離延長 (距離延長)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">延長一変 (延長一変)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">前走（5着以下）よりも200ｍ以上長い距離のレースで、大きな力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">完全燃焼 (完全燃焼)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">全身全霊 (全身全霊)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">休み明けで、大きな力を発揮するがレース後にやや疲労が上がることがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">学習能力 (学習能力)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">勝利の再現 (勝利の再現)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">近4走以内に同じ競馬場の重賞を勝っていると、大きな力を発揮し、レース後に育成度が上がることがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">春競馬 (春競馬)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">春満開 (春満開)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">春に開催されるレースで、力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">夏競馬 (夏競馬)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">夏馬 (夏馬)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">夏に開催されるレースで、力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">秋競馬 (秋競馬)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">秋の嵐 (秋の嵐)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">秋に開催されるレースで、力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">冬競馬 (冬競馬)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">冬将軍 (冬将軍)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">冬に開催されるレースで、力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">東京巧者 (東京巧者)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">府中の申し子 (府中の申し子)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">東京競馬場で、力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">中山巧者 (中山巧者)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">中山の申し子 (中山の申し子)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">中山競馬場で、力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">京都巧者 (京都巧者)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">淀の申し子 (淀の申し子)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">京都競馬場で、力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">阪神巧者 (阪神巧者)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">仁川の申し子 (仁川の申し子)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">阪神競馬場で、力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">坂越え (坂越え)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">タフランナー (タフランナー)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">最後の直線に坂のある競馬場で、大きな力を発揮することがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">平坦巧者 (平坦道巧者)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">フラットランナー (フラットランナー)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">最後の直線に坂のない競馬場で、大きな力を発揮することがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">行きっぷり (行きっぷり)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">前進気勢 (前進気勢)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">距離適性の下限以下のレースでも、力を発揮することがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">一人旅 (一人旅)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">唯我独尊 (唯我独尊)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">大逃げ、逃げ中發揮實力，大逃げで最後までさらに粘りやすくなる。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">ペースメイク (ペースメイク)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">レースメイク (レースメイク)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">ペースや位置取りを問わず、特殊作戦（前方）中發揮力量。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">最短距離 (最短距離)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">インベタ張り付き (インベタ張り付き)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">イン狙いでやや力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">ロングスパート (ロングスパート)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">ひとまくり (ひとまくり)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">ペースを問わず、まくり中發揮力量。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">決め打ち (決め打ち)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">丁半博打 (丁半博打)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">ペースや位置取りを問わず、特殊作戦（後方）でやや力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">香港巧者 (香港巧者)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">香港マイスター (香港マイスター)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">香港のシャティン競馬場で、大きな力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">ドバイ巧者 (ドバイ巧者)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">ドバイマイスター (ドバイマイスター)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">ドバイのメイダン競馬場で、大きな力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">ロンシャン巧者 (ロンシャン巧者)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">ロンシャンマイスター (ロンシャンマイスター)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">フランスのパリロンシャン競馬場で、大きな力を発揮する。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">スプリントギア (スプリントギア)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">激流チェイス (激流チェイス)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1400m以下のレースの序盤から道中で、速度を大きく上げることがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">スプリントターボ (スプリントターボ)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">光速スパート (光速スパート)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1400m以下のレースの仕掛けどころで、速度を大きく上げることがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">マイルギア (マイルギア)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">勇往邁進 (勇往邁進)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1401～1800mのレースの序盤から道中で、速度を大きく上げることがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">マイルターボ (マイルターボ)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">疾風迅雷 (疾風迅雷)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1401～1800mのレースの仕掛けどころで、速度を大きく上げることがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">クラシックギア (クラシックギア)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">王者の行軍 (王者の行軍)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1801～2400m 的レースの序盤から道中で、速度を大きく上げることがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">クラシックターボ (クラシックターボ)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">王者の進撃 (王者の進撃)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1801～2400m 的レースの仕掛けどころで、速度を大きく上げることがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">長距離ギア (長距離ギア)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">長駆追走 (長駆追走)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2401m以上のレースの序盤から道中で、速度を大きく上げることがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">長距離ターボ (長距離ターボ)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">長駆突入 (長駆突入)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2401m以上のレースの仕掛けどころで、速度を大きく上げることがある。</td>
+    </tr>
+    
+    <tr>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--text-color);">アスコット巧者 (アスコット巧者)</strong></td>
+        <td style="text-align:left !important; white-space:nowrap;"><strong style="color:var(--gold-color);">アスコットマイスター (アスコットマイスター)</strong></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">イギリスのアスコット競馬場で、大きな力を発揮する。</td>
+    </tr>
+    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 二、日本史實名駒專屬固有特性卡片 (有完整邊框) -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-crown"></i> 二、日本史實名駒專屬固有特性完全名冊
+                </div>
+                <span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">共 59 種</span>
+            </div>
+            <div class="table-responsive" style="margin:0;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th class="sortable-th" style="min-width:240px; text-align:left !important;">固有特性名稱 (日/中) ⇅</th>
+                            <th class="sortable-th" style="min-width:140px; text-align:left !important;">類別 ⇅</th>
+                            <th style="min-width:380px; text-align:left !important;">解鎖條件與超常爆發效果 (繁體中文)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">覇道</strong> (霸道 (魯鐸象徵 / Symboli Rudolf))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000m以上の中央 JRA 的G1 賽事で先行・選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">異能の末脚</strong> (異能之末腳 (愛麗速子 / Agnes Tachyon))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600~2000m 的G1 賽事の於勝負關鍵處有機率提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">黄金の翼</strong> (黃金之翼 (神鷹 / El Condor Pasa))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600m 的G1 賽事で選擇「先行 (前領)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">熱血王道</strong> (熱血王道 (東海帝皇 / Tokai Teio))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000m以上の中央 JRA 的G1 賽事の仕掛けどころで速度が上がり、賽後疲勞略微下降。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">不死鳥の一閃</strong> (不死鳥の一閃)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1800m以上の中央 JRA 的非根幹距離のレースの於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">栄冠を映す瞳</strong> (栄冠を映す瞳)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">東京競馬場的G1 賽事で選擇「差し / 追込」跑法時，仕掛けどころで速度を上げるが、レース後に疲労が上がる。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">衝撃の末脚</strong> (衝擊之末腳 (大震撼 / Deep Impact))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000 / 2400 / 3000m 的中央 JRA 的G1 賽事で差し・追込を選ぶと於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">絶対皇帝</strong> (絕對皇帝 (魯鐸象徵 / Symboli Rudolf))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000m以上の中央 JRA 的G1 賽事で選擇「逃げ / 先行」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">心酔の府中</strong> (心醉之府中 (伏特加 / Vodka))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">東京競馬場的G1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">受け継がれし輝き</strong> (繼承之光輝 (黃金巨匠 / Orfevre))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000~2500m 的G1 賽事で選擇「先行 / 差し」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">祭囃子</strong> (祭典旋律 (北部玄駒 / Kitasan Black))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000m以上の中央 JRA 的G1 賽事で選擇「逃げ (領放)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">絶景の王道</strong> (絕景之王道 (龍王 / Lord Kanaloa))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000m以上の中央 JRA 的G1 賽事で先行・選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">金色の暴脚</strong> (金色暴腳 (黃金船 / Gold Ship))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000 / 2400 / 3000m 的G1 賽事で差し・追込を選ぶと於勝負關鍵處有機率提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">快速龍王</strong> (快速龍王 (龍王 / Lord Kanaloa))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1200m 以下的G1 賽事で選擇「先行 / 差し」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">破天荒</strong> (破天荒 (黑船 / Kurofune))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000m以上の中央 JRA G1で選擇「差し / まくり / 追込」跑法時，於勝負關鍵處有機率提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">未知なる進化</strong> (未知なる進化)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600~2000m 的レースで選擇「先行 / 差し」跑法時，於勝負關鍵處有機率提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">大歓声より速く</strong> (大歓声より速く)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">中央 JRA 的1600m 的G1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">怪物の孤高</strong> (怪物の孤高)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000 / 2400 / 3000m 的G1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">白雲の軌跡</strong> (白雲の軌跡)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">前走１着の2000m以上の中央 JRA 的G1 賽事の仕掛けどころで速度を上げるが、レース後に疲労が上がる。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">堂々たる主演</strong> (堂々たる主演)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2200m以上の中央 JRA 的G1 賽事で選擇「先行 (前領)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">テイオーステップ</strong> (テイオーステップ)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000m以上の中央 JRA 的G1 賽事の仕掛けどころで速度を上げるが、レース後に疲労が上がる。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">オグリコール</strong> (オグリコール)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600m以上のG1 賽事の於勝負關鍵處有機率提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">緋色の煌めき</strong> (緋色の煌めき)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600～2500mの中央 JRA 的G1 賽事で選擇「逃げ / 先行」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">大地が弾んで</strong> (大地が弾んで)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000 / 2400 / 3000m 的G1 賽事でまくり、選擇「追込 (後追)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">天馬の羽ばたき</strong> (天馬の羽ばたき)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000~2500m 的中央 JRA 的G1 賽事で選擇「先行 (前領)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">流星の貴公子</strong> (流星の貴公子)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2400m以上の中央 JRA 的G1 賽事の於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">アイドルホースの熱狂</strong> (アイドルホースの熱狂)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1800～2400m 的G1 賽事の於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">人気より実力</strong> (人気より実力)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2400m以上の中央 JRA 的G1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">異次元の逃走劇</strong> (異次元の逃走劇)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1800～2200mのレースで選擇「大逃げ / 逃げ」跑法時，仕掛けどころで速度を上げ、大逃げは最後まで粘りやすくなる。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">覚醒の鼓動</strong> (覚醒の鼓動)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2200～2500mのG1 賽事で選擇「先行 / 差し」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">義賊活劇譚</strong> (義賊活劇譚)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000~2500m 的G1 賽事で選擇「先行 / 差し」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">頂きへの飛翔</strong> (頂きへの飛翔)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600~2400m 的海外遠征のレースで選擇「先行 (前領)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">黒白を分かつ閃光</strong> (黒白を分かつ閃光)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000m以上のG1 賽事の於勝負關鍵處有機率提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">自由を照らす走り</strong> (自由を照らす走り)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600/2000/2400m 的G1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">豪脚、稲妻の如し</strong> (豪脚、稲妻の如し)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000~3200m 的G1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">光速を超える脚</strong> (光速を超える脚)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600~2400m 的レースで選擇「逃げ / 先行」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">黒船襲来</strong> (黒船襲来)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600～2200mのレースで選擇「逃げ / 先行」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">最強大王の進軍</strong> (最強大王の進軍)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600~2400m 的G1 賽事で選擇「差し (居中)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">終わりなき爆進</strong> (終わりなき爆進)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1200～1400mのレースで選擇「先行 (前領)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">超音速フライト</strong> (超音速フライト)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2400m以上のG1 賽事で、於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">桜色に染まる月桂冠</strong> (桜色に染まる月桂冠)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2400m以上のG1 賽事で選擇「差し (居中)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">鍛え上げし芸術</strong> (鍛え上げし芸術)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600~2400m 的G1 賽事で選擇「大逃げ / 逃げ」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">モンスターマシン</strong> (モンスターマシン)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1200~2000m 的レースで選擇「大逃げ / 逃げ」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">優美なる末脚</strong> (優美なる末脚)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600～2500mのG1 賽事で選擇「差し (居中)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">青空を貫く稲妻</strong> (青空を貫く稲妻)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000～3000mのG1 賽事で選擇「大逃げ / 逃げ」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">王者の安定感</strong> (王者の安定感)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000~3200m 的G1 賽事で選擇「逃げ / 先行」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">泰然自若の差し脚</strong> (泰然自若の差し脚)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000~2500m 的G1 賽事で選擇「差し (居中)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">女帝の辣腕</strong> (女帝の辣腕)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">牝馬のみ1600/2000/2400m 的G1 賽事で選擇「逃げ / 先行」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">獲物貫く嚆矢</strong> (獲物貫く嚆矢)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600～2500mのG1 賽事で選擇「追込 (後追)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">覚醒に至る道程</strong> (覚醒に至る道程)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">前走１着かつ1600~2000m 的G1 賽事で選擇「差し (居中)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">荒々しき鼓動</strong> (荒々しき鼓動)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1800～2400m 的G1 賽事で選擇「差し (居中)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">栄誉掴みしエース</strong> (栄誉掴みしエース)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2000~3200m 的G1 賽事で選擇「大逃げ / 逃げ」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">荒武者の一太刀</strong> (荒武者の一太刀)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1800～2500mのG1 賽事で選擇「先行 (前領)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">逆襲の末脚</strong> (逆襲の末脚)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600～2500mのG1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">時代の開拓者</strong> (時代の開拓者)<span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">2200～3200mのG1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">変幻自在の太刀筋</strong> (変幻自在の太刀筋)<span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">前走1着だと、中央 JRA 的レースの於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">夢と歴史の創造</strong> (夢と歴史の創造)<span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">牝馬のみ2200～2500mの非根幹距離のレースで選擇「差し (居中)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">あなたへの愛を込めて</strong> (あなたへの愛を込めて)<span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">牝馬のみ2000/2400m 的G1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(234,179,8,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--gold-color);">その輝き、永遠に</strong> (その輝き、永遠に)<span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.2); color:#facc15;">日本名駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600~2000m 的ダートG1 賽事で選擇「先行 (前領)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 三、海外史實殿堂神駒專屬固有特性卡片 (有完整邊框) -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:#38bdf8; display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-earth-americas"></i> 三、全球海外殿堂名駒專屬固有特性完全名冊
+                </div>
+                <span class="badge" style="background:#0284c7; color:#fff; font-size:0.8rem; padding:4px 8px;">共 60 種 (2026 全球神駒)</span>
+            </div>
+            <div class="table-responsive" style="margin:0;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th class="sortable-th" style="min-width:240px; text-align:left !important;">海外固有特性名稱 (日/中) ⇅</th>
+                            <th class="sortable-th" style="min-width:140px; text-align:left !important;">類別 ⇅</th>
+                            <th style="min-width:380px; text-align:left !important;">海外賽場發揮與壓制對手效果 (繁體中文)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">勇者が拓く道</strong> (勇者開拓之道 (週日寧靜 / Sunday Silence))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600/2000/2400m 的G1 賽事で選擇「追込 (後追)」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">欠点なき豪脚</strong> (無懈可擊之豪腳 (范高爾 / Frankel))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的1600~2400m 的G1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">偉大なる紅き伝説</strong> (偉大赤紅傳奇 (秘書處 / Secretariat))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的1600~2400m 的G1 賽事中發揮實力，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">天才の舞踏</strong> (天才之舞步 (尼金斯基 / Nijinsky))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的1600~2400m 的G1 賽事でわずかに力を発揮し、於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">北の地の至宝</strong> (北方大地之至寶 (北方舞蹈家 / Northern Dancer))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">G1 賽事中發揮實力，於勝負關鍵處有機率提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">最強の怪物</strong> (最強之怪物 (格烈准將 / Brigadier Gerard))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的1600~2000m 的G1 賽事で選擇「逃げ / 先行」跑法時，於勝負關鍵處大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">勝利命ず王権</strong> (號令勝利之王權 (西雅圖迴旋 / Seattle Slew))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的1600~2400m 的G1 賽事で選擇「逃げ (領放)」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">無敵の超快速</strong> (無敵超快速 (費格醫生 / Dr. Fager))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1000~1600m 的泥地賽事中選擇「大逃げ / 逃げ」跑法時，仕掛けどころで速度を大きく上げ、大逃跑法更容易頑強黏著。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">魅了する灰の幻影</strong> (魅惑灰之幻影 (精彩投標 / Spectacular Bid))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的1600~2400m 的G1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">極めた芸術</strong> (極致藝術 (水車礁石 / Mill Reef))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的2000~3200m 的G1 賽事で選擇「逃げ / 先行」跑法時，於勝負關鍵處大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">支配者の慧眼</strong> (支配者之慧眼 (雪茄 / Cigar))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1200~2000m 的ダートG1 賽事で先行を選ぶと大きな力を発揮し、同場其他對手實力略微受到壓制。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">千年紀が育んだ偉才</strong> (千禧孕育之偉才 (杜拜千禧 / Dubai Millennium))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600~2000m 的G1 賽事で選擇「逃げ (領放)」跑法時，レース序盤と於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">描くは栄光の結末</strong> (描繪榮耀結局 (海都之星 / Sea The Stars))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的2400m 的レースで選擇「差し (居中)」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">狼煙が導く大攻勢</strong> (狼煙引領大攻勢 (航線 / Flightline))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">前仗獲勝且泥地賽事を選んだ場合、仕掛けどころで速度を上げ、賽後疲勞不易上升。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">自由と夢の象徴</strong> (自由與夢想象徵 (美國法老 / American Pharoah))
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的泥地賽事で選擇「逃げ (領放)」跑法時，起步出閘更為犀利，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">闘争心の化身</strong> (闘争心の化身)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的ＧⅠで選擇「逃げ / 先行」跑法時，他馬がわずかに力を発揮しにくくなり、於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">星の海の旅人</strong> (星の海の旅人)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的レースで選擇「差し (居中)」跑法時，仕掛けどころで速度を大きく上げ、賽後疲勞略微下降。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">勝利へのランディング</strong> (勝利へのランディング)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的1200~2000m 的G1 賽事の仕掛けどころで速度を大きく上げるが、レース後にやや疲労が上がる。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">荒き血潮の咆哮</strong> (荒き血潮の咆哮)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600~2000m 的G1 賽事で、於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">奇跡の体現者</strong> (奇跡の体現者)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的2400m 的レース中發揮實力，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">紅き巨大戦艦</strong> (紅き巨大戦艦)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1400～2400m 的レースでスタートが少し苦手になるが、於勝負關鍵處大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">咲き誇る名花</strong> (咲き誇る名花)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600～2500mのG1 賽事で選擇「追込 (後追)」跑法時，仕掛けどころで速度を上げ、疲労が少し下がることがある。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">最速の誇り</strong> (最速の誇り)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1000～1400mのG1 賽事で選擇「逃げ (領放)」跑法時，起步出閘更為犀利，於勝負關鍵處有機率提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">魂燃やすビッグレッド</strong> (魂燃やすビッグレッド)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的1600~2400m 的G1 賽事の於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">全能たる鬼才</strong> (全能たる鬼才)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">前走１着かつ美國的ＧⅠで選擇「大逃げ / 逃げ」跑法時，終盤で速度を上げ、大逃げは粘りやすくなることがある。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">堅牢なる王朝</strong> (堅牢なる王朝)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的G1 賽事の於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">燃え滾る逃走本能</strong> (燃え滾る逃走本能)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的1200～2400m 的G1 賽事で選擇「大逃げ / 逃げ」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">百万馬力の末脚</strong> (百万馬力の末脚)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的ダートG1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">偉丈夫の七変化</strong> (偉丈夫の七変化)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的1000～2000mのG1 賽事の於勝負關鍵處有機率提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">革命への進軍</strong> (革命への進軍)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的レースで選擇「追込 (後追)」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">敵逃さぬ長距離砲</strong> (敵逃さぬ長距離砲)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的2400m以上のレースで選擇「先行 / 差し」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">西部のヒットマン</strong> (西部のヒットマン)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的1600～4000mのG1 賽事で選擇「先行 / 差し」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">海鳥優雅に舞う</strong> (海鳥優雅に舞う)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的2000~2500m 的G1 賽事の於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">勇将の鋭き剣技</strong> (勇将の鋭き剣技)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的1600~2000m 的G1 賽事の於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">頂極めし脚</strong> (頂極めし脚)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的1400～3000mのG1 賽事で選擇「逃げ / 先行」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">至高の脚</strong> (至高の脚)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的2000/2400m 的G1 賽事で選擇「先行 / 差し」跑法時，於勝負關鍵處有機率提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">畏怖もたらす閃光</strong> (畏怖もたらす閃光)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1800～3200mのG1 賽事で選擇「追込 (後追)」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">不滅の末脚</strong> (不滅の末脚)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1400～2000mのG1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">純然たる王者</strong> (純然たる王者)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1400～2400m 的G1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">獲物とらえる銃弾</strong> (獲物とらえる銃弾)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">G1 賽事で選擇「逃げ / 先行」跑法時，於勝負關鍵處有機率提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">黒真珠の輝き</strong> (黒真珠の輝き)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1000～1400mのG1 賽事で選擇「逃げ / 先行」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">蹴り抜く一閃</strong> (蹴り抜く一閃)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1200～1600m 的G1 賽事で選擇「逃げ / 先行」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">旭日の導き</strong> (旭日の導き)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1400～2000mのG1 賽事で選擇「逃げ / 先行」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">祝祭彩る歌姫</strong> (祝祭彩る歌姫)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">牝馬のみ2000~3200m 的G1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">ソニックブーム</strong> (ソニックブーム)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1200～1400mのG1 賽事で選擇「逃げ / 先行」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">静寂に閃く脚</strong> (静寂に閃く脚)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1000～1400mのG1 賽事で選擇「大逃げ / 逃げ」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">黄金色に輝く名槍</strong> (黄金色に輝く名槍)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600~2000m 的G1 賽事で選擇「追込 (後追)」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">大いなる浪漫を求め</strong> (大いなる浪漫を求め)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">1600~2000m 的G1 賽事で選擇「先行 (前領)」跑法時，於勝負關鍵處有機率大幅提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">暴走蒸気機関車</strong> (暴走蒸気機関車)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的G1 賽事で、於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">千変万化</strong> (千変万化)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的1400～3200mのG1 賽事で、於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">必然たる奇跡</strong> (必然たる奇跡)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的G1 賽事で、於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">英雄砂海を行く</strong> (英雄砂海を行く)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的1200~2000m 的ダートG1 賽事で、於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">口笛交じりの一蹴</strong> (口笛交じりの一蹴)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的1200～3200mのダートG1 賽事で選擇「追込 (後追)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">絶対女王の王威</strong> (絶対女王の王威)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">牝馬のみ2000/2400m 的G1 賽事で選擇「先行 (前領)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">鉄壁の門番</strong> (鉄壁の門番)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的1600~2400m 的G1 賽事で選擇「差し (居中)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">砂塵まとう暴風雨</strong> (砂塵まとう暴風雨)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的1600~2000m 的ダートG1 賽事で選擇「差し / 追込」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">聖女の凱旋</strong> (聖女の凱旋)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">牝馬のみ歐洲的1600/2000/2400m 的G1 賽事で選擇「差し (居中)」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">比類なきヒロイン</strong> (比類なきヒロイン)
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">牝馬のみ美國的1200～2400m 的G1 賽事で選擇「大逃げ / 逃げ」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">アークの化身</strong> (アークの化身)<span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">歐洲的2400m 的レースで、於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+    <tr style="background:rgba(56,189,248,0.04);">
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:#38bdf8;">最速最強の証明</strong> (最速最強の証明)<span class="badge" style="background:#dc2626; color:#fff; font-size:0.7rem; margin-left:4px;">NEW</span>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">海外神駒固有</span></td>
+        <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">美國的1800～2400m 的ダートG1 賽事で選擇「大逃げ / 逃げ」跑法時，於勝負關鍵處（仕掛所）提升速度。</td>
+    </tr>
+    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="section-card" id="sec-historical-train">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-dumbbell"></i> 第 27 章：史實調教・SP 雙馬合練・大成功量表與全 40+ 種調教效果全圖鑑</div>
+<div class="section-title"><i class="fa-solid fa-dumbbell"></i> 第 28 章：史實調教・SP 雙馬合練・大成功量表與全 40+ 種調教效果全圖鑑</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -10225,7 +10816,7 @@ li {
 </div></section>
 <section class="section-card" id="sec-umasona">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-face-smile"></i> 第 28 章：ウマソナ (馬之個性) 全圖鑑・克服進化秘技與 14 大性格分佈矩陣</div>
+<div class="section-title"><i class="fa-solid fa-face-smile"></i> 第 29 章：ウマソナ (馬之個性) 全圖鑑・克服進化秘技與 14 大性格分佈矩陣</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom:16px;">
@@ -11618,11 +12209,11 @@ li {
 </div>
 </div>
 </section>
-<!-- 第 29 章：2026 賽馬關係性 (宿敵/搭檔/激勵/絆) -->
-    <!-- 第 29 章：2026 賽馬關係性 (宿敵/搭檔/激勵/絆) -->
+<!-- 第 30 章：2026 賽馬關係性 (宿敵/搭檔/激勵/絆) -->
+    <!-- 第 30 章：2026 賽馬關係性 (宿敵/搭檔/激勵/絆) -->
     <section id="sec-relations-2026" class="section-card">
         <div class="section-header">
-            <div class="section-title"><i class="fa-solid fa-hands-holding-circle"></i> 第 29 章：2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</div>
+            <div class="section-title"><i class="fa-solid fa-hands-holding-circle"></i> 第 30 章：2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</div>
         </div>
         <div class="section-body">
             <div class="callout callout-gold" style="margin-bottom:16px;">
@@ -11714,7 +12305,7 @@ li {
     <!-- 第 23 章：全重賞日程・全球三冠系列賽・G1 頂級攻略與競馬場特性大百科 -->
     <section id="sec-stakes-master" class="section-card" style="margin-bottom:24px;">
         <div class="section-header">
-            <div class="section-title"><i class="fa-solid fa-trophy"></i> 第 30 章：全重賞日程・全球三冠系列賽・G1 頂級攻略與競馬場特性大百科</div>
+            <div class="section-title"><i class="fa-solid fa-trophy"></i> 第 31 章：全重賞日程・全球三冠系列賽・G1 頂級攻略與競馬場特性大百科</div>
         </div>
         <div class="section-body">
             <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px; line-height:1.6;">
@@ -11724,6 +12315,13 @@ li {
             <!-- 4 大子分頁切換導航按鈕等寬網格 (Equal Unified Subtab Rail) -->
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:8px; margin-bottom:18px; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
                 <button class="tab-btn active" id="btnStakesTab1" onclick="switchStakesSubTab('stakesTab1')" style="font-size:0.85rem; padding:8px 12px; text-align:center; justify-content:center; display:flex; align-items:center; gap:6px; width:100%; white-space:nowrap;">🏅 1. 重賞大表速查 (740)</button>
+
+                        <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-traits-master')">
+                            <span class="jump-icon"><i class="fa-solid fa-bolt"></i></span>
+                            <span class="jump-num">第 27 章</span>
+                            <span class="jump-title">特性全書 (全223種通常・上位・日本固有與海外神駒特性)</span>
+                        </button>
+
                 <button class="tab-btn" id="btnStakesTab2" onclick="switchStakesSubTab('stakesTab2')" style="font-size:0.85rem; padding:8px 12px; text-align:center; justify-content:center; display:flex; align-items:center; gap:6px; width:100%; white-space:nowrap;">👑 2. 全球三冠系列 (36)</button>
                 <button class="tab-btn" id="btnStakesTab3" onclick="switchStakesSubTab('stakesTab3')" style="font-size:0.85rem; padding:8px 12px; text-align:center; justify-content:center; display:flex; align-items:center; gap:6px; width:100%; white-space:nowrap;">🏆 3. G1 頂級攻略指南</button>
                 <button class="tab-btn" id="btnStakesTab4" onclick="switchStakesSubTab('stakesTab4')" style="font-size:0.85rem; padding:8px 12px; text-align:center; justify-content:center; display:flex; align-items:center; gap:6px; width:100%; white-space:nowrap;">🏁 4. 競馬場特性庫 (68場 / 136賽道)</button>
@@ -28956,7 +29554,7 @@ function filterTab5Racecourses() {
 
 <section class="section-card" id="sec-triple-crowns">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-crown"></i> 第 31 章：全球三冠路線與夏季系列賽完全對照</div>
+<div class="section-title"><i class="fa-solid fa-crown"></i> 第 32 章：全球三冠路線與夏季系列賽完全對照</div>
 </div>
 <div class="section-body">
 <div class="callout callout-info">
@@ -29392,7 +29990,7 @@ function filterTab5Racecourses() {
 
 <section class="section-card" id="sec-keiba-boom">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-fire"></i> 第 32 章：偶像馬地圖・賽馬熱潮・傳奇特性與顯彰馬</div>
+<div class="section-title"><i class="fa-solid fa-fire"></i> 第 33 章：偶像馬地圖・賽馬熱潮・傳奇特性與顯彰馬</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -29464,7 +30062,7 @@ function filterTab5Racecourses() {
 </section>
 <section class="section-card" id="sec-nicknames">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-award"></i> 第 33 章：殿堂馬稱號 (異名)・人氣加成 (Boost) 與獲得條件全圖鑑</div>
+<div class="section-title"><i class="fa-solid fa-award"></i> 第 34 章：殿堂馬稱號 (異名)・人氣加成 (Boost) 與獲得條件全圖鑑</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -29579,7 +30177,7 @@ function filterTab5Racecourses() {
 </div></section>
 <section class="section-card" id="sec-historia">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-book-journal-whills"></i> 第 34 章：競馬歷史事件 (Historia) 名場面與觸發條件</div>
+<div class="section-title"><i class="fa-solid fa-book-journal-whills"></i> 第 35 章：競馬歷史事件 (Historia) 名場面與觸發條件</div>
 </div>
 <div class="section-body">
 <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">
@@ -29641,7 +30239,7 @@ function filterTab5Racecourses() {
         </div>
         <section class="section-card" id="sec-farm-facilities">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-warehouse"></i> 第 35 章：牧場設施升級與美歐海外分場規劃</div>
+<div class="section-title"><i class="fa-solid fa-warehouse"></i> 第 36 章：牧場設施升級與美歐海外分場規劃</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -30136,7 +30734,7 @@ function filterTab5Racecourses() {
 </div></section>
 <section class="section-card" id="sec-personnel">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-user-gear"></i> 第 36 章：騎手・調教師・牧場長 18 大人物技能全書</div>
+<div class="section-title"><i class="fa-solid fa-user-gear"></i> 第 37 章：騎手・調教師・牧場長 18 大人物技能全書</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom:16px;">
@@ -30466,7 +31064,7 @@ function filterTab5Racecourses() {
 </section>
 <section class="section-card" id="sec-marriage-secrets">
 <div class="section-header" style="background: linear-gradient(135deg, rgba(236,72,153,0.15), rgba(168,85,247,0.15)); border-bottom: 1px solid rgba(236,72,153,0.3);">
-<div class="section-title"><i class="fa-solid fa-ring"></i> 第 37 章：知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</div>
+<div class="section-title"><i class="fa-solid fa-ring"></i> 第 38 章：知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom: 20px;">
@@ -31187,7 +31785,7 @@ function filterTab5Racecourses() {
     <!-- 第 37 章 標題卡片 -->
     <div class="section-card" id="sec-horse-db" style="margin-bottom:14px;">
         <div class="section-header">
-            <div class="section-title"><i class="fa-solid fa-horse"></i> 第 38 章：1.5 萬匹全史實馬與 11 大年度推薦速查庫</div>
+            <div class="section-title"><i class="fa-solid fa-horse"></i> 第 39 章：1.5 萬匹全史實馬與 11 大年度推薦速查庫</div>
         </div>
         <div class="section-body" style="padding-bottom:6px;">
             <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
@@ -31337,7 +31935,7 @@ function filterTab5Racecourses() {
     
 <section class="section-card" id="sec-allhorseprofiles-db">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-book-bookmark"></i> 第 39 章：全史實名駒 18 欄位終極履歷與血統檔案完全圖鑑 (allhorseprofiles 深度檔案庫)</div>
+<div class="section-title"><i class="fa-solid fa-book-bookmark"></i> 第 40 章：全史實名駒 18 欄位終極履歷與血統檔案完全圖鑑 (allhorseprofiles 深度檔案庫)</div>
 </div>
 <div class="section-body" style="padding: 24px 28px !important; box-sizing: border-box !important;">
 <style>
@@ -31621,7 +32219,7 @@ function filterTab5Racecourses() {
 }
 </style>
 <div class="section-header" style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(147,51,234,0.2)); border-bottom: 2px solid var(--accent-gold);">
-<div class="section-title"><span class="chapter-number">41</span> <i class="fa-solid fa-book-bookmark" style="color:var(--gold-color); font-size:1.3rem;"></i> 第 39 章：全史實名駒 18 欄位終極履歷與血統檔案完全圖鑑 (allhorseprofiles 深度檔案庫)</div>
+<div class="section-title"><span class="chapter-number">41</span> <i class="fa-solid fa-book-bookmark" style="color:var(--gold-color); font-size:1.3rem;"></i> 第 40 章：全史實名駒 18 欄位終極履歷與血統檔案完全圖鑑 (allhorseprofiles 深度檔案庫)</div>
 </div>
 <div class="section-body">
 </div>
@@ -33040,7 +33638,7 @@ function changeMasterLivePage(delta) {
     <div class="modal-backdrop" id="chapterModal" onclick="closeChapterModal(event)">
         <div class="chapter-modal-card" onclick="event.stopPropagation()">
             <div class="chapter-modal-header">
-                <h2><i class="fa-solid fa-list-ol"></i> 📑 全 40 大章節快速跳轉</h2>
+                <h2><i class="fa-solid fa-list-ol"></i> 📑 全 41 大章節快速跳轉</h2>
                 <span class="modal-close" onclick="closeChapterModal()">&times;</span>
             </div>
             <div class="chapter-search-box">
@@ -33205,17 +33803,17 @@ function changeMasterLivePage(delta) {
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-historical-train')">
                             <span class="jump-icon"><i class="fa-solid fa-dumbbell"></i></span>
-                            <span class="jump-num">第 27 章</span>
+                            <span class="jump-num">第 28 章</span>
                             <span class="jump-title">史實調教・SP 雙馬合練・大成功量表全圖鑑</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-umasona')">
                             <span class="jump-icon"><i class="fa-solid fa-face-smile"></i></span>
-                            <span class="jump-num">第 28 章</span>
+                            <span class="jump-num">第 29 章</span>
                             <span class="jump-title">ウマソナ (馬之個性) 全圖鑑・克服進化與14大性格矩陣</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-relations-2026')">
                             <span class="jump-icon"><i class="fa-solid fa-hands-holding-circle"></i></span>
-                            <span class="jump-num">第 29 章</span>
+                            <span class="jump-num">第 30 章</span>
                             <span class="jump-title">2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</span>
                         </button>
                     </div>
@@ -33232,7 +33830,7 @@ function changeMasterLivePage(delta) {
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-triple-crowns')">
                             <span class="jump-icon"><i class="fa-solid fa-crown"></i></span>
-                            <span class="jump-num">第 31 章</span>
+                            <span class="jump-num">第 32 章</span>
                             <span class="jump-title">全球三冠路線與夏季系列賽完全對照</span>
                         </button>
                         
@@ -33244,12 +33842,12 @@ function changeMasterLivePage(delta) {
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-nicknames')">
                             <span class="jump-icon"><i class="fa-solid fa-award"></i></span>
-                            <span class="jump-num">第 33 章</span>
+                            <span class="jump-num">第 34 章</span>
                             <span class="jump-title">殿堂馬稱號 (異名) 圖鑑與特殊效果</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-historia')">
                             <span class="jump-icon"><i class="fa-solid fa-book-journal-whills"></i></span>
-                            <span class="jump-num">第 34 章</span>
+                            <span class="jump-num">第 35 章</span>
                             <span class="jump-title">競馬歷史事件 (Historia) 名場面與觸發條件</span>
                         </button>
                     </div>
@@ -33261,7 +33859,7 @@ function changeMasterLivePage(delta) {
                     <div class="chapter-items-grid">
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-farm-facilities')">
                             <span class="jump-icon"><i class="fa-solid fa-warehouse"></i></span>
-                            <span class="jump-num">第 35 章</span>
+                            <span class="jump-num">第 36 章</span>
                             <span class="jump-title">牧場設施升級與美歐海外分場規劃</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-personnel')">
@@ -33271,7 +33869,7 @@ function changeMasterLivePage(delta) {
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-marriage-secrets')">
                             <span class="jump-icon"><i class="fa-solid fa-ring"></i></span>
-                            <span class="jump-num">第 37 章</span>
+                            <span class="jump-num">第 38 章</span>
                             <span class="jump-title">知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</span>
                         </button>
                     </div>
@@ -33283,18 +33881,18 @@ function changeMasterLivePage(delta) {
                     <div class="chapter-items-grid">
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-horse-db')">
                             <span class="jump-icon"><i class="fa-solid fa-horse"></i></span>
-                            <span class="jump-num">第 38 章</span>
+                            <span class="jump-num">第 39 章</span>
                             <span class="jump-title">1.5 萬匹全史實馬與 11 大年度推薦速查庫</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-allhorseprofiles-db')">
                             <span class="jump-icon"><i class="fa-solid fa-book-bookmark"></i></span>
-                            <span class="jump-num">第 39 章</span>
+                            <span class="jump-num">第 40 章</span>
                             <span class="jump-title">全史實名駒 18 欄位終極履歷與血統檔案完全圖鑑</span>
                         </button>
                     
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-official-lectures')">
                             <span class="jump-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-                            <span class="jump-num">第 40 章</span>
+                            <span class="jump-num">第 41 章</span>
                             <span class="jump-title">光榮官方名師講堂 (新手入門與 2026 展開適應性完全指南)</span>
                         </button>
 </div>
@@ -33305,10 +33903,10 @@ function changeMasterLivePage(delta) {
 
     
 
-<!-- ==================== 第 40 章：光榮官方名師講堂 (新手入門與 2026 展開適應性完全指南) ==================== -->
+<!-- ==================== 第 41 章：光榮官方名師講堂 (新手入門與 2026 展開適應性完全指南) ==================== -->
 <section id="sec-official-lectures" class="section-card">
     <div class="section-header">
-        <div class="section-title"><i class="fa-solid fa-graduation-cap"></i> 第 40 章：光榮官方名師講堂 (新手入門育成指南 & 2026 展開適應性徹底講座)</div>
+        <div class="section-title"><i class="fa-solid fa-graduation-cap"></i> 第 41 章：光榮官方名師講堂 (新手入門育成指南 & 2026 展開適應性徹底講座)</div>
     </div>
     <div class="section-body">
         <div class="callout callout-gold" style="margin-bottom:20px;">
