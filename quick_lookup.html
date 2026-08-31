@@ -1737,13 +1737,13 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.55</span>
+        <span class="version-badge">v02.56</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
-            15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
+            15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
         </p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
-            <button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">📑 41 章快速跳轉</button>
+            <button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">📑 45 章快速跳轉</button>
             <button class="header-btn" onclick="clearPwaCache()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🔄 清除快取重載</button>
             <button class="header-btn" onclick="toggleAppTheme()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🌓 主題切換</button>
         </div>
@@ -33655,7 +33655,7 @@ function changeMasterLivePage(delta) {
     <div class="modal-backdrop" id="chapterModal" onclick="closeChapterModal(event)">
         <div class="chapter-modal-card" onclick="event.stopPropagation()">
             <div class="chapter-modal-header">
-                <h2><i class="fa-solid fa-list-ol"></i> 📑 全 41 大章節快速跳轉</h2>
+                <h2><i class="fa-solid fa-list-ol"></i> 📑 全 45 大章節快速跳轉</h2>
                 <span class="modal-close" onclick="closeChapterModal()">&times;</span>
             </div>
             <div class="chapter-search-box">
@@ -33912,6 +33912,28 @@ function changeMasterLivePage(delta) {
                             <span class="jump-num">第 41 章</span>
                             <span class="jump-title">光榮官方名師講堂 (新手入門與 2026 展開適應性完全指南)</span>
                         </button>
+
+                        <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-farms', 'sec-club-management')">
+                            <span class="jump-icon"><i class="fa-solid fa-building-columns"></i></span>
+                            <span class="jump-num">第 42 章</span>
+                            <span class="jump-title">賽馬俱樂部 (Club) 經營與法人牧場指南</span>
+                        </button>
+                        <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-farms', 'sec-legend-match')">
+                            <span class="jump-icon"><i class="fa-solid fa-trophy"></i></span>
+                            <span class="jump-num">第 43 章</span>
+                            <span class="jump-title">傳奇對決 (The Legend Match) 與世界百大名駒</span>
+                        </button>
+                        <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-online-strongest')">
+                            <span class="jump-icon"><i class="fa-solid fa-globe"></i></span>
+                            <span class="jump-num">第 44 章</span>
+                            <span class="jump-title">線上模式・最強馬之路 (最強馬ロード) 育成大賽</span>
+                        </button>
+                        <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-system-features')">
+                            <span class="jump-icon"><i class="fa-solid fa-gamepad"></i></span>
+                            <span class="jump-num">第 45 章</span>
+                            <span class="jump-title">全平台操作對照・過場名場面 (Cinema Event)</span>
+                        </button>
+
 </div>
                 </div>
             </div>
@@ -34289,6 +34311,360 @@ function changeMasterLivePage(delta) {
         </div>
     </div>
 </section>
+
+
+<!-- ==================== 第 42 章：賽馬俱樂部 (Club) 經營・法人化牧場與會員招募完全指南 ==================== -->
+<section id="sec-club-management" class="section-card">
+    <div class="section-header">
+        <div class="section-title"><i class="fa-solid fa-building-columns"></i> 第 42 章：賽馬俱樂部 (Club) 經營・法人化牧場與會員招募完全指南</div>
+    </div>
+    <div class="section-body">
+        <div class="callout callout-gold" style="margin-bottom:20px;">
+            <i class="fa-solid fa-users-viewfinder"></i>
+            <div>
+                <strong>《賽馬大亨 10 2026》光榮官方 Web 手冊 3500 & 4400 俱樂部法人經營完全收錄</strong><br/>
+                當馬主資金與名聲達到一定水準後，可申請設立專屬的「一口馬主」賽馬俱樂部法人（Club）。透過自主制定勝負服、設定募集口數與定價、招攬會員出資，並可解鎖專屬的「俱樂部牧場 (クラブ牧場)」，實現雙牧場協同繁育與巨額分紅利潤！
+            </div>
+        </div>
+
+        <!-- 一、俱樂部設立與營運流程 -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-stamp"></i> 一、俱樂部法人設立條件、流程與代表選任
+                </div>
+                <span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">法人化制度</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:16px;">
+                <div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
+                    <h4 style="color:#38bdf8; font-size:0.9rem; margin-top:0;">📋 1. 設立條件與資金門檻</h4>
+                    <p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
+                        馬主資產達 <strong>20 億日圓以上</strong> 且名聲達標時，知人將登門提議設立俱樂部。需支付 10 億日圓作為法人設立準備金與註冊資本。
+                    </p>
+                </div>
+                <div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
+                    <h4 style="color:#4ade80; font-size:0.9rem; margin-top:0;">👔 2. 俱樂部代表 (社長) 選任</h4>
+                    <p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
+                        可指派結識之知人或已成年的<strong>子孫 (家系後代)</strong> 擔任俱樂部代表社長。代表之「相馬眼」與「交涉力」將直接影響會員增長速度與募集成功率。
+                    </p>
+                </div>
+                <div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
+                    <h4 style="color:#facc15; font-size:0.9rem; margin-top:0;">🎨 3. 勝負服設計與冠名</h4>
+                    <p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
+                        可為俱樂部制定專屬的勝負服圖樣（配色、條紋、星形等）與專屬馬名冠名（如 Sunday Racing, Silk 等風格），與本場自用馬做明顯區隔。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 二、幼駒募集口數與定價營運 -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-hand-holding-dollar"></i> 二、幼駒募集定價、一口口數與利潤分紅機制
+                </div>
+                <span class="badge" style="background:var(--accent-color); color:#fff; font-size:0.8rem; padding:4px 8px;">一ロ馬主機制</span>
+            </div>
+
+            <div class="table-responsive" style="margin:0;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="min-width:140px; text-align:left !important;">募集口數類別</th>
+                            <th style="min-width:140px; text-align:left !important;">一口定價區間</th>
+                            <th style="min-width:280px; text-align:left !important;">會員受眾與滿額難易度</th>
+                            <th style="min-width:260px; text-align:left !important;">營運利潤與俱樂部名聲加成</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align:left !important;"><strong style="color:#f87171;">40 口 (少人數少額分攤)</strong></td>
+                            <td style="text-align:left !important;">高額 (1000萬~5000萬/口)</td>
+                            <td style="text-align:left !important;">針對高資產會員，需幼駒血統評級 A 以上才易售罄。</td>
+                            <td style="text-align:left !important;">初期資金回流極快，奪冠時俱樂部名聲大幅激增。</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong style="color:var(--gold-color);">400 口 (主流標準俱樂部)</strong></td>
+                            <td style="text-align:left !important;">中額 (100萬~500萬/口)</td>
+                            <td style="text-align:left !important;">最均衡之募集模式，大眾會員接受度極高。</td>
+                            <td style="text-align:left !important;">會員數成長平穩，可維持每年穩健的分紅現金流。</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong style="color:#38bdf8;">1000 口 (微型大眾口數)</strong></td>
+                            <td style="text-align:left !important;">低額 (10萬~50萬/口)</td>
+                            <td style="text-align:left !important;">入門門檻低，極易達成「滿額 (満口御礼)」。</td>
+                            <td style="text-align:left !important;">大幅引爆俱樂部狂潮與會員總人數成長。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 三、俱樂部牧場設立與雙牧場連動 -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:#34d399; display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-tree"></i> 三、俱樂部專屬牧場 (クラブ牧場) 設立與雙牧場協同
+                </div>
+                <span class="badge" style="background:#059669; color:#fff; font-size:0.8rem; padding:4px 8px;">雙牧場系統</span>
+            </div>
+
+            <div style="font-size:0.84rem; line-height:1.75; color:var(--text-main); text-align:left !important;">
+                <p style="margin:0 0 10px 0;">
+                    當俱樂部會員數突破 <strong>5,000 人</strong> 且俱樂部資金充裕時，可在日本另行開闢<strong>「俱樂部牧場」</strong>！
+                </p>
+                <div style="background:rgba(6,95,70,0.2); border-left:3px solid #34d399; padding:10px 14px; border-radius:6px; margin-bottom:10px;">
+                    <strong>🔄 雙牧場協同繁育效益：</strong><br/>
+                    • 繁殖牝馬繫養規模翻倍（本場 20 頭 + 俱樂部牧場 20 頭 = 40 頭頂級母馬群）。<br/>
+                    • 優質幼駒可自由在「自留本場現役」與「移籍俱樂部募集」之間無縫分配。<br/>
+                    • 自家種牡馬可直接無償配種俱樂部牧場母馬，節省巨額配種費並加速自身系統確立！
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ==================== 第 43 章：傳奇對決 (The Legend Match)・世界百大名駒殿堂排行榜與顯彰馬決戰 ==================== -->
+<section id="sec-legend-match" class="section-card">
+    <div class="section-header">
+        <div class="section-title"><i class="fa-solid fa-trophy"></i> 第 43 章：傳奇對決 (The Legend Match)・世界百大名駒殿堂排行榜與顯彰馬決戰</div>
+    </div>
+    <div class="section-body">
+        <div class="callout callout-gold" style="margin-bottom:20px;">
+            <i class="fa-solid fa-award"></i>
+            <div>
+                <strong>《賽馬大亨 10 2026》光榮官方 Web 手冊 4650 & 4670 傳奇挑戰系統完全收錄</strong><br/>
+                突破時空維度！玩家現役巔峰名駒可受邀參加夏季與冬季舉辦的夢幻大賽<strong>「The Legend Match (傳奇對決)」</strong>，與大震撼、神鷹、成田白仁、杏目、秘書處等歷史神獸同場競技；同時在<strong>「世界 100 傑馬殿堂」</strong>爭奪全球歷史第一排名！
+            </div>
+        </div>
+
+        <!-- 一、The Legend Match 傳奇對決規則 -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-swords"></i> 一、ザ・レジェンドマッチ (The Legend Match) 舉辦週期與參賽資格
+                </div>
+                <span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">夢幻賽事</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:16px;">
+                <div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
+                    <h4 style="color:#38bdf8; font-size:0.9rem; margin-top:0;">🎫 1. 參賽邀請函 (入場券) 獲得</h4>
+                    <p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
+                        現役馬於 G1 賽事累積 <strong>3 勝以上</strong> 且鬥志/調子達到巔峰時，於 6 月與 12 月將收到主辦方發送之「傳奇對決特別邀請函」。
+                    </p>
+                </div>
+                <div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
+                    <h4 style="color:#facc15; font-size:0.9rem; margin-top:0;">⚔️ 2. 對戰陣容與跨時代神駒</h4>
+                    <p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
+                        賽事將隨機或指定匹配歷史跨時代巔峰神駒（如 <strong>ディープインパクト (大震撼)</strong>、<strong>トウカイテイオー (東海帝皇)</strong>、<strong>Secretariat (秘書處)</strong>）。
+                    </p>
+                </div>
+                <div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
+                    <h4 style="color:#4ade80; font-size:0.9rem; margin-top:0;">🎁 3. 獲勝獎勵與傳奇特性解鎖</h4>
+                    <p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
+                        擊敗傳奇名馬奪冠後，可獲得<strong>巨額特別獎金</strong>、<strong>金色/虹色御守</strong>，並直接解鎖極其稀有的【傳奇專屬特性 (Legend Trait)】！
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 二、世界 100 傑馬殿堂排行榜 -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-earth-americas"></i> 二、世界 100 傑馬 (Top 100 Horses) 積分規則與登頂心法
+                </div>
+                <span class="badge" style="background:var(--accent-color); color:#fff; font-size:0.8rem; padding:4px 8px;">世界排行榜</span>
+            </div>
+
+            <div style="font-size:0.84rem; line-height:1.7; color:var(--text-main); text-align:left !important;">
+                <p style="margin:0 0 10px 0;">
+                    「世界 100 傑馬」收錄了全球有史以來最強的 100 匹殿堂級名駒。排行榜按國際 G1 大賽勝場加權積分進行排序：
+                </p>
+                <div style="background:rgba(30,41,59,0.7); border-radius:8px; padding:12px; border-left:3px solid var(--gold-color); margin-bottom:12px;">
+                    <strong>🏆 積分加權計算法則：</strong><br/>
+                    • <strong>全球超頂級特級 G1</strong>（凱旋門賞、日本盃、美國育馬者盃經典賽、杜拜世界盃）：每勝獲得 <strong>+100 積分</strong>。<br/>
+                    • <strong>國內外常規 G1</strong>（經典三冠、天皇賞、有馬紀念等）：每勝獲得 <strong>+50 積分</strong>。<br/>
+                    • <strong>連勝加成</strong>：跨年度無敗連勝每多一場額外疊加 <strong>+15 積分</strong>。<br/>
+                    • 累積積分突破 <strong>800 分以上</strong> 即可強勢殺入全球前 10 名，超越歷史傳奇榮登世界第 1 名馬王座！
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ==================== 第 44 章：線上模式・最強馬之路 (最強馬ロード) 育成・前哨戰與全國大會對戰完全手冊 ==================== -->
+<section id="sec-online-strongest" class="section-card">
+    <div class="section-header">
+        <div class="section-title"><i class="fa-solid fa-globe"></i> 第 44 章：線上模式・最強馬之路 (最強馬ロード) 育成・前哨戰與全國大會對戰完全手冊</div>
+    </div>
+    <div class="section-body">
+        <div class="callout callout-gold" style="margin-bottom:20px;">
+            <i class="fa-solid fa-network-wired"></i>
+            <div>
+                <strong>《賽馬大亨 10 2026》光榮官方 Web 手冊 6300 & 7510~7550 線上模式完全收錄</strong><br/>
+                「最強馬ロード (最強馬之路)」是獨立於本篇劇本的線上競技模式。玩家可在公平的起點下進行專屬配合、線上育成訓練、挑戰各級前哨戰，並派出自身繁育的最強賽駒參與<strong>「全國線上錦標大會 (全国オンライン大会)」</strong>，與全日本及全球玩家一較高下！
+            </div>
+        </div>
+
+        <!-- 一、最強馬ロード五大階段流程 -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:#38bdf8; display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-route"></i> 一、最強馬之路 (最強馬ロード) 五大階段核心流程
+                </div>
+                <span class="badge" style="background:#0284c7; color:#fff; font-size:0.8rem; padding:4px 8px;">五大階段</span>
+            </div>
+
+            <div class="table-responsive" style="margin:0;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="min-width:140px; text-align:left !important;">階段序號與名稱</th>
+                            <th style="min-width:200px; text-align:left !important;">核心玩法與操作目標</th>
+                            <th style="min-width:320px; text-align:left !important;">關鍵決策與技巧 (繁體中文)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align:left !important;"><strong style="color:var(--gold-color);">1. 配合 (專屬配種)</strong></td>
+                            <td style="text-align:left !important;">選定專屬種牡馬與繁殖牝馬</td>
+                            <td style="text-align:left !important;">利用模式限定之高爆發力卡牌與因子，最大化產出天生 SP 75+ 的優質幼駒。</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong style="color:#38bdf8;">2. 育成パート (調教訓練)</strong></td>
+                            <td style="text-align:left !important;">執行每週調教與史實調教</td>
+                            <td style="text-align:left !important;">集中拉滿瞬發力、勝負根性與三大適應能力星級 (★10 限界突破)。</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong style="color:#34d399;">3. レース (前哨挑戰賽)</strong></td>
+                            <td style="text-align:left !important;">累積實戰經驗與鬥志</td>
+                            <td style="text-align:left !important;">挑選勝率最高之賽事路徑連勝，解鎖「上位特性」與高階騎手牽絆。</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong style="color:#fb923c;">4. 登録 (大會登錄參賽)</strong></td>
+                            <td style="text-align:left !important;">鎖定最佳狀態登錄大會</td>
+                            <td style="text-align:left !important;">將賽駒調子、體重、氣勢調整至絕對頂點後上傳伺服器。</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong style="color:#f472b6;">5. 大会 (線上對決與頒獎)</strong></td>
+                            <td style="text-align:left !important;">全國玩家伺服器實時匹配</td>
+                            <td style="text-align:left !important;">決賽奪冠贏得限定稱號、專屬頭像、豪華本篇道具與線上排行榜高額積分！</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ==================== 第 45 章：全平台操作對照・過場名場面 (Cinema Event) 與系統問答全書 ==================== -->
+<section id="sec-system-features" class="section-card">
+    <div class="section-header">
+        <div class="section-title"><i class="fa-solid fa-gamepad"></i> 第 45 章：全平台操作對照・過場名場面 (Cinema Event) 與系統問答全書</div>
+    </div>
+    <div class="section-body">
+        <div class="callout callout-gold" style="margin-bottom:20px;">
+            <i class="fa-solid fa-sliders"></i>
+            <div>
+                <strong>《賽馬大亨 10 2026》光榮官方 Web 手冊 2100~2400 & 6100~6900 系統機能完全收錄</strong><br/>
+                收錄 PS5 / PS4 / Nintendo Switch 2 / Nintendo Switch / Windows Steam 全平台手把與鍵鼠操作對照表、電影級過場名場面 (シネマイベント) 觸發條件、競馬歷史事件 (Historia) 與常見問題完全疑難排解！
+            </div>
+        </div>
+
+        <!-- 一、全平台按鍵操作對照表 (2100~2400) -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-gamepad"></i> 一、全平台（PS5 / PS4 / Switch 2 / Switch / Steam）操作按鍵對照表
+                </div>
+                <span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">全平台支援</span>
+            </div>
+
+            <div class="table-responsive" style="margin:0;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="min-width:180px; text-align:left !important;">常用功能指令</th>
+                            <th style="min-width:140px; text-align:left !important;">PlayStation®5 / PS4</th>
+                            <th style="min-width:150px; text-align:left !important;">Nintendo Switch™ 2 / Switch</th>
+                            <th style="min-width:140px; text-align:left !important;">Windows® (Steam®)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align:left !important;"><strong>決定 / 選擇 / 進入</strong></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#3b82f6;">✕ 鈕</span></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#ef4444;">A 鍵</span></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#64748b;">滑鼠左鍵 / Enter</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong>取消 / 返回上一頁</strong></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#ef4444;">○ 鈕</span></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#3b82f6;">B 鍵</span></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#64748b;">滑鼠右鍵 / Esc</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong>指令選單呼出 (Menu)</strong></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#22c55e;">△ 鈕</span></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#22c55e;">X 鍵</span></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#64748b;">Space (空白鍵)</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong>表示切替 (切換頁籤/資訊)</strong></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#eab308; color:#000;">□ 鈕</span></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#eab308; color:#000;">Y 鍵</span></td>
+                            <td style="text-align:left !important;"><span class="badge" style="background:#64748b;">Tab 鍵</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong>切換分頁 (L / R)</strong></td>
+                            <td style="text-align:left !important;">L1 / R1 鈕</td>
+                            <td style="text-align:left !important;">L / R 鍵</td>
+                            <td style="text-align:left !important;">Q / E 鍵</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left !important;"><strong>日程自動推進 (Auto-Run)</strong></td>
+                            <td style="text-align:left !important;">OPTIONS 鈕</td>
+                            <td style="text-align:left !important;">+ 鍵</td>
+                            <td style="text-align:left !important;">F1 鍵</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 二、電影級名場面 (Cinema Event) 觸發條件 (6600) -->
+        <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+                <div style="font-size:1.1rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-film"></i> 二、電影級過場名場面 (シネマイベント) 觸發條件全書
+                </div>
+                <span class="badge" style="background:var(--accent-color); color:#fff; font-size:0.8rem; padding:4px 8px;">官方名場面</span>
+            </div>
+
+            <div style="font-size:0.84rem; line-height:1.75; color:var(--text-main); text-align:left !important;">
+                <p style="margin:0 0 10px 0;">
+                    《賽馬大亨 10 2026》大幅強化了賽事與牧場中的電影級實時過場動畫（シネマイベント）。達成特定條件即可觸發高光播片：
+                </p>
+                <ul style="padding-left:18px; margin:0 0 10px 0;">
+                    <li><strong>🏆 德比死鬥高光</strong>：同世代宿敵馬同時以 1、2 番人氣出戰東京優駿 (德比)，於最後 200m 觸發雙馬並進特寫動畫！</li>
+                    <li><strong>🗼 凱旋門遠征奪冠</strong>：日本自產馬首次於法國隆尚凱旋門大賽奪冠時，觸發全場沸騰與日本馬主圓夢之專屬過場！</li>
+                    <li><strong>⚡ 狂潮頂點極限大逃</strong>：持有「神速逃げ」或「高速領放」之賽駒在超滿員狂潮大賽中大逃領先 10 馬身以上時觸發。</li>
+                    <li><strong>👑 無敗三冠登頂加冕</strong>：以無敗戰績橫掃皐月賞、日本德比、菊花賞時，觸發三冠馬專屬殿堂加冕動畫！</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <script>
 function switchLecTab(tabIdx) {
