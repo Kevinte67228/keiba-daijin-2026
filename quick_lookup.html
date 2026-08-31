@@ -1737,13 +1737,13 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.46</span>
+        <span class="version-badge">v02.47</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
-            15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
+            15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 39 大章節)
         </p>
         <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
-            <button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">📑 41 章快速跳轉</button>
+            <button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">📑 39 章快速跳轉</button>
             <button class="header-btn" onclick="clearPwaCache()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🔄 清除快取重載</button>
             <button class="header-btn" onclick="toggleAppTheme()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🌓 主題切換</button>
         </div>
@@ -10695,7 +10695,7 @@ li {
     <div id="pillar-races" class="pillar-content" style="display:none;">
         <div class="pillar-header-card">
             <h2>🏆 全球重賞賽事・三冠系列賽・競馬場特性・Historia (Races & Tracks)</h2>
-            <p>【第 30 章 ~ 第 36 章】全重賞日程大百科、全球 36 條三冠系列賽體系、各國競馬場特性庫、Turf 1~11 草質適應、賽馬熱潮、殿堂馬稱號與 Historia 歷史名場面</p>
+            <p>【第 30 章 ~ 實戰專題】全重賞日程大百科、全球 36 條三冠系列賽體系、全 68 競馬場/136 賽道特性庫、2025/2026 適應能力與賽事展開戰型、賽馬熱潮、殿堂馬稱號與 Historia 歷史名場面</p>
         </div>
         
     <!-- 第 23 章：全重賞日程・全球三冠系列賽・G1 頂級攻略與競馬場特性大百科 -->
@@ -23345,6 +23345,44 @@ li {
 
 <!-- 4. 競馬場特性庫 (stakesTab4) -->
 <div class="stakes-subtab-pane" id="stakesTab4" style="display:none;">
+
+    <!-- 整合自原 32/33 章之草質 11 級與適應能力提升心法導航卡片 -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:12px; margin-bottom:16px;">
+        <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:12px 14px;">
+            <div style="font-size:0.85rem; font-weight:bold; color:var(--accent-color); margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+                <span>🌱</span> 全球草質 8 格基準與 11 級重草場地對照
+            </div>
+            <div class="table-responsive" style="margin:0;">
+                <table class="data-table" style="font-size:0.78rem;">
+                    <thead><tr><th style="text-align:left !important;">地區 / 馬場</th><th style="text-align:left !important;">基準草質</th><th style="text-align:left !important;">場地特徵與適性要求</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>🇯🇵 日本 / 🇺🇸 美國 / 🇦🇺 澳洲</strong></td><td><span class="pill pill-safe">1 ~ 3 級 (極輕)</span></td><td>極度要求純速度 SP 與瞬發加速</td></tr>
+                        <tr><td><strong>🇭🇰 香港 / 🇦🇪 杜拜 / 🇸🇦 沙烏地</strong></td><td><span class="pill pill-cyan">3 ~ 4 級 (中等)</span></td><td>草質適中，日本馬遠征適應度佳</td></tr>
+                        <tr><td><strong>🇪🇺 歐洲 (英法愛德)</strong></td><td><span class="pill pill-danger">4 ~ 8 級 (重草)</span></td><td>極度要求力量 Power 與 Stamina 耐力</td></tr>
+                        <tr><td><strong>🌧️ 雨天重馬場 (重 / 不良)</strong></td><td><span class="pill pill-version">9 ~ 11 級 (泥沼)</span></td><td>需具備重馬場「鬼 / 得意」及大步頻走法</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(234,179,8,0.25); border-radius:10px; padding:12px 14px;">
+            <div style="font-size:0.85rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+                <span>⭐</span> 2025/2026 最新「適應能力」(適応能力) 戰型提升手段
+            </div>
+            <div class="table-responsive" style="margin:0;">
+                <table class="data-table" style="font-size:0.78rem;">
+                    <thead><tr><th style="text-align:left !important;">適應性戰型</th><th style="text-align:left !important;">代表主流賽場</th><th style="text-align:left !important;">步速要求與提升手段</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong style="color:#38bdf8;">⚡ 瞬發戰 (Sprint)</strong></td><td><strong>日本馬場主流</strong></td><td>慢步速直線極限衝刺。「好位拔出」、「大外一気」獲勝提升。</td></tr>
+                        <tr><td><strong style="color:#34d399;">🛡️ 持久戰 (Endurance)</strong></td><td><strong>歐洲馬場主流</strong></td><td>中段提速長程拉鋸。「前付け」、「馬群待機」獲勝提升。</td></tr>
+                        <tr><td><strong style="color:#fb923c;">🔥 消耗戰 (Attrition)</strong></td><td><strong>美國馬場主流</strong></td><td>出閘即全力快步速肉搏。「積極策」、「直線強襲」獲勝提升。</td></tr>
+                        <tr><td><strong style="color:#facc15;">👑 綜合戰 (Total)</strong></td><td>頂級跨國大賽</td><td>要求三大適應性全面發揮 (如日本盃、凱旋門)。</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:14px 16px; margin-bottom:16px; box-shadow:0 4px 14px rgba(0,0,0,0.15);">
         <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:10px;">
             <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
@@ -26029,217 +26067,11 @@ function filterTab5Racecourses() {
 </div>
 </div>
 </section>
-<section class="section-card" id="sec-racecourses">
-<div class="section-header">
-<div class="section-title"><i class="fa-solid fa-flag-checkered"></i> 第 32 章：全球賽馬場特性與跑道數據庫</div>
-</div>
-<div class="section-body">
-<div class="callout callout-gold">
-<i class="fa-solid fa-map-location-dot" style="font-size:1.2rem; color:var(--accent-gold);"></i>
-<div>
-<strong>《賽馬大亨 10 2026》全球賽馬場特性與比賽展開傾向庫</strong><br/>
-                本作大幅細化了各大賽馬場的物理跑道數據（左右迴圈、坡度急坂、直線長度、起伏形態），並導入賽事展開傾向（瞬發戰 / 持久戰 / 消耗戰 / 綜合戰）。出賽前針對賽道特性選派適應能力契合的馬匹是奪冠關鍵！
-            </div>
-</div>
-<h3 style="font-size:1rem; color:var(--accent-color); margin: 16px 0 8px;">一、日本中央四大與主要賽馬場特性對照表</h3>
-<div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
-<thead>
-<tr>
-<th>賽馬場</th>
-<th>所屬</th>
-<th>草地 (芝) 跑道特性</th>
-<th>草地內圈 (內回り)</th>
-<th>泥地 (ダート) 跑道特性</th>
-<th>主要比賽展開傾向</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>東京</strong><br/><small>(Tokyo)</small></td>
-<td>關東</td>
-<td>左迴 / 有坡度 / 直線長 / 起伏普通 / 大迴圈</td>
-<td>-</td>
-<td>左迴 / 有坡度 / 直線長 / 起伏普通 / 大迴圈</td>
-<td><span class="pill pill-danger">瞬発戦 ◎</span> (末腳極限爆發)</td>
-</tr>
-<tr>
-<td><strong>中山</strong><br/><small>(Nakayama)</small></td>
-<td>關東</td>
-<td>右迴 / <strong>急坂 (險峻陡坡)</strong> / 直線偏短 / 起伏普通</td>
-<td>-</td>
-<td>右迴 / 有坡度 / 直線偏短 / 起伏普通</td>
-<td><span class="pill pill-safe">持久戦 ◎</span> (耐力與力量拼鬥)</td>
-</tr>
-<tr>
-<td><strong>京都</strong><br/><small>(Kyoto)</small></td>
-<td>關西</td>
-<td>右迴 / 無最後坡度 / 直線普通 / 平坦</td>
-<td>右迴 / 直線偏短</td>
-<td>右迴 / 無坡度 / 直線偏短</td>
-<td><span class="pill pill-safe">持久戦 ◎</span> / 泥地消耗戰</td>
-</tr>
-<tr>
-<td><strong>阪神</strong><br/><small>(Hanshin)</small></td>
-<td>關西</td>
-<td>右迴 / <strong>急坂 (陡坡)</strong> / 外圈直線偏長 / 略平坦</td>
-<td>右迴 / 直線偏短 (持久戰◎)</td>
-<td>右迴 / 有坡度 / 直線偏短</td>
-<td>外圈 <span class="pill pill-danger">瞬発戦 ◎</span> / 內圈 <span class="pill pill-safe">持久戦 ◎</span></td>
-</tr>
-<tr>
-<td><strong>中京</strong><br/><small>(Chukyo)</small></td>
-<td>地方/中京</td>
-<td>左迴 / <strong>急坂</strong> / 直線普通</td>
-<td>-</td>
-<td>左迴 / 有坡度 / 直線普通</td>
-<td><span class="pill pill-danger">瞬発戦 〇</span> / 泥地消耗戰 〇</td>
-</tr>
-<tr>
-<td><strong>新潟</strong><br/><small>(Niigata)</small></td>
-<td>關東/新潟</td>
-<td>左迴 / 平坦無坡 / <strong>超長直線 (659m)</strong> / 大迴圈</td>
-<td>左迴 / 直線普通 (瞬發戰△)</td>
-<td>左迴 / 直線偏短 / 大迴圈</td>
-<td><span class="pill pill-danger">瞬発戦 〇</span> (直線千直與外圈長末腳)</td>
-</tr>
-<tr>
-<td><strong>札幌</strong><br/><small>(Sapporo)</small></td>
-<td>北海道</td>
-<td>右迴 / 極平坦無坡 / 直線偏短 / 小迴圈</td>
-<td>-</td>
-<td>右迴 / 極平坦 / 直線偏短 / 小迴圈</td>
-<td><span class="pill pill-version">消耗戦 〇</span> / 洋芝適性要求高</td>
-</tr>
-<tr>
-<td><strong>函館</strong><br/><small>(Hakodate)</small></td>
-<td>北海道</td>
-<td>右迴 / 上下起伏大 / 直線最短 (262m) / 小迴圈</td>
-<td>-</td>
-<td>右迴 / 起伏大 / 直線短 / 小迴圈</td>
-<td><span class="pill pill-version">消耗戦 〇</span> (考驗起步加速與洋芝)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 style="font-size:1rem; color:var(--accent-color); margin: 20px 0 8px;">二、歐美與全球頂級海外賽馬場跑道特性庫</h3>
-<div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
-<thead>
-<tr>
-<th>海外賽馬場</th>
-<th>國家/地區</th>
-<th>草質與跑道形態</th>
-<th>標誌性重賞 G1</th>
-<th>比賽展開核心傾向</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>隆尚</strong> (ParisLongchamp)</td>
-<td>🇫🇷 法國</td>
-<td>草質 9~10 (極重草) / 大迴圈 / 假直線 (Fausse ligne droite)</td>
-<td><strong>凱旋門賞</strong> (Prix de l'Arc de Triomphe)</td>
-<td><span class="pill pill-safe">究極持久戦 ◎</span> (耐力/力量/重草極限)</td>
-</tr>
-<tr>
-<td><strong>阿斯科特</strong> (Ascot)</td>
-<td>🇬🇧 英國</td>
-<td>草質 8~9 (厚重草) / 直線爬坡陡峭 / 馬場起伏劇烈</td>
-<td><strong>英國冠軍錦標、英皇錦標</strong></td>
-<td><span class="pill pill-safe">超持久戦 ◎</span> (勝負根性與精神力)</td>
-</tr>
-<tr>
-<td><strong>葉森</strong> (Epsom Downs)</td>
-<td>🇬🇧 英國</td>
-<td>草質 8~9 / 傳奇塔登漢彎角 (Tattenham Corner) / 劇烈下坡急彎</td>
-<td><strong>葉森德比</strong> (Epsom Derby)</td>
-<td><span class="pill pill-safe">持久戰＋平衡綜合戰</span></td>
-</tr>
-<tr>
-<td><strong>杜拜美丹</strong> (Meydan)</td>
-<td>🇦🇪 杜拜</td>
-<td>草質 5~6 (中等偏硬) / 泥地超高速 / 寬廣現代跑道</td>
-<td><strong>杜拜世界盃、杜拜司馬經典賽</strong></td>
-<td>草地 <span class="pill pill-danger">瞬発戦 〇</span> / 泥地 <span class="pill pill-version">超高速消耗戰</span></td>
-</tr>
-<tr>
-<td><strong>邱吉爾園</strong> (Churchill Downs)</td>
-<td>🇺🇸 美國</td>
-<td>泥地 (Dirt) / 平坦左迴 / 小迴圈高速彎道</td>
-<td><strong>肯塔基德比</strong> (Kentucky Derby)</td>
-<td><span class="pill pill-version">究極消耗戦 ◎</span> (開閘即全速對決)</td>
-</tr>
-<tr>
-<td><strong>沙拉托加</strong> (Saratoga)</td>
-<td>🇺🇸 美國</td>
-<td>泥地 / 草地雙軌 / 「名馬墳場」緊湊彎道</td>
-<td><strong>崔佛斯錦標</strong> (Travers Stakes)</td>
-<td><span class="pill pill-version">消耗戦 ◎</span> (前領先鋒激烈廝殺)</td>
-</tr>
-<tr>
-<td><strong>沙田</strong> (Sha Tin)</td>
-<td>🇭🇰 香港</td>
-<td>草質 3~4 (偏硬平整) / 直線 430m 寬闊 / 極速轉彎</td>
-<td><strong>香港盃、香港短途錦標</strong></td>
-<td><span class="pill pill-danger">極速瞬発戦 ◎</span> (考驗極速與瞬發力)</td>
-</tr>
-<tr>
-<td><strong>弗明頓</strong> (Flemington)</td>
-<td>🇦🇺 澳洲</td>
-<td>草質 4~5 / 超長直路 450m / 寬廣平坦</td>
-<td><strong>墨爾本盃</strong> (Melbourne Cup)</td>
-<td><span class="pill pill-safe">長途持久戰 〇</span> / 短途直路賽</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section class="section-card" id="sec-turf-adapt">
-<div class="section-header">
-<div class="section-title"><i class="fa-solid fa-seedling"></i> 第 33 章：全球草質 (Turf 1~11) 與適應能力對照</div>
-</div>
-<div class="section-body">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="tool-card">
-<h4 style="font-size:13px; font-weight:800; color:var(--accent-green); margin-bottom:5px;">
-              🌱 全球草質 8 格基準與 11 級重草場地對照
-            </h4>
-<div class="table-responsive" style="margin:0;">
-<table class="data-table">
-<thead><tr><th>地區 / 馬場</th><th>基準草質</th><th>場地特徵與適性要求</th></tr></thead>
-<tbody>
-<tr><td><strong>日本 / 美國 / 澳洲</strong></td><td><span class="pill pill-safe">1 ~ 3 級 (極輕)</span></td><td>極度要求純速度 SP 與瞬發加速</td></tr>
-<tr><td><strong>香港 / 杜拜 / 沙特</strong></td><td><span class="pill pill-cyan">3 ~ 4 級 (中等)</span></td><td>草質適中，日本馬遠征適應度佳</td></tr>
-<tr><td><strong>歐洲 (英法愛德)</strong></td><td><span class="pill pill-danger">4 ~ 8 級 (重草)</span></td><td>極度要求力量 Power 與 Stamina 耐力</td></tr>
-<tr><td><strong>雨天重馬場 (重/不良)</strong></td><td><span class="pill pill-version">9 ~ 11 級 (泥沼)</span></td><td>需具備重馬場「鬼 / 得意」及大步頻走法</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="tool-card">
-<h4 style="font-size:13px; font-weight:800; color:var(--accent-gold); margin-bottom:5px;">
-              ⭐ 2025/2026 最新「適應能力」(適応能力) 三大戰型
-            </h4>
-<div class="table-responsive" style="margin:0;">
-<table class="data-table">
-<thead><tr><th>適應性戰型</th><th>代表主流賽場</th><th>步速要求與提升手段</th></tr></thead>
-<tbody>
-<tr><td><strong style="color:var(--text-highlight);">瞬發戰 (Sprint)</strong></td><td><strong>日本馬場主流</strong></td><td>慢步速直線極限衝刺。「好位抜出」、「大外一気」獲勝提升。</td></tr>
-<tr><td><strong style="color:var(--accent-purple);">持久戰 (Endurance)</strong></td><td><strong>歐洲馬場主流</strong></td><td>中段提速長程拉鋸。「前付け」、「馬群待機」獲勝提升。</td></tr>
-<tr><td><strong style="color:var(--accent-red);">消耗戰 (Attrition)</strong></td><td><strong>美國馬場主流</strong></td><td>出閘即全力快步速肉搏。「積極策」、「直線強襲」獲勝提升。</td></tr>
-<tr><td><strong style="color:var(--accent-gold);">綜合戰 (Total)</strong></td><td>頂級跨國大賽</td><td>要求三大適應性全面發揮。</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</section>
+
+
 <section class="section-card" id="sec-keiba-boom">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-fire"></i> 第 34 章：偶像馬地圖・賽馬熱潮・傳奇特性與顯彰馬</div>
+<div class="section-title"><i class="fa-solid fa-fire"></i> 第 32 章：偶像馬地圖・賽馬熱潮・傳奇特性與顯彰馬</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -26311,7 +26143,7 @@ function filterTab5Racecourses() {
 </section>
 <section class="section-card" id="sec-nicknames">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-award"></i> 第 35 章：殿堂馬稱號 (異名)・人氣加成 (Boost) 與獲得條件全圖鑑</div>
+<div class="section-title"><i class="fa-solid fa-award"></i> 第 33 章：殿堂馬稱號 (異名)・人氣加成 (Boost) 與獲得條件全圖鑑</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -26426,7 +26258,7 @@ function filterTab5Racecourses() {
 </div></section>
 <section class="section-card" id="sec-historia">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-book-journal-whills"></i> 第 36 章：競馬歷史事件 (Historia) 名場面與觸發條件</div>
+<div class="section-title"><i class="fa-solid fa-book-journal-whills"></i> 第 34 章：競馬歷史事件 (Historia) 名場面與觸發條件</div>
 </div>
 <div class="section-body">
 <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">
@@ -26484,11 +26316,11 @@ function filterTab5Racecourses() {
     <div id="pillar-ranch" class="pillar-content" style="display:none;">
         <div class="pillar-header-card">
             <h2>🏰 牧場經營・人物技能・結婚伴侶與子孫家族 (Ranch & Dynasty)</h2>
-            <p>【第 37 章 ~ 第 39 章】牧場設施升級與美歐海外分場規劃、騎手/調教師/牧場長 18 大人物技能全書、知人/結婚相手/秘書/牧場長 40+ 全圖鑑與子孫誕生/教育方針/進路培育攻略</p>
+            <p>【第 33 章 ~ 第 35 章】牧場設施升級與美歐海外分場規劃、騎手/調教師/牧場長 18 大人物技能全書、知人/結婚相手/秘書/牧場長 40+ 全圖鑑與子孫誕生/教育方針/進路培育攻略</p>
         </div>
         <section class="section-card" id="sec-farm-facilities">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-warehouse"></i> 第 37 章：牧場設施升級與美歐海外分場規劃</div>
+<div class="section-title"><i class="fa-solid fa-warehouse"></i> 第 35 章：牧場設施升級與美歐海外分場規劃</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold">
@@ -26983,7 +26815,7 @@ function filterTab5Racecourses() {
 </div></section>
 <section class="section-card" id="sec-personnel">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-user-gear"></i> 第 38 章：騎手・調教師・牧場長 18 大人物技能全書</div>
+<div class="section-title"><i class="fa-solid fa-user-gear"></i> 第 36 章：騎手・調教師・牧場長 18 大人物技能全書</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom:16px;">
@@ -27313,7 +27145,7 @@ function filterTab5Racecourses() {
 </section>
 <section class="section-card" id="sec-marriage-secrets">
 <div class="section-header" style="background: linear-gradient(135deg, rgba(236,72,153,0.15), rgba(168,85,247,0.15)); border-bottom: 1px solid rgba(236,72,153,0.3);">
-<div class="section-title"><i class="fa-solid fa-ring"></i> 第 39 章：知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</div>
+<div class="section-title"><i class="fa-solid fa-ring"></i> 第 37 章：知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom: 20px;">
@@ -28028,13 +27860,13 @@ function filterTab5Racecourses() {
     <div id="pillar-db" class="pillar-content" style="display:none;">
         <div class="pillar-header-card">
             <h2>🏇 史實馬匹資料庫互動速查與終極檔案 (Historical Horse Database & Profiles)</h2>
-            <p>【第 40 章 ~ 第 41 章】涵蓋 1967 ~ 2023 年共 15,389 匹全史實馬、11 大年度推薦分類、35+ 欄位能力詳細卡片與 allhorseprofiles 18 欄位終極履歷深度檔案庫</p>
+            <p>【第 36 章 ~ 第 37 章】涵蓋 1967 ~ 2023 年共 15,389 匹全史實馬、11 大年度推薦分類、35+ 欄位能力詳細卡片與 allhorseprofiles 18 欄位終極履歷深度檔案庫</p>
         </div>
         
-    <!-- 第 39 章 標題卡片 -->
+    <!-- 第 37 章 標題卡片 -->
     <div class="section-card" id="sec-horse-db" style="margin-bottom:14px;">
         <div class="section-header">
-            <div class="section-title"><i class="fa-solid fa-horse"></i> 第 40 章：1.5 萬匹全史實馬與 11 大年度推薦速查庫</div>
+            <div class="section-title"><i class="fa-solid fa-horse"></i> 第 38 章：1.5 萬匹全史實馬與 11 大年度推薦速查庫</div>
         </div>
         <div class="section-body" style="padding-bottom:6px;">
             <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
@@ -28184,11 +28016,11 @@ function filterTab5Racecourses() {
     
 <section class="section-card" id="sec-allhorseprofiles-db">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-book-bookmark"></i> 第 41 章：全史實名駒 18 欄位終極履歷與血統檔案完全圖鑑 (allhorseprofiles 深度檔案庫)</div>
+<div class="section-title"><i class="fa-solid fa-book-bookmark"></i> 第 39 章：全史實名駒 18 欄位終極履歷與血統檔案完全圖鑑 (allhorseprofiles 深度檔案庫)</div>
 </div>
 <div class="section-body" style="padding: 24px 28px !important; box-sizing: border-box !important;">
 <style>
-/* ===== 第 41 章 平板極致適配佈局規範 ===== */
+/* ===== 第 39 章 平板極致適配佈局規範 ===== */
 
 #masterLiveTable {
     border-collapse: collapse !important;
@@ -28468,7 +28300,7 @@ function filterTab5Racecourses() {
 }
 </style>
 <div class="section-header" style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(147,51,234,0.2)); border-bottom: 2px solid var(--accent-gold);">
-<div class="section-title"><span class="chapter-number">41</span> <i class="fa-solid fa-book-bookmark" style="color:var(--gold-color); font-size:1.3rem;"></i> 第 41 章：全史實名駒 18 欄位終極履歷與血統檔案完全圖鑑 (allhorseprofiles 深度檔案庫)</div>
+<div class="section-title"><span class="chapter-number">41</span> <i class="fa-solid fa-book-bookmark" style="color:var(--gold-color); font-size:1.3rem;"></i> 第 39 章：全史實名駒 18 欄位終極履歷與血統檔案完全圖鑑 (allhorseprofiles 深度檔案庫)</div>
 </div>
 <div class="section-body">
 </div>
@@ -29887,7 +29719,7 @@ function changeMasterLivePage(delta) {
     <div class="modal-backdrop" id="chapterModal" onclick="closeChapterModal(event)">
         <div class="chapter-modal-card" onclick="event.stopPropagation()">
             <div class="chapter-modal-header">
-                <h2><i class="fa-solid fa-list-ol"></i> 📑 全 41 大章節快速跳轉</h2>
+                <h2><i class="fa-solid fa-list-ol"></i> 📑 全 39 大章節快速跳轉</h2>
                 <span class="modal-close" onclick="closeChapterModal()">&times;</span>
             </div>
             <div class="chapter-search-box">
@@ -30070,7 +29902,7 @@ function changeMasterLivePage(delta) {
 
                 <!-- Group 5: 🏆 賽事實戰 -->
                 <div class="chapter-pillar-group">
-                    <div class="chapter-pillar-title">🏆 第五專題：賽事實戰 (第 30 章 ~ 第 36 章)</div>
+                    <div class="chapter-pillar-title">🏆 第五專題：賽事實戰 (第 30 章 ~ 第 32 章)</div>
                     <div class="chapter-items-grid">
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-stakes-master')">
                             <span class="jump-icon"><i class="fa-solid fa-trophy"></i></span>
@@ -30082,29 +29914,21 @@ function changeMasterLivePage(delta) {
                             <span class="jump-num">第 31 章</span>
                             <span class="jump-title">全球三冠路線與夏季系列賽完全對照</span>
                         </button>
-                        <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-racecourses')">
-                            <span class="jump-icon"><i class="fa-solid fa-flag-checkered"></i></span>
-                            <span class="jump-num">第 32 章</span>
-                            <span class="jump-title">全球賽馬場特性與跑道數據庫</span>
-                        </button>
-                        <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-turf-adapt')">
-                            <span class="jump-icon"><i class="fa-solid fa-seedling"></i></span>
-                            <span class="jump-num">第 33 章</span>
-                            <span class="jump-title">全球草質 (Turf 1~11) 與適應能力對照</span>
-                        </button>
+                        
+                        
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-keiba-boom')">
                             <span class="jump-icon"><i class="fa-solid fa-fire"></i></span>
-                            <span class="jump-num">第 34 章</span>
+                            <span class="jump-num">第 32 章</span>
                             <span class="jump-title">賽馬熱潮 (競馬ブーム) 極致爆發指南</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-nicknames')">
                             <span class="jump-icon"><i class="fa-solid fa-award"></i></span>
-                            <span class="jump-num">第 35 章</span>
+                            <span class="jump-num">第 33 章</span>
                             <span class="jump-title">殿堂馬稱號 (異名) 圖鑑與特殊效果</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-historia')">
                             <span class="jump-icon"><i class="fa-solid fa-book-journal-whills"></i></span>
-                            <span class="jump-num">第 36 章</span>
+                            <span class="jump-num">第 34 章</span>
                             <span class="jump-title">競馬歷史事件 (Historia) 名場面與觸發條件</span>
                         </button>
                     </div>
@@ -30112,21 +29936,21 @@ function changeMasterLivePage(delta) {
 
                 <!-- Group 6: 🏰 牧場家族 -->
                 <div class="chapter-pillar-group">
-                    <div class="chapter-pillar-title">🏰 第六專題：牧場家族 (第 37 章 ~ 第 39 章)</div>
+                    <div class="chapter-pillar-title">🏰 第六專題：牧場家族 (第 33 章 ~ 第 35 章)</div>
                     <div class="chapter-items-grid">
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-farm-facilities')">
                             <span class="jump-icon"><i class="fa-solid fa-warehouse"></i></span>
-                            <span class="jump-num">第 37 章</span>
+                            <span class="jump-num">第 35 章</span>
                             <span class="jump-title">牧場設施升級與美歐海外分場規劃</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-personnel')">
                             <span class="jump-icon"><i class="fa-solid fa-user-gear"></i></span>
-                            <span class="jump-num">第 38 章</span>
+                            <span class="jump-num">第 36 章</span>
                             <span class="jump-title">騎手・調教師・牧場長 18 大人物技能全書</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-marriage-secrets')">
                             <span class="jump-icon"><i class="fa-solid fa-ring"></i></span>
-                            <span class="jump-num">第 39 章</span>
+                            <span class="jump-num">第 37 章</span>
                             <span class="jump-title">知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</span>
                         </button>
                     </div>
@@ -30134,16 +29958,16 @@ function changeMasterLivePage(delta) {
 
                 <!-- Group 7: 🏇 馬庫速查與終極履歷 -->
                 <div class="chapter-pillar-group">
-                    <div class="chapter-pillar-title">🏇 第七專題：馬庫速查與終極檔案 (第 40 章 ~ 第 41 章)</div>
+                    <div class="chapter-pillar-title">🏇 第七專題：馬庫速查與終極檔案 (第 36 章 ~ 第 37 章)</div>
                     <div class="chapter-items-grid">
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-horse-db')">
                             <span class="jump-icon"><i class="fa-solid fa-horse"></i></span>
-                            <span class="jump-num">第 40 章</span>
+                            <span class="jump-num">第 38 章</span>
                             <span class="jump-title">1.5 萬匹全史實馬與 11 大年度推薦速查庫</span>
                         </button>
                         <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-allhorseprofiles-db')">
                             <span class="jump-icon"><i class="fa-solid fa-book-bookmark"></i></span>
-                            <span class="jump-num">第 41 章</span>
+                            <span class="jump-num">第 39 章</span>
                             <span class="jump-title">全史實名駒 18 欄位終極履歷與血統檔案完全圖鑑</span>
                         </button>
                     </div>
