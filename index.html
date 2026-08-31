@@ -1737,7 +1737,7 @@ li {
 
         <!-- 頁首 Header -->
     <div class="header">
-        <span class="version-badge">v02.45</span>
+        <span class="version-badge">v02.46</span>
         <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
         <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 41 大章節)
@@ -10714,6 +10714,7 @@ li {
                 <button class="tab-btn" id="btnStakesTab2" onclick="switchStakesSubTab('stakesTab2')" style="font-size:0.85rem; padding:8px 12px; text-align:center; justify-content:center; display:flex; align-items:center; gap:6px; width:100%; white-space:nowrap;">👑 2. 全球三冠系列 (36)</button>
                 <button class="tab-btn" id="btnStakesTab3" onclick="switchStakesSubTab('stakesTab3')" style="font-size:0.85rem; padding:8px 12px; text-align:center; justify-content:center; display:flex; align-items:center; gap:6px; width:100%; white-space:nowrap;">🏆 3. G1 頂級攻略指南</button>
                 <button class="tab-btn" id="btnStakesTab4" onclick="switchStakesSubTab('stakesTab4')" style="font-size:0.85rem; padding:8px 12px; text-align:center; justify-content:center; display:flex; align-items:center; gap:6px; width:100%; white-space:nowrap;">🏁 4. 競馬場特性庫 (68場 / 136賽道)</button>
+                <button class="tab-btn" id="btnStakesTab5" onclick="switchStakesSubTab('stakesTab5')" style="font-size:0.85rem; padding:8px 12px; text-align:center; justify-content:center; display:flex; align-items:center; gap:6px; width:100%; white-space:nowrap;">⚡ 5. 賽事展開與適應能力庫 (64場)</button>
             </div>
 
             <!-- 4 大內容容器 -->
@@ -24431,6 +24432,1163 @@ function filterRacecourses() {
     });
     
     const countEl = document.getElementById('rcMatchCount');
+    if (countEl) countEl.innerText = count;
+}
+</script>
+
+
+
+<!-- 5. 賽道展開與適應能力庫 (stakesTab5) -->
+<div class="stakes-subtab-pane" id="stakesTab5" style="display:none;">
+    <!-- 導言與戰略速覽卡片 -->
+    <div style="background:linear-gradient(135deg, rgba(6,182,212,0.1), rgba(16,185,129,0.1)); border:1px solid rgba(6,182,212,0.3); border-radius:12px; padding:14px 16px; margin-bottom:16px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+            <span class="badge badge-gold" style="font-size:0.85rem; padding:4px 8px;">⚡ 2025/2026 核心機制革新</span>
+            <strong style="color:var(--text-color); font-size:0.95rem;">全球競馬場展開戰型與適應能力全圖鑑 (64 座名賽場)</strong>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6; margin:0 0 8px 0;">
+            本作全面廢除舊版單純的「芝質適性 (Turf 1~11)」，改為以<strong>「馬場跑道幾何與重大賽事的展開適應性」</strong>為核心機制。馬匹適應能力匹配度直接左右賽事爆發與耐力發揮。
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:0.78rem;">
+            <span class="pill" style="background:rgba(6,182,212,0.2); color:#22d3ee; border:1px solid rgba(6,182,212,0.5);">⚡ 瞬發戰：日本中央/亞洲主流 (極速直路爆發)</span>
+            <span class="pill" style="background:rgba(16,185,129,0.2); color:#34d399; border:1px solid rgba(16,185,129,0.5);">🛡️ 持久戰：歐洲各大賽場主流 (長途耐力與起伏抗性)</span>
+            <span class="pill" style="background:rgba(249,115,22,0.2); color:#fb923c; border:1px solid rgba(249,115,22,0.5);">🔥 消耗戰：美國賽場及泥地賽事主流 (前中段高配速廝殺)</span>
+            <span class="pill" style="background:rgba(234,179,8,0.2); color:#facc15; border:1px solid rgba(234,179,8,0.5);">👑 評級要求：⦿ (特化) &gt; ◎ (極佳) &gt; 〇 (良好) &gt; △ (普通)</span>
+        </div>
+    </div>
+
+    <!-- 篩選控制面板 -->
+    <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:14px 16px; margin-bottom:16px; box-shadow:0 4px 14px rgba(0,0,0,0.15);">
+        <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:10px;">
+            <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+                <!-- 地域篩選 -->
+                <select id="tab5FilterRegion" onchange="filterTab5Racecourses()" class="filter-control" style="font-size:0.82rem; padding:5px 10px;">
+                    <option value="ALL">🌍 全部地區 (日本中央/地方/歐洲/北美/海外)</option>
+                    <option value="中央關東">🇯🇵 日本中央 - 關東</option>
+                    <option value="中央關西">🇯🇵 日本中央 - 關西</option>
+                    <option value="ローカル">🇯🇵 日本中央 - Local</option>
+                    <option value="地方">🏛️ 日本地方交流 (NAR)</option>
+                    <option value="英國">🇬🇧 歐洲 - 英國</option>
+                    <option value="法國">🇫🇷 歐洲 - 法國</option>
+                    <option value="愛爾蘭">🇮🇪 歐洲 - 愛爾蘭</option>
+                    <option value="德國">🇩🇪 歐洲 - 德國</option>
+                    <option value="美國">🇺🇸 北美 - 美國</option>
+                    <option value="加拿大">🇨🇦 北美 - 加拿大</option>
+                    <option value="阿聯酋">🇦🇪 中東 - 阿聯酋杜拜</option>
+                    <option value="沙地">🇸🇦 中東 - 沙烏地阿拉伯</option>
+                    <option value="香港">🇭🇰 亞洲 - 香港</option>
+                    <option value="澳洲">🇦🇺 大洋洲 - 澳洲</option>
+                </select>
+
+                <!-- 展開戰型篩選 -->
+                <select id="tab5FilterTactics" onchange="filterTab5Racecourses()" class="filter-control" style="font-size:0.82rem; padding:5px 10px;">
+                    <option value="ALL">⚔️ 全部展開戰型</option>
+                    <option value="瞬発戦">⚡ 瞬發戰 (瞬発戦)</option>
+                    <option value="持久戦">🛡️ 持久戰 (持久戦)</option>
+                    <option value="消耗戦">🔥 消耗戰 (消耗戦)</option>
+                    <option value="総合戦">👑 綜合戰 (総合戦)</option>
+                </select>
+
+                <!-- 坡道篩選 -->
+                <select id="tab5FilterSlope" onchange="filterTab5Racecourses()" class="filter-control" style="font-size:0.82rem; padding:5px 10px;">
+                    <option value="ALL">⛰️ 全部直道坡度</option>
+                    <option value="急坂">急坂 (陡坡 / 中山/阪神/中京/雅士谷等)</option>
+                    <option value="あり">有坡道 (盛岡/東京/愛爾蘭等)</option>
+                    <option value="なし">平坦賽道 (京都/大井/美國等)</option>
+                </select>
+            </div>
+
+            <!-- 關鍵字搜尋框 -->
+            <div style="flex:1; min-width:240px; max-width:380px;">
+                <input type="text" id="tab5SearchInput" oninput="filterTab5Racecourses()" class="search-input" placeholder="🔍 搜尋競馬場名、大賽 (如德比/凱旋門/BC)..." style="font-size:0.82rem; padding:6px 12px; width:100%; box-sizing:border-box;">
+            </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.82rem; color:var(--text-muted); padding-top:6px; border-top:1px dashed var(--border-color);">
+            <div>顯示筆數：<strong style="color:var(--accent-color);" id="tab5MatchCount">64</strong> / 64 座名賽場</div>
+            <div>💡 點擊表頭可即時排序 | 100% 勘誤修正版 | 支援日中英與大賽交叉篩選</div>
+        </div>
+    </div>
+
+    <!-- 資料表格 -->
+    <div class="table-responsive" style="border:1px solid var(--border-color); border-radius:10px; overflow-x:auto;">
+        <table class="data-table" id="tab5MasterTable" style="width:100%; min-width:1150px; border-collapse:collapse;">
+            <thead>
+                <tr style="background:rgba(15,23,42,0.85);">
+                    <th class="sortable-th" style="text-align:left !important; width:80px;" onclick="sortTable('tab5MasterTable', 0)">地區 <span class="sort-icon">⇅</span></th>
+                    <th class="sortable-th" style="text-align:left !important; width:180px;" onclick="sortTable('tab5MasterTable', 1)">競馬場名稱 (日/中/英) <span class="sort-icon">⇅</span></th>
+                    <th class="sortable-th" style="text-align:left !important; width:100px;" onclick="sortTable('tab5MasterTable', 2)">細部地域 <span class="sort-icon">⇅</span></th>
+                    <th class="sortable-th" style="text-align:left !important; width:70px;" onclick="sortTable('tab5MasterTable', 3)">迴轉 <span class="sort-icon">⇅</span></th>
+                    <th class="sortable-th" style="text-align:left !important; width:90px;" onclick="sortTable('tab5MasterTable', 4)">道中起伏 <span class="sort-icon">⇅</span></th>
+                    <th class="sortable-th" style="text-align:left !important; width:90px;" onclick="sortTable('tab5MasterTable', 5)">跑道形態 <span class="sort-icon">⇅</span></th>
+                    <th class="sortable-th" style="text-align:left !important; width:110px;" onclick="sortTable('tab5MasterTable', 6)">直線長度 <span class="sort-icon">⇅</span></th>
+                    <th class="sortable-th" style="text-align:left !important; width:100px;" onclick="sortTable('tab5MasterTable', 7)">直線坡道 <span class="sort-icon">⇅</span></th>
+                    <th style="text-align:left !important; min-width:180px;">常規賽事展開傾向 (草地/泥地)</th>
+                    <th style="text-align:left !important; min-width:220px;">核心重大 G1 賽事展開傾向</th>
+                </tr>
+            </thead>
+            <tbody id="tab5TableBody">
+                
+    <tr class="tab5-rc-row" data-zone="日本" data-region="中央關東" data-slope="急坂" data-tactics="芝: 持久戦◎ダート: 消耗戦〇 有馬記念: 持久戦◎皐月賞: 持久戦◎" data-search="中山 中山 nakayama 日本 中央關東 芝: 持久戦◎ダート: 消耗戦〇 有馬記念: 持久戦◎皐月賞: 持久戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">中山 (中山)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Nakayama</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">中央關東</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-danger" style="font-size:0.75rem;">⛰️ 急坂</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">有馬記念:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">皐月賞:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="中央關東" data-slope="あり" data-tactics="芝: 瞬発戦◎ダート: 瞬発戦〇 ジャパンカップ: 総合戦◎日本ダービー: 瞬発戦⦿フェブラリーS: 消耗戦◎" data-search="東京 東京 tokyo 日本 中央關東 芝: 瞬発戦◎ダート: 瞬発戦〇 ジャパンカップ: 総合戦◎日本ダービー: 瞬発戦⦿フェブラリーs: 消耗戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">東京 (東京)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Tokyo</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">中央關東</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">◎</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ジャパンカップ:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(234,179,8,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#facc15; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(234,179,8,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">👑 綜合戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fde047;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">日本ダービー:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">⚡ 瞬發戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#38bdf8;">⦿</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">フェブラリーS:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="中央關西" data-slope="芝:急坂ダート: あり" data-tactics="芝內: 持久戦◎芝外: 瞬発戦◎ダート: 消耗戦〇 宝塚記念: 持久戦◎大阪杯: 瞬発戦〇桜花賞: 瞬発戦◎朝日杯FS: 持久戦〇" data-search="阪神 阪神 hanshin 日本 中央關西 芝內: 持久戦◎芝外: 瞬発戦◎ダート: 消耗戦〇 宝塚記念: 持久戦◎大阪杯: 瞬発戦〇桜花賞: 瞬発戦◎朝日杯fs: 持久戦〇">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">阪神 (阪神)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Hanshin</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">中央關西</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">芝內/ダート: やや短い芝外: やや長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-danger" style="font-size:0.72rem;">芝:急坂 / 泥:有</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿內:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🌿外:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">◎</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">宝塚記念:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">大阪杯:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">⚡ 瞬發戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#38bdf8;">〇</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">桜花賞:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">⚡ 瞬發戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#38bdf8;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">朝日杯FS:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">〇</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="中央關西" data-slope="なし" data-tactics="芝內: 持久戦〇芝外: 持久戦◎ダート: 消耗戦△ 秋華賞: 瞬発戦〇菊花賞: 持久戦◎天皇賞春: 持久戦◎" data-search="京都 京都 kyoto 日本 中央關西 芝內: 持久戦〇芝外: 持久戦◎ダート: 消耗戦△ 秋華賞: 瞬発戦〇菊花賞: 持久戦◎天皇賞春: 持久戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">京都 (京都)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Kyoto</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">中央關西</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">芝內/ダート: やや短い芝外: 普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿內:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🌿外:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">秋華賞:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">⚡ 瞬發戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#38bdf8;">〇</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">菊花賞:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">天皇賞春:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="ローカル" data-slope="芝: 急坂ダート: あり" data-tactics="芝: 瞬発戦〇ダート: 消耗戦〇 高松宮記念: 瞬発戦◎チャンピオンズC: 消耗戦◎" data-search="中京 中京 chukyo 日本 ローカル 芝: 瞬発戦〇ダート: 消耗戦〇 高松宮記念: 瞬発戦◎チャンピオンズc: 消耗戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">中京 (中京)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Chukyo</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">ローカル</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-danger" style="font-size:0.72rem;">芝:急坂 / 泥:有</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">高松宮記念:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">⚡ 瞬發戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#38bdf8;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">チャンピオンズC:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="ローカル" data-slope="あり" data-tactics="芝: 消耗戦△ダート: 消耗戦△ /" data-search="福島 福島 fukushima 日本 ローカル 芝: 消耗戦△ダート: 消耗戦△ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">福島 (福島)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Fukushima</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">ローカル</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="ローカル" data-slope="なし" data-tactics="芝: 消耗戦〇ダート: 消耗戦〇 /" data-search="函館 函館 hakodate 日本 ローカル 芝: 消耗戦〇ダート: 消耗戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">函館 (函館)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Hakodate</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">ローカル</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="ローカル" data-slope="なし" data-tactics="芝: 消耗戦〇ダート: 消耗戦△ /" data-search="小倉 小倉 kokura 日本 ローカル 芝: 消耗戦〇ダート: 消耗戦△ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">小倉 (小倉)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Kokura</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">ローカル</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="ローカル" data-slope="なし" data-tactics="芝內: 瞬発戦△芝外: 瞬発戦〇芝直: 消耗戦◎ダート: 消耗戦〇 /" data-search="新潟 新潟 niigata 日本 ローカル 芝內: 瞬発戦△芝外: 瞬発戦〇芝直: 消耗戦◎ダート: 消耗戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">新潟 (新潟)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Niigata</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">ローカル</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">芝內: 普通芝外/芝直: かなり長いダート: やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿內:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">△</b></span><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🌿外:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">〇</b></span><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🌿直:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="ローカル" data-slope="なし" data-tactics="芝: 消耗戦△ダート: 消耗戦△ /" data-search="札幌 札幌 sapporo 日本 ローカル 芝: 消耗戦△ダート: 消耗戦△ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">札幌 (札幌)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Sapporo</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">ローカル</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="地方" data-slope="なし" data-tactics="ダート: 消耗戦◎ /" data-search="船橋 船橋 funabashi 日本 地方 ダート: 消耗戦◎ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">船橋 (船橋)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Funabashi</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">地方</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="地方" data-slope="あり" data-tactics="ダート: 消耗戦〇 /" data-search="盛岡 盛岡 morioka 日本 地方 ダート: 消耗戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">盛岡 (盛岡)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Morioka</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">地方</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="地方" data-slope="なし" data-tactics="ダート: 消耗戦◎ /" data-search="大井 大井 ohi 日本 地方 ダート: 消耗戦◎ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">大井 (大井)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Ohi</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">地方</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="地方" data-slope="なし" data-tactics="ダート: 消耗戦◎ /" data-search="川崎 川崎 kawasaki 日本 地方 ダート: 消耗戦◎ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">川崎 (川崎)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Kawasaki</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">地方</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="地方" data-slope="なし" data-tactics="ダート: 消耗戦△ /" data-search="金沢 金澤 kawasaki 日本 地方 ダート: 消耗戦△ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">金沢 (金澤)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Kawasaki <span style='font-size:0.72rem; color:#f59e0b;'>(Kanazawa (原網頁誤植為 Kawasaki))</span></div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">地方</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="地方" data-slope="なし" data-tactics="ダート: 消耗戦△ /" data-search="高知 高知 kochi 日本 地方 ダート: 消耗戦△ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">高知 (高知)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Kochi</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">地方</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">かなり短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="地方" data-slope="なし" data-tactics="ダート: 消耗戦〇 /" data-search="門別 門別 monbetsu 日本 地方 ダート: 消耗戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">門別 (門別)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Monbetsu</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">地方</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="地方" data-slope="なし" data-tactics="ダート: 消耗戦〇 /" data-search="名古屋 名古屋 nagoya 日本 地方 ダート: 消耗戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">名古屋 (名古屋)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Nagoya</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">地方</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">かなり短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="地方" data-slope="なし" data-tactics="ダート: 消耗戦△ /" data-search="佐賀 佐賀 saga 日本 地方 ダート: 消耗戦△ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">佐賀 (佐賀)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Saga</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">地方</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">かなり短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="地方" data-slope="なし" data-tactics="ダート: 消耗戦〇 /" data-search="園田 園田 sonoda 日本 地方 ダート: 消耗戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">園田 (園田)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Sonoda</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">地方</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">かなり短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="日本" data-region="地方" data-slope="なし" data-tactics="ダート: 消耗戦〇 /" data-search="浦和 浦和 urawa 日本 地方 ダート: 消耗戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">浦和 (浦和)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Urawa</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">地方</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="英國" data-slope="急坂" data-tactics="持久戦◎ KGVI＆QES: 持久戦◎ゴールドC: 持久戦⦿" data-search="アスコット 雅士谷 ascot 歐洲 英國 持久戦◎ kgvi＆qes: 持久戦◎ゴールドc: 持久戦⦿">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">アスコット (雅士谷)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Ascot</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">英國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">ややハード</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-danger" style="font-size:0.75rem;">⛰️ 急坂</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">KGVI＆QES:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ゴールドC:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">⦿</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="英國" data-slope="急坂" data-tactics="持久戦◎ イギリスダービー: 持久戦⦿" data-search="エプソムダウンズ 葉森 epsom downs 歐洲 英國 持久戦◎ イギリスダービー: 持久戦⦿">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">エプソムダウンズ (葉森)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Epsom Downs</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">英國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなりハード</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-danger" style="font-size:0.75rem;">⛰️ 急坂</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">イギリスダービー:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">⦿</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="英國" data-slope="なし" data-tactics="持久戦◎ /" data-search="グッドウッド 古活 goodwood 歐洲 英國 持久戦◎ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">グッドウッド (古活)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Goodwood</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">英國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">ハード</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="英國" data-slope="急坂" data-tactics="持久戦◎ /" data-search="サンダウンパーク 沙丘園 sandown park 歐洲 英國 持久戦◎ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">サンダウンパーク (沙丘園)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Sandown Park</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">英國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">ハード</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-danger" style="font-size:0.75rem;">⛰️ 急坂</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="英國" data-slope="あり" data-tactics="持久戦△ /" data-search="チェスター 車士達 chester 歐洲 英國 持久戦△ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">チェスター (車士達)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Chester</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">英國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">ややハード</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="英國" data-slope="なし" data-tactics="持久戦〇 /" data-search="ドンカスター 唐加士達 doncaster 歐洲 英國 持久戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ドンカスター (唐加士達)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Doncaster</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">英國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="英國" data-slope="あり" data-tactics="持久戦〇 /" data-search="ニューベリー 紐百利 newbury 歐洲 英國 持久戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ニューベリー (紐百利)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Newbury</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">英國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="英國" data-slope="急坂" data-tactics="持久戦◎ /" data-search="ニューマーケット 新市場 newmarket 歐洲 英國 持久戦◎ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ニューマーケット (新市場)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Newmarket</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">英國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">ややハード</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-danger" style="font-size:0.75rem;">⛰️ 急坂</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="英國" data-slope="あり" data-tactics="持久戦〇 /" data-search="ヘイドックパーク 希鐸 haydock park 歐洲 英國 持久戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ヘイドックパーク (希鐸)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Haydock Park</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">英國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">ややハード</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="英國" data-slope="あり" data-tactics="芝: 持久戦△芝直: 持久戦〇 /" data-search="ヨーク 約克 york 歐洲 英國 芝: 持久戦△芝直: 持久戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ヨーク (約克)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">York</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">英國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">△</b></span><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🌿直:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="法國" data-slope="あり" data-tactics="持久戦△ /" data-search="サンクルー 聖格盧 saint-cloud 歐洲 法國 持久戦△ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">サンクルー (聖格盧)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Saint-Cloud</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">法國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="法國" data-slope="なし" data-tactics="持久戦〇 フランスダービー: 持久戦◎" data-search="シャンティイ 尚蒂伊 chantilly 歐洲 法國 持久戦〇 フランスダービー: 持久戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">シャンティイ (尚蒂伊)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Chantilly</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">法國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">ややハード</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">フランスダービー:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="法國" data-slope="なし" data-tactics="持久戦△ /" data-search="ドーヴィル 多維爾 deauville 歐洲 法國 持久戦△ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ドーヴィル (多維爾)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Deauville</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">法國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="法國" data-slope="なし" data-tactics="持久戦◎ 凱旋門賞: 持久戦⦿カドラン賞: 持久戦◎" data-search="パリロンシャン 巴黎隆尚 pairs longchamp 歐洲 法國 持久戦◎ 凱旋門賞: 持久戦⦿カドラン賞: 持久戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">パリロンシャン (巴黎隆尚)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Pairs Longchamp <span style='font-size:0.72rem; color:#f59e0b;'>(ParisLongchamp (原網頁拼寫為 Pairs Longchamp))</span></div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">法國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">ややハード</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">凱旋門賞:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">⦿</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">カドラン賞:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="愛爾蘭" data-slope="あり" data-tactics="持久戦◎ アイルランドダービー: 持久戦◎" data-search="カラ 卻拉 curragh 歐洲 愛爾蘭 持久戦◎ アイルランドダービー: 持久戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">カラ (卻拉)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Curragh</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">愛爾蘭</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">ハード</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">アイルランドダービー:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="愛爾蘭" data-slope="あり" data-tactics="持久戦◎ /" data-search="ナヴァン 納雲 navan 歐洲 愛爾蘭 持久戦◎ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ナヴァン (納雲)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Navan</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">愛爾蘭</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">ややハード</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="愛爾蘭" data-slope="急坂" data-tactics="持久戦〇 /" data-search="レパーズタウン 李奧柏 leopardstown 歐洲 愛爾蘭 持久戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">レパーズタウン (李奧柏)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Leopardstown</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">愛爾蘭</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">ややハード</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-danger" style="font-size:0.75rem;">⛰️ 急坂</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="德國" data-slope="なし" data-tactics="芝: 持久戦△芝直: 持久戦〇 /" data-search="ハンブルク 漢堡 hamburg 歐洲 德國 芝: 持久戦△芝直: 持久戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ハンブルク (漢堡)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Hamburg</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">德國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">△</b></span><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🌿直:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="德國" data-slope="なし" data-tactics="芝: 持久戦△芝直: 持久戦〇 /" data-search="バーデンバーデン 巴登巴登 baden-baden 歐洲 德國 芝: 持久戦△芝直: 持久戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">バーデンバーデン (巴登巴登)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Baden-Baden</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">德國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">△</b></span><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🌿直:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="歐洲" data-region="德國" data-slope="なし" data-tactics="持久戦△ /" data-search="ホッペガルテン 霍珀加滕 hoppegarten 歐洲 德國 持久戦△ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ホッペガルテン (霍珀加滕)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Hoppegarten</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">德國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="其他" data-region="阿聯酋" data-slope="なし" data-tactics="芝: 瞬発戦〇芝直: 瞬発戦△ダート: 消耗戦◎ ドバイシーマクラシック: 瞬発戦◎ドバイターフ: 瞬発戦◎ドバイワールドカップ: 消耗戦◎" data-search="メイダン 美丹 meydan 其他 阿聯酋 芝: 瞬発戦〇芝直: 瞬発戦△ダート: 消耗戦◎ ドバイシーマクラシック: 瞬発戦◎ドバイターフ: 瞬発戦◎ドバイワールドカップ: 消耗戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">メイダン (美丹)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Meydan</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">阿聯酋</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">〇</b></span><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🌿直:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">△</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ドバイシーマクラシック:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">⚡ 瞬發戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#38bdf8;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ドバイターフ:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">⚡ 瞬發戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#38bdf8;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ドバイワールドカップ:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="其他" data-region="沙地阿拉拍" data-slope="なし" data-tactics="芝: 持久戦〇ダート: 消耗戦◎ サウジカップ: 消耗戦◎" data-search="キングアブドゥルアジーズ 安都拉茲 king abdulaziz 其他 沙地阿拉拍 芝: 持久戦〇ダート: 消耗戦◎ サウジカップ: 消耗戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">キングアブドゥルアジーズ (安都拉茲)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">King Abdulaziz</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">沙地阿拉拍</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">サウジカップ:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="其他" data-region="香港" data-slope="なし" data-tactics="瞬発戦〇 香港カップ: 持久戦◎香港マイル: 消耗戦◎" data-search="シャティン 沙田 sha tin 其他 香港 瞬発戦〇 香港カップ: 持久戦◎香港マイル: 消耗戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">シャティン (沙田)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Sha Tin</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">香港</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">香港カップ:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">香港マイル:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="其他" data-region="澳洲" data-slope="なし" data-tactics="瞬発戦〇 /" data-search="コーフィールド 考菲爾德 caulfield 其他 澳洲 瞬発戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">コーフィールド (考菲爾德)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Caulfield</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">澳洲</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="其他" data-region="澳洲" data-slope="なし" data-tactics="芝: 持久戦〇芝直: 瞬発戦△ メルボルンカップ: 持久戦◎" data-search="フレミントン 費明頓 flemington 其他 澳洲 芝: 持久戦〇芝直: 瞬発戦△ メルボルンカップ: 持久戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">フレミントン (費明頓)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Flemington</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">澳洲</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🌿直:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">メルボルンカップ:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="其他" data-region="澳洲" data-slope="なし" data-tactics="消耗戦◎ コックスプレート: 消耗戦◎" data-search="ムーニーバレー 滿利谷 moonee valley 其他 澳洲 消耗戦◎ コックスプレート: 消耗戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ムーニーバレー (滿利谷)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Moonee Valley</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">澳洲</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">かなり短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">コックスプレート:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="其他" data-region="澳洲" data-slope="あり" data-tactics="持久戦△ ジ・エベレスト: 消耗戦◎シドニーC: 持久戦〇" data-search="ロイヤルランドウィック 蘭域 royal randwick 其他 澳洲 持久戦△ ジ・エベレスト: 消耗戦◎シドニーc: 持久戦〇">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ロイヤルランドウィック (蘭域)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Royal Randwick</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">澳洲</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ジ・エベレスト:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">シドニーC:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">〇</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="其他" data-region="澳洲" data-slope="なし" data-tactics="瞬発戦〇 /" data-search="ローズヒルガーデンズ 玫瑰崗 rosehill gardens 其他 澳洲 瞬発戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ローズヒルガーデンズ (玫瑰崗)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Rosehill Gardens</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">澳洲</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8;">右迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="芝: 消耗戦〇ダート: 消耗戦◎ /" data-search="アケダクト 雅佳特 aqueduct 美國 美國 芝: 消耗戦〇ダート: 消耗戦◎ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">アケダクト (雅佳特)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Aqueduct</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="ダート: 消耗戦◎ /" data-search="オークローンパーク 奧克朗園 oak lawn park 美國 美國 ダート: 消耗戦◎ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">オークローンパーク (奧克朗園)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Oak Lawn Park</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="芝: 消耗戦〇ダート: 消耗戦◎ ペガサスワールドC: 消耗戦◎" data-search="ガルフストリームパーク 灣流 gulfstream park 美國 美國 芝: 消耗戦〇ダート: 消耗戦◎ ペガサスワールドc: 消耗戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ガルフストリームパーク (灣流)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Gulfstream Park</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ペガサスワールドC:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="芝: 消耗戦〇ダート: 消耗戦〇 /" data-search="キーンランド 堅蘭 keeneland 美國 美國 芝: 消耗戦〇ダート: 消耗戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">キーンランド (堅蘭)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Keeneland</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="芝: 消耗戦〇ダート: 消耗戦〇 /" data-search="サラトガ 沙拉托加 saratoga 美國 美國 芝: 消耗戦〇ダート: 消耗戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">サラトガ (沙拉托加)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Saratoga</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="芝: 消耗戦〇ダート: 消耗戦◎ BCターフ: 持久戦〇BCクラシック: 消耗戦⦿BCスプリント: 消耗戦⦿" data-search="サンタアニタ 聖雅尼塔 santa anita 美國 美國 芝: 消耗戦〇ダート: 消耗戦◎ bcターフ: 持久戦〇bcクラシック: 消耗戦⦿bcスプリント: 消耗戦⦿">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">サンタアニタ (聖雅尼塔)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Santa Anita</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">BCターフ:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🛡️ 持久戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#6ee7b7;">〇</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">BCクラシック:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">⦿</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">BCスプリント:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">⦿</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="ダート: 消耗戦〇 /" data-search="ターフウェーパーク 草道園 turfway park 美國 美國 ダート: 消耗戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ターフウェーパーク (草道園)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Turfway Park</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="芝: 消耗戦〇ダート: 消耗戦◎ ケンタッキーダービー: 消耗戦⦿" data-search="チャーチルダウンズ 邱吉爾園 churchill downs 美國 美國 芝: 消耗戦〇ダート: 消耗戦◎ ケンタッキーダービー: 消耗戦⦿">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">チャーチルダウンズ (邱吉爾園)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Churchill Downs</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ケンタッキーダービー:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">⦿</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="芝: 消耗戦△ダート: 消耗戦◎ パシフィッククラシック: 消耗戦◎" data-search="デルマー 德爾馬 del mar 美國 美國 芝: 消耗戦△ダート: 消耗戦◎ パシフィッククラシック: 消耗戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">デルマー (德爾馬)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Del Mar</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">パシフィッククラシック:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="芝: 消耗戦〇ダート: 消耗戦◎ プリークネスS: 消耗戦◎" data-search="ピムリコ 賓利高 pimlico 美國 美國 芝: 消耗戦〇ダート: 消耗戦◎ プリークネスs: 消耗戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ピムリコ (賓利高)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Pimlico</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">プリークネスS:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="芝: 消耗戦△ダート: 消耗戦〇 プリークネスS: 消耗戦◎" data-search="フェアグラウンズ 費爾園 fair grounds 美國 美國 芝: 消耗戦△ダート: 消耗戦〇 プリークネスs: 消耗戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">フェアグラウンズ (費爾園)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Fair Grounds</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">プリークネスS:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">◎</b></span><div style="font-size:0.75rem; color:#f59e0b; margin-top:3px;">⚠️ 原網頁複製了 Pimlico 的普利克尼斯錦標 (Fair Grounds 實為路易斯安那德比 Louisiana Derby 賽場)</div></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="芝: 消耗戦〇ダート: 消耗戦◎ ベルモントS: 消耗戦◎" data-search="ベルモントパーク 貝蒙園 belmont park 美國 美國 芝: 消耗戦〇ダート: 消耗戦◎ ベルモントs: 消耗戦◎">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ベルモントパーク (貝蒙園)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Belmont Park</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ベルモントS:</strong> <span class="pill" <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:</strong>rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;">🔥 消耗戰 <b <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:</strong>#fdba74;">◎</b></span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="芝: 消耗戦△ダート: 消耗戦〇 /" data-search="モンマスパーク 萬滿園 monmouth park 美國 美國 芝: 消耗戦△ダート: 消耗戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">モンマスパーク (萬滿園)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Monmouth Park</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="美國" data-slope="なし" data-tactics="ダート: 消耗戦〇 /" data-search="ロスアラミトス 洛斯阿拉米托斯 los alamitos 美國 美國 ダート: 消耗戦〇 /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ロスアラミトス (洛斯阿拉米托斯)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Los Alamitos</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">美國</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">かなり平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">小回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+    <tr class="tab5-rc-row" data-zone="美國" data-region="加拿大" data-slope="なし" data-tactics="芝: 消耗戦△ /" data-search="ウッドバイン 活拜 woodbine 美國 加拿大 芝: 消耗戦△ /">
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
+        <td style="text-align:left !important; white-space:nowrap;">
+            <strong style="color:var(--text-color); font-size:0.9rem;">ウッドバイン (活拜)</strong>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Woodbine</div>
+        </td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:var(--text-muted);">加拿大</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(234,179,8,0.15); color:#facc15;">左迴</span></td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや平坦</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem;">やや大回り</td>
+        <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
+        <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
+        <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span></td>
+        <td style="text-align:left !important; line-height:1.6; min-width:200px;"><span style="color:var(--text-muted); font-size:0.8rem;">—</span></td>
+    </tr>
+    
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+function filterTab5Racecourses() {
+    const region = document.getElementById('tab5FilterRegion')?.value || 'ALL';
+    const tactics = document.getElementById('tab5FilterTactics')?.value || 'ALL';
+    const slope = document.getElementById('tab5FilterSlope')?.value || 'ALL';
+    const search = (document.getElementById('tab5SearchInput')?.value || '').trim().toLowerCase();
+    
+    const rows = document.querySelectorAll('#tab5TableBody .tab5-rc-row');
+    let count = 0;
+    
+    rows.forEach(tr => {
+        const rowRegion = tr.getAttribute('data-region') || '';
+        const rowZone = tr.getAttribute('data-zone') || '';
+        const rowSlope = tr.getAttribute('data-slope') || '';
+        const rowTactics = tr.getAttribute('data-tactics') || '';
+        const rowSearch = tr.getAttribute('data-search') || '';
+        
+        let matchRegion = (region === 'ALL' || rowRegion.includes(region) || rowZone.includes(region));
+        let matchTactics = (tactics === 'ALL' || rowTactics.includes(tactics));
+        let matchSlope = (slope === 'ALL' || rowSlope.includes(slope));
+        let matchSearch = (!search || rowSearch.includes(search));
+        
+        if (matchRegion && matchTactics && matchSlope && matchSearch) {
+            tr.style.display = '';
+            count++;
+        } else {
+            tr.style.display = 'none';
+        }
+    });
+    
+    const countEl = document.getElementById('tab5MatchCount');
     if (countEl) countEl.innerText = count;
 }
 </script>
