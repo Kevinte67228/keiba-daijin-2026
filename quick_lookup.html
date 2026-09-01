@@ -1734,7 +1734,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.72</span>
+<span class="version-badge">v02.73</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -5548,6 +5548,103 @@ li {
 <h2>🐴 幼駒相馬・評語對照・出生事件 (Foals &amp; Comments)</h2>
 <p>【第 22 章 ~ 第 24 章】0~3 歲幼駒評語完全手冊 (日文/中文/解讀三欄對照)、相馬眼 S 級評判心法、9 大特殊出生事件</p>
 </div>
+<section class="section-card" id="sec-breeding-only-horses">
+<div class="section-header">
+<div class="section-title"><i class="fa-solid fa-venus-mars"></i> 【繁殖專用史實馬全量數據庫】 (4,314 匹名種公馬 / 繁殖名雌完全對照大表)</div>
+</div>
+<div class="section-body">
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-dna"></i>
+<div>
+<strong>《賽馬大亨 10 2026》繁殖専用史実馬 (Breeding-Only Historical Horses) 完全指南</strong><br/>
+                    收錄全歷史 <strong>4,314 匹繁殖專用史實名馬</strong>（競走馬階段不直接登場，但在遊戲開始時即作為種牡馬/繁殖牝馬登場，或於競走引退年齡之翌年直接作為種公馬/繁殖母馬出現）。<br/>
+                    ※ 包含日本馬與海外名馬雙方，精準記載 <strong>SP、耐力、7 大副屬性評級 (S+~G)、副屬性合計 (滿分105)、三態展開適應 (瞬/持/消)、成長型、腳質、特性、遺傳因子與仔出能力 (仔出し)</strong>！
+                </div>
+</div>
+
+<!-- 篩選控制面板 -->
+<div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:8px; padding:12px; margin-bottom:14px;">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+    <div class="md:col-span-4">
+      <div style="position:relative;">
+        <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:12px;"></i>
+        <input type="text" id="breedHorseSearchInput" placeholder="搜尋馬名 (日/英)、父馬、母馬、特性..." oninput="filterBreedingHorsesTable()" style="width:100%; padding:6px 10px 6px 30px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:6px; color:var(--text-main); font-size:12px;" />
+      </div>
+    </div>
+    
+    <!-- 馬札篩選 -->
+    <div class="md:col-span-5 flex flex-wrap gap-1">
+      <button class="pill active" onclick="setBreedAmuletFilter('ALL', this)" style="padding:3px 8px; font-size:10.5px;">全部馬札</button>
+      <button class="pill" onclick="setBreedAmuletFilter('虹', this)" style="padding:3px 8px; font-size:10.5px; color:#ec4899;">🌈 虹札</button>
+      <button class="pill" onclick="setBreedAmuletFilter('金', this)" style="padding:3px 8px; font-size:10.5px; color:#eab308;">🥇 金札</button>
+      <button class="pill" onclick="setBreedAmuletFilter('銀', this)" style="padding:3px 8px; font-size:10.5px; color:#94a3b8;">🥈 銀札</button>
+      <button class="pill" onclick="setBreedAmuletFilter('銅', this)" style="padding:3px 8px; font-size:10.5px; color:#f97316;">🥉 銅札</button>
+      <button class="pill" onclick="setBreedAmuletFilter('緑', this)" style="padding:3px 8px; font-size:10.5px; color:#22c55e;">🟢 綠札</button>
+      <button class="pill" onclick="setBreedAmuletFilter('無', this)" style="padding:3px 8px; font-size:10.5px; color:#64748b;">⚪ 免費無札</button>
+    </div>
+    
+    <!-- 性別篩選 -->
+    <div class="md:col-span-3 text-right flex justify-end gap-1">
+      <button class="pill active" onclick="setBreedSexFilter('ALL', this)" style="padding:3px 8px; font-size:10.5px;">全部性別</button>
+      <button class="pill" onclick="setBreedSexFilter('牡', this)" style="padding:3px 8px; font-size:10.5px; color:#38bdf8;">♂ 牡馬</button>
+      <button class="pill" onclick="setBreedSexFilter('牝', this)" style="padding:3px 8px; font-size:10.5px; color:#f472b6;">♀ 牝馬</button>
+    </div>
+  </div>
+  
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; padding-top:8px; border-top:1px dashed var(--border-color);">
+    <!-- 地域篩選 -->
+    <div class="flex gap-2">
+      <button class="pill active" onclick="setBreedRegionFilter('ALL', this)" style="font-size:11px;">全部繋養地</button>
+      <button class="pill" onclick="setBreedRegionFilter('日本', this)" style="font-size:11px;">🇯🇵 日本</button>
+      <button class="pill" onclick="setBreedRegionFilter('美國', this)" style="font-size:11px;">🇺🇸 美國</button>
+      <button class="pill" onclick="setBreedRegionFilter('英國', this)" style="font-size:11px;">🇬🇧 英國</button>
+      <button class="pill" onclick="setBreedRegionFilter('愛爾蘭', this)" style="font-size:11px;">🇮🇪 愛爾蘭</button>
+      <button class="pill" onclick="setBreedRegionFilter('法國', this)" style="font-size:11px;">🇫🇷 法國</button>
+      <button class="pill" onclick="setBreedRegionFilter('澳洲', this)" style="font-size:11px;">🇦🇺 澳洲</button>
+    </div>
+    <span style="font-size:11.5px; color:var(--text-muted);" id="breedHorseCountBadge">顯示共 4,314 匹繁殖史實馬</span>
+  </div>
+</div>
+
+<!-- 繁殖專用史實馬資料大表 -->
+<div class="table-responsive" style="max-height:650px; overflow-y:auto; margin-bottom:18px; -webkit-overflow-scrolling:touch;">
+<table class="data-table" style="min-width:1600px;" id="breedingOnlyHorsesTable">
+<thead>
+<tr>
+<th class="sortable-th" onclick="sortBreedTable('name_jp')" style="min-width:160px; text-align:left !important;">日文馬名 ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('name_en')" style="min-width:150px; text-align:left !important;">英文馬名 ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('amulet')" style="width:70px; text-align:left !important;">馬札 ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('birth_year')" style="width:80px; text-align:left !important;">生年 ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('sex')" style="width:80px; text-align:left !important;">性別 ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('coat')" style="width:80px; text-align:left !important;">毛色 ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('birth_country')" style="width:80px; text-align:left !important;">生國 ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('stable_country')" style="width:80px; text-align:left !important;">繋養地 ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('sire')" style="min-width:130px; text-align:left !important;">父馬 ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('dam')" style="min-width:130px; text-align:left !important;">母馬 ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('sp')" style="width:70px; text-align:left !important;">SP ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('st')" style="width:70px; text-align:left !important;">耐力 ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('sub_total')" style="width:80px; text-align:left !important; color:#38bdf8;">副計 ⇅</th>
+<th style="width:60px; text-align:left !important;">芝</th>
+<th style="width:60px; text-align:left !important;">泥</th>
+<th style="width:65px; text-align:left !important;">瞬適</th>
+<th style="width:65px; text-align:left !important;">持適</th>
+<th style="width:65px; text-align:left !important;">消適</th>
+<th class="sortable-th" onclick="sortBreedTable('growth_type')" style="width:85px; text-align:left !important;">成長型 ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('running_style')" style="width:75px; text-align:left !important;">腳質 ⇅</th>
+<th style="width:70px; text-align:left !important;">氣性</th>
+<th class="sortable-th" onclick="sortBreedTable('kodaeshi')" style="width:75px; text-align:left !important; color:#22c55e;">仔出 ⇅</th>
+<th style="min-width:130px; text-align:left !important;">特性</th>
+<th style="min-width:100px; text-align:left !important;">因子</th>
+<th style="width:80px; text-align:left !important;">繁引退齡</th>
+</tr>
+</thead>
+<tbody id="breedingOnlyTableBody">
+<!-- Dynamic Loaded via JS -->
+</tbody>
+</table>
+</div>
+</div>
+</section>
 <section class="section-card" id="sec-potential">
 <div class="section-header">
 <div class="section-title"><i class="fa-solid fa-eye"></i> 第 22 章：優質幼駒四大判別法・相馬心法與幼駒專用史實調教</div>
@@ -32759,7 +32856,8 @@ function applyUmasonaCombinedFilter() {
     });
 }
 </script><script src="yearly_full_db.js"></script>
-<script src="sires_retire_db.js"></script><script>
+<script src="sires_retire_db.js"></script>
+<script src="breeding_only_sires_db.js"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -33034,6 +33132,168 @@ function renderSiresTable() {
 window.addEventListener('DOMContentLoaded', initSiresAndNenpyo);
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
   initSiresAndNenpyo();
+}
+</script>
+
+
+<script>
+// Breeding Only Historical Horses Table Logic
+let currentBreedAmulet = 'ALL';
+let currentBreedSex = 'ALL';
+let currentBreedRegion = 'ALL';
+let breedSortKey = 'birth_year';
+let breedSortAsc = true;
+
+const amuletRankMap = { '虹': 6, '金': 5, '銀': 4, '銅': 3, '緑': 2, '無': 1 };
+
+function initBreedingHorses() {
+  if (!window.WP10_BREEDING_ONLY_HORSES) return;
+  renderBreedingTable();
+}
+
+function setBreedAmuletFilter(amulet, btn) {
+  currentBreedAmulet = amulet;
+  if (btn) {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  renderBreedingTable();
+}
+
+function setBreedSexFilter(sex, btn) {
+  currentBreedSex = sex;
+  if (btn) {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  renderBreedingTable();
+}
+
+function setBreedRegionFilter(reg, btn) {
+  currentBreedRegion = reg;
+  if (btn) {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  renderBreedingTable();
+}
+
+function sortBreedTable(key) {
+  if (breedSortKey === key) {
+    breedSortAsc = !breedSortAsc;
+  } else {
+    breedSortKey = key;
+    breedSortAsc = true;
+  }
+  renderBreedingTable();
+}
+
+function renderBreedingTable() {
+  if (!window.WP10_BREEDING_ONLY_HORSES) return;
+  const tbody = document.getElementById('breedingOnlyTableBody');
+  const countBadge = document.getElementById('breedHorseCountBadge');
+  const query = (document.getElementById('breedHorseSearchInput')?.value || '').toLowerCase().trim();
+  
+  let list = window.WP10_BREEDING_ONLY_HORSES;
+  
+  // Filter amulet
+  if (currentBreedAmulet !== 'ALL') {
+    list = list.filter(h => h.amulet === currentBreedAmulet);
+  }
+  
+  // Filter sex
+  if (currentBreedSex !== 'ALL') {
+    list = list.filter(h => h.sex.includes(currentBreedSex));
+  }
+  
+  // Filter region
+  if (currentBreedRegion !== 'ALL') {
+    list = list.filter(h => h.stable_country.includes(currentBreedRegion) || h.birth_country.includes(currentBreedRegion));
+  }
+  
+  // Filter query
+  if (query) {
+    list = list.filter(h =>
+      h.name_jp.toLowerCase().includes(query) ||
+      h.name_en.toLowerCase().includes(query) ||
+      h.sire.toLowerCase().includes(query) ||
+      h.dam.toLowerCase().includes(query) ||
+      h.traits.toLowerCase().includes(query) ||
+      String(h.birth_year).includes(query)
+    );
+  }
+  
+  // Sort
+  list.sort((a, b) => {
+    let va = a[breedSortKey];
+    let vb = b[breedSortKey];
+    if (breedSortKey === 'amulet') {
+      va = amuletRankMap[va] || 0;
+      vb = amuletRankMap[vb] || 0;
+    }
+    if (typeof va === 'string') {
+      return breedSortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+    }
+    return breedSortAsc ? (va - vb) : (vb - va);
+  });
+  
+  if (countBadge) {
+    countBadge.textContent = `顯示共 ${list.length} / ${window.WP10_BREEDING_ONLY_HORSES.length} 匹繁殖專用史實馬`;
+  }
+  
+  if (!tbody) return;
+  
+  const displayList = list.slice(0, 250);
+  let html = '';
+  displayList.forEach(h => {
+    const amBadge = h.amulet === '虹' ? '<span class="badge" style="background:#ec4899; color:#fff;">虹</span>' :
+                    h.amulet === '金' ? '<span class="badge" style="background:#eab308; color:#000;">金</span>' :
+                    h.amulet === '銀' ? '<span class="badge" style="background:#94a3b8; color:#fff;">銀</span>' :
+                    h.amulet === '銅' ? '<span class="badge" style="background:#f97316; color:#fff;">銅</span>' :
+                    h.amulet === '緑' ? '<span class="badge" style="background:#22c55e; color:#fff;">綠</span>' :
+                    '<span class="badge" style="background:#64748b; color:#fff;">無</span>';
+                    
+    const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;">牝</strong>' : '<strong style="color:#38bdf8;">牡</strong>';
+    
+    html += `<tr>
+      <td style="font-weight:700; text-align:left !important;">${h.name_jp}</td>
+      <td style="color:var(--text-muted); font-size:11px; text-align:left !important;">${h.name_en}</td>
+      <td style="text-align:left !important;">${amBadge}</td>
+      <td style="font-weight:700; color:var(--primary); text-align:left !important;">${h.birth_year}</td>
+      <td style="text-align:left !important;">${sexBadge}</td>
+      <td style="text-align:left !important;">${h.coat}</td>
+      <td style="text-align:left !important;">${h.birth_country}</td>
+      <td style="text-align:left !important;">${h.stable_country}</td>
+      <td style="text-align:left !important;">${h.sire}</td>
+      <td style="text-align:left !important;">${h.dam}</td>
+      <td style="font-weight:700; text-align:left !important;">${h.sp}</td>
+      <td style="text-align:left !important;">${h.st}</td>
+      <td style="font-weight:700; color:#38bdf8; text-align:left !important;">${h.sub_total}</td>
+      <td style="text-align:left !important;">${h.turf}</td>
+      <td style="text-align:left !important;">${h.dirt}</td>
+      <td style="text-align:left !important; font-size:11px;">${h.apt_instant}</td>
+      <td style="text-align:left !important; font-size:11px;">${h.apt_persist}</td>
+      <td style="text-align:left !important; font-size:11px;">${h.apt_deplete}</td>
+      <td style="text-align:left !important;">${h.growth_type}</td>
+      <td style="text-align:left !important;">${h.running_style}</td>
+      <td style="text-align:left !important;">${h.temperament}</td>
+      <td style="font-weight:700; color:#22c55e; text-align:left !important;">${h.kodaeshi}</td>
+      <td style="font-size:11px; text-align:left !important;">${h.traits ? `<span class="badge" style="background:rgba(217,119,6,0.15); color:var(--primary);">${h.traits}</span>` : '-'}</td>
+      <td style="font-size:11px; text-align:left !important;">${h.inshi || '-'}</td>
+      <td style="text-align:left !important;">${h.retire_breed_age ? `${h.retire_breed_age} 歲` : '-'}</td>
+    </tr>`;
+  });
+  
+  if (list.length > 250) {
+    html += `<tr><td colspan="25" style="text-align:center; padding:12px; color:var(--text-muted); font-size:12px;">已載入前 250 匹繁殖馬，若需尋找特定名馬請利用上方「馬札」、「性別」、「繋養地」篩選或「搜尋框」即時檢索。</td></tr>`;
+  }
+  
+  tbody.innerHTML = html;
+}
+
+window.addEventListener('DOMContentLoaded', initBreedingHorses);
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  initBreedingHorses();
 }
 </script>
 
