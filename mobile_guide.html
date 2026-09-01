@@ -1746,7 +1746,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.84</span>
+<span class="version-badge">v02.85</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -29473,7 +29473,7 @@ function filterTab5Racecourses() {
 </div>
 </div>
 
-id="pillar-tracker" style="display:none; padding-bottom:110px;">
+<div class="pillar-content" id="pillar-tracker" style="display:none; padding-bottom:110px;">
 <div class="pillar-header-card">
 <h2>📊 實戰 13 大跑法比賽戰績紀錄儀 (橫向即時批次錄入大表)</h2>
 <p>橫向一行對應一匹馬的一場比賽戰績，支援同時進行多匹馬的 13 種跑法即時輸入、切換月份週別自動推薦重賞、自動計算最優跑法、以及 Google Sheets 雙向同步</p>
@@ -30905,6 +30905,279 @@ function filterChapterList() {
         group.style.display = anyVisible ? "block" : "none";
     });
 }
+</script>
+<script>
+// ==================== 核心全站晶片 (Chips) 與分頁切換引擎 ====================
+
+// 1. 章節 47：名師實戰講堂分頁切換
+function switchLecTab(tabIdx) {
+    document.querySelectorAll('.lec-tab-pane').forEach(el => el.style.display = 'none');
+    const target = document.getElementById('lecTab' + tabIdx);
+    if (target) target.style.display = 'block';
+
+    for (let i = 1; i <= 6; i++) {
+        const btn = document.getElementById('btnLecTab' + i);
+        if (btn) btn.classList.remove('active');
+    }
+    const activeBtn = document.getElementById('btnLecTab' + tabIdx);
+    if (activeBtn) activeBtn.classList.add('active');
+}
+
+// 2. 章節 31：重賞大表 / 競馬場特性 / G1 攻略子分頁切換
+function switchStakesSubTab(tabId) {
+    document.querySelectorAll('.stakes-subtab-pane').forEach(el => el.style.display = 'none');
+    const target = document.getElementById(tabId);
+    if (target) target.style.display = 'block';
+    
+    const btnMap = {
+        'stakesTab1': 'btnStakesTab1',
+        'stakesTab2': 'btnStakesTab2',
+        'stakesTab3': 'btnStakesTab3',
+        'stakesTab4': 'btnStakesTab4',
+        'stakesTab5': 'btnStakesTab5'
+    };
+    Object.values(btnMap).forEach(id => {
+        const b = document.getElementById(id);
+        if (b) b.classList.remove('active');
+    });
+    const activeBtn = document.getElementById(btnMap[tabId]);
+    if (activeBtn) activeBtn.classList.add('active');
+}
+
+// 3. 章節 32：全球三冠系列賽群組與項目切換
+function switchSeriesGroup(groupIdx) {
+    document.querySelectorAll('.series-group-pane').forEach(el => el.style.display = 'none');
+    const target = document.getElementById('serGroupContainer_' + groupIdx);
+    if (target) target.style.display = 'block';
+
+    for (let i = 0; i < 6; i++) {
+        const btn = document.getElementById('btnSerGroup_' + i);
+        if (btn) btn.classList.remove('active');
+    }
+    const activeBtn = document.getElementById('btnSerGroup_' + groupIdx);
+    if (activeBtn) activeBtn.classList.add('active');
+}
+
+function switchSeriesItem(groupIdx, itemId) {
+    const container = document.getElementById('serGroupContainer_' + groupIdx);
+    if (!container) return;
+
+    container.querySelectorAll('.series-item-card').forEach(el => el.style.display = 'none');
+    const card = document.getElementById('cardSer_' + itemId);
+    if (card) card.style.display = 'block';
+
+    container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    const chip = document.getElementById('chipSer_' + itemId);
+    if (chip) chip.classList.add('active');
+}
+
+function resetCh38Filters() {
+    if (document.getElementById('ch38FilterRegion')) document.getElementById('ch38FilterRegion').value = 'ALL';
+    if (document.getElementById('ch38FilterGrade')) document.getElementById('ch38FilterGrade').value = 'ALL';
+    if (document.getElementById('ch38FilterMonth')) document.getElementById('ch38FilterMonth').value = 'ALL';
+    if (document.getElementById('ch38FilterTrack')) document.getElementById('ch38FilterTrack').value = 'ALL';
+    if (document.getElementById('ch38SearchInput')) document.getElementById('ch38SearchInput').value = '';
+    if (typeof filterCh38Stakes === 'function') filterCh38Stakes();
+}
+
+// 4. 章節 09：全配合理論分類晶片篩選
+function filterCategory(category, btn) {
+    document.querySelectorAll('#sec-master-table .filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    const rows = document.querySelectorAll('#theoryMasterTable tbody tr');
+    rows.forEach(r => {
+        const catAttr = (r.getAttribute('data-cat') || "").split(" ");
+        if (category === 'all' || catAttr.includes(category)) {
+            r.style.display = '';
+        } else {
+            r.style.display = 'none';
+        }
+    });
+}
+
+// 5. 章節 21：系統確立與血統支配率精算機分頁切換
+function setSysTab(tabKey) {
+    const key = (tabKey === 'founder' || tabKey === 'ancestor') ? 'ancestor' : tabKey;
+    
+    document.querySelectorAll('.sys-btn').forEach(b => {
+        b.style.color = 'var(--text-muted)';
+        b.style.borderBottom = '2px solid transparent';
+        b.style.fontWeight = 'bold';
+    });
+    const activeBtn = document.getElementById(`sysTab-${key}`) || document.getElementById(`sysTab-${tabKey}`);
+    if (activeBtn) {
+        activeBtn.style.color = 'var(--accent-color)';
+        activeBtn.style.borderBottom = '2px solid var(--accent-color)';
+    }
+
+    const container = document.getElementById('sysContent');
+    if (!container) return;
+    
+    if (key === 'child') {
+        container.innerHTML = `
+            <div style="background:rgba(15,23,42,0.6); padding:16px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
+                <h4 style="color:var(--accent-color); margin-bottom:8px;">子系統確立 (子系統確立) 核心標準</h4>
+                <p style="font-size:0.85rem; line-height:1.7;">滿足以下任一支配率條件，且該種公馬引退前未滿 27 歲：</p>
+                <ul style="font-size:0.85rem; line-height:1.8; margin-left:20px; color:var(--text-main);">
+                    <li><strong>日本國內血統支配率 ≥ 5.0%</strong></li>
+                    <li><strong>世界全體血統支配率 ≥ 2.0%</strong></li>
+                </ul>
+            </div>`;
+    } else if (key === 'ancestor') {
+        container.innerHTML = `
+            <div style="background:rgba(15,23,42,0.6); padding:16px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
+                <h4 style="color:var(--gold-color); margin-bottom:8px;">親系統確立 (親系統確立) 昇格條件</h4>
+                <p style="font-size:0.85rem; line-height:1.7;">滿足以下任一條件，子系統升格為親系統：</p>
+                <ul style="font-size:0.85rem; line-height:1.8; margin-left:20px; color:var(--text-main);">
+                    <li><strong>下屬建立 4 個子系統</strong> (自動升格)</li>
+                    <li><strong>下屬建立 3 個子系統，且自身日本國內支配率 ≥ 10.0% 或世界支配率 ≥ 5.0%</strong></li>
+                    <li><strong>自身世界全體血統支配率 ≥ 10.0%</strong></li>
+                </ul>
+            </div>`;
+    } else if (key === 'extinct') {
+        container.innerHTML = `
+            <div style="background:rgba(15,23,42,0.6); padding:16px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
+                <h4 style="color:#ef4444; margin-bottom:8px;">零細化與滅亡系統保護</h4>
+                <p style="font-size:0.85rem; line-height:1.7;">當血統支配率過低時發動零細配合，可為血統提供額外 +4~+8 爆發力加成。</p>
+            </div>`;
+    }
+}
+
+function calculateDominance() {
+    const s = parseFloat(document.getElementById('sys_sire')?.value || 0);
+    const m = parseFloat(document.getElementById('sys_mare')?.value || 0);
+    const r = parseFloat(document.getElementById('sys_race')?.value || 0);
+    const b = parseFloat(document.getElementById('sys_brood')?.value || 0);
+    const total = (s + m + r + b) / 4.0;
+    const resEl = document.getElementById('sys_result');
+    if (resEl) {
+        resEl.textContent = total.toFixed(2) + "% " + (total >= 5.0 ? "(達標!)" : "(未達標)");
+        resEl.style.color = total >= 5.0 ? "#4ade80" : "#f87171";
+    }
+}
+
+// 6. 章節 08：爆發力隨機抽樣分佈模擬器圖表初始化與運算
+let explosionChartInstance = null;
+
+function initSimulationChart() {
+    const canvasEl = document.getElementById('explosionChart');
+    if (!canvasEl) return;
+    if (explosionChartInstance) return;
+    if (typeof Chart === 'undefined') return;
+    
+    const ctx = canvasEl.getContext('2d');
+    explosionChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: Array.from({length: 31}, (_, i) => `b = ${i}`),
+            data: Array(31).fill(0),
+            backgroundColor: 'rgba(56, 189, 248, 0.65)',
+            borderColor: '#38bdf8',
+            borderWidth: 1.5,
+            borderRadius: 3
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) { return ` 抽樣次數: ${context.parsed.y} 次`; }
+                    }
+                }
+            },
+            scales: {
+                x: { ticks: { color: '#94a3b8', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+            }
+        }
+    });
+    runExplosionSimulation();
+}
+
+function runExplosionSimulation() {
+    const baseB = parseInt(document.getElementById('simBaseExp')?.value || 30);
+    const ranchLvl = parseInt(document.getElementById('simRanchBonus')?.value || 3);
+    const maxB = baseB + ranchLvl;
+    
+    const counts = Array(maxB + 1).fill(0);
+    const N = 1000;
+    for (let i = 0; i < N; i++) {
+        const sampled = Math.floor(Math.random() * (maxB + 1));
+        counts[sampled]++;
+    }
+    
+    if (explosionChartInstance) {
+        explosionChartInstance.data.labels = Array.from({length: maxB + 1}, (_, i) => `b = ${i}`);
+        explosionChartInstance.data.datasets[0].data = counts;
+        explosionChartInstance.update();
+    }
+}
+function runSimulation() { runExplosionSimulation(); }
+
+// 7. 章節 29：ウマソナ (馬之個性) 分類晶片篩選
+function filterUmasona(catKey, btn) {
+    document.querySelectorAll('#sec-umasona .filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    const cards = document.querySelectorAll('#sec-umasona .umasona-card');
+    cards.forEach(c => {
+        const cat = c.getAttribute('data-cat') || '';
+        if (catKey === 'all' || cat === catKey) {
+            c.style.display = 'block';
+        } else {
+            c.style.display = 'none';
+        }
+    });
+}
+
+// 8. 全域通用資料表格即時升降序排序引擎
+function sortTableByColumn(table, colIndex, headerEl) {
+    const tbody = table.querySelector('tbody');
+    if (!tbody) return;
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    if (rows.length === 0) return;
+    
+    let isAsc = headerEl.classList.contains('sorted-asc') ? false : true;
+    
+    table.querySelectorAll('th').forEach(th => {
+        th.classList.remove('sorted-asc', 'sorted-desc');
+    });
+    headerEl.classList.add(isAsc ? 'sorted-asc' : 'sorted-desc');
+    
+    rows.sort((a, b) => {
+        const cellA = (a.children[colIndex]?.innerText || '').trim();
+        const cellB = (b.children[colIndex]?.innerText || '').trim();
+        
+        const numA = parseFloat(cellA.replace(/[^0-9.-]/g, ''));
+        const numB = parseFloat(cellB.replace(/[^0-9.-]/g, ''));
+        
+        if (!isNaN(numA) && !isNaN(numB) && cellA.match(/^\d/) && cellB.match(/^\d/)) {
+            return isAsc ? numA - numB : numB - numA;
+        }
+        return isAsc ? cellA.localeCompare(cellB, 'zh-TW') : cellB.localeCompare(cellA, 'zh-TW');
+    });
+    
+    rows.forEach(r => tbody.appendChild(r));
+}
+
+function makeTablesSortable(root = document) {
+    root.querySelectorAll('table.data-table').forEach(table => {
+        const headers = table.querySelectorAll('th');
+        headers.forEach((th, idx) => {
+            if (!th.classList.contains('sortable-th')) {
+                th.classList.add('sortable-th');
+                th.style.cursor = 'pointer';
+                th.style.userSelect = 'none';
+                th.title = '點擊即可即時切換升降序排序';
+                th.addEventListener('click', () => sortTableByColumn(table, idx, th));
+            }
+        });
+    });
+}
+document.addEventListener('DOMContentLoaded', () => {
+    makeTablesSortable();
+    if (typeof initSimulationChart === 'function') setTimeout(initSimulationChart, 300);
+});
 </script>
 </body>
 </html>
