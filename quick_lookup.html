@@ -1746,7 +1746,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.75</span>
+<span class="version-badge">v02.76</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -29701,10 +29701,10 @@ function switchLecTab(tabIdx) {
             if (m) m.style.display = "none";
         }
 
-        function jumpToChapter(pillarId, sectionId) {
-            recordCurrentPosition();
-            switchMainPillar(pillarId);
-            closeChapterModal();
+                        function jumpToChapter(pillarId, sectionId) {
+            if (typeof recordCurrentPosition === 'function') recordCurrentPosition();
+            if (typeof switchMainPillar === 'function') switchMainPillar(pillarId);
+            if (typeof closeChapterModal === 'function') closeChapterModal();
             setTimeout(() => {
                 const target = document.getElementById(sectionId);
                 if (target) {
@@ -29713,7 +29713,6 @@ function switchLecTab(tabIdx) {
                     setTimeout(() => target.classList.remove('section-highlight-flash'), 2000);
                 }
             }, 120);
-        }, 160);
         }
 
         function filterChapterList() {
