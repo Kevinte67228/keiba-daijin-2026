@@ -1746,7 +1746,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.87</span>
+<span class="version-badge">v02.88</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -30343,84 +30343,15 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 let currentRecsRegion = 'japan';
 let currentRecsYearIndex = 0;
 
-function initYearlyRecsTable() {
-  if (!window.WP10_YEARLY_RECOMMENDATIONS_DATA) return;
-  renderYearChips();
-  renderYearContent();
-}
 
-function setRecsRegionFilter(region, btn) {
-  currentRecsRegion = region;
-  currentRecsYearIndex = 0;
-  if (btn) {
-    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
-  renderYearChips();
-  renderYearContent();
-}
 
-function selectRecsYear(idx, btn) {
-  currentRecsYearIndex = idx;
-  if (btn) {
-    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
-  renderYearContent();
-}
 
-function renderYearChips() {
-  const container = document.getElementById('recsYearButtons');
-  if (!container || !window.WP10_YEARLY_RECOMMENDATIONS_DATA) return;
-  
-  const list = window.WP10_YEARLY_RECOMMENDATIONS_DATA[currentRecsRegion] || [];
-  let html = '';
-  list.forEach((item, idx) => {
-    const activeClass = idx === currentRecsYearIndex ? 'active' : '';
-    html += `<button class="pill ${activeClass}" onclick="selectRecsYear(${idx}, this)" style="font-size:11.5px; white-space:nowrap; padding:3px 10px;">${item.year_label}</button>`;
-  });
-  container.innerHTML = html;
-}
 
-function renderYearContent() {
-  const container = document.getElementById('recsYearContentContainer');
-  const badge = document.getElementById('recsCurrentYearBadge');
-  if (!container || !window.WP10_YEARLY_RECOMMENDATIONS_DATA) return;
-  
-  const list = window.WP10_YEARLY_RECOMMENDATIONS_DATA[currentRecsRegion] || [];
-  if (!list[currentRecsYearIndex]) return;
-  
-  const item = list[currentRecsYearIndex];
-  if (badge) {
-    badge.textContent = `[${item.year_label}] ${currentRecsRegion === 'japan' ? '日本史實馬推薦' : '海外史實馬推薦'}`;
-  }
-  
-  let html = `<div style="border:2px solid var(--gold-color); border-radius:10px; padding:16px; background:rgba(15,23,42,0.8); box-shadow:0 4px 15px rgba(234,179,8,0.15);">
-    <h3 style="font-size:1.1rem; font-weight:800; color:var(--gold-color); margin-bottom:14px; display:flex; align-items:center; gap:8px;">
-      <i class="fa-solid fa-star"></i> [${item.year_label}] 推薦史實馬與 11 大路線表
-    </h3>`;
-    
-  if (item.routes_html) {
-    html += `<div style="margin-bottom:20px;">
-      <div style="font-size:0.9rem; font-weight:700; color:var(--primary); margin-bottom:8px;">📊 11 大競走路線推薦馬速查表 (◎、○、▲)：</div>
-      <div class="table-responsive" style="-webkit-overflow-scrolling:touch; border-radius:8px; border:1px solid var(--border-color);">
-        ${item.routes_html}
-      </div>
-    </div>`;
-  }
-  
-  if (item.horses_html) {
-    html += `<div>
-      <div style="font-size:0.9rem; font-weight:700; color:var(--gold-color); margin-bottom:8px;">🐎 該年代推薦史實馬詳細能力、展開上限與戰略評語：</div>
-      <div class="table-responsive" style="-webkit-overflow-scrolling:touch; border-radius:8px; border:1px solid var(--border-color);">
-        ${item.horses_html}
-      </div>
-    </div>`;
-  }
-  
-  html += `</div>`;
-  container.innerHTML = html;
-}
+
+
+
+
+
 
 window.addEventListener('DOMContentLoaded', initYearlyRecsTable);
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
@@ -30790,6 +30721,7 @@ function goBackLastPosition() {
 }
 
 function switchMainPillar(pillarId) {
+  setTimeout(() => { if (typeof initYearlyRecsTable === "function") initYearlyRecsTable(); }, 50);
     document.querySelectorAll('.pillar-content').forEach(el => {
         el.style.display = 'none';
         el.classList.remove('active');
@@ -31175,6 +31107,119 @@ document.addEventListener('DOMContentLoaded', () => {
     makeTablesSortable();
     if (typeof initSimulationChart === 'function') setTimeout(initSimulationChart, 300);
 });
+</script>
+<script>
+// ==================== 第 45 章：全年代 11 大路線年度推薦史實馬渲染引擎 ====================
+let currentRecsRegion = 'japan';
+let currentRecsYearIndex = 0;
+
+function initYearlyRecsTable() {
+    if (!window.WP10_YEARLY_RECOMMENDATIONS_DATA) return;
+    renderYearChips();
+    renderYearContent();
+}
+
+function setRecsRegionFilter(region, btn) {
+    currentRecsRegion = region;
+    currentRecsYearIndex = 0;
+    if (btn) {
+        btn.parentElement.querySelectorAll('button').forEach(b => {
+            b.classList.remove('active');
+            b.style.background = 'rgba(255,255,255,0.08)';
+            b.style.color = '#cbd5e1';
+        });
+        btn.classList.add('active');
+        btn.style.background = 'var(--gold-color)';
+        btn.style.color = '#0f172a';
+    }
+    renderYearChips();
+    renderYearContent();
+}
+
+function selectRecsYear(idx, btn) {
+    currentRecsYearIndex = idx;
+    if (btn) {
+        btn.parentElement.querySelectorAll('button').forEach(b => {
+            b.classList.remove('active');
+            b.style.background = 'rgba(255,255,255,0.08)';
+            b.style.color = '#cbd5e1';
+            b.style.border = '1px solid rgba(255,255,255,0.12)';
+        });
+        btn.classList.add('active');
+        btn.style.background = 'var(--gold-color)';
+        btn.style.color = '#0f172a';
+        btn.style.fontWeight = 'bold';
+        btn.style.border = '1px solid var(--gold-color)';
+    }
+    renderYearContent();
+}
+
+function renderYearChips() {
+    const container = document.getElementById('recsYearButtons');
+    if (!container || !window.WP10_YEARLY_RECOMMENDATIONS_DATA) return;
+    
+    const list = window.WP10_YEARLY_RECOMMENDATIONS_DATA[currentRecsRegion] || [];
+    let html = '';
+    list.forEach((item, idx) => {
+        const isActive = idx === currentRecsYearIndex;
+        const bg = isActive ? 'var(--gold-color)' : 'rgba(255,255,255,0.08)';
+        const color = isActive ? '#0f172a' : '#cbd5e1';
+        const border = isActive ? '1px solid var(--gold-color)' : '1px solid rgba(255,255,255,0.12)';
+        const fw = isActive ? 'bold' : 'normal';
+        
+        html += `<button class="pill ${isActive ? 'active' : ''}" onclick="selectRecsYear(${idx}, this)" style="font-size:12px; white-space:nowrap; padding:4px 12px; cursor:pointer; background:${bg}; color:${color}; border:${border}; font-weight:${fw}; border-radius:14px; transition:all 0.15s ease;">${item.year_label}</button>`;
+    });
+    container.innerHTML = html;
+}
+
+function renderYearContent() {
+    const container = document.getElementById('recsYearContentContainer');
+    const badge = document.getElementById('recsCurrentYearBadge');
+    if (!container || !window.WP10_YEARLY_RECOMMENDATIONS_DATA) return;
+    
+    const list = window.WP10_YEARLY_RECOMMENDATIONS_DATA[currentRecsRegion] || [];
+    if (!list[currentRecsYearIndex]) return;
+    
+    const item = list[currentRecsYearIndex];
+    if (badge) {
+        badge.textContent = `[${item.year_label}] ${currentRecsRegion === 'japan' ? '日本史實馬推薦' : '海外史實馬推薦'}`;
+    }
+    
+    let html = `<div style="border:2px solid var(--gold-color); border-radius:10px; padding:16px; background:rgba(15,23,42,0.9); box-shadow:0 4px 20px rgba(234,179,8,0.15);">
+        <h3 style="font-size:1.15rem; font-weight:800; color:var(--gold-color); margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+            <i class="fa-solid fa-star"></i> [${item.year_label}] 推薦史實馬與 11 大路線表
+        </h3>`;
+        
+    if (item.routes_html) {
+        html += `<div style="margin-bottom:22px;">
+            <div style="font-size:0.92rem; font-weight:700; color:var(--primary); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+                <i class="fa-solid fa-table-list"></i> 📊 11 大競走路線推薦馬速查表 (◎、○、▲)：
+            </div>
+            <div class="table-responsive" style="-webkit-overflow-scrolling:touch; border-radius:8px; border:1px solid var(--border-color);">
+                ${item.routes_html}
+            </div>
+        </div>`;
+    }
+    
+    if (item.horses_html) {
+        html += `<div>
+            <div style="font-size:0.92rem; font-weight:700; color:var(--gold-color); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+                <i class="fa-solid fa-horse-head"></i> 🐎 該年代推薦史實馬詳細能力、展開上限與戰略評語：
+            </div>
+            <div class="table-responsive" style="-webkit-overflow-scrolling:touch; border-radius:8px; border:1px solid var(--border-color);">
+                ${item.horses_html}
+            </div>
+        </div>`;
+    }
+    
+    html += `</div>`;
+    container.innerHTML = html;
+}
+
+window.addEventListener('DOMContentLoaded', initYearlyRecsTable);
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(initYearlyRecsTable, 150);
+}
 </script>
 </body>
 </html>
