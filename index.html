@@ -1746,7 +1746,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.76</span>
+<span class="version-badge">v02.77</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -6799,6 +6799,136 @@ li {
 </tbody>
 </table>
 </div>
+</div>
+</div>
+<!-- 三、賽馬展開適應力 (瞬間戰 / 持久戰 / 消耗戰) 機制全解與先天對照表 -->
+<div class="tool-card" style="background:rgba(15,23,42,0.95); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+<div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-gauge-high"></i> 三、賽馬展開適應力 (瞬間戰・持久戰・消耗戰) 決定公式與對照表
+</div>
+<span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">2026 官方攻略數據</span>
+</div>
+
+<p style="font-size:0.85rem; color:var(--text-main); line-height:1.7; margin-bottom:16px; text-align:left !important;">
+比賽中「瞬間戰」「持久戰」「消耗戰」反映賽駒對不同賽事展開的適應能力。發生對應比賽展開時，<strong>適應能力高者能展現超越能力極限的強悍爆發；若適應力低則無法發揮 100% 之實力</strong>。
+</p>
+
+<!-- 1. 能力畫面星號標示說明 -->
+<div style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:18px;">
+  <h4 style="font-size:0.95rem; font-weight:800; color:var(--primary); margin-bottom:10px; text-align:left !important;">
+    <i class="fa-solid fa-star"></i> 1. 能力畫面的三星號標示解析
+  </h4>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3" style="margin-bottom:12px;">
+    <div style="background:rgba(34,197,94,0.12); border:1px solid #22c55e; border-radius:8px; padding:10px; text-align:left !important;">
+      <strong style="color:#22c55e; font-size:0.9rem;">🟢 綠色★（先天能力）</strong>
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px; margin-bottom:0;">由血統、上限值與成長型決定的「固有先天適應力」。</p>
+    </div>
+    <div style="background:rgba(249,115,22,0.12); border:1px solid #f97316; border-radius:8px; padding:10px; text-align:left !important;">
+      <strong style="color:#f97316; font-size:0.9rem;">🟠 橘色★（後天能力）</strong>
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px; margin-bottom:0;">透過比賽出賽、指定戰術與史實調教獲得成長的「後天經驗」。</p>
+    </div>
+    <div style="background:rgba(148,163,184,0.12); border:1px solid #94a3b8; border-radius:8px; padding:10px; text-align:left !important;">
+      <strong style="color:#94a3b8; font-size:0.9rem;">⚪ 灰色★（上限值 Upper Limit）</strong>
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px; margin-bottom:0;">代表該適應能力的成長極限值（0 ~ 10）。</p>
+    </div>
+  </div>
+  <div style="background:rgba(234,179,8,0.15); border:1px solid var(--gold-color); border-radius:6px; padding:8px 12px; font-size:0.83rem; font-weight:700; color:var(--gold-color); text-align:left !important;">
+    ⚡ 實戰發揮值計算公式：<span style="color:#fff;">實際上賽道發揮的數值 ＝ 🟢 先天的能力 ＋ 🟠 後天的能力</span>
+  </div>
+</div>
+
+<!-- 2. 先天能力與上限值決定方式表格 -->
+<div style="margin-bottom:18px;">
+  <h4 style="font-size:0.95rem; font-weight:800; color:var(--primary); margin-bottom:10px; text-align:left !important;">
+    <i class="fa-solid fa-calculator"></i> 2. 先天能力與上限值決定公式
+  </h4>
+  <div class="table-responsive">
+    <table class="data-table" style="min-width:750px;">
+      <thead>
+        <tr>
+          <th style="width:180px; text-align:left !important;">馬匹種類</th>
+          <th style="text-align:left !important;">🟢 先天能力 (綠★)</th>
+          <th style="text-align:left !important;">⚪ 上限值 (灰★)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:700; color:var(--gold-color); text-align:left !important;">史實馬 及 超級馬 (SH)</td>
+          <td style="font-size:0.82rem; text-align:left !important;">
+            依下表依據「上限值」與「成長型」決定。<br/>
+            <span style="color:var(--text-muted);">※ 若成立特殊配合理論（孤高、最高傑作、サージュ騎士/王者/霸者等），某項先天能力可能額外提升。</span>
+          </td>
+          <td style="font-size:0.82rem; text-align:left !important;">
+            固定設定值 (0 ~ 10)。<br/>
+            <span style="color:var(--text-muted);">※ 若父系、父父系、母父系、母母父系升格為世界系統，上限值可能額外增加。</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">架空產駒 (自家繁育馬)</td>
+          <td style="font-size:0.82rem; text-align:left !important;">直接與上限值同等（連動）。</td>
+          <td style="font-size:0.82rem; text-align:left !important;">
+            隨機 1 ~ 10。<br/>
+            <span style="color:var(--text-muted);">※ 受父母之「剛健」、「勝負根性」、「精神力」等數值品質影響。</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 3. 先天能力對照速查表 -->
+<div style="margin-bottom:18px;">
+  <h4 style="font-size:0.95rem; font-weight:800; color:var(--primary); margin-bottom:10px; text-align:left !important;">
+    <i class="fa-solid fa-table-cells"></i> 3. 先天能力對照速查表 (Upper Limit vs Growth Type)
+  </h4>
+  <div class="table-responsive">
+    <table class="data-table" style="min-width:680px; text-align:left !important;">
+      <thead>
+        <tr>
+          <th style="width:100px; text-align:left !important;">上限值 (灰★)</th>
+          <th style="text-align:left !important;">早熟・早め・晩成 (經典型)</th>
+          <th style="text-align:left !important;">早め持続・早熟持続 (持續型)</th>
+          <th style="text-align:left !important;">晩成持続・持続・覚醒 (極長持續/覺醒型)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="font-weight:700; color:var(--gold-color); text-align:left !important;">10</td><td style="font-weight:700; color:#22c55e; text-align:left !important;">8 顆綠★</td><td style="text-align:left !important;">7 顆綠★</td><td style="text-align:left !important;">6 顆綠★</td></tr>
+        <tr><td style="font-weight:700; color:var(--gold-color); text-align:left !important;">9</td><td style="font-weight:700; color:#22c55e; text-align:left !important;">7 顆綠★</td><td style="text-align:left !important;">6 顆綠★</td><td style="text-align:left !important;">5 顆綠★</td></tr>
+        <tr><td style="font-weight:700; color:var(--gold-color); text-align:left !important;">8</td><td style="font-weight:700; color:#22c55e; text-align:left !important;">6 顆綠★</td><td style="text-align:left !important;">5 顆綠★</td><td style="text-align:left !important;">5 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">7</td><td style="text-align:left !important;">5 顆綠★</td><td style="text-align:left !important;">4 顆綠★</td><td style="text-align:left !important;">4 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">6</td><td style="text-align:left !important;">5 顆綠★</td><td style="text-align:left !important;">5 顆綠★</td><td style="text-align:left !important;">4 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">5</td><td style="text-align:left !important;">4 顆綠★</td><td style="text-align:left !important;">3 顆綠★</td><td style="text-align:left !important;">3 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">4</td><td style="text-align:left !important;">3 顆綠★</td><td style="text-align:left !important;">3 顆綠★</td><td style="text-align:left !important;">2 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">3</td><td style="text-align:left !important;">2 顆綠★</td><td style="text-align:left !important;">2 顆綠★</td><td style="text-align:left !important;">2 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">2</td><td style="text-align:left !important;">1 顆綠★</td><td style="text-align:left !important;">1 顆綠★</td><td style="text-align:left !important;">1 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">1</td><td style="text-align:left !important;">1 顆綠★</td><td style="text-align:left !important;">1 顆綠★</td><td style="text-align:left !important;">1 顆綠★</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-top:8px; font-size:0.8rem; color:var(--text-muted); line-height:1.6; text-align:left !important;">
+    ※ <strong>世界系統地域傾向上限加成</strong>：當父系 4 代祖的世界系統為 🇯🇵 <strong>日本型</strong> 時「瞬間戰」易偏高；🇪🇺 <strong>歐州型</strong> 時「持久戰」易偏高；🇺🇸 <strong>美國型</strong> 時「消耗戰」易偏高。多個世界系統重疊時效果更加顯著！
+  </div>
+</div>
+
+<!-- 4. 適應力的後天成長、戰術選擇與限界突破 -->
+<div style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px;">
+  <h4 style="font-size:0.95rem; font-weight:800; color:var(--primary); margin-bottom:10px; text-align:left !important;">
+    <i class="fa-solid fa-arrow-trend-up"></i> 4. 適應力的後天成長途徑、比賽戰術加成與「限界突破」
+  </h4>
+  <ul style="font-size:0.84rem; color:var(--text-main); line-height:1.7; padding-left:20px; margin-bottom:0; text-align:left !important;">
+    <li><strong>比賽經驗與史實調教</strong>：參加對應賽事展開的比賽或執行對應的史實調教項目，可穩定累積橘色★點數。</li>
+    <li><strong>比賽戰術選擇之成長轉向</strong>：
+      <ul>
+        <li>選擇 <strong style="color:#ec4899;">「最後方」「大外一気」</strong> ➔ 優先提升 <strong>瞬間戰</strong> 適應力。</li>
+        <li>選擇 <strong style="color:#38bdf8;">「逃げ」「逃げ特化」</strong> ➔ 優先提升 <strong>持久戰</strong> 適應力。</li>
+        <li>選擇 <strong style="color:#eab308;">「横一線」「直線強襲」</strong> ➔ 優先提升 <strong>消耗戰</strong> 適應力。</li>
+      </ul>
+    </li>
+    <li><strong>G1 冠軍 Bonus</strong>：玩家自有馬或賽馬俱樂部馬首度贏得 G1 賽事時，適應力獲得額外成長 Bonus。</li>
+    <li><strong>退役轉種馬/繁殖母馬繼承</strong>：退役時的（綠★ ＋ 橘★）將成為繁殖基礎，並將「上限值」傳承至下一代幼駒。</li>
+    <li><strong>🌟 限界突破 (Limit Break)</strong>：達到灰色★上限後，若在超賽事/極端展開大賽中奪冠或執行專屬史實調教，可發動「限界突破」！突破最多可超越上限額外獲得 <strong>★1 ~ ★2</strong>（每匹馬限一項適應能力突破）。</li>
+  </ul>
 </div>
 </div>
 </section>
