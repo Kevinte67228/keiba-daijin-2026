@@ -1746,13 +1746,13 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.80</span>
+<span class="version-badge">v02.84</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
         </p>
 <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
-<button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">📑 48 章快速跳轉</button>
+<button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">📑 49 章快速跳轉</button>
 <button class="header-btn" onclick="clearPwaCache()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🔄 清除快取重載</button>
 <button class="header-btn" onclick="toggleAppTheme()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🌓 主題切換</button>
 </div>
@@ -28470,150 +28470,166 @@ function filterTab5Racecourses() {
 </div></div>
 </section></div>
 <!-- Pillar 7: 🏇 馬匹資料庫互動速查 -->
+<!-- ================= 支柱七：馬匹資料庫 ================= -->
+<!-- ================= 支柱七：馬匹資料庫 ================= -->
 <div class="pillar-content" id="pillar-db" style="display:none;">
-<div class="pillar-header-card">
-<h2>🏇 支柱 7：馬匹資料庫互動速查與終極檔案庫 (Historical Horse Database & Breeding Profiles)</h2>
-<p>【第 41 章 ~ 第 45 章】收錄全遊戲 1.5 萬匹史實馬、2,898 匹史實種公馬引退速查庫與 4,314 匹繁殖專用史實名馬全量數據庫</p>
+<div class="pillar-header" style="background:linear-gradient(135deg, rgba(234,179,8,0.15), rgba(15,23,42,0.8)); border-left:4px solid #eab308;">
+<h2><i class="fa-solid fa-magnifying-glass"></i> 👑 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 章 ~ 第 46 章)</h2>
+<p>收錄全 1.5 萬匹史實馬、2,898 匹種公馬引退年限、4,314 匹繁殖專用史實馬、16,570 匹全競走馬、32+9 全年代路線推薦大表與 976 條殿堂馬異名！</p>
 </div>
+<div class="sections-container">
 
-<!-- 第 41 章：1.5 萬匹全史實馬與 11 大年度推薦速查庫 -->
-<div class="section-card" id="sec-horse-db" style="margin-bottom:14px;">
-<div class="section-header">
-<div class="section-title"><i class="fa-solid fa-magnifying-glass"></i> 第 41 章：1.5 萬匹全史實馬與 11 大年度推薦速查庫</div>
-</div>
-<div class="section-body" style="padding-bottom:6px;">
-<p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
-                涵蓋 1967 ~ 2023 年共 15,389 匹全史實馬、11 大年度推薦分類、35+ 欄位能力詳細卡片與 AI 戰略評析。
+
+
+<section class="section-card" id="sec-horse-db" style="margin-bottom:14px;">
+        <div class="section-header">
+            <div class="section-title"><i class="fa-solid fa-horse"></i> 第 41 章：1.5 萬匹全史實馬與 11 大年度推薦速查庫</div>
+        </div>
+        <div class="section-body" style="padding-bottom:6px;">
+            <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
+                涵蓋 1967 ~ 2023 年共 15,389 匹全史實馬、7 大年度推薦分類、35+ 欄位能力詳細卡片與 AI 戰略評析。
             </p>
-<!-- 14 大核心分類頁籤 - 滑動網格佈局 -->
-<div class="category-tabs-wrapper">
-<div class="category-tabs" id="categoryTabs">
-<button class="tab-btn active" data-cat="cat1">🐎 1. 史実馬一覧</button>
-<button class="tab-btn" data-cat="cat3">🇯🇵 2. 日本おすすめ幼駒</button>
-<button class="tab-btn" data-cat="cat4">🇪🇺 3. 海外おすすめ幼駒</button>
-<button class="tab-btn" data-cat="cat5">🐴 4. おすすめ繁殖牝馬</button>
-<button class="tab-btn" data-cat="cat6">💰 5. 幼駒セール馬</button>
-<button class="tab-btn" data-cat="cat7">🏷️ 6. 繁殖牝馬セール馬</button>
-<button class="tab-btn" data-cat="cat8">🏇 7. 海外トレーニングセール</button>
-<button class="tab-btn" data-cat="cat9">🏆 8. おすすめ年度末馬</button>
-<button class="tab-btn" data-cat="cat10">⭐ 9. スーパースターホース一覧</button>
-<button class="tab-btn" data-cat="cat13">🇯🇵 10. 虹札おすすめ日本馬</button>
-<button class="tab-btn" data-cat="cat14">🇪🇺 11. 虹札おすすめ海外馬</button>
-</div>
-</div>
-<!-- 自訂條件篩選面板 (手機緊湊雙列) -->
-<div class="filter-panel">
-<div class="filter-group">
-<label for="filterYear">📅 登場年度 (Year)</label>
-<select class="filter-control" id="filterYear">
-<option value="ALL">全部年份 (1967 ~ 2023)</option>
-</select>
-</div>
-<div class="filter-group">
-<label for="filterTicket">🌈 お守り/馬札等級</label>
-<select class="filter-control" id="filterTicket">
-<option value="ALL">全部馬札 (虹/金/銀/銅/綠/無)</option>
-<option value="虹">🌈 虹札</option>
-<option value="金">🥇 金札</option>
-<option value="銀">🥈 銀札</option>
-<option value="銅">🥉 銅札</option>
-<option value="綠">🟢 綠札</option>
-<option value="無">⚪ 無札</option>
-</select>
-</div>
-<div class="filter-group">
-<label for="filterSex">♂♀ 性別 (Sex)</label>
-<select class="filter-control" id="filterSex">
-<option value="ALL">全部性別</option>
-<option value="牡">牡馬</option>
-<option value="牝">牝馬</option>
-<option value="騙">騸馬</option>
-</select>
-</div>
-<div class="filter-group">
-<label for="filterSp">⚡ 最小基本 SP (Speed &gt;=)</label>
-<select class="filter-control" id="filterSp">
-<option value="0">全部 SP 速度</option>
-<option value="75">SP &gt;= 75 (S級超級名馬)</option>
-<option value="70">SP &gt;= 70 (A級一線名馬)</option>
-<option value="65">SP &gt;= 65 (B級主力名馬)</option>
-</select>
-</div>
-<div class="filter-group">
-<label for="filterSt">🐎 最小基本 ST (耐力 &gt;=)</label>
-<select class="filter-control" id="filterSt">
-<option value="0">全部 ST 耐力</option>
-<option value="80">ST &gt;= 80 (超長途 3000m+)</option>
-<option value="70">ST &gt;= 70 (長距離 2400m+)</option>
-<option value="50">ST &gt;= 50 (經典中長途 2000m+)</option>
-<option value="30">ST &gt;= 30 (一哩/中距離 1600m+)</option>
-<option value="15">ST &gt;= 15 (短途快馬)</option>
-</select>
-</div>
-<div class="filter-group">
-<label for="filterTrack">🌱 馬場適性 (芝 / ダ)</label>
-<select class="filter-control" id="filterTrack">
-<option value="ALL">全部馬場適性</option>
-<option value="芝">◎ (芝) / × (ダ) (芝專用)</option>
-<option value="ダ">× (芝) / ◎ (ダ) (泥地專用)</option>
-<option value="万能">◎ (芝) / ◎ (ダ) (芝ダ萬能)</option>
-<option value="芝可能">芝適性良好 (芝◎/○)</option>
-<option value="ダ可能">泥地適性良好 (ダ◎/○)</option>
-</select>
-</div>
-<div class="filter-group">
-<label for="filterDistance">📏 距離適性起點</label>
-<select class="filter-control" id="filterDistance">
-<option value="ALL">全部距離</option>
-<option value="1200">1200m (短途)</option>
-<option value="1400">1400m (短途)</option>
-<option value="1600">1600m (一哩)</option>
-<option value="1800">1800m (中距離)</option>
-<option value="2000">2000m (中距離)</option>
-<option value="2400">2400m (長途經典)</option>
-<option value="2500">2500m+ (超長途)</option>
-</select>
-</div>
-<div class="filter-group">
-<label for="filterRegion">🌍 地區 (Region)</label>
-<select class="filter-control" id="filterRegion">
-<option value="ALL">全部地區</option>
-<option value="日本">🇯🇵 日本</option>
-<option value="米">🇺🇸 美國 (米)</option>
-<option value="欧">🇪🇺 歐洲 (歐)</option>
-</select>
-</div>
-<div class="filter-group full-width-mobile">
-<label for="filterSearch">🔍 馬名 / 父馬 關鍵字搜尋</label>
-<input class="filter-control" id="filterSearch" placeholder="輸入日中文馬名 (如: テイオー, 皇帝)..." type="text"/>
-</div>
-</div>
-<!-- 統計列 -->
-<div class="stats-bar">
-<div>目前篩選結果：共 <span class="stats-count" id="matchCount">0</span> 匹馬</div>
-<div>💡 點擊欄位標題可正/反向排序 | 點擊馬名檢視完整 35+ 欄位能力卡片</div>
-</div>
-<!-- 結果表格容器 (Table View) -->
-<div id="tableViewWrapper">
-<div class="table-container">
-<table class="data-table" id="horseTable">
-<thead>
-<tr id="tableHeader">
-<!-- Dynamic Headers -->
-</tr>
-</thead>
-<tbody id="tableBody">
-<!-- Dynamic Rows -->
-</tbody>
-</table>
-</div>
-</div>
-<!-- 戰略與指南卡片容器 (Guide View) -->
-<div id="guideViewWrapper" style="display:none; margin-bottom:25px;"></div>
-</div>
-</div>
 
-<!-- 第 42 章：2,898 匹史實種公馬引退年限完全速查庫 -->
+            <!-- 14 大核心分類頁籤 - 滑動網格佈局 -->
+            <div class="category-tabs-wrapper">
+                <div class="category-tabs" id="categoryTabs">
+                    <button class="tab-btn active" data-cat="cat1">🐎 1. 史実馬一覧</button>
+                    <button class="tab-btn" data-cat="cat3">🇯🇵 2. 日本おすすめ幼駒</button>
+                    <button class="tab-btn" data-cat="cat4">🇪🇺 3. 海外おすすめ幼駒</button>
+                    <button class="tab-btn" data-cat="cat5">🐴 4. おすすめ繁殖牝馬</button>
+                    <button class="tab-btn" data-cat="cat6">💰 5. 幼駒セール馬</button>
+                    <button class="tab-btn" data-cat="cat7">🏷️ 6. 繁殖牝馬セール馬</button>
+                    <button class="tab-btn" data-cat="cat8">🏇 7. 海外トレーニングセール</button>
+                    <button class="tab-btn" data-cat="cat9">🏆 8. おすすめ年度末馬</button>
+                    <button class="tab-btn" data-cat="cat10">⭐ 9. スーパースターホース一覧</button>
+                    <button class="tab-btn" data-cat="cat13">🇯🇵 10. 虹札おすすめ日本馬</button>
+                    <button class="tab-btn" data-cat="cat14">🇪🇺 11. 虹札おすすめ海外馬</button>
+                </div>
+            </div>
+
+            <!-- 自訂條件篩選面板 (手機緊湊雙列) -->
+            <div class="filter-panel">
+                <div class="filter-group">
+                    <label for="filterYear">📅 登場年度 (Year)</label>
+                    <select id="filterYear" class="filter-control">
+                        <option value="ALL">全部年份 (1967 ~ 2023)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterTicket">🌈 お守り/馬札等級</label>
+                    <select id="filterTicket" class="filter-control">
+                        <option value="ALL">全部馬札 (虹/金/銀/銅/綠/無)</option>
+                        <option value="虹">🌈 虹札</option>
+                        <option value="金">🥇 金札</option>
+                        <option value="銀">🥈 銀札</option>
+                        <option value="銅">🥉 銅札</option>
+                        <option value="綠">🟢 綠札</option>
+                        <option value="無">⚪ 無札</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterSex">♂♀ 性別 (Sex)</label>
+                    <select id="filterSex" class="filter-control">
+                        <option value="ALL">全部性別</option>
+                        <option value="牡">牡馬</option>
+                        <option value="牝">牝馬</option>
+                        <option value="騙">騸馬</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterSp">⚡ 最小基本 SP (Speed >=)</label>
+                    <select id="filterSp" class="filter-control">
+                        <option value="0">全部 SP 速度</option>
+                        <option value="75">SP >= 75 (S級超級名馬)</option>
+                        <option value="70">SP >= 70 (A級一線名馬)</option>
+                        <option value="65">SP >= 65 (B級主力名馬)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterSt">🐎 最小基本 ST (耐力 >=)</label>
+                    <select id="filterSt" class="filter-control">
+                        <option value="0">全部 ST 耐力</option>
+                        <option value="80">ST >= 80 (超長途 3000m+)</option>
+                        <option value="70">ST >= 70 (長距離 2400m+)</option>
+                        <option value="50">ST >= 50 (經典中長途 2000m+)</option>
+                        <option value="30">ST >= 30 (一哩/中距離 1600m+)</option>
+                        <option value="15">ST >= 15 (短途快馬)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterTrack">🌱 馬場適性 (芝 / ダ)</label>
+                    <select id="filterTrack" class="filter-control">
+                        <option value="ALL">全部馬場適性</option>
+                        <option value="芝">◎ (芝) / × (ダ) (芝專用)</option>
+                        <option value="ダ">× (芝) / ◎ (ダ) (泥地專用)</option>
+                        <option value="万能">◎ (芝) / ◎ (ダ) (芝ダ萬能)</option>
+                        <option value="芝可能">芝適性良好 (芝◎/○)</option>
+                        <option value="ダ可能">泥地適性良好 (ダ◎/○)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterDistance">📏 距離適性起點</label>
+                    <select id="filterDistance" class="filter-control">
+                        <option value="ALL">全部距離</option>
+                        <option value="1200">1200m (短途)</option>
+                        <option value="1400">1400m (短途)</option>
+                        <option value="1600">1600m (一哩)</option>
+                        <option value="1800">1800m (中距離)</option>
+                        <option value="2000">2000m (中距離)</option>
+                        <option value="2400">2400m (長途經典)</option>
+                        <option value="2500">2500m+ (超長途)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterRegion">🌍 地區 (Region)</label>
+                    <select id="filterRegion" class="filter-control">
+                        <option value="ALL">全部地區</option>
+                        <option value="日本">🇯🇵 日本</option>
+                        <option value="米">🇺🇸 美國 (米)</option>
+                        <option value="欧">🇪🇺 歐洲 (歐)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group full-width-mobile">
+                    <label for="filterSearch">🔍 馬名 / 父馬 關鍵字搜尋</label>
+                    <input type="text" id="filterSearch" class="filter-control" placeholder="輸入日中文馬名 (如: テイオー, 皇帝)...">
+                </div>
+            </div>
+
+            <!-- 統計列 -->
+            <div class="stats-bar">
+                <div>目前篩選結果：共 <span class="stats-count" id="matchCount">0</span> 匹馬</div>
+                <div>💡 點擊欄位標題可正/反向排序 | 點擊馬名檢視完整 35+ 欄位能力卡片</div>
+            </div>
+
+            <!-- 結果表格容器 (Table View) -->
+            <div id="tableViewWrapper">
+                <div class="table-container">
+                    <table id="horseTable" class="data-table">
+                        <thead>
+                            <tr id="tableHeader">
+                                <!-- Dynamic Headers -->
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- Dynamic Rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 戰略與指南卡片容器 (Guide View) -->
+            <div id="guideViewWrapper" style="display:none; margin-bottom:25px;"></div>
+        </div>
+    </section>
+
 <section class="section-card" id="sec-sires-retire-db" style="margin-bottom:18px;">
 <div class="section-header">
 <div class="section-title"><i class="fa-solid fa-clock-rotate-left"></i> 第 42 章：2,898 匹史實種公馬引退年限完全速查庫 (Private 保護期檢索庫)</div>
@@ -28682,8 +28698,6 @@ function filterTab5Racecourses() {
 </div>
 </div>
 </section>
-
-<!-- 第 43 章：4,314 匹繁殖專用史實馬全量數據庫 -->
 <section class="section-card" id="sec-breeding-only-horses" style="margin-bottom:18px;">
 <div class="section-header">
 <div class="section-title"><i class="fa-solid fa-venus-mars"></i> 第 43 章：4,314 匹繁殖專用史實馬全量數據庫 (名種公馬 / 繁殖名雌完全對照大表)</div>
@@ -28781,39 +28795,6 @@ function filterTab5Racecourses() {
 </div>
 </div>
 </section>
-</div>
-<div class="pillar-content" id="pillar-lectures" style="display:none;"><div class="pillar-header-card"><h2>🎓 名師實戰講堂・線上最強馬與系統全書 (Official Masterclasses &amp; System)</h2><p>【第 46 章 ~ 第 48 章】吹里谷芽愛名師指南、リオン展開適應性徹底講座、最強馬之路 (最強馬ロード) 線上育成大賽與電影級名場面觸發條件</p></div><section class="section-card" id="sec-official-lectures">
-<div class="section-header">
-<div class="section-title"><i class="fa-solid fa-graduation-cap"></i> 第 46 章：名師實戰講堂 (吹里谷芽愛育成指南 &amp; リオン展開適應性徹底講座)</div>
-</div>
-<div class="section-body">
-<div class="callout callout-gold" style="margin-bottom:20px;">
-<i class="fa-solid fa-book-open-reader"></i>
-<div>
-<strong>《賽馬大亨 10 2026》名師育成與展開適應性中日對照完全指南</strong><br/>
-                全量復刻官方「吹里谷芽愛 (吹里谷 芽愛) 初心者育成指南」三大講義，以及「リオン (Rion) 賽事展開傾向與適應能力講座」三大核心專題。涵蓋狀態調度、賽事挑選、配種繁育、展開強度判定（◉＞◎＞○＞△）、日本 24 大 G1 展開總表與三大國 SP 史實調教上限突破心法！
-            </div>
-</div>
-<!-- 子分頁導航膠囊軌道 -->
-<div class="subtabs-nav" style="display:flex; gap:8px; overflow-x:auto; padding-bottom:10px; margin-bottom:18px; border-bottom:1px solid var(--border-color); -webkit-overflow-scrolling:touch;">
-<button class="filter-btn active" id="btnLecTab1" onclick="switchLecTab(1)" style="white-space:nowrap; padding:8px 16px; font-size:0.85rem; display:flex; align-items:center; gap:6px;">
-<span>🍎 1. 愛馬狀態調度指南</span>
-</button>
-<button class="filter-btn" id="btnLecTab2" onclick="switchLecTab(2)" style="white-space:nowrap; padding:8px 16px; font-size:0.85rem; display:flex; align-items:center; gap:6px;">
-<span>🏇 2. 賽事路線挑選指南</span>
-</button>
-<button class="filter-btn" id="btnLecTab3" onclick="switchLecTab(3)" style="white-space:nowrap; padding:8px 16px; font-size:0.85rem; display:flex; align-items:center; gap:6px;">
-<span>🧬 3. 繁育頂級幼駒指南</span>
-</button>
-<button class="filter-btn" id="btnLecTab4" onclick="switchLecTab(4)" style="white-space:nowrap; padding:8px 16px; font-size:0.85rem; display:flex; align-items:center; gap:6px;">
-<span>🏁 4. 賽事展開傾向是什麼？</span>
-</button>
-<button class="filter-btn" id="btnLecTab5" onclick="switchLecTab(5)" style="white-space:nowrap; padding:8px 16px; font-size:0.85rem; display:flex; align-items:center; gap:6px;">
-<span>🌍 5. 適應能力與地域差</span>
-</button>
-<button class="filter-btn" id="btnLecTab6" onclick="switchLecTab(6)" style="white-space:nowrap; padding:8px 16px; font-size:0.85rem; display:flex; align-items:center; gap:6px;">
-<span>🚀 6. 如何提升適應能力</span>
-</button>
 <section class="section-card" id="sec-racehorses-full-db" style="margin-bottom:18px;">
 <div class="section-header">
 <div class="section-title"><i class="fa-solid fa-flag-checkered"></i> 第 44 章：16,570 匹全史實競走馬完全數據庫 (日本馬 ＋ 海外馬對照大表)</div>
@@ -28910,9 +28891,47 @@ function filterTab5Racecourses() {
 </div>
 </div>
 </section>
+<section class="section-card" id="sec-yearly-recs-db" style="margin-bottom:18px;">
+<div class="section-header">
+<div class="section-title"><i class="fa-solid fa-calendar-check"></i> 第 45 章：全年代 11 大路線年度推薦史實馬完全數據庫 (日本馬 ＋ 海外馬 1:1 復刻)</div>
+</div>
+<div class="section-body">
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-shield-halved"></i>
+<div>
+<strong>《賽馬大亨 10 2026》全年代史實馬指南・1:1 完全無遺漏收錄版</strong><br/>
+                    1:1 完全收錄 <strong>日本全年代 (1964 ~ 1995 年生，共 32 年代)</strong> 與 <strong>海外全年代 (1968 ~ 1976 年生，共 9 年代)</strong> 推薦史實馬。<br/>
+                    ※ 每個年代標準呈現：<strong>① 11 大競走路線推薦馬小表 (◎、○、▲)</strong> ＋ <strong>② 該年代推薦史實馬詳細能力、展開適應上限與戰略評語大表</strong>！
+                </div>
+</div>
+
+<!-- 控制組件：區域切換與年代膠囊軌道 -->
+<div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:18px;">
+  <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+    <!-- 區域切換晶片 -->
+    <div class="flex gap-2">
+      <button class="pill active" id="btnRecsRegionJapan" onclick="setRecsRegionFilter('japan', this)" style="font-size:12px; padding:4px 12px;">🇯🇵 日本推薦史實馬 (1964 ~ 1995)</button>
+      <button class="pill" id="btnRecsRegionKaigai" onclick="setRecsRegionFilter('kaigai', this)" style="font-size:12px; padding:4px 12px;">🌍 海外推薦史實馬 (1968 ~ 1976)</button>
+    </div>
+    <span style="font-size:12px; color:var(--gold-color); font-weight:700;" id="recsCurrentYearBadge">1964 年生推薦史實馬</span>
+  </div>
+  
+  <!-- 全年代單行水平滑動膠囊軌道 -->
+  <div id="recsYearButtons" style="display:flex; overflow-x:auto; gap:6px; padding:4px 0; -webkit-overflow-scrolling:touch; scrollbar-width:thin;">
+    <!-- Rendered via JS -->
+  </div>
+</div>
+
+<!-- 該年代標準呈現視窗 (紅框 1:1 呈現) -->
+<div id="recsYearContentContainer" style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:10px; padding:16px; min-height:300px;">
+  <!-- Rendered via JS -->
+</div>
+
+</div>
+</section>
 <section class="section-card" id="sec-nicknames-full-db" style="margin-bottom:18px;">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-tags"></i> 第 45 章：殿堂馬稱號 (異名 / Nicknames) 全量數據庫與獲得條件完全圖鑑</div>
+<div class="section-title"><i class="fa-solid fa-tags"></i> 第 46 章：殿堂馬稱號 (異名 / Nicknames) 全量數據庫與獲得條件完全圖鑑</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom:16px;">
@@ -28978,6 +28997,51 @@ function filterTab5Racecourses() {
 </div>
 </div>
 </section>
+</div>
+</div>
+
+<!-- ================= 支柱八：名師實戰講堂・線上對戰與系統機能 ================= -->
+<div class="pillar-content" id="pillar-lectures" style="display:none;">
+<div class="pillar-header" style="background:linear-gradient(135deg, rgba(99,102,241,0.15), rgba(15,23,42,0.8)); border-left:4px solid #6366f1;">
+<h2><i class="fa-solid fa-graduation-cap"></i> 🎓 支柱八：名師實戰講堂・線上對戰與系統機能 (第 47 章 ~ 第 49 章)</h2>
+<p>收錄吹里谷芽愛育成指南、リオン展開適應性徹底講座、線上模式最強馬ロード與電影級過場名場面！</p>
+</div>
+<div class="sections-container">
+<section class="section-card" id="sec-official-lectures">
+<div class="section-header">
+<div class="section-title"><i class="fa-solid fa-graduation-cap"></i> 第 47 章：名師實戰講堂 (吹里谷芽愛育成指南 &amp; リオン展開適應性徹底講座)</div>
+</div>
+<div class="section-body">
+<div class="callout callout-gold" style="margin-bottom:20px;">
+<i class="fa-solid fa-book-open-reader"></i>
+<div>
+<strong>《賽馬大亨 10 2026》名師育成與展開適應性中日對照完全指南</strong><br/>
+                全量復刻官方「吹里谷芽愛 (吹里谷 芽愛) 初心者育成指南」三大講義，以及「リオン (Rion) 賽事展開傾向與適應能力講座」三大核心專題。涵蓋狀態調度、賽事挑選、配種繁育、展開強度判定（◉＞◎＞○＞△）、日本 24 大 G1 展開總表與三大國 SP 史實調教上限突破心法！
+            </div>
+</div>
+<!-- 子分頁導航膠囊軌道 -->
+<div class="subtabs-nav" style="display:flex; gap:8px; overflow-x:auto; padding-bottom:10px; margin-bottom:18px; border-bottom:1px solid var(--border-color); -webkit-overflow-scrolling:touch;">
+<button class="filter-btn active" id="btnLecTab1" onclick="switchLecTab(1)" style="white-space:nowrap; padding:8px 16px; font-size:0.85rem; display:flex; align-items:center; gap:6px;">
+<span>🍎 1. 愛馬狀態調度指南</span>
+</button>
+<button class="filter-btn" id="btnLecTab2" onclick="switchLecTab(2)" style="white-space:nowrap; padding:8px 16px; font-size:0.85rem; display:flex; align-items:center; gap:6px;">
+<span>🏇 2. 賽事路線挑選指南</span>
+</button>
+<button class="filter-btn" id="btnLecTab3" onclick="switchLecTab(3)" style="white-space:nowrap; padding:8px 16px; font-size:0.85rem; display:flex; align-items:center; gap:6px;">
+<span>🧬 3. 繁育頂級幼駒指南</span>
+</button>
+<button class="filter-btn" id="btnLecTab4" onclick="switchLecTab(4)" style="white-space:nowrap; padding:8px 16px; font-size:0.85rem; display:flex; align-items:center; gap:6px;">
+<span>🏁 4. 賽事展開傾向是什麼？</span>
+</button>
+<button class="filter-btn" id="btnLecTab5" onclick="switchLecTab(5)" style="white-space:nowrap; padding:8px 16px; font-size:0.85rem; display:flex; align-items:center; gap:6px;">
+<span>🌍 5. 適應能力與地域差</span>
+</button>
+<button class="filter-btn" id="btnLecTab6" onclick="switchLecTab(6)" style="white-space:nowrap; padding:8px 16px; font-size:0.85rem; display:flex; align-items:center; gap:6px;">
+<span>🚀 6. 如何提升適應能力</span>
+</button>
+
+
+
 </div>
 <!-- ==================== 1. 愛馬狀態調度指南 ==================== -->
 <div class="lec-tab-pane" id="lecTab1" style="display:block;">
@@ -29287,9 +29351,10 @@ function filterTab5Racecourses() {
 </div>
 </div>
 </div>
-</section><section class="section-card" id="sec-online-strongest">
+</section>
+<section class="section-card" id="sec-online-strongest">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-globe"></i> 第 47 章：線上模式・最強馬之路 (最強馬ロード) 育成・前哨戰與全國大會對戰完全手冊</div>
+<div class="section-title"><i class="fa-solid fa-globe"></i> 第 48 章：線上模式・最強馬之路 (最強馬ロード) 育成・前哨戰與全國大會對戰完全手冊</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom:20px;">
@@ -29347,9 +29412,10 @@ function filterTab5Racecourses() {
 </div>
 </div>
 </div>
-</section><section class="section-card" id="sec-system-features">
+</section>
+<section class="section-card" id="sec-system-features">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-film"></i> 第 48 章：電影級過場名場面 (Cinema Event) 觸發條件與系統便利機能全書</div>
+<div class="section-title"><i class="fa-solid fa-film"></i> 第 49 章：電影級過場名場面 (Cinema Event) 觸發條件與系統便利機能全書</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom:20px;">
@@ -29403,1986 +29469,11 @@ function filterTab5Racecourses() {
 </div>
 </div>
 </div>
-</section></div>
-<!-- 浮動按鈕群 (返回上一位置 + 章節目錄跳轉 + 回頂部) -->
-<div class="floating-btn-group">
-<button class="btn-floating btn-history-back" id="btnJumpBackHistory" onclick="jumpBackToPreviousPosition()" style="display:none;" title="返回跳轉前位置 (Back)">
-<i class="fa-solid fa-arrow-rotate-left"></i>
-</button>
-<button class="btn-floating btn-jump" onclick="openChapterModal()" title="章節跳轉目錄"><i class="fa-solid fa-list-ol"></i></button>
-<button class="btn-floating" onclick="scrollToTop()" title="回到頂部"><i class="fa-solid fa-arrow-up"></i></button>
-</div>
-<!-- 📑 章節跳轉彈出抽屜 (Chapter Modal) -->
-<!-- 📑 章節跳轉彈出抽屜 (Chapter Modal) -->
-<!-- 📑 章節跳轉彈出抽屜 (Chapter Modal) -->
-<!-- 📑 章節跳轉彈出抽屜 (Chapter Modal) -->
-<div class="modal-backdrop" id="chapterModal" onclick="closeChapterModal(event)">
-<div class="chapter-modal-card" onclick="event.stopPropagation()">
-<div class="chapter-modal-header">
-<h2><i class="fa-solid fa-list-ol"></i> 📑 全 48 大章節快速跳轉</h2>
-<span class="modal-close" onclick="closeChapterModal()">×</span>
-</div>
-<div class="chapter-search-box">
-<i class="fa-solid fa-magnifying-glass"></i>
-<input id="chapterFilterInput" oninput="filterChapterList()" placeholder="🔍 全局內文檢索：輸入任何關鍵字 (如: 爆發力, 評語, 三冠, 史實調教, 繁育, 異名, 稱號)..." type="text"/>
-</div>
-<div class="chapter-list-container" id="chapterListContainer">
-
-<div class="chapter-pillar-group">
-  <div class="chapter-pillar-title" style="color:#38bdf8; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-    <i class="fa-solid fa-crown"></i> 👑 支柱一：開局劇本年代與史實攻略 (第 01 ~ 07 章)
-  </div>
-  <div class="chapter-items-grid">
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-start-guide')">
-      <span class="jump-icon"><i class="fa-solid fa-flag-checkered"></i></span>
-      <span class="jump-num">第 01 章</span>
-      <span class="jump-title">開局劇本年代選拔・初年度52週圖文通關與全年代初期讓渡馬完全指南</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-1968-scenario')">
-      <span class="jump-icon"><i class="fa-solid fa-scroll"></i></span>
-      <span class="jump-num">第 02 章</span>
-      <span class="jump-title">1968 年最古開局劇本完全攻略 (元祖三強・日美歐持続牝馬全書)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-era-horses-guide')">
-      <span class="jump-icon"><i class="fa-solid fa-calendar-days"></i></span>
-      <span class="jump-num">第 03 章</span>
-      <span class="jump-title">按年代史實攻略與 1967~1975 各年代推薦名馬完全指南</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-amulets')">
-      <span class="jump-icon"><i class="fa-solid fa-shield-halved"></i></span>
-      <span class="jump-num">第 04 章</span>
-      <span class="jump-title">守護符 (御守 / お守り) 獲得全圖鑑・兌換日曆與虹札名馬運用戰略</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-super-horses')">
-      <span class="jump-icon"><i class="fa-solid fa-star"></i></span>
-      <span class="jump-num">第 05 章</span>
-      <span class="jump-title">超級巨星名駒 (スーパースターホース) 機制解析與歷代超級馬 (SH) 完全名單</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-pro-tricks')">
-      <span class="jump-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-      <span class="jump-num">第 06 章</span>
-      <span class="jump-title">+40 爆發力滿貫公式與賽務職業小技</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-version-diff')">
-      <span class="jump-icon"><i class="fa-solid fa-code-compare"></i></span>
-      <span class="jump-num">第 07 章</span>
-      <span class="jump-title">歷代版本演進差異完全剖析 (2023~2026)</span>
-    </button>
-  </div>
-</div>
-
-<div class="chapter-pillar-group">
-  <div class="chapter-pillar-title" style="color:#06b6d4; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-    <i class="fa-solid fa-dna"></i> 🧬 支柱二：配合繁育大系・四大指標與爆發力理論 (第 08 ~ 21 章)
-  </div>
-  <div class="chapter-items-grid">
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-metrics')">
-      <span class="jump-icon"><i class="fa-solid fa-gauge-high"></i></span>
-      <span class="jump-num">第 08 章</span>
-      <span class="jump-title">配合機制・四大指標與爆發力抽樣模擬器</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-master-table')">
-      <span class="jump-icon"><i class="fa-solid fa-table-list"></i></span>
-      <span class="jump-num">第 09 章</span>
-      <span class="jump-title">全配合理論速查與加成總覽表 (全 39 條目)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-diagrams')">
-      <span class="jump-icon"><i class="fa-solid fa-network-wired"></i></span>
-      <span class="jump-num">第 10 章</span>
-      <span class="jump-title">專屬 4 代血統矩陣圖譜總覽</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-nicks')">
-      <span class="jump-icon"><i class="fa-solid fa-heart"></i></span>
-      <span class="jump-num">第 11 章</span>
-      <span class="jump-title">相性配合 (ニックス / Nicks) 與副屬性爆發</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')">
-      <span class="jump-icon"><i class="fa-solid fa-link"></i></span>
-      <span class="jump-num">第 12 章</span>
-      <span class="jump-title">近親交配 (Inbreed)、母系近親、全兄妹與異系</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-linebreed')">
-      <span class="jump-icon"><i class="fa-solid fa-code-branch"></i></span>
-      <span class="jump-num">第 13 章</span>
-      <span class="jump-title">系統交配 (Linebreed / 3×4 / 流行與零細)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-activation')">
-      <span class="jump-icon"><i class="fa-solid fa-bolt"></i></span>
-      <span class="jump-num">第 14 章</span>
-      <span class="jump-title">血脈活性化配合 (8親系 / 完全活性)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-vitality')">
-      <span class="jump-icon"><i class="fa-solid fa-battery-full"></i></span>
-      <span class="jump-num">第 15 章</span>
-      <span class="jump-title">活力源化・活力補完與隔世遺傳</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-lines')">
-      <span class="jump-icon"><i class="fa-solid fa-arrows-split-up-and-left"></i></span>
-      <span class="jump-num">第 16 章</span>
-      <span class="jump-title">雄系活性化與雌系活性化配合</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-traits')">
-      <span class="jump-icon"><i class="fa-solid fa-gem"></i></span>
-      <span class="jump-num">第 17 章</span>
-      <span class="jump-title">特性昇華配合與母系融合</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-special')">
-      <span class="jump-icon"><i class="fa-solid fa-wand-sparkles"></i></span>
-      <span class="jump-num">第 18 章</span>
-      <span class="jump-title">特殊名馬配合與彩蛋配合</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-2026new')">
-      <span class="jump-icon"><i class="fa-solid fa-atom"></i></span>
-      <span class="jump-num">第 19 章</span>
-      <span class="jump-title">2024~2026 最新繁育理論 (歷史因子/世界始祖/Drama融合)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-gene-factors')">
-      <span class="jump-icon"><i class="fa-solid fa-dna"></i></span>
-      <span class="jump-num">第 20 章</span>
-      <span class="jump-title">Drama 因子 (ドラマ因子) 全書・活力增強 4 階段與 2026 繁育新理論</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-systems')">
-      <span class="jump-icon"><i class="fa-solid fa-sitemap"></i></span>
-      <span class="jump-num">第 21 章</span>
-      <span class="jump-title">系統確立與滅亡年表・血統支配率精算機</span>
-    </button>
-  </div>
-</div>
-
-<div class="chapter-pillar-group">
-  <div class="chapter-pillar-title" style="color:#10b981; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-    <i class="fa-solid fa-horse"></i> 🐎 支柱三：幼駒培育・相馬心法與出生事件 (第 22 ~ 24 章)
-  </div>
-  <div class="chapter-items-grid">
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-potential')">
-      <span class="jump-icon"><i class="fa-solid fa-eye"></i></span>
-      <span class="jump-num">第 22 章</span>
-      <span class="jump-title">優質幼駒四大判別法・相馬心法與幼駒專用史實調教</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-horse-comments')">
-      <span class="jump-icon"><i class="fa-solid fa-comment-dots"></i></span>
-      <span class="jump-num">第 23 章</span>
-      <span class="jump-title">0~3 歲幼駒與賽馬評語完全手冊 (日/中/解讀三欄對照)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-special-events')">
-      <span class="jump-icon"><i class="fa-solid fa-meteor"></i></span>
-      <span class="jump-num">第 24 章</span>
-      <span class="jump-title">幼駒頂級出生事件 (流星/春雷/天馬等 9 大事件)</span>
-    </button>
-  </div>
-</div>
-
-<div class="chapter-pillar-group">
-  <div class="chapter-pillar-title" style="color:#f59e0b; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-    <i class="fa-solid fa-bolt"></i> ⚡ 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (第 25 ~ 30 章)
-  </div>
-  <div class="chapter-items-grid">
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-status-encyclopedia')">
-      <span class="jump-icon"><i class="fa-solid fa-address-card"></i></span>
-      <span class="jump-num">第 25 章</span>
-      <span class="jump-title">五大人物與賽馬數值能力完全百科 (競走馬・騎手・調教師・牧場長・子孫結婚知人)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-skills-traits')">
-      <span class="jump-icon"><i class="fa-solid fa-chart-simple"></i></span>
-      <span class="jump-num">第 26 章</span>
-      <span class="jump-title">基礎能力・四大比賽展開與適應能力機制全書</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-traits-master')">
-      <span class="jump-icon"><i class="fa-solid fa-medal"></i></span>
-      <span class="jump-num">第 27 章</span>
-      <span class="jump-title">特性全書・全 223 種通常・上位進化・日本固有與海外專屬特性完全圖鑑</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-historical-train')">
-      <span class="jump-icon"><i class="fa-solid fa-dumbbell"></i></span>
-      <span class="jump-num">第 28 章</span>
-      <span class="jump-title">史實調教・SP 雙馬合練・大成功量表與全 40+ 種調教效果全圖鑑</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-umasona')">
-      <span class="jump-icon"><i class="fa-solid fa-masks-theater"></i></span>
-      <span class="jump-num">第 29 章</span>
-      <span class="jump-title">ウマソナ (馬之個性) 全圖鑑・克服進化秘技與 14 大性格分佈矩陣</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-relations-2026')">
-      <span class="jump-icon"><i class="fa-solid fa-handshake"></i></span>
-      <span class="jump-num">第 30 章</span>
-      <span class="jump-title">2026 名馬相関圖與 4 大關係性 (親友/犬猿/戀仲/強敵) 深度指南</span>
-    </button>
-  </div>
-</div>
-
-<div class="chapter-pillar-group">
-  <div class="chapter-pillar-title" style="color:#ec4899; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-    <i class="fa-solid fa-trophy"></i> 🏆 支柱五：重賞日程・全球三冠・熱潮與賽馬場特性 (第 31 ~ 35 章)
-  </div>
-  <div class="chapter-items-grid">
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-stakes-master')">
-      <span class="jump-icon"><i class="fa-solid fa-trophy"></i></span>
-      <span class="jump-num">第 31 章</span>
-      <span class="jump-title">全重賞日程・全球三冠系列賽・G1 頂級攻略與 64 大競馬場特性大百科</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-triple-crowns')">
-      <span class="jump-icon"><i class="fa-solid fa-award"></i></span>
-      <span class="jump-num">第 32 章</span>
-      <span class="jump-title">全球三冠路線與夏季系列賽完全對照</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-keiba-boom')">
-      <span class="jump-icon"><i class="fa-solid fa-fire"></i></span>
-      <span class="jump-num">第 33 章</span>
-      <span class="jump-title">偶像馬地圖・賽馬熱潮・傳奇特性與顯彰馬</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-nicknames')">
-      <span class="jump-icon"><i class="fa-solid fa-tags"></i></span>
-      <span class="jump-num">第 34 章</span>
-      <span class="jump-title">殿堂馬稱號 (異名)・人氣加成 (Boost) 與獲得條件全圖鑑</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-historia')">
-      <span class="jump-icon"><i class="fa-solid fa-landmark"></i></span>
-      <span class="jump-num">第 35 章</span>
-      <span class="jump-title">競馬歷史事件 (Historia) 名場面與觸發條件</span>
-    </button>
-  </div>
-</div>
-
-<div class="chapter-pillar-group">
-  <div class="chapter-pillar-title" style="color:#a855f7; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-    <i class="fa-solid fa-house-chimney"></i> 🏡 支柱六：牧場經營・人物技能・婚姻與俱樂部法人 (第 36 ~ 40 章)
-  </div>
-  <div class="chapter-items-grid">
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-farm-facilities')">
-      <span class="jump-icon"><i class="fa-solid fa-house-chimney"></i></span>
-      <span class="jump-num">第 36 章</span>
-      <span class="jump-title">牧場設施升級與美歐海外分場規劃</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-personnel')">
-      <span class="jump-icon"><i class="fa-solid fa-user-tie"></i></span>
-      <span class="jump-num">第 37 章</span>
-      <span class="jump-title">騎手・調教師・牧場長 18 大人物技能全書</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-marriage-secrets')">
-      <span class="jump-icon"><i class="fa-solid fa-venus-mars"></i></span>
-      <span class="jump-num">第 38 章</span>
-      <span class="jump-title">知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-club-management')">
-      <span class="jump-icon"><i class="fa-solid fa-briefcase"></i></span>
-      <span class="jump-num">第 39 章</span>
-      <span class="jump-title">賽馬俱樂部 (Club) 經營・法人化牧場與會員招募完全指南</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-legend-match')">
-      <span class="jump-icon"><i class="fa-solid fa-chess-king"></i></span>
-      <span class="jump-num">第 40 章</span>
-      <span class="jump-title">傳奇對決 (The Legend Match)・世界百大名駒殿堂排行榜與顯彰馬決戰</span>
-    </button>
-  </div>
-</div>
-
-<div class="chapter-pillar-group">
-  <div class="chapter-pillar-title" style="color:#eab308; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-    <i class="fa-solid fa-magnifying-glass"></i> 🏇 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 ~ 45 章)
-  </div>
-  <div class="chapter-items-grid">
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-horse-db')">
-      <span class="jump-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-      <span class="jump-num">第 41 章</span>
-      <span class="jump-title">1.5 萬匹全史實馬與 11 大年度推薦速查庫</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-sires-retire-db')">
-      <span class="jump-icon"><i class="fa-solid fa-clock-rotate-left"></i></span>
-      <span class="jump-num">第 42 章</span>
-      <span class="jump-title">2,898 匹史實種公馬引退年限完全速查庫 (Private 保護期檢索庫)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-breeding-only-horses')">
-      <span class="jump-icon"><i class="fa-solid fa-venus-mars"></i></span>
-      <span class="jump-num">第 43 章</span>
-      <span class="jump-title">4,314 匹繁殖專用史實馬全量數據庫 (名種公馬 / 繁殖名雌完全對照大表)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-racehorses-full-db')">
-      <span class="jump-icon"><i class="fa-solid fa-flag-checkered"></i></span>
-      <span class="jump-num">第 44 章</span>
-      <span class="jump-title">16,570 匹全史實競走馬完全數據庫 (日本馬 ＋ 海外馬對照大表)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-nicknames-full-db')">
-      <span class="jump-icon"><i class="fa-solid fa-tags"></i></span>
-      <span class="jump-num">第 45 章</span>
-      <span class="jump-title">殿堂馬稱號 (異名 / Nicknames) 全量數據庫與獲得條件完全圖鑑</span>
-    </button>
-  </div>
-</div>
-
-<div class="chapter-pillar-group">
-  <div class="chapter-pillar-title" style="color:#6366f1; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-    <i class="fa-solid fa-graduation-cap"></i> 🎓 支柱八：名師實戰講堂・線上對戰與系統機能 (第 46 ~ 48 章)
-  </div>
-  <div class="chapter-items-grid">
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-official-lectures')">
-      <span class="jump-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-      <span class="jump-num">第 46 章</span>
-      <span class="jump-title">名師實戰講堂 (吹里谷芽愛育成指南 & リオン展開適應性徹底講座)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-online-strongest')">
-      <span class="jump-icon"><i class="fa-solid fa-globe"></i></span>
-      <span class="jump-num">第 47 章</span>
-      <span class="jump-title">線上模式・最強馬之路 (最強馬ロード) 育成・前哨戰與全國大會對戰完全手冊</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-system-features')">
-      <span class="jump-icon"><i class="fa-solid fa-clapperboard"></i></span>
-      <span class="jump-num">第 48 章</span>
-      <span class="jump-title">電影級過場名場面 (Cinema Event) 觸發條件與系統便利機能全書</span>
-    </button>
-  </div>
-</div>
-
+</section>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- ==================== 第 41 章：名師實戰講堂 (新手入門與 2026 展開適應性完全指南) ==================== -->
-<!-- ==================== 第 42 章：賽馬俱樂部 (Club) 經營・法人化牧場與會員招募完全指南 ==================== -->
-<!-- ==================== 第 43 章：傳奇對決 (The Legend Match)・世界百大名駒殿堂排行榜與顯彰馬決戰 ==================== -->
-<!-- ==================== 第 47 章：線上模式・最強馬之路 (最強馬ロード) 育成・前哨戰與全國大會對戰完全手冊 ==================== -->
-<!-- ==================== 第 48 章：電影級過場名場面 (Cinema Event) 與系統機能 與系統問答全書 ==================== -->
-<!-- ==================== 第 48 章：電影級過場名場面 (Cinema Event) 觸發條件與系統便利機能全書 ==================== -->
-<script>
-function switchLecTab(tabIdx) {
-    for (let i = 1; i <= 6; i++) {
-        const btn = document.getElementById('btnLecTab' + i);
-        const pane = document.getElementById('lecTab' + i);
-        if (btn) btn.classList.toggle('active', i === tabIdx);
-        if (pane) pane.style.display = (i === tabIdx) ? 'block' : 'none';
-    }
-}
-</script>
-<!-- Modal 詳情彈出卡片 -->
-<div class="modal-backdrop" id="horseModal" onclick="closeModal(event)">
-<div class="modal-card" onclick="event.stopPropagation()">
-<span class="modal-close" onclick="closeModal()">×</span>
-<div class="modal-header">
-<h2 id="mName">馬名載入中...</h2>
-<div style="margin-top:6px; display:flex; gap:6px; align-items:center;">
-<span id="mTicket"></span>
-<span id="mSex" style="color:var(--text-muted); font-size:0.82rem;"></span>
-<span id="mRegion" style="color:var(--text-muted); font-size:0.82rem;"></span>
-</div>
-</div>
-<div class="stat-grid" id="mGrid">
-<!-- 動態注入能力與評語 -->
-</div>
-<div style="margin-top:8px; margin-bottom:12px; display:flex; justify-content:center;">
-<button class="filter-btn active" onclick="closeModal()" style="min-width:180px; padding:10px 24px; font-size:0.9rem; font-weight:bold; border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
-<i class="fa-solid fa-xmark"></i> 關閉詳情視窗
-                </button>
-</div>
-</div>
-</div>
-<script>
-                // ==================== 全域變數與資料庫邏輯 ====================
-        let dbData = null;
-        let currentTab = "cat1";
-        let sortField = "sp";
-        let sortAsc = false;
-        window._CURRENT_RENDERED_ITEMS = [];
 
-        const ticketWeights = {
-            "🌈 虹札": 6, "虹": 6,
-            "🥇 金札": 5, "金": 5,
-            "🥈 銀札": 4, "銀": 4,
-            "🥉 銅札": 3, "銅": 3,
-            "🟢 綠札": 2, "綠": 2, "緑": 2,
-            "⚪ 無札": 1, "無": 1, "": 0
-        };
-
-        const rankWeights = {
-            "S+": 9, "S": 8, "A+": 7, "A": 6, "B+": 5, "B": 4, "C+": 3, "C": 2, "D+": 1, "D": 0, "-": -1
-        };
-
-        const trackWeights = {
-            "◎": 4, "○": 3, "△": 2, "×": 1, "-": 0
-        };
-
-        function ensureUnpackedDb() {
-            if (window.MASTER_DB_DATA) {
-                dbData = window.MASTER_DB_DATA;
-            }
-        }
-
-        function getSortValue(item, field) {
-            if (!item) return 0;
-            if (field === "ticket") return ticketWeights[item.ticket] || 0;
-            if (field === "year") return parseInt(item.year) || 0;
-            if (field === "sp" || field === "matched_sp" || field === "sp_max") {
-                let val = item.sp || item.matched_sp || item.sp_max || 0;
-                return parseFloat(val) || 0;
-            }
-            if (field === "stamina" || field === "st") {
-                return parseInt(item.stamina || item.st) || 0;
-            }
-            if (field === "subpara_total" || field === "sub" || field === "サ") {
-                return parseInt(item.subpara_total) || 0;
-            }
-            if (field === "price" || field === "reputation" || field === "life") {
-                return parseInt(item[field]) || 0;
-            }
-            if (field === "foal_quality" || field === "foal_count") {
-                let val = item.foal_quality || item.foal_count || "";
-                let m = String(val).match(/\d+/);
-                return m ? parseInt(m[0]) : 0;
-            }
-            if (field === "stars") {
-                let s = item.stars || "";
-                return (s.match(/★/g) || []).length;
-            }
-            if (field === "distance") {
-                let m = (item.distance || "").match(/\d+/);
-                return m ? parseInt(m[0]) : 0;
-            }
-            if (['shunhatsu', 'konjo', 'power', 'seishin', 'keshikosa', 'junan', 'kenko'].includes(field)) {
-                return rankWeights[item[field]] || 0;
-            }
-            if (field === "grass" || field === "dirt") {
-                return trackWeights[item[field]] || 0;
-            }
-            return (item[field] || item.details || "").toString().toLowerCase();
-        }
-
-        function switchMainPillar(pillarId) {
-            document.querySelectorAll('.pillar-content').forEach(el => {
-                el.style.display = 'none';
-                el.classList.remove('active');
-            });
-            document.querySelectorAll('.main-tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            const target = document.getElementById(pillarId);
-            if (target) {
-                target.style.display = 'block';
-                target.classList.add('active');
-            }
-            const btnMap = {
-                'pillar-db': 'tabPillarDb',
-                'pillar-breed': 'tabPillarBreed',
-                'pillar-foals': 'tabPillarFoals',
-                'pillar-train': 'tabPillarTrain',
-                'pillar-races': 'tabPillarRaces',
-                'pillar-ranch': 'tabPillarRanch',
-                'pillar-secrets': 'tabPillarSecrets',
-                'pillar-lectures': 'tabPillarLectures',
-                'pillar-tracker': 'tabPillarTracker'
-            };
-            if (pillarId === 'pillar-tracker' && typeof renderTacticsGrid === 'function') {
-                renderTacticsGrid();
-            }
-            const btn = document.getElementById(btnMap[pillarId]);
-            if (btn) btn.classList.add('active');
-
-            if (pillarId === 'pillar-breed') {
-                if (typeof initSimulationChart === 'function') initSimulationChart();
-                if (typeof setSysTab === 'function') setSysTab('child');
-            }
-            if (pillarId === 'pillar-ranch') {
-                if (typeof initYearlyRecsUI === 'function') initYearlyRecsUI();
-            }
-        }
-
-        // ==================== 頁面導航歷史與返回上一位置 (Navigation History Stack) ====================
-        let jumpHistory = [];
-
-        function recordCurrentPosition() {
-            let activePillar = 'pillar-secrets';
-            const activeNav = document.querySelector('.main-tab-btn.active');
-            if (activeNav) {
-                const idAttr = activeNav.id || '';
-                const revMap = {
-                    'tabPillarDb': 'pillar-db',
-                    'tabPillarBreed': 'pillar-breed',
-                    'tabPillarFoals': 'pillar-foals',
-                    'tabPillarTrain': 'pillar-train',
-                    'tabPillarRaces': 'pillar-races',
-                    'tabPillarRanch': 'pillar-ranch',
-                    'tabPillarSecrets': 'pillar-secrets',
-                    'tabPillarTracker': 'pillar-tracker'
-                };
-                if (revMap[idAttr]) activePillar = revMap[idAttr];
-            }
-            const pos = {
-                scrollX: window.scrollX || window.pageXOffset || 0,
-                scrollY: window.scrollY || window.pageYOffset || 0,
-                pillarId: activePillar
-            };
-            
-            if (jumpHistory.length > 0) {
-                const last = jumpHistory[jumpHistory.length - 1];
-                if (Math.abs(last.scrollY - pos.scrollY) < 50 && last.pillarId === pos.pillarId) {
-                    return;
-                }
-            }
-            jumpHistory.push(pos);
-            if (jumpHistory.length > 25) jumpHistory.shift();
-            updateBackHistoryBtnVisibility();
-        }
-
-        function updateBackHistoryBtnVisibility() {
-            const btn = document.getElementById('btnJumpBackHistory');
-            if (btn) {
-                btn.style.display = (jumpHistory.length > 0) ? 'flex' : 'none';
-            }
-        }
-
-        function jumpBackToPreviousPosition() {
-            if (jumpHistory.length === 0) return;
-            const lastPos = jumpHistory.pop();
-            updateBackHistoryBtnVisibility();
-            if (lastPos) {
-                if (lastPos.pillarId) {
-                    document.querySelectorAll('.pillar-content').forEach(el => {
-                        el.style.display = 'none';
-                        el.classList.remove('active');
-                    });
-                    document.querySelectorAll('.main-tab-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    const target = document.getElementById(lastPos.pillarId);
-                    if (target) {
-                        target.style.display = 'block';
-                        target.classList.add('active');
-                    }
-                    const btnMap = {
-                        'pillar-db': 'tabPillarDb',
-                        'pillar-breed': 'tabPillarBreed',
-                        'pillar-foals': 'tabPillarFoals',
-                        'pillar-train': 'tabPillarTrain',
-                        'pillar-races': 'tabPillarRaces',
-                        'pillar-ranch': 'tabPillarRanch',
-                        'pillar-secrets': 'tabPillarSecrets',
-                'pillar-lectures': 'tabPillarLectures',
-                        'pillar-tracker': 'tabPillarTracker'
-                    };
-                    const b = document.getElementById(btnMap[lastPos.pillarId]);
-                    if (b) b.classList.add('active');
-                }
-                setTimeout(() => {
-                    window.scrollTo({
-                        top: lastPos.scrollY,
-                        left: lastPos.scrollX,
-                        behavior: 'smooth'
-                    });
-                }, 40);
-            }
-        }
-
-        function scrollToTop() {
-            if ((window.scrollY || window.pageYOffset || 0) > 250) {
-                recordCurrentPosition();
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function toggleAppTheme() {
-            const current = document.documentElement.getAttribute('data-theme') || 'dark';
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('keiba_theme', next);
-            if (explosionChartInstance) explosionChartInstance.update();
-            makeTablesSortable();
-        }
-
-        // ==================== 章節快速跳轉功能 (Quick Jump) ====================
-        function openChapterModal() {
-            const m = document.getElementById("chapterModal");
-            if (m) {
-                m.style.display = "flex";
-                const inp = document.getElementById("chapterFilterInput");
-                if (inp) {
-                    inp.value = "";
-                    filterChapterList();
-                    inp.blur();
-                }
-            }
-        }
-
-        function closeChapterModal(event) {
-            if (event && event.target && event.target.closest('.chapter-modal-card') && !event.target.classList.contains('modal-close')) {
-                return;
-            }
-            const m = document.getElementById("chapterModal");
-            if (m) m.style.display = "none";
-        }
-
-                        function jumpToChapter(pillarId, sectionId) {
-            if (typeof recordCurrentPosition === 'function') recordCurrentPosition();
-            if (typeof switchMainPillar === 'function') switchMainPillar(pillarId);
-            if (typeof closeChapterModal === 'function') closeChapterModal();
-            setTimeout(() => {
-                const target = document.getElementById(sectionId);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    target.classList.add('section-highlight-flash');
-                    setTimeout(() => target.classList.remove('section-highlight-flash'), 2000);
-                }
-            }, 120);
-        }
-
-        function filterChapterList() {
-            const inputEl = document.getElementById("chapterFilterInput");
-            const query = (inputEl ? inputEl.value : "").trim().toLowerCase();
-            const groups = document.querySelectorAll(".chapter-pillar-group");
-            
-            groups.forEach(group => {
-                let anyVisible = false;
-                const btns = group.querySelectorAll(".chapter-jump-btn");
-                btns.forEach(btn => {
-                    const titleText = btn.innerText.toLowerCase();
-                    let match = !query || titleText.includes(query);
-                    
-                    if (!match && query) {
-                        // 全局內文全文檢索 (Full-text Section Body Search)
-                        const onclickAttr = btn.getAttribute("onclick") || "";
-                        const secMatch = onclickAttr.match(/jumpToChapter\(['"][^'"]+['"]\s*,\s*['"]([^'"]+)['"]\)/);
-                        if (secMatch && secMatch[1]) {
-                            const sectionEl = document.getElementById(secMatch[1]);
-                            if (sectionEl) {
-                                const bodyText = sectionEl.innerText.toLowerCase();
-                                if (bodyText.includes(query)) {
-                                    match = true;
-                                }
-                            }
-                        }
-                    }
-                    
-                    if (match) {
-                        btn.style.display = "flex";
-                        anyVisible = true;
-                    } else {
-                        btn.style.display = "none";
-                    }
-                });
-                group.style.display = anyVisible ? "block" : "none";
-            });
-        }
-
-                // ==================== 配合理論分類篩選 (Section 2 Chips) ====================
-        function filterCategory(category, btn) {
-            document.querySelectorAll('#sec-master-table .filter-btn').forEach(b => b.classList.remove('active'));
-            if (btn) btn.classList.add('active');
-            const rows = document.querySelectorAll('#theoryMasterTable tbody tr');
-            rows.forEach(r => {
-                const catAttr = (r.getAttribute('data-cat') || "").split(" ");
-                if (category === 'all' || catAttr.includes(category)) {
-                    r.style.display = '';
-                } else {
-                    r.style.display = 'none';
-                }
-            });
-        }
-
-        function filterTheories() {
-            const input = (document.getElementById('theorySearch') ? document.getElementById('theorySearch').value : "").toLowerCase();
-            const rows = document.querySelectorAll('#theoryMasterTable tbody tr');
-            rows.forEach(r => {
-                const text = r.innerText.toLowerCase();
-                if (text.includes(input)) {
-                    r.style.display = '';
-                } else {
-                    r.style.display = 'none';
-                }
-            });
-        }
-
-        // ==================== 系統確立四大體系資料庫與分頁切換 ====================
-        const sysDatabase = {
-            child: {
-                title: "子系統確立 (Sub-system / 名種牡馬 銀因子)",
-                badge: "🥈 子系統 (銀)",
-                reqs: [
-                    "① 該種牡馬於單一地區（日本/美洲/歐洲）<strong>血統支配率 ≥ 5.0%</strong>，或<strong>全球支配率 ≥ 2.0%</strong>",
-                    "② 旗下必須至少擁有 4 匹同父系後代活躍現役種牡馬",
-                    "③ 該種牡馬尚未引退，或於引退當年達成門檻（當年年末結算成立）"
-                ],
-                notes: "💡 效益：獲得銀色名種牡馬因子，大幅活化血脈並建立自產 Linebreed 基礎。"
-            },
-            parent: {
-                title: "親系統昇格 (Parent System / 大種牡馬 金因子)",
-                badge: "🥇 親系統 (金)",
-                reqs: [
-                    "① <strong>條件 A (單區支配率)</strong>：單一地區血統支配率達到 <strong>≥ 12.0%</strong>",
-                    "② <strong>條件 B (全球支配率)</strong>：全球平均血統支配率達到 <strong>≥ 10.0%</strong>",
-                    "③ <strong>條件 C (三代連續子系)</strong>：旗下連續 3 代後代皆成功自立子系統"
-                ],
-                notes: "💡 效益：獲得金色大種牡馬因子，成立血脈活性化與親系 Linebreed 配合。"
-            },
-            world: {
-                title: "世界系統昇格 (World System / 世界種牡馬 彩虹因子)",
-                badge: "🌈 世界系統 (彩虹)",
-                reqs: [
-                    "① 全球平均血統支配率達到 <strong>≥ 15.0%</strong>",
-                    "② 在日、美、歐三大地區皆擁有活躍之子系統種牡馬",
-                    "③ 旗下產駒在各大賽馬場均享有高適性與爆發力加成"
-                ],
-                notes: "💡 效益：獲得彩虹世界種牡馬因子，5大副屬性爆發加成直接翻倍 (2倍)！"
-            },
-            ancestor: {
-                title: "世界始祖系統 (World Founder / 2026 最新神級巔峰機制)",
-                badge: "👑 始祖系統 (極限)",
-                reqs: [
-                    "① 全球血統支配率達到史無前例之 <strong>≥ 25.0%</strong> (或全球 ≥ 20.0% 且單區 ≥ 25.0%)",
-                    "② 橫跨 4 代以上均為主流親系統，繁衍超過 50 匹殿堂 G1 冠軍產駒",
-                    "③ 解鎖全遊戲最強之「始祖融合特性」與超限爆發力加成"
-                ],
-                notes: "💡 效益：2026 版全新繁育終極目標，象徵自身牧場王朝徹底統治世界賽馬史。"
-            },
-            founder: {
-                title: "世界始祖系統 (World Founder / 2026 最新神級巔峰機制)",
-                badge: "👑 始祖系統 (極限)",
-                reqs: [
-                    "① 全球血統支配率達到史無前例之 <strong>≥ 25.0%</strong> (或全球 ≥ 20.0% 且單區 ≥ 25.0%)",
-                    "② 橫跨 4 代以上均為主流親系統，繁衍超過 50 匹殿堂 G1 冠軍產駒",
-                    "③ 解鎖全遊戲最強之「始祖融合特性」與超限爆發力加成"
-                ],
-                notes: "💡 效益：2026 版全新繁育終極目標，象徵自身牧場王朝徹底統治世界賽馬史。"
-            }
-        };
-
-        function setSysTab(tabKey) {
-            const key = (tabKey === 'founder' || tabKey === 'ancestor') ? 'ancestor' : tabKey;
-            
-            // Highlight active button
-            document.querySelectorAll('.sys-btn').forEach(b => {
-                b.style.color = 'var(--text-muted)';
-                b.style.borderBottom = '2px solid transparent';
-                b.style.fontWeight = 'bold';
-            });
-            const activeBtn = document.getElementById(`sysTab-${key}`) || document.getElementById(`sysTab-${tabKey}`);
-            if (activeBtn) {
-                activeBtn.style.color = 'var(--accent-color)';
-                activeBtn.style.borderBottom = '2px solid var(--accent-color)';
-            }
-
-            // Render content into #sysContent
-            const container = document.getElementById('sysContent') || document.getElementById('sysDetailCard');
-            const data = sysDatabase[key] || sysDatabase[tabKey];
-            if (container && data) {
-                container.innerHTML = `
-                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
-                        <strong style="font-size:13px; color:var(--text-highlight);">${data.title}</strong>
-                        <span class="pill pill-version" style="font-size:0.75rem;">${data.badge}</span>
-                    </div>
-                    <div style="background:var(--bg-tertiary); padding:10px 12px; border-radius:6px; margin-bottom:8px; border:1px solid var(--border-color); line-height:1.7;">
-                        ${data.reqs.map(r => `<div style="margin-bottom:4px;">${r}</div>`).join('')}
-                    </div>
-                    <div style="font-size:11.5px; color:var(--text-muted); padding:4px 2px;">${data.notes}</div>
-                `;
-            }
-        }
-
-        function calculateDominance() {
-            const jp1 = parseFloat(document.getElementById('jp1') ? document.getElementById('jp1').value : 6.0) || 0;
-            const jp2 = parseFloat(document.getElementById('jp2') ? document.getElementById('jp2').value : 5.5) || 0;
-            const jp3 = parseFloat(document.getElementById('jp3') ? document.getElementById('jp3').value : 4.8) || 0;
-            const jp4 = parseFloat(document.getElementById('jp4') ? document.getElementById('jp4').value : 5.2) || 0;
-            let jpAvg = (jp1 + jp2 + jp3 + jp4) / 4;
-            if (jpAvg > 0 && jpAvg < 0.05) jpAvg = 0.1;
-            const resJpEl = document.getElementById('resJP');
-            if (resJpEl) resJpEl.innerText = jpAvg.toFixed(2) + '%';
-
-            const usDom = parseFloat(document.getElementById('usDom') ? document.getElementById('usDom').value : 1.5) || 0;
-            const euDom = parseFloat(document.getElementById('euDom') ? document.getElementById('euDom').value : 0.8) || 0;
-            const globalAvg = (jpAvg + usDom + euDom) / 3;
-            const resGlEl = document.getElementById('resGlobal');
-            if (resGlEl) resGlEl.innerText = globalAvg.toFixed(2) + '%';
-
-            const statusEl = document.getElementById('estStatus');
-            if (!statusEl) return;
-            if (globalAvg >= 25.0 || (globalAvg >= 20.0 && jpAvg >= 25.0)) {
-                statusEl.innerText = "👑 滿足始祖系統昇格門檻 (全球 ≥ 25.0%)";
-                statusEl.style.color = "#c084fc";
-            } else if (globalAvg >= 15.0) {
-                statusEl.innerText = "🌟 滿足世界系統昇格門檻 (全球 ≥ 15.0%)";
-                statusEl.style.color = "#38bdf8";
-            } else if (globalAvg >= 10.0 || jpAvg >= 12.0) {
-                statusEl.innerText = "🏆 滿足親系統昇格門檻 (全球 ≥ 10.0% 或單區 ≥ 12.0%)";
-                statusEl.style.color = "#fcd34d";
-            } else if (globalAvg >= 2.0 || jpAvg >= 5.0) {
-                statusEl.innerText = "✅ 滿足子系統確立門檻 (全球 ≥ 2.0% 或單區 ≥ 5.0%)";
-                statusEl.style.color = "#6ee7b7";
-            } else {
-                statusEl.innerText = "⚠️ 未達子系統確立門檻 (全球需 ≥ 2.0% 或單區 ≥ 5.0%)";
-                statusEl.style.color = "#cbd5e1";
-            }
-        }
-
-        // ==================== 配合爆發力抽樣模擬器 (Section 1) ====================
-        let explosionChartInstance = null;
-        function initSimulationChart() {
-            const canvasEl = document.getElementById('explosionChart');
-            if (!canvasEl) return;
-            if (explosionChartInstance) return;
-            const ctx = canvasEl.getContext('2d');
-            explosionChartInstance = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: [],
-                    datasets: [{
-                        label: '抽樣次數 (加成值 b)',
-                        data: [],
-                        backgroundColor: 'rgba(56, 189, 248, 0.65)',
-                        borderColor: '#38bdf8',
-                        borderWidth: 1.5,
-                        borderRadius: 3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } } },
-                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } } }
-                    }
-                }
-            });
-        }
-
-        function runSimulation() {
-            initSimulationChart();
-            const bInput = document.getElementById('inputB') || document.getElementById('simB');
-            const facInput = document.getElementById('facilityLv');
-            const baseB = parseInt(bInput ? bInput.value : 30) || 30;
-            const facBonus = parseInt(facInput ? facInput.value : 3) || 0;
-            const B = baseB + facBonus;
-            const N = 1000;
-            const dist = new Array(B + 1).fill(0);
-
-            for (let i = 0; i < N; i++) {
-                const b = Math.floor(Math.random() * (B + 1));
-                dist[b]++;
-            }
-
-            if (explosionChartInstance) {
-                explosionChartInstance.data.labels = Array.from({ length: B + 1 }, (_, i) => `${i}`);
-                explosionChartInstance.data.datasets[0].data = dist;
-                explosionChartInstance.update();
-            }
-        }
-
-        function runExplosionSimulation() {
-            runSimulation();
-        }
-
-
-        // ==================== 14 大分類渲染引擎 ====================
-        function renderGuideCategory(catKey) {
-            const tableWrap = document.getElementById("tableViewWrapper");
-            const guideWrap = document.getElementById("guideViewWrapper");
-            const filterPanel = document.querySelector(".filter-panel");
-            const statsBar = document.querySelector(".stats-bar");
-
-            if (tableWrap) tableWrap.style.display = "none";
-            if (filterPanel) filterPanel.style.display = "none";
-            if (statsBar) statsBar.style.display = "none";
-            if (guideWrap) {
-                guideWrap.style.display = "block";
-                guideWrap.innerHTML = "";
-            }
-
-            if (!dbData) return;
-
-            if (catKey === "cat2") {
-                const list = Array.isArray(dbData.cat2) ? dbData.cat2 : [];
-                const headerCard = document.createElement("div");
-                headerCard.className = "callout callout-gold";
-                headerCard.innerHTML = `<i class="fa-solid fa-scroll fa-lg"></i><div><strong>📜 に入手すべきおすすめ馬について (1968~2023 全年代戰略指南)</strong><p style="font-size:0.82rem; margin-top:4px; margin-bottom:0;">包含各歷史年代開局核心目標、優先引進名駒、系統確立方向與繁殖策略解讀。</p></div>`;
-                guideWrap.appendChild(headerCard);
-
-                list.forEach(item => {
-                    const card = document.createElement("div");
-                    card.className = "section-card";
-                    card.style.marginBottom = "14px";
-                    card.innerHTML = `
-                        <div class="section-header" style="background:rgba(56,189,248,0.08);">
-                            <div class="section-title"><i class="fa-solid fa-calendar-days"></i> ${item.title || item.year + '年'}</div>
-                            <span class="pill pill-safe">${item.year} 年</span>
-                        </div>
-                        <div class="section-body">
-                            <p style="margin:0; line-height:1.7; color:var(--text-color); font-size:0.88rem;">${item.strategy_zh || item.strategy || "本年度史實產駒與拍賣會名駒具備高即戰力，建議依牧場配種設施與馬札存量妥善安排收購。"}</p>
-                        </div>
-                    `;
-                    guideWrap.appendChild(card);
-                });
-            } else if (catKey === "cat11") {
-                const g = dbData.cat11 || {};
-                const card = document.createElement("div");
-                card.className = "section-card";
-                card.innerHTML = `
-                    <div class="section-header" style="background:rgba(245,158,11,0.1);">
-                        <div class="section-title" style="color:var(--gold-color);"><i class="fa-solid fa-star"></i> ${g.title || "スーパースターホースとは (超級巨星名駒解析)"}</div>
-                    </div>
-                    <div class="section-body">
-                        <div class="callout callout-gold"><i class="fa-solid fa-trophy"></i><div><strong>定義與特徵</strong><p style="margin:4px 0 0 0;">${g.definition || "《賽馬大亨 10 2026》中具備歷史級統治力之頂級史實名駒 (SP 76+ 或 虹札神駒)。"}</p></div></div>
-                        <h4 style="color:var(--accent-color); margin-top:14px;">⚡ 核心四大優勢</h4>
-                        <ul style="line-height:1.8;">
-                            ${(g.key_traits || []).map(t => `<li>${t}</li>`).join('')}
-                        </ul>
-                        <h4 style="color:var(--gold-color); margin-top:14px;">🎯 主要獲取途徑</h4>
-                        <ul style="line-height:1.8;">
-                            ${(g.how_to_acquire || []).map(a => `<li>${a}</li>`).join('')}
-                        </ul>
-                    </div>
-                `;
-                guideWrap.appendChild(card);
-            } else if (catKey === "cat12") {
-                const g = dbData.cat12 || {};
-                const card = document.createElement("div");
-                card.className = "section-card";
-                card.innerHTML = `
-                    <div class="section-header" style="background:linear-gradient(90deg, rgba(239,68,68,0.15), rgba(59,130,246,0.15));">
-                        <div class="section-title" style="color:#f472b6;"><i class="fa-solid fa-rainbow"></i> ${g.title || "おすすめ虹札馬について (虹札兌換戰略與優先級總覽)"}</div>
-                    </div>
-                    <div class="section-body">
-                        <div class="callout callout-info"><i class="fa-solid fa-award"></i><div><strong>虹札運用黃金法則</strong><p style="margin:4px 0 0 0;">${g.description || "虹札 (虹のお守り) 是遊戲中最珍貴之最高階道具。合理運用能在 10~20 年內徹底確立自家牧場之絕對支配地位。"}</p></div></div>
-                        <h4 style="color:var(--accent-color); margin-top:14px;">👑 三大優先收購準則</h4>
-                        <ul style="line-height:1.8;">
-                            ${(g.rules || []).map(r => `<li>${r}</li>`).join('')}
-                        </ul>
-                    </div>
-                `;
-                guideWrap.appendChild(card);
-            }
-        }
-
-        let ch40CategoryFilter = 'all';
-        let ch40LetterFilter = null;
-        let ch40KanaFilter = null;
-
-        const CH40_LETTER_KANA_MAP = {
-            'A': ['ア', 'イ', 'ウ', 'エ', 'オ', 'ヴ'],
-            'B': ['バ', 'ビ', 'ブ', 'ベ', 'ボ'],
-            'C': ['カ', 'キ', 'ク', 'ケ', 'コ', 'キャ', 'キュ', 'キョ', 'チェ', 'チャ', 'チュ', 'チョ'],
-            'D': ['ダ', 'ヂ', 'ヅ', 'デ', 'ド', 'ディ', 'ドゥ'],
-            'E': ['エ', 'エイ', 'エフ', 'エル', 'エム', 'エン'],
-            'F': ['ファ', 'フィ', 'フ', 'フェ', 'フォ'],
-            'G': ['ガ', 'ギ', 'グ', 'ゲ', 'ゴ'],
-            'H': ['ハ', 'ヒ', 'フ', 'ヘ', 'ホ'],
-            'I': ['イ', 'アイ', 'イン', 'イル'],
-            'J': ['ジャ', 'ジ', 'ジュ', 'ジェ', 'ジョ'],
-            'K': ['カ', 'キ', 'ク', 'ケ', 'コ'],
-            'L': ['ラ', 'リ', 'ル', 'レ', 'ロ'],
-            'M': ['マ', 'ミ', 'ム', 'メ', 'モ'],
-            'N': ['ナ', 'ニ', 'ヌ', 'ネ', 'ノ'],
-            'O': ['オ', 'オー', 'オウ', 'オフ'],
-            'P': ['パ', 'ピ', 'プ', 'ペ', 'ポ'],
-            'Q': ['ク', 'クイ', 'クエ', 'クオ'],
-            'R': ['ラ', 'リ', 'ル', 'レ', 'ロ'],
-            'S': ['サ', 'シ', 'ス', 'セ', 'ソ', 'シャ', 'シュ', 'ショ'],
-            'T': ['タ', 'チ', 'ツ', 'テ', 'ト'],
-            'U': ['ウ', 'ユー', 'ユ', 'ウル'],
-            'V': ['ヴ', 'ヴァ', 'ヴィ', 'ヴ', 'ヴェ', 'ヴォ'],
-            'W': ['ワ', 'ウィ', 'ウェ', 'ウォ', 'ワン'],
-            'X': ['エックス', 'ザ', 'ジ', 'ズ'],
-            'Y': ['ヤ', 'ユ', 'ヨ', 'イエ'],
-            'Z': ['ザ', 'ジ', 'ズ', 'ゼ', 'ゾ']
-        };
-
-        const CH40_KANA_ROW_MAP = {
-            'ア': ['ア', 'イ', 'ウ', 'エ', 'オ', 'ヴ'],
-            'カ': ['カ', 'キ', 'ク', 'ケ', 'コ', 'ガ', 'ギ', 'グ', 'ゲ', 'ゴ'],
-            'サ': ['サ', 'シ', 'ス', 'セ', 'ソ', 'ザ', 'ジ', 'ズ', 'ゼ', 'ゾ'],
-            'タ': ['タ', 'チ', 'ツ', 'テ', 'ト', 'ダ', 'ヂ', 'ヅ', 'デ', 'ド'],
-            'ナ': ['ナ', 'ニ', 'ヌ', 'ネ', 'ノ'],
-            'ハ': ['ハ', 'ヒ', 'フ', 'ヘ', 'ホ', 'バ', 'ビ', 'ブ', 'ベ', 'ボ', 'パ', 'ピ', 'プ', 'ペ', 'ポ'],
-            'マ': ['マ', 'ミ', 'ム', 'メ', 'モ'],
-            'ヤ': ['ヤ', 'ユ', 'ヨ'],
-            'ラ': ['ラ', 'リ', 'ル', 'レ', 'ロ'],
-            'ワ': ['ワ', 'ヲ', 'ン']
-        };
-
-        function filterCh40Category(catType, btn) {
-            ch40CategoryFilter = catType;
-            ch40LetterFilter = null;
-            ch40KanaFilter = null;
-            
-            document.querySelectorAll('#ch40QuickFilters .ch41-filter-chip').forEach(b => b.classList.remove('active'));
-            if (btn) btn.classList.add('active');
-            document.querySelectorAll('#ch40LetterBtns .ch41-letter-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('#ch40KanaBtns .ch41-kana-btn').forEach(b => b.classList.remove('active'));
-            
-            renderTable();
-        }
-
-        function filterCh40Letter(letter, btn) {
-            if (ch40LetterFilter === letter) {
-                ch40LetterFilter = null;
-                if (btn) btn.classList.remove('active');
-            } else {
-                ch40LetterFilter = letter;
-                ch40KanaFilter = null;
-                document.querySelectorAll('#ch40LetterBtns .ch41-letter-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('#ch40KanaBtns .ch41-kana-btn').forEach(b => b.classList.remove('active'));
-                if (btn) btn.classList.add('active');
-            }
-            renderTable();
-        }
-
-        function filterCh40Kana(kanaRow, btn) {
-            if (ch40KanaFilter === kanaRow) {
-                ch40KanaFilter = null;
-                if (btn) btn.classList.remove('active');
-            } else {
-                ch40KanaFilter = kanaRow;
-                ch40LetterFilter = null;
-                document.querySelectorAll('#ch40LetterBtns .ch41-letter-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('#ch40KanaBtns .ch41-kana-btn').forEach(b => b.classList.remove('active'));
-                if (btn) btn.classList.add('active');
-            }
-            renderTable();
-        }
-
-        function resetCh40Filters() {
-            ch40CategoryFilter = 'all';
-            ch40LetterFilter = null;
-            ch40KanaFilter = null;
-            
-            const searchEl = document.getElementById('filterSearch');
-            if (searchEl) searchEl.value = '';
-            const yearEl = document.getElementById('filterYear');
-            if (yearEl) yearEl.value = 'ALL';
-            const ticketEl = document.getElementById('filterTicket');
-            if (ticketEl) ticketEl.value = 'ALL';
-            const sexEl = document.getElementById('filterSex');
-            if (sexEl) sexEl.value = 'ALL';
-
-            document.querySelectorAll('#ch40QuickFilters .ch41-filter-chip').forEach((b, idx) => {
-                if (idx === 0) b.classList.add('active');
-                else b.classList.remove('active');
-            });
-            document.querySelectorAll('#ch40LetterBtns .ch41-letter-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('#ch40KanaBtns .ch41-kana-btn').forEach(b => b.classList.remove('active'));
-
-            renderTable();
-        }
-
-        function renderTable() {
-            ensureUnpackedDb();
-            ch40CurrentPage = 1;
-
-            if (["cat2", "cat11", "cat12"].includes(currentTab)) {
-                renderGuideCategory(currentTab);
-                return;
-            }
-
-            const tableWrap = document.getElementById("tableViewWrapper");
-            const guideWrap = document.getElementById("guideViewWrapper");
-            const filterPanel = document.querySelector(".filter-panel");
-            const statsBar = document.querySelector(".stats-bar");
-
-            if (tableWrap) tableWrap.style.display = "block";
-            if (filterPanel) filterPanel.style.display = "grid";
-            if (statsBar) statsBar.style.display = "flex";
-            if (guideWrap) guideWrap.style.display = "none";
-
-            const yearVal = document.getElementById("filterYear") ? document.getElementById("filterYear").value : "ALL";
-            const ticketVal = document.getElementById("filterTicket") ? document.getElementById("filterTicket").value : "ALL";
-            const sexVal = document.getElementById("filterSex") ? document.getElementById("filterSex").value : "ALL";
-            const spVal = document.getElementById("filterSp") ? (parseInt(document.getElementById("filterSp").value) || 0) : 0;
-            const stVal = document.getElementById("filterSt") ? (parseInt(document.getElementById("filterSt").value) || 0) : 0;
-            const trackVal = document.getElementById("filterTrack") ? document.getElementById("filterTrack").value : "ALL";
-            const distVal = document.getElementById("filterDistance") ? document.getElementById("filterDistance").value : "ALL";
-            const regionVal = document.getElementById("filterRegion") ? document.getElementById("filterRegion").value : "ALL";
-            const searchVal = document.getElementById("filterSearch") ? document.getElementById("filterSearch").value.trim().toLowerCase() : "";
-
-            let dataset = [];
-            if (dbData) {
-                dataset = dbData[currentTab] || dbData.cat1 || [];
-            }
-            if (!Array.isArray(dataset)) dataset = [];
-
-            let filtered = dataset.filter(item => {
-                if (!item) return false;
-                if (yearVal !== "ALL" && String(item.year) !== String(yearVal)) return false;
-                if (ticketVal !== "ALL") {
-                    const t = item.ticket || "";
-                    if (!t.includes(ticketVal)) return false;
-                }
-                if (sexVal !== "ALL") {
-                    const s = item.sex || "";
-                    if (!s.includes(sexVal)) return false;
-                }
-
-                const sp = parseInt(item.sp || item.matched_sp) || 0;
-                if (spVal > 0 && sp < spVal) return false;
-
-                const st = parseInt(item.stamina || item.st) || 0;
-                if (stVal > 0 && st < stVal) return false;
-
-                if (trackVal !== "ALL") {
-                    const grass = item.grass || item.turf || item.芝 || "";
-                    const dirt = item.dirt || item.ダ || "";
-                    const isGrassGood = grass === "◎" || grass === "○";
-                    const isDirtGood = dirt === "◎" || dirt === "○";
-
-                    if (trackVal === "芝") {
-                        if (!isGrassGood || isDirtGood) return false;
-                    } else if (trackVal === "ダ") {
-                        if (!isDirtGood || isGrassGood) return false;
-                    } else if (trackVal === "万能") {
-                        if (!isGrassGood || !isDirtGood) return false;
-                    } else if (trackVal === "芝可能") {
-                        if (!isGrassGood) return false;
-                    } else if (trackVal === "ダ可能") {
-                        if (!isDirtGood) return false;
-                    }
-                }
-
-                if (distVal !== "ALL") {
-                    const targetDist = parseInt(distVal);
-                    const m = (item.distance || "").match(/(\d+)/);
-                    const itemMinDist = m ? parseInt(m[1]) : 0;
-                    if (distVal === "2500") {
-                        if (itemMinDist < 2500) return false;
-                    } else {
-                        if (itemMinDist !== targetDist) return false;
-                    }
-                }
-
-                if (regionVal !== "ALL") {
-                    const r = item.region || item.country || "";
-                    if (regionVal === "日本") {
-                        if (!r.includes("日")) return false;
-                    } else if (regionVal === "米") {
-                        if (!r.includes("米") && !r.includes("美") && !r.includes("US")) return false;
-                    } else if (regionVal === "欧") {
-                        if (!r.includes("欧") && !r.includes("歐") && !r.includes("EU") && !r.includes("Europe")) return false;
-                    }
-                }
-
-                if (searchVal) {
-                    const name = (item.name || "").toLowerCase();
-                    const sire = (item.sire || "").toLowerCase();
-                    if (!name.includes(searchVal) && !sire.includes(searchVal)) return false;
-                }
-                return true;
-            });
-
-            filtered.sort((a, b) => {
-                let valA = getSortValue(a, sortField);
-                let valB = getSortValue(b, sortField);
-                if (typeof valA === "number" && typeof valB === "number") {
-                    return sortAsc ? valA - valB : valB - valA;
-                }
-                if (valA < valB) return sortAsc ? -1 : 1;
-                if (valA > valB) return sortAsc ? 1 : -1;
-                return 0;
-            });
-
-            const matchCountEl = document.getElementById("matchCount");
-            if (matchCountEl) matchCountEl.textContent = filtered.length.toLocaleString();
-
-            renderHeader();
-            renderBody(filtered);
-        }
-
-        // ==================== 徽章與樣式輔助函數 ====================
-        function renderStarsBadge(stars) {
-            if (!stars || stars === "-") return "-";
-            const sStr = String(stars);
-            if (sStr.includes("★")) {
-                return `<span style="color:var(--gold-color); font-weight:bold;">${sStr}</span>`;
-            }
-            const count = parseInt(sStr) || 0;
-            if (count > 0 && count <= 5) {
-                return `<span style="color:var(--gold-color); font-weight:bold;">${"★".repeat(count)}${"☆".repeat(5 - count)}</span>`;
-            }
-            return sStr;
-        }
-
-        function renderTicketBadge(ticket) {
-            if (!ticket || ticket === "-" || ticket === "無") return `<span class="badge" style="background:#334155; color:#94a3b8;">無</span>`;
-            const t = String(ticket).trim();
-            if (t.includes("虹") || t.includes("彩")) return `<span class="badge badge-rainbow">虹</span>`;
-            if (t.includes("金")) return `<span class="badge badge-gold">金</span>`;
-            if (t.includes("銀")) return `<span class="badge badge-silver">銀</span>`;
-            if (t.includes("銅")) return `<span class="badge badge-bronze">銅</span>`;
-            if (t.includes("綠") || t.includes("緑")) return `<span class="badge badge-green">綠</span>`;
-            return `<span class="badge" style="background:#334155; color:#fff;">${t}</span>`;
-        }
-
-        function renderTrackBadge(val) {
-            if (!val || val === "-") return "-";
-            const v = String(val).trim();
-            if (v.includes("◎")) return `<span style="color:#10b981; font-weight:bold;">◎</span>`;
-            if (v.includes("○")) return `<span style="color:#38bdf8; font-weight:bold;">○</span>`;
-            if (v.includes("△")) return `<span style="color:#f59e0b; font-weight:bold;">△</span>`;
-            if (v.includes("×") || v.includes("✕")) return `<span style="color:#ef4444; font-weight:bold;">×</span>`;
-            return v;
-        }
-
-        function renderRankBadge(rank) {
-            if (!rank || rank === "-") return "-";
-            const r = String(rank).trim();
-            if (r.startsWith("S")) return `<span style="color:#eab308; font-weight:bold;">${r}</span>`;
-            if (r.startsWith("A")) return `<span style="color:#f43f5e; font-weight:bold;">${r}</span>`;
-            if (r.startsWith("B")) return `<span style="color:#3b82f6; font-weight:bold;">${r}</span>`;
-            if (r.startsWith("C")) return `<span style="color:#10b981; font-weight:bold;">${r}</span>`;
-            if (r.startsWith("D") || r.startsWith("E") || r.startsWith("G")) return `<span style="color:#94a3b8;">${r}</span>`;
-            return r;
-        }
-
-                function renderHeader() {
-            const tr = document.getElementById("tableHeader");
-            if (!tr) return;
-            tr.innerHTML = "";
-
-            const cols = [
-                { key: "year", title: "登場" },
-                { key: "name", title: "馬名" },
-                { key: "ticket", title: "札" },
-                { key: "sex", title: "性別" },
-                { key: "sp", title: "SP" },
-                { key: "stamina", title: "ST" },
-                { key: "subpara_total", title: "サ" },
-                { key: "growth", title: "成型(威力)" },
-                { key: "grass", title: "芝" },
-                { key: "dirt", title: "ダ" },
-                { key: "distance", title: "距離適性" },
-                { key: "stars", title: "推薦" },
-                { key: "region", title: "地區" },
-                { key: "action", title: "詳情" }
-            ];
-
-            cols.forEach(col => {
-                const th = document.createElement("th");
-                let sortIndicator = "";
-                if (sortField === col.key) {
-                    sortIndicator = sortAsc ? " ▲" : " ▼";
-                }
-                th.innerHTML = `${col.title}<span class="sort-icon">${sortIndicator}</span>`;
-                th.addEventListener("click", () => {
-                    if (sortField === col.key) {
-                        sortAsc = !sortAsc;
-                    } else {
-                        sortField = col.key;
-                        sortAsc = false;
-                    }
-                    renderTable();
-                });
-                tr.appendChild(th);
-            });
-        }
-
-        let ch40CurrentPage = 1;
-        const ch40PageSize = 25;
-        let ch40FilteredList = [];
-
-        function jumpCh40Page() {
-            const input = document.getElementById('ch40JumpInput');
-            if (!input) return;
-            const p = parseInt(input.value, 10);
-            const totalPages = Math.max(1, Math.ceil(ch40FilteredList.length / ch40PageSize));
-            if (p >= 1 && p <= totalPages) {
-                ch40CurrentPage = p;
-                renderBody(ch40FilteredList);
-                const tbl = document.getElementById("horseTable");
-                if (tbl) tbl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-        }
-
-        function changeCh40Page(delta) {
-            ch40CurrentPage += delta;
-            renderBody(ch40FilteredList);
-            const tbl = document.getElementById("horseTable");
-            if (tbl) tbl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        function renderThead() {
-            renderHeader();
-        }
-
-        function openModalByIndex(idx) {
-            const item = window._CURRENT_RENDERED_ITEMS[idx];
-            if (!item) return;
-            openModalDirect(item);
-        }
-
-        function renderBody(items) {
-            ch40FilteredList = items;
-            const tbody = document.getElementById("tableBody");
-            if (!tbody) return;
-            tbody.innerHTML = "";
-
-            const total = items.length;
-            const totalPages = Math.max(1, Math.ceil(total / ch40PageSize));
-            ch40CurrentPage = Math.min(Math.max(1, ch40CurrentPage), totalPages);
-
-            if (total === 0) {
-                window._CURRENT_RENDERED_ITEMS = [];
-                const tr = document.createElement("tr");
-                tr.innerHTML = `<td colspan="14" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
-                tbody.appendChild(tr);
-                
-                const oldPag = document.getElementById("ch40Pagination");
-                if (oldPag) oldPag.remove();
-                return;
-            }
-
-            const start = (ch40CurrentPage - 1) * ch40PageSize;
-            const slice = items.slice(start, start + ch40PageSize);
-            window._CURRENT_RENDERED_ITEMS = slice;
-
-            slice.forEach((item, idx) => {
-                const tr = document.createElement("tr");
-                const spVal = item.sp || item.matched_sp || "-";
-                const stVal = item.stamina || "-";
-                const subVal = item.subpara_total || "-";
-                const regionVal = item.region || (["cat4", "cat8", "cat14"].includes(currentTab) ? "海外" : "日本");
-                let growthVal = item.growth || "-";
-                if (item.growth_cap && item.growth_cap !== "-" && item.growth_cap !== "普通") {
-                    growthVal += `(${item.growth_cap})`;
-                } else if (item.foal_count) {
-                    growthVal = "仔出 " + item.foal_count;
-                }
-                const sexVal = item.sex === "牡" ? '<span style="color:#60a5fa; font-weight:bold;">牡</span>' : (item.sex === "牝" ? '<span style="color:#f472b6; font-weight:bold;">牝</span>' : (item.sex || "-"));
-
-                tr.innerHTML = `
-                    <td style="text-align:center;">${item.year || "-"}</td>
-                    <td><a class="horse-link" onclick="openModalByIndex(${idx})">${item.name || "-"}</a></td>
-                    <td style="text-align:center;">${renderTicketBadge(item.ticket)}</td>
-                    <td style="text-align:center;">${sexVal}</td>
-                    <td style="text-align:center; font-weight:bold; color:var(--accent-color);">${spVal}</td>
-                    <td style="text-align:center; font-weight:bold; color:#38bdf8;">${stVal}</td>
-                    <td style="text-align:center; font-weight:bold; color:var(--gold-color);">${subVal}</td>
-                    <td style="text-align:center;">${growthVal}</td>
-                    <td style="text-align:center;">${renderTrackBadge(item.grass)}</td>
-                    <td style="text-align:center;">${renderTrackBadge(item.dirt)}</td>
-                    <td style="text-align:center;">${item.distance || "-"}</td>
-                    <td style="text-align:center;">${renderStarsBadge(item.stars)}</td>
-                    <td style="text-align:center;">${regionVal}</td>
-                    <td style="text-align:center;"><button class="btn-detail" onclick="openModalByIndex(${idx})">詳情</button></td>
-                `;
-                tbody.appendChild(tr);
-            });
-
-            // Update or create pagination container below table
-            let pagEl = document.getElementById("ch40Pagination");
-            if (!pagEl) {
-                const tableWrap = document.getElementById("tableViewWrapper");
-                if (tableWrap) {
-                    pagEl = document.createElement("div");
-                    pagEl.id = "ch40Pagination";
-                    tableWrap.appendChild(pagEl);
-                }
-            }
-            if (pagEl) {
-                pagEl.style.cssText = "display:flex; justify-content:center; align-items:center; gap:12px; margin-top:16px; margin-bottom:20px; font-size:0.85rem;";
-                pagEl.innerHTML = `
-                    <button onclick="changeCh40Page(-1)" class="btn btn-secondary" style="padding:6px 14px; cursor:pointer; border-radius:6px;" ${ch40CurrentPage <= 1 ? 'disabled style="opacity:0.4; cursor:not-allowed; padding:6px 14px;"' : ''}><i class="fa-solid fa-chevron-left"></i> 上一頁</button>
-                    <span style="color:var(--text-color); font-weight:600;">第 ${ch40CurrentPage} / ${totalPages} 頁 (每頁 25 筆，總計 ${total.toLocaleString()} 匹)</span>
-                    <span style="margin-left:6px; display:inline-flex; align-items:center; gap:4px;">
-                        跳至 <input type="number" id="ch40JumpInput" min="1" max="${totalPages}" value="${ch40CurrentPage}" style="width:50px; height:28px; text-align:center; background:rgba(15,23,42,0.8); color:var(--text-color); border:1px solid var(--border-color); border-radius:4px; font-weight:bold;" onkeydown="if(event.key==='Enter') jumpCh40Page()"> 頁
-                        <button onclick="jumpCh40Page()" class="btn btn-secondary" style="padding:3px 10px; font-size:0.78rem; cursor:pointer; border-radius:4px;">前往</button>
-                    </span>
-                    <button onclick="changeCh40Page(1)" class="btn btn-secondary" style="padding:6px 14px; cursor:pointer; border-radius:6px;" ${ch40CurrentPage >= totalPages ? 'disabled style="opacity:0.4; cursor:not-allowed; padding:6px 14px;"' : ''}>下一頁 <i class="fa-solid fa-chevron-right"></i></button>
-                `;
-            }
-        }
-
-        // ==================== AI 戰略評語引擎 ====================
-        function generateAIComment(h) {
-            if (!h) return "尚無評語";
-            const parts = [];
-            const sp = parseInt(h.sp || h.matched_sp) || 0;
-            const sub = parseInt(h.subpara_total) || 0;
-            if (sp >= 75) parts.push(`⚡ 擁有極高之 SP 速度能力 (${sp})，具備奪取頂級 G1 之強大即戰力。`);
-            else if (sp >= 70) parts.push(`🐎 速度屬性優良 (${sp})，於重賞賽事具備高度競爭力。`);
-            if (sub >= 75) parts.push(`💎 次能力極其全面均衡 (次能力合計 ${sub})，無明顯弱點。`);
-            if (h.track && h.track.includes("◎")) parts.push(`🎯 賽道適性出色 (${h.track})，發揮極其穩定。`);
-            if (h.traits && h.traits !== "無特殊特性" && h.traits !== "-") parts.push(`✨ 具備關鍵特性「${h.traits}」，關鍵戰局往往能發揮奇效。`);
-            if (h.umarsonality && h.umarsonality !== "-") parts.push(`🐴 馬匹個性為「${h.umarsonality}」。`);
-            if (h.foal_quality && parseInt(h.foal_quality) >= 6) parts.push(`🧬 具備高繁殖潛力 (仔出評級 ${h.foal_quality})，退役後極具配種價值。`);
-            return parts.length > 0 ? parts.join(" ") : "基礎素質健全，適合依適性距離與賽道穩健安排賽程。";
-        }
-
-
-        function openModalDirect(item) {
-            try {
-                if (!item) return;
-                const mName = document.getElementById("mName");
-                if (mName) mName.textContent = item.name || "未命名馬匹";
-                const mTicket = document.getElementById("mTicket");
-                if (mTicket) mTicket.innerHTML = renderTicketBadge(item.ticket);
-                const mSex = document.getElementById("mSex");
-                if (mSex) mSex.innerHTML = item.sex === "牡" ? '<span style="color:#60a5fa; font-weight:bold;">牡馬</span>' : (item.sex === "牝" ? '<span style="color:#f472b6; font-weight:bold;">牝馬</span>' : (item.sex || "-"));
-                const mRegion = document.getElementById("mRegion");
-                if (mRegion) mRegion.textContent = `所屬: ${item.region || item.country || '日本'} | 登場: ${item.year || '-'}年`;
-
-                const grid = document.getElementById("mGrid");
-                if (!grid) return;
-                grid.innerHTML = "";
-
-                const addStat = (label, val, fullWidth = false) => {
-                    if (val === undefined || val === null || val === "") val = "-";
-                    const div = document.createElement("div");
-                    div.className = "stat-item" + (fullWidth ? " full-width" : "");
-                    div.innerHTML = `<div class="stat-label">${label}</div><div class="stat-value">${val}</div>`;
-                    grid.appendChild(div);
-                };
-
-                const addTitle = (title) => {
-                    const div = document.createElement("div");
-                    div.className = "modal-section-title";
-                    div.textContent = title;
-                    grid.appendChild(div);
-                };
-
-                // Section 1: 🎯 基本資料與身價評級
-                addTitle("🎯 基本資料與身價評級");
-                addStat("誕生年 / 生年", `${item.year || '-'} 年`);
-                addStat("お守り / 馬札", renderTicketBadge(item.ticket));
-                addStat("毛色 (Coat Color)", item.coat_color || "-");
-                addStat("所屬國 / 地區", item.country || item.region || "日本");
-                addStat("評判額 / 評價額", item.price ? `${item.price} 萬 (名聲: ${item.reputation || '-'})` : "-");
-                addStat("競走壽命 (Life)", item.life || "-");
-
-                // Section 2: ⚡ 核心能力與 8 大次能力 (Sub-parameters)
-                addTitle("⚡ 核心能力與 8 大次能力 (Sub-parameters)");
-                const spStr = item.sp_max ? `${item.sp || item.matched_sp || '-'} (上限: ${item.sp_max}) [${item.sp_rank || '-'}]` : (item.sp || item.matched_sp || "-");
-                addStat("スピード (SP 速度 / 上限)", spStr);
-                addStat("スタミナ (耐力 Stamina)", item.stamina || "-");
-                addStat("サブパラ合計 (次能力合計)", item.subpara_total || "-");
-                addStat("瞬發力 (瞬発)", renderRankBadge(item.shunhatsu));
-                addStat("勝負根性 (根性)", renderRankBadge(item.konjo));
-                addStat("力量 (パワー)", renderRankBadge(item.power));
-                addStat("精神力 (精神)", renderRankBadge(item.seishin));
-                addStat("智商 (賢さ)", renderRankBadge(item.keshikosa));
-                addStat("柔軟性 (柔軟)", renderRankBadge(item.junan));
-                addStat("健康 (Health)", renderRankBadge(item.kenko));
-                addStat("脚質 (跑法)", item.running_style || "-");
-                addStat("氣性 / 性格", `${item.temperament || '-'} / ${item.personality || '-'}`);
-
-                // Section 3: 🏟️ 賽道適性與 2026 三大新適性
-                addTitle("🏟️ 賽道適性與 2026 三大新適性");
-                addStat("適性距離", item.distance || "-");
-                addStat("馬場適性 (芝 / ダ)", `${renderTrackBadge(item.grass)} (芝) / ${renderTrackBadge(item.dirt)} (ダ)`);
-                addStat("瞬発力適性 (上限)", item.shunhatsu_apt || "-");
-                addStat("持続力適性 (上限)", item.jizoku_apt || "-");
-                addStat("消耗力適性 (上限)", item.shoumo_apt || "-");
-                addStat("轉彎適性 (小/左/右回り)", `${item.komawari || '-'} / ${item.hidarimawari || '-'} / ${item.migimawari || '-'}`);
-                addStat("體質弱點 (喉鳴/腳部/腰)", `${item.nodonari || '無'} / ${item.kyakubu_fuan || '無'} / ${item.koshi_no_amasa || '無'}`);
-
-                // Section 4: 🧬 血統世系與繁殖遺傳
-                addTitle("🧬 血統世系與繁殖遺傳");
-                addStat("父馬 (Sire)", `${item.sire || '-'} [${item.sire_line || '-'}]`);
-                addStat("母馬 (Dam)", `${item.dam || '-'} [${item.dam_line || '-'}]`);
-                addStat("成長型 (成長力)", `${item.growth || '-'} (${item.growth_cap || '普通'})`);
-                addStat("系統特性 / 遺伝", item.inheritance || "-");
-                addStat("仔出評級 (Foal Quality)", item.foal_quality || item.foal_count || "-");
-
-                // Section 5: ✨ 2026 特性・個性與戰略評析
-                addTitle("✨ 2026 特性・個性與戰略評析");
-                if (item.details && item.details !== "-") {
-                    addStat("💡 詳細特徵 / 配合建議", item.details, true);
-                }
-                addStat("史實固有特性 (Traits)", item.traits || "無特殊特性", true);
-                addStat("馬之個性 (ウマソナ)", item.umarsonality || "-", true);
-                addStat("AI 戰略評語", generateAIComment(item), true);
-
-                const modal = document.getElementById("horseModal");
-                if (modal) modal.style.display = "flex";
-            } catch (err) {
-                console.error("Modal open error:", err);
-                const modal = document.getElementById("horseModal");
-                if (modal) modal.style.display = "flex";
-            }
-        }
-
-        function closeModal(event) {
-            if (event && event.target && event.target.closest('.modal-card') && !event.target.classList.contains('modal-close')) {
-                return;
-            }
-            const m = document.getElementById("horseModal");
-            if (m) m.style.display = "none";
-        }
-
-        
-        // ==================== 全年代推薦種牡馬・繁殖牝馬 1:1 渲染引擎 ====================
-        let currentRecYear = "SP種牡馬・繁殖牝馬(全覽)";
-
-        function initYearlyRecsUI() {
-            const btnContainer = document.getElementById("recsYearButtons");
-            if (!btnContainer || !window.YEARLY_RECS_DATA) return;
-            
-            btnContainer.innerHTML = "";
-            const years = Object.keys(window.YEARLY_RECS_DATA);
-            years.forEach(y => {
-                const btn = document.createElement("button");
-                const isActive = (y === currentRecYear);
-                btn.className = "filter-btn" + (isActive ? " active" : "");
-                
-                if (y.includes("SP種牡馬")) {
-                    btn.innerHTML = "🧬 🌟 <strong>SP種牡馬・SP繁殖牝馬(全覽)</strong>";
-                } else {
-                    btn.innerText = y;
-                }
-                
-                btn.onclick = () => {
-                    document.querySelectorAll("#recsYearButtons .filter-btn").forEach(b => b.classList.remove("active"));
-                    btn.classList.add("active");
-                    currentRecYear = y;
-                    const searchInput = document.getElementById("recsSearchInput");
-                    if (searchInput) searchInput.value = "";
-                    renderYearlyRecs();
-                };
-                btnContainer.appendChild(btn);
-            });
-            renderYearlyRecs();
-        }
-
-        function renderYearlyRecs() {
-            const container = document.getElementById("yearlyRecsContainer");
-            if (!container || !window.YEARLY_RECS_DATA) return;
-            
-            const query = (document.getElementById("recsSearchInput") ? document.getElementById("recsSearchInput").value : "").trim().toLowerCase();
-            
-            let tablesToRender = [];
-            if (query) {
-                Object.entries(window.YEARLY_RECS_DATA).forEach(([y, tbls]) => {
-                    tbls.forEach(tbl => {
-                        const matchedRows = tbl.rows.filter(r => r.some(cell => String(cell).toLowerCase().includes(query)));
-                        if (matchedRows.length > 0) {
-                            tablesToRender.push({
-                                year: y,
-                                section: tbl.section,
-                                headers: tbl.headers,
-                                rows: matchedRows
-                            });
-                        }
-                    });
-                });
-                const label = document.getElementById("currentRecsYearLabel");
-                if (label) label.innerText = `🔍 搜尋「${query}」跨年代結果`;
-            } else {
-                const tbls = window.YEARLY_RECS_DATA[currentRecYear] || [];
-                tablesToRender = tbls.map(t => ({
-                    year: currentRecYear,
-                    section: t.section,
-                    headers: t.headers,
-                    rows: t.rows
-                }));
-                const label = document.getElementById("currentRecsYearLabel");
-                if (label) label.innerText = currentRecYear;
-            }
-            
-            let totalCount = 0;
-            container.innerHTML = "";
-            
-            if (tablesToRender.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之推薦馬匹資料</div>`;
-                const cEl = document.getElementById("currentRecsCount");
-                if (cEl) cEl.innerText = "0";
-                return;
-            }
-            
-            tablesToRender.forEach(tbl => {
-                totalCount += tbl.rows.length;
-                const card = document.createElement("div");
-                card.style.cssText = "margin-bottom:18px; background:var(--card-bg); border:1px solid var(--border-color); border-radius:10px; overflow:hidden;";
-                
-                let headerHtml = `<div style="padding:10px 14px; background:rgba(56,189,248,0.08); border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
-                    <strong style="color:var(--accent-color); font-size:0.88rem;">${tbl.section || tbl.year}</strong>
-                    <span class="pill pill-safe">${tbl.rows.length} 匹</span>
-                </div>`;
-                
-                let theadHtml = `<thead><tr>${tbl.headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>`;
-                let tbodyHtml = `<tbody>${tbl.rows.map(r => `<tr>${r.map((c, i) => {
-                    const cStr = String(c);
-                    if (cStr.includes('★')) return `<td><span style="color:#f59e0b; font-weight:bold;">${cStr}</span></td>`;
-                    if (cStr === '虹' || cStr === '金' || cStr === '銀' || cStr === '銅' || cStr === '緑' || cStr === '綠') return `<td>${renderTicketBadge(cStr)}</td>`;
-                    if (cStr === '牡') return `<td><span style="color:#60a5fa; font-weight:bold;">牡</span></td>`;
-                    if (cStr === '牝') return `<td><span style="color:#f472b6; font-weight:bold;">牝</span></td>`;
-                    if (i >= tbl.headers.length - 1 || cStr.length > 25) return `<td style="white-space:normal; line-height:1.45; font-size:0.8rem;">${cStr}</td>`;
-                    return `<td>${cStr}</td>`;
-                }).join('')}</tr>`).join('')}</tbody>`;
-                
-                card.innerHTML = headerHtml + `<div class="table-responsive"><table class="data-table">${theadHtml}${tbodyHtml}</table></div>`;
-                container.appendChild(card);
-            });
-            
-            const countEl = document.getElementById("currentRecsCount");
-            if (countEl) countEl.innerText = totalCount.toLocaleString();
-            makeTablesSortable(container);
-        }
-
-        function filterYearlyRecs() {
-            renderYearlyRecs();
-        }
-
-        function initCategoryTabs() {
-            const btns = document.querySelectorAll("#categoryTabs .tab-btn");
-            btns.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    btns.forEach(b => b.classList.remove("active"));
-                    btn.classList.add("active");
-                    currentTab = btn.getAttribute("data-cat");
-                    renderTable();
-                });
-            });
-        }
-
-        function initYearFilter() {
-            const sel = document.getElementById("filterYear");
-            if (!sel) return;
-            sel.innerHTML = '<option value="ALL">全部年份 (1967 ~ 2023)</option>';
-            for (let y = 1967; y <= 2023; y++) {
-                const opt = document.createElement("option");
-                opt.value = y;
-                opt.textContent = `${y} 年`;
-                sel.appendChild(opt);
-            }
-        }
-
-        
-        // ==================== 全域通用表格即時排序引擎 (Universal Table Sorter) ====================
-        const TICKET_WEIGHTS = { '虹': 6, '彩': 6, '金': 5, '銀': 4, '銅': 3, '緑': 2, '綠': 2, '無': 1, '-': 0 };
-        const RANK_WEIGHTS = { 'S+': 10, 'S': 9, 'A+': 8, 'A': 7, 'B+': 6, 'B': 5, 'C+': 4, 'C': 3, 'D': 2, 'E': 1, 'G': 0, '-': 0 };
-        const TRACK_WEIGHTS = { '◎': 4, '○': 3, '△': 2, '×': 1, '✕': 1, '-': 0 };
-
-        function parseSortValue(cellText) {
-            if (!cellText) return { type: 'str', val: '' };
-            const s = cellText.trim();
-            
-            // 1. Ticket Rank
-            if (TICKET_WEIGHTS[s] !== undefined) return { type: 'num', val: TICKET_WEIGHTS[s] };
-            
-            // 2. Ability Rank
-            if (RANK_WEIGHTS[s] !== undefined) return { type: 'num', val: RANK_WEIGHTS[s] };
-            
-            // 3. Track Aptitude
-            if (TRACK_WEIGHTS[s] !== undefined) return { type: 'num', val: TRACK_WEIGHTS[s] };
-            
-            // 4. Star Rating
-            if (s.includes('★')) {
-                const count = (s.match(/★/g) || []).length;
-                return { type: 'num', val: count };
-            }
-            
-            // 5. Percentage (e.g. +16%, 30%, 15.5%)
-            if (s.endsWith('%')) {
-                const num = parseFloat(s.replace(/[^0-9.-]/g, ''));
-                if (!isNaN(num)) return { type: 'num', val: num };
-            }
-            
-            // 6. Distance (e.g. 1800~3200m or 2000m)
-            const distMatch = s.match(/(\d+)(?:\s*[~～-]\s*\d+)?m/);
-            if (distMatch) {
-                return { type: 'num', val: parseInt(distMatch[1]) };
-            }
-            
-            // 7. Month + Week (e.g. 1月1週, 5月4週, 12月2週)
-            const monthWeekMatch = s.match(/^(\d+)月(?:(\d+)週)?/);
-            if (monthWeekMatch) {
-                const mNum = parseInt(monthWeekMatch[1]);
-                const wNum = monthWeekMatch[2] ? parseInt(monthWeekMatch[2]) : 1;
-                return { type: 'num', val: mNum * 10 + wNum };
-            }
-            
-            // 7b. Duration in Weeks (e.g. 4週, 6週間, 2週)
-            const weekMatch = s.match(/^(\d+)週/);
-            if (weekMatch) {
-                return { type: 'num', val: parseInt(weekMatch[1]) };
-            }
-            
-            // 8. Pure Number / Year / Price
-            const pureNum = parseFloat(s.replace(/,/g, ''));
-            if (!isNaN(pureNum) && /^[-+]?[0-9]*\.?[0-9]+$/.test(s.replace(/,/g, ''))) {
-                return { type: 'num', val: pureNum };
-            }
-            
-            // 9. Standard String
-            return { type: 'str', val: s.toLowerCase() };
-        }
-
-        function sortTableByColumn(table, colIndex, headerEl) {
-            const tbody = table.querySelector('tbody');
-            if (!tbody) return;
-            
-            const rows = Array.from(tbody.querySelectorAll('tr'));
-            if (rows.length === 0) return;
-            
-            // Determine current sort direction
-            let isAsc = true;
-            if (headerEl.classList.contains('sorted-asc')) {
-                isAsc = false;
-            }
-            
-            // Reset all headers in this table
-            table.querySelectorAll('th').forEach(th => {
-                th.classList.remove('sorted-asc', 'sorted-desc');
-                const icon = th.querySelector('.sort-icon');
-                if (icon) icon.className = 'fa-solid fa-sort sort-icon';
-            });
-            
-            // Apply new state to clicked header
-            headerEl.classList.add(isAsc ? 'sorted-asc' : 'sorted-desc');
-            const icon = headerEl.querySelector('.sort-icon');
-            if (icon) {
-                icon.className = isAsc ? 'fa-solid fa-sort-up sort-icon' : 'fa-solid fa-sort-down sort-icon';
-            }
-            
-            // Sort rows
-            rows.sort((rowA, rowB) => {
-                const cellA = rowA.children[colIndex];
-                const cellB = rowB.children[colIndex];
-                const textA = cellA ? cellA.innerText : '';
-                const textB = cellB ? cellB.innerText : '';
-                
-                const valA = parseSortValue(textA);
-                const valB = parseSortValue(textB);
-                
-                if (valA.type === 'num' && valB.type === 'num') {
-                    return isAsc ? (valA.val - valB.val) : (valB.val - valA.val);
-                }
-                
-                const strA = String(valA.val);
-                const strB = String(valB.val);
-                return isAsc ? strA.localeCompare(strB, 'zh-Hant') : strB.localeCompare(strA, 'zh-Hant');
-            });
-            
-            // Re-append sorted rows
-            rows.forEach(r => tbody.appendChild(r));
-        }
-
-        function makeTablesSortable(root = document) {
-            const tables = root.querySelectorAll('table.data-table');
-            tables.forEach(table => {
-                if (table.id === 'horseTable' || table.id === 'masterLiveTable') return; // Handled by custom dataset sorters
-                
-                const thead = table.querySelector('thead');
-                if (!thead) return;
-                
-                const headers = thead.querySelectorAll('th');
-                headers.forEach((th, idx) => {
-                    if (th.getAttribute('data-sort-bound')) return;
-                    th.setAttribute('data-sort-bound', 'true');
-                    th.classList.add('sortable-th');
-                    
-                    // Add icon if missing
-                    if (!th.querySelector('.sort-icon')) {
-                        const iconSpan = document.createElement('span');
-                        iconSpan.innerHTML = '<i class="fa-solid fa-sort sort-icon"></i>';
-                        th.appendChild(iconSpan);
-                    }
-                    
-                    th.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        sortTableByColumn(table, idx, th);
-                    });
-                });
-            });
-        }
-
-
-                        
-
-    function switchSeriesGroup(groupIdx) {
-        document.querySelectorAll('.series-group-pane').forEach(el => el.style.display = 'none');
-        const target = document.getElementById('serGroupContainer_' + groupIdx);
-        if (target) target.style.display = 'block';
-
-        for (let i = 0; i < 6; i++) {
-            const btn = document.getElementById('btnSerGroup_' + i);
-            if (btn) btn.classList.remove('active');
-        }
-        const activeBtn = document.getElementById('btnSerGroup_' + groupIdx);
-        if (activeBtn) activeBtn.classList.add('active');
-    }
-
-    function switchSeriesItem(groupIdx, itemId) {
-        const container = document.getElementById('serGroupContainer_' + groupIdx);
-        if (!container) return;
-
-        container.querySelectorAll('.series-item-card').forEach(el => el.style.display = 'none');
-        const card = document.getElementById('cardSer_' + itemId);
-        if (card) card.style.display = 'block';
-
-        container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        const chip = document.getElementById('chipSer_' + itemId);
-        if (chip) chip.classList.add('active');
-    }
-
-
-    function switchEraRecsTab(year, btn) {
-            document.querySelectorAll('.era-recs-pane').forEach(el => el.style.display = 'none');
-            const target = document.getElementById('paneEraRecs_' + year);
-            if (target) target.style.display = 'block';
-            
-            if (btn && btn.parentElement) {
-                btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            }
-            makeTablesSortable();
-        }
-
-        function switchStakesSubTab(tabId) {
-        document.querySelectorAll('.stakes-subtab-pane').forEach(el => el.style.display = 'none');
-        const target = document.getElementById(tabId);
-        if (target) target.style.display = 'block';
-        
-        const btnMap = {
-            'stakesTab1': 'btnStakesTab1',
-            'stakesTab2': 'btnStakesTab2',
-            'stakesTab3': 'btnStakesTab3',
-            'stakesTab4': 'btnStakesTab4',
-            'stakesTab5': 'btnStakesTab5'
-        };
-        Object.values(btnMap).forEach(id => {
-            const b = document.getElementById(id);
-            if (b) b.classList.remove('active');
-        });
-        const activeBtn = document.getElementById(btnMap[tabId]);
-        if (activeBtn) activeBtn.classList.add('active');
-    }
-
-    function filterCh38Stakes() {
-        const regionVal = document.getElementById('ch38FilterRegion')?.value || 'ALL';
-        const gradeVal = document.getElementById('ch38FilterGrade')?.value || 'ALL';
-        const monthVal = document.getElementById('ch38FilterMonth')?.value || 'ALL';
-        const trackVal = document.getElementById('ch38FilterTrack')?.value || 'ALL';
-        const searchVal = (document.getElementById('ch38SearchInput')?.value || '').trim().toLowerCase();
-
-        const table = document.getElementById('ch38StakesTable');
-        if (!table) return;
-
-        const rows = table.querySelectorAll('tbody tr');
-        let visibleCount = 0;
-
-        rows.forEach(r => {
-            const rRegion = r.getAttribute('data-region') || '';
-            const rGrade = r.getAttribute('data-grade') || '';
-            const rMonth = r.getAttribute('data-month') || '';
-            const rTrack = r.getAttribute('data-track') || '';
-            const rText = r.innerText.toLowerCase();
-
-            let match = true;
-
-            if (regionVal !== 'ALL' && rRegion !== regionVal) match = false;
-            if (gradeVal !== 'ALL' && !rGrade.includes(gradeVal)) match = false;
-            if (monthVal !== 'ALL' && rMonth !== monthVal) match = false;
-            if (trackVal !== 'ALL' && rTrack !== trackVal) match = false;
-            if (searchVal && !rText.includes(searchVal)) match = false;
-
-            if (match) {
-                r.style.display = '';
-                visibleCount++;
-            } else {
-                r.style.display = 'none';
-            }
-        });
-
-        const countEl = document.getElementById('ch38VisibleCount');
-        if (countEl) countEl.innerText = visibleCount.toLocaleString();
-    }
-
-    function resetCh38Filters() {
-        if (document.getElementById('ch38FilterRegion')) document.getElementById('ch38FilterRegion').value = 'ALL';
-        if (document.getElementById('ch38FilterGrade')) document.getElementById('ch38FilterGrade').value = 'ALL';
-        if (document.getElementById('ch38FilterMonth')) document.getElementById('ch38FilterMonth').value = 'ALL';
-        if (document.getElementById('ch38FilterTrack')) document.getElementById('ch38FilterTrack').value = 'ALL';
-        if (document.getElementById('ch38SearchInput')) document.getElementById('ch38SearchInput').value = '';
-        filterCh38Stakes();
-    }
-
-    function filterCh38Track(region, btn) {
-        if (btn && btn.parentElement) {
-            btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        }
-        const table = document.getElementById('ch38TrackTable');
-        if (!table) return;
-
-        const rows = table.querySelectorAll('tbody tr');
-        rows.forEach(r => {
-            const rRegion = r.getAttribute('data-region') || '';
-            if (region === 'ALL' || rRegion.includes(region)) {
-                r.style.display = '';
-            } else {
-                r.style.display = 'none';
-            }
-        });
-    }
-
-
-        function init() {
-            ensureUnpackedDb();
-            initCategoryTabs();
-            makeTablesSortable();
-            initYearFilter();
-            initSimulationChart();
-            runSimulation();
-            setSysTab('child');
-            calculateDominance();
-            initSimulationChart();
-            runSimulation();
-            setSysTab('child');
-            calculateDominance();
-
-            const bindChange = (id) => {
-                const el = document.getElementById(id);
-                if (el) el.addEventListener("change", renderTable);
-            };
-            bindChange("filterYear");
-            bindChange("filterTicket");
-            bindChange("filterSex");
-            bindChange("filterSp");
-            bindChange("filterSt");
-            bindChange("filterTrack");
-            bindChange("filterDistance");
-            bindChange("filterRegion");
-
-            const searchInput = document.getElementById("filterSearch");
-            if (searchInput) {
-                let timer = null;
-                searchInput.addEventListener("input", () => {
-                    clearTimeout(timer);
-                    timer = setTimeout(renderTable, 250);
-                });
-            }
-
-            const savedTheme = localStorage.getItem('keiba_theme');
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-            }
-
-            // 配合大系、系統確立與計算機初始化
-            document.querySelectorAll('.calc-in').forEach(input => {
-                input.addEventListener('input', calculateDominance);
-            });
-            calculateDominance();
-            setSysTab('child');
-
-                        initYearlyRecsUI();
-            renderTable();
-
-            // 若資料庫非同步載入完成，自動立即重新渲染
-            let checkDbInterval = setInterval(() => {
-                if (window.MASTER_DB_DATA && (!dbData || !dbData.cat1 || dbData.cat1.length === 0)) {
-                    ensureUnpackedDb();
-                    renderTable();
-                    clearInterval(checkDbInterval);
-                }
-            }, 200);
-            setTimeout(() => clearInterval(checkDbInterval), 12000);
-        }
-
-        // 自動啟動應用程式 (Auto Launch)
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', init);
-        } else {
-            init();
-        }
-    </script>
-<!-- Pillar 8: 📊 實戰 13 大跑法比賽戰績紀錄儀 (橫向試算表批次錄入版) -->
-<div class="pillar-content" id="pillar-tracker" style="display:none; padding-bottom:110px;">
+id="pillar-tracker" style="display:none; padding-bottom:110px;">
 <div class="pillar-header-card">
 <h2>📊 實戰 13 大跑法比賽戰績紀錄儀 (橫向即時批次錄入大表)</h2>
 <p>橫向一行對應一匹馬的一場比賽戰績，支援同時進行多匹馬的 13 種跑法即時輸入、切換月份週別自動推薦重賞、自動計算最優跑法、以及 Google Sheets 雙向同步</p>
@@ -32249,6 +30340,570 @@ function renderNicknamesTable() {
 window.addEventListener('DOMContentLoaded', initNicknamesTable);
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
   initNicknamesTable();
+}
+</script>
+<script>
+let currentRecsRegion = 'japan';
+let currentRecsYearIndex = 0;
+
+function initYearlyRecsTable() {
+  if (!window.WP10_YEARLY_RECOMMENDATIONS_DATA) return;
+  renderYearChips();
+  renderYearContent();
+}
+
+function setRecsRegionFilter(region, btn) {
+  currentRecsRegion = region;
+  currentRecsYearIndex = 0;
+  if (btn) {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  renderYearChips();
+  renderYearContent();
+}
+
+function selectRecsYear(idx, btn) {
+  currentRecsYearIndex = idx;
+  if (btn) {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  renderYearContent();
+}
+
+function renderYearChips() {
+  const container = document.getElementById('recsYearButtons');
+  if (!container || !window.WP10_YEARLY_RECOMMENDATIONS_DATA) return;
+  
+  const list = window.WP10_YEARLY_RECOMMENDATIONS_DATA[currentRecsRegion] || [];
+  let html = '';
+  list.forEach((item, idx) => {
+    const activeClass = idx === currentRecsYearIndex ? 'active' : '';
+    html += `<button class="pill ${activeClass}" onclick="selectRecsYear(${idx}, this)" style="font-size:11.5px; white-space:nowrap; padding:3px 10px;">${item.year_label}</button>`;
+  });
+  container.innerHTML = html;
+}
+
+function renderYearContent() {
+  const container = document.getElementById('recsYearContentContainer');
+  const badge = document.getElementById('recsCurrentYearBadge');
+  if (!container || !window.WP10_YEARLY_RECOMMENDATIONS_DATA) return;
+  
+  const list = window.WP10_YEARLY_RECOMMENDATIONS_DATA[currentRecsRegion] || [];
+  if (!list[currentRecsYearIndex]) return;
+  
+  const item = list[currentRecsYearIndex];
+  if (badge) {
+    badge.textContent = `[${item.year_label}] ${currentRecsRegion === 'japan' ? '日本史實馬推薦' : '海外史實馬推薦'}`;
+  }
+  
+  let html = `<div style="border:2px solid #ef4444; border-radius:10px; padding:14px; background:rgba(15,23,42,0.6);">
+    <h3 style="font-size:1.1rem; font-weight:800; color:var(--gold-color); margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+      <i class="fa-solid fa-star"></i> [${item.year_label}] 推薦史實馬與 11 大路線表
+    </h3>`;
+    
+  if (item.routes_html) {
+    html += `<div style="margin-bottom:16px;">
+      <div style="font-size:0.85rem; font-weight:700; color:var(--primary); margin-bottom:6px;">📊 11 大競走路線推薦馬速查表 (◎、○、▲)：</div>
+      <div class="table-responsive" style="-webkit-overflow-scrolling:touch;">
+        ${item.routes_html}
+      </div>
+    </div>`;
+  }
+  
+  if (item.horses_html) {
+    html += `<div>
+      <div style="font-size:0.85rem; font-weight:700; color:var(--gold-color); margin-bottom:6px;">🐎 該年代推薦史實馬詳細能力、展開上限與戰略評語：</div>
+      <div class="table-responsive" style="-webkit-overflow-scrolling:touch;">
+        ${item.horses_html}
+      </div>
+    </div>`;
+  }
+  
+  html += `</div>`;
+  container.innerHTML = html;
+}
+
+window.addEventListener('DOMContentLoaded', initYearlyRecsTable);
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  initYearlyRecsTable();
+}
+</script>
+<!-- 📑 章節跳轉彈出抽屜 (Chapter Modal) -->
+<!-- 浮動按鈕群 (章節跳轉目錄 + 返回前一定位 + 回頂部) -->
+<div class="floating-btn-group" style="position:fixed; bottom:20px; right:16px; display:flex; flex-direction:column; gap:10px; z-index:9999;">
+  <button class="btn-floating btn-jump" onclick="openChapterModal()" title="📑 49 章跳轉目錄" style="background:var(--gold-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+    <i class="fa-solid fa-list-ol"></i>
+  </button>
+  <button class="btn-floating btn-back" onclick="goBackLastPosition()" title="↩️ 返回前一定位" style="background:var(--accent-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+    <i class="fa-solid fa-rotate-left"></i>
+  </button>
+  <button class="btn-floating btn-top" onclick="scrollToTop()" title="⬆️ 回到頂部" style="background:var(--primary); color:#fff; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+</div>
+
+<div class="modal-backdrop" id="chapterModal" onclick="closeChapterModal(event)">
+<div class="chapter-modal-card" onclick="event.stopPropagation()">
+<div class="chapter-modal-header">
+<h2><i class="fa-solid fa-list-ol"></i> 📑 全 49 大章節快速跳轉</h2>
+<span class="modal-close" onclick="closeChapterModal()">×</span>
+</div>
+<div class="chapter-search-box">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input id="chapterFilterInput" oninput="filterChapterList()" placeholder="🔍 全局內文檢索：輸入任何關鍵字 (如: 爆發力, 評語, 三冠, 史實調教, 繁育, 異名, 推薦馬)..." type="text"/>
+</div>
+<div class="chapter-list-container" id="chapterListContainer">
+
+<div class="chapter-pillar-group">
+  <div class="chapter-pillar-title" style="color:#38bdf8; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-crown"></i> 👑 支柱一：開局劇本年代與史實攻略 (第 01 ~ 07 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-start-guide')">
+      <span class="jump-icon"><i class="fa-solid fa-flag-checkered"></i></span>
+      <span class="jump-num">第 01 章</span>
+      <span class="jump-title">開局劇本年代選拔・初年度52週圖文通關與全年代初期讓渡馬完全指南</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-1968-scenario')">
+      <span class="jump-icon"><i class="fa-solid fa-scroll"></i></span>
+      <span class="jump-num">第 02 章</span>
+      <span class="jump-title">1968 年最古開局劇本完全攻略 (元祖三強・日美歐持続牝馬全書)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-era-horses-guide')">
+      <span class="jump-icon"><i class="fa-solid fa-calendar-days"></i></span>
+      <span class="jump-num">第 03 章</span>
+      <span class="jump-title">按年代史實攻略與 1967~1975 各年代推薦名馬完全指南</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-amulets')">
+      <span class="jump-icon"><i class="fa-solid fa-shield-halved"></i></span>
+      <span class="jump-num">第 04 章</span>
+      <span class="jump-title">守護符 (御守 / お守り) 獲得全圖鑑・兌換日曆與虹札名馬運用戰略</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-super-horses')">
+      <span class="jump-icon"><i class="fa-solid fa-star"></i></span>
+      <span class="jump-num">第 05 章</span>
+      <span class="jump-title">超級巨星名駒 (スーパースターホース) 機制解析與歷代超級馬 (SH) 完全名單</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-pro-tricks')">
+      <span class="jump-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+      <span class="jump-num">第 06 章</span>
+      <span class="jump-title">+40 爆發力滿貫公式與賽務職業小技</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-version-diff')">
+      <span class="jump-icon"><i class="fa-solid fa-code-compare"></i></span>
+      <span class="jump-num">第 07 章</span>
+      <span class="jump-title">歷代版本演進差異完全剖析 (2023~2026)</span>
+    </button>
+  </div>
+</div>
+
+<div class="chapter-pillar-group">
+  <div class="chapter-pillar-title" style="color:#06b6d4; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-dna"></i> 🧬 支柱二：配合繁育大系・四大指標與爆發力理論 (第 08 ~ 21 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-metrics')">
+      <span class="jump-icon"><i class="fa-solid fa-gauge-high"></i></span>
+      <span class="jump-num">第 08 章</span>
+      <span class="jump-title">配合機制・四大指標與爆發力抽樣模擬器</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-master-table')">
+      <span class="jump-icon"><i class="fa-solid fa-table-list"></i></span>
+      <span class="jump-num">第 09 章</span>
+      <span class="jump-title">全配合理論速查與加成總覽表 (全 39 條目)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-diagrams')">
+      <span class="jump-icon"><i class="fa-solid fa-network-wired"></i></span>
+      <span class="jump-num">第 10 章</span>
+      <span class="jump-title">專屬 4 代血統矩陣圖譜總覽</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-nicks')">
+      <span class="jump-icon"><i class="fa-solid fa-heart"></i></span>
+      <span class="jump-num">第 11 章</span>
+      <span class="jump-title">相性配合 (ニックス / Nicks) 與副屬性爆發</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')">
+      <span class="jump-icon"><i class="fa-solid fa-link"></i></span>
+      <span class="jump-num">第 12 章</span>
+      <span class="jump-title">近親交配 (Inbreed)、母系近親、全兄妹與異系</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-linebreed')">
+      <span class="jump-icon"><i class="fa-solid fa-code-branch"></i></span>
+      <span class="jump-num">第 13 章</span>
+      <span class="jump-title">系統交配 (Linebreed / 3×4 / 流行與零細)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-activation')">
+      <span class="jump-icon"><i class="fa-solid fa-bolt"></i></span>
+      <span class="jump-num">第 14 章</span>
+      <span class="jump-title">血脈活性化配合 (8親系 / 完全活性)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-vitality')">
+      <span class="jump-icon"><i class="fa-solid fa-battery-full"></i></span>
+      <span class="jump-num">第 15 章</span>
+      <span class="jump-title">活力源化・活力補完與隔世遺傳</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-lines')">
+      <span class="jump-icon"><i class="fa-solid fa-arrows-split-up-and-left"></i></span>
+      <span class="jump-num">第 16 章</span>
+      <span class="jump-title">雄系活性化與雌系活性化配合</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-traits')">
+      <span class="jump-icon"><i class="fa-solid fa-gem"></i></span>
+      <span class="jump-num">第 17 章</span>
+      <span class="jump-title">特性昇華配合與母系融合</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-special')">
+      <span class="jump-icon"><i class="fa-solid fa-wand-sparkles"></i></span>
+      <span class="jump-num">第 18 章</span>
+      <span class="jump-title">特殊名馬配合與彩蛋配合</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-2026new')">
+      <span class="jump-icon"><i class="fa-solid fa-atom"></i></span>
+      <span class="jump-num">第 19 章</span>
+      <span class="jump-title">2024~2026 最新繁育理論 (歷史因子/世界始祖/Drama融合)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-gene-factors')">
+      <span class="jump-icon"><i class="fa-solid fa-dna"></i></span>
+      <span class="jump-num">第 20 章</span>
+      <span class="jump-title">Drama 因子 (ドラマ因子) 全書・活力增強 4 階段與 2026 繁育新理論</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-systems')">
+      <span class="jump-icon"><i class="fa-solid fa-sitemap"></i></span>
+      <span class="jump-num">第 21 章</span>
+      <span class="jump-title">系統確立與滅亡年表・血統支配率精算機</span>
+    </button>
+  </div>
+</div>
+
+<div class="chapter-pillar-group">
+  <div class="chapter-pillar-title" style="color:#10b981; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-horse"></i> 🐎 支柱三：幼駒培育・相馬心法與出生事件 (第 22 ~ 24 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-potential')">
+      <span class="jump-icon"><i class="fa-solid fa-eye"></i></span>
+      <span class="jump-num">第 22 章</span>
+      <span class="jump-title">優質幼駒四大判別法・相馬心法與幼駒專用史實調教</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-horse-comments')">
+      <span class="jump-icon"><i class="fa-solid fa-comment-dots"></i></span>
+      <span class="jump-num">第 23 章</span>
+      <span class="jump-title">0~3 歲幼駒與賽馬評語完全手冊 (日/中/解讀三欄對照)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-special-events')">
+      <span class="jump-icon"><i class="fa-solid fa-meteor"></i></span>
+      <span class="jump-num">第 24 章</span>
+      <span class="jump-title">幼駒頂級出生事件 (流星/春雷/天馬等 9 大事件)</span>
+    </button>
+  </div>
+</div>
+
+<div class="chapter-pillar-group">
+  <div class="chapter-pillar-title" style="color:#f59e0b; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-bolt"></i> ⚡ 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (第 25 ~ 30 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-status-encyclopedia')">
+      <span class="jump-icon"><i class="fa-solid fa-address-card"></i></span>
+      <span class="jump-num">第 25 章</span>
+      <span class="jump-title">五大人物與賽馬數值能力完全百科 (競走馬・騎手・調教師・牧場長・子孫結婚知人)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-skills-traits')">
+      <span class="jump-icon"><i class="fa-solid fa-chart-simple"></i></span>
+      <span class="jump-num">第 26 章</span>
+      <span class="jump-title">基礎能力・四大比賽展開與適應能力機制全書</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-traits-master')">
+      <span class="jump-icon"><i class="fa-solid fa-medal"></i></span>
+      <span class="jump-num">第 27 章</span>
+      <span class="jump-title">特性全書・全 223 種通常・上位進化・日本固有與海外專屬特性完全圖鑑</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-historical-train')">
+      <span class="jump-icon"><i class="fa-solid fa-dumbbell"></i></span>
+      <span class="jump-num">第 28 章</span>
+      <span class="jump-title">史實調教・SP 雙馬合練・大成功量表與全 40+ 種調教效果全圖鑑</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-umasona')">
+      <span class="jump-icon"><i class="fa-solid fa-masks-theater"></i></span>
+      <span class="jump-num">第 29 章</span>
+      <span class="jump-title">ウマソナ (馬之個性) 全圖鑑・克服進化秘技與 14 大性格分佈矩陣</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-relations-2026')">
+      <span class="jump-icon"><i class="fa-solid fa-handshake"></i></span>
+      <span class="jump-num">第 30 章</span>
+      <span class="jump-title">2026 名馬相関圖與 4 大關係性 (親友/犬猿/戀仲/強敵) 深度指南</span>
+    </button>
+  </div>
+</div>
+
+<div class="chapter-pillar-group">
+  <div class="chapter-pillar-title" style="color:#ec4899; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-trophy"></i> 🏆 支柱五：重賞日程・全球三冠・熱潮與賽馬場特性 (第 31 ~ 35 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-stakes-master')">
+      <span class="jump-icon"><i class="fa-solid fa-trophy"></i></span>
+      <span class="jump-num">第 31 章</span>
+      <span class="jump-title">全重賞日程・全球三冠系列賽・G1 頂級攻略與 64 大競馬場特性大百科</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-triple-crowns')">
+      <span class="jump-icon"><i class="fa-solid fa-award"></i></span>
+      <span class="jump-num">第 32 章</span>
+      <span class="jump-title">全球三冠路線與夏季系列賽完全對照</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-keiba-boom')">
+      <span class="jump-icon"><i class="fa-solid fa-fire"></i></span>
+      <span class="jump-num">第 33 章</span>
+      <span class="jump-title">偶像馬地圖・賽馬熱潮・傳奇特性與顯彰馬</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-nicknames')">
+      <span class="jump-icon"><i class="fa-solid fa-tags"></i></span>
+      <span class="jump-num">第 34 章</span>
+      <span class="jump-title">殿堂馬稱號 (異名)・人氣加成 (Boost) 與獲得條件全圖鑑</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-historia')">
+      <span class="jump-icon"><i class="fa-solid fa-landmark"></i></span>
+      <span class="jump-num">第 35 章</span>
+      <span class="jump-title">競馬歷史事件 (Historia) 名場面與觸發條件</span>
+    </button>
+  </div>
+</div>
+
+<div class="chapter-pillar-group">
+  <div class="chapter-pillar-title" style="color:#a855f7; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-house-chimney"></i> 🏡 支柱六：牧場經營・人物技能・婚姻與俱樂部法人 (第 36 ~ 40 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-farm-facilities')">
+      <span class="jump-icon"><i class="fa-solid fa-house-chimney"></i></span>
+      <span class="jump-num">第 36 章</span>
+      <span class="jump-title">牧場設施升級與美歐海外分場規劃</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-personnel')">
+      <span class="jump-icon"><i class="fa-solid fa-user-tie"></i></span>
+      <span class="jump-num">第 37 章</span>
+      <span class="jump-title">騎手・調教師・牧場長 18 大人物技能全書</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-marriage-secrets')">
+      <span class="jump-icon"><i class="fa-solid fa-venus-mars"></i></span>
+      <span class="jump-num">第 38 章</span>
+      <span class="jump-title">知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-club-management')">
+      <span class="jump-icon"><i class="fa-solid fa-briefcase"></i></span>
+      <span class="jump-num">第 39 章</span>
+      <span class="jump-title">賽馬俱樂部 (Club) 經營・法人化牧場與會員招募完全指南</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-legend-match')">
+      <span class="jump-icon"><i class="fa-solid fa-chess-king"></i></span>
+      <span class="jump-num">第 40 章</span>
+      <span class="jump-title">傳奇對決 (The Legend Match)・世界百大名駒殿堂排行榜與顯彰馬決戰</span>
+    </button>
+  </div>
+</div>
+
+<div class="chapter-pillar-group">
+  <div class="chapter-pillar-title" style="color:#eab308; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-magnifying-glass"></i> 🏇 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 ~ 46 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-horse-db')">
+      <span class="jump-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+      <span class="jump-num">第 41 章</span>
+      <span class="jump-title">1.5 萬匹全史實馬與 11 大年度推薦速查庫</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-sires-retire-db')">
+      <span class="jump-icon"><i class="fa-solid fa-clock-rotate-left"></i></span>
+      <span class="jump-num">第 42 章</span>
+      <span class="jump-title">2,898 匹史實種公馬引退年限完全速查庫 (Private 保護期檢索庫)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-breeding-only-horses')">
+      <span class="jump-icon"><i class="fa-solid fa-venus-mars"></i></span>
+      <span class="jump-num">第 43 章</span>
+      <span class="jump-title">4,314 匹繁殖專用史實馬全量數據庫 (名種公馬 / 繁殖名雌完全對照大表)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-racehorses-full-db')">
+      <span class="jump-icon"><i class="fa-solid fa-flag-checkered"></i></span>
+      <span class="jump-num">第 44 章</span>
+      <span class="jump-title">16,570 匹全史實競走馬完全數據庫 (日本馬 ＋ 海外馬對照大表)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-yearly-recs-db')">
+      <span class="jump-icon"><i class="fa-solid fa-calendar-check"></i></span>
+      <span class="jump-num">第 45 章</span>
+      <span class="jump-title">全年代 11 大路線年度推薦史實馬完全數據庫 (日本馬 ＋ 海外馬 1:1 復刻)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-nicknames-full-db')">
+      <span class="jump-icon"><i class="fa-solid fa-tags"></i></span>
+      <span class="jump-num">第 46 章</span>
+      <span class="jump-title">殿堂馬稱號 (異名 / Nicknames) 全量數據庫與獲得條件完全圖鑑</span>
+    </button>
+  </div>
+</div>
+
+<div class="chapter-pillar-group">
+  <div class="chapter-pillar-title" style="color:#6366f1; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-graduation-cap"></i> 🎓 支柱八：名師實戰講堂・線上對戰與系統機能 (第 47 ~ 49 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-official-lectures')">
+      <span class="jump-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+      <span class="jump-num">第 47 章</span>
+      <span class="jump-title">名師實戰講堂 (吹里谷芽愛育成指南 & リオン展開適應性徹底講座)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-online-strongest')">
+      <span class="jump-icon"><i class="fa-solid fa-globe"></i></span>
+      <span class="jump-num">第 48 章</span>
+      <span class="jump-title">線上模式・最強馬之路 (最強馬ロード) 育成・前哨戰與全國大會對戰完全手冊</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-system-features')">
+      <span class="jump-icon"><i class="fa-solid fa-clapperboard"></i></span>
+      <span class="jump-num">第 49 章</span>
+      <span class="jump-title">電影級過場名場面 (Cinema Event) 觸發條件與系統便利機能全書</span>
+    </button>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+<script>
+// ==================== 核心 UI、歷史返回與章節跳轉引擎 ====================
+let jumpHistoryStack = [];
+
+function recordCurrentPosition() {
+    const activePillar = document.querySelector('.pillar-content.active') || document.querySelector('.pillar-content[style*="display: block"]');
+    const pillarId = activePillar ? activePillar.id : 'pillar-db';
+    const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    jumpHistoryStack.push({ pillarId: pillarId, scrollY: scrollY });
+    if (jumpHistoryStack.length > 20) jumpHistoryStack.shift();
+}
+
+function goBackLastPosition() {
+    if (jumpHistoryStack.length === 0) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+    }
+    const lastPos = jumpHistoryStack.pop();
+    switchMainPillar(lastPos.pillarId);
+    setTimeout(() => {
+        window.scrollTo({ top: lastPos.scrollY, behavior: 'smooth' });
+    }, 120);
+}
+
+function switchMainPillar(pillarId) {
+    document.querySelectorAll('.pillar-content').forEach(el => {
+        el.style.display = 'none';
+        el.classList.remove('active');
+    });
+    document.querySelectorAll('.main-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    const target = document.getElementById(pillarId);
+    if (target) {
+        target.style.display = 'block';
+        target.classList.add('active');
+    }
+    const btnMap = {
+        'pillar-db': 'tabPillarDb',
+        'pillar-breed': 'tabPillarBreed',
+        'pillar-foals': 'tabPillarFoals',
+        'pillar-train': 'tabPillarTrain',
+        'pillar-races': 'tabPillarRaces',
+        'pillar-ranch': 'tabPillarRanch',
+        'pillar-secrets': 'tabPillarSecrets',
+        'pillar-lectures': 'tabPillarLectures',
+        'pillar-tracker': 'tabPillarTracker'
+    };
+    const btn = document.getElementById(btnMap[pillarId]);
+    if (btn) btn.classList.add('active');
+}
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleAppTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('keiba_theme', next);
+    if (typeof explosionChartInstance !== 'undefined' && explosionChartInstance) {
+        explosionChartInstance.update();
+    }
+}
+
+function openChapterModal() {
+    const m = document.getElementById("chapterModal");
+    if (m) {
+        m.style.display = "flex";
+        const inp = document.getElementById("chapterFilterInput");
+        if (inp) {
+            inp.value = "";
+            filterChapterList();
+            inp.blur();
+        }
+    }
+}
+
+function closeChapterModal(event) {
+    if (event && event.target && event.target.closest('.chapter-modal-card') && !event.target.classList.contains('modal-close')) {
+        return;
+    }
+    const m = document.getElementById("chapterModal");
+    if (m) m.style.display = "none";
+}
+
+function jumpToChapter(pillarId, sectionId) {
+    recordCurrentPosition();
+    switchMainPillar(pillarId);
+    closeChapterModal();
+    setTimeout(() => {
+        const target = document.getElementById(sectionId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            target.classList.add('section-highlight-flash');
+            setTimeout(() => target.classList.remove('section-highlight-flash'), 1800);
+        }
+    }, 120);
+}
+
+function filterChapterList() {
+    const inputEl = document.getElementById("chapterFilterInput");
+    const query = (inputEl ? inputEl.value : "").trim().toLowerCase();
+    const groups = document.querySelectorAll(".chapter-pillar-group");
+    
+    groups.forEach(group => {
+        let anyVisible = false;
+        const btns = group.querySelectorAll(".chapter-jump-btn");
+        btns.forEach(btn => {
+            const titleText = btn.innerText.toLowerCase();
+            let match = !query || titleText.includes(query);
+            
+            if (!match && query) {
+                const onclickAttr = btn.getAttribute("onclick") || "";
+                const secMatch = onclickAttr.match(/jumpToChapter\(['"][^'"]+['"]\s*,\s*['"]([^'"]+)['"]\)/);
+                if (secMatch && secMatch[1]) {
+                    const sectionEl = document.getElementById(secMatch[1]);
+                    if (sectionEl) {
+                        const bodyText = sectionEl.innerText.toLowerCase();
+                        if (bodyText.includes(query)) {
+                            match = true;
+                        }
+                    }
+                }
+            }
+            
+            if (match) {
+                btn.style.display = "flex";
+                anyVisible = true;
+            } else {
+                btn.style.display = "none";
+            }
+        });
+        group.style.display = anyVisible ? "block" : "none";
+    });
 }
 </script>
 </body>

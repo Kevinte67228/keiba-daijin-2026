@@ -1746,7 +1746,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.83</span>
+<span class="version-badge">v02.84</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -30431,15 +30431,15 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 }
 </script>
 <!-- 📑 章節跳轉彈出抽屜 (Chapter Modal) -->
-<!-- 浮動按鈕群 (主題切換 + 章節跳轉目錄 + 回頂部) -->
+<!-- 浮動按鈕群 (章節跳轉目錄 + 返回前一定位 + 回頂部) -->
 <div class="floating-btn-group" style="position:fixed; bottom:20px; right:16px; display:flex; flex-direction:column; gap:10px; z-index:9999;">
-  <button class="btn-floating btn-theme" onclick="toggleAppTheme()" title="切換深淺色主題" style="background:var(--accent-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
-    <i class="fa-solid fa-moon"></i>
-  </button>
-  <button class="btn-floating btn-jump" onclick="openChapterModal()" title="章節跳轉目錄" style="background:var(--gold-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+  <button class="btn-floating btn-jump" onclick="openChapterModal()" title="📑 49 章跳轉目錄" style="background:var(--gold-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
     <i class="fa-solid fa-list-ol"></i>
   </button>
-  <button class="btn-floating" onclick="scrollToTop()" title="回到頂部" style="background:var(--primary); color:#fff; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+  <button class="btn-floating btn-back" onclick="goBackLastPosition()" title="↩️ 返回前一定位" style="background:var(--accent-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+    <i class="fa-solid fa-rotate-left"></i>
+  </button>
+  <button class="btn-floating btn-top" onclick="scrollToTop()" title="⬆️ 回到頂部" style="background:var(--primary); color:#fff; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
     <i class="fa-solid fa-arrow-up"></i>
   </button>
 </div>
@@ -30769,7 +30769,29 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <script>
-// ==================== 核心 UI、主題切換與章節跳轉引擎 ====================
+// ==================== 核心 UI、歷史返回與章節跳轉引擎 ====================
+let jumpHistoryStack = [];
+
+function recordCurrentPosition() {
+    const activePillar = document.querySelector('.pillar-content.active') || document.querySelector('.pillar-content[style*="display: block"]');
+    const pillarId = activePillar ? activePillar.id : 'pillar-db';
+    const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    jumpHistoryStack.push({ pillarId: pillarId, scrollY: scrollY });
+    if (jumpHistoryStack.length > 20) jumpHistoryStack.shift();
+}
+
+function goBackLastPosition() {
+    if (jumpHistoryStack.length === 0) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+    }
+    const lastPos = jumpHistoryStack.pop();
+    switchMainPillar(lastPos.pillarId);
+    setTimeout(() => {
+        window.scrollTo({ top: lastPos.scrollY, behavior: 'smooth' });
+    }, 120);
+}
+
 function switchMainPillar(pillarId) {
     document.querySelectorAll('.pillar-content').forEach(el => {
         el.style.display = 'none';
@@ -30834,6 +30856,7 @@ function closeChapterModal(event) {
 }
 
 function jumpToChapter(pillarId, sectionId) {
+    recordCurrentPosition();
     switchMainPillar(pillarId);
     closeChapterModal();
     setTimeout(() => {
@@ -30859,7 +30882,6 @@ function filterChapterList() {
             let match = !query || titleText.includes(query);
             
             if (!match && query) {
-                // 全局內文全文檢索 (Full-text Section Body Search)
                 const onclickAttr = btn.getAttribute("onclick") || "";
                 const secMatch = onclickAttr.match(/jumpToChapter\(['"][^'"]+['"]\s*,\s*['"]([^'"]+)['"]\)/);
                 if (secMatch && secMatch[1]) {
