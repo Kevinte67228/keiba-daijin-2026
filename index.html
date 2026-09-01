@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v02.00"></script>
-<script src="core_guides_data.js?v=v02.00"></script>
-<script src="yearly_recs_db.js?v=v02.00"></script>
-<script src="horse_subtopics_data.js?v=v02.00"></script>
+<script src="master_lookup_db.js?v=v02.91"></script>
+<script src="core_guides_data.js?v=v02.91"></script>
+<script src="yearly_recs_db.js?v=v02.91"></script>
+<script src="horse_subtopics_data.js?v=v02.91"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -296,7 +296,7 @@
         if (countSpan) countSpan.textContent = filtered.length;
 
         if (filtered.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="20" style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-folder-open" style="font-size:1.8rem; opacity:0.5; margin-bottom:8px; display:block;"></i>尚無任何賽事紀錄。請點擊「➕ 新增一列賽事紀錄 (Add Row)」開始錄入！</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="20" style="text-align:left; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-folder-open" style="font-size:1.8rem; opacity:0.5; margin-bottom:8px; display:block;"></i>尚無任何賽事紀錄。請點擊「➕ 新增一列賽事紀錄 (Add Row)」開始錄入！</td></tr>`;
             return;
         }
 
@@ -336,7 +336,7 @@
                 const rankVal = (r.ranks && r.ranks[t.id] !== undefined) ? r.ranks[t.id] : '';
                 let cellBg = rankVal === 1 ? 'background:rgba(234,179,8,0.25);' : (rankVal === 2 ? 'background:rgba(148,163,184,0.2);' : (rankVal === 3 ? 'background:rgba(205,127,50,0.2);' : ''));
                 return `
-                    <td style="padding:4px; text-align:center; ${cellBg}">
+                    <td style="padding:4px; text-align:left; ${cellBg}">
                         <input type="number" min="1" max="18" value="${rankVal}" placeholder="-" 
                             class="filter-control" 
                             style="width:52px; padding:4px 2px; font-size:0.85rem; text-align:center; font-weight:bold; color:var(--gold-color); background:rgba(15,23,42,0.85); border:1px solid rgba(255,255,255,0.15);"
@@ -388,7 +388,7 @@
                     <td>
                         <span id="best_tactic_${r.id}" class="${bestClass}" style="font-size:0.75rem; white-space:nowrap;">${bestTactic}</span>
                     </td>
-                    <td style="text-align:center; white-space:nowrap;">
+                    <td style="text-align:left; white-space:nowrap;">
                         <button onclick="copyTacticsRow('${r.id}')" style="background:#0284c7; color:#fff; border:none; padding:4px 7px; border-radius:4px; cursor:pointer; font-size:0.75rem; margin-right:3px;" title="複製此列"><i class="fa-solid fa-copy"></i></button>
                         <button onclick="deleteTacticsRow('${r.id}')" style="background:#ef4444; color:#fff; border:none; padding:4px 7px; border-radius:4px; cursor:pointer; font-size:0.75rem;" title="刪除此列"><i class="fa-solid fa-trash"></i></button>
                     </td>
@@ -1128,9 +1128,9 @@
         #yearlyRecsContainer .data-table td:nth-child(9) { width: 1% !important; white-space: nowrap !important; } /* 距離適性 */
         #yearlyRecsContainer .data-table td:nth-child(10) { width: 1% !important; white-space: nowrap !important; } /* 脚質 */
         #yearlyRecsContainer .data-table td:nth-child(11) { width: 1% !important; white-space: nowrap !important; } /* 成長型 */
-        #yearlyRecsContainer .data-table td:nth-child(12) { width: 1% !important; white-space: nowrap !important; } /* 仔出し */
+        #yearlyRecsContainer .data-table td:nth-child(12) { width: 1% !important; white-space: nowrap !important; } /* 仔出 (仔出し) */
         #yearlyRecsContainer .data-table td:nth-child(13) { min-width: 150px !important; white-space: normal !important; } /* 特性 */
-        #yearlyRecsContainer .data-table td:nth-child(14) { min-width: 140px !important; white-space: normal !important; } /* ウマソナ */
+        #yearlyRecsContainer .data-table td:nth-child(14) { min-width: 140px !important; white-space: normal !important; } /* 馬之個性 (ウマソナ) */
         #yearlyRecsContainer .data-table td:nth-child(15) { width: 1% !important; white-space: nowrap !important; } /* 生產國 */
         #yearlyRecsContainer .data-table td:nth-child(16) { width: 1% !important; white-space: nowrap !important; } /* 現役地域 */
         #yearlyRecsContainer .data-table td:nth-child(17) { width: 1% !important; white-space: nowrap !important; } /* 父 */
@@ -1570,9 +1570,9 @@
         #yearlyRecsContainer .data-table td:nth-child(9) { min-width: 115px !important; text-align: left !important; } /* 距離適性 */
         #yearlyRecsContainer .data-table td:nth-child(10) { min-width: 75px !important; text-align: left !important; } /* 脚質 */
         #yearlyRecsContainer .data-table td:nth-child(11) { min-width: 85px !important; text-align: left !important; } /* 成長型 */
-        #yearlyRecsContainer .data-table td:nth-child(12) { width: 55px !important; min-width: 55px !important; text-align: left !important; } /* 仔出し */
+        #yearlyRecsContainer .data-table td:nth-child(12) { width: 55px !important; min-width: 55px !important; text-align: left !important; } /* 仔出 (仔出し) */
         #yearlyRecsContainer .data-table td:nth-child(13) { min-width: 170px !important; white-space: normal !important; text-align: left !important; } /* 特性 */
-        #yearlyRecsContainer .data-table td:nth-child(14) { min-width: 150px !important; white-space: normal !important; text-align: left !important; } /* ウマソナ */
+        #yearlyRecsContainer .data-table td:nth-child(14) { min-width: 150px !important; white-space: normal !important; text-align: left !important; } /* 馬之個性 (ウマソナ) */
         #yearlyRecsContainer .data-table td:nth-child(15) { width: 65px !important; min-width: 65px !important; text-align: left !important; } /* 生產國 */
         #yearlyRecsContainer .data-table td:nth-child(16) { width: 65px !important; min-width: 65px !important; text-align: left !important; } /* 現役地域 */
         #yearlyRecsContainer .data-table td:nth-child(17) { min-width: 120px !important; text-align: left !important; } /* 父 */
@@ -1742,11 +1742,29 @@ li {
 }
 </style>
 
+
+<style id="qa-fix-no-results-style">
+.no-results-state {
+    display: none;
+    padding: 2rem 1rem;
+    text-align: center;
+    color: var(--text-muted, #8b9bb4);
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px dashed var(--border-color, #334155);
+    border-radius: 8px;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+}
+.no-results-state.active {
+    display: block !important;
+}
+</style>
+
 </head>
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.88</span>
+<span class="version-badge">v02.91</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -1804,7 +1822,7 @@ li {
 <div class="pillar-content active" id="pillar-secrets">
 <div class="pillar-header-card">
 <h2>👑 開局劇本・守護符日曆・超級巨星馬與通關秘技 (Scenarios &amp; Secrets)</h2>
-<p>【第 1 章 ~ 第 7 章】開局劇本年代與史實名馬選拔指南、1968 年最古開局劇本完全攻略、按年代史實攻略與 1967~1975 各年代推薦名馬、守護符 (御守) 獲得全圖鑑與兌換日曆、超級巨星名駒 (スーパースターホース) 機制解析與歷代 SH 完全名單、+40 爆發力滿貫公式與版本演進差異</p>
+<p>【第 1 章 ~ 第 7 章】開局劇本年代與史實名馬選拔指南、1968 年最古開局劇本完全攻略、按年代史實攻略與 1967~1975 各年代推薦名馬、守護符 (御守) 獲得全圖鑑與兌換日曆、超級巨星名駒 (スーパースターホース) 機制解析與歷代 SH 完全名單、+40 爆發力 (爆発力)滿貫公式與版本演進差異</p>
 </div>
 <section class="section-card" id="sec-start-guide">
 <div class="section-header">
@@ -1879,7 +1897,7 @@ li {
 <tr style="background:rgba(59,130,246,0.06);">
 <td><strong>ザラズーストラ (Zarathustra)</strong></td>
 <td><span class="badge badge-silver">銀札級</span></td>
-<td>愛爾蘭打吡冠軍，具備頂級長距離耐力與豐富血統因子，可大幅提升自產幼駒的耐力與爆發力上限。</td>
+<td>愛爾蘭打吡冠軍，具備頂級長距離耐力與豐富血統因子，可大幅提升自產幼駒的耐力與爆發力 (爆発力)上限。</td>
 </tr>
 <tr style="background:rgba(59,130,246,0.06);">
 <td><strong>モンタヴァル (Montaval)</strong></td>
@@ -1901,7 +1919,7 @@ li {
 <tr style="background:rgba(236,72,153,0.06);">
 <td><strong>スタイルパッチ (Style Patch)</strong></td>
 <td><span class="badge badge-silver">銀札級</span></td>
-<td>美國名門速度系母馬，自帶早熟爆發力與優質速度因子，開局短途與一哩配種首選。</td>
+<td>美國名門速度系母馬，自帶早熟爆發力 (爆発力)與優質速度因子，開局短途與一哩配種首選。</td>
 </tr>
 <tr style="background:rgba(236,72,153,0.06);">
 <td><strong>スヰート (Sweet)</strong></td>
@@ -1911,7 +1929,7 @@ li {
 <tr style="background:rgba(236,72,153,0.06);">
 <td><strong>ダルモーガン (Dalmorgan)</strong></td>
 <td><span class="badge badge-silver">銀札級</span></td>
-<td>高仔出率母馬，血統活性化能力強，與多數特別種牡馬皆能形成高爆發力配合。</td>
+<td>高仔出 (仔出し)率母馬，血統活性化能力強，與多數特別種牡馬皆能形成高爆發力 (爆発力)配合。</td>
 </tr>
 <tr style="background:rgba(236,72,153,0.06);">
 <td><strong>ハヤノボリ (Hayanobori)</strong></td>
@@ -2000,7 +2018,7 @@ li {
 <ul style="margin:4px 0 0 0; padding-left:18px;">
 <li><strong>3月1週</strong>：<strong>自家牧場落成！</strong> 優先建造 1 億日圓之<strong>「噴霧 (ミスト)」</strong>（放牧加速恢復）與<strong>「研究棟」</strong>（牧場長成長），切勿盲目擴建。獲贈 1 歲幼駒（帶「內向」個性）。解鎖<strong>個性撫育事件</strong>（每跑 3 場互動 1 次）。<strong>初年度 200P 目標解鎖</strong>：利用 3 歲馬在夏季前連刷 3 歲限定重賞，達成 200P 領取銀札神駒（1968 ヤマニンウェーブ、1976 プリティキャスト、2020 リメイク）！</li>
 <li><strong>3月2週</strong>：賽馬預測家 <strong>井坂修三郎</strong> 登場。</li>
-<li><strong>3月3週</strong>：<strong>免費讓渡繁殖母馬</strong>（1968 ダイサンキヨサチ、1976 ハーバーゲイム、1984 タニノテスコ、1991 ドミナスローズ、2020 アプリコットフィズ）。<strong>系列特典繋養</strong>：1968 首選種馬 <strong>テスコボーイ</strong>（仔出9、雙速度因子）+ 母馬 <strong>パロクサイド</strong>（氣槽名門牝系祖先）。</li>
+<li><strong>3月3週</strong>：<strong>免費讓渡繁殖母馬</strong>（1968 ダイサンキヨサチ、1976 ハーバーゲイム、1984 タニノテスコ、1991 ドミナスローズ、2020 アプリコットフィズ）。<strong>系列特典繋養</strong>：1968 首選種馬 <strong>テスコボーイ</strong>（仔出 (仔出し)9、雙速度因子）+ 母馬 <strong>パロクサイド</strong>（氣槽名門牝系祖先）。</li>
 <li><strong>3月4週</strong>：知人 <strong>桐原麗奈</strong> 登場（解鎖調教師應援室，最易結婚對象）。千都つむぎ 解說 <strong>繁殖母馬「活力 (Vitality)」</strong>（集滿 10 格受胎率 100%、因子昇華）。</li>
 <li><strong>3月5週</strong>：<strong>第 2 匹愛馬讓渡 (3~5歲)</strong>（1968 メジロタイヨウ、1984 ギャロップダイナ、1998 ステイゴールド、2020 ディープボンド）。</li>
 </ul>
@@ -2019,7 +2037,7 @@ li {
 <div style="background:rgba(15,23,42,0.6); border-left:4px solid #ef4444; padding:10px 14px; border-radius:4px;">
 <strong style="color:#f87171; font-size:0.88rem;">📅 5月：春季配種黃金法則・Drama 因子・芝當週追</strong>
 <ul style="margin:4px 0 0 0; padding-left:18px;">
-<li><strong>5月1週</strong>：如月英里子（結婚候選）登場。<strong>配種判定公式</strong>：爆發力 20+ ＞ 速度因子 ＞ 評價 B+ ＞ 危險度 ≤ 3 ＞ 大種牡馬因子。☆ 星號配合必出史實名駒。</li>
+<li><strong>5月1週</strong>：如月英里子（結婚候選）登場。<strong>配種判定公式</strong>：爆發力 (爆発力) 20+ ＞ 速度因子 ＞ 評價 B+ ＞ 危險度 ≤ 3 ＞ 大種牡馬因子。☆ 星號配合必出史實名駒。</li>
 <li><strong>5月2週</strong>：史實調教「音樂鑑賞」入手。千都つむぎ 解說系統確立與始祖系統。</li>
 <li><strong>5月3週</strong>：歷史名馬介紹（肯塔基打吡）；Drama 因子解說（現役取得多場 G1 榮獲）。</li>
 <li><strong>5月4週</strong>：史實調教<strong>「芝當週追 (芝当週追い)」解鎖</strong>（賽前當週使用大成功速度 +2！）。高階御守知人 <strong>兜山天馬</strong>（銀換金）與 <strong>セシルレーヌ</strong>（金換虹）登場！ナリアローザ 目標解鎖。</li>
@@ -2033,7 +2051,7 @@ li {
 <li><strong>7月1週</strong>：牧場<strong>觀光設施</strong>（初期印鈔機必建）與 <strong>Private 種牡馬設施</strong> 解鎖。<strong>世界 100 傑馬</strong> 解鎖（榮獲專屬異名與繁殖速度因子，The Legend Match 奪名譽殿堂）。</li>
 <li><strong>7月2週</strong>：<strong>大目標追加 (+100P)</strong>：9月4週 後任一 G1 入前 3 名即達標。</li>
 <li><strong>8月1週</strong>：<strong>當歲拍賣會 (幼駒セール)</strong>：<strong>免御守拍購帶札名駒</strong>黃金機會！</li>
-<li><strong>8月5週</strong>：<strong>1 歲幼駒庭先交易截止日</strong>！1968 必買銀札神駒 <strong>アローエクスプレス (Arrow Express)</strong>（SP 70、SP+Power雙因子、仔出 10 頂級種馬）。</li>
+<li><strong>8月5週</strong>：<strong>1 歲幼駒庭先交易截止日</strong>！1968 必買銀札神駒 <strong>アローエクスプレス (Arrow Express)</strong>（SP 70、SP+Power雙因子、仔出 (仔出し) 10 頂級種馬）。</li>
 </ul>
 </div>
 <!-- 9月~12月 & 年末 -->
@@ -2106,7 +2124,7 @@ li {
 <td><strong>3月3週 (系列特典・種牡馬)</strong></td>
 <td><strong style="color:var(--gold-color);">テスコボーイ (Tesco Boy)</strong></td>
 <td><span class="badge badge-gold">種牡馬 (8歲)</span></td>
-<td><strong>隱藏仔出高達 10 滿分</strong>，自帶 2 個速度因子！8 歲正值壯年，產出大量史實名馬，為開局特大資金源！</td>
+<td><strong>隱藏仔出 (仔出し)高達 10 滿分</strong>，自帶 2 個速度因子！8 歲正值壯年，產出大量史實名馬，為開局特大資金源！</td>
 </tr>
 <tr style="background:rgba(234,179,8,0.06);">
 <td><strong>3月3週 (系列特典・繁殖牝馬)</strong></td>
@@ -2166,7 +2184,7 @@ li {
 <td><strong>3月3週 (免費繁殖牝馬)</strong></td>
 <td><strong>ハーバーゲイム (Harbor Game)</strong></td>
 <td><span class="badge badge-pink">牝馬</span></td>
-<td>母馬自身能力優秀，血統極易達成血脈活性化配合，配合爆發力極高。</td>
+<td>母馬自身能力優秀，血統極易達成血脈活性化配合，配合爆發力 (爆発力)極高。</td>
 </tr>
 <tr style="background:rgba(234,179,8,0.06);">
 <td><strong>3月3週 (系列特典・種牡馬)</strong></td>
@@ -2184,7 +2202,7 @@ li {
 <td><strong>3月3週 (系列特典・繁殖牝馬 B)</strong></td>
 <td><strong>スカーレットインク (Scarlet Ink)</strong></td>
 <td><span class="badge badge-gold">繁殖牝馬</span></td>
-<td>產下スカーレットブーケ與スカーレットローズ，為大和赤驥與大和主將之祖先，名門緋紅家族！仔出極高。</td>
+<td>產下スカーレットブーケ與スカーレットローズ，為大和赤驥與大和主將之祖先，名門緋紅家族！仔出 (仔出し)極高。</td>
 </tr>
 <tr style="background:rgba(234,179,8,0.06);">
 <td><strong>3月3週 (系列特典・繁殖牝馬 C)</strong></td>
@@ -2196,7 +2214,7 @@ li {
 <td><strong>3月3週 (系列特典・繁殖牝馬 D)</strong></td>
 <td><strong>イットー (Itto)</strong></td>
 <td><span class="badge badge-gold">繁殖牝馬</span></td>
-<td>基本能力極高、帶速度因子、仔出 10 滿分（非史實限制自產名駒玩法首選）。</td>
+<td>基本能力極高、帶速度因子、仔出 (仔出し) 10 滿分（非史實限制自產名駒玩法首選）。</td>
 </tr>
 <tr>
 <td><strong>3月5週 (第2匹愛馬讓渡)</strong></td>
@@ -2256,13 +2274,13 @@ li {
 <td><strong>3月3週 (系列特典・種牡馬)</strong></td>
 <td><strong style="color:var(--gold-color);">トウショウボーイ (Tosho Boy)</strong></td>
 <td><span class="badge badge-gold">種牡馬</span></td>
-<td>仔出 10 滿分、自帶速度因子，能力極強，產出大量超強自產幼駒！亦可選 13 歲巔峰期的ノーザンテースト。</td>
+<td>仔出 (仔出し) 10 滿分、自帶速度因子，能力極強，產出大量超強自產幼駒！亦可選 13 歲巔峰期的ノーザンテースト。</td>
 </tr>
 <tr style="background:rgba(234,179,8,0.06);">
 <td><strong>3月3週 (系列特典・繁殖牝馬)</strong></td>
 <td><strong style="color:var(--gold-color);">グリーンシャトー (Green Chateau)</strong></td>
 <td><span class="badge badge-rainbow">繁殖牝馬</span></td>
-<td><strong>於 84 年產下同世代世界最快 SP A+ 76 虹札神駒「タマモクロス (玉藻十字)」</strong>，自身仔出高達 9！</td>
+<td><strong>於 84 年產下同世代世界最快 SP A+ 76 虹札神駒「タマモクロス (玉藻十字)」</strong>，自身仔出 (仔出し)高達 9！</td>
 </tr>
 <tr>
 <td><strong>3月5週 (第2匹愛馬讓渡)</strong></td>
@@ -2381,7 +2399,7 @@ li {
 <tr style="background:rgba(59,130,246,0.04);">
 <td>3月3週 (系列特典・母馬)</td>
 <td><strong>ビワハイジ (Biwa Heidi)</strong></td>
-<td><strong>06 年產下虹札名牝「ブエナビスタ (迷人景致)」</strong>，自身仔出 10 滿分、帶速度因子！</td>
+<td><strong>06 年產下虹札名牝「ブエナビスタ (迷人景致)」</strong>，自身仔出 (仔出し) 10 滿分、帶速度因子！</td>
 </tr>
 <tr style="background:rgba(59,130,246,0.04);">
 <td>3月5週 (第2匹愛馬)</td>
@@ -2408,7 +2426,7 @@ li {
 <tr style="background:rgba(16,185,129,0.04);">
 <td>3月3週 (系列特典・母馬)</td>
 <td><strong>エアグルーヴ (Air Groove / 氣槽)</strong></td>
-<td><strong>07 年產下金札「ルーラーシップ (統治地位)」</strong>，能力值頂尖且仔出 10 滿分！</td>
+<td><strong>07 年產下金札「ルーラーシップ (統治地位)」</strong>，能力值頂尖且仔出 (仔出し) 10 滿分！</td>
 </tr>
 <tr style="background:rgba(16,185,129,0.04);">
 <td>3月5週 (第2匹愛馬)</td>
@@ -2467,7 +2485,7 @@ li {
 <tr style="background:rgba(168,85,247,0.04);">
 <td>3月3週 (系列特典・種馬)</td>
 <td><strong>キタサンブラック (Kitasan Black)</strong></td>
-<td>8 歲壯年大種馬，仔出 8，イクイノックス (春秋分) 已誕生！</td>
+<td>8 歲壯年大種馬，仔出 (仔出し) 8，イクイノックス (春秋分) 已誕生！</td>
 </tr>
 <tr style="background:rgba(168,85,247,0.04);">
 <td>3月3週 (系列特典・母馬)</td>
@@ -2482,7 +2500,7 @@ li {
 <tr style="background:rgba(168,85,247,0.04);">
 <td>6月1週 (2歲幼駒)</td>
 <td><strong>メイケイエール (Meikei Yell)</strong></td>
-<td>重賞級短途狂駒，爆發力十足。</td>
+<td>重賞級短途狂駒，爆發力 (爆発力)十足。</td>
 </tr>
 <!-- 2026/2027 -->
 <tr style="background:rgba(239,68,68,0.04);">
@@ -2571,7 +2589,7 @@ li {
 <tr>
 <td><strong style="color:#38bdf8;">第 3 階段 (中盤交配)</strong></td>
 <td>將海外頂級種馬配給 China Rock 產出的優質牝馬。</td>
-<td>將國內深厚耐力血脈與海外頂級爆發力完美融合，產出破格怪物！</td>
+<td>將國內深厚耐力血脈與海外頂級爆發力 (爆発力)完美融合，產出破格怪物！</td>
 </tr>
 <tr>
 <td><strong style="color:#4ade80;">第 4 階段 (血脈確立)</strong></td>
@@ -2615,7 +2633,7 @@ li {
 <tr style="background:rgba(56,189,248,0.08);">
 <td><strong style="color:#38bdf8;">ノーザンテースト (Northern Taste)</strong></td>
 <td>中盤登場 (1975~)</td>
-<td><strong>後續接力主力 1！</strong> 與 China Rock 牝馬配合產生恐怖爆發力。</td>
+<td><strong>後續接力主力 1！</strong> 與 China Rock 牝馬配合產生恐怖爆發力 (爆発力)。</td>
 <td>進入中期後全面鞏固日本賽馬霸權的必備種馬。</td>
 </tr>
 <tr style="background:rgba(56,189,248,0.08);">
@@ -3705,13 +3723,13 @@ li {
 <i class="fa-solid fa-gem"></i> 1968 開局必買銀札神級母母：ヴァーヴ (Verve) 繁育秘技
                 </div>
 <p style="font-size:0.83rem; color:var(--text-color); line-height:1.6; margin-bottom:10px;">
-                    ヴァーヴ 是 1968 年開局能夠買到的<strong>極其珍貴的 Nearco (ネアルコ) 直仔繁殖牝馬</strong>。自帶母父◎（爆發力+4），且 Nearco 擁有速度因子與極大種牡馬血統群，零細血統適性極佳：
+                    ヴァーヴ 是 1968 年開局能夠買到的<strong>極其珍貴的 Nearco (ネアルコ) 直仔繁殖牝馬</strong>。自帶母父◎（爆發力 (爆発力)+4），且 Nearco 擁有速度因子與極大種牡馬血統群，零細血統適性極佳：
                 </p>
 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px; font-size:0.82rem;">
 <div style="background:rgba(30,41,59,0.8); padding:10px 12px; border-radius:6px;">
 <strong style="color:var(--gold-color);">💡 神級配合推薦 1：</strong><br/>
 <strong>Northern Dancer 直仔種馬 × 零細血統種馬 × ヴァーヴ</strong><br/>
-<small style="color:var(--text-muted);">例：シャリーフダンサー 配種 ➔ 評價 A / 爆發力 43 / 近親危險度僅 1！</small>
+<small style="color:var(--text-muted);">例：シャリーフダンサー 配種 ➔ 評價 A / 爆發力 (爆発力) 43 / 近親危險度僅 1！</small>
 </div>
 <div style="background:rgba(30,41,59,0.8); padding:10px 12px; border-radius:6px;">
 <strong style="color:var(--accent-color);">💡 神級配合推薦 2：</strong><br/>
@@ -3745,7 +3763,7 @@ li {
 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; font-size:0.85rem; color:var(--text-color); line-height:1.6;">
 <div style="background:rgba(0,0,0,0.3); border-left:3px solid #38bdf8; padding:10px 12px; border-radius:4px;">
 <strong style="color:#38bdf8;">1. 名馬相關圖 (關係性)：</strong>
-            同時代名馬結下宿敵或搭檔關係後，不僅提升當前競走能力，更能在退役後直接轉化為<strong>極高繁育配合爆發力</strong>！務必優先購入熱門世代的樞紐核心名駒。
+            同時代名馬結下宿敵或搭檔關係後，不僅提升當前競走能力，更能在退役後直接轉化為<strong>極高繁育配合爆發力 (爆発力)</strong>！務必優先購入熱門世代的樞紐核心名駒。
         </div>
 <div style="background:rgba(0,0,0,0.3); border-left:3px solid #38bdf8; padding:10px 12px; border-radius:4px;">
 <strong style="color:#38bdf8;">2. 活力與 Drama 因子：</strong>
@@ -3790,7 +3808,7 @@ li {
 <i class="fa-solid fa-crown"></i> 👑 虹札三大優先收購準則 (Priority Rules)
             </h4>
 <ul style="line-height:1.8; font-size:0.82rem; margin:0; padding-left:18px;">
-<li>優先引進「高仔出＋生下多匹史實 G1 幼駒」之繁殖牝馬 (如 1 枚虹札獲取パシフィカス同時獲得ビワハヤヒデ與ナリタブライアン)。</li><li>優先引進「系統確立核心父馬」以防止史實退役或提早輸出海外 (如トウショウボーイ、ノーザンテースト)。</li><li>海外超級名駒 (如フランケル、シーザスターズ) 宜於 1 歲幼駒期由海外拍賣會或庭先交易早期鎖定。</li>
+<li>優先引進「高仔出 (仔出し)＋生下多匹史實 G1 幼駒」之繁殖牝馬 (如 1 枚虹札獲取パシフィカス同時獲得ビワハヤヒデ與ナリタブライアン)。</li><li>優先引進「系統確立核心父馬」以防止史實退役或提早輸出海外 (如トウショウボーイ、ノーザンテースト)。</li><li>海外超級名駒 (如フランケル、シーザスターズ) 宜於 1 歲幼駒期由海外拍賣會或庭先交易早期鎖定。</li>
 </ul>
 </div>
 <!-- 各級守護符基本取得方式 -->
@@ -3882,7 +3900,7 @@ li {
 <div>
 <strong style="font-size:0.95rem; color:var(--gold-color);">⭐ スーパースターホースとは (超級巨星名駒定義與特徵)</strong>
 <p style="margin:4px 0 0 0; font-size:0.84rem; line-height:1.7;">
-                    《賽馬大亨 10 2026》中具備歷史級統治力之頂級史實名駒（SP 76+ 或 虹札神駒），擁有專屬固有特性、強大爆發力與極高仔出繁殖潛力。
+                    《賽馬大亨 10 2026》中具備歷史級統治力之頂級史實名駒（SP 76+ 或 虹札神駒），擁有專屬固有特性、強大爆發力 (爆発力)與極高仔出 (仔出し)繁殖潛力。
                 </p>
 </div>
 </div>
@@ -3900,7 +3918,7 @@ li {
 <i class="fa-solid fa-bullseye"></i> 🎯 主要獲取途徑 (How to Acquire)
                 </h4>
 <ul style="line-height:1.8; font-size:0.82rem; margin:0; padding-left:18px;">
-<li>虹のお守り (虹札交換)：於幼駒誕生或庭先取引時消耗 1 枚虹札引進。</li><li>セリ (拍賣會)：於 8 月幼駒拍賣會或 12 月繁殖牝馬拍賣會直接競標購入。</li><li>自家生産 (配合大系)：透過神之配合、高爆發力配種培育超越史實之自製巨星名駒。</li>
+<li>虹のお守り (虹札交換)：於幼駒誕生或庭先取引時消耗 1 枚虹札引進。</li><li>セリ (拍賣會)：於 8 月幼駒拍賣會或 12 月繁殖牝馬拍賣會直接競標購入。</li><li>自家生産 (配合大系)：透過神之配合、高爆發力 (爆発力)配種培育超越史實之自製巨星名駒。</li>
 </ul>
 </div>
 </div>
@@ -3918,12 +3936,12 @@ li {
 </section>
 <section class="section-card" id="sec-pro-tricks">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> 第 06 章：+40 爆發力滿貫公式與賽務職業小技</div>
+<div class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> 第 06 章：+40 爆發力 (爆発力)滿貫公式與賽務職業小技</div>
 </div>
 <div class="section-body">
 <div class="checklist-grid">
 <div class="checklist-card" style="border-color:var(--accent-gold);">
-<div class="checklist-card-header"><i class="fa-solid fa-calculator"></i> 40+ 爆發力「滿貫組牌範例」</div>
+<div class="checklist-card-header"><i class="fa-solid fa-calculator"></i> 40+ 爆發力 (爆発力)「滿貫組牌範例」</div>
 <ul class="checklist-items">
 <li>1. 牧場種牡馬設施 Lv3：<strong>+3</strong></li>
 <li>2. 三重相性 (Triple Nicks)：<strong>+6</strong></li>
@@ -3934,7 +3952,7 @@ li {
 <li>7. 活力源化因子 (金/銀)：<strong>+3</strong></li>
 <li>8. 3冠配合 / 名牝系配合：<strong>+4</strong></li>
 <li style="border-top:1px dashed var(--border-color); padding-top:4px; margin-top:4px; font-weight:bold; color:var(--accent-gold);">
-                總爆發力合計：3+6+8+5+9+5+3+4 = <strong>43 爆發力 (0 危險度)！</strong>
+                總爆發力 (爆発力)合計：3+6+8+5+9+5+3+4 = <strong>43 爆發力 (爆発力) (0 危險度)！</strong>
 </li>
 </ul>
 </div>
@@ -3955,7 +3973,7 @@ li {
 <h4 style="font-size:13px; font-weight:800;">海外牧場サヨナラ配合強制觸發</h4>
 </div>
 <p style="font-size:11.5px; color:var(--text-muted); line-height:1.6;">
-              當種馬年滿 23 歲以上時，於年末將其移籍至「無相同子系統種馬」之海外牧場（美國或歐洲）。次年配種強制成立<strong>『サヨナラ配合』</strong>（爆發力 +5）。若配合 18 歲以上母馬可成立<strong>『Wサヨナラ配合』</strong>（爆發 +8 且全副屬性大幅躍升）。
+              當種馬年滿 23 歲以上時，於年末將其移籍至「無相同子系統種馬」之海外牧場（美國或歐洲）。次年配種強制成立<strong>『サヨナラ配合』</strong>（爆發力 (爆発力) +5）。若配合 18 歲以上母馬可成立<strong>『Wサヨナラ配合』</strong>（爆發 +8 且全副屬性大幅躍升）。
             </p>
 </div>
 <div class="tool-card">
@@ -3964,7 +3982,7 @@ li {
 <h4 style="font-size:13px; font-weight:800;">買賣重置母馬繫養年數（雷嵐無限續航）</h4>
 </div>
 <p style="font-size:11.5px; color:var(--text-muted); line-height:1.6;">
-              『雷嵐配合』條件要求母馬「繫養年數 3 年以內」。第 4 年起將該母馬賣出，並於<strong>同年再次買回</strong>，系統內部的繫養年數會重置為 1 年！達成實質無限次續航成立『雷嵐配合』（最高獲得爆發力 +10 ~ +14 加成）。
+              『雷嵐配合』條件要求母馬「繫養年數 3 年以內」。第 4 年起將該母馬賣出，並於<strong>同年再次買回</strong>，系統內部的繫養年數會重置為 1 年！達成實質無限次續航成立『雷嵐配合』（最高獲得爆發力 (爆発力) +10 ~ +14 加成）。
             </p>
 </div>
 </div>
@@ -4009,13 +4027,13 @@ li {
 </div>
 <section class="section-card" id="sec-metrics">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-gauge-high"></i> 第 08 章：配合機制・四大指標與爆發力抽樣模擬器</div>
+<div class="section-title"><i class="fa-solid fa-gauge-high"></i> 第 08 章：配合機制・四大指標與爆發力 (爆発力)抽樣模擬器</div>
 </div>
 <div class="section-body">
 <div class="callout callout-info">
 <i class="fa-solid fa-circle-info"></i>
 <div>
-            配種（種付け）介面顯示 <strong>総合評価</strong>、<strong>爆発力</strong>、<strong>危険度</strong> 與隱藏參數 <strong>仔出し</strong>。幼駒能力由父母基礎平均傳承（速度約 2/3）與爆發力隨機抽樣值共同決定。
+            配種（種付け）介面顯示 <strong>総合評価</strong>、<strong>爆發力 (爆発力)</strong>、<strong>危険度</strong> 與隱藏參數 <strong>仔出 (仔出し)</strong>。幼駒能力由父母基礎平均傳承（速度約 2/3）與爆發力 (爆発力)隨機抽樣值共同決定。
           </div>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -4038,9 +4056,9 @@ li {
 <td>速度與七大副屬性綜合評估。等級越高副屬性越穩定。</td>
 </tr>
 <tr>
-<td><strong>爆発力</strong></td>
+<td><strong>爆發力 (爆発力)</strong></td>
 <td><span class="pill pill-power">0 ~ 40+</span></td>
-<td>決定速度上限提升規模。實際抽樣值為 <code>[0, 爆發力 - 1]</code> 等機率抽樣。</td>
+<td>決定速度上限提升規模。實際抽樣值為 <code>[0, 爆發力 (爆発力) - 1]</code> 等機率抽樣。</td>
 </tr>
 <tr>
 <td><strong>危険度</strong></td>
@@ -4050,9 +4068,9 @@ li {
 <td>近親交配副作用。高危險度會導致幼駒能力大跌或脾氣暴躁（気性難）。</td>
 </tr>
 <tr>
-<td><strong>仔出し (隱藏)</strong></td>
+<td><strong>仔出 (仔出し) (隱藏)</strong></td>
 <td><span class="pill pill-version">1 ~ 10</span></td>
-<td>遺傳效率。高仔出馬匹配種有 10% 豁免機率直抽成長上限。</td>
+<td>遺傳效率。高仔出 (仔出し)馬匹配種有 10% 豁免機率直抽成長上限。</td>
 </tr>
 <tr>
 <td><strong>種付不可</strong></td>
@@ -4065,13 +4083,13 @@ li {
 </div>
 <!-- Interactive Simulator -->
 <div class="tool-card">
-<h3 style="font-size:13.5px; font-weight:800; margin-bottom:5px; color:var(--accent-gold);">二、爆發力隨機抽樣分佈模擬器</h3>
+<h3 style="font-size:13.5px; font-weight:800; margin-bottom:5px; color:var(--accent-gold);">二、爆發力 (爆発力)隨機抽樣分佈模擬器</h3>
 <p style="font-size:11.5px; color:var(--text-muted); margin-bottom:8px;">
-              當配合顯示爆發力為 <code style="color:var(--accent-gold)">B</code> 時，幼駒速度加成值 <code style="color:var(--accent-gold)">b</code> 於整數區間 <code style="color:var(--accent-gold)">[0, B - 1]</code> 等機率隨機抽取。
+              當配合顯示爆發力 (爆発力)為 <code style="color:var(--accent-gold)">B</code> 時，幼駒速度加成值 <code style="color:var(--accent-gold)">b</code> 於整數區間 <code style="color:var(--accent-gold)">[0, B - 1]</code> 等機率隨機抽取。
             </p>
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
 <div>
-<label style="font-size:10.5px; font-weight:700; display:block; margin-bottom:2px;">配合爆發力 (B):</label>
+<label style="font-size:10.5px; font-weight:700; display:block; margin-bottom:2px;">配合爆發力 (爆発力) (B):</label>
 <input id="inputB" max="60" min="1" style="width:100%; padding:4px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-weight:bold; font-size:11.5px;" type="number" value="30"/>
 </div>
 <div>
@@ -4106,13 +4124,13 @@ li {
 <div>• <strong>特性技能</strong> (固有/通常/上位特性)</div>
 <div>• <strong>馬場適性</strong> (芝/泥地/1~8芝質)</div>
 <div>• <strong>戰法成長</strong> (腳質/成長型/成長力)</div>
-<div>• <strong>ウマソナ</strong> (個性/大賽鬥志發揮)</div>
+<div>• <strong>馬之個性 (ウマソナ)</strong> (個性/大賽鬥志發揮)</div>
 <div>• <strong>賽事備忘</strong> (經典戰功/賽事傾向)</div>
 <div>• <strong>體質弱點</strong> (氣性/性格/小迴/持病)</div>
 <div>• <strong>現役生涯</strong> (入廄/引退/所屬地域)</div>
-<div>• <strong>配種繁育</strong> (因子/仔出 0~10 滿分)</div>
+<div>• <strong>配種繁育</strong> (因子/仔出 (仔出し) 0~10 滿分)</div>
 <div>• <strong>繁殖生涯</strong> (退役年份/配種地域)</div>
-<div>• <strong>繁殖備忘</strong> (高爆發力繁育戰略)</div>
+<div>• <strong>繁殖備忘</strong> (高爆發力 (爆発力)繁育戰略)</div>
 <div>• <strong>劇本狀態</strong> (各劇本開局登場身份)</div>
 <div>• <strong>配種行情</strong> (各年代開局配種費)</div>
 <div>• <strong>系統血系</strong> (父系/牝系日中同步)</div>
@@ -4135,8 +4153,8 @@ li {
 </div>
 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:16px;">
 <div style="background:rgba(0,0,0,0.3); border-left:3px solid #06b6d4; padding:10px 12px; border-radius:4px;">
-<strong style="color:#06b6d4;"><img src="images/manual/no_01.png" style="height:16px; vertical-align:middle;"/> 預估爆發力與綜合評價：</strong>
-<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">顯示該配種組合能獲得的總爆發力數值 (如 +35)，以及電腦綜合判定等級 (S/A/B/C)。</p>
+<strong style="color:#06b6d4;"><img src="images/manual/no_01.png" style="height:16px; vertical-align:middle;"/> 預估爆發力 (爆発力)與綜合評價：</strong>
+<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">顯示該配種組合能獲得的總爆發力 (爆発力)數值 (如 +35)，以及電腦綜合判定等級 (S/A/B/C)。</p>
 </div>
 <div style="background:rgba(0,0,0,0.3); border-left:3px solid #06b6d4; padding:10px 12px; border-radius:4px;">
 <strong style="color:#06b6d4;"><img src="images/manual/no_02.png" style="height:16px; vertical-align:middle;"/> 近親交配危險度 (危険度)：</strong>
@@ -4167,7 +4185,7 @@ li {
 <p style="margin:0 0 6px;"><strong>2. 活力增加 5 大階段與永續機制：</strong></p>
 <ul style="margin:0; padding-left:20px;">
 <li><span style="color:#facc15; font-weight:bold;">黃色一般活力 (小 / 中 / 大 / 特大)：</span> 累積至「活力增強狀態」後，母馬成功受胎將會消耗歸零。</li>
-<li><span style="color:#22c55e; font-weight:bold;">綠色永續活力 (永続の活力)：</span> 達成頂級偉業後解鎖，即使母馬受胎生產，<strong>綠色活力永久保留不消退</strong>，產駒將代代享有高爆發力加成！</li>
+<li><span style="color:#22c55e; font-weight:bold;">綠色永續活力 (永続の活力)：</span> 達成頂級偉業後解鎖，即使母馬受胎生產，<strong>綠色活力永久保留不消退</strong>，產駒將代代享有高爆發力 (爆発力)加成！</li>
 </ul>
 <p style="margin:6px 0 0; color:var(--text-muted); font-size:0.82rem;">※ 玩家可於遊戲選單「資料 ➔ 活力増加契機一覧」隨時查詢當前解鎖條件，隨著活力增強次數提升，將逐步開啟【大～永續】的隱藏達成清單！</p>
 </div>
@@ -4181,7 +4199,7 @@ li {
 <tr>
 <th class="sortable-th" style="width:160px;">配合名稱 (日/中)</th>
 <th class="sortable-th">成立條件與原型背景</th>
-<th class="sortable-th" style="width:85px;">爆發力</th>
+<th class="sortable-th" style="width:85px;">爆發力 (爆発力)</th>
 <th class="sortable-th">特殊效果與實戰價值</th>
 </tr>
 </thead>
@@ -4190,7 +4208,7 @@ li {
 <td><strong>稲妻配合 (閃電配合)</strong></td>
 <td>父母雙方均為 <strong>瞬發力 A+ 且 勝負根性 D-</strong>（白毛/蘆毛額外加成）。</td>
 <td><span class="pill pill-power" style="font-weight:bold;">+6 ~ +8</span></td>
-<td>產駒極端強化末腳爆發力與瞬發戰適性。</td>
+<td>產駒極端強化末腳爆發力 (爆発力)與瞬發戰適性。</td>
 </tr>
 <tr>
 <td><strong>疾風配合 (疾風配合)</strong></td>
@@ -4220,7 +4238,7 @@ li {
 <td><strong style="color:var(--gold-color);">雷嵐配合 (春嵐 × 春雷)</strong></td>
 <td>春嵐事件達成之三冠牡馬 × 春雷事件達成之三冠牝馬配種。</td>
 <td><span class="pill pill-gold" style="font-weight:bold;">+14</span></td>
-<td><strong>遊戲內最強彩蛋配合</strong>（含三冠配合共 +14 爆發力），極高機率誕生白毛怪物神駒！</td>
+<td><strong>遊戲內最強彩蛋配合</strong>（含三冠配合共 +14 爆發力 (爆発力)），極高機率誕生白毛怪物神駒！</td>
 </tr>
 <tr>
 <td><strong>お披露目配合</strong></td>
@@ -4267,7 +4285,7 @@ li {
 <thead>
 <tr>
 <th style="min-width:230px;">配合理論名稱 (日/中)</th>
-<th style="width:1%; white-space:nowrap;">爆發力</th>
+<th style="width:1%; white-space:nowrap;">爆發力 (爆発力)</th>
 <th style="min-width:380px;">成立條件、詳細機制與備註說明</th>
 </tr>
 </thead>
@@ -4275,7 +4293,7 @@ li {
 <tr data-cat="basic">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-ranch', 'sec-farm-facilities')"><strong>種牡馬繋養施設</strong></a><br/><small style="color:var(--text-muted)">種牡馬繫養設施配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+1 ~ +3</td>
-<td>牧場設施「種牡馬繫養設施」Lv1 (+1) / Lv2 (+2) / Lv3 (+3) 帶來的先天爆發力加成。</td>
+<td>牧場設施「種牡馬繫養設施」Lv1 (+1) / Lv2 (+2) / Lv3 (+3) 帶來的先天爆發力 (爆発力)加成。</td>
 </tr>
 <tr data-cat="basic">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-nicks')"><strong>ニックス (シングルニックス)</strong></a><br/><small style="color:var(--text-muted)">單向相性配合 (Single Nicks)</small></td>
@@ -4303,19 +4321,19 @@ li {
 <td>種牡馬父系同時與【母父】、【母母父】、【母母母父】及【母母母母】全數成立相性。極致副屬性爆發！</td>
 </tr>
 <tr data-cat="basic">
-<td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-nicks')"><strong>サブパラ爆発力</strong></a><br/><small style="color:var(--text-muted)">副屬性因子爆發 (Subparameter Nicks)</small></td>
+<td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-nicks')"><strong>サブパラ爆發力 (爆発力)</strong></a><br/><small style="color:var(--text-muted)">副屬性因子爆發 (Subparameter Nicks)</small></td>
 <td style="font-weight:bold; color:#38bdf8;">副屬性提升</td>
 <td>相性成立時，種牡馬固定 +1，母方依該子系統繁榮度加成（繁榮 +3 / 安定 +2 / 衰退 +1），大幅強化耐力、瞬發、根性、力量、柔軟！</td>
 </tr>
 <tr data-cat="inbreed">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')"><strong>インブリード (Inbreeding)</strong></a><br/><small style="color:var(--text-muted)">一般近親交配 (奇跡之血量 3×4)</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+1 ~ +5<br/><small style="color:var(--text-muted)">(速因子每個+3)</small></td>
-<td>4 代內含有相同祖先（12.5%~37.5%）。Inbred 祖先每個速度因子直接 <strong>+3 爆發力</strong>；帶危險度（父母健康 S 減 2，A 減 1；血脈活性化可消除）。</td>
+<td>4 代內含有相同祖先（12.5%~37.5%）。Inbred 祖先每個速度因子直接 <strong>+3 爆發力 (爆発力)</strong>；帶危險度（父母健康 S 減 2，A 減 1；血脈活性化可消除）。</td>
 </tr>
 <tr data-cat="inbreed">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')"><strong>全きょうだいインブリード</strong></a><br/><small style="color:var(--text-muted)">全兄弟姐妹近親交配</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+1 ~ +5<br/><small style="color:var(--text-muted)">(速因子獨立累計)</small></td>
-<td>近親中出現全兄弟姐妹（如大震撼與黑潮）。兄弟馬之速度因子<strong>分開獨立計算</strong>，3 匹雙速因子全兄弟可帶來 <strong>+18 爆發力</strong>！</td>
+<td>近親中出現全兄弟姐妹（如大震撼與黑潮）。兄弟馬之速度因子<strong>分開獨立計算</strong>，3 匹雙速因子全兄弟可帶來 <strong>+18 爆發力 (爆発力)</strong>！</td>
 </tr>
 <tr data-cat="inbreed">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')"><strong>母系インブリード</strong></a><br/><small style="color:var(--text-muted)">母系近親交配 (Mother Line Inbreed)</small></td>
@@ -4330,22 +4348,22 @@ li {
 <tr data-cat="line">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-linebreed')"><strong>子系統ラインブリード (通常 / SP型)</strong></a><br/><small style="color:var(--text-muted)">子系統 Linebreed 配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+3 / +5</td>
-<td>種牡馬與繁殖牝馬同屬相同子系統。一般型 +3 (危險度+2)；若為 SP 系統則為 SP 型 <strong>+5 爆發力</strong>。</td>
+<td>種牡馬與繁殖牝馬同屬相同子系統。一般型 +3 (危險度+2)；若為 SP 系統則為 SP 型 <strong>+5 爆發力 (爆発力)</strong>。</td>
 </tr>
 <tr data-cat="line">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-linebreed')"><strong>親系統ラインブリード (通常 / SP型)</strong></a><br/><small style="color:var(--text-muted)">親系統 Linebreed 配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+2 / +3</td>
-<td>父母同屬相同親系統但不同子系統。一般型 +2 (危險度+1)；若為 SP 系統則為 SP 型 <strong>+3 爆發力</strong>。</td>
+<td>父母同屬相同親系統但不同子系統。一般型 +2 (危險度+1)；若為 SP 系統則為 SP 型 <strong>+3 爆發力 (爆発力)</strong>。</td>
 </tr>
 <tr data-cat="line">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-linebreed')"><strong>親系統ラインブリード 3本爆発型 (通常 / SP型)</strong></a><br/><small style="color:var(--text-muted)">親系統 3 本爆發型配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+7 / +9</td>
-<td>第 3 代 4 匹父系（父父父、父母父、母父父、母母父）中有 3 匹為同親系不同子系。一般型 +7；SP 型 <strong>+9 爆發力</strong>。</td>
+<td>第 3 代 4 匹父系（父父父、父母父、母父父、母母父）中有 3 匹為同親系不同子系。一般型 +7；SP 型 <strong>+9 爆發力 (爆発力)</strong>。</td>
 </tr>
 <tr data-cat="line">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-linebreed')"><strong>親系統ラインブリード 4本爆発型 (通常 / SP型)</strong></a><br/><small style="color:var(--text-muted)">親系統 4 本爆發型配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+11 / +13</td>
-<td>第 3 代 4 匹父系全為同一親系統但分屬不同子系統。一般型 +11；SP 型 <strong>+13 超極致爆發力</strong>！</td>
+<td>第 3 代 4 匹父系全為同一親系統但分屬不同子系統。一般型 +11；SP 型 <strong>+13 超極致爆發力 (爆発力)</strong>！</td>
 </tr>
 <tr data-cat="basic">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'sec-diagrams')"><strong>母父○ (BMS 配合)</strong></a><br/><small style="color:var(--text-muted)">優良母父配合</small></td>
@@ -4365,7 +4383,7 @@ li {
 <tr data-cat="activation">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-vitality')"><strong>活力補完 (名種 / 名牝 / 異系 / 完全型)</strong></a><br/><small style="color:var(--text-muted)">活力補完配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+0 / +3</td>
-<td>第 3 代 8 匹祖先具備系統因子、牝系因子或零細血統。提升競走壽命；<strong>8 匹全滿 (完全型) 額外 +3 爆發力</strong>。</td>
+<td>第 3 代 8 匹祖先具備系統因子、牝系因子或零細血統。提升競走壽命；<strong>8 匹全滿 (完全型) 額外 +3 爆發力 (爆発力)</strong>。</td>
 </tr>
 <tr data-cat="activation">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-vitality')"><strong>隔世遺傳 (Generation Gap)</strong></a><br/><small style="color:var(--text-muted)">隔代因子遺傳配合</small></td>
@@ -4395,7 +4413,7 @@ li {
 <tr data-cat="traits">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-traits')"><strong>SP・ST 融合配合 (系統特性融合)</strong></a><br/><small style="color:var(--text-muted)">極速與耐力融合配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+5</td>
-<td>一方血統至第 3 代全為 SP 系，另一方全為 ST 系。<strong>爆發力 +5</strong> 且力量 (Power) 大幅躍升。</td>
+<td>一方血統至第 3 代全為 SP 系，另一方全為 ST 系。<strong>爆發力 (爆発力) +5</strong> 且力量 (Power) 大幅躍升。</td>
 </tr>
 <tr data-cat="traits new">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-traits')"><strong>系統特性昇華配合 (なし/無特性 2024 NEW)</strong></a><br/><small style="color:var(--text-muted)">無特性均衡昇華配合</small></td>
@@ -4420,22 +4438,22 @@ li {
 <tr data-cat="special">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-special')"><strong>お似合い配合 (門當戶對配合)</strong></a><br/><small style="color:var(--text-muted)">門當戶對配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+5</td>
-<td>種牡馬與母馬評價額皆在 1000 萬以下且賢度皆達 A+。提升勝負根性與爆發力。</td>
+<td>種牡馬與母馬評價額皆在 1000 萬以下且賢度皆達 A+。提升勝負根性與爆發力 (爆発力)。</td>
 </tr>
 <tr data-cat="special">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-special')"><strong>サヨナラ配合 / Ｗサヨナラ配合</strong></a><br/><small style="color:var(--text-muted)">告別配合 / 雙重告別配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+5 / +8</td>
-<td>同地域唯一現役且 23 歲以上老種牡馬 (+5)；若母馬亦達 15 歲以上同系唯一則成立 W 告別 <strong>+8 爆發力</strong>！</td>
+<td>同地域唯一現役且 23 歲以上老種牡馬 (+5)；若母馬亦達 15 歲以上同系唯一則成立 W 告別 <strong>+8 爆發力 (爆発力)</strong>！</td>
 </tr>
 <tr data-cat="special">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-special')"><strong>稲妻配合 / 真・稲妻配合</strong></a><br/><small style="color:var(--text-muted)">閃電配合 / 真閃電配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+6 / +12</td>
-<td>瞬發 S+ 且勝負根性 D 以下，毛色為蘆毛/白毛/黑鹿毛/青毛。真閃電爆發力高達 <strong>+12 且瞬發極限突破</strong>！</td>
+<td>瞬發 S+ 且勝負根性 D 以下，毛色為蘆毛/白毛/黑鹿毛/青毛。真閃電爆發力 (爆発力)高達 <strong>+12 且瞬發極限突破</strong>！</td>
 </tr>
 <tr data-cat="special">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-special')"><strong>疾風配合 / 真・疾風配合</strong></a><br/><small style="color:var(--text-muted)">疾風配合 / 真疾風配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+6 / +12</td>
-<td>勝負根性 S+ 且瞬發 D 以下，毛色為栗毛/尾花栗毛/栃栗毛/鹿毛。真疾風爆發力高達 <strong>+12 且根性極限突破</strong>！</td>
+<td>勝負根性 S+ 且瞬發 D 以下，毛色為栗毛/尾花栗毛/栃栗毛/鹿毛。真疾風爆發力 (爆発力)高達 <strong>+12 且根性極限突破</strong>！</td>
 </tr>
 <tr data-cat="special">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-special')"><strong>3冠配合 (三冠配合)</strong></a><br/><small style="color:var(--text-muted)">經典三冠名駒交配</small></td>
@@ -4445,7 +4463,7 @@ li {
 <tr data-cat="special">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'sec-systems')"><strong>牝系配合 / 名牝系 / Ｗ名牝系配合</strong></a><br/><small style="color:var(--text-muted)">名牝系配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+2 / +3 / +4</td>
-<td>母馬所屬主流牝系 (+2) 或名牝系 (+3)；父母雙方皆出自名牝系則成立 W 名牝系配合 (<strong>+4 爆發力</strong>)。</td>
+<td>母馬所屬主流牝系 (+2) 或名牝系 (+3)；父母雙方皆出自名牝系則成立 W 名牝系配合 (<strong>+4 爆發力 (爆発力)</strong>)。</td>
 </tr>
 <tr data-cat="special">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-special')"><strong>お披露目配合 (公開亮相配合)</strong></a><br/><small style="color:var(--text-muted)">新種馬公開配種配合</small></td>
@@ -4465,7 +4483,7 @@ li {
 <tr data-cat="special">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-special')"><strong>ライバル配合 / ライバル母父配合</strong></a><br/><small style="color:var(--text-muted)">宿敵配合 / 宿敵母父配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+3 / +6</td>
-<td>現役時期累積高宿敵關係點數之名馬交配。提升勝負根性與對抗爆發力。</td>
+<td>現役時期累積高宿敵關係點數之名馬交配。提升勝負根性與對抗爆發力 (爆発力)。</td>
 </tr>
 <tr data-cat="new">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-2026new')"><strong>基準交配 (2025 日本限定 NEW)</strong></a><br/><small style="color:var(--text-muted)">基準交配理論</small></td>
@@ -4490,17 +4508,17 @@ li {
 <tr data-cat="new">
 <td><a class="theory-clean-link" href="javascript:void(0)" onclick="jumpToChapter('pillar-breed', 'mod-2026new')"><strong>ドラマ因子融合配合 (Drama 2026 NEW)</strong></a><br/><small style="color:var(--text-muted)">傳奇 Drama 因子配合</small></td>
 <td style="font-weight:bold; color:var(--gold-color);">+10</td>
-<td>父母雙方皆帶有活性化之ドラマ因子。繼承史詩級固有特性並大幅拉升實戰爆發力！</td>
+<td>父母雙方皆帶有活性化之ドラマ因子。繼承史詩級固有特性並大幅拉升實戰爆發力 (爆発力)！</td>
 </tr>
 </tbody>
 </table>
 </div>
-<!-- ==================== 基準交配與成長度精算法 & 仔出し (Foal Potential) ==================== -->
+<!-- ==================== 基準交配與成長度精算法 & 仔出 (仔出し) (Foal Potential) ==================== -->
 <h3 style="font-size:1rem; color:var(--gold-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-scale-balanced"></i> 五、基準交配・成長度 (Growth Degree) 與 仔出し (Foal Potential) 深度精算法
+<i class="fa-solid fa-scale-balanced"></i> 五、基準交配・成長度 (Growth Degree) 與 仔出 (仔出し) (Foal Potential) 深度精算法
         </h3>
 <p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
-          許多玩家在配種時過度迷信「爆發力（如 +35）」，卻頻頻產出出道時能力殘缺的平庸馬。根據《權威繁育大百科》深度解密：<strong>爆發力只決定產駒的「潛力上限」，而【基準交配】與【仔出し】才決定產駒的「成長度（基礎完成度與實力下限）」！</strong>
+          許多玩家在配種時過度迷信「爆發力 (爆発力)（如 +35）」，卻頻頻產出出道時能力殘缺的平庸馬。根據《權威繁育大百科》深度解密：<strong>爆發力 (爆発力)只決定產駒的「潛力上限」，而【基準交配】與【仔出 (仔出し)】才決定產駒的「成長度（基礎完成度與實力下限）」！</strong>
 </p>
 <div class="table-responsive" style="margin-bottom:20px;">
 <table class="data-table">
@@ -4515,12 +4533,12 @@ li {
 <tr style="background:rgba(234,179,8,0.08);">
 <td><strong style="color:var(--gold-color);">基準交配の成長度</strong></td>
 <td>由父母雙方的基本能力（スピード、サブパラ均勻度）與相性綜合判定。</td>
-<td><strong>決定產駒出生時的「成長進度條起始點」！</strong> 基準交配良好時，即使爆發力僅 +12，產駒也能快速成熟、早期出道橫掃 2~3 歲重賞；反之基準交配極差時，即使爆發力 +30 也可能因為成長度過低而終生難以達到巔峰。</td>
+<td><strong>決定產駒出生時的「成長進度條起始點」！</strong> 基準交配良好時，即使爆發力 (爆発力)僅 +12，產駒也能快速成熟、早期出道橫掃 2~3 歲重賞；反之基準交配極差時，即使爆發力 (爆発力) +30 也可能因為成長度過低而終生難以達到巔峰。</td>
 </tr>
 <tr style="background:rgba(56,189,248,0.08);">
-<td><strong style="color:#38bdf8;">仔出し (Foal Potential 1~10)</strong></td>
+<td><strong style="color:#38bdf8;">仔出 (仔出し) (Foal Potential 1~10)</strong></td>
 <td>種牡馬與繁殖牝馬自帶的隱藏大物產出係數（1~10 級）。</td>
-<td><strong>決定產駒覺醒超凡大物的概率！</strong> 仔出高達 9~10 的名種馬（如 Sunday Silence、Deep Impact、China Rock）即使爆發力平平也能連生 G1 怪物；仔出僅 1~3 的種馬若無極致爆發力加成，產駒極易淪為下級條件馬。</td>
+<td><strong>決定產駒覺醒超凡大物的概率！</strong> 仔出 (仔出し)高達 9~10 的名種馬（如 Sunday Silence、Deep Impact、China Rock）即使爆發力 (爆発力)平平也能連生 G1 怪物；仔出 (仔出し)僅 1~3 的種馬若無極致爆發力 (爆発力)加成，產駒極易淪為下級條件馬。</td>
 </tr>
 </tbody>
 </table>
@@ -4599,7 +4617,7 @@ li {
 <p><strong>ニックス (相性)</strong> 是賽馬大亨中最經典且最基礎的配種核心。當<strong>種牡馬的子系統</strong>與母系特定位置（母父、母母父、母母母父、母母母母）所屬的子系統為「良好相性」時成立。</p>
 <div class="pedigree-wrapper">
 <div class="pedigree-caption"><i class="fa-solid fa-crosshairs"></i> ニックス (相性配合) 4 大觸發位置圖解</div>
-<table class="pedigree-table">
+<table class="pedigree-table data-table" style="min-width:880px; text-align:left !important;">
 <thead>
 <tr>
 <th>第 1 代</th>
@@ -4650,7 +4668,7 @@ li {
 <div class="callout callout-tip">
 <i class="fa-solid fa-circle-check"></i>
 <div>
-<strong>サブパラ爆発力 (副屬性爆發機制)：</strong><br/>
+<strong>サブパラ爆發力 (爆発力) (副屬性爆發機制)：</strong><br/>
             相性成立時，會將符合相性種馬所擁有的輔助因子（耐/瞬/根/力/柔）爆發。種牡馬端固定 +1；繁殖牝馬端依子系統繁榮度加成（衰退 +1、安定 +2、繁榮 +3）。
           </div>
 </div>
@@ -4668,7 +4686,7 @@ li {
 <!-- Buena Vista 3x4 -->
 <div class="pedigree-wrapper">
 <div class="pedigree-caption"><i class="fa-solid fa-horse"></i> 經典 3x4 奇蹟血量實例 — 名牝「迷人景致 (ブエナビスタ)」(Nijinsky 3x4 Inbreed)</div>
-<table class="pedigree-table">
+<table class="pedigree-table data-table" style="min-width:880px; text-align:left !important;">
 <thead>
 <tr>
 <th>第 1 代 (50%)</th>
@@ -4722,7 +4740,7 @@ li {
 <div class="checklist-card">
 <div class="checklist-card-header"><i class="fa-solid fa-people-arrows"></i> 全きょうだいインブリード (全兄弟姊妹)</div>
 <p style="font-size:12px; color:var(--text-muted);">
-              全兄弟姊妹（如大震撼、黑潮）之因子<strong>分開獨立累加計算</strong>！若出現 3 匹各持 2 速因子的全兄妹近親，爆發力合計高達 <code>6+6+6 = +18</code>！
+              全兄弟姊妹（如大震撼、黑潮）之因子<strong>分開獨立累加計算</strong>！若出現 3 匹各持 2 速因子的全兄妹近親，爆發力 (爆発力)合計高達 <code>6+6+6 = +18</code>！
             </p>
 </div>
 </div>
@@ -4739,7 +4757,7 @@ li {
 <p>同親系或同子系交配。親系統 Linebreed 普通型爆發 +2 (危險+1)；SP型爆發 +3 (危險+1)。</p>
 <div class="pedigree-wrapper">
 <div class="pedigree-caption"><i class="fa-solid fa-bomb"></i> 親系統 Linebreed 爆發型 3 代 4 大父系陣列圖解</div>
-<table class="pedigree-table">
+<table class="pedigree-table data-table" style="min-width:880px; text-align:left !important;">
 <thead>
 <tr>
 <th>第 1 代</th>
@@ -4809,7 +4827,7 @@ li {
 <thead>
 <tr>
 <th>親系統數量</th>
-<th style="text-align: left;">爆發力</th>
+<th style="text-align: left;">爆發力 (爆発力)</th>
 <th>危險度化解效果</th>
 </tr>
 </thead>
@@ -4922,7 +4940,7 @@ li {
 <div class="checklist-card">
 <div class="checklist-card-header"><i class="fa-solid fa-yin-yang" style="color:var(--accent-gold)"></i> SP・ST 融合配合</div>
 <p style="font-size:12px; color:var(--text-muted);">
-              一方至 3 代全為 SP 系，另一方至 3 代全為 ST 系。爆發力 <strong>+5</strong> 且力量 (Power) 大幅躍升！
+              一方至 3 代全為 SP 系，另一方至 3 代全為 ST 系。爆發力 (爆発力) <strong>+5</strong> 且力量 (Power) 大幅躍升！
             </p>
 </div>
 </div>
@@ -4941,7 +4959,7 @@ li {
 <thead>
 <tr>
 <th>配合名稱</th>
-<th style="text-align: left;">爆發力</th>
+<th style="text-align: left;">爆發力 (爆発力)</th>
 <th>成立條件與屬性加成</th>
 </tr>
 </thead>
@@ -4979,7 +4997,7 @@ li {
 <tr>
 <td><strong>雷嵐配合 (Lv1~3)</strong></td>
 <td style="text-align: left;"><span class="pill pill-power">+6 / +8 / +10</span></td>
-<td>春嵐種馬 × 春雷繁殖牝馬首 3 年內配種（依事件完成度提升爆發力）</td>
+<td>春嵐種馬 × 春雷繁殖牝馬首 3 年內配種（依事件完成度提升爆發力 (爆発力)）</td>
 </tr>
 <tr>
 <td><strong>宿敵配合 (ライバル)</strong></td>
@@ -5012,7 +5030,7 @@ li {
 <tr>
 <th class="sortable-th" style="width:200px;">配合理論名稱 (日/中)</th>
 <th class="sortable-th" style="width:300px;">成立詳細條件 (日/中對照)</th>
-<th class="sortable-th" style="width:100px;">爆發力</th>
+<th class="sortable-th" style="width:100px;">爆發力 (爆発力)</th>
 <th class="sortable-th">實戰神級加成效益 (繁體中文)</th>
 </tr>
 </thead>
@@ -5038,7 +5056,7 @@ li {
 </td>
 <td><span class="pill pill-power" style="font-weight:bold;">+ 小 (上升)</span></td>
 <td>
-                    • 爆發力上升 (小)<br/>
+                    • 爆發力 (爆発力)上升 (小)<br/>
                     • <strong>對象 Drama 因子的單體特殊效果發動機率大幅上升！</strong>
 </td>
 </tr>
@@ -5049,7 +5067,7 @@ li {
                 </td>
 <td><span class="pill pill-gold" style="font-weight:bold;">極大爆發</span></td>
 <td>
-                    • <strong>爆發力極大上升</strong> (依活性化先祖馬數量加乘)<br/>
+                    • <strong>爆發力 (爆発力)極大上升</strong> (依活性化先祖馬數量加乘)<br/>
                     • 全體 Drama 因子單體效果發動機率暴增<br/>
                     • <strong style="color:#c084fc;">極高機率誕生適應能力超群之神級幼駒！</strong>
 </td>
@@ -5129,7 +5147,7 @@ li {
 <ul style="font-size:0.85rem; line-height:1.8; color:var(--text-color); margin-bottom:16px;">
 <li><strong>心法 1：母馬不再只是道具，而是需要悉心培育的能量庫</strong>——2025 以前母馬買來只是工具，2026 透過優質種馬配種、產駒好成績回饋，可將母馬活力逐步養成至 10 格滿格！</li>
 <li><strong>心法 2：優先挑選能提供「永続 (綠格)」與「特大」活力的種馬</strong>——綠色永續活力配種後永不歸零，能永久縮短母馬達到「活力增強」的週期！</li>
-<li><strong>心法 3：毋須為活力犧牲基本配合</strong>——活力的本質是「加分 Boost」，基本盤仍應優先遵循：近親危險度低 ➔ 配合評級 S/A ➔ 爆發力高，在此基礎上追求活力特大增長！</li>
+<li><strong>心法 3：毋須為活力犧牲基本配合</strong>——活力的本質是「加分 Boost」，基本盤仍應優先遵循：近親危險度低 ➔ 配合評級 S/A ➔ 爆發力 (爆発力)高，在此基礎上追求活力特大增長！</li>
 </ul>
 <!-- ==================== 四、初學必備 12 大核心配合精分 ==================== -->
 <h3 style="font-size:1rem; color:var(--accent-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">四、配合理論全 58 種中初學必備 12 大核心理論精分全圖鑑</h3>
@@ -5139,7 +5157,7 @@ li {
 <tr>
 <th style="min-width:130px;">維度分類</th>
 <th style="min-width:180px;">核心配合理論 (日/中)</th>
-<th style="min-width:140px;">爆發力 / 效果</th>
+<th style="min-width:140px;">爆發力 (爆発力) / 效果</th>
 <th style="min-width:340px;">核心成立條件與實戰要訣 (繁體中文)</th>
 </tr>
 </thead>
@@ -5158,7 +5176,7 @@ li {
 <tr>
 <td><strong>活力源化種牡馬 (因子累積)</strong></td>
 <td>+1 ~ +6</td>
-<td>祖先血統表內持有大量遺傳因子，直接轉換為純粹爆發力。</td>
+<td>祖先血統表內持有大量遺傳因子，直接轉換為純粹爆發力 (爆発力)。</td>
 </tr>
 <tr>
 <td><strong>インブリード (奇蹟的血量 3×4)</strong></td>
@@ -5206,7 +5224,7 @@ li {
 <tr style="background:rgba(234,179,8,0.1);">
 <td><strong>活力増強配合 (Vitality 10格)</strong></td>
 <td>100% 受胎 + Boost</td>
-<td>母馬活力累積滿 10 格引爆，受胎率 100% 且打破爆發力固定上限！</td>
+<td>母馬活力累積滿 10 格引爆，受胎率 100% 且打破爆發力 (爆発力)固定上限！</td>
 </tr>
 </tbody>
 </table>
@@ -5222,7 +5240,7 @@ li {
 <i class="fa-solid fa-atom"></i>
 <div>
 <strong>《賽馬大亨 10 2026》全新「ドラマ因子 (Drama 因子)」與「活力増強 (Vitality Boost)」核心架構</strong><br/>
-                    名馬於競走生涯締造史詩壯舉後將烙印專屬「Drama 因子」，在血統表傳承時激發<strong>「Drama Line 配合」</strong>與<strong>「Drama 融合配合」</strong>；配合繁殖母馬之<strong>「活力增強 (4 階段累積)」</strong>機制，可達成 100% 受胎率、產駒適應能力突破上限與頂級爆發力！
+                    名馬於競走生涯締造史詩壯舉後將烙印專屬「Drama 因子」，在血統表傳承時激發<strong>「Drama Line 配合」</strong>與<strong>「Drama 融合配合」</strong>；配合繁殖母馬之<strong>「活力增強 (4 階段累積)」</strong>機制，可達成 100% 受胎率、產駒適應能力突破上限與頂級爆發力 (爆発力)！
                 </div>
 </div>
 
@@ -5363,7 +5381,7 @@ li {
 <h4 style="font-size:12.5px; font-weight:700; color:var(--primary); margin-bottom:8px;"><i class="fa-solid fa-code-merge"></i> ドラマ因子融合配合 (Drama Inshi Fusion Breeding)</h4>
 <p style="font-size:11.5px; color:var(--text-main); line-height:1.7;">
 <strong>成立條件</strong>：父方與母方 4 代祖先中共計擁有 <strong>多種不同且活性化之 Drama 因子</strong>。<br/>
-<strong>效果</strong>：各路史詩壯舉因子完美交融，產駒同時獲得多項適應能力與特性，爆發力額外 <strong>+4 ~ +8</strong>！
+<strong>效果</strong>：各路史詩壯舉因子完美交融，產駒同時獲得多項適應能力與特性，爆發力 (爆発力)額外 <strong>+4 ~ +8</strong>！
 </p>
 </div>
 </div>
@@ -5387,7 +5405,7 @@ li {
 <td style="text-align:left !important;">母馬健康維持在 A 以上且年齡在 14 歲以下時逐年自然累積。</td>
 <td rowspan="3" style="text-align:left !important;">
 <strong>1. 配合必定 100% 受胎</strong> (告別難產受胎失敗)<br/>
-<strong>2. 活力源化因子爆發力加倍</strong>：大種牡馬因子×1、世界種牡馬因子×2<br/>
+<strong>2. 活力源化因子爆發力 (爆発力)加倍</strong>：大種牡馬因子×1、世界種牡馬因子×2<br/>
 <strong>3. 產駒適應能力全面上升</strong><br/>
 <strong>4. 名種牡馬/名牝型活力補完效果最大化</strong> (延長競走壽命＋降低危險度)
 </td>
@@ -5458,17 +5476,17 @@ li {
 <tr>
 <td style="text-align:left !important;"><strong>子系統確立</strong></td>
 <td style="text-align:left !important;">單一區域 <strong style="color:var(--primary);">5.0%</strong> 或 全球 <strong style="color:var(--primary);">2.0%</strong></td>
-<td style="text-align:left !important;">自立新血統、獲得名種牡馬因子 (+1 爆發力)。</td>
+<td style="text-align:left !important;">自立新血統、獲得名種牡馬因子 (+1 爆發力 (爆発力))。</td>
 </tr>
 <tr>
 <td style="text-align:left !important;"><strong>親系統昇格</strong></td>
 <td style="text-align:left !important;">單一區域 <strong style="color:var(--primary);">12.0%</strong> 或 全球 <strong style="color:var(--primary);">10.0%</strong></td>
-<td style="text-align:left !important;">獲得大種牡馬因子 (+1~+2 爆發力)、徹底稀釋血統活性。</td>
+<td style="text-align:left !important;">獲得大種牡馬因子 (+1~+2 爆發力 (爆発力))、徹底稀釋血統活性。</td>
 </tr>
 <tr>
 <td style="text-align:left !important;"><strong>世界系統昇格</strong></td>
 <td style="text-align:left !important;">全球 4 大區域 (日/美/歐/亞) 皆建立子系統</td>
-<td style="text-align:left !important;">獲得世界種牡馬因子 (+2 爆發力)，配種爆發力永久滿額！</td>
+<td style="text-align:left !important;">獲得世界種牡馬因子 (+2 爆發力 (爆発力))，配種爆發力 (爆発力)永久滿額！</td>
 </tr>
 </tbody>
 </table>
@@ -5913,7 +5931,7 @@ li {
 <div class="pillar-content" id="pillar-train" style="display:none;">
 <div class="pillar-header-card">
 <h2>🏋️ 調教培育・基礎能力・個性進化與關係性 (Training &amp; Traits)</h2>
-<p>【第 25 章 ~ 第 29 章】五大人物與賽馬數值能力完全百科、四大比賽展開・適應能力與技能特性全書、史實調教全 40+ 種效果與 SP 雙馬合練、ウマソナ (馬之個性) 克服與進化、2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</p>
+<p>【第 25 章 ~ 第 29 章】五大人物與賽馬數值能力完全百科、四大比賽展開・適應能力與技能特性全書、史實調教全 40+ 種效果與 SP 雙馬合練、馬之個性 (ウマソナ) (馬之個性 (ウマソナ)) 克服與進化、2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</p>
 </div>
 <section class="section-card" id="sec-status-encyclopedia">
 <div class="section-header">
@@ -5991,7 +6009,7 @@ li {
 <div>
 <strong>《賽馬大亨 10 2026》全角色五大維度能力數值・特性與隱藏參數完全圖鑑 (100% 完整解析)</strong><br/>
 
-                系統化剖析遊戲內全部 5 大實體面板：① <strong>競走馬</strong>（速度 40 階對照、八大副屬性、特徵壽命、隱藏仔出與賽事經驗）、② <strong>騎手</strong>（戰法距離與 20 大騎手特性）、③ <strong>調教師</strong>（五大能力與 20 大練馬師特性）、④ <strong>牧場長</strong>（五大能力、得意設施與育成方針）、⑤ <strong>子孫・結婚知人</strong>（三大素質、職業進路與家系傳承）。
+                系統化剖析遊戲內全部 5 大實體面板：① <strong>競走馬</strong>（速度 40 階對照、八大副屬性、特徵壽命、隱藏仔出 (仔出し)與賽事經驗）、② <strong>騎手</strong>（戰法距離與 20 大騎手特性）、③ <strong>調教師</strong>（五大能力與 20 大練馬師特性）、④ <strong>牧場長</strong>（五大能力、得意設施與育成方針）、⑤ <strong>子孫・結婚知人</strong>（三大素質、職業進路與家系傳承）。
 
             </div>
 </div>
@@ -6037,7 +6055,7 @@ li {
 <tr>
 <td><strong>瞬発力 (瞬發力)</strong></td>
 <td><span class="badge badge-blue">G ~ S+</span></td>
-<td>瞬發力越高，採取<strong>「居中 (差し)」、「後追 (追込)」</strong>跑法時的直線末腳爆發力越強。</td>
+<td>瞬發力越高，採取<strong>「居中 (差し)」、「後追 (追込)」</strong>跑法時的直線末腳爆發力 (爆発力)越強。</td>
 </tr>
 <tr>
 <td><strong>パワー (力量 / Power)</strong></td>
@@ -6249,7 +6267,7 @@ li {
 </tr>
 <tr>
 <td><strong>隱藏參數</strong></td>
-<td><strong>仔出 (0~10)</strong><br/><strong>賽事直覺 (0~100)</strong><br/><strong>名氣評價 (0~100)</strong></td>
+<td><strong>仔出 (仔出し) (0~10)</strong><br/><strong>賽事直覺 (0~100)</strong><br/><strong>名氣評價 (0~100)</strong></td>
 <td><strong>仔出 (仔出し)</strong>：決定產駒高能力遺傳機率，現役戰績出色可提升；<br/><strong>賽事直覺 (レース勘)</strong>：出賽增加、放牧減少，影響臨場發力時機；<br/><strong>評判</strong>：影響拍賣會估價與俱樂部會員購買熱度。</td>
 </tr>
 </tbody>
@@ -6532,7 +6550,7 @@ li {
 </tr>
 <tr>
 <td><strong>血統知識 (血統知識)</strong></td>
-<td>越高在委託其自動配種（種付けお任せ）時的效果與爆發力越高。</td>
+<td>越高在委託其自動配種（種付けお任せ）時的效果與爆發力 (爆発力)越高。</td>
 </tr>
 <tr>
 <td><strong>馴致 (幼駒馴化)</strong></td>
@@ -6551,7 +6569,7 @@ li {
 <td>牧場長專精之設施（如坂路、草地、放牧場），<strong>必須實際建造該設施才能觸發加成</strong>。</td>
 </tr>
 <tr>
-<td><strong>得意ウマソナ</strong></td>
+<td><strong>得意馬之個性 (ウマソナ)</strong></td>
 <td>牧場長專精之個性，顯著加速持有該個性之 1 歲幼駒與未入廄 2 歲馬的成長。</td>
 </tr>
 <tr>
@@ -6648,14 +6666,14 @@ li {
 </div>
 <div style="background:rgba(0,0,0,0.3); border-left:3px solid #38bdf8; padding:10px 12px; border-radius:4px;">
 <strong style="color:#38bdf8;"><img src="images/manual/no_04.png" style="height:16px; vertical-align:middle;"/> 信任度等級 (信頼度 Lv1~Lv3)：</strong>
-<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">透過賽事好走、史實調教與ウマソナ事件累積信任。Lv 提升時可<strong>突破能力上限、激發上位進化個性、並解鎖史實固有配合</strong>！</p>
+<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">透過賽事好走、史實調教與馬之個性 (ウマソナ)事件累積信任。Lv 提升時可<strong>突破能力上限、激發上位進化個性、並解鎖史實固有配合</strong>！</p>
 </div>
 <div style="background:rgba(0,0,0,0.3); border-left:3px solid #38bdf8; padding:10px 12px; border-radius:4px;">
 <strong style="color:#38bdf8;"><img src="images/manual/no_05.png" style="height:16px; vertical-align:middle;"/> 氣合・調子・疲勞狀態：</strong>
 <p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">氣合 (鬪志) 分為 5 階（以雙箭頭表示），調子分為 7 階，疲勞度過高會引發「スランプ (低潮)」或骨折風險。</p>
 </div>
 <div style="background:rgba(0,0,0,0.3); border-left:3px solid #38bdf8; padding:10px 12px; border-radius:4px;">
-<strong style="color:#38bdf8;"><img src="images/manual/no_06.png" style="height:16px; vertical-align:middle;"/> ウマソナ (馬之個性) 與戰術適性：</strong>
+<strong style="color:#38bdf8;"><img src="images/manual/no_06.png" style="height:16px; vertical-align:middle;"/> 馬之個性 (ウマソナ) (馬之個性 (ウマソナ)) 與戰術適性：</strong>
 <p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">每匹馬最多持有 6 個個性，藍色為正面加成、紅色為負面缺陷、金/紫色為上位進化或雙向刃。</p>
 </div>
 </div>
@@ -8148,23 +8166,23 @@ li {
 <td style="color:#10b981; font-weight:bold;">＋１０％ / ＋２０％</td>
 </tr>
 <tr>
-<td><strong>合乎「調教適性」的特徵 (ウマソナ / 走法 / 馬體)</strong></td>
-<td style="color:#10b981; font-weight:bold;">每項 ＋１０％ / 上位ウマソナ每項 ＋１５％</td>
+<td><strong>合乎「調教適性」的特徵 (馬之個性 (ウマソナ) / 走法 / 馬體)</strong></td>
+<td style="color:#10b981; font-weight:bold;">每項 ＋１０％ / 上位馬之個性 (ウマソナ)每項 ＋１５％</td>
 </tr>
 <tr>
 <td><strong>「提案者」與調教師為同一人</strong></td>
 <td style="color:#10b981; font-weight:bold;">＋１０％ (調教師引退後永久發動，轉生後解除)</td>
 </tr>
 <tr>
-<td><strong>ウマソナ「努力上手」</strong></td>
+<td><strong>馬之個性 (ウマソナ)「努力上手」</strong></td>
 <td style="color:#10b981; font-weight:bold;">＋５％</td>
 </tr>
 <tr>
-<td><strong>ウマソナ「秀才肌」</strong></td>
+<td><strong>馬之個性 (ウマソナ)「秀才肌」</strong></td>
 <td style="color:#10b981; font-weight:bold;">＋１０％</td>
 </tr>
 <tr>
-<td><strong>ウマソナ負面個性「手抜き癖」</strong></td>
+<td><strong>馬之個性 (ウマソナ)負面個性「手抜き癖」</strong></td>
 <td style="color:#ef4444; font-weight:bold;">－５％</td>
 </tr>
 <tr>
@@ -8203,7 +8221,7 @@ li {
 <th>期間</th>
 <th>大成功率</th>
 <th>特性進化 (Evolution)</th>
-<th>調教適性 (ウマソナ / 走法)</th>
+<th>調教適性 (馬之個性 (ウマソナ) / 走法)</th>
 </tr>
 </thead>
 <tbody>
@@ -8303,7 +8321,7 @@ li {
 <th>期間</th>
 <th>大成功率</th>
 <th>特性進化 (Evolution)</th>
-<th>調教適性 (ウマソナ / 走法)</th>
+<th>調教適性 (馬之個性 (ウマソナ) / 走法)</th>
 </tr>
 </thead>
 <tbody>
@@ -8906,7 +8924,7 @@ li {
 </div>
 <div style="background:rgba(0,0,0,0.3); border-left:3px solid #eab308; padding:10px 12px; border-radius:4px;">
 <strong style="color:#eab308;"><img src="images/manual/no_04.png" style="height:16px; vertical-align:middle;"/> 調教效果與特性進化：</strong>
-<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">大成功時可額外<strong>克服負面ウマソナ缺陷</strong>、<strong>上位進化通常特性</strong>、並使賽馬關係性進一步深化。</p>
+<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">大成功時可額外<strong>克服負面馬之個性 (ウマソナ)缺陷</strong>、<strong>上位進化通常特性</strong>、並使賽馬關係性進一步深化。</p>
 </div>
 </div>
 <!-- SP 雙馬合練特別介紹 -->
@@ -8929,20 +8947,20 @@ li {
 </div></div></section>
 <section class="section-card" id="sec-umasona">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-face-smile"></i> 第 29 章：ウマソナ (馬之個性) 全圖鑑・克服進化秘技與 14 大性格分佈矩陣</div>
+<div class="section-title"><i class="fa-solid fa-face-smile"></i> 第 29 章：馬之個性 (ウマソナ) (馬之個性 (ウマソナ)) 全圖鑑・克服進化秘技與 14 大性格分佈矩陣</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom:16px;">
 <i class="fa-solid fa-masks-theater" style="font-size:1.2rem; color:var(--accent-gold);"></i>
 <div>
-<strong>《賽馬大亨 10 2026》ウマソナ (馬之個性 / Umasonality) 100% 完全數據庫與底層機制手冊</strong><br/>
+<strong>《賽馬大亨 10 2026》馬之個性 (ウマソナ) (馬之個性 (ウマソナ) / Umasonality) 100% 完全數據庫與底層機制手冊</strong><br/>
                 個性是決定賽駒臨場發揮、能力上下限、調教成功率與人馬相性的核心系統。本章全量收錄 40+ 種個性效果、觸發條件、賽事經驗箭頭、克服與進化途徑、對應史實調教清單，以及 14 大先天性格之個性出現機率分佈矩陣！
             </div>
 </div>
-<!-- ==================== 一、ウマソナ四大核心底層機制全解 ==================== -->
+<!-- ==================== 一、馬之個性 (ウマソナ)四大核心底層機制全解 ==================== -->
 <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--accent-gold); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
 <h3 style="color:var(--gold-color); font-size:1.1rem; margin-top:0; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:8px; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-brain"></i> 一、ウマソナ (馬之個性) 四大底層運作機制
+<i class="fa-solid fa-brain"></i> 一、馬之個性 (ウマソナ) (馬之個性 (ウマソナ)) 四大底層運作機制
     </h3>
 <div class="grid-cols-1-mobile" style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px;">
 <div style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:8px; padding:12px;">
@@ -8979,7 +8997,7 @@ li {
 <ul style="font-size:0.83rem; line-height:1.7; margin:0; padding-left:18px;">
 <li><strong>信任度累積</strong>：賽事跑入前 5 名或觸發個性事件增加。<strong>G1 大概 3 勝可提升 1 級信任度</strong>。</li>
 <li><strong>進化與克服</strong>：信任度達 Lv1 可克服負面缺陷；達 Lv2 可將正面特性進化為神級上位個性！</li>
-<li><strong>個性事件 (ウマソナイベント)</strong>：<strong>每出賽 3 次觸發 1 次，每匹馬上限 5 次</strong>（首回固定為「愛馬撫育」）。</li>
+<li><strong>個性事件 (馬之個性 (ウマソナ)イベント)</strong>：<strong>每出賽 3 次觸發 1 次，每匹馬上限 5 次</strong>（首回固定為「愛馬撫育」）。</li>
 <li><strong>S/L 洗事件</strong>：可透過賽前存檔讀檔（S/L）隨機刷新互動內容與獎勵。</li>
 </ul>
 </div>
@@ -8989,7 +9007,7 @@ li {
 <div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
 <div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-table-list"></i> 二、ウマソナ (馬之個性) 全量數據庫完全對照表
+<i class="fa-solid fa-table-list"></i> 二、馬之個性 (ウマソナ) (馬之個性 (ウマソナ)) 全量數據庫完全對照表
         </div>
 <span class="badge badge-gold" style="font-size:0.78rem; padding:3px 8px;">日中並行・零遺漏完整收錄</span>
 </div>
@@ -9006,7 +9024,7 @@ li {
 <button class="filter-btn" id="btnUmasonaDouble" onclick="filterUmasona('雙向')">⚡ 雙向兩面刃 (<span id="countUmasonaDouble">12</span>)</button>
 </div>
 <div style="position:relative; width:100%;">
-<input class="filter-control" id="umasonaSearchInput" oninput="filterUmasonaSearch()" placeholder="🔍 即時搜尋馬之個性名稱、日文原名、屬性、效果關鍵字 (如: 瞬發力, 遠征, 連戰, 調教, 逃げ)..." style="width:100%; padding:8px 12px 8px 36px; border-radius:6px; font-size:0.88rem; background:rgba(0,0,0,0.3); border:1px solid var(--border-color); color:var(--text-color); box-sizing:border-box;" type="text"/>
+<input class="filter-control" id="umasonaSearchInput" oninput="filterUmasonaSearch()" placeholder="🔍 即時搜尋馬之個性 (ウマソナ)名稱、日文原名、屬性、效果關鍵字 (如: 瞬發力, 遠征, 連戰, 調教, 逃げ)..." style="width:100%; padding:8px 12px 8px 36px; border-radius:6px; font-size:0.88rem; background:rgba(0,0,0,0.3); border:1px solid var(--border-color); color:var(--text-color); box-sizing:border-box;" type="text"/>
 <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:0.85rem;"></i>
 </div>
 </div><div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
@@ -9515,7 +9533,7 @@ li {
 <td>進化</td>
 <td>由「スランプ (克服)」上位進化</td>
 </tr>
-<tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">積極果敢 (積極果敢)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>獲得 1 番人氣時採取積極跑法更易發揮實力。比賽時勝負根性上升。</td><td>由「負けず嫌い」上位進化</td><td>逃げ / 先行 (先行逃げ)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，於 1 番人氣下以領先跑法多次勝出</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">天真爛漫 (天真爛漫)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>服從調教指示且能高效率訓練，育成度上升速度顯著加快。</td><td>由「甘えん坊」上位進化</td><td>日常調教訓練</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，多次史實調教大成功</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">前向き (積極進取)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>奔馳慾望強烈，在短距離賽事與休養復出戰更能超額發揮實力。</td><td>由「引っ込み思案」克服後上位進化</td><td>短距離 / 休み明け (久休復出)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，短途休養復出戰勝出</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">瞬間の反応 (瞬間反應)</strong></td><td style="white-space:nowrap;">集中 (集中力)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>搭檔「剛腕○」或「風車鞭○」騎手時，最後直線末腳爆發力大增。比賽時瞬發力上升。</td><td>由「詰めが甘い」克服後上位進化</td><td>差し / 追込 (直線強襲)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，直路後追勝出</td></tr><tr data-type="負面" style="background:rgba(239,68,68,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#f87171;">ズブい (遲鈍慢熱)</strong></td><td style="white-space:nowrap;">集中 (集中力)</td><td style="white-space:nowrap;"><span class="badge badge-pink">負面</span></td><td>引擎起步加速極為緩慢，短距離與短直道賽道嚴重不利；需搭配推騎型騎手。</td><td>幼駒期隨機或敗戰習得</td><td>長距離 / 長直線 (長距離追込)</td><td style="white-space:nowrap;"><span class="pill pill-safe">2 級</span></td><td style="white-space:nowrap;">通常</td><td>實行「坂路調教」等克服史實調教</td></tr><tr data-type="負面" style="background:rgba(239,68,68,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#f87171;">噛みつき癖 (撕咬惡習)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-pink">負面</span></td><td>多頭數賽事進入內中檔位時容易因撕咬惡習而失速；可配戴眼罩 (Blinker) 抑制。</td><td>幼駒期隨機或內側擁擠敗戰</td><td>外枠 (外側檔位)</td><td style="white-space:nowrap;"><span class="pill pill-safe">2 級</span></td><td style="white-space:nowrap;">通常</td><td>配戴眼罩或透過馬術調教克服</td></tr><tr data-type="負面" style="background:rgba(239,68,68,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#f87171;">馬込み× (懼怕馬群)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-pink">負面</span></td><td>多頭數內側若被包夾在馬群內部，能力發揮將嚴重受阻。</td><td>多頭數內側包夾敗戰習得</td><td>外枠 / 大外一気</td><td style="white-space:nowrap;"><span class="pill pill-safe">2 級</span></td><td style="white-space:nowrap;">通常</td><td>實行「入廄巡禮」或「障礙調教」克服</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">馬込み○ (適應馬群)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>多頭數內側被包夾在馬群中也能冷靜發揮實力。</td><td>由「馬込み×」克服後習得</td><td>馬群包夾 (馬群の内)</td><td style="white-space:nowrap;"><span class="pill pill-safe">3 級</span></td><td style="white-space:nowrap;">通常</td><td>於多頭數內檔勝出</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">馬群割り (突破馬群)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>多頭數內側被深陷馬群包圍時能激發出更強戰力。比賽時瞬發力大幅上升！</td><td>由「馬込み○」上位進化</td><td>內欄突圍 (イン突き)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，深陷馬群內欄突圍連勝</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">自由気まま (悠然自得)</strong></td><td style="white-space:nowrap;">意外性 (意外性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>在廄舍自由自在生活，調子極易上升且競賽壽命不易損耗。</td><td>由「いたずら好き」上位進化</td><td>自由奔馳 (マイペース)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，長途或放牧復出勝出</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">臥薪嘗胆 (臥薪嘗膽)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>具備極強忍耐力，調子好時實力大增，調子不好時亦幾乎不受負面影響。</td><td>由「スランプ (低潮)」克服後上位進化</td><td>逆境奮戰</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，克服低潮後於 G1 大賽勝出</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">荒ぶる鏑矢 (荒野之箭)</strong></td><td style="white-space:nowrap;">作戰展開 (展開)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>在領放馬較少的賽事中，採用「大逃/逃げ/積極策/前付け」於勝負處可發動強烈二段加速！</td><td>領先單騎逃馬連勝激發 / 史實固有</td><td>大逃げ / 逃げ (單騎領放)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">固有</td><td>大逃連勝或特定名駒固有</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">稀代の気分屋 (絕代隨性)</strong></td><td style="white-space:nowrap;">意外性 (意外性)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>出賽當天氣合狀態大幅起伏波動（由同一專屬主戰騎手連續策騎時氣合更容易上升）。</td><td>由「ムラっ気」進化或特定史實馬固有</td><td>主戰騎手專屬固定策騎</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>由固定主戰騎手策騎連勝</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">プレイボーイ (花花公子)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>賽事中有雌馬同場時容易分心，但在【SP 雙馬史實調教】中若對手為雌馬，調教效果大幅暴增！</td><td>雄馬隨機觸發或與雌馬合練習得</td><td>SP 雙馬雌馬合練</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">プレイガール (萬人迷)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>賽事中有雄馬同場時容易分心，但在【SP 雙馬史實調教】中若對手為雄馬，調教效果大幅暴增！</td><td>雌馬隨機觸發或與雄馬合練習得</td><td>SP 雙馬雄馬合練</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">食いしん坊 (大胃王)</strong></td><td style="white-space:nowrap;">健康體力 (體力)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>賽後進食量大，體力消耗少且疲勞恢復極快；但在放牧休養期間容易增重發福。</td><td>幼駒期隨機或大胃王事件</td><td>密集出賽 (連戦)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">一心不乱 (專心致志)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>採取前領戰術時容易搶口，但在比賽中極具超常爆發潛力。</td><td>由「ムラっ気」克服後進化</td><td>逃げ / 先行 (前領跑法)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，前領連勝</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">気ままフライト (自在疾馳)</strong></td><td style="white-space:nowrap;">作戰展開 (展開)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>當同場採取相同跑法的對手很少時，沿途能無拘無束自在奔馳並完全發揮實力。</td><td>同跑法對手少時勝出</td><td>獨走跑法 (少頭數同作戰)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">親分肌 (大哥風範)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>在【SP 雙馬史實調教】中，以領頭大哥姿態帶領搭檔賽駒，大幅提升調教大成功機率！</td><td>多次作為領頭馬進行 SP 雙馬調教</td><td>SP 雙馬領頭合練</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>SP 雙馬合練大成功多次</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">泰然自若 (泰然自若)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>從賽前到賽後全程平靜沉著，賽後累積疲勞大幅減輕。</td><td>由「臆病」克服後進化</td><td>平穩大賽 (重賞平靜)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>克服膽小後於 G1 勝出</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">制御不能 (無法掌控)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>令廄舍人員極度頭疼的怪脾氣，在廄舍內的調子與氣合容易劇烈震盪，但實戰爆發力驚人。</td><td>特定烈馬史實固有或隨機觸發</td><td>滿氣合出賽</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">超わがままっ子 (超級任性)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>心情不好時完全不願動彈使史實調教效果下降，但實戰賽事中有極高爆發力。</td><td>由「わがまま」上位進化</td><td>好調實戰 (絶好調出走)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上連勝</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">暴れん坊 (暴躁狂)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>賽事中極容易搶口暴走，但若調子與氣合蓄滿時實力將呈毀滅性極限爆發！</td><td>由「反抗的」上位進化</td><td>滿氣合出賽 (気合MAX)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>滿氣合下連勝</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">奇想天外 (奇想天外)</strong></td><td style="white-space:nowrap;">意外性 (意外性)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>氣合低時容易漏閘或搶口，但若氣合維持高點則實力超群絕倫。</td><td>由「いたずら好き」上位進化</td><td>滿氣合出賽</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>意外性賽事勝出</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">超実戦型 (超實戰型)</strong></td><td style="white-space:nowrap;">競走適性 (適性)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>平時調教訓練效果略有扣減，但在實戰賽場上能發揮出遠超平時的超強實力。</td><td>連勝激發或特定史實固有</td><td>實戰王道 (本番勝負)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">猪突猛進 (勇往直前)</strong></td><td style="white-space:nowrap;">作戰展開 (展開)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>一心一意只盯著最前領先位置，比賽中容易搶口，但史實調教的成長效果大幅提升。</td><td>逃馬連勝激發</td><td>大逃げ / 逃げ (先頭突進)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">悠々自適 (悠閒適意)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>面對海外遠征等環境變化反而視為出門散心，發揮出比平時更強的實力！</td><td>由「環境変化✕」克服後上位進化</td><td>海外遠征 (遠征)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>海外遠征 G1 連勝</td></tr></tbody>
+<tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">積極果敢 (積極果敢)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>獲得 1 番人氣時採取積極跑法更易發揮實力。比賽時勝負根性上升。</td><td>由「負けず嫌い」上位進化</td><td>逃げ / 先行 (先行逃げ)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，於 1 番人氣下以領先跑法多次勝出</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">天真爛漫 (天真爛漫)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>服從調教指示且能高效率訓練，育成度上升速度顯著加快。</td><td>由「甘えん坊」上位進化</td><td>日常調教訓練</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，多次史實調教大成功</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">前向き (積極進取)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>奔馳慾望強烈，在短距離賽事與休養復出戰更能超額發揮實力。</td><td>由「引っ込み思案」克服後上位進化</td><td>短距離 / 休み明け (久休復出)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，短途休養復出戰勝出</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">瞬間の反応 (瞬間反應)</strong></td><td style="white-space:nowrap;">集中 (集中力)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>搭檔「剛腕○」或「風車鞭○」騎手時，最後直線末腳爆發力 (爆発力)大增。比賽時瞬發力上升。</td><td>由「詰めが甘い」克服後上位進化</td><td>差し / 追込 (直線強襲)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，直路後追勝出</td></tr><tr data-type="負面" style="background:rgba(239,68,68,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#f87171;">ズブい (遲鈍慢熱)</strong></td><td style="white-space:nowrap;">集中 (集中力)</td><td style="white-space:nowrap;"><span class="badge badge-pink">負面</span></td><td>引擎起步加速極為緩慢，短距離與短直道賽道嚴重不利；需搭配推騎型騎手。</td><td>幼駒期隨機或敗戰習得</td><td>長距離 / 長直線 (長距離追込)</td><td style="white-space:nowrap;"><span class="pill pill-safe">2 級</span></td><td style="white-space:nowrap;">通常</td><td>實行「坂路調教」等克服史實調教</td></tr><tr data-type="負面" style="background:rgba(239,68,68,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#f87171;">噛みつき癖 (撕咬惡習)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-pink">負面</span></td><td>多頭數賽事進入內中檔位時容易因撕咬惡習而失速；可配戴眼罩 (Blinker) 抑制。</td><td>幼駒期隨機或內側擁擠敗戰</td><td>外枠 (外側檔位)</td><td style="white-space:nowrap;"><span class="pill pill-safe">2 級</span></td><td style="white-space:nowrap;">通常</td><td>配戴眼罩或透過馬術調教克服</td></tr><tr data-type="負面" style="background:rgba(239,68,68,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#f87171;">馬込み× (懼怕馬群)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-pink">負面</span></td><td>多頭數內側若被包夾在馬群內部，能力發揮將嚴重受阻。</td><td>多頭數內側包夾敗戰習得</td><td>外枠 / 大外一気</td><td style="white-space:nowrap;"><span class="pill pill-safe">2 級</span></td><td style="white-space:nowrap;">通常</td><td>實行「入廄巡禮」或「障礙調教」克服</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">馬込み○ (適應馬群)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>多頭數內側被包夾在馬群中也能冷靜發揮實力。</td><td>由「馬込み×」克服後習得</td><td>馬群包夾 (馬群の内)</td><td style="white-space:nowrap;"><span class="pill pill-safe">3 級</span></td><td style="white-space:nowrap;">通常</td><td>於多頭數內檔勝出</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">馬群割り (突破馬群)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>多頭數內側被深陷馬群包圍時能激發出更強戰力。比賽時瞬發力大幅上升！</td><td>由「馬込み○」上位進化</td><td>內欄突圍 (イン突き)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，深陷馬群內欄突圍連勝</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">自由気まま (悠然自得)</strong></td><td style="white-space:nowrap;">意外性 (意外性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>在廄舍自由自在生活，調子極易上升且競賽壽命不易損耗。</td><td>由「いたずら好き」上位進化</td><td>自由奔馳 (マイペース)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，長途或放牧復出勝出</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">臥薪嘗胆 (臥薪嘗膽)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>具備極強忍耐力，調子好時實力大增，調子不好時亦幾乎不受負面影響。</td><td>由「スランプ (低潮)」克服後上位進化</td><td>逆境奮戰</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，克服低潮後於 G1 大賽勝出</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">荒ぶる鏑矢 (荒野之箭)</strong></td><td style="white-space:nowrap;">作戰展開 (展開)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>在領放馬較少的賽事中，採用「大逃/逃げ/積極策/前付け」於勝負處可發動強烈二段加速！</td><td>領先單騎逃馬連勝激發 / 史實固有</td><td>大逃げ / 逃げ (單騎領放)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">固有</td><td>大逃連勝或特定名駒固有</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">稀代の気分屋 (絕代隨性)</strong></td><td style="white-space:nowrap;">意外性 (意外性)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>出賽當天氣合狀態大幅起伏波動（由同一專屬主戰騎手連續策騎時氣合更容易上升）。</td><td>由「ムラっ気」進化或特定史實馬固有</td><td>主戰騎手專屬固定策騎</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>由固定主戰騎手策騎連勝</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">プレイボーイ (花花公子)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>賽事中有雌馬同場時容易分心，但在【SP 雙馬史實調教】中若對手為雌馬，調教效果大幅暴增！</td><td>雄馬隨機觸發或與雌馬合練習得</td><td>SP 雙馬雌馬合練</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">プレイガール (萬人迷)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>賽事中有雄馬同場時容易分心，但在【SP 雙馬史實調教】中若對手為雄馬，調教效果大幅暴增！</td><td>雌馬隨機觸發或與雄馬合練習得</td><td>SP 雙馬雄馬合練</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">食いしん坊 (大胃王)</strong></td><td style="white-space:nowrap;">健康體力 (體力)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>賽後進食量大，體力消耗少且疲勞恢復極快；但在放牧休養期間容易增重發福。</td><td>幼駒期隨機或大胃王事件</td><td>密集出賽 (連戦)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">一心不乱 (專心致志)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>採取前領戰術時容易搶口，但在比賽中極具超常爆發潛力。</td><td>由「ムラっ気」克服後進化</td><td>逃げ / 先行 (前領跑法)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，前領連勝</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">気ままフライト (自在疾馳)</strong></td><td style="white-space:nowrap;">作戰展開 (展開)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>當同場採取相同跑法的對手很少時，沿途能無拘無束自在奔馳並完全發揮實力。</td><td>同跑法對手少時勝出</td><td>獨走跑法 (少頭數同作戰)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">親分肌 (大哥風範)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>在【SP 雙馬史實調教】中，以領頭大哥姿態帶領搭檔賽駒，大幅提升調教大成功機率！</td><td>多次作為領頭馬進行 SP 雙馬調教</td><td>SP 雙馬領頭合練</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>SP 雙馬合練大成功多次</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">泰然自若 (泰然自若)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>從賽前到賽後全程平靜沉著，賽後累積疲勞大幅減輕。</td><td>由「臆病」克服後進化</td><td>平穩大賽 (重賞平靜)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>克服膽小後於 G1 勝出</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">制御不能 (無法掌控)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>令廄舍人員極度頭疼的怪脾氣，在廄舍內的調子與氣合容易劇烈震盪，但實戰爆發力 (爆発力)驚人。</td><td>特定烈馬史實固有或隨機觸發</td><td>滿氣合出賽</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">超わがままっ子 (超級任性)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>心情不好時完全不願動彈使史實調教效果下降，但實戰賽事中有極高爆發力 (爆発力)。</td><td>由「わがまま」上位進化</td><td>好調實戰 (絶好調出走)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上連勝</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">暴れん坊 (暴躁狂)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>賽事中極容易搶口暴走，但若調子與氣合蓄滿時實力將呈毀滅性極限爆發！</td><td>由「反抗的」上位進化</td><td>滿氣合出賽 (気合MAX)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>滿氣合下連勝</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">奇想天外 (奇想天外)</strong></td><td style="white-space:nowrap;">意外性 (意外性)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>氣合低時容易漏閘或搶口，但若氣合維持高點則實力超群絕倫。</td><td>由「いたずら好き」上位進化</td><td>滿氣合出賽</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>意外性賽事勝出</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">超実戦型 (超實戰型)</strong></td><td style="white-space:nowrap;">競走適性 (適性)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>平時調教訓練效果略有扣減，但在實戰賽場上能發揮出遠超平時的超強實力。</td><td>連勝激發或特定史實固有</td><td>實戰王道 (本番勝負)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">猪突猛進 (勇往直前)</strong></td><td style="white-space:nowrap;">作戰展開 (展開)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>一心一意只盯著最前領先位置，比賽中容易搶口，但史實調教的成長效果大幅提升。</td><td>逃馬連勝激發</td><td>大逃げ / 逃げ (先頭突進)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">悠々自適 (悠閒適意)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>面對海外遠征等環境變化反而視為出門散心，發揮出比平時更強的實力！</td><td>由「環境変化✕」克服後上位進化</td><td>海外遠征 (遠征)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>海外遠征 G1 連勝</td></tr></tbody>
 </table>
 </div>
 </div>
@@ -9531,7 +9549,7 @@ li {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:180px;">ウマソナ (馬之個性)</th>
+<th style="min-width:180px;">馬之個性 (ウマソナ) (馬之個性 (ウマソナ))</th>
 <th style="min-width:180px;">習得觸發條件</th>
 <th style="min-width:100px;">初期所有</th>
 <th style="min-width:380px;">適性／克服專用之史實調教清單 (日/中)</th>
@@ -10025,7 +10043,7 @@ li {
 <i class="fa-solid fa-heart-pulse"></i>
 <div>
 <strong>《賽馬大亨 10 2026》全新「関係性 (賽馬關係性)」與名馬相関圖核心機制</strong><br/>
-                    賽駒之間透過共同生活、同場出賽死鬥、同週同地區海外遠征、史實調教/SP史實調教及專屬關係性事件建立羈絆。每匹名馬最多可與 <strong>6 匹名駒</strong> 締結關係。現役時期提供 <strong>即時五大能力升級 (Rank D~S)</strong>，引退後更可直接轉化為 <strong>專屬配合理論 (爆發力大幅飆升)</strong>！
+                    賽駒之間透過共同生活、同場出賽死鬥、同週同地區海外遠征、史實調教/SP史實調教及專屬關係性事件建立羈絆。每匹名馬最多可與 <strong>6 匹名駒</strong> 締結關係。現役時期提供 <strong>即時五大能力升級 (Rank D~S)</strong>，引退後更可直接轉化為 <strong>專屬配合理論 (爆發力 (爆発力)大幅飆升)</strong>！
                 </div>
 </div>
 <!-- 一、四大關係性類型完全對照 -->
@@ -10045,19 +10063,19 @@ li {
 <td style="text-align:left !important;"><strong style="color:#22c55e;"><i class="fa-solid fa-user-group"></i> 親友系 (親友)</strong></td>
 <td style="text-align:left !important;"><span class="badge" style="background:#22c55e; color:#fff;">友好關係</span> 兩駒相性極佳時極易成立</td>
 <td style="text-align:left !important;">同廄舍生活、共同執行 SP 史實調教、同週同地區遠征。</td>
-<td style="text-align:left !important;">日常訓練效率與調教大成功率顯著提升；退役後若同場配合可激發<strong>「親友血緣共鳴 (爆發力+2~+4)」</strong>。</td>
+<td style="text-align:left !important;">日常訓練效率與調教大成功率顯著提升；退役後若同場配合可激發<strong>「親友血緣共鳴 (爆發力 (爆発力)+2~+4)」</strong>。</td>
 </tr>
 <tr style="background:rgba(239,68,68,0.08);">
 <td style="text-align:left !important;"><strong style="color:#f87171;"><i class="fa-solid fa-fire"></i> 強敵系 (強敵 / 宿敵)</strong></td>
 <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">激戰對決</span> 頂級大賽激烈爭霸時極易成立</td>
 <td style="text-align:left !important;">在 G1/G2 賽事中多次同場死鬥且差距在 1 馬身以內。</td>
-<td style="text-align:left !important;">同場出走時勝負根性、鬥志與速度全滿！引退後可成立頂級<strong>「ライバル配合 (宿敵配合 爆發力+3~+6)」</strong>！</td>
+<td style="text-align:left !important;">同場出走時勝負根性、鬥志與速度全滿！引退後可成立頂級<strong>「ライバル配合 (宿敵配合 爆發力 (爆発力)+3~+6)」</strong>！</td>
 </tr>
 <tr style="background:rgba(236,72,153,0.08);">
 <td style="text-align:left !important;"><strong style="color:#ec4899;"><i class="fa-solid fa-heart"></i> 戀仲系 (戀仲 / 浪漫)</strong></td>
 <td style="text-align:left !important;"><span class="badge" style="background:#ec4899; color:#fff;">異性專屬</span> 僅限雄馬與雌馬之間締結</td>
 <td style="text-align:left !important;">異性名駒多次同廄舍合練、同週海外遠征或同場競技。</td>
-<td style="text-align:left !important;">大幅提升兩駒比賽穩定度與抗壓能力；退役後雙方直接配種可觸發<strong>「戀仲專屬配合 (必受胎＋爆發力+4~+6)」</strong>！</td>
+<td style="text-align:left !important;">大幅提升兩駒比賽穩定度與抗壓能力；退役後雙方直接配種可觸發<strong>「戀仲專屬配合 (必受胎＋爆發力 (爆発力)+4~+6)」</strong>！</td>
 </tr>
 <tr style="background:rgba(168,85,247,0.08);">
 <td style="text-align:left !important;"><strong style="color:#a855f7;"><i class="fa-solid fa-bolt"></i> 犬猿系 (犬猿 / 死對頭)</strong></td>
@@ -19063,7 +19081,7 @@ li {
 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px;">
 <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:8px; padding:12px 14px;">
 <div style="font-size:0.85rem; font-weight:bold; color:var(--text-main); margin-bottom:6px; border-left:3px solid var(--accent-color); padding-left:6px;">📖 體系解說 (解説)：</div>
-<p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">歐洲 3 歲一哩王者的黃金跨國連線：英國皇家雅士谷「聖詹姆士宮錦標 (St James's Palace Stakes / 1600m)」、英國古德伍德「薩塞克斯錦標 (Sussex Stakes / 1600m)」，以及法國多維爾「傑克莫華大賽 (Prix Jacques Le Marois / 1600m)」。</p><p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">難易度評級 ★3，要求極致的頂級一哩極速與短直道爆發力。</p>
+<p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">歐洲 3 歲一哩王者的黃金跨國連線：英國皇家雅士谷「聖詹姆士宮錦標 (St James's Palace Stakes / 1600m)」、英國古德伍德「薩塞克斯錦標 (Sussex Stakes / 1600m)」，以及法國多維爾「傑克莫華大賽 (Prix Jacques Le Marois / 1600m)」。</p><p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">難易度評級 ★3，要求極致的頂級一哩極速與短直道爆發力 (爆発力)。</p>
 </div>
 <div style="background:rgba(234,179,8,0.04); border:1px solid rgba(234,179,8,0.25); border-radius:8px; padding:12px 14px;">
 <div style="font-size:0.85rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; border-left:3px solid var(--gold-color); padding-left:6px;">💡 實戰破局攻略 (攻略要領)：</div>
@@ -19179,7 +19197,7 @@ li {
 </div>
 <div style="background:rgba(234,179,8,0.04); border:1px solid rgba(234,179,8,0.25); border-radius:8px; padding:12px 14px;">
 <div style="font-size:0.85rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; border-left:3px solid var(--gold-color); padding-left:6px;">💡 實戰破局攻略 (攻略要領)：</div>
-<p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">適合一哩爆發力強、具備良好精神力的歐洲雌馬挑戰。</p>
+<p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">適合一哩爆發力 (爆発力)強、具備良好精神力的歐洲雌馬挑戰。</p>
 </div>
 </div>
 </div>
@@ -19283,7 +19301,7 @@ li {
 </div>
 <div style="background:rgba(234,179,8,0.04); border:1px solid rgba(234,179,8,0.25); border-radius:8px; padding:12px 14px;">
 <div style="font-size:0.85rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; border-left:3px solid var(--gold-color); padding-left:6px;">💡 實戰破局攻略 (攻略要領)：</div>
-<p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">必須挑選距離適性範圍極寬 (如 1600m ~ 3000m)、且同時兼備極速與深厚耐力的全能型賽駒。</p><p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">若馬匹耐力不足，可放棄聖烈治轉戰歐洲一哩三冠；若耐力充沛，需加強新市場直線一哩的爆發力以突破首關。</p>
+<p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">必須挑選距離適性範圍極寬 (如 1600m ~ 3000m)、且同時兼備極速與深厚耐力的全能型賽駒。</p><p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">若馬匹耐力不足，可放棄聖烈治轉戰歐洲一哩三冠；若耐力充沛，需加強新市場直線一哩的爆發力 (爆発力)以突破首關。</p>
 </div>
 </div>
 </div>
@@ -20310,7 +20328,7 @@ li {
 </div>
 <div style="background:rgba(234,179,8,0.04); border:1px solid rgba(234,179,8,0.25); border-radius:8px; padding:12px 14px;">
 <div style="font-size:0.85rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; border-left:3px solid var(--gold-color); padding-left:6px;">💡 實戰破局攻略 (攻略要領)：</div>
-<p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">需具備極限短途爆發力 (SP 76+、距離適性 1000m~1400m) 與頂級起步推進技能方能突圍。</p>
+<p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">需具備極限短途爆發力 (爆発力) (SP 76+、距離適性 1000m~1400m) 與頂級起步推進技能方能突圍。</p>
 </div>
 </div>
 </div>
@@ -20504,7 +20522,7 @@ li {
 </div>
 <div style="background:rgba(234,179,8,0.04); border:1px solid rgba(234,179,8,0.25); border-radius:8px; padding:12px 14px;">
 <div style="font-size:0.85rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; border-left:3px solid var(--gold-color); padding-left:6px;">💡 實戰破局攻略 (攻略要領)：</div>
-<p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">需要極早熟、超高 SP 與短途爆發力的早熟神童出戰。</p>
+<p style="font-size:0.85rem; color:var(--text-color); line-height:1.7; margin-bottom:8px;">需要極早熟、超高 SP 與短途爆發力 (爆発力)的早熟神童出戰。</p>
 </div>
 </div>
 </div>
@@ -25971,7 +25989,7 @@ function filterTab5Racecourses() {
 <div class="callout callout-info">
 <i class="fa-solid fa-circle-info"></i>
 <div>
-<strong>三冠與系列賽獎勵機制：</strong> 勝出三冠賽事可獲得銅色~金色守護符，引退後配種可觸發<strong>「3冠配合」(+4 爆發力)</strong>。<br/>
+<strong>三冠與系列賽獎勵機制：</strong> 勝出三冠賽事可獲得銅色~金色守護符，引退後配種可觸發<strong>「3冠配合」(+4 爆發力 (爆発力))</strong>。<br/>
 <span style="color:var(--accent-red); font-weight:bold;">*特別注意：</span> <code>米国芝3冠</code>、<code>米国芝牝馬3冠</code>、<code>香港トリプルクラウン</code>、<code>香港短距離3冠</code> <strong>不會</strong>成立三冠配合。
           </div>
 </div>
@@ -26426,7 +26444,7 @@ function filterTab5Racecourses() {
 <td>罕見毛色與特殊面部流星天生具備高人氣加成。</td>
 </tr>
 <tr>
-<td><strong>個性 (ウマソナ / 性格)</strong></td>
+<td><strong>個性 (馬之個性 (ウマソナ) / 性格)</strong></td>
 <td>持有上位個性、特性克服進化</td>
 <td>將缺陷個性克服並進化為「エンタテイナー」或「厩舎のボス」。</td>
 </tr>
@@ -26956,7 +26974,7 @@ function filterTab5Racecourses() {
 <td style="text-align: left;"><span class="pill pill-safe">放牧場</span></td>
 <td style="text-align: left;">1</td>
 <td>初期已解鎖</td>
-<td>提供配合理論<strong>爆發力 +1 ~ +3 加成</strong>；升級後可引進他國海外種馬進行配種。</td>
+<td>提供配合理論<strong>爆發力 (爆発力) +1 ~ +3 加成</strong>；升級後可引進他國海外種馬進行配種。</td>
 <td>-</td>
 </tr>
 <tr>
@@ -27143,7 +27161,7 @@ function filterTab5Racecourses() {
                     🚀 名聲 1,000 ~ (繁育躍進期)
                 </div>
 <ul style="font-size:0.8rem; line-height:1.7; margin:0; padding-left:18px;">
-<li><strong>種牡馬繋養施設 Lv3 (最優先)：</strong><br/>爆發力 +3，並<strong>解鎖海外歐美種馬配種權限</strong>，育種維度全面打開！</li>
+<li><strong>種牡馬繋養施設 Lv3 (最優先)：</strong><br/>爆發力 (爆発力) +3，並<strong>解鎖海外歐美種馬配種權限</strong>，育種維度全面打開！</li>
 <li><strong>獣医施設 Lv3 × 2 座 (神技)：</strong><br/><span style="color:#ef4444; font-weight:bold;">★ 牧場黑科技：</span>當牧場建有 2 座滿級 Lv3 獸醫設施時，<strong>幼駒故障率降為 0%</strong>！</li>
 <li><strong>厩舎 Lv2~3：</strong><br/>擴增繁殖牝馬上限至 20~30 頭，擴大每年產駒基數。</li>
 </ul>
@@ -27235,7 +27253,7 @@ function filterTab5Racecourses() {
 <i class="fa-solid fa-users" style="font-size:1.2rem; color:var(--accent-gold);"></i>
 <div>
 <strong>《賽馬大亨 10 2026》全球人馬角色完全數據庫 (日美歐頂級騎師・練馬師實名對照與海外移籍名單)</strong><br/>
-                本章全量收錄 Alnasgames 核心人物與移籍數據庫：包含日美歐三大賽區頂級騎手與調教師之實名對照、五圍適性、專屬特性與相性個性（ウマソナ），以及現役賽駒、種牡馬、繁殖母馬之海外移籍時間表。
+                本章全量收錄 Alnasgames 核心人物與移籍數據庫：包含日美歐三大賽區頂級騎手與調教師之實名對照、五圍適性、專屬特性與相性個性（馬之個性 (ウマソナ)），以及現役賽駒、種牡馬、繁殖母馬之海外移籍時間表。
             </div>
 </div>
 <!-- ==================== 1. 日本中央與地方頂級名手騎手庫 ==================== -->
@@ -28708,7 +28726,7 @@ function filterTab5Racecourses() {
 <div>
 <strong>《賽馬大亨 10 2026》繁殖専用史実馬 (Breeding-Only Historical Horses) 完全指南</strong><br/>
                     收錄全歷史 <strong>4,314 匹繁殖專用史實名馬</strong>（競走馬階段不直接登場，但在遊戲開始時即作為種牡馬/繁殖牝馬登場，或於競走引退年齡之翌年直接作為種公馬/繁殖母馬出現）。<br/>
-                    ※ 包含日本馬與海外名馬雙方，精準記載 <strong>SP、耐力、7 大副屬性評級 (S+~G)、副屬性合計 (滿分105)、三態展開適應 (瞬/持/消)、成長型、腳質、特性、遺傳因子與仔出能力 (仔出し)</strong>！點選 <strong>「♀ 牝馬」</strong> 即可一鍵單獨檢索全量繁殖母馬！
+                    ※ 包含日本馬與海外名馬雙方，精準記載 <strong>SP、耐力、7 大副屬性評級 (S+~G)、副屬性合計 (滿分105)、三態展開適應 (瞬/持/消)、成長型、腳質、特性、遺傳因子與仔出 (仔出し)能力 (仔出 (仔出し)し)</strong>！點選 <strong>「♀ 牝馬」</strong> 即可一鍵單獨檢索全量繁殖母馬！
                 </div>
 </div>
 
@@ -28782,7 +28800,7 @@ function filterTab5Racecourses() {
 <th class="sortable-th" onclick="sortBreedTable('growth_type')" style="width:85px; text-align:left !important;">成長型 ⇅</th>
 <th class="sortable-th" onclick="sortBreedTable('running_style')" style="width:75px; text-align:left !important;">腳質 ⇅</th>
 <th style="width:70px; text-align:left !important;">氣性</th>
-<th class="sortable-th" onclick="sortBreedTable('kodaeshi')" style="width:75px; text-align:left !important; color:#22c55e;">仔出 ⇅</th>
+<th class="sortable-th" onclick="sortBreedTable('kodaeshi')" style="width:75px; text-align:left !important; color:#22c55e;">仔出 (仔出し) ⇅</th>
 <th style="min-width:130px; text-align:left !important;">特性</th>
 <th style="min-width:100px; text-align:left !important;">因子</th>
 <th style="width:80px; text-align:left !important;">繁引退齡</th>
@@ -28805,7 +28823,7 @@ function filterTab5Racecourses() {
 <div>
 <strong>《賽馬大亨 10 2026》全史實競走馬 (Historical Racehorses) 雙向數據庫</strong><br/>
                     完整收錄全歷史 <strong>16,570 匹史實競走馬</strong>（日本賽駒 7,884 匹 ＋ 歐美海外賽駒 8,686 匹）。<br/>
-                    ※ 包含 <strong>SP、耐力、7 大副屬性 (S+~G)、副計 (0~105)、三態展開適應上限 (瞬適/持適/消適)、成長型、腳質、氣性、性格、特性、先天馬之個性 (ウマソナ)、因子、仔出能力與拍賣會資訊</strong>！
+                    ※ 包含 <strong>SP、耐力、7 大副屬性 (S+~G)、副計 (0~105)、三態展開適應上限 (瞬適/持適/消適)、成長型、腳質、氣性、性格、特性、先天馬之個性 (ウマソナ)、因子、仔出 (仔出し)能力與拍賣會資訊</strong>！
                 </div>
 </div>
 
@@ -28815,7 +28833,7 @@ function filterTab5Racecourses() {
     <div class="md:col-span-4">
       <div style="position:relative;">
         <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:12px;"></i>
-        <input type="text" id="racehorseSearchInput" placeholder="搜尋競走馬名 (日/英)、父馬、母馬、特性、馬之個性..." oninput="filterRacehorsesTable()" style="width:100%; padding:6px 10px 6px 30px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:6px; color:var(--text-main); font-size:12px;" />
+        <input type="text" id="racehorseSearchInput" placeholder="搜尋競走馬名 (日/英)、父馬、母馬、特性、馬之個性 (ウマソナ)..." oninput="filterRacehorsesTable()" style="width:100%; padding:6px 10px 6px 30px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:6px; color:var(--text-main); font-size:12px;" />
       </div>
     </div>
     
@@ -28876,9 +28894,9 @@ function filterTab5Racecourses() {
 <th class="sortable-th" onclick="sortRacehorseTable('growth_type')" style="width:85px; text-align:left !important;">成長型 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('running_style')" style="width:75px; text-align:left !important;">腳質 ⇅</th>
 <th style="width:70px; text-align:left !important;">氣性</th>
-<th class="sortable-th" onclick="sortRacehorseTable('kodaeshi')" style="width:75px; text-align:left !important; color:#22c55e;">仔出 ⇅</th>
+<th class="sortable-th" onclick="sortRacehorseTable('kodaeshi')" style="width:75px; text-align:left !important; color:#22c55e;">仔出 (仔出し) ⇅</th>
 <th style="min-width:130px; text-align:left !important;">特性</th>
-<th style="min-width:110px; text-align:left !important;">先天馬之個性</th>
+<th style="min-width:110px; text-align:left !important;">先天馬之個性 (ウマソナ)</th>
 <th style="min-width:90px; text-align:left !important;">因子</th>
 <th style="width:70px; text-align:left !important;">拍賣會</th>
 <th style="width:80px; text-align:left !important;">競引退齡</th>
@@ -29140,7 +29158,7 @@ function filterTab5Racecourses() {
 <img alt="吹里谷 芽愛" src="images/manual/mea_03-1.jpg" style="width:48px; height:48px; border-radius:50%; border:2px solid #34d399;"/>
 <div>
 <h3 style="margin:0; font-size:1.05rem; color:#34d399;">吹里谷芽愛指南：強い幼駒を生産しよう (繁育頂級幼駒指南)</h3>
-<div style="font-size:0.78rem; color:var(--text-muted);">配合評價 (S~C)、爆發力滿貫公式、遺傳因子活性化與近親危險度迴避心法！</div>
+<div style="font-size:0.78rem; color:var(--text-muted);">配合評價 (S~C)、爆發力 (爆発力)滿貫公式、遺傳因子活性化與近親危險度迴避心法！</div>
 </div>
 </div>
 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px;">
@@ -29151,9 +29169,9 @@ function filterTab5Racecourses() {
                         </p>
 </div>
 <div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
-<h4 style="color:#38bdf8; font-size:0.9rem; margin-top:0;">💥 2. 爆發力 (速度上限突破值)</h4>
+<h4 style="color:#38bdf8; font-size:0.9rem; margin-top:0;">💥 2. 爆發力 (爆発力) (速度上限突破值)</h4>
 <p style="font-size:0.82rem; line-height:1.6; margin:0;">
-                            爆發力越高，幼駒抽中超高速度 (SP) 的機率越大。透過血脈活性化 (+8)、三冠配合 (+4)、Nick 配合 (+3~+9)、Drama 因子融合等，可將爆發力堆疊至 <strong>+35 ~ +45</strong> 滿貫！
+                            爆發力 (爆発力)越高，幼駒抽中超高速度 (SP) 的機率越大。透過血脈活性化 (+8)、三冠配合 (+4)、Nick 配合 (+3~+9)、Drama 因子融合等，可將爆發力 (爆発力)堆疊至 <strong>+35 ~ +45</strong> 滿貫！
                         </p>
 </div>
 <div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
@@ -29385,7 +29403,7 @@ function filterTab5Racecourses() {
 <tr>
 <td style="text-align:left !important;"><strong style="color:var(--gold-color);">1. 配合 (專屬配種)</strong></td>
 <td style="text-align:left !important;">選定專屬種牡馬與繁殖牝馬</td>
-<td style="text-align:left !important;">利用模式限定之高爆發力卡牌與因子，最大化產出天生 SP 75+ 的優質幼駒。</td>
+<td style="text-align:left !important;">利用模式限定之高爆發力 (爆発力)卡牌與因子，最大化產出天生 SP 75+ 的優質幼駒。</td>
 </tr>
 <tr>
 <td style="text-align:left !important;"><strong style="color:#38bdf8;">2. 育成パート (調教訓練)</strong></td>
@@ -29463,7 +29481,7 @@ function filterTab5Racecourses() {
 <div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
 <h4 style="color:#4ade80; font-size:0.9rem; margin-top:0;">🔍 2. 自訂條件智慧篩選</h4>
 <p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
-                        於現役馬與幼駒名單中，支援依「距離適性、馬場適性、爆發力、札色、父系」進行交叉過濾，迅速鎖定目標賽駒。
+                        於現役馬與幼駒名單中，支援依「距離適性、馬場適性、爆發力 (爆発力)、札色、父系」進行交叉過濾，迅速鎖定目標賽駒。
                     </p>
 </div>
 </div>
@@ -29552,9 +29570,9 @@ function filterTab5Racecourses() {
 <th style="min-width:280px; text-align:left;">賽事名稱 (重賞選單 / 自由自填)</th>
 <th style="min-width:140px; text-align:left;">賽駒名稱</th>
 <th style="min-width:110px; text-align:left;">騎手</th>
-<th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">大逃げ</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">逃げ</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">積極策</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">前付け</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">好位抜出</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">先行</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">イン狙い</div><span class="pill pill-gold" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">限定</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">差し</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">まくり</div><span class="pill pill-gold" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">限定</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">馬群待機</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">大外一気</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">直線強襲</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:center; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">追込</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th>
+<th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">大逃げ</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">逃げ</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">積極策</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">前付け</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">好位抜出</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">先行</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">イン狙い</div><span class="pill pill-gold" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">限定</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">差し</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">まくり</div><span class="pill pill-gold" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">限定</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">馬群待機</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">大外一気</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">直線強襲</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">追込</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th>
 <th style="min-width:130px; text-align:left;">最優推薦跑法</th>
-<th style="min-width:90px; text-align:center;">操作</th>
+<th style="min-width:90px; text-align:left;">操作</th>
 </tr>
 </thead>
 <tbody id="tacticsGridBody">
@@ -29570,7 +29588,7 @@ function filterTab5Racecourses() {
 </div>
 </div>
 <script>
-// ウマソナ即時篩選與搜尋引擎
+// 馬之個性 (ウマソナ)即時篩選與搜尋引擎
 let currentUmasonaFilter = 'ALL';
 
 function filterUmasona(type) {
@@ -29899,7 +29917,7 @@ function renderSiresTable() {
   });
   
   if (list.length > 300) {
-    html += `<tr><td colspan="8" style="text-align:center; padding:10px; color:var(--text-muted); font-size:12px;">已載入前 300 匹種公馬，若需尋找特定名馬請利用上方「年代篩選」或「搜尋框」即時精準檢索。</td></tr>`;
+    html += `<tr><td colspan="8" style="text-align:left; padding:10px; color:var(--text-muted); font-size:12px;">已載入前 300 匹種公馬，若需尋找特定名馬請利用上方「年代篩選」或「搜尋框」即時精準檢索。</td></tr>`;
   }
   
   tbody.innerHTML = html;
@@ -30019,6 +30037,15 @@ function renderBreedingTable() {
   
   if (!tbody) return;
   
+  
+  if (list.length === 0) {
+    if (countBadge) countBadge.textContent = '顯示共 0 匹史實競走馬';
+    if (tbody) {
+      tbody.innerHTML = `<tr><td colspan="27" style="text-align:left; padding:30px;"><div class="no-results-state active" style="display:block;">🔍 未找到符合條件之史實競走馬資料 <button onclick="resetRacehorseFilters()" class="pill pill-safe" style="margin-left:10px; cursor:pointer; font-size:0.8rem; padding:4px 10px;">重設篩選條件</button></div></td></tr>`;
+    }
+    return;
+  }
+
   const displayList = list.slice(0, 250);
   let html = '';
   displayList.forEach(h => {
@@ -30061,7 +30088,7 @@ function renderBreedingTable() {
   });
   
   if (list.length > 250) {
-    html += `<tr><td colspan="25" style="text-align:center; padding:12px; color:var(--text-muted); font-size:12px;">已載入前 250 匹繁殖馬，若需尋找特定名馬請利用上方「馬札」、「性別」、「繋養地」篩選或「搜尋框」即時檢索。</td></tr>`;
+    html += `<tr><td colspan="25" style="text-align:left; padding:12px; color:var(--text-muted); font-size:12px;">已載入前 250 匹繁殖馬，若需尋找特定名馬請利用上方「馬札」、「性別」、「繋養地」篩選或「搜尋框」即時檢索。</td></tr>`;
   }
   
   tbody.innerHTML = html;
@@ -30124,6 +30151,24 @@ function sortRacehorseTable(key) {
   renderRacehorsesTable();
 }
 
+
+function resetRacehorseFilters() {
+  const searchInput = document.getElementById('racehorseSearchInput');
+  if (searchInput) searchInput.value = '';
+  currentRacehorseRegion = 'ALL';
+  currentRacehorseSex = 'ALL';
+  currentRacehorseAmulet = 'ALL';
+  document.querySelectorAll('#racehorseRegionChips .chip, #racehorseSexChips .chip, #racehorseAmuletChips .chip').forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.dataset.val === 'ALL') btn.classList.add('active');
+  });
+  renderRacehorsesTable();
+}
+function resetSearchFilters() {
+  resetRacehorseFilters();
+  if (typeof filterCategory === 'function') filterCategory('ALL');
+}
+
 function renderRacehorsesTable() {
   if (!window.WP10_RACEHORSES_FULL_DATA) return;
   const tbody = document.getElementById('racehorsesFullTableBody');
@@ -30172,6 +30217,15 @@ function renderRacehorsesTable() {
   
   if (!tbody) return;
   
+  
+  if (list.length === 0) {
+    if (countBadge) countBadge.textContent = '顯示共 0 匹史實競走馬';
+    if (tbody) {
+      tbody.innerHTML = `<tr><td colspan="27" style="text-align:left; padding:30px;"><div class="no-results-state active" style="display:block;">🔍 未找到符合條件之史實競走馬資料 <button onclick="resetRacehorseFilters()" class="pill pill-safe" style="margin-left:10px; cursor:pointer; font-size:0.8rem; padding:4px 10px;">重設篩選條件</button></div></td></tr>`;
+    }
+    return;
+  }
+
   const displayList = list.slice(0, 250);
   let html = '';
   displayList.forEach(h => {
@@ -30216,7 +30270,7 @@ function renderRacehorsesTable() {
   });
   
   if (list.length > 250) {
-    html += `<tr><td colspan="27" style="text-align:center; padding:12px; color:var(--text-muted); font-size:12px;">已載入前 250 匹史實競走馬，若需尋找特定名馬請利用上方「日本/海外」、「馬札」、「性別」篩選或「搜尋框」即時檢索。</td></tr>`;
+    html += `<tr><td colspan="27" style="text-align:left; padding:12px; color:var(--text-muted); font-size:12px;">已載入前 250 匹史實競走馬，若需尋找特定名馬請利用上方「日本/海外」、「馬札」、「性別」篩選或「搜尋框」即時檢索。</td></tr>`;
   }
   
   tbody.innerHTML = html;
@@ -30380,7 +30434,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 <div class="chapter-search-box">
 <i class="fa-solid fa-magnifying-glass"></i>
-<input id="chapterFilterInput" oninput="filterChapterList()" placeholder="🔍 全局內文檢索：輸入任何關鍵字 (如: 爆發力, 評語, 三冠, 史實調教, 繁育, 異名, 推薦馬)..." type="text"/>
+<input id="chapterFilterInput" oninput="filterChapterList()" placeholder="🔍 全局內文檢索：輸入任何關鍵字 (如: 爆發力 (爆発力), 評語, 三冠, 史實調教, 繁育, 異名, 推薦馬)..." type="text"/>
 </div>
 <div class="chapter-list-container" id="chapterListContainer">
 
@@ -30417,7 +30471,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-pro-tricks')">
       <span class="jump-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
       <span class="jump-num">第 06 章</span>
-      <span class="jump-title">+40 爆發力滿貫公式與賽務職業小技</span>
+      <span class="jump-title">+40 爆發力 (爆発力)滿貫公式與賽務職業小技</span>
     </button>
     <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-version-diff')">
       <span class="jump-icon"><i class="fa-solid fa-code-compare"></i></span>
@@ -30429,13 +30483,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 
 <div class="chapter-pillar-group">
   <div class="chapter-pillar-title" style="color:#06b6d4; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-    <i class="fa-solid fa-dna"></i> 🧬 支柱二：配合繁育大系・四大指標與爆發力理論 (第 08 ~ 21 章)
+    <i class="fa-solid fa-dna"></i> 🧬 支柱二：配合繁育大系・四大指標與爆發力 (爆発力)理論 (第 08 ~ 21 章)
   </div>
   <div class="chapter-items-grid">
     <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-metrics')">
       <span class="jump-icon"><i class="fa-solid fa-gauge-high"></i></span>
       <span class="jump-num">第 08 章</span>
-      <span class="jump-title">配合機制・四大指標與爆發力抽樣模擬器</span>
+      <span class="jump-title">配合機制・四大指標與爆發力 (爆発力)抽樣模擬器</span>
     </button>
     <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-master-table')">
       <span class="jump-icon"><i class="fa-solid fa-table-list"></i></span>
@@ -30530,7 +30584,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 
 <div class="chapter-pillar-group">
   <div class="chapter-pillar-title" style="color:#f59e0b; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-    <i class="fa-solid fa-bolt"></i> ⚡ 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (第 25 ~ 30 章)
+    <i class="fa-solid fa-bolt"></i> ⚡ 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (ウマソナ) (第 25 ~ 30 章)
   </div>
   <div class="chapter-items-grid">
     <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-status-encyclopedia')">
@@ -30556,7 +30610,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-umasona')">
       <span class="jump-icon"><i class="fa-solid fa-masks-theater"></i></span>
       <span class="jump-num">第 29 章</span>
-      <span class="jump-title">ウマソナ (馬之個性) 全圖鑑・克服進化秘技與 14 大性格分佈矩陣</span>
+      <span class="jump-title">馬之個性 (ウマソナ) (馬之個性 (ウマソナ)) 全圖鑑・克服進化秘技與 14 大性格分佈矩陣</span>
     </button>
     <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-relations-2026')">
       <span class="jump-icon"><i class="fa-solid fa-handshake"></i></span>
@@ -30967,7 +31021,7 @@ function setSysTab(tabKey) {
         container.innerHTML = `
             <div style="background:rgba(15,23,42,0.6); padding:16px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
                 <h4 style="color:#ef4444; margin-bottom:8px;">零細化與滅亡系統保護</h4>
-                <p style="font-size:0.85rem; line-height:1.7;">當血統支配率過低時發動零細配合，可為血統提供額外 +4~+8 爆發力加成。</p>
+                <p style="font-size:0.85rem; line-height:1.7;">當血統支配率過低時發動零細配合，可為血統提供額外 +4~+8 爆發力 (爆発力)加成。</p>
             </div>`;
     }
 }
@@ -30985,7 +31039,7 @@ function calculateDominance() {
     }
 }
 
-// 6. 章節 08：爆發力隨機抽樣分佈模擬器圖表初始化與運算
+// 6. 章節 08：爆發力 (爆発力)隨機抽樣分佈模擬器圖表初始化與運算
 let explosionChartInstance = null;
 
 function initSimulationChart() {
@@ -31044,7 +31098,7 @@ function runExplosionSimulation() {
 }
 function runSimulation() { runExplosionSimulation(); }
 
-// 7. 章節 29：ウマソナ (馬之個性) 分類晶片篩選
+// 7. 章節 29：馬之個性 (ウマソナ) (馬之個性 (ウマソナ)) 分類晶片篩選
 function filterUmasona(catKey, btn) {
     document.querySelectorAll('#sec-umasona .filter-btn').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
