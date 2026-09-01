@@ -1746,7 +1746,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.85</span>
+<span class="version-badge">v02.86</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -30272,34 +30272,35 @@ function renderNicknamesTable() {
   if (!window.WP10_NICKNAMES_FULL_DATA) return;
   const tbody = document.getElementById('nicknamesFullTableBody');
   const countBadge = document.getElementById('nicknameCountBadge');
-  const query = (document.getElementById('nicknameSearchInput')?.value || '').toLowerCase().trim();
+  const inputEl = document.getElementById('nicknameSearchInput');
+  const query = (inputEl ? inputEl.value : '').toLowerCase().trim();
   
   let list = window.WP10_NICKNAMES_FULL_DATA;
   
-  if (currentNicknameCategory !== 'ALL') {
+  if (currentNicknameCategory && currentNicknameCategory !== 'ALL') {
     list = list.filter(h => h.category === currentNicknameCategory);
   }
-  if (currentNicknameRarity !== 'ALL') {
+  if (currentNicknameRarity && currentNicknameRarity !== 'ALL') {
     list = list.filter(h => h.rarity === currentNicknameRarity);
   }
   if (query) {
     list = list.filter(h =>
-      h.name.toLowerCase().includes(query) ||
-      h.effect.toLowerCase().includes(query) ||
-      h.condition_or_horse.toLowerCase().includes(query) ||
-      h.category.toLowerCase().includes(query)
+      (h.name && h.name.toLowerCase().includes(query)) ||
+      (h.effect && h.effect.toLowerCase().includes(query)) ||
+      (h.condition_or_horse && h.condition_or_horse.toLowerCase().includes(query)) ||
+      (h.category && h.category.toLowerCase().includes(query))
     );
   }
   
   list.sort((a, b) => {
-    let va = a[nicknameSortKey];
-    let vb = b[nicknameSortKey];
+    let va = a[nicknameSortKey] || '';
+    let vb = b[nicknameSortKey] || '';
     if (nicknameSortKey === 'rarity') {
       va = nicknameRarityMap[va] || 0;
       vb = nicknameRarityMap[vb] || 0;
     }
     if (typeof va === 'string') {
-      return nicknameSortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+      return nicknameSortAsc ? va.localeCompare(vb, 'zh-TW') : vb.localeCompare(va, 'zh-TW');
     }
     return nicknameSortAsc ? (va - vb) : (vb - va);
   });
@@ -30319,20 +30320,16 @@ function renderNicknamesTable() {
                       h.rarity === 'C' ? '<span class="badge" style="background:#f97316; color:#fff;">C (🥉 銅)</span>' :
                       '<span class="badge" style="background:#22c55e; color:#fff;">D (🟢 綠)</span>';
                       
-    const condText = h.birth_year ? `${h.condition_or_horse} (${h.birth_year}年生)` : (h.condition_or_horse || '-');
+    const condText = h.birth_year ? `${h.condition_or_horse || '-'} (${h.birth_year}年生)` : (h.condition_or_horse || '-');
     
     html += `<tr>
-      <td style="font-weight:700; color:var(--text-highlight); text-align:left !important;">${h.name}</td>
-      <td style="text-align:left !important;">${rareBadge}</td>
-      <td style="font-size:11.5px; text-align:left !important;"><span class="badge" style="background:var(--bg-tertiary); border:1px solid var(--border-color); color:var(--text-main);">${h.category}</span></td>
-      <td style="font-size:12px; color:var(--text-main); text-align:left !important;">${h.effect || '-'}</td>
-      <td style="font-size:12px; color:var(--primary); font-weight:600; text-align:left !important;">${condText}</td>
+      <td style="font-weight:700; color:var(--text-highlight); text-align:left !important; min-width:180px;">${h.name}</td>
+      <td style="text-align:left !important; width:90px;">${rareBadge}</td>
+      <td style="font-size:11.5px; text-align:left !important; width:140px;"><span class="badge" style="background:rgba(255,255,255,0.08); color:var(--text-main);">${h.category}</span></td>
+      <td style="font-size:12px; line-height:1.5; color:var(--text-main); text-align:left !important; min-width:280px;">${h.effect || '-'}</td>
+      <td style="font-size:12px; line-height:1.5; color:var(--gold-color); text-align:left !important; min-width:240px;">${condText}</td>
     </tr>`;
   });
-  
-  if (list.length > 300) {
-    html += `<tr><td colspan="5" style="text-align:center; padding:12px; color:var(--text-muted); font-size:12px;">已載入前 300 條異名，若需尋找特定稱號請利用上方「分類」、「稀有度」篩選或「搜尋框」即時檢索。</td></tr>`;
-  }
   
   tbody.innerHTML = html;
 }
@@ -30398,24 +30395,26 @@ function renderYearContent() {
     badge.textContent = `[${item.year_label}] ${currentRecsRegion === 'japan' ? '日本史實馬推薦' : '海外史實馬推薦'}`;
   }
   
-  let html = `<div style="border:2px solid #ef4444; border-radius:10px; padding:14px; background:rgba(15,23,42,0.6);">
-    <h3 style="font-size:1.1rem; font-weight:800; color:var(--gold-color); margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+  let html = `<div style="border:2px solid var(--gold-color); border-radius:10px; padding:16px; background:rgba(15,23,42,0.8); box-shadow:0 4px 15px rgba(234,179,8,0.15);">
+    <h3 style="font-size:1.1rem; font-weight:800; color:var(--gold-color); margin-bottom:14px; display:flex; align-items:center; gap:8px;">
       <i class="fa-solid fa-star"></i> [${item.year_label}] 推薦史實馬與 11 大路線表
     </h3>`;
     
   if (item.routes_html) {
-    html += `<div style="margin-bottom:16px;">
-      <div style="font-size:0.85rem; font-weight:700; color:var(--primary); margin-bottom:6px;">📊 11 大競走路線推薦馬速查表 (◎、○、▲)：</div>
-      <div class="table-responsive" style="-webkit-overflow-scrolling:touch;">
-        ${item.routes_html}
+    html += `<div style="margin-bottom:20px;">
+      <div style="font-size:0.9rem; font-weight:700; color:var(--primary); margin-bottom:8px;">📊 11 大競走路線推薦馬速查表 (◎、○、▲)：</div>
+      <div class="table-responsive" style="-webkit-overflow-scrolling:touch; border-radius:8px; border:1px solid var(--border-color);">
+        <table class="data-table" style="min-width:1320px; text-align:left !important;">
+          ${item.routes_html}
+        </table>
       </div>
     </div>`;
   }
   
   if (item.horses_html) {
     html += `<div>
-      <div style="font-size:0.85rem; font-weight:700; color:var(--gold-color); margin-bottom:6px;">🐎 該年代推薦史實馬詳細能力、展開上限與戰略評語：</div>
-      <div class="table-responsive" style="-webkit-overflow-scrolling:touch;">
+      <div style="font-size:0.9rem; font-weight:700; color:var(--gold-color); margin-bottom:8px;">🐎 該年代推薦史實馬詳細能力、展開上限與戰略評語：</div>
+      <div style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:8px; padding:14px; font-size:0.88rem; line-height:1.8;">
         ${item.horses_html}
       </div>
     </div>`;
