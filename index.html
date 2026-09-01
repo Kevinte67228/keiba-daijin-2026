@@ -1746,7 +1746,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.82</span>
+<span class="version-badge">v02.83</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -30431,6 +30431,19 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 }
 </script>
 <!-- 📑 章節跳轉彈出抽屜 (Chapter Modal) -->
+<!-- 浮動按鈕群 (主題切換 + 章節跳轉目錄 + 回頂部) -->
+<div class="floating-btn-group" style="position:fixed; bottom:20px; right:16px; display:flex; flex-direction:column; gap:10px; z-index:9999;">
+  <button class="btn-floating btn-theme" onclick="toggleAppTheme()" title="切換深淺色主題" style="background:var(--accent-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+  <button class="btn-floating btn-jump" onclick="openChapterModal()" title="章節跳轉目錄" style="background:var(--gold-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+    <i class="fa-solid fa-list-ol"></i>
+  </button>
+  <button class="btn-floating" onclick="scrollToTop()" title="回到頂部" style="background:var(--primary); color:#fff; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+</div>
+
 <div class="modal-backdrop" id="chapterModal" onclick="closeChapterModal(event)">
 <div class="chapter-modal-card" onclick="event.stopPropagation()">
 <div class="chapter-modal-header">
@@ -30755,5 +30768,121 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 </div>
+<script>
+// ==================== 核心 UI、主題切換與章節跳轉引擎 ====================
+function switchMainPillar(pillarId) {
+    document.querySelectorAll('.pillar-content').forEach(el => {
+        el.style.display = 'none';
+        el.classList.remove('active');
+    });
+    document.querySelectorAll('.main-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    const target = document.getElementById(pillarId);
+    if (target) {
+        target.style.display = 'block';
+        target.classList.add('active');
+    }
+    const btnMap = {
+        'pillar-db': 'tabPillarDb',
+        'pillar-breed': 'tabPillarBreed',
+        'pillar-foals': 'tabPillarFoals',
+        'pillar-train': 'tabPillarTrain',
+        'pillar-races': 'tabPillarRaces',
+        'pillar-ranch': 'tabPillarRanch',
+        'pillar-secrets': 'tabPillarSecrets',
+        'pillar-lectures': 'tabPillarLectures',
+        'pillar-tracker': 'tabPillarTracker'
+    };
+    const btn = document.getElementById(btnMap[pillarId]);
+    if (btn) btn.classList.add('active');
+}
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleAppTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('keiba_theme', next);
+    if (typeof explosionChartInstance !== 'undefined' && explosionChartInstance) {
+        explosionChartInstance.update();
+    }
+}
+
+function openChapterModal() {
+    const m = document.getElementById("chapterModal");
+    if (m) {
+        m.style.display = "flex";
+        const inp = document.getElementById("chapterFilterInput");
+        if (inp) {
+            inp.value = "";
+            filterChapterList();
+            inp.blur();
+        }
+    }
+}
+
+function closeChapterModal(event) {
+    if (event && event.target && event.target.closest('.chapter-modal-card') && !event.target.classList.contains('modal-close')) {
+        return;
+    }
+    const m = document.getElementById("chapterModal");
+    if (m) m.style.display = "none";
+}
+
+function jumpToChapter(pillarId, sectionId) {
+    switchMainPillar(pillarId);
+    closeChapterModal();
+    setTimeout(() => {
+        const target = document.getElementById(sectionId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            target.classList.add('section-highlight-flash');
+            setTimeout(() => target.classList.remove('section-highlight-flash'), 1800);
+        }
+    }, 120);
+}
+
+function filterChapterList() {
+    const inputEl = document.getElementById("chapterFilterInput");
+    const query = (inputEl ? inputEl.value : "").trim().toLowerCase();
+    const groups = document.querySelectorAll(".chapter-pillar-group");
+    
+    groups.forEach(group => {
+        let anyVisible = false;
+        const btns = group.querySelectorAll(".chapter-jump-btn");
+        btns.forEach(btn => {
+            const titleText = btn.innerText.toLowerCase();
+            let match = !query || titleText.includes(query);
+            
+            if (!match && query) {
+                // 全局內文全文檢索 (Full-text Section Body Search)
+                const onclickAttr = btn.getAttribute("onclick") || "";
+                const secMatch = onclickAttr.match(/jumpToChapter\(['"][^'"]+['"]\s*,\s*['"]([^'"]+)['"]\)/);
+                if (secMatch && secMatch[1]) {
+                    const sectionEl = document.getElementById(secMatch[1]);
+                    if (sectionEl) {
+                        const bodyText = sectionEl.innerText.toLowerCase();
+                        if (bodyText.includes(query)) {
+                            match = true;
+                        }
+                    }
+                }
+            }
+            
+            if (match) {
+                btn.style.display = "flex";
+                anyVisible = true;
+            } else {
+                btn.style.display = "none";
+            }
+        });
+        group.style.display = anyVisible ? "block" : "none";
+    });
+}
+</script>
 </body>
 </html>
