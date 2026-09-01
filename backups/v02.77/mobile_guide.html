@@ -1730,17 +1730,29 @@ li {
 /* ================== 結束強迫症校正 ================== */
 
     </style>
+
+<style>
+@keyframes sectionFlashAnim {
+  0% { box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.8), 0 0 25px rgba(234, 179, 8, 0.5); border-color: #eab308 !important; }
+  50% { box-shadow: 0 0 0 6px rgba(234, 179, 8, 0.9), 0 0 35px rgba(234, 179, 8, 0.6); border-color: #eab308 !important; }
+  100% { box-shadow: none; }
+}
+.section-highlight-flash {
+  animation: sectionFlashAnim 1.8s ease-out !important;
+}
+</style>
+
 </head>
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.74</span>
+<span class="version-badge">v02.78</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
         </p>
 <div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
-<button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">📑 45 章快速跳轉</button>
+<button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">📑 46 章快速跳轉</button>
 <button class="header-btn" onclick="clearPwaCache()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🔄 清除快取重載</button>
 <button class="header-btn" onclick="toggleAppTheme()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🌓 主題切換</button>
 </div>
@@ -6787,6 +6799,136 @@ li {
 </tbody>
 </table>
 </div>
+</div>
+</div>
+<!-- 三、賽馬展開適應力 (瞬間戰 / 持久戰 / 消耗戰) 機制全解與先天對照表 -->
+<div class="tool-card" style="background:rgba(15,23,42,0.95); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+<div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-gauge-high"></i> 三、賽馬展開適應力 (瞬間戰・持久戰・消耗戰) 決定公式與對照表
+</div>
+<span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">2026 官方攻略數據</span>
+</div>
+
+<p style="font-size:0.85rem; color:var(--text-main); line-height:1.7; margin-bottom:16px; text-align:left !important;">
+比賽中「瞬間戰」「持久戰」「消耗戰」反映賽駒對不同賽事展開的適應能力。發生對應比賽展開時，<strong>適應能力高者能展現超越能力極限的強悍爆發；若適應力低則無法發揮 100% 之實力</strong>。
+</p>
+
+<!-- 1. 能力畫面星號標示說明 -->
+<div style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:18px;">
+  <h4 style="font-size:0.95rem; font-weight:800; color:var(--primary); margin-bottom:10px; text-align:left !important;">
+    <i class="fa-solid fa-star"></i> 1. 能力畫面的三星號標示解析
+  </h4>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3" style="margin-bottom:12px;">
+    <div style="background:rgba(34,197,94,0.12); border:1px solid #22c55e; border-radius:8px; padding:10px; text-align:left !important;">
+      <strong style="color:#22c55e; font-size:0.9rem;">🟢 綠色★（先天能力）</strong>
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px; margin-bottom:0;">由血統、上限值與成長型決定的「固有先天適應力」。</p>
+    </div>
+    <div style="background:rgba(249,115,22,0.12); border:1px solid #f97316; border-radius:8px; padding:10px; text-align:left !important;">
+      <strong style="color:#f97316; font-size:0.9rem;">🟠 橘色★（後天能力）</strong>
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px; margin-bottom:0;">透過比賽出賽、指定戰術與史實調教獲得成長的「後天經驗」。</p>
+    </div>
+    <div style="background:rgba(148,163,184,0.12); border:1px solid #94a3b8; border-radius:8px; padding:10px; text-align:left !important;">
+      <strong style="color:#94a3b8; font-size:0.9rem;">⚪ 灰色★（上限值 Upper Limit）</strong>
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px; margin-bottom:0;">代表該適應能力的成長極限值（0 ~ 10）。</p>
+    </div>
+  </div>
+  <div style="background:rgba(234,179,8,0.15); border:1px solid var(--gold-color); border-radius:6px; padding:8px 12px; font-size:0.83rem; font-weight:700; color:var(--gold-color); text-align:left !important;">
+    ⚡ 實戰發揮值計算公式：<span style="color:#fff;">實際上賽道發揮的數值 ＝ 🟢 先天的能力 ＋ 🟠 後天的能力</span>
+  </div>
+</div>
+
+<!-- 2. 先天能力與上限值決定方式表格 -->
+<div style="margin-bottom:18px;">
+  <h4 style="font-size:0.95rem; font-weight:800; color:var(--primary); margin-bottom:10px; text-align:left !important;">
+    <i class="fa-solid fa-calculator"></i> 2. 先天能力與上限值決定公式
+  </h4>
+  <div class="table-responsive">
+    <table class="data-table" style="min-width:750px;">
+      <thead>
+        <tr>
+          <th style="width:180px; text-align:left !important;">馬匹種類</th>
+          <th style="text-align:left !important;">🟢 先天能力 (綠★)</th>
+          <th style="text-align:left !important;">⚪ 上限值 (灰★)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:700; color:var(--gold-color); text-align:left !important;">史實馬 及 超級馬 (SH)</td>
+          <td style="font-size:0.82rem; text-align:left !important;">
+            依下表依據「上限值」與「成長型」決定。<br/>
+            <span style="color:var(--text-muted);">※ 若成立特殊配合理論（孤高、最高傑作、サージュ騎士/王者/霸者等），某項先天能力可能額外提升。</span>
+          </td>
+          <td style="font-size:0.82rem; text-align:left !important;">
+            固定設定值 (0 ~ 10)。<br/>
+            <span style="color:var(--text-muted);">※ 若父系、父父系、母父系、母母父系升格為世界系統，上限值可能額外增加。</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">架空產駒 (自家繁育馬)</td>
+          <td style="font-size:0.82rem; text-align:left !important;">直接與上限值同等（連動）。</td>
+          <td style="font-size:0.82rem; text-align:left !important;">
+            隨機 1 ~ 10。<br/>
+            <span style="color:var(--text-muted);">※ 受父母之「剛健」、「勝負根性」、「精神力」等數值品質影響。</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 3. 先天能力對照速查表 -->
+<div style="margin-bottom:18px;">
+  <h4 style="font-size:0.95rem; font-weight:800; color:var(--primary); margin-bottom:10px; text-align:left !important;">
+    <i class="fa-solid fa-table-cells"></i> 3. 先天能力對照速查表 (Upper Limit vs Growth Type)
+  </h4>
+  <div class="table-responsive">
+    <table class="data-table" style="min-width:680px; text-align:left !important;">
+      <thead>
+        <tr>
+          <th style="width:100px; text-align:left !important;">上限值 (灰★)</th>
+          <th style="text-align:left !important;">早熟・早め・晩成 (經典型)</th>
+          <th style="text-align:left !important;">早め持続・早熟持続 (持續型)</th>
+          <th style="text-align:left !important;">晩成持続・持続・覚醒 (極長持續/覺醒型)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="font-weight:700; color:var(--gold-color); text-align:left !important;">10</td><td style="font-weight:700; color:#22c55e; text-align:left !important;">8 顆綠★</td><td style="text-align:left !important;">7 顆綠★</td><td style="text-align:left !important;">6 顆綠★</td></tr>
+        <tr><td style="font-weight:700; color:var(--gold-color); text-align:left !important;">9</td><td style="font-weight:700; color:#22c55e; text-align:left !important;">7 顆綠★</td><td style="text-align:left !important;">6 顆綠★</td><td style="text-align:left !important;">5 顆綠★</td></tr>
+        <tr><td style="font-weight:700; color:var(--gold-color); text-align:left !important;">8</td><td style="font-weight:700; color:#22c55e; text-align:left !important;">6 顆綠★</td><td style="text-align:left !important;">5 顆綠★</td><td style="text-align:left !important;">5 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">7</td><td style="text-align:left !important;">5 顆綠★</td><td style="text-align:left !important;">4 顆綠★</td><td style="text-align:left !important;">4 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">6</td><td style="text-align:left !important;">5 顆綠★</td><td style="text-align:left !important;">5 顆綠★</td><td style="text-align:left !important;">4 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">5</td><td style="text-align:left !important;">4 顆綠★</td><td style="text-align:left !important;">3 顆綠★</td><td style="text-align:left !important;">3 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">4</td><td style="text-align:left !important;">3 顆綠★</td><td style="text-align:left !important;">3 顆綠★</td><td style="text-align:left !important;">2 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">3</td><td style="text-align:left !important;">2 顆綠★</td><td style="text-align:left !important;">2 顆綠★</td><td style="text-align:left !important;">2 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">2</td><td style="text-align:left !important;">1 顆綠★</td><td style="text-align:left !important;">1 顆綠★</td><td style="text-align:left !important;">1 顆綠★</td></tr>
+        <tr><td style="font-weight:700; text-align:left !important;">1</td><td style="text-align:left !important;">1 顆綠★</td><td style="text-align:left !important;">1 顆綠★</td><td style="text-align:left !important;">1 顆綠★</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-top:8px; font-size:0.8rem; color:var(--text-muted); line-height:1.6; text-align:left !important;">
+    ※ <strong>世界系統地域傾向上限加成</strong>：當父系 4 代祖的世界系統為 🇯🇵 <strong>日本型</strong> 時「瞬間戰」易偏高；🇪🇺 <strong>歐州型</strong> 時「持久戰」易偏高；🇺🇸 <strong>美國型</strong> 時「消耗戰」易偏高。多個世界系統重疊時效果更加顯著！
+  </div>
+</div>
+
+<!-- 4. 適應力的後天成長、戰術選擇與限界突破 -->
+<div style="background:rgba(30,41,59,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px;">
+  <h4 style="font-size:0.95rem; font-weight:800; color:var(--primary); margin-bottom:10px; text-align:left !important;">
+    <i class="fa-solid fa-arrow-trend-up"></i> 4. 適應力的後天成長途徑、比賽戰術加成與「限界突破」
+  </h4>
+  <ul style="font-size:0.84rem; color:var(--text-main); line-height:1.7; padding-left:20px; margin-bottom:0; text-align:left !important;">
+    <li><strong>比賽經驗與史實調教</strong>：參加對應賽事展開的比賽或執行對應的史實調教項目，可穩定累積橘色★點數。</li>
+    <li><strong>比賽戰術選擇之成長轉向</strong>：
+      <ul>
+        <li>選擇 <strong style="color:#ec4899;">「最後方」「大外一気」</strong> ➔ 優先提升 <strong>瞬間戰</strong> 適應力。</li>
+        <li>選擇 <strong style="color:#38bdf8;">「逃げ」「逃げ特化」</strong> ➔ 優先提升 <strong>持久戰</strong> 適應力。</li>
+        <li>選擇 <strong style="color:#eab308;">「横一線」「直線強襲」</strong> ➔ 優先提升 <strong>消耗戰</strong> 適應力。</li>
+      </ul>
+    </li>
+    <li><strong>G1 冠軍 Bonus</strong>：玩家自有馬或賽馬俱樂部馬首度贏得 G1 賽事時，適應力獲得額外成長 Bonus。</li>
+    <li><strong>退役轉種馬/繁殖母馬繼承</strong>：退役時的（綠★ ＋ 橘★）將成為繁殖基礎，並將「上限值」傳承至下一代幼駒。</li>
+    <li><strong>🌟 限界突破 (Limit Break)</strong>：達到灰色★上限後，若在超賽事/極端展開大賽中奪冠或執行專屬史實調教，可發動「限界突破」！突破最多可超越上限額外獲得 <strong>★1 ~ ★2</strong>（每匹馬限一項適應能力突破）。</li>
+  </ul>
 </div>
 </div>
 </section>
@@ -29107,304 +29249,315 @@ function filterTab5Racecourses() {
 <button class="btn-floating" onclick="scrollToTop()" title="回到頂部"><i class="fa-solid fa-arrow-up"></i></button>
 </div>
 <!-- 📑 章節跳轉彈出抽屜 (Chapter Modal) -->
+<!-- 📑 章節跳轉彈出抽屜 (Chapter Modal) -->
 <div class="modal-backdrop" id="chapterModal" onclick="closeChapterModal(event)">
 <div class="chapter-modal-card" onclick="event.stopPropagation()">
 <div class="chapter-modal-header">
-<h2><i class="fa-solid fa-list-ol"></i> 📑 全 45 大章節快速跳轉</h2>
+<h2><i class="fa-solid fa-list-ol"></i> 📑 全 46 大章節快速跳轉</h2>
 <span class="modal-close" onclick="closeChapterModal()">×</span>
 </div>
 <div class="chapter-search-box">
 <i class="fa-solid fa-magnifying-glass"></i>
-<input id="chapterFilterInput" oninput="filterChapterList()" placeholder="搜尋章節關鍵字 (如: 配合, 評語, 三冠, 調教, 設施)..." type="text"/>
+<input id="chapterFilterInput" oninput="filterChapterList()" placeholder="🔍 全局內文檢索：輸入任何關鍵字 (如: 爆發力, 評語, 三冠, 史實調教, 繁育, 限界突破)..." type="text"/>
 </div>
 <div class="chapter-list-container" id="chapterListContainer">
+
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#38bdf8; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-crown"></i> 👑 支柱一：開局劇本年代與史實攻略 (第 01 ~ 07 章)
-        </div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-start-guide')">
-<span class="jump-icon"><i class="fa-solid fa-flag-checkered"></i></span>
-<span class="jump-num">第 01 章</span>
-<span class="jump-title">開局劇本年代選拔・初年度52週圖文通關與全年代初期讓渡馬完全指南</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-1968-scenario')">
-<span class="jump-icon"><i class="fa-solid fa-scroll"></i></span>
-<span class="jump-num">第 02 章</span>
-<span class="jump-title">1968 年最古開局劇本完全攻略 (元祖三強・日美歐持続牝馬全書)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-era-horses-guide')">
-<span class="jump-icon"><i class="fa-solid fa-calendar-days"></i></span>
-<span class="jump-num">第 03 章</span>
-<span class="jump-title">按年代史實攻略與 1967~1975 各年代推薦名馬完全指南</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-amulets')">
-<span class="jump-icon"><i class="fa-solid fa-shield-halved"></i></span>
-<span class="jump-num">第 04 章</span>
-<span class="jump-title">守護符 (御守 / お守り) 獲得全圖鑑・兌換日曆與虹札名馬運用戰略</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-super-horses')">
-<span class="jump-icon"><i class="fa-solid fa-star"></i></span>
-<span class="jump-num">第 05 章</span>
-<span class="jump-title">超級巨星名駒 (スーパースターホース) 機制解析與歷代超級馬 (SH) 完全名單</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-pro-tricks')">
-<span class="jump-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-<span class="jump-num">第 06 章</span>
-<span class="jump-title">+40 爆發力滿貫公式與賽務職業小技</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-version-diff')">
-<span class="jump-icon"><i class="fa-solid fa-code-compare"></i></span>
-<span class="jump-num">第 07 章</span>
-<span class="jump-title">歷代版本演進差異完全剖析 (2023~2026)</span>
-</button>
+  <div class="chapter-pillar-title" style="color:#38bdf8; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-crown"></i> 👑 支柱一：開局劇本年代與史實攻略 (第 01 ~ 07 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-start-guide')">
+      <span class="jump-icon"><i class="fa-solid fa-flag-checkered"></i></span>
+      <span class="jump-num">第 01 章</span>
+      <span class="jump-title">開局劇本年代選拔・初年度52週圖文通關與全年代初期讓渡馬完全指南</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-1968-scenario')">
+      <span class="jump-icon"><i class="fa-solid fa-scroll"></i></span>
+      <span class="jump-num">第 02 章</span>
+      <span class="jump-title">1968 年最古開局劇本完全攻略 (元祖三強・日美歐持続牝馬全書)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-era-horses-guide')">
+      <span class="jump-icon"><i class="fa-solid fa-calendar-days"></i></span>
+      <span class="jump-num">第 03 章</span>
+      <span class="jump-title">按年代史實攻略與 1967~1975 各年代推薦名馬完全指南</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-amulets')">
+      <span class="jump-icon"><i class="fa-solid fa-shield-halved"></i></span>
+      <span class="jump-num">第 04 章</span>
+      <span class="jump-title">守護符 (御守 / お守り) 獲得全圖鑑・兌換日曆與虹札名馬運用戰略</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-super-horses')">
+      <span class="jump-icon"><i class="fa-solid fa-star"></i></span>
+      <span class="jump-num">第 05 章</span>
+      <span class="jump-title">超級巨星名駒 (スーパースターホース) 機制解析與歷代超級馬 (SH) 完全名單</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-pro-tricks')">
+      <span class="jump-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+      <span class="jump-num">第 06 章</span>
+      <span class="jump-title">+40 爆發力滿貫公式與賽務職業小技</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-version-diff')">
+      <span class="jump-icon"><i class="fa-solid fa-code-compare"></i></span>
+      <span class="jump-num">第 07 章</span>
+      <span class="jump-title">歷代版本演進差異完全剖析 (2023~2026)</span>
+    </button>
+  </div>
 </div>
-</div>
+
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#06b6d4; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-dna"></i> 🧬 支柱二：配合繁育大系・四大指標與爆發力理論 (第 08 ~ 21 章)
-        </div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-metrics')">
-<span class="jump-icon"><i class="fa-solid fa-gauge-high"></i></span>
-<span class="jump-num">第 08 章</span>
-<span class="jump-title">配合機制・四大指標與爆發力抽樣模擬器</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-master-table')">
-<span class="jump-icon"><i class="fa-solid fa-table-list"></i></span>
-<span class="jump-num">第 09 章</span>
-<span class="jump-title">全配合理論速查與加成總覽表 (全 39 條目)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-diagrams')">
-<span class="jump-icon"><i class="fa-solid fa-sitemap"></i></span>
-<span class="jump-num">第 10 章</span>
-<span class="jump-title">專屬 4 代血統矩陣圖譜總覽</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-nicks')">
-<span class="jump-icon"><i class="fa-solid fa-bolt"></i></span>
-<span class="jump-num">第 11 章</span>
-<span class="jump-title">相性配合 (ニックス / Nicks) 與副屬性爆發</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')">
-<span class="jump-icon"><i class="fa-solid fa-dna"></i></span>
-<span class="jump-num">第 12 章</span>
-<span class="jump-title">近親交配 (Inbreed)、母系近親、全兄妹與異系</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-linebreed')">
-<span class="jump-icon"><i class="fa-solid fa-network-wired"></i></span>
-<span class="jump-num">第 13 章</span>
-<span class="jump-title">系統交配 (Linebreed / 3×4 / 流行與零細)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-activation')">
-<span class="jump-icon"><i class="fa-solid fa-heart-pulse"></i></span>
-<span class="jump-num">第 14 章</span>
-<span class="jump-title">血脈活性化配合 (8親系 / 完全活性)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-vitality')">
-<span class="jump-icon"><i class="fa-solid fa-seedling"></i></span>
-<span class="jump-num">第 15 章</span>
-<span class="jump-title">活力源化・活力補完與隔世遺傳</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-lines')">
-<span class="jump-icon"><i class="fa-solid fa-venus-mars"></i></span>
-<span class="jump-num">第 16 章</span>
-<span class="jump-title">雄系活性化與雌系活性化配合</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-traits')">
-<span class="jump-icon"><i class="fa-solid fa-gem"></i></span>
-<span class="jump-num">第 17 章</span>
-<span class="jump-title">特性昇華配合與母系融合</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-special')">
-<span class="jump-icon"><i class="fa-solid fa-star"></i></span>
-<span class="jump-num">第 18 章</span>
-<span class="jump-title">特殊名馬配合與彩蛋配合</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-2026new')">
-<span class="jump-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-<span class="jump-num">第 19 章</span>
-<span class="jump-title">2024~2026 最新繁育理論 (歷史因子/世界始祖/Drama融合)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-gene-factors')">
-<span class="jump-icon"><i class="fa-solid fa-dna"></i></span>
-<span class="jump-num">第 20 章</span>
-<span class="jump-title">13 大遺傳因子獲得・活性化與圖鑑</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-systems')">
-<span class="jump-icon"><i class="fa-solid fa-sitemap"></i></span>
-<span class="jump-num">第 21 章</span>
-<span class="jump-title">系統確立・親/世界/始祖確立與支配率計算機</span>
-</button>
+  <div class="chapter-pillar-title" style="color:#06b6d4; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-dna"></i> 🧬 支柱二：配合繁育大系・四大指標與爆發力理論 (第 08 ~ 21 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-metrics')">
+      <span class="jump-icon"><i class="fa-solid fa-gauge-high"></i></span>
+      <span class="jump-num">第 08 章</span>
+      <span class="jump-title">配合機制・四大指標與爆發力抽樣模擬器</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-master-table')">
+      <span class="jump-icon"><i class="fa-solid fa-table-list"></i></span>
+      <span class="jump-num">第 09 章</span>
+      <span class="jump-title">全配合理論速查與加成總覽表 (全 39 條目)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-diagrams')">
+      <span class="jump-icon"><i class="fa-solid fa-network-wired"></i></span>
+      <span class="jump-num">第 10 章</span>
+      <span class="jump-title">專屬 4 代血統矩陣圖譜總覽</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-nicks')">
+      <span class="jump-icon"><i class="fa-solid fa-heart"></i></span>
+      <span class="jump-num">第 11 章</span>
+      <span class="jump-title">相性配合 (ニックス / Nicks) 與副屬性爆發</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')">
+      <span class="jump-icon"><i class="fa-solid fa-link"></i></span>
+      <span class="jump-num">第 12 章</span>
+      <span class="jump-title">近親交配 (Inbreed)、母系近親、全兄妹與異系</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-linebreed')">
+      <span class="jump-icon"><i class="fa-solid fa-code-branch"></i></span>
+      <span class="jump-num">第 13 章</span>
+      <span class="jump-title">系統交配 (Linebreed / 3×4 / 流行與零細)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-activation')">
+      <span class="jump-icon"><i class="fa-solid fa-bolt"></i></span>
+      <span class="jump-num">第 14 章</span>
+      <span class="jump-title">血脈活性化配合 (8親系 / 完全活性)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-vitality')">
+      <span class="jump-icon"><i class="fa-solid fa-battery-full"></i></span>
+      <span class="jump-num">第 15 章</span>
+      <span class="jump-title">活力源化・活力補完與隔世遺傳</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-lines')">
+      <span class="jump-icon"><i class="fa-solid fa-arrows-split-up-and-left"></i></span>
+      <span class="jump-num">第 16 章</span>
+      <span class="jump-title">雄系活性化與雌系活性化配合</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-traits')">
+      <span class="jump-icon"><i class="fa-solid fa-gem"></i></span>
+      <span class="jump-num">第 17 章</span>
+      <span class="jump-title">特性昇華配合與母系融合</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-special')">
+      <span class="jump-icon"><i class="fa-solid fa-wand-sparkles"></i></span>
+      <span class="jump-num">第 18 章</span>
+      <span class="jump-title">特殊名馬配合與彩蛋配合</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-2026new')">
+      <span class="jump-icon"><i class="fa-solid fa-atom"></i></span>
+      <span class="jump-num">第 19 章</span>
+      <span class="jump-title">2024~2026 最新繁育理論 (歷史因子/世界始祖/Drama融合)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-gene-factors')">
+      <span class="jump-icon"><i class="fa-solid fa-dna"></i></span>
+      <span class="jump-num">第 20 章</span>
+      <span class="jump-title">Drama 因子 (ドラマ因子) 全書・活力增強 4 階段與 2026 繁育新理論</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-systems')">
+      <span class="jump-icon"><i class="fa-solid fa-sitemap"></i></span>
+      <span class="jump-num">第 21 章</span>
+      <span class="jump-title">系統確立與滅亡年表・血統支配率精算機</span>
+    </button>
+  </div>
 </div>
-</div>
+
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#f59e0b; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-horse"></i> 🐴 支柱三：幼駒相馬・評語對照・出生事件 (第 22 ~ 24 章)
-        </div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-potential')">
-<span class="jump-icon"><i class="fa-solid fa-eye"></i></span>
-<span class="jump-num">第 22 章</span>
-<span class="jump-title">優質幼駒四大判別法・相馬心法與幼駒專用史實調教</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-horse-comments')">
-<span class="jump-icon"><i class="fa-solid fa-comment-dots"></i></span>
-<span class="jump-num">第 23 章</span>
-<span class="jump-title">0~3 歲幼駒與賽馬評語完全手冊 (日/中/解讀三欄對照)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-special-events')">
-<span class="jump-icon"><i class="fa-solid fa-meteor"></i></span>
-<span class="jump-num">第 24 章</span>
-<span class="jump-title">幼駒頂級出生事件 (流星/春雷/天馬等 9 大事件)</span>
-</button>
+  <div class="chapter-pillar-title" style="color:#10b981; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-horse"></i> 🐎 支柱三：幼駒培育・相馬心法與出生事件 (第 22 ~ 24 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-potential')">
+      <span class="jump-icon"><i class="fa-solid fa-eye"></i></span>
+      <span class="jump-num">第 22 章</span>
+      <span class="jump-title">優質幼駒四大判別法・相馬心法與幼駒專用史實調教</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-horse-comments')">
+      <span class="jump-icon"><i class="fa-solid fa-comment-dots"></i></span>
+      <span class="jump-num">第 23 章</span>
+      <span class="jump-title">0~3 歲幼駒與賽馬評語完全手冊 (日/中/解讀三欄對照)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-special-events')">
+      <span class="jump-icon"><i class="fa-solid fa-meteor"></i></span>
+      <span class="jump-num">第 24 章</span>
+      <span class="jump-title">幼駒頂級出生事件 (流星/春雷/天馬等 9 大事件)</span>
+    </button>
+  </div>
 </div>
-</div>
+
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#eab308; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-bolt"></i> ⚡ 支柱四：人物能力・特性全書・調教與個性 (第 25 ~ 30 章)
-        </div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-status-encyclopedia')">
-<span class="jump-icon"><i class="fa-solid fa-chart-pie"></i></span>
-<span class="jump-num">第 25 章</span>
-<span class="jump-title">五大人物與賽馬數值能力完全百科 (競走馬・騎手・調教師・牧場長・子孫結婚知人)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-skills-traits')">
-<span class="jump-icon"><i class="fa-solid fa-bullseye"></i></span>
-<span class="jump-num">第 26 章</span>
-<span class="jump-title">基礎能力・四大比賽展開與適應能力機制全書</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-traits-master')">
-<span class="jump-icon"><i class="fa-solid fa-bolt"></i></span>
-<span class="jump-num">第 27 章</span>
-<span class="jump-title">特性全書・全 223 種通常・上位進化・日本固有與海外專屬特性完全圖鑑</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-historical-train')">
-<span class="jump-icon"><i class="fa-solid fa-dumbbell"></i></span>
-<span class="jump-num">第 28 章</span>
-<span class="jump-title">史實調教・SP 雙馬合練・大成功量表與全 40+ 種調教效果全圖鑑</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-umasona')">
-<span class="jump-icon"><i class="fa-solid fa-face-smile"></i></span>
-<span class="jump-num">第 29 章</span>
-<span class="jump-title">ウマソナ (馬之個性) 全圖鑑・克服進化秘技與 14 大性格分佈矩陣</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-relations-2026')">
-<span class="jump-icon"><i class="fa-solid fa-handshake"></i></span>
-<span class="jump-num">第 30 章</span>
-<span class="jump-title">2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</span>
-</button>
+  <div class="chapter-pillar-title" style="color:#f59e0b; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-bolt"></i> ⚡ 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (第 25 ~ 30 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-status-encyclopedia')">
+      <span class="jump-icon"><i class="fa-solid fa-address-card"></i></span>
+      <span class="jump-num">第 25 章</span>
+      <span class="jump-title">五大人物與賽馬數值能力完全百科 (競走馬・騎手・調教師・牧場長・子孫結婚知人)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-skills-traits')">
+      <span class="jump-icon"><i class="fa-solid fa-chart-simple"></i></span>
+      <span class="jump-num">第 26 章</span>
+      <span class="jump-title">基礎能力・四大比賽展開與適應能力機制全書</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-traits-master')">
+      <span class="jump-icon"><i class="fa-solid fa-medal"></i></span>
+      <span class="jump-num">第 27 章</span>
+      <span class="jump-title">特性全書・全 223 種通常・上位進化・日本固有與海外專屬特性完全圖鑑</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-historical-train')">
+      <span class="jump-icon"><i class="fa-solid fa-dumbbell"></i></span>
+      <span class="jump-num">第 28 章</span>
+      <span class="jump-title">史實調教・SP 雙馬合練・大成功量表與全 40+ 種調教效果全圖鑑</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-umasona')">
+      <span class="jump-icon"><i class="fa-solid fa-masks-theater"></i></span>
+      <span class="jump-num">第 29 章</span>
+      <span class="jump-title">ウマソナ (馬之個性) 全圖鑑・克服進化秘技與 14 大性格分佈矩陣</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-relations-2026')">
+      <span class="jump-icon"><i class="fa-solid fa-handshake"></i></span>
+      <span class="jump-num">第 30 章</span>
+      <span class="jump-title">2026 名馬相関圖與 4 大關係性 (親友/犬猿/戀仲/強敵) 深度指南</span>
+    </button>
+  </div>
 </div>
-</div>
+
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#10b981; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-trophy"></i> 🏆 支柱五：賽事賽程・競馬場特性・三冠與歷史 (第 31 ~ 35 章)
-        </div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-stakes-master')">
-<span class="jump-icon"><i class="fa-solid fa-trophy"></i></span>
-<span class="jump-num">第 31 章</span>
-<span class="jump-title">全重賞日程・全球三冠系列賽・G1 頂級攻略與 64 大競馬場特性大百科</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-triple-crowns')">
-<span class="jump-icon"><i class="fa-solid fa-crown"></i></span>
-<span class="jump-num">第 32 章</span>
-<span class="jump-title">全球三冠路線與夏季系列賽完全對照</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-keiba-boom')">
-<span class="jump-icon"><i class="fa-solid fa-fire"></i></span>
-<span class="jump-num">第 33 章</span>
-<span class="jump-title">偶像馬地圖・賽馬熱潮・傳奇特性與顯彰馬</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-nicknames')">
-<span class="jump-icon"><i class="fa-solid fa-medal"></i></span>
-<span class="jump-num">第 34 章</span>
-<span class="jump-title">殿堂馬稱號 (異名)・人氣加成 (Boost) 與獲得條件全圖鑑</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-historia')">
-<span class="jump-icon"><i class="fa-solid fa-book-bookmark"></i></span>
-<span class="jump-num">第 35 章</span>
-<span class="jump-title">競馬歷史事件 (Historia) 名場面與觸發條件</span>
-</button>
+  <div class="chapter-pillar-title" style="color:#ec4899; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-trophy"></i> 🏆 支柱五：重賞日程・全球三冠・熱潮與賽馬場特性 (第 31 ~ 35 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-stakes-master')">
+      <span class="jump-icon"><i class="fa-solid fa-trophy"></i></span>
+      <span class="jump-num">第 31 章</span>
+      <span class="jump-title">全重賞日程・全球三冠系列賽・G1 頂級攻略與 64 大競馬場特性大百科</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-triple-crowns')">
+      <span class="jump-icon"><i class="fa-solid fa-award"></i></span>
+      <span class="jump-num">第 32 章</span>
+      <span class="jump-title">全球三冠路線與夏季系列賽完全對照</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-keiba-boom')">
+      <span class="jump-icon"><i class="fa-solid fa-fire"></i></span>
+      <span class="jump-num">第 33 章</span>
+      <span class="jump-title">偶像馬地圖・賽馬熱潮・傳奇特性與顯彰馬</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-nicknames')">
+      <span class="jump-icon"><i class="fa-solid fa-tags"></i></span>
+      <span class="jump-num">第 34 章</span>
+      <span class="jump-title">殿堂馬稱號 (異名)・人氣加成 (Boost) 與獲得條件全圖鑑</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-historia')">
+      <span class="jump-icon"><i class="fa-solid fa-landmark"></i></span>
+      <span class="jump-num">第 35 章</span>
+      <span class="jump-title">競馬歷史事件 (Historia) 名場面與觸發條件</span>
+    </button>
+  </div>
 </div>
-</div>
+
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#a855f7; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-house"></i> 🏰 支柱六：牧場設施・俱樂部經營・傳奇對決與家系 (第 36 ~ 40 章)
-        </div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-farm-facilities')">
-<span class="jump-icon"><i class="fa-solid fa-warehouse"></i></span>
-<span class="jump-num">第 36 章</span>
-<span class="jump-title">牧場設施升級與美歐海外分場規劃</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-personnel')">
-<span class="jump-icon"><i class="fa-solid fa-user-tie"></i></span>
-<span class="jump-num">第 37 章</span>
-<span class="jump-title">騎手・調教師・牧場長 18 大人物技能全書</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-marriage-secrets')">
-<span class="jump-icon"><i class="fa-solid fa-ring"></i></span>
-<span class="jump-num">第 38 章</span>
-<span class="jump-title">知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-club-management')">
-<span class="jump-icon"><i class="fa-solid fa-building-columns"></i></span>
-<span class="jump-num">第 39 章</span>
-<span class="jump-title">賽馬俱樂部 (Club) 經營・法人化牧場與會員招募完全指南</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-legend-match')">
-<span class="jump-icon"><i class="fa-solid fa-trophy"></i></span>
-<span class="jump-num">第 40 章</span>
-<span class="jump-title">傳奇對決 (The Legend Match)・世界百大名駒殿堂排行榜與顯彰馬決戰</span>
-</button>
+  <div class="chapter-pillar-title" style="color:#a855f7; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-house-chimney"></i> 🏡 支柱六：牧場經營・人物技能・婚姻與俱樂部法人 (第 36 ~ 40 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-farm-facilities')">
+      <span class="jump-icon"><i class="fa-solid fa-house-chimney"></i></span>
+      <span class="jump-num">第 36 章</span>
+      <span class="jump-title">牧場設施升級與美歐海外分場規劃</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-personnel')">
+      <span class="jump-icon"><i class="fa-solid fa-user-tie"></i></span>
+      <span class="jump-num">第 37 章</span>
+      <span class="jump-title">騎手・調教師・牧場長 18 大人物技能全書</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-marriage-secrets')">
+      <span class="jump-icon"><i class="fa-solid fa-venus-mars"></i></span>
+      <span class="jump-num">第 38 章</span>
+      <span class="jump-title">知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-club-management')">
+      <span class="jump-icon"><i class="fa-solid fa-briefcase"></i></span>
+      <span class="jump-num">第 39 章</span>
+      <span class="jump-title">賽馬俱樂部 (Club) 經營・法人化牧場與會員招募完全指南</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-legend-match')">
+      <span class="jump-icon"><i class="fa-solid fa-chess-king"></i></span>
+      <span class="jump-num">第 40 章</span>
+      <span class="jump-title">傳奇對決 (The Legend Match)・世界百大名駒殿堂排行榜與顯彰馬決戰</span>
+    </button>
+  </div>
 </div>
-</div>
+
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#ec4899; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-database"></i> 🐎 支柱七：名駒速查庫與 18 欄深度檔案 (第 41 ~ 42 章)
-        </div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-horse-db')">
-<span class="jump-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-<span class="jump-num">第 41 章</span>
-<span class="jump-title">1.5 萬匹全史實馬與 11 大年度推薦速查庫</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-allhorseprofiles-db')">
-<span class="jump-icon"><i class="fa-solid fa-database"></i></span>
-<span class="jump-num">第 42 章</span>
-<span class="jump-title">全史實名駒 18 欄位終極履歷與血統檔案完全圖鑑 (allhorseprofiles 深度檔案庫)</span>
-</button>
+  <div class="chapter-pillar-title" style="color:#eab308; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-magnifying-glass"></i> 🏇 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 ~ 43 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-horse-db')">
+      <span class="jump-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+      <span class="jump-num">第 41 章</span>
+      <span class="jump-title">1.5 萬匹全史實馬與 11 大年度推薦速查庫</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-sires-retire-db')">
+      <span class="jump-icon"><i class="fa-solid fa-clock-rotate-left"></i></span>
+      <span class="jump-num">第 42 章</span>
+      <span class="jump-title">2,898 匹史實種公馬引退年限完全速查庫 (Private 保護期檢索庫)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-breeding-only-horses')">
+      <span class="jump-icon"><i class="fa-solid fa-venus-mars"></i></span>
+      <span class="jump-num">第 43 章</span>
+      <span class="jump-title">4,314 匹繁殖專用史實馬全量數據庫 (名種公馬 / 繁殖名雌完全對照大表)</span>
+    </button>
+  </div>
 </div>
-</div>
+
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#facc15; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-graduation-cap"></i> 🎓 支柱八：名師實戰講堂・線上大賽與系統全書 (第 43 ~ 45 章)
-        </div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-official-lectures')">
-<span class="jump-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-<span class="jump-num">第 43 章</span>
-<span class="jump-title">名師實戰講堂 (吹里谷芽愛育成指南 &amp; リオン展開適應性徹底講座)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-online-strongest')">
-<span class="jump-icon"><i class="fa-solid fa-globe"></i></span>
-<span class="jump-num">第 44 章</span>
-<span class="jump-title">線上模式・最強馬之路 (最強馬ロード) 育成・前哨戰與全國大會對戰完全手冊</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-system-features')">
-<span class="jump-icon"><i class="fa-solid fa-film"></i></span>
-<span class="jump-num">第 45 章</span>
-<span class="jump-title">電影級過場名場面 (Cinema Event) 觸發條件與系統便利機能全書</span>
-</button>
+  <div class="chapter-pillar-title" style="color:#6366f1; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
+    <i class="fa-solid fa-graduation-cap"></i> 🎓 支柱八：名師實戰講堂・線上對戰與系統機能 (第 44 ~ 46 章)
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-official-lectures')">
+      <span class="jump-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+      <span class="jump-num">第 44 章</span>
+      <span class="jump-title">名師實戰講堂 (吹里谷芽愛育成指南 & リオン展開適應性徹底講座)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-online-strongest')">
+      <span class="jump-icon"><i class="fa-solid fa-globe"></i></span>
+      <span class="jump-num">第 45 章</span>
+      <span class="jump-title">線上模式・最強馬之路 (最強馬ロード) 育成・前哨戰與全國大會對戰完全手冊</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-system-features')">
+      <span class="jump-icon"><i class="fa-solid fa-clapperboard"></i></span>
+      <span class="jump-num">第 46 章</span>
+      <span class="jump-title">電影級過場名場面 (Cinema Event) 觸發條件與系統便利機能全書</span>
+    </button>
+  </div>
+</div>
+
 </div>
 </div>
-<div class="chapter-modal-tool-footer" style="margin-top:16px; border-top:1px solid rgba(255,255,255,0.1); padding-top:12px;">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-tracker', 'pillar-tracker')" style="width:100%; justify-content:center; background:linear-gradient(135deg, rgba(16,185,129,0.15), rgba(6,182,212,0.15)); border:1px solid rgba(16,185,129,0.4); padding:10px 16px; border-radius:8px; cursor:pointer;">
-<span class="jump-icon"><i class="fa-solid fa-chart-line" style="color:#34d399;"></i></span>
-<span class="jump-title" style="color:#34d399; font-weight:800; font-size:0.95rem;">📊 實戰 13 大跑法比賽戰績紀錄儀 (橫向即時批次錄入大表)</span>
-</button>
-</div></div>
 </div>
 </div>
 <!-- ==================== 第 41 章：名師實戰講堂 (新手入門與 2026 展開適應性完全指南) ==================== -->
@@ -29678,29 +29831,48 @@ function switchLecTab(tabIdx) {
             if (m) m.style.display = "none";
         }
 
-        function jumpToChapter(pillarId, sectionId) {
-            recordCurrentPosition();
-            switchMainPillar(pillarId);
-            closeChapterModal();
+                        function jumpToChapter(pillarId, sectionId) {
+            if (typeof recordCurrentPosition === 'function') recordCurrentPosition();
+            if (typeof switchMainPillar === 'function') switchMainPillar(pillarId);
+            if (typeof closeChapterModal === 'function') closeChapterModal();
             setTimeout(() => {
                 const target = document.getElementById(sectionId);
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    target.classList.add('chapter-highlight-glow');
-                    setTimeout(() => target.classList.remove('chapter-highlight-glow'), 2400);
+                    target.classList.add('section-highlight-flash');
+                    setTimeout(() => target.classList.remove('section-highlight-flash'), 2000);
                 }
-            }, 160);
+            }, 120);
         }
 
         function filterChapterList() {
-            const query = (document.getElementById("chapterFilterInput") ? document.getElementById("chapterFilterInput").value : "").trim().toLowerCase();
+            const inputEl = document.getElementById("chapterFilterInput");
+            const query = (inputEl ? inputEl.value : "").trim().toLowerCase();
             const groups = document.querySelectorAll(".chapter-pillar-group");
+            
             groups.forEach(group => {
                 let anyVisible = false;
                 const btns = group.querySelectorAll(".chapter-jump-btn");
                 btns.forEach(btn => {
-                    const text = btn.innerText.toLowerCase();
-                    if (!query || text.includes(query)) {
+                    const titleText = btn.innerText.toLowerCase();
+                    let match = !query || titleText.includes(query);
+                    
+                    if (!match && query) {
+                        // 全局內文全文檢索 (Full-text Section Body Search)
+                        const onclickAttr = btn.getAttribute("onclick") || "";
+                        const secMatch = onclickAttr.match(/jumpToChapter\(['"][^'"]+['"]\s*,\s*['"]([^'"]+)['"]\)/);
+                        if (secMatch && secMatch[1]) {
+                            const sectionEl = document.getElementById(secMatch[1]);
+                            if (sectionEl) {
+                                const bodyText = sectionEl.innerText.toLowerCase();
+                                if (bodyText.includes(query)) {
+                                    match = true;
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (match) {
                         btn.style.display = "flex";
                         anyVisible = true;
                     } else {
