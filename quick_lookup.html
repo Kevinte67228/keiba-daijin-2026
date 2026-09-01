@@ -1734,7 +1734,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.62</span>
+<span class="version-badge">v02.63</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -11436,7 +11436,23 @@ li {
         </div>
 <span class="badge badge-gold" style="font-size:0.78rem; padding:3px 8px;">日中並行・零遺漏完整收錄</span>
 </div>
-<div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
+<div class="umasona-filter-panel" style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:8px; padding:14px 16px; margin-bottom:18px;">
+<div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; align-items:center;">
+<span style="font-size:0.85rem; font-weight:700; color:var(--accent-color); margin-right:4px;">
+<i class="fa-solid fa-filter"></i> 效果篩選：
+        </span>
+<button class="filter-btn active" id="btnUmasonaAll" onclick="filterUmasona('ALL')">全部個性 (<span id="countUmasonaAll">71</span>)</button>
+<button class="filter-btn" id="btnUmasonaPlus" onclick="filterUmasona('正面')">✨ 正面效果 (<span id="countUmasonaPlus">17</span>)</button>
+<button class="filter-btn" id="btnUmasonaEvo" onclick="filterUmasona('進化')">🌟 上位進化 (<span id="countUmasonaEvo">18</span>)</button>
+<button class="filter-btn" id="btnUmasonaMinus" onclick="filterUmasona('負面')">⚠️ 負面缺陷 (<span id="countUmasonaMinus">13</span>)</button>
+<button class="filter-btn" id="btnUmasonaOvercome" onclick="filterUmasona('克服')">🛡️ 後天克服 (<span id="countUmasonaOvercome">11</span>)</button>
+<button class="filter-btn" id="btnUmasonaDouble" onclick="filterUmasona('雙向')">⚡ 雙向兩面刃 (<span id="countUmasonaDouble">12</span>)</button>
+</div>
+<div style="position:relative; width:100%;">
+<input class="filter-control" id="umasonaSearchInput" oninput="filterUmasonaSearch()" placeholder="🔍 即時搜尋馬之個性名稱、日文原名、屬性、效果關鍵字 (如: 瞬發力, 遠征, 連戰, 調教, 逃げ)..." style="width:100%; padding:8px 12px 8px 36px; border-radius:6px; font-size:0.88rem; background:rgba(0,0,0,0.3); border:1px solid var(--border-color); color:var(--text-color); box-sizing:border-box;" type="text"/>
+<i class="fa-solid fa-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:0.85rem;"></i>
+</div>
+</div><div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
 <table class="data-table">
 <thead>
 <tr>
@@ -11453,7 +11469,7 @@ li {
 </thead>
 <tbody>
 <!-- 領導力 -->
-<tr style="background:rgba(239,68,68,0.06);">
+<tr data-type="負面" style="background:rgba(239,68,68,0.06);">
 <td><strong style="color:#f87171;">引っ込み思案 (內向)</strong></td>
 <td>領導力 (リーダーシップ)</td>
 <td><span class="badge badge-pink">負面</span></td>
@@ -11464,7 +11480,7 @@ li {
 <td>通常</td>
 <td>信任 Lv1 以上，以 1 番人氣獲勝 或 執行對應史實調教克服</td>
 </tr>
-<tr style="background:rgba(148,163,184,0.06);">
+<tr data-type="克服" style="background:rgba(148,163,184,0.06);">
 <td><strong>引っ込み思案 (克服)</strong></td>
 <td>領導力 (リーダーシップ)</td>
 <td><span class="badge badge-silver">克服</span></td>
@@ -11475,7 +11491,7 @@ li {
 <td>克服</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(59,130,246,0.06);">
+<tr data-type="正面" style="background:rgba(59,130,246,0.06);">
 <td><strong style="color:var(--gold-color);">目立ちたがり (愛出風頭)</strong></td>
 <td>領導力 (リーダーシップ)</td>
 <td><span class="badge badge-blue">正面</span></td>
@@ -11486,7 +11502,7 @@ li {
 <td>通常</td>
 <td>信任 Lv2 以上，在觸發個性的賽事中取得多次勝利進化</td>
 </tr>
-<tr style="background:rgba(234,179,8,0.08);">
+<tr data-type="進化" style="background:rgba(234,179,8,0.08);">
 <td><strong style="color:var(--gold-color);">エンターテイナー (頂級娛樂家)</strong></td>
 <td>領導力 (リーダーシップ)</td>
 <td><span class="badge badge-gold">進化</span></td>
@@ -11498,7 +11514,7 @@ li {
 <td>由「目立ちたがり (愛出風頭)」上位進化</td>
 </tr>
 <!-- 勝負心/負けん気 -->
-<tr style="background:rgba(239,68,68,0.06);">
+<tr data-type="負面" style="background:rgba(239,68,68,0.06);">
 <td><strong style="color:#f87171;">詰めが甘い (後勁不足)</strong></td>
 <td>勝負心 (負けん気)</td>
 <td><span class="badge badge-pink">負面</span></td>
@@ -11509,7 +11525,7 @@ li {
 <td>通常</td>
 <td>信任 Lv1 以上，在接戰中獲勝 / 連勝 / 史實調教克服</td>
 </tr>
-<tr style="background:rgba(148,163,184,0.06);">
+<tr data-type="克服" style="background:rgba(148,163,184,0.06);">
 <td><strong>詰めが甘い (克服)</strong></td>
 <td>勝負心 (負けん気)</td>
 <td><span class="badge badge-silver">克服</span></td>
@@ -11520,7 +11536,7 @@ li {
 <td>克服</td>
 <td>信任 Lv2 以上，在接戰中取得多次勝利進化為「ど根性」</td>
 </tr>
-<tr style="background:rgba(234,179,8,0.08);">
+<tr data-type="進化" style="background:rgba(234,179,8,0.08);">
 <td><strong style="color:var(--gold-color);">ど根性 (超強韌性)</strong></td>
 <td>勝負心 (負けん気)</td>
 <td><span class="badge badge-gold">進化</span></td>
@@ -11531,7 +11547,7 @@ li {
 <td>進化</td>
 <td>由「詰めが甘い (克服)」上位進化</td>
 </tr>
-<tr style="background:rgba(239,68,68,0.06);">
+<tr data-type="負面" style="background:rgba(239,68,68,0.06);">
 <td><strong style="color:#f87171;">反抗的 (反叛逆反)</strong></td>
 <td>勝負心 (負けん気)</td>
 <td><span class="badge badge-pink">負面</span></td>
@@ -11542,7 +11558,7 @@ li {
 <td>通常</td>
 <td>信任 Lv1 以上，按作戰指示獲勝 或 史實調教克服</td>
 </tr>
-<tr style="background:rgba(148,163,184,0.06);">
+<tr data-type="克服" style="background:rgba(148,163,184,0.06);">
 <td><strong>反抗的 (克服)</strong></td>
 <td>勝負心 (負けん気)</td>
 <td><span class="badge badge-silver">克服</span></td>
@@ -11553,7 +11569,7 @@ li {
 <td>克服</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(59,130,246,0.06);">
+<tr data-type="正面" style="background:rgba(59,130,246,0.06);">
 <td><strong style="color:var(--gold-color);">負けず嫌い (不服輸)</strong></td>
 <td>勝負心 (負けん気)</td>
 <td><span class="badge badge-blue">正面</span></td>
@@ -11564,7 +11580,7 @@ li {
 <td>通常</td>
 <td>信任 Lv2 以上，擊敗高格位或高度勁敵馬後進化</td>
 </tr>
-<tr style="background:rgba(234,179,8,0.08);">
+<tr data-type="進化" style="background:rgba(234,179,8,0.08);">
 <td><strong style="color:var(--gold-color);">不撓不屈 (不屈不撓)</strong></td>
 <td>勝負心 (負けん気)</td>
 <td><span class="badge badge-gold">進化</span></td>
@@ -11576,7 +11592,7 @@ li {
 <td>由「負けず嫌い (不服輸)」上位進化</td>
 </tr>
 <!-- 協調性 -->
-<tr style="background:rgba(59,130,246,0.06);">
+<tr data-type="正面" style="background:rgba(59,130,246,0.06);">
 <td><strong style="color:var(--gold-color);">甘えん坊 (撒嬌鬼)</strong></td>
 <td>協調性 (協調性)</td>
 <td><span class="badge badge-blue">正面</span></td>
@@ -11587,7 +11603,7 @@ li {
 <td>通常</td>
 <td>信任 Lv2 以上，於非遠征賽事取得多次勝利進化</td>
 </tr>
-<tr style="background:rgba(234,179,8,0.08);">
+<tr data-type="進化" style="background:rgba(234,179,8,0.08);">
 <td><strong style="color:var(--gold-color);">甘え上手 (撒嬌高手)</strong></td>
 <td>協調性 (協調性)</td>
 <td><span class="badge badge-gold">進化</span></td>
@@ -11598,7 +11614,7 @@ li {
 <td>進化</td>
 <td>由「甘えん坊 (撒嬌鬼)」上位進化</td>
 </tr>
-<tr style="background:rgba(59,130,246,0.06);">
+<tr data-type="正面" style="background:rgba(59,130,246,0.06);">
 <td><strong style="color:var(--gold-color);">人懐っこい (親人溫馴)</strong></td>
 <td>協調性 (協調性)</td>
 <td><span class="badge badge-blue">正面</span></td>
@@ -11609,7 +11625,7 @@ li {
 <td>通常</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(239,68,68,0.06);">
+<tr data-type="負面" style="background:rgba(239,68,68,0.06);">
 <td><strong style="color:#f87171;">わがまま (任性自私)</strong></td>
 <td>協調性 (協調性)</td>
 <td><span class="badge badge-pink">負面</span></td>
@@ -11620,7 +11636,7 @@ li {
 <td>通常</td>
 <td>信任 Lv1 以上，執行對應史實調教克服</td>
 </tr>
-<tr style="background:rgba(148,163,184,0.06);">
+<tr data-type="克服" style="background:rgba(148,163,184,0.06);">
 <td><strong>わがまま (克服)</strong></td>
 <td>協調性 (協調性)</td>
 <td><span class="badge badge-silver">克服</span></td>
@@ -11631,7 +11647,7 @@ li {
 <td>克服</td>
 <td>信任 Lv2 以上，在同廄舍中活躍度居於前列進化</td>
 </tr>
-<tr style="background:rgba(234,179,8,0.08);">
+<tr data-type="進化" style="background:rgba(234,179,8,0.08);">
 <td><strong style="color:var(--gold-color);">厩舎のボス (馬房老大)</strong></td>
 <td>協調性 (協調性)</td>
 <td><span class="badge badge-gold">進化</span></td>
@@ -11642,10 +11658,10 @@ li {
 <td>進化</td>
 <td>由「わがまま (克服)」上位進化</td>
 </tr>
-<tr style="background:rgba(168,85,247,0.06);">
+<tr data-type="雙向" style="background:rgba(168,85,247,0.08);">
 <td><strong style="color:#c084fc;">群れの一員 (群體一員)</strong></td>
 <td>協調性 (協調性)</td>
-<td><span class="badge badge-purple">雙向</span></td>
+<td><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td>
 <td>廄舍有「馬房老大」時育成度大幅上升；若無則育成度上升量減少</td>
 <td>同廄舍存在持有「厩舎のボス」之賽馬</td>
 <td>多頭數 (多頭数)</td>
@@ -11654,29 +11670,29 @@ li {
 <td>/</td>
 </tr>
 <!-- 集中力 -->
-<tr style="background:rgba(239,68,68,0.06);">
+<tr data-type="負面" style="background:rgba(239,68,68,0.06);">
 <td><strong style="color:#f87171;">手抜き癖 (偷工偷懶)</strong></td>
 <td>集中力 (集中力)</td>
 <td><span class="badge badge-pink">負面</span></td>
 <td>史實調教成功率下降 5%</td>
 <td>無</td>
 <td>慢步速 (スローペース)</td>
-<td><span class="pill pill-version">1 級</span></td>
+<td><span class="pill pill-safe">1 級</span></td>
 <td>通常</td>
 <td>信任 Lv1 以上，執行史實調教克服</td>
 </tr>
-<tr style="background:rgba(148,163,184,0.06);">
+<tr data-type="克服" style="background:rgba(148,163,184,0.06);">
 <td><strong>手抜き癖 (克服)</strong></td>
 <td>集中力 (集中力)</td>
 <td><span class="badge badge-silver">克服</span></td>
 <td>無負面減益 (史實調教機率正常)</td>
 <td>無</td>
 <td>慢步速 (スローペース)</td>
-<td><span class="pill pill-version">1 級</span></td>
+<td><span class="pill pill-safe">1 級</span></td>
 <td>克服</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(59,130,246,0.06);">
+<tr data-type="正面" style="background:rgba(59,130,246,0.06);">
 <td><strong style="color:var(--gold-color);">努力上手 (勤奮努力)</strong></td>
 <td>集中力 (集中力)</td>
 <td><span class="badge badge-blue">正面</span></td>
@@ -11687,7 +11703,7 @@ li {
 <td>通常</td>
 <td>信任 Lv2 以上，執行上位史實調教 (評級 A) 達成大成功進化</td>
 </tr>
-<tr style="background:rgba(234,179,8,0.08);">
+<tr data-type="進化" style="background:rgba(234,179,8,0.08);">
 <td><strong style="color:var(--gold-color);">秀才肌 (天賦秀才)</strong></td>
 <td>集中力 (集中力)</td>
 <td><span class="badge badge-gold">進化</span></td>
@@ -11698,10 +11714,10 @@ li {
 <td>進化</td>
 <td>由「努力上手 (勤奮努力)」上位進化</td>
 </tr>
-<tr style="background:rgba(168,85,247,0.06);">
+<tr data-type="雙向" style="background:rgba(168,85,247,0.08);">
 <td><strong style="color:#c084fc;">ムラっ気 (情緒起伏)</strong></td>
 <td>集中力 (集中力)</td>
-<td><span class="badge badge-purple">雙向</span></td>
+<td><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td>
 <td>賽事當天鬥志大幅上下波動（若騎師持續策騎則較易提升）</td>
 <td>無</td>
 <td>冷門 (人気薄)</td>
@@ -11709,7 +11725,7 @@ li {
 <td>通常</td>
 <td>信任 Lv1 以上，近走成績穩定（5著以內）獲勝 或 史實調教克服</td>
 </tr>
-<tr style="background:rgba(148,163,184,0.06);">
+<tr data-type="克服" style="background:rgba(148,163,184,0.06);">
 <td><strong>ムラっ気 (克服)</strong></td>
 <td>集中力 (集中力)</td>
 <td><span class="badge badge-silver">克服</span></td>
@@ -11720,7 +11736,7 @@ li {
 <td>克服</td>
 <td>信任 Lv2 以上，近走 3 著以內且高鬥志下獲勝進化</td>
 </tr>
-<tr style="background:rgba(234,179,8,0.08);">
+<tr data-type="進化" style="background:rgba(234,179,8,0.08);">
 <td><strong style="color:var(--gold-color);">気合充分 (鬥志昂揚)</strong></td>
 <td>集中力 (集中力)</td>
 <td><span class="badge badge-gold">進化</span></td>
@@ -11732,7 +11748,7 @@ li {
 <td>由「ムラっ気 (克服)」上位進化</td>
 </tr>
 <!-- 壓力耐性 -->
-<tr style="background:rgba(239,68,68,0.06);">
+<tr data-type="負面" style="background:rgba(239,68,68,0.06);">
 <td><strong style="color:#f87171;">環境変化× (環境不適)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-pink">負面</span></td>
@@ -11743,7 +11759,7 @@ li {
 <td>通常</td>
 <td>信任 Lv1 以上，遠征或初次作賽獲勝 / 史實調教克服</td>
 </tr>
-<tr style="background:rgba(148,163,184,0.06);">
+<tr data-type="克服" style="background:rgba(148,163,184,0.06);">
 <td><strong>環境変化× (克服)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-silver">克服</span></td>
@@ -11754,7 +11770,7 @@ li {
 <td>克服</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(59,130,246,0.06);">
+<tr data-type="正面" style="background:rgba(59,130,246,0.06);">
 <td><strong style="color:var(--gold-color);">環境変化〇 (環境適應)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-blue">正面</span></td>
@@ -11765,7 +11781,7 @@ li {
 <td>通常</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(239,68,68,0.06);">
+<tr data-type="負面" style="background:rgba(239,68,68,0.06);">
 <td><strong style="color:#f87171;">剛腕× (不適剛腕騎手)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-pink">負面</span></td>
@@ -11776,7 +11792,7 @@ li {
 <td>通常</td>
 <td>信任 Lv1 以上，由「剛腕〇」騎手策騎獲勝 / 史實調教克服</td>
 </tr>
-<tr style="background:rgba(148,163,184,0.06);">
+<tr data-type="克服" style="background:rgba(148,163,184,0.06);">
 <td><strong>剛腕× (克服)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-silver">克服</span></td>
@@ -11787,7 +11803,7 @@ li {
 <td>克服</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(59,130,246,0.06);">
+<tr data-type="正面" style="background:rgba(59,130,246,0.06);">
 <td><strong style="color:var(--gold-color);">剛腕〇 (適應剛腕騎手)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-blue">正面</span></td>
@@ -11798,7 +11814,7 @@ li {
 <td>通常</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(239,68,68,0.06);">
+<tr data-type="負面" style="background:rgba(239,68,68,0.06);">
 <td><strong style="color:#f87171;">風車鞭× (恐懼風車鞭)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-pink">負面</span></td>
@@ -11809,7 +11825,7 @@ li {
 <td>通常</td>
 <td>信任 Lv1 以上，由「風車鞭〇」騎手策騎獲勝 / 史實調教克服</td>
 </tr>
-<tr style="background:rgba(148,163,184,0.06);">
+<tr data-type="克服" style="background:rgba(148,163,184,0.06);">
 <td><strong>風車鞭× (克服)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-silver">克服</span></td>
@@ -11820,7 +11836,7 @@ li {
 <td>克服</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(59,130,246,0.06);">
+<tr data-type="正面" style="background:rgba(59,130,246,0.06);">
 <td><strong style="color:var(--gold-color);">風車鞭〇 (適應風車鞭)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-blue">正面</span></td>
@@ -11831,7 +11847,7 @@ li {
 <td>通常</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(59,130,246,0.06);">
+<tr data-type="正面" style="background:rgba(59,130,246,0.06);">
 <td><strong style="color:var(--gold-color);">スパルタ調整向き (魔鬼調整)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-blue">正面</span></td>
@@ -11842,7 +11858,7 @@ li {
 <td>通常</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(59,130,246,0.06);">
+<tr data-type="正面" style="background:rgba(59,130,246,0.06);">
 <td><strong style="color:var(--gold-color);">ソフト調整向き (溫和調整)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-blue">正面</span></td>
@@ -11853,29 +11869,29 @@ li {
 <td>通常</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(239,68,68,0.06);">
+<tr data-type="負面" style="background:rgba(239,68,68,0.06);">
 <td><strong style="color:#f87171;">使い詰め× (連戰不耐)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-pink">負面</span></td>
 <td>賽後疲勞累積速度大幅加快</td>
 <td>賽程表 (Rotation) 間隔顯示為紅色緊湊</td>
 <td>賽事間隔寬鬆 (ゆったり)</td>
-<td><span class="pill pill-version">1 級</span></td>
+<td><span class="pill pill-safe">1 級</span></td>
 <td>通常</td>
 <td>信任 Lv1 以上，在緊湊賽程下獲勝 / 史實調教克服</td>
 </tr>
-<tr style="background:rgba(148,163,184,0.06);">
+<tr data-type="克服" style="background:rgba(148,163,184,0.06);">
 <td><strong>使い詰め× (克服)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-silver">克服</span></td>
 <td>無負面減益 (疲勞正常)</td>
 <td>無</td>
 <td>賽事間隔寬鬆 (ゆったり)</td>
-<td><span class="pill pill-version">1 級</span></td>
+<td><span class="pill pill-safe">1 級</span></td>
 <td>克服</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(59,130,246,0.06);">
+<tr data-type="正面" style="background:rgba(59,130,246,0.06);">
 <td><strong style="color:var(--gold-color);">使い詰め〇 (連戰剛健)</strong></td>
 <td>抗壓 (ストレス耐性)</td>
 <td><span class="badge badge-blue">正面</span></td>
@@ -11887,7 +11903,7 @@ li {
 <td>/</td>
 </tr>
 <!-- 意外性 & 其他 -->
-<tr style="background:rgba(59,130,246,0.06);">
+<tr data-type="正面" style="background:rgba(59,130,246,0.06);">
 <td><strong style="color:var(--gold-color);">いたずら好き (愛惡作劇)</strong></td>
 <td>意外性 (意外性)</td>
 <td><span class="badge badge-blue">正面</span></td>
@@ -11898,10 +11914,10 @@ li {
 <td>通常</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(168,85,247,0.06);">
+<tr data-type="雙向" style="background:rgba(168,85,247,0.08);">
 <td><strong style="color:#c084fc;">新聞を読む馬 (看報紙的馬)</strong></td>
 <td>意外性 (意外性)</td>
-<td><span class="badge badge-purple">雙向</span></td>
+<td><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td>
 <td>為冷門馬時能力超水準發揮；但成為 1 番人氣時能力反而下降</td>
 <td>處於非熱門 (人気薄)</td>
 <td>本命 (本命)</td>
@@ -11909,7 +11925,7 @@ li {
 <td>通常</td>
 <td>/</td>
 </tr>
-<tr style="background:rgba(239,68,68,0.06);">
+<tr data-type="負面" style="background:rgba(239,68,68,0.06);">
 <td><strong style="color:#f87171;">スランプ (低潮低迷)</strong></td>
 <td>其他 (その他)</td>
 <td><span class="badge badge-pink">負面</span></td>
@@ -11920,7 +11936,7 @@ li {
 <td>通常</td>
 <td>信任 Lv1 以上，前 2 戰跑入三甲 (馬券圈) 獲勝 / 史實調教克服</td>
 </tr>
-<tr style="background:rgba(148,163,184,0.06);">
+<tr data-type="克服" style="background:rgba(148,163,184,0.06);">
 <td><strong>スランプ (克服)</strong></td>
 <td>其他 (その他)</td>
 <td><span class="badge badge-silver">克服</span></td>
@@ -11931,7 +11947,7 @@ li {
 <td>克服</td>
 <td>信任 Lv2 以上，於狀態極佳下連勝進化</td>
 </tr>
-<tr style="background:rgba(234,179,8,0.08);">
+<tr data-type="進化" style="background:rgba(234,179,8,0.08);">
 <td><strong style="color:var(--gold-color);">絶好調 (絕佳狀態)</strong></td>
 <td>其他 (その他)</td>
 <td><span class="badge badge-gold">進化</span></td>
@@ -11942,43 +11958,7 @@ li {
 <td>進化</td>
 <td>由「スランプ (克服)」上位進化</td>
 </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">積極果敢 (積極果敢)</td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="pill pill-yellow">進化</span></td><td>獲得 1 番人氣時採取積極跑法更易發揮實力。比賽時勝負根性上升。</td><td>由「負けず嫌い」上位進化</td><td>逃げ / 先行 (先行逃げ)</td><td style="white-space:nowrap;">4 級</td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，於 1 番人氣下以領先跑法多次勝出</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">天真爛漫 (天真爛漫)</td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="pill pill-yellow">進化</span></td><td>服從調教指示且能高效率訓練，育成度上升速度顯著加快。</td><td>由「甘えん坊」上位進化</td><td>日常調教訓練</td><td style="white-space:nowrap;">4 級</td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，多次史實調教大成功</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">前向き (積極進取)</td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="pill pill-yellow">進化</span></td><td>奔馳慾望強烈，在短距離賽事與休養復出戰更能超額發揮實力。</td><td>由「引っ込み思案」克服後上位進化</td><td>短距離 / 休み明け (久休復出)</td><td style="white-space:nowrap;">4 級</td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，短途休養復出戰勝出</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">瞬間の反応 (瞬間反應)</td><td style="white-space:nowrap;">集中 (集中力)</td><td style="white-space:nowrap;"><span class="pill pill-yellow">進化</span></td><td>搭檔「剛腕○」或「風車鞭○」騎手時，最後直線末腳爆發力大增。比賽時瞬發力上升。</td><td>由「詰めが甘い」克服後上位進化</td><td>差し / 追込 (直線強襲)</td><td style="white-space:nowrap;">4 級</td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，直路後追勝出</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">ズブい (遲鈍慢熱)</td><td style="white-space:nowrap;">集中 (集中力)</td><td style="white-space:nowrap;"><span class="pill pill-red">負面</span></td><td>引擎起步加速極為緩慢，短距離與短直道賽道嚴重不利；需搭配推騎型騎手。</td><td>幼駒期隨機或敗戰習得</td><td>長距離 / 長直線 (長距離追込)</td><td style="white-space:nowrap;">2 級</td><td style="white-space:nowrap;">通常</td><td>實行「坂路調教」等克服史實調教</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">噛みつき癖 (撕咬惡習)</td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="pill pill-red">負面</span></td><td>多頭數賽事進入內中檔位時容易因撕咬惡習而失速；可配戴眼罩 (Blinker) 抑制。</td><td>幼駒期隨機或內側擁擠敗戰</td><td>外枠 (外側檔位)</td><td style="white-space:nowrap;">2 級</td><td style="white-space:nowrap;">通常</td><td>配戴眼罩或透過馬術調教克服</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">馬込み× (懼怕馬群)</td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="pill pill-red">負面</span></td><td>多頭數內側若被包夾在馬群內部，能力發揮將嚴重受阻。</td><td>多頭數內側包夾敗戰習得</td><td>外枠 / 大外一気</td><td style="white-space:nowrap;">2 級</td><td style="white-space:nowrap;">通常</td><td>實行「入廄巡禮」或「障礙調教」克服</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">馬込み○ (適應馬群)</td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="pill pill-green">正面</span></td><td>多頭數內側被包夾在馬群中也能冷靜發揮實力。</td><td>由「馬込み×」克服後習得</td><td>馬群包夾 (馬群の内)</td><td style="white-space:nowrap;">3 級</td><td style="white-space:nowrap;">通常</td><td>於多頭數內檔勝出</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">馬群割り (突破馬群)</td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="pill pill-yellow">進化</span></td><td>多頭數內側被深陷馬群包圍時能激發出更強戰力。比賽時瞬發力大幅上升！</td><td>由「馬込み○」上位進化</td><td>內欄突圍 (イン突き)</td><td style="white-space:nowrap;">5 級</td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，深陷馬群內欄突圍連勝</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">自由気まま (悠然自得)</td><td style="white-space:nowrap;">意外性 (意外性)</td><td style="white-space:nowrap;"><span class="pill pill-yellow">進化</span></td><td>在廄舍自由自在生活，調子極易上升且競賽壽命不易損耗。</td><td>由「いたずら好き」上位進化</td><td>自由奔馳 (マイペース)</td><td style="white-space:nowrap;">4 級</td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，長途或放牧復出勝出</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">臥薪嘗胆 (臥薪嘗膽)</td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="pill pill-yellow">進化</span></td><td>具備極強忍耐力，調子好時實力大增，調子不好時亦幾乎不受負面影響。</td><td>由「スランプ (低潮)」克服後上位進化</td><td>逆境奮戰</td><td style="white-space:nowrap;">5 級</td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，克服低潮後於 G1 大賽勝出</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">荒ぶる鏑矢 (荒野之箭)</td><td style="white-space:nowrap;">作戰展開 (展開)</td><td style="white-space:nowrap;"><span class="pill pill-green">正面</span></td><td>在領放馬較少的賽事中，採用「大逃/逃げ/積極策/前付け」於勝負處可發動強烈二段加速！</td><td>領先單騎逃馬連勝激發 / 史實固有</td><td>大逃げ / 逃げ (單騎領放)</td><td style="white-space:nowrap;">5 級</td><td style="white-space:nowrap;">固有</td><td>大逃連勝或特定名駒固有</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">稀代の気分屋 (絕代隨性)</td><td style="white-space:nowrap;">意外性 (意外性)</td><td style="white-space:nowrap;"><span class="pill pill-purple">雙向</span></td><td>出賽當天氣合狀態大幅起伏波動（由同一專屬主戰騎手連續策騎時氣合更容易上升）。</td><td>由「ムラっ気」進化或特定史實馬固有</td><td>主戰騎手專屬固定策騎</td><td style="white-space:nowrap;">4 級</td><td style="white-space:nowrap;">進化</td><td>由固定主戰騎手策騎連勝</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">プレイボーイ (花花公子)</td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="pill pill-purple">雙向</span></td><td>賽事中有雌馬同場時容易分心，但在【SP 雙馬史實調教】中若對手為雌馬，調教效果大幅暴增！</td><td>雄馬隨機觸發或與雌馬合練習得</td><td>SP 雙馬雌馬合練</td><td style="white-space:nowrap;">4 級</td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">プレイガール (萬人迷)</td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="pill pill-purple">雙向</span></td><td>賽事中有雄馬同場時容易分心，但在【SP 雙馬史實調教】中若對手為雄馬，調教效果大幅暴增！</td><td>雌馬隨機觸發或與雄馬合練習得</td><td>SP 雙馬雄馬合練</td><td style="white-space:nowrap;">4 級</td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">食いしん坊 (大胃王)</td><td style="white-space:nowrap;">健康體力 (體力)</td><td style="white-space:nowrap;"><span class="pill pill-purple">雙向</span></td><td>賽後進食量大，體力消耗少且疲勞恢復極快；但在放牧休養期間容易增重發福。</td><td>幼駒期隨機或大胃王事件</td><td>密集出賽 (連戦)</td><td style="white-space:nowrap;">4 級</td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">一心不乱 (專心致志)</td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="pill pill-green">正面</span></td><td>採取前領戰術時容易搶口，但在比賽中極具超常爆發潛力。</td><td>由「ムラっ気」克服後進化</td><td>逃げ / 先行 (前領跑法)</td><td style="white-space:nowrap;">4 級</td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，前領連勝</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">気ままフライト (自在疾馳)</td><td style="white-space:nowrap;">作戰展開 (展開)</td><td style="white-space:nowrap;"><span class="pill pill-green">正面</span></td><td>當同場採取相同跑法的對手很少時，沿途能無拘無束自在奔馳並完全發揮實力。</td><td>同跑法對手少時勝出</td><td>獨走跑法 (少頭數同作戰)</td><td style="white-space:nowrap;">4 級</td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">親分肌 (大哥風範)</td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="pill pill-yellow">進化</span></td><td>在【SP 雙馬史實調教】中，以領頭大哥姿態帶領搭檔賽駒，大幅提升調教大成功機率！</td><td>多次作為領頭馬進行 SP 雙馬調教</td><td>SP 雙馬領頭合練</td><td style="white-space:nowrap;">5 級</td><td style="white-space:nowrap;">進化</td><td>SP 雙馬合練大成功多次</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">泰然自若 (泰然自若)</td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="pill pill-yellow">進化</span></td><td>從賽前到賽後全程平靜沉著，賽後累積疲勞大幅減輕。</td><td>由「臆病」克服後進化</td><td>平穩大賽 (重賞平靜)</td><td style="white-space:nowrap;">5 級</td><td style="white-space:nowrap;">進化</td><td>克服膽小後於 G1 勝出</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">制御不能 (無法掌控)</td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="pill pill-purple">雙向</span></td><td>令廄舍人員極度頭疼的怪脾氣，在廄舍內的調子與氣合容易劇烈震盪，但實戰爆發力驚人。</td><td>特定烈馬史實固有或隨機觸發</td><td>滿氣合出賽</td><td style="white-space:nowrap;">4 級</td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">超わがままっ子 (超級任性)</td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="pill pill-purple">雙向</span></td><td>心情不好時完全不願動彈使史實調教效果下降，但實戰賽事中有極高爆發力。</td><td>由「わがまま」上位進化</td><td>好調實戰 (絶好調出走)</td><td style="white-space:nowrap;">5 級</td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上連勝</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">暴れん坊 (暴躁狂)</td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="pill pill-purple">雙向</span></td><td>賽事中極容易搶口暴走，但若調子與氣合蓄滿時實力將呈毀滅性極限爆發！</td><td>由「反抗的」上位進化</td><td>滿氣合出賽 (気合MAX)</td><td style="white-space:nowrap;">5 級</td><td style="white-space:nowrap;">進化</td><td>滿氣合下連勝</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">奇想天外 (奇想天外)</td><td style="white-space:nowrap;">意外性 (意外性)</td><td style="white-space:nowrap;"><span class="pill pill-green">正面</span></td><td>氣合低時容易漏閘或搶口，但若氣合維持高點則實力超群絕倫。</td><td>由「いたずら好き」上位進化</td><td>滿氣合出賽</td><td style="white-space:nowrap;">5 級</td><td style="white-space:nowrap;">進化</td><td>意外性賽事勝出</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">超実戦型 (超實戰型)</td><td style="white-space:nowrap;">競走適性 (適性)</td><td style="white-space:nowrap;"><span class="pill pill-purple">雙向</span></td><td>平時調教訓練效果略有扣減，但在實戰賽場上能發揮出遠超平時的超強實力。</td><td>連勝激發或特定史實固有</td><td>實戰王道 (本番勝負)</td><td style="white-space:nowrap;">5 級</td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">猪突猛進 (勇往直前)</td><td style="white-space:nowrap;">作戰展開 (展開)</td><td style="white-space:nowrap;"><span class="pill pill-purple">雙向</span></td><td>一心一意只盯著最前領先位置，比賽中容易搶口，但史實調教的成長效果大幅提升。</td><td>逃馬連勝激發</td><td>大逃げ / 逃げ (先頭突進)</td><td style="white-space:nowrap;">4 級</td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;">悠々自適 (悠閒適意)</td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="pill pill-yellow">進化</span></td><td>面對海外遠征等環境變化反而視為出門散心，發揮出比平時更強的實力！</td><td>由「環境変化✕」克服後上位進化</td><td>海外遠征 (遠征)</td><td style="white-space:nowrap;">5 級</td><td style="white-space:nowrap;">進化</td><td>海外遠征 G1 連勝</td></tr></tbody>
+<tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">積極果敢 (積極果敢)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>獲得 1 番人氣時採取積極跑法更易發揮實力。比賽時勝負根性上升。</td><td>由「負けず嫌い」上位進化</td><td>逃げ / 先行 (先行逃げ)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，於 1 番人氣下以領先跑法多次勝出</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">天真爛漫 (天真爛漫)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>服從調教指示且能高效率訓練，育成度上升速度顯著加快。</td><td>由「甘えん坊」上位進化</td><td>日常調教訓練</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，多次史實調教大成功</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">前向き (積極進取)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>奔馳慾望強烈，在短距離賽事與休養復出戰更能超額發揮實力。</td><td>由「引っ込み思案」克服後上位進化</td><td>短距離 / 休み明け (久休復出)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，短途休養復出戰勝出</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">瞬間の反応 (瞬間反應)</strong></td><td style="white-space:nowrap;">集中 (集中力)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>搭檔「剛腕○」或「風車鞭○」騎手時，最後直線末腳爆發力大增。比賽時瞬發力上升。</td><td>由「詰めが甘い」克服後上位進化</td><td>差し / 追込 (直線強襲)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，直路後追勝出</td></tr><tr data-type="負面" style="background:rgba(239,68,68,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#f87171;">ズブい (遲鈍慢熱)</strong></td><td style="white-space:nowrap;">集中 (集中力)</td><td style="white-space:nowrap;"><span class="badge badge-pink">負面</span></td><td>引擎起步加速極為緩慢，短距離與短直道賽道嚴重不利；需搭配推騎型騎手。</td><td>幼駒期隨機或敗戰習得</td><td>長距離 / 長直線 (長距離追込)</td><td style="white-space:nowrap;"><span class="pill pill-safe">2 級</span></td><td style="white-space:nowrap;">通常</td><td>實行「坂路調教」等克服史實調教</td></tr><tr data-type="負面" style="background:rgba(239,68,68,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#f87171;">噛みつき癖 (撕咬惡習)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-pink">負面</span></td><td>多頭數賽事進入內中檔位時容易因撕咬惡習而失速；可配戴眼罩 (Blinker) 抑制。</td><td>幼駒期隨機或內側擁擠敗戰</td><td>外枠 (外側檔位)</td><td style="white-space:nowrap;"><span class="pill pill-safe">2 級</span></td><td style="white-space:nowrap;">通常</td><td>配戴眼罩或透過馬術調教克服</td></tr><tr data-type="負面" style="background:rgba(239,68,68,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#f87171;">馬込み× (懼怕馬群)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-pink">負面</span></td><td>多頭數內側若被包夾在馬群內部，能力發揮將嚴重受阻。</td><td>多頭數內側包夾敗戰習得</td><td>外枠 / 大外一気</td><td style="white-space:nowrap;"><span class="pill pill-safe">2 級</span></td><td style="white-space:nowrap;">通常</td><td>實行「入廄巡禮」或「障礙調教」克服</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">馬込み○ (適應馬群)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>多頭數內側被包夾在馬群中也能冷靜發揮實力。</td><td>由「馬込み×」克服後習得</td><td>馬群包夾 (馬群の内)</td><td style="white-space:nowrap;"><span class="pill pill-safe">3 級</span></td><td style="white-space:nowrap;">通常</td><td>於多頭數內檔勝出</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">馬群割り (突破馬群)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>多頭數內側被深陷馬群包圍時能激發出更強戰力。比賽時瞬發力大幅上升！</td><td>由「馬込み○」上位進化</td><td>內欄突圍 (イン突き)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，深陷馬群內欄突圍連勝</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">自由気まま (悠然自得)</strong></td><td style="white-space:nowrap;">意外性 (意外性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>在廄舍自由自在生活，調子極易上升且競賽壽命不易損耗。</td><td>由「いたずら好き」上位進化</td><td>自由奔馳 (マイペース)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，長途或放牧復出勝出</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">臥薪嘗胆 (臥薪嘗膽)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>具備極強忍耐力，調子好時實力大增，調子不好時亦幾乎不受負面影響。</td><td>由「スランプ (低潮)」克服後上位進化</td><td>逆境奮戰</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，克服低潮後於 G1 大賽勝出</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">荒ぶる鏑矢 (荒野之箭)</strong></td><td style="white-space:nowrap;">作戰展開 (展開)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>在領放馬較少的賽事中，採用「大逃/逃げ/積極策/前付け」於勝負處可發動強烈二段加速！</td><td>領先單騎逃馬連勝激發 / 史實固有</td><td>大逃げ / 逃げ (單騎領放)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">固有</td><td>大逃連勝或特定名駒固有</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">稀代の気分屋 (絕代隨性)</strong></td><td style="white-space:nowrap;">意外性 (意外性)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>出賽當天氣合狀態大幅起伏波動（由同一專屬主戰騎手連續策騎時氣合更容易上升）。</td><td>由「ムラっ気」進化或特定史實馬固有</td><td>主戰騎手專屬固定策騎</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>由固定主戰騎手策騎連勝</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">プレイボーイ (花花公子)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>賽事中有雌馬同場時容易分心，但在【SP 雙馬史實調教】中若對手為雌馬，調教效果大幅暴增！</td><td>雄馬隨機觸發或與雌馬合練習得</td><td>SP 雙馬雌馬合練</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">プレイガール (萬人迷)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>賽事中有雄馬同場時容易分心，但在【SP 雙馬史實調教】中若對手為雄馬，調教效果大幅暴增！</td><td>雌馬隨機觸發或與雄馬合練習得</td><td>SP 雙馬雄馬合練</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">食いしん坊 (大胃王)</strong></td><td style="white-space:nowrap;">健康體力 (體力)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>賽後進食量大，體力消耗少且疲勞恢復極快；但在放牧休養期間容易增重發福。</td><td>幼駒期隨機或大胃王事件</td><td>密集出賽 (連戦)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">一心不乱 (專心致志)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>採取前領戰術時容易搶口，但在比賽中極具超常爆發潛力。</td><td>由「ムラっ気」克服後進化</td><td>逃げ / 先行 (前領跑法)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上，前領連勝</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">気ままフライト (自在疾馳)</strong></td><td style="white-space:nowrap;">作戰展開 (展開)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>當同場採取相同跑法的對手很少時，沿途能無拘無束自在奔馳並完全發揮實力。</td><td>同跑法對手少時勝出</td><td>獨走跑法 (少頭數同作戰)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">親分肌 (大哥風範)</strong></td><td style="white-space:nowrap;">協調 (協調性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>在【SP 雙馬史實調教】中，以領頭大哥姿態帶領搭檔賽駒，大幅提升調教大成功機率！</td><td>多次作為領頭馬進行 SP 雙馬調教</td><td>SP 雙馬領頭合練</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>SP 雙馬合練大成功多次</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">泰然自若 (泰然自若)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>從賽前到賽後全程平靜沉著，賽後累積疲勞大幅減輕。</td><td>由「臆病」克服後進化</td><td>平穩大賽 (重賞平靜)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>克服膽小後於 G1 勝出</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">制御不能 (無法掌控)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>令廄舍人員極度頭疼的怪脾氣，在廄舍內的調子與氣合容易劇烈震盪，但實戰爆發力驚人。</td><td>特定烈馬史實固有或隨機觸發</td><td>滿氣合出賽</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">超わがままっ子 (超級任性)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>心情不好時完全不願動彈使史實調教效果下降，但實戰賽事中有極高爆發力。</td><td>由「わがまま」上位進化</td><td>好調實戰 (絶好調出走)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>信任 Lv2 以上連勝</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">暴れん坊 (暴躁狂)</strong></td><td style="white-space:nowrap;">精神 (精神力)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>賽事中極容易搶口暴走，但若調子與氣合蓄滿時實力將呈毀滅性極限爆發！</td><td>由「反抗的」上位進化</td><td>滿氣合出賽 (気合MAX)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>滿氣合下連勝</td></tr><tr data-type="正面" style="background:rgba(59,130,246,0.06);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">奇想天外 (奇想天外)</strong></td><td style="white-space:nowrap;">意外性 (意外性)</td><td style="white-space:nowrap;"><span class="badge badge-blue">正面</span></td><td>氣合低時容易漏閘或搶口，但若氣合維持高點則實力超群絕倫。</td><td>由「いたずら好き」上位進化</td><td>滿氣合出賽</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>意外性賽事勝出</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">超実戦型 (超實戰型)</strong></td><td style="white-space:nowrap;">競走適性 (適性)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>平時調教訓練效果略有扣減，但在實戰賽場上能發揮出遠超平時的超強實力。</td><td>連勝激發或特定史實固有</td><td>實戰王道 (本番勝負)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="雙向" style="background:rgba(168,85,247,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:#c084fc;">猪突猛進 (勇往直前)</strong></td><td style="white-space:nowrap;">作戰展開 (展開)</td><td style="white-space:nowrap;"><span class="badge badge-rainbow" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">雙向</span></td><td>一心一意只盯著最前領先位置，比賽中容易搶口，但史實調教的成長效果大幅提升。</td><td>逃馬連勝激發</td><td>大逃げ / 逃げ (先頭突進)</td><td style="white-space:nowrap;"><span class="pill pill-power">4 級</span></td><td style="white-space:nowrap;">通常</td><td>/</td></tr><tr data-type="進化" style="background:rgba(234,179,8,0.08);"><td style="font-weight:bold; color:var(--accent-gold); white-space:nowrap;"><strong style="color:var(--gold-color);">悠々自適 (悠閒適意)</strong></td><td style="white-space:nowrap;">抗壓 (ストレス耐性)</td><td style="white-space:nowrap;"><span class="badge badge-gold">進化</span></td><td>面對海外遠征等環境變化反而視為出門散心，發揮出比平時更強的實力！</td><td>由「環境変化✕」克服後上位進化</td><td>海外遠征 (遠征)</td><td style="white-space:nowrap;"><span class="pill pill-power">5 級</span></td><td style="white-space:nowrap;">進化</td><td>海外遠征 G1 連勝</td></tr></tbody>
 </table>
 </div>
 </div>
@@ -35040,5 +35020,65 @@ function switchLecTab(tabIdx) {
 </div>
 </div>
 </div>
-</body>
+<script>
+// ウマソナ即時篩選與搜尋引擎
+let currentUmasonaFilter = 'ALL';
+
+function filterUmasona(type) {
+    currentUmasonaFilter = type;
+    document.querySelectorAll('.umasona-filter-panel .filter-btn').forEach(btn => btn.classList.remove('active'));
+    
+    if (type === 'ALL') {
+        const btn = document.getElementById('btnUmasonaAll');
+        if (btn) btn.classList.add('active');
+    } else if (type === '正面') {
+        const btn = document.getElementById('btnUmasonaPlus');
+        if (btn) btn.classList.add('active');
+    } else if (type === '進化') {
+        const btn = document.getElementById('btnUmasonaEvo');
+        if (btn) btn.classList.add('active');
+    } else if (type === '負面') {
+        const btn = document.getElementById('btnUmasonaMinus');
+        if (btn) btn.classList.add('active');
+    } else if (type === '克服') {
+        const btn = document.getElementById('btnUmasonaOvercome');
+        if (btn) btn.classList.add('active');
+    } else if (type === '雙向') {
+        const btn = document.getElementById('btnUmasonaDouble');
+        if (btn) btn.classList.add('active');
+    }
+    applyUmasonaCombinedFilter();
+}
+
+function filterUmasonaSearch() {
+    applyUmasonaCombinedFilter();
+}
+
+function applyUmasonaCombinedFilter() {
+    const searchVal = (document.getElementById('umasonaSearchInput')?.value || '').toLowerCase().trim();
+    const table = document.querySelector('#sec-umasona table');
+    if (!table) return;
+    
+    const rows = table.querySelectorAll('tbody tr, tr');
+    let visibleCount = 0;
+    
+    rows.forEach((row, idx) => {
+        // Skip header row
+        if (row.querySelector('th')) return;
+        
+        const rowType = row.getAttribute('data-type') || '';
+        const rowText = row.textContent.toLowerCase();
+        
+        const matchesType = (currentUmasonaFilter === 'ALL') || (rowType === currentUmasonaFilter);
+        const matchesSearch = !searchVal || rowText.includes(searchVal);
+        
+        if (matchesType && matchesSearch) {
+            row.style.display = '';
+            visibleCount++;
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+</script></body>
 </html>
