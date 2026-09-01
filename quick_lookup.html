@@ -1746,7 +1746,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.77</span>
+<span class="version-badge">v02.78</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -29258,7 +29258,7 @@ function filterTab5Racecourses() {
 </div>
 <div class="chapter-search-box">
 <i class="fa-solid fa-magnifying-glass"></i>
-<input id="chapterFilterInput" oninput="filterChapterList()" placeholder="搜尋章節關鍵字 (如: 配合, 評語, 三冠, 調教, 設施, 繁殖, 引退)..." type="text"/>
+<input id="chapterFilterInput" oninput="filterChapterList()" placeholder="🔍 全局內文檢索：輸入任何關鍵字 (如: 爆發力, 評語, 三冠, 史實調教, 繁育, 限界突破)..." type="text"/>
 </div>
 <div class="chapter-list-container" id="chapterListContainer">
 
@@ -29846,14 +29846,33 @@ function switchLecTab(tabIdx) {
         }
 
         function filterChapterList() {
-            const query = (document.getElementById("chapterFilterInput") ? document.getElementById("chapterFilterInput").value : "").trim().toLowerCase();
+            const inputEl = document.getElementById("chapterFilterInput");
+            const query = (inputEl ? inputEl.value : "").trim().toLowerCase();
             const groups = document.querySelectorAll(".chapter-pillar-group");
+            
             groups.forEach(group => {
                 let anyVisible = false;
                 const btns = group.querySelectorAll(".chapter-jump-btn");
                 btns.forEach(btn => {
-                    const text = btn.innerText.toLowerCase();
-                    if (!query || text.includes(query)) {
+                    const titleText = btn.innerText.toLowerCase();
+                    let match = !query || titleText.includes(query);
+                    
+                    if (!match && query) {
+                        // 全局內文全文檢索 (Full-text Section Body Search)
+                        const onclickAttr = btn.getAttribute("onclick") || "";
+                        const secMatch = onclickAttr.match(/jumpToChapter\(['"][^'"]+['"]\s*,\s*['"]([^'"]+)['"]\)/);
+                        if (secMatch && secMatch[1]) {
+                            const sectionEl = document.getElementById(secMatch[1]);
+                            if (sectionEl) {
+                                const bodyText = sectionEl.innerText.toLowerCase();
+                                if (bodyText.includes(query)) {
+                                    match = true;
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (match) {
                         btn.style.display = "flex";
                         anyVisible = true;
                     } else {
