@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.04"></script>
-<script src="core_guides_data.js?v=v03.04"></script>
-<script src="yearly_recs_db.js?v=v03.04"></script>
-<script src="horse_subtopics_data.js?v=v03.04"></script>
+<script src="master_lookup_db.js?v=v03.05"></script>
+<script src="core_guides_data.js?v=v03.05"></script>
+<script src="yearly_recs_db.js?v=v03.05"></script>
+<script src="horse_subtopics_data.js?v=v03.05"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1761,7 +1761,7 @@ li {
 </style>
 
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.04) */
+/* Unified Amulet & Badge Tokens (v03.05) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -1911,11 +1911,39 @@ li {
 }
 </style>
 
+
+<style id="dark-calc-select-style">
+/* 下拉選單與選單選項暗黑科技風優化，徹底消除白底死角 */
+.calc-select {
+    width: 100% !important;
+    padding: 6px 10px !important;
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(56, 189, 248, 0.3) !important;
+    border-radius: 6px !important;
+    font-size: 0.82rem !important;
+    outline: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.calc-select:hover, .calc-select:focus {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.3) !important;
+}
+
+.calc-select option {
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    padding: 8px 10px !important;
+}
+</style>
+
 </head>
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.04</span>
+<span class="version-badge">v03.05</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -30034,7 +30062,7 @@ function filterTab5Racecourses() {
         <div style="background:rgba(30,41,59,0.5); border:1px solid var(--border-color); border-radius:12px; padding:16px;">
           
           <!-- Tab 1: 0歲期 -->
-          <div id="tab-calc-0yo-p" class="foal-calc-tab-content-p">
+          <div id="tab-calc-0yo-p" class="foal-calc-tab-content">
             <h4 style="color:var(--gold-color); font-size:0.92rem; margin-bottom:10px;"><i class="fa-solid fa-users"></i> 0 歲 8 月 人物印記 (秘書/相馬眼)</h4>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.8rem; margin-bottom:12px;">
               <div>
@@ -30069,7 +30097,7 @@ function filterTab5Racecourses() {
           </div>
 
           <!-- Tab 2: 1歲期 -->
-          <div id="tab-calc-1yo-p" class="foal-calc-tab-content-p" style="display:none;">
+          <div id="tab-calc-1yo-p" class="foal-calc-tab-content" style="display:none;">
             <h4 style="color:var(--gold-color); font-size:0.92rem; margin-bottom:10px;"><i class="fa-solid fa-horse-head"></i> 1 歲 評語觀察 (體型/步態/成長度)</h4>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.8rem; margin-bottom:10px;">
               <div>
@@ -30092,7 +30120,7 @@ function filterTab5Racecourses() {
           </div>
 
           <!-- Tab 3: 2歲期 -->
-          <div id="tab-calc-2yo-p" class="foal-calc-tab-content-p" style="display:none;">
+          <div id="tab-calc-2yo-p" class="foal-calc-tab-content" style="display:none;">
             <h4 style="color:var(--gold-color); font-size:0.92rem; margin-bottom:10px;"><i class="fa-solid fa-gauge-high"></i> 2 歲 核心速度 (SP) 評語</h4>
             <div style="font-size:0.8rem; margin-bottom:10px;">
               <label style="color:var(--text-muted);">2 歲 1~5 月 速度感評語:</label>
@@ -30112,7 +30140,7 @@ function filterTab5Racecourses() {
           </div>
 
           <!-- Tab 4: 特殊事件 -->
-          <div id="tab-calc-events-p" class="foal-calc-tab-content-p" style="display:none;">
+          <div id="tab-calc-events-p" class="foal-calc-tab-content" style="display:none;">
             <h4 style="color:var(--gold-color); font-size:0.92rem; margin-bottom:10px;"><i class="fa-solid fa-bolt"></i> 24 章 9 大特殊出生與成長事件</h4>
             <div style="font-size:0.82rem; line-height:1.8;">
               <label style="color:#4ade80;"><input type="checkbox" id="chk_fence_jump_p" onchange="calculateFoalPotentialP()"> ⚡ 柵越え (越欄事件 - 直升 S 級大物)</label><br>
@@ -31795,12 +31823,27 @@ function closeFoalCalculatorModal() {
 
 
 function switchFoalCalcTab(tabId, btn) {
-    document.querySelectorAll('.foal-calc-tab-btn').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
+    if (!btn) return;
+    const parent = btn.closest('#foalCalculatorModal') || btn.closest('#sec-foal-calc-panel') || document;
     
-    document.querySelectorAll('.foal-calc-tab-content').forEach(c => c.style.display = 'none');
-    const targetTab = document.getElementById(tabId);
-    if (targetTab) targetTab.style.display = 'block';
+    parent.querySelectorAll('.foal-calc-tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    parent.querySelectorAll('.foal-calc-tab-content').forEach(c => c.style.display = 'none');
+    
+    // 尋找對應的 tab id
+    let target = parent.querySelector('#' + tabId);
+    if (!target) {
+        // 如果傳入的是原 id，嘗試在面板或 Modal 尋找對應索引
+        const idx = Array.from(parent.querySelectorAll('.foal-calc-tab-btn')).indexOf(btn);
+        const contents = parent.querySelectorAll('.foal-calc-tab-content');
+        if (idx !== -1 && contents[idx]) {
+            target = contents[idx];
+        }
+    }
+    if (target) {
+        target.style.display = 'block';
+    }
 }
 
 
