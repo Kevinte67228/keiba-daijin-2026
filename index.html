@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.00"></script>
-<script src="core_guides_data.js?v=v03.00"></script>
-<script src="yearly_recs_db.js?v=v03.00"></script>
-<script src="horse_subtopics_data.js?v=v03.00"></script>
+<script src="master_lookup_db.js?v=v03.01"></script>
+<script src="core_guides_data.js?v=v03.01"></script>
+<script src="yearly_recs_db.js?v=v03.01"></script>
+<script src="horse_subtopics_data.js?v=v03.01"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1761,7 +1761,7 @@ li {
 </style>
 
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.00) */
+/* Unified Amulet & Badge Tokens (v03.01) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -1915,7 +1915,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.00</span>
+<span class="version-badge">v03.01</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -1966,6 +1966,12 @@ li {
 <span class="tab-icon">📊</span>
 <span class="tab-text" style="color:#34d399; font-weight:bold;">比賽戰績儀</span>
 </button>
+
+<button class="nav-tab-btn" onclick="openFoalCalculatorModal()" style="background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(56,189,248,0.2)); border: 1px solid rgba(168,85,247,0.5);">
+<span class="tab-icon">🧮</span>
+<span class="tab-text" style="color:#c084fc; font-weight:bold;">幼駒核心能力評語計算器</span>
+</button>
+
 </div>
 </div>
 <!-- 7 大專題 Pillar 內容區 -->
@@ -31606,6 +31612,88 @@ function filterFoalAge(ageKey, btn) {
     }
 }
 
+
+// 🧮 幼駒核心能力評語計算器 控制腳本
+function openFoalCalculatorModal() {
+    const el = document.getElementById('foalCalculatorModal');
+    if (el) {
+        el.style.display = 'block';
+        calculateFoalPotential();
+    }
+}
+
+function closeFoalCalculatorModal() {
+    const el = document.getElementById('foalCalculatorModal');
+    if (el) el.style.display = 'none';
+}
+
+function switchFoalCalcTab(tabId, btn) {
+    document.querySelectorAll('.foal-calc-tab-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    
+    document.querySelectorAll('.foal-calc-tab-content').forEach(c => c.style.display = 'none');
+    const targetTab = document.getElementById(tabId);
+    if (targetTab) targetTab.style.display = 'block';
+}
+
+function calculateFoalPotential() {
+    const mika = parseInt(document.getElementById('calc_mika')?.value || 6);
+    const kappa = parseInt(document.getElementById('calc_kappa')?.value || 6);
+    const birth = parseInt(document.getElementById('calc_birth')?.value || 10);
+    const growth = parseInt(document.getElementById('calc_growth1')?.value || 6);
+    const size = parseInt(document.getElementById('calc_size')?.value || 6);
+    const baseSp = parseInt(document.getElementById('calc_sp_comment')?.value || 72);
+    
+    const isFenceJump = document.getElementById('chk_fence_jump')?.checked;
+    const isFenceBreak = document.getElementById('chk_fence_break')?.checked;
+    const isChunrai = document.getElementById('chk_chunrai')?.checked;
+    const isTwins = document.getElementById('chk_twins')?.checked;
+    const isLegProb = document.getElementById('chk_leg_problem')?.checked;
+    const isTemperWild = document.getElementById('chk_temper_wild')?.checked;
+    
+    let totalScore = mika + kappa + birth + growth + size;
+    let finalSp = baseSp;
+    
+    if (isFenceJump) { totalScore += 25; finalSp += 4; }
+    if (isFenceBreak) { totalScore += 15; }
+    if (isChunrai) { totalScore += 20; finalSp += 3; }
+    if (isTwins) { totalScore -= 15; finalSp -= 5; }
+    
+    const badgeEl = document.getElementById('res_rank_badge');
+    const spEl = document.getElementById('res_sp_val');
+    const adviceEl = document.getElementById('res_ai_advice');
+    
+    let rankText = 'A 級 (一流名駒)';
+    let badgeClass = 'pill-safe';
+    
+    if (isFenceJump || isChunrai || totalScore >= 75) {
+        rankText = 'S+ 級 (越欄怪物駒認證)';
+        badgeClass = 'badge-rainbow';
+    } else if (totalScore >= 55 || finalSp >= 72) {
+        rankText = 'S 級 (超大物名駒)';
+        badgeClass = 'badge-gold';
+    } else if (totalScore >= 35) {
+        rankText = 'A 級 (一流競走馬)';
+        badgeClass = 'pill-safe';
+    } else {
+        rankText = 'B 級 (普通合格)';
+        badgeClass = 'pill-version';
+    }
+    
+    if (badgeEl) badgeEl.innerHTML = `<span class="${badgeClass}">${rankText}</span> (總權重分: ${totalScore}分)`;
+    if (spEl) spEl.textContent = `${(finalSp - 1.0).toFixed(1)} ~ ${(finalSp + 1.5).toFixed(1)} (推估 SP: ${finalSp})`;
+    
+    let advice = '該幼駒整體表現穩定，適合用於常規重賞與一般 G1 賽事。';
+    if (isFenceJump || isChunrai) {
+        advice = '🌟 該馬匹觸發越欄/三冠特別事件！極度推薦使用【虹札 / 金札】優先兌換，乃殿堂三冠怪物駒！';
+    } else if (isLegProb) {
+        advice = '⚠️ 檢視到「腳部不安」警告，建議於 2 歲 9 月進行史實調教修復，避免影響競走壽命。';
+    } else if (isTwins) {
+        advice = '❌ 該幼駒為雙胞胎誕生，體質與能力受到嚴重懲罰，不建議投入珍貴守護符。';
+    }
+    if (adviceEl) adviceEl.textContent = advice;
+}
+
 function calculateDominance() {
     const jp1 = parseFloat(document.getElementById('jp1')?.value || document.getElementById('sys_sire')?.value || 0);
     const jp2 = parseFloat(document.getElementById('jp2')?.value || document.getElementById('sys_mare')?.value || 0);
@@ -31885,5 +31973,191 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     setTimeout(initYearlyRecsTable, 150);
 }
 </script>
+
+<!-- 🧮 幼駒核心能力評語計算器 Modal 彈窗 -->
+<div id="foalCalculatorModal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.85); z-index:9999; backdrop-filter:blur(8px); overflow-y:auto; padding:20px 10px;">
+  <div class="modal-content" style="max-width:960px; margin:30px auto; background:#0f172a; border:1px solid rgba(168,85,247,0.4); border-radius:16px; box-shadow:0 0 30px rgba(168,85,247,0.25); padding:24px;">
+    
+    <!-- Modal Header -->
+    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:14px; margin-bottom:18px;">
+      <div style="font-size:1.2rem; font-weight:800; color:#c084fc; display:flex; align-items:center; gap:8px;">
+        <i class="fa-solid fa-calculator"></i> 🧮 幼駒核心能力評語推估計算器 (Foal Potential Estimator)
+      </div>
+      <button onclick="closeFoalCalculatorModal()" style="background:rgba(255,255,255,0.1); border:none; color:#fff; font-size:1.2rem; padding:4px 12px; border-radius:8px; cursor:pointer;">&times;</button>
+    </div>
+
+    <!-- 膠囊晶片切換軌道 (依據 GEMINI.md 規範 5 統一樣式) -->
+    <div class="chip-rail" style="display:flex; gap:8px; overflow-x:auto; margin-bottom:16px; padding-bottom:4px;">
+      <button class="foal-calc-tab-btn active" onclick="switchFoalCalcTab('tab-calc-0yo', this)">🍼 0 歲期印記與出生</button>
+      <button class="foal-calc-tab-btn" onclick="switchFoalCalcTab('tab-calc-1yo', this)">🐴 1 歲期評語與體型</button>
+      <button class="foal-calc-tab-btn" onclick="switchFoalCalcTab('tab-calc-2yo', this)">🏇 2 歲期能力與入廄</button>
+      <button class="foal-calc-tab-btn" onclick="switchFoalCalcTab('tab-calc-events', this)">⚡ 9 大特殊成長事件</button>
+    </div>
+
+    <!-- 主體雙欄佈局：左側輸入 / 右側即時精算儀表板 -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px;">
+      
+      <!-- 左側：評語與印記輸入區域 -->
+      <div style="background:rgba(30,41,59,0.5); border:1px solid var(--border-color); border-radius:12px; padding:16px;">
+        
+        <!-- Tab 1: 0歲期 -->
+        <div id="tab-calc-0yo" class="foal-calc-tab-content">
+          <h4 style="color:var(--gold-color); font-size:0.92rem; margin-bottom:10px;"><i class="fa-solid fa-users"></i> 0 歲 8 月 人物印記 (秘書/相馬眼)</h4>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.8rem; margin-bottom:12px;">
+            <div>
+              <label style="color:var(--text-muted);">秘書評語 (美香):</label>
+              <select id="calc_mika" class="calc-select" onchange="calculateFoalPotential()">
+                <option value="10">◎ (極度好評 +10)</option>
+                <option value="6" selected>○ (好評 +6)</option>
+                <option value="3">△ (普通 +3)</option>
+                <option value="0">× / 無 (0)</option>
+              </select>
+            </div>
+            <div>
+              <label style="color:var(--text-muted);">相馬眼 (河童木):</label>
+              <select id="calc_kappa" class="calc-select" onchange="calculateFoalPotential()">
+                <option value="10">◎ (破格大物 +10)</option>
+                <option value="6" selected>○ (優秀 +6)</option>
+                <option value="3">△ (普通 +3)</option>
+                <option value="0">× / 無 (0)</option>
+              </select>
+            </div>
+          </div>
+
+          <h4 style="color:var(--gold-color); font-size:0.92rem; margin-bottom:10px;"><i class="fa-solid fa-baby"></i> 0 歲 4~12 月 關鍵週次評語</h4>
+          <div style="font-size:0.8rem; margin-bottom:8px;">
+            <label style="color:var(--text-muted);">0 歲 4 月 出生評語 (誕生):</label>
+            <select id="calc_birth" class="calc-select" onchange="calculateFoalPotential()">
+              <option value="15">破格 / 超大物誕生感 (+15)</option>
+              <option value="10" selected>優秀名駒氣息 (+10)</option>
+              <option value="5">普通平庸 (+5)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Tab 2: 1歲期 -->
+        <div id="tab-calc-1yo" class="foal-calc-tab-content" style="display:none;">
+          <h4 style="color:var(--gold-color); font-size:0.92rem; margin-bottom:10px;"><i class="fa-solid fa-horse-head"></i> 1 歲 評語觀察 (體型/步態/成長度)</h4>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.8rem; margin-bottom:10px;">
+            <div>
+              <label style="color:var(--text-muted);">1 歲 1 月 成長度評語:</label>
+              <select id="calc_growth1" class="calc-select" onchange="calculateFoalPotential()">
+                <option value="10">順調超群 (+10)</option>
+                <option value="6" selected>普通順調 (+6)</option>
+                <option value="2">遲緩/晚熟 (+2)</option>
+              </select>
+            </div>
+            <div>
+              <label style="color:var(--text-muted);">1 歲 3 月 馬格 (體型):</label>
+              <select id="calc_size" class="calc-select" onchange="calculateFoalPotential()">
+                <option value="10">雄偉絕佳 (+10)</option>
+                <option value="6" selected>標準體型 (+6)</option>
+                <option value="2">過小/過重 (+2)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: 2歲期 -->
+        <div id="tab-calc-2yo" class="foal-calc-tab-content" style="display:none;">
+          <h4 style="color:var(--gold-color); font-size:0.92rem; margin-bottom:10px;"><i class="fa-solid fa-gauge-high"></i> 2 歲 核心速度 (SP) 評語</h4>
+          <div style="font-size:0.8rem; margin-bottom:10px;">
+            <label style="color:var(--text-muted);">2 歲 1~5 月 速度感評語:</label>
+            <select id="calc_sp_comment" class="calc-select" onchange="calculateFoalPotential()">
+              <option value="77">大物感 / 破格速度 (超越同齡 SP 76+)</option>
+              <option value="72" selected>相當有速度 (スピード感あり SP 70~75)</option>
+              <option value="67">標準速度 (標準的 SP 65~69)</option>
+              <option value="62">速度不足 (物足りない SP 64以下)</option>
+            </select>
+          </div>
+
+          <h4 style="color:var(--gold-color); font-size:0.92rem; margin-bottom:10px;"><i class="fa-solid fa-shield-halved"></i> Sub-params 狀態警告</h4>
+          <div style="font-size:0.8rem;">
+            <label><input type="checkbox" id="chk_leg_problem" onchange="calculateFoalPotential()"> 腳部不安 (需要史實調教)</label><br>
+            <label><input type="checkbox" id="chk_temper_wild" onchange="calculateFoalPotential()"> 氣性難 / 荒暴 (脾氣需修正)</label>
+          </div>
+        </div>
+
+        <!-- Tab 4: 特殊事件 -->
+        <div id="tab-calc-events" class="foal-calc-tab-content" style="display:none;">
+          <h4 style="color:var(--gold-color); font-size:0.92rem; margin-bottom:10px;"><i class="fa-solid fa-bolt"></i> 24 章 9 大特殊出生與成長事件</h4>
+          <div style="font-size:0.82rem; line-height:1.8;">
+            <label style="color:#4ade80;"><input type="checkbox" id="chk_fence_jump" onchange="calculateFoalPotential()"> ⚡ 柵越え (越欄事件 - 直升 S 級大物)</label><br>
+            <label style="color:#f59e0b;"><input type="checkbox" id="chk_fence_break" onchange="calculateFoalPotential()"> 🔨 柵破壊 (毀柵事件 - 力量/氣性極致)</label><br>
+            <label style="color:#c084fc;"><input type="checkbox" id="chk_chunrai" onchange="calculateFoalPotential()"> 👑 春雷 / 春嵐 (三冠血統特別事件)</label><br>
+            <label style="color:#ef4444;"><input type="checkbox" id="chk_twins" onchange="calculateFoalPotential()"> ⚠️ 雙子誕生 (體質能力懲罰 -15)</label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 右側：即時精算儀表板 (Dashboard) -->
+      <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(168,85,247,0.4); border-radius:12px; padding:16px; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:4px;">綜合相馬潛力估算 (Overall Potential)</div>
+          <div id="res_rank_badge" style="font-size:1.4rem; font-weight:900; color:var(--gold-color); margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+            <span class="badge-rainbow">S+ 級 (越欄怪物駒認證)</span>
+          </div>
+
+          <div style="background:rgba(30,41,59,0.7); padding:10px; border-radius:8px; margin-bottom:12px;">
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:2px;">⚡ 推估核心速度 (Estimated SP):</div>
+            <div id="res_sp_val" style="font-size:1.1rem; font-weight:800; color:#38bdf8;">76.5 ~ 78.5 (S+ 級)</div>
+          </div>
+
+          <!-- 次要能力條形估算 -->
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">🛡 Sub-params 次要能力估估 (雷達對照):</div>
+          <div style="font-size:0.78rem; line-height:1.7; color:var(--text-main);" id="res_subparams">
+            • 力量 (Power): <strong style="color:#4ade80;">S 級</strong> &nbsp;|&nbsp; 瞬發 (Spurt): <strong style="color:#4ade80;">S+ 級</strong><br>
+            • 柔軟 (Flexibility): <strong style="color:#4ade80;">S 級</strong> &nbsp;|&nbsp; 智商 (Intelligence): <strong style="color:#38bdf8;">A 級</strong><br>
+            • 根性 (Grit): <strong style="color:#38bdf8;">A 級</strong> &nbsp;|&nbsp; 健康 (Health): <strong style="color:#f59e0b;">B 級 (需留意)</strong>
+          </div>
+        </div>
+
+        <!-- AI 相馬專家建議 -->
+        <div style="margin-top:14px; background:rgba(168,85,247,0.1); border:1px solid rgba(168,85,247,0.3); border-radius:8px; padding:10px; font-size:0.78rem; line-height:1.6;">
+          <div style="font-weight:bold; color:#c084fc; margin-bottom:4px;"><i class="fa-solid fa-lightbulb"></i> 💡 AI 相馬專家培育建議 (繁體中文):</div>
+          <div id="res_ai_advice" style="color:var(--text-muted);">
+            該幼駒極具怪物天賦，建議優先使用【虹札 / 金札】解鎖引進！
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<style>
+.calc-select {
+    width: 100%;
+    padding: 4px 8px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-main);
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+.foal-calc-tab-btn {
+    background: rgba(30, 41, 59, 0.75) !important;
+    color: #94a3b8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.25) !important;
+    border-radius: 20px !important;
+    padding: 5px 14px !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+}
+.foal-calc-tab-btn.active {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
+}
+</style>
+
 </body>
 </html>
