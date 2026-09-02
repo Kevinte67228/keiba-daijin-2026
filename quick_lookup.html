@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v02.95"></script>
-<script src="core_guides_data.js?v=v02.95"></script>
-<script src="yearly_recs_db.js?v=v02.95"></script>
-<script src="horse_subtopics_data.js?v=v02.95"></script>
+<script src="master_lookup_db.js?v=v02.96"></script>
+<script src="core_guides_data.js?v=v02.96"></script>
+<script src="yearly_recs_db.js?v=v02.96"></script>
+<script src="horse_subtopics_data.js?v=v02.96"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1761,7 +1761,7 @@ li {
 </style>
 
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v02.95) */
+/* Unified Amulet & Badge Tokens (v02.96) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -1792,7 +1792,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.95</span>
+<span class="version-badge">v02.96</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -31286,15 +31286,18 @@ function setSysTab(tabKey) {
 }
 
 function calculateDominance() {
-    const s = parseFloat(document.getElementById('sys_sire')?.value || 0);
-    const m = parseFloat(document.getElementById('sys_mare')?.value || 0);
-    const r = parseFloat(document.getElementById('sys_race')?.value || 0);
-    const b = parseFloat(document.getElementById('sys_brood')?.value || 0);
-    const total = (s + m + r + b) / 4.0;
-    const resEl = document.getElementById('sys_result');
+    const jp1 = parseFloat(document.getElementById('jp1')?.value || document.getElementById('sys_sire')?.value || 0);
+    const jp2 = parseFloat(document.getElementById('jp2')?.value || document.getElementById('sys_mare')?.value || 0);
+    const jp3 = parseFloat(document.getElementById('jp3')?.value || document.getElementById('sys_race')?.value || 0);
+    const jp4 = parseFloat(document.getElementById('jp4')?.value || document.getElementById('sys_brood')?.value || 0);
+    
+    const total = (jp1 + jp2 + jp3 + jp4) / 4.0;
+    
+    const resEl = document.getElementById('res-jp') || document.getElementById('sys_result');
     if (resEl) {
-        resEl.textContent = total.toFixed(2) + "% " + (total >= 5.0 ? "(達標!)" : "(未達標)");
-        resEl.style.color = total >= 5.0 ? "#4ade80" : "#f87171";
+        const isPassed = total >= 5.0;
+        resEl.textContent = total.toFixed(2) + "% " + (isPassed ? "(達標!)" : "(未達標)");
+        resEl.style.color = isPassed ? "#4ade80" : "#f87171";
     }
 }
 
