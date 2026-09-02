@@ -1,5 +1,5 @@
 {
-  "current_version": "v02.00",
+  "current_version": "v02.92",
   "history": [
     {
       "version": "v01.01",
@@ -505,6 +505,501 @@
       "version": "v02.00",
       "date": "2026-08-30",
       "description": "Milestone: Standalone Chapter 39 (1967-1975 Era Guide) with 100% Traditional Chinese Strategy Points (攻略のポイント), 14-Col Left-Aligned Tables and Zero Citation Artifacts"
+    },
+    {
+      "version": "v02.00",
+      "date": "2026-08-30",
+      "description": "Milestone: Fully Unified Version Engine v02.00 & 39 Sequential Chapters"
+    },
+    {
+      "version": "v02.01",
+      "date": "2026-08-30",
+      "description": "Layout: Fix Tablet Modal Bottom Clipping with dvh Safe Insets and Dedicated Bottom Close Button"
+    },
+    {
+      "version": "v02.02",
+      "date": "2026-08-30",
+      "description": "優化馬庫1-11分類按鈕：緊湊縮小晶片尺寸並適配平板端 3x2 水平流暢滑動軌道"
+    },
+    {
+      "version": "v02.03",
+      "date": "2026-08-30",
+      "description": "修復馬庫1-11按鈕晶片：適配直向平板(480px+)嚴格3X2滑動軌道並極致緊湊縮小高度為30px"
+    },
+    {
+      "version": "v02.04",
+      "date": "2026-08-30",
+      "description": "專題架構升級：將「開局劇本」調整為第二專題，重構第 02~39 章目錄與跳轉索引"
+    },
+    {
+      "version": "v02.05",
+      "date": "2026-08-30",
+      "description": "專題與章節全面重構：將「開局劇本」調整為第一專題 (第 01~07 章)，「馬庫速查」調整為最後第七專題 (第 39 章)，同步全站 39 大章節跳轉索引與備份"
+    },
+    {
+      "version": "v02.06",
+      "date": "2026-08-30",
+      "description": "全量整合初年度52週圖文攻略與全年代劇本初期讓渡馬指南(6大節點)"
+    },
+    {
+      "version": "v02.07",
+      "date": "2026-08-30",
+      "description": "全年代初期讓渡馬表格牡馬與牝馬獨立分行優化"
+    },
+    {
+      "version": "v02.08",
+      "date": "2026-08-30",
+      "description": "特別種牡馬與特別繁殖牝馬設定表格逐匹獨立分行優化"
+    },
+    {
+      "version": "v02.09",
+      "date": "2026-08-30",
+      "description": "全量整合Alnasgames馬之個性完全數據庫與14大性格分佈矩陣"
+    },
+    {
+      "version": "v02.10",
+      "date": "2026-08-30",
+      "description": "全量新增第25章五大人馬數值狀態完全百科(競走馬・騎手・調教師・牧場長・子孫知人)並重構為40大章"
+    },
+    {
+      "version": "v02.11",
+      "date": "2026-08-30",
+      "description": "全量子網址展開收錄日美歐頂級騎師調教師實名數據庫與海外移籍名馬全圖鑑"
+    },
+    {
+      "version": "v02.12",
+      "date": "2026-08-30",
+      "description": "全量鑽取至最底層葉節點收錄52大進化特性與32名駒專屬固有技能全圖鑑"
+    },
+    {
+      "version": "v02.13",
+      "date": "2026-08-30",
+      "description": "全量新增獨立第41章全史實名駒18欄位終極履歷與血統檔案完全圖鑑"
+    },
+    {
+      "version": "v02.14",
+      "date": "2026-08-30",
+      "description": "修復第41章allhorseprofiles獨立章節渲染並同步更新全站41章標題與導航按鈕描述"
+    },
+    {
+      "version": "v02.15",
+      "date": "2026-08-30",
+      "description": "全量實現三大馬匹資料庫競走馬種牡馬繁殖牝馬互動分頁大表與allhorseprofiles深度檔案直連"
+    },
+    {
+      "version": "v02.16",
+      "date": "2026-08-30",
+      "description": "全量實裝第41章三大馬匹資料庫所有子晶片即時大表切換與1.5萬匹馬全庫即時搜尋引擎"
+    },
+    {
+      "version": "v02.17",
+      "date": "2026-08-30",
+      "description": "修復第41章子專題大表排版緊密吸附晶片列與全庫即時搜尋引擎零延遲載入"
+    },
+    {
+      "version": "v02.18",
+      "date": "2026-08-30",
+      "description": "第41章三大馬匹資料庫全晶片尺寸統一規範並去除英文後綴保持純淨日中對照"
+    },
+    {
+      "version": "v02.19",
+      "date": "2026-08-30",
+      "description": "第41章三大主頁籤改為三等分1:1:1等寬網格與子晶片單行平滑軌道像素級嚴格對齊"
+    },
+    {
+      "version": "v02.20",
+      "date": "2026-08-30",
+      "description": "還原第41章原生靈動排版並確保同區塊內晶片按鈕高度內邊距絕對統一"
+    },
+    {
+      "version": "v02.21",
+      "date": "2026-08-30",
+      "description": "實裝平板3x3子晶片網格、13x2英文字母雙排、全部名駒7顆單排滿分仔出與純日文三大主頁籤"
+    },
+    {
+      "version": "v02.22",
+      "date": "2026-08-30",
+      "description": "修復第二層子專題晶片嚴格連動第一層頁籤單獨顯示"
+    },
+    {
+      "version": "v02.23",
+      "date": "2026-08-30",
+      "description": "全量1:1本機靜態預編譯第41章子專題大表與App原生18欄位檔案彈窗"
+    },
+    {
+      "version": "v02.24",
+      "date": "2026-08-30",
+      "description": "修復第41章靜態大表切換與原生18欄位檔案彈窗控制器函數注入"
+    },
+    {
+      "version": "v02.25",
+      "date": "2026-08-30",
+      "description": "實裝American Pharoah 18大數據模組完全體與重繪八維能力雷達圖芝質適性軌道"
+    },
+    {
+      "version": "v02.26",
+      "date": "2026-08-30",
+      "description": "全量啟用所有馬匹100%動態生成18欄位完整檔案、重繪SVG八維雷達圖與1~8芝質漸層軌道"
+    },
+    {
+      "version": "v02.27",
+      "date": "2026-08-30",
+      "description": "去除Table字眼、系統家族日中文同步、主要史實產駒與兄弟姐妹實時動態查詢"
+    },
+    {
+      "version": "v02.28",
+      "date": "2026-08-30",
+      "description": "將第41章模組說明轉為純淨燈泡卡、移除本文殘留大方塊、全量落實無Table標籤與日中雙語系統"
+    },
+    {
+      "version": "v02.29",
+      "date": "2026-08-30",
+      "description": "實裝可折疊燈泡按鈕、徹底移除正文殘留American Pharoah方塊並優化全站體積"
+    },
+    {
+      "version": "v02.30",
+      "date": "2026-08-30",
+      "description": "修復雷達圖左右字元裁切、補齊英文名欄位與字母50音篩選、擴充8大傳奇名駒卡片、彩札染色與邊距排版規範"
+    },
+    {
+      "version": "v02.31",
+      "date": "2026-08-30",
+      "description": "修復馬札篩選晶片觸發、完美對齊大表12欄表頭與內容"
+    },
+    {
+      "version": "v02.32",
+      "date": "2026-08-30",
+      "description": "修復第41章DOM結構完整性、包覆標準section-body並注入24px防貼邊內邊距"
+    },
+    {
+      "version": "v02.33",
+      "date": "2026-08-30",
+      "description": "統一上下排晶片高度為30px並擴充滑動軌道下緣防碰撞呼吸間距"
+    },
+    {
+      "version": "v02.34",
+      "date": "2026-08-30",
+      "description": "大表外層全面追加ST耐力、サ副屬性合計、成型力、芝草地適性、ダ泥地適性等核心數值欄位"
+    },
+    {
+      "version": "v02.35",
+      "date": "2026-08-30",
+      "description": "實裝4代血統譜視覺樹狀圖藍粉矩陣與競爭情報體質小回り持病歷程模組"
+    },
+    {
+      "version": "v02.36",
+      "date": "2026-08-30",
+      "description": "收緊SP、ST、サ等數值欄位預留寬度、去除空隙並優化緊湊比例"
+    },
+    {
+      "version": "v02.37",
+      "date": "2026-08-30",
+      "description": "實裝第41章全域跨頁內存數據庫排序引擎、點擊表頭即時針對全部篩選結果全局重排"
+    },
+    {
+      "version": "v02.38",
+      "date": "2026-08-30",
+      "description": "實裝表格自適應縮排技術、SP、ST、サ等數值欄位精確緊密靠攏、徹底去除空隙"
+    },
+    {
+      "version": "v02.39",
+      "date": "2026-08-30",
+      "description": "將第40章超級巨星名駒庫呈現結果數量統一升級為每頁25筆與完整分頁導航"
+    },
+    {
+      "version": "v02.40",
+      "date": "2026-08-30",
+      "description": "重構第41章大表為table-layout:fixed與100%等比colgroup、徹底消滅SP與ST之間異常空隙"
+    },
+    {
+      "version": "v02.41",
+      "date": "2026-08-30",
+      "description": "實裝彈窗繁殖情報全模組、血統頂部父系牝系子表、大表1120px嚴格定寬消滅SP/ST間隙、以及全站跳至指定頁面功能框"
+    },
+    {
+      "version": "v02.42",
+      "date": "2026-08-30",
+      "description": "全面將第40章UI檢索比照第41章升級為7顆頂部快速晶片、13*2英文字母與10等分五十音雙向檢索網格"
+    },
+    {
+      "version": "v02.43",
+      "date": "2026-08-30",
+      "description": "保持SP與ST緊湊相鄰間距、全域恢復其他欄位自然展開與零截斷視覺"
+    },
+    {
+      "version": "v02.43",
+      "date": "2026-08-30",
+      "description": "Rollback: Fully restored to complete original v02.43 with all 41 chapters intact"
+    },
+    {
+      "version": "v02.44",
+      "date": "2026-08-30",
+      "description": "第30章：實裝第4子分頁「🏁 4. 競馬場特性庫」全量賽道、Turf草質、坡度地形與主要大賽檢索大表"
+    },
+    {
+      "version": "v02.45",
+      "date": "2026-08-30",
+      "description": "優化第30章第4子分頁標題：精確標示為「🏁 4. 競馬場特性庫 (68場 / 136賽道)」"
+    },
+    {
+      "version": "v02.46",
+      "date": "2026-08-30",
+      "description": "第30章：全量實裝第5子分頁「⚡ 5. 賽事展開與適應能力庫 (64場)」64座名賽場適應性與重大G1傾向"
+    },
+    {
+      "version": "v02.47",
+      "date": "2026-08-30",
+      "description": "章節深度整併：將原第32/33章競馬場跑道與草質適應庫全量整合至第30章五大子分頁，重新梳理章節序列為39大章"
+    },
+    {
+      "version": "v02.48",
+      "date": "2026-08-30",
+      "description": "整合光榮官方Web手冊7100號章節：導入基本能力雷達圖(綠/橘先天後天)、適應能力星級進度條與上限突破(★10+)、以及騎手絆特性圖示說明"
+    },
+    {
+      "version": "v02.49",
+      "date": "2026-08-30",
+      "description": "修復第30章Part5右側大賽標籤HTML解析異常，並重構第25/26/29章卡片排版與移除手冊編號字樣"
+    },
+    {
+      "version": "v02.50",
+      "date": "2026-08-30",
+      "description": "重新排版優化：第25章基本能力雷達圖與八大屬性判定心法、第29章騎手專屬絆特性卡片全面升級高階暗黑科技流UI"
+    },
+    {
+      "version": "v02.51",
+      "date": "2026-08-30",
+      "description": "清理全站所有原始出處誤植標註，直接呈現勘誤後正確內容；同時縮小第29章牽絆特性圖示並緊湊化排版"
+    },
+    {
+      "version": "v02.52",
+      "date": "2026-08-30",
+      "description": "實裝光榮官方名師講堂全系列：1:1復刻8100~9300講義為獨立第40章，並補齊第26章海外名駒固有特性與第28章2026全量個性"
+    },
+    {
+      "version": "v02.53",
+      "date": "2026-08-30",
+      "description": "清理第40章所有手冊編號括弧數字註記，標題與子分頁全面精緻純淨化"
+    },
+    {
+      "version": "v02.54",
+      "date": "2026-08-30",
+      "description": "將特性一覧獨立為全新第27章(100%全收錄223種特性中日對照)，重構第25章子孫結婚圖片為平板適應網格，並修復第26章與27章所有子節卡片邊框容器"
+    },
+    {
+      "version": "v02.55",
+      "date": "2026-08-30",
+      "description": "徹底修復第25章第5節平板3欄圖片排版，重構第26章與第27章特性全書卡片邊框，解決邊框脫落與快取同步問題"
+    },
+    {
+      "version": "v02.56",
+      "date": "2026-08-30",
+      "description": "全量整合光榮官方Web手冊54大子頁面圖文與343張官方截圖，擴展為全45大章節終極百科(新增俱樂部經營、傳奇對決、最強馬之路線上模式與全平台操作對照)"
+    },
+    {
+      "version": "v02.57",
+      "date": "2026-08-30",
+      "description": "依指示移除第45章全平台按鍵操作對照表，聚焦收錄電影級名場面與系統便利機能"
+    },
+    {
+      "version": "v02.58",
+      "date": "2026-08-30",
+      "description": "移除第45章全平台按鍵操作對照表，聚焦收錄電影級名場面與系統便利機能"
+    },
+    {
+      "version": "v02.59",
+      "date": "2026-08-30",
+      "description": "重新全面校準全45大章節：補全遺漏章節(第09至18章繁育理論)、修正章號跳躍與重複、達成100%連續不中斷01~45終極大百科"
+    },
+    {
+      "version": "v02.60",
+      "date": "2026-08-30",
+      "description": "修正快速跳轉第19章Icon(改為標準FontAwesome6 Free圖標fa-wand-magic-sparkles)，全面清理Pro-only無效圖標"
+    },
+    {
+      "version": "v02.61",
+      "date": "2026-08-30",
+      "description": "移除第1章兩張1年目圖檔，徹底清除第09至18章與第42章之重複內嵌標題黑條，全面重構首頁8大支柱功能晶片導航列"
+    },
+    {
+      "version": "v02.62",
+      "date": "2026-08-30",
+      "description": "統一第29章ウマソナ全量數據庫為9欄位完整齊頭標準大表，補齊所有官方全書個性之分類、觸發、經驗、影響度與進化路徑"
+    },
+    {
+      "version": "v02.63",
+      "date": "2026-08-30",
+      "description": "統一第29章ウマソナ全71筆個性行背景與徽章Highlight樣式，並新增即時效果篩選晶片列與即時搜尋欄"
+    },
+    {
+      "version": "v02.64",
+      "date": "2026-08-30",
+      "description": "重構快速跳轉Modal目錄(chapterListContainer)，100%完全同步首頁8大平衡支柱分組與45大章節"
+    },
+    {
+      "version": "v02.65",
+      "date": "2026-08-30",
+      "description": "重新恢復首頁導航晶片【📊 比賽戰績儀】與快速跳轉Modal戰績儀直達按鈕，完整保留實戰13大跑法比賽戰績紀錄儀"
+    },
+    {
+      "version": "v02.66",
+      "date": "2026-08-30",
+      "description": "完成光榮官方手冊4200/4500/4600/4630/4650/4670/4700(含4700#26活力增加契機與永續綠色活力)圖文1:1復刻並精準整合至各專屬章節"
+    },
+    {
+      "version": "v02.67",
+      "date": "2026-08-30",
+      "description": "全面清理所有章節內之官方手冊與Official Manual元標籤描述，轉化為流暢沉浸的原生深度攻略指南"
+    },
+    {
+      "version": "v02.68",
+      "date": "2026-08-30",
+      "description": "徹底修復GitHub樹狀備份清理機制：僅保留最新5個歷史版本(v02.64~v02.68)，自動徹底清除其餘所有過期歷史目錄"
+    },
+    {
+      "version": "v02.69",
+      "date": "2026-08-30",
+      "description": "全面整合yuruyuru-biyori 1967~2023全56大史實出生年代496匹推薦名馬攻略庫，支援56顆單行滑動晶片切換與全量繁體中文化戰略評析"
+    },
+    {
+      "version": "v02.70",
+      "date": "2026-08-30",
+      "description": "完成全56大史實年代戰略分析與496匹推薦名駒詳細評語100%純淨繁體中文完全在地化"
+    },
+    {
+      "version": "v02.71",
+      "date": "2026-08-30",
+      "description": "徹底完成全56大史實年代戰略要點與496匹推薦名駒詳細評語100%純淨繁體中文完全在地化（零日文殘留）"
+    },
+    {
+      "version": "v02.72",
+      "date": "2026-08-30",
+      "description": "深度收錄Ahogame第一與第二優先：名馬相関圖關係性全書+Drama因子24種全書+2898匹史實種公馬引退年限完全速查庫"
+    },
+    {
+      "version": "v02.73",
+      "date": "2026-08-30",
+      "description": "新增專屬章節：4314匹繁殖專用史實馬全量數據庫完全對照大表（含馬札/性別/繋養地/副計/仔出完全速查）"
+    },
+    {
+      "version": "v02.74",
+      "date": "2026-08-30",
+      "description": "重構支柱7馬匹資料庫：將2898匹史實種公馬引退速查庫與4314匹繁殖專用史實馬大表獨立為第42與第43專屬大章"
+    },
+    {
+      "version": "v02.75",
+      "date": "2026-08-30",
+      "description": "全面整頓全46大章節次序與快速跳轉導覽：修正Pillar與全46章精確對照、加入目標卡片高亮閃爍動畫"
+    },
+    {
+      "version": "v02.76",
+      "date": "2026-08-30",
+      "description": "修復快速跳轉目錄JS語法錯誤：清除jumpToChapter多餘符號、確保46章快速跳轉抽屜與全域點擊事件100%正常運作"
+    },
+    {
+      "version": "v02.77",
+      "date": "2026-08-30",
+      "description": "重繪並深度嵌入第26章：賽馬展開適應力機制全解、先天能力與上限對照大表、戰術育成加成與限界突破"
+    },
+    {
+      "version": "v02.78",
+      "date": "2026-08-30",
+      "description": "升級快速跳轉目錄搜尋引擎：支援全域內文全文檢索（同時比對章節標題與全內文關鍵字）"
+    },
+    {
+      "version": "v02.79",
+      "date": "2026-08-30",
+      "description": "新增第44章：16,570匹全史實競走馬完全數據庫（日本馬7,884匹+海外馬8,686匹），全站章節順延擴充至全47大章"
+    },
+    {
+      "version": "v02.80",
+      "date": "2026-08-30",
+      "description": "新增第45章：殿堂馬稱號（異名/Nicknames）全量數據庫（976條全5大分類1:1復刻），全站章節順延擴充至全48大章"
+    },
+    {
+      "version": "v02.81",
+      "date": "2026-08-30",
+      "description": "新增第45章：全年代11大路線年度推薦史實馬完全數據庫（日本32年代+海外9年代 1:1 紅框標準復刻與全年代膠囊軌道），全站章節順延擴充至全49大章"
+    },
+    {
+      "version": "v02.82",
+      "date": "2026-08-30",
+      "description": "修復DOM標籤閉合問題：將第44、45、46章精確歸位至【支柱7：馬匹資料庫】，修復章節跳轉與晶片定位機制"
+    },
+    {
+      "version": "v02.83",
+      "date": "2026-08-30",
+      "description": "完全修復與重構右下角浮動按鈕群（主題切換+章節跳轉+回到頂部）與核心UI引擎（toggleAppTheme/jumpToChapter）"
+    },
+    {
+      "version": "v02.84",
+      "date": "2026-08-30",
+      "description": "更新右下角浮動按鈕群：移除主題切換，復原【↩️ 返回前一定位 (goBackLastPosition)】歷史導航按鈕"
+    },
+    {
+      "version": "v02.85",
+      "date": "2026-08-30",
+      "description": "徹底修復比賽戰績紀錄儀DOM標籤外溢、修復全站晶片切換引擎 (switchStakesSubTab/switchLecTab/setSysTab/filterCategory等)"
+    },
+    {
+      "version": "v02.86",
+      "date": "2026-08-30",
+      "description": "徹底修復第45章(全年代路線表表格擠壓)與第46章(殿堂馬異名欄位分離與重複排版修復)"
+    },
+    {
+      "version": "v02.87",
+      "date": "2026-08-30",
+      "description": "重新從ahogame原始檔1:1零損失精確抓取並格式化第45章(全年代路線表樣式)與第46章(977條殿堂馬異名全量正確解析)"
+    },
+    {
+      "version": "v02.88",
+      "date": "2026-08-30",
+      "description": "徹底修復第45章年代膠囊點擊選擇軌道、自動觸發初始化與高對比暗黑模式配色文字對比度"
+    },
+    {
+      "version": "v02.89",
+      "date": "2026-09-02",
+      "description": "Agent Final Verification Release (v02.89): Resolved JS query string cache sync, bilingual term alignment, added no-results empty states, left-aligned table formatting, and updated PWA SW cache."
+    },
+    {
+      "version": "v02.90",
+      "date": "2026-09-02",
+      "description": "Agent D Release (v02.90): Left-align all table headers/cells, synchronize Service Worker CACHE_NAME to v02.90, enforce Japanese/Chinese bilingual proper nouns, ensure no-results fallback UI states, and prune backups to keep latest 5 versions."
+    },
+    {
+      "version": "v02.91",
+      "date": "2026-09-02",
+      "description": "Agent D Release (v02.91): Fixed 5 QA items from Agent B - dynamic empty-state rendering with filter reset button in racehorses table search, added min-width:880px to all 3 pedigree tables, fully bilingualized 3 core terms (仔出 (仔出し), 爆發力 (爆発力), 馬之個性 (ウマソナ)), updated Service Worker CACHE_NAME to v02.91, and backed up v02.90."
+    },
+    {
+      "version": "v02.91",
+      "date": "2026-08-30",
+      "description": "Release v02.91 - Agent D Final Verified Release"
+    },
+    {
+      "version": "v02.91",
+      "date": "2026-09-02",
+      "description": "Test Smart Incremental Deploy"
+    },
+    {
+      "version": "v02.91",
+      "date": "2026-09-02",
+      "description": "Optimized Deploy Engine"
+    },
+    {
+      "version": "v02.92",
+      "date": "2026-09-02",
+      "description": "UI/UX Design Token Standardization (v02.92): Unified Rainbow Ticket badge/chip gradient to linear-gradient(135deg, #a855f7, #ec4899, #eab308) and Gold Ticket color to #f59e0b across the entire application."
+    },
+    {
+      "version": "v02.92",
+      "date": "2026-09-02",
+      "description": "Release v02.92 with unified Amulet Tokens and strictly 5 backup versions"
+    },
+    {
+      "version": "v02.92",
+      "date": "2026-09-02",
+      "description": "Deploy v02.92 with SKILL.md and strictly 5 backup folders"
     }
   ]
 }
