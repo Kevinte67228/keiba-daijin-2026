@@ -1,5 +1,5 @@
 {
-  "current_version": "v02.92",
+  "current_version": "v02.93",
   "history": [
     {
       "version": "v01.01",
@@ -1000,6 +1000,11 @@
       "version": "v02.92",
       "date": "2026-09-02",
       "description": "Deploy v02.92 with SKILL.md and strictly 5 backup folders"
+    },
+    {
+      "version": "v02.93",
+      "date": "2026-09-02",
+      "description": "Chapter 9 Foal Potential (仔出) Major Feature Expansion (v02.93): Added 4 core mechanics cards, 1~10 level potential & lower-bound probability matrix, and 4 practical breeding management guidelines."
     }
   ]
 }

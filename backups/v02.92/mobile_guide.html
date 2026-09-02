@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v02.92"></script>
-<script src="core_guides_data.js?v=v02.92"></script>
-<script src="yearly_recs_db.js?v=v02.92"></script>
-<script src="horse_subtopics_data.js?v=v02.92"></script>
+<script src="master_lookup_db.js?v=v02.93"></script>
+<script src="core_guides_data.js?v=v02.93"></script>
+<script src="yearly_recs_db.js?v=v02.93"></script>
+<script src="horse_subtopics_data.js?v=v02.93"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1761,7 +1761,7 @@ li {
 </style>
 
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v02.92) */
+/* Unified Amulet & Badge Tokens (v02.93) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -1792,7 +1792,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.92</span>
+<span class="version-badge">v02.93</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -4517,37 +4517,103 @@ li {
 </table>
 </div>
 <!-- ==================== 基準交配與成長度精算法 & 仔出 (仔出し) (Foal Potential) ==================== -->
-<h3 style="font-size:1rem; color:var(--gold-color); margin:24px 0 10px; display:flex; align-items:center; gap:8px;">
+
+<h3 style="font-size:1.1rem; color:var(--gold-color); margin:28px 0 12px; display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-scale-balanced"></i> 五、基準交配・成長度 (Growth Degree) 與 仔出 (仔出し) (Foal Potential) 深度精算法
-        </h3>
-<p style="font-size:0.85rem; line-height:1.75; margin-bottom:12px;">
-          許多玩家在配種時過度迷信「爆發力 (爆発力)（如 +35）」，卻頻頻產出出道時能力殘缺的平庸馬。根據《權威繁育大百科》深度解密：<strong>爆發力 (爆発力)只決定產駒的「潛力上限」，而【基準交配】與【仔出 (仔出し)】才決定產駒的「成長度（基礎完成度與實力下限）」！</strong>
+</h3>
+<p style="font-size:0.86rem; line-height:1.8; margin-bottom:14px;">
+  許多玩家在配種時過度迷信「<strong>爆發力 (爆発力)</strong>（如 +35）」，卻頻頻產出出道時能力殘缺、終生無法達標的平庸馬。根據《權威繁育大百科》深度解密：<strong>爆發力 (爆発力)只決定產駒能力的「亂數加成上限」，而【基準交配】與【仔出 (仔出し)】才決定產駒的「基礎完成度、能力底限與超凡大物覺醒率」！</strong>
 </p>
+
+<!-- 4 大底層機制卡片 -->
+<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:18px;">
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid var(--gold-color); border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:var(--gold-color); font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-seedling"></i> 1. 基準交配の成長度 (Growth Degree)</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      由父母雙方基礎能力與血統相性綜合判定。<strong>決定產駒出生時的「成長進度條起始點」！</strong> 基準交配極佳時，產駒成長度高、早期即可出道橫掃 2~3 歲重賞。
+    </div>
+  </div>
+
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid #38bdf8; border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:#38bdf8; font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-star"></i> 2. 仔出 (仔出し) 隱藏數值 (1 ~ 10 級)</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      種牡馬與繁殖牝馬自帶的隱藏大物產出係數。史實名種馬（如 Sunday Silence、Deep Impact）開局預設即為 <strong>10 級滿級仔出</strong>，是產出越欄駒 (柵越え) 的關鍵！
+    </div>
+  </div>
+
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid #a855f7; border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:#a855f7; font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-chart-line"></i> 3. 仔出 (仔出し) 的動態升降機制</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      <strong>📈 上升 (+1~2)</strong>：子嗣獲得 G1 勝利、殿堂馬或年度頭銜，次年父/母仔出提升。<br>
+      <strong>📉 下降 (-1)</strong>：連續 3~4 年產駒無重賞或未勝利，父/母仔出衰退下降。
+    </div>
+  </div>
+
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid #ef4444; border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:#ef4444; font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-triangle-exclamation"></i> 4. 警惕「爆發力陷阱」</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      若父母仔出僅 1~2 級，即便爆發力 (爆発力) 高達 +40，產駒也極易因為「能力下限過低」淪為下級條件馬。高仔出才是穩定大物的基石！
+    </div>
+  </div>
+</div>
+
+<!-- 仔出等級 (1~10) 大物產出機率與實力下限對照大表 -->
+<div style="font-weight:800; font-size:0.92rem; color:var(--gold-color); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+  <i class="fa-solid fa-table"></i> 📊 仔出 (仔出し) 等級 (1~10) 大物產出機率與產駒能力下限對照表
+</div>
+
 <div class="table-responsive" style="margin-bottom:20px;">
-<table class="data-table">
+<table class="data-table" style="min-width:780px;">
 <thead>
 <tr>
-<th style="min-width:160px;">核心機制項目 (日/中)</th>
-<th style="min-width:260px;">遊戲內底層判定邏輯</th>
-<th style="min-width:380px;">繁育實戰影響與避坑指南 (繁體中文)</th>
+<th style="min-width:130px; text-align:left !important;">綜合仔出等級</th>
+<th style="min-width:150px; text-align:left !important;">超大物/越欄駒覺醒率</th>
+<th style="min-width:160px; text-align:left !important;">產駒基礎完成度 (實力下限)</th>
+<th style="min-width:320px; text-align:left !important;">繁育實戰評價與養成建議 (繁體中文)</th>
 </tr>
 </thead>
 <tbody>
-<tr style="background:rgba(234,179,8,0.08);">
-<td><strong style="color:var(--gold-color);">基準交配の成長度</strong></td>
-<td>由父母雙方的基本能力（スピード、サブパラ均勻度）與相性綜合判定。</td>
-<td><strong>決定產駒出生時的「成長進度條起始點」！</strong> 基準交配良好時，即使爆發力 (爆発力)僅 +12，產駒也能快速成熟、早期出道橫掃 2~3 歲重賞；反之基準交配極差時，即使爆發力 (爆発力) +30 也可能因為成長度過低而終生難以達到巔峰。</td>
+<tr style="background:rgba(234,179,8,0.12);">
+<td style="text-align:left !important;"><strong style="color:var(--gold-color);">9 ~ 10 級 (頂級名種)</strong></td>
+<td style="text-align:left !important;"><span class="badge-gold">35% ~ 50%</span></td>
+<td style="text-align:left !important;"><strong style="color:#4ade80;">S ~ A 級 (即戰力)</strong></td>
+<td style="text-align:left !important;"><strong>極致名種品質！</strong> 即使爆發力 (爆発力) 僅 +15，也能頻繁產出橫掃 G1 的超凡大物，必須優先引進與保護。</td>
 </tr>
 <tr style="background:rgba(56,189,248,0.08);">
-<td><strong style="color:#38bdf8;">仔出 (仔出し) (Foal Potential 1~10)</strong></td>
-<td>種牡馬與繁殖牝馬自帶的隱藏大物產出係數（1~10 級）。</td>
-<td><strong>決定產駒覺醒超凡大物的概率！</strong> 仔出 (仔出し)高達 9~10 的名種馬（如 Sunday Silence、Deep Impact、China Rock）即使爆發力 (爆発力)平平也能連生 G1 怪物；仔出 (仔出し)僅 1~3 的種馬若無極致爆發力 (爆発力)加成，產駒極易淪為下級條件馬。</td>
+<td style="text-align:left !important;"><strong style="color:#38bdf8;">6 ~ 8 級 (優秀繁育)</strong></td>
+<td style="text-align:left !important;"><span class="pill-safe">15% ~ 30%</span></td>
+<td style="text-align:left !important;"><strong style="color:#38bdf8;">B+ ~ A 級</strong></td>
+<td style="text-align:left !important;"><strong>主力育種陣容！</strong> 配合爆發力 (爆発力) +25 以上即可穩定輸出高素質重賞馬，為自家牧場的中流砥柱。</td>
+</tr>
+<tr style="background:rgba(148,163,184,0.08);">
+<td style="text-align:left !important;"><strong style="color:#94a3b8;">3 ~ 5 級 (普通平庸)</strong></td>
+<td style="text-align:left !important;"><span class="pill-version">5% ~ 10%</span></td>
+<td style="text-align:left !important;"><strong style="color:#facc15;">C ~ B 級</strong></td>
+<td style="text-align:left !important;"><strong>過渡期品質。</strong> 必須依賴爆發力 (爆発力) +35 以上與良好的【基準交配】才能補足基礎實力下限。</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.08);">
+<td style="text-align:left !important;"><strong style="color:#ef4444;">1 ~ 2 級 (低劣仔出)</strong></td>
+<td style="text-align:left !important;"><span style="background:#ef4444; color:#fff; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:bold;">&lt; 2%</span></td>
+<td style="text-align:left !important;"><strong style="color:#ef4444;">D ~ C 級 (嚴重缺陷)</strong></td>
+<td style="text-align:left !important;"><strong>極易引發爆發力陷阱！</strong> 產駒完成度低、成熟極慢，極易淪為未勝利條件馬，建議儘速淘汰或搭配高仔出名種馬洗血。</td>
 </tr>
 </tbody>
 </table>
 </div>
+
+<!-- 自家繁殖牝馬 仔出 (仔出し) 快速養成與保護 4 大實戰指南 -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:20px;">
+  <div style="font-weight:bold; color:var(--gold-color); font-size:0.95rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+    <i class="fa-solid fa-lightbulb"></i> 💡 自家繁殖牝馬 仔出 (仔出し) 快速養成與保護 4 大實戰指南
+  </div>
+  <ul style="font-size:0.84rem; color:var(--text-muted); line-height:1.75; padding-left:20px; margin:0;">
+    <li><strong>第一胎高仔出名種馬灌頂法</strong>：自家退役母馬初始仔出較低時，前 1~2 年務必使用 10 級仔出名種馬（如 Deep Impact、Sunday Silence）交配，確保第一胎順利奪得 G1 賽事勝利，進而一次性將母馬自身的仔出提升 +2 點！</li>
+    <li><strong>Private 種牡馬永久鎖定法</strong>：將 10 級滿級仔出的高齡名種馬購入私人牧場（Private種牡馬），可防止其強制退役被銷毀，為自家牧場提供永久穩定的 10 級仔出優質種源。</li>
+    <li><strong>殿堂馬女馬退役初始加成</strong>：獲得【殿堂馬】頭銜或【八大競走 / 三冠】的名牝馬退役轉繁殖時，系統會自動賦予更高初始仔出（通常為 7~9 級），省去繁瑣提升過程。</li>
+    <li><strong>及時停損防下降機制</strong>：若某匹母馬連續 3 年產駒無重賞表現，應暫停配合低能力架空種馬，換用高仔出種馬交配衝擊 G1，避免母馬仔出持續下滑至 1~2 級。</li>
+  </ul>
 </div>
-</div>
+
 </section>
 <!-- ==================== 第 10 章：專屬 4 代血統矩陣圖譜總覽 ==================== -->
 <section class="section-card" id="sec-diagrams">
