@@ -4118,11 +4118,11 @@ li {
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
 <div>
 <label style="font-size:10.5px; font-weight:700; display:block; margin-bottom:2px;">配合爆發力 (爆発力) (B):</label>
-<input id="inputB" max="60" min="1" style="width:100%; padding:4px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-weight:bold; font-size:11.5px;" type="number" value="30"/>
+<input id="simBaseExp" max="60" min="1" onchange="runExplosionSimulation()" oninput="runExplosionSimulation()" style="width:100%; padding:4px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-weight:bold; font-size:11.5px;" type="number" value="30"/>
 </div>
 <div>
 <label style="font-size:10.5px; font-weight:700; display:block; margin-bottom:2px;">種牡馬施設加成:</label>
-<select id="facilityLv" style="width:100%; padding:4px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11.5px;">
+<select id="simRanchBonus" onchange="runExplosionSimulation()" style="width:100%; padding:4px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11.5px;">
 <option value="0">無 / 未建設 (+0)</option>
 <option value="1">Lv1 (+1)</option>
 <option value="2">Lv2 (+2)</option>
@@ -4134,7 +4134,7 @@ li {
 <button onclick="runSimulation()" style="width:100%; padding:6px; background:#2563eb; color:#fff; font-weight:bold; font-size:11.5px; border:none; border-radius:6px; cursor:pointer; transition:background 0.15s;">
               🎲 執行 1,000 次配種抽樣分佈
             </button>
-<div class="chart-container">
+<div class="chart-container" style="position: relative; width: 100%; height: 280px; margin-top: 14px;">
 <canvas id="explosionChart"></canvas>
 </div>
 </div>
@@ -31080,26 +31080,53 @@ function initSimulationChart() {
     explosionChartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: Array.from({length: 31}, (_, i) => `b = ${i}`),
-            data: Array(31).fill(0),
-            backgroundColor: 'rgba(56, 189, 248, 0.65)',
-            borderColor: '#38bdf8',
-            borderWidth: 1.5,
-            borderRadius: 3
+            labels: Array.from({length: 34}, (_, i) => `b = ${i}`),
+            datasets: [{
+                label: '出現次數 (N)',
+                data: Array(34).fill(0),
+                backgroundColor: 'rgba(56, 189, 248, 0.65)',
+                borderColor: '#38bdf8',
+                borderWidth: 1.5,
+                borderRadius: 4,
+                hoverBackgroundColor: 'rgba(245, 158, 11, 0.85)',
+                hoverBorderColor: '#f59e0b'
+            }]
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 legend: { display: false },
                 tooltip: {
                     callbacks: {
-                        label: function(context) { return ` 抽樣次數: ${context.parsed.y} 次`; }
+                        label: function(context) { return ` 出現次數: ${context.parsed.y} 次 (佔 ${(context.parsed.y / 10).toFixed(1)}%)`; }
                     }
                 }
             },
             scales: {
-                x: { ticks: { color: '#94a3b8', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
-                y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                x: {
+                    title: {
+                        display: true,
+                        text: 'X 軸：幼駒速度加成值 b (點數)',
+                        color: '#38bdf8',
+                        font: { size: 11, weight: 'bold' },
+                        padding: { top: 6 }
+                    },
+                    ticks: { color: '#94a3b8', font: { size: 10 } },
+                    grid: { color: 'rgba(255,255,255,0.05)' }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Y 軸：出現頻率 / 抽樣次數 (次)',
+                        color: '#38bdf8',
+                        font: { size: 11, weight: 'bold' },
+                        padding: { bottom: 6 }
+                    },
+                    beginAtZero: true,
+                    ticks: { color: '#94a3b8', font: { size: 10 } },
+                    grid: { color: 'rgba(255,255,255,0.05)' }
+                }
             }
         }
     });
