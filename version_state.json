@@ -1,5 +1,5 @@
 {
-  "current_version": "v02.99",
+  "current_version": "v03.00",
   "history": [
     {
       "version": "v01.01",
@@ -1035,6 +1035,11 @@
       "version": "v02.99",
       "date": "2026-09-02",
       "description": "Chapter 03 56-Era Chips Style Upgrade (v02.99): Applied standard GEMINI.md capsule chip rail style with tech-blue/gold glowing active state and customized thin scrollbar."
+    },
+    {
+      "version": "v03.00",
+      "date": "2026-09-03",
+      "description": "Chapter 23 Foal Age Filter Chips Addition (v03.00 Milestone): Added 0/1/2 Foal Age capsule filter chip rail with GEMINI.md standard styling and instant table filtering."
     }
   ]
 }
