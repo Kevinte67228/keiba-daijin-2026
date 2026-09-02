@@ -1,5 +1,5 @@
 {
-  "current_version": "v02.98",
+  "current_version": "v02.99",
   "history": [
     {
       "version": "v01.01",
@@ -1030,6 +1030,11 @@
       "version": "v02.98",
       "date": "2026-09-02",
       "description": "Chapter 15 Vitality Source, Complement & Generation Gap Major Feature Expansion (v02.98): Added 4 core mechanics cards, Vitality Complement lifespan extension & 3x Multiplier matrix table, and 4 practical breeding guidelines."
+    },
+    {
+      "version": "v02.99",
+      "date": "2026-09-02",
+      "description": "Chapter 03 56-Era Chips Style Upgrade (v02.99): Applied standard GEMINI.md capsule chip rail style with tech-blue/gold glowing active state and customized thin scrollbar."
     }
   ]
 }
