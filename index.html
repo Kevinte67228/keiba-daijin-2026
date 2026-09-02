@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v02.99"></script>
-<script src="core_guides_data.js?v=v02.99"></script>
-<script src="yearly_recs_db.js?v=v02.99"></script>
-<script src="horse_subtopics_data.js?v=v02.99"></script>
+<script src="master_lookup_db.js?v=v03.00"></script>
+<script src="core_guides_data.js?v=v03.00"></script>
+<script src="yearly_recs_db.js?v=v03.00"></script>
+<script src="horse_subtopics_data.js?v=v03.00"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1761,7 +1761,7 @@ li {
 </style>
 
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v02.99) */
+/* Unified Amulet & Badge Tokens (v03.00) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -1875,11 +1875,47 @@ li {
 }
 </style>
 
+
+<style id="ch23-foal-age-chips-style">
+/* 依據 GEMINI.md 規範 5 打造之標準高級科技流光膠囊晶片 */
+.foal-age-btn {
+    background: rgba(30, 41, 59, 0.75) !important;
+    color: #94a3b8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.25) !important;
+    border-radius: 20px !important;
+    padding: 5px 14px !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease-in-out !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+
+.foal-age-btn:hover {
+    background: rgba(56, 189, 248, 0.18) !important;
+    color: #38bdf8 !important;
+    border-color: #38bdf8 !important;
+    transform: translateY(-1px);
+}
+
+.foal-age-btn.active {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    color: #0f172a !important;
+    border-color: #f59e0b !important;
+    font-weight: 800 !important;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
+}
+</style>
+
 </head>
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.99</span>
+<span class="version-badge">v03.00</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -6147,8 +6183,28 @@ li {
           </div>
 </div>
 <h3 style="font-size:1rem; color:var(--accent-color); margin:16px 0 10px; display:flex; align-items:center; gap:8px;">一、0~2 歲入廄前各月週次評語日程表 (日/中對照)</h3>
+
+<div class="foal-age-filter-wrapper" style="margin-bottom: 14px; background: rgba(15, 23, 42, 0.6); padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border-color);">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+    <div style="font-size: 0.86rem; font-weight: 800; color: var(--gold-color); display: flex; align-items: center; gap: 6px;">
+      <i class="fa-solid fa-horse"></i> 🐴 選擇幼駒成長歲數篩選評語日程：
+    </div>
+    <div style="font-size: 0.78rem; color: var(--text-muted);" id="foalAgeStat">
+      目前檢視：<strong style="color: var(--accent-color);">0 ~ 2 歲全覽 (共 26 個月份日程)</strong>
+    </div>
+  </div>
+
+  <!-- 單行水平滑動膠囊軌道 -->
+  <div class="chip-rail" id="foalAgeChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; scrollbar-width: thin;">
+    <button class="foal-age-btn active" onclick="filterFoalAge('all', this)">🌐 全部歲數 (0~2歲全覽)</button>
+    <button class="foal-age-btn" onclick="filterFoalAge('0 歲', this)">🍼 0 歲幼駒 (出生~離乳)</button>
+    <button class="foal-age-btn" onclick="filterFoalAge('1 歲', this)">🐴 1 歲幼駒 (成長~體型)</button>
+    <button class="foal-age-btn" onclick="filterFoalAge('2 歲', this)">🏇 2 歲幼駒 (能力~入廄)</button>
+  </div>
+</div>
+
 <div class="table-responsive" style="margin-bottom:20px;">
-<table class="data-table" style="font-size:0.8rem;">
+<table class="data-table" id="foalAgeScheduleTable" style="font-size:0.8rem;">
 <thead>
 <tr>
 <th style="min-width:130px;">時期 (時期)</th>
@@ -31514,6 +31570,38 @@ function filterNenpyoEra(eraKey, btn) {
         } else {
             const btnText = btn ? btn.textContent.trim() : eraKey;
             statEl.innerHTML = '目前檢視：<strong style="color:var(--gold-color);">' + btnText + '</strong> (共 ' + visibleCount + ' 年紀錄)';
+        }
+    }
+}
+
+
+// 第 23 章：幼駒歲數篩選邏輯
+function filterFoalAge(ageKey, btn) {
+    document.querySelectorAll('.foal-age-btn').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    
+    const rows = document.querySelectorAll('#foalAgeScheduleTable tbody tr');
+    let visibleCount = 0;
+    
+    rows.forEach(function(r) {
+        const firstTd = r.querySelector('td');
+        if (!firstTd) return;
+        const text = firstTd.textContent || '';
+        if (ageKey === 'all' || text.indexOf(ageKey) !== -1) {
+            r.style.display = '';
+            visibleCount++;
+        } else {
+            r.style.display = 'none';
+        }
+    });
+    
+    const statEl = document.getElementById('foalAgeStat');
+    if (statEl) {
+        if (ageKey === 'all') {
+            statEl.innerHTML = '目前檢視：<strong style="color:var(--accent-color);">0 ~ 2 歲全覽</strong> (共 ' + visibleCount + ' 個月份日程)';
+        } else {
+            const btnText = btn ? btn.textContent.trim() : ageKey;
+            statEl.innerHTML = '目前檢視：<strong style="color:var(--gold-color);">' + btnText + '</strong> (共 ' + visibleCount + ' 個月份日程)';
         }
     }
 }
