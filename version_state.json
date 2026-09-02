@@ -1,5 +1,5 @@
 {
-  "current_version": "v02.96",
+  "current_version": "v02.97",
   "history": [
     {
       "version": "v01.01",
@@ -1020,6 +1020,11 @@
       "version": "v02.96",
       "date": "2026-09-02",
       "description": "Fix Chapter 21 Dominance Calculator (v02.96): Matched DOM element IDs (jp1~jp4 & res-jp) with calculateDominance() JS function for instant dynamic calculation and pass/fail color highlighting."
+    },
+    {
+      "version": "v02.97",
+      "date": "2026-09-02",
+      "description": "Chapter 21 6-Era Filter Chips Redesign (v02.97): Replaced crude white buttons with futuristic tech-blue/gold glowing capsule chip rail (.nenpyo-era-btn) and instant era filtering logic across 1968~2025."
     }
   ]
 }

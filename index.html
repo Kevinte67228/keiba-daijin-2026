@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v02.96"></script>
-<script src="core_guides_data.js?v=v02.96"></script>
-<script src="yearly_recs_db.js?v=v02.96"></script>
-<script src="horse_subtopics_data.js?v=v02.96"></script>
+<script src="master_lookup_db.js?v=v02.97"></script>
+<script src="core_guides_data.js?v=v02.97"></script>
+<script src="yearly_recs_db.js?v=v02.97"></script>
+<script src="horse_subtopics_data.js?v=v02.97"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1761,7 +1761,7 @@ li {
 </style>
 
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v02.96) */
+/* Unified Amulet & Badge Tokens (v02.97) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -1788,11 +1788,46 @@ li {
     word-break: keep-all !important;
 }
 </style>
+
+<style id="ch21-era-chips-style">
+.nenpyo-era-btn {
+    background: rgba(30, 41, 59, 0.75) !important;
+    color: #94a3b8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.25) !important;
+    border-radius: 20px !important;
+    padding: 5px 14px !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease-in-out !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+
+.nenpyo-era-btn:hover {
+    background: rgba(56, 189, 248, 0.18) !important;
+    color: #38bdf8 !important;
+    border-color: #38bdf8 !important;
+    transform: translateY(-1px);
+}
+
+.nenpyo-era-btn.active {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    color: #0f172a !important;
+    border-color: #f59e0b !important;
+    font-weight: 800 !important;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
+}
+</style>
+
 </head>
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.96</span>
+<span class="version-badge">v02.97</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -5755,6 +5790,30 @@ li {
 
 <!-- 三、系統確立與自然滅亡年表 (1968~2025 對照大表) -->
 <h3 style="font-size:14px; font-weight:800; color:var(--text-highlight); margin:18px 0 10px 0;">三、全歷史系統確立與自然滅亡年表 (1968 ~ 2025 無介入 vs 有介入對照)</h3>
+
+<!-- 全新重新設計：第 21 章 6 大世代科技流光膠囊晶片軌道 -->
+<div class="nenpyo-era-filter-wrapper" style="margin-bottom: 14px; background: rgba(15, 23, 42, 0.6); padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border-color);">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+    <div style="font-size: 0.86rem; font-weight: 800; color: var(--gold-color); display: flex; align-items: center; gap: 6px;">
+      <i class="fa-solid fa-timeline"></i> 📅 選擇系統確立與滅亡歷史世代切換：
+    </div>
+    <div style="font-size: 0.78rem; color: var(--text-muted);" id="nenpyoEraStat">
+      目前檢視：<strong style="color: var(--accent-color);">1968 ~ 2025 全世代總覽</strong>
+    </div>
+  </div>
+
+  <!-- 單行水平滑動膠囊軌道 -->
+  <div class="chip-rail" id="nenpyoEraChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; scrollbar-width: thin;">
+    <button class="nenpyo-era-btn active" onclick="filterNenpyoEra('all', this)">🌐 全部世代</button>
+    <button class="nenpyo-era-btn" onclick="filterNenpyoEra('1968-1975', this)">🏛 1968~1975 最古</button>
+    <button class="nenpyo-era-btn" onclick="filterNenpyoEra('1976-1985', this)">📜 1976~1985 時代</button>
+    <button class="nenpyo-era-btn" onclick="filterNenpyoEra('1986-1995', this)">🏆 1986~1995 黃金</button>
+    <button class="nenpyo-era-btn" onclick="filterNenpyoEra('1996-2005', this)">👑 1996~2005 雙冠</button>
+    <button class="nenpyo-era-btn" onclick="filterNenpyoEra('2006-2015', this)">⚡ 2006~2015 強豪</button>
+    <button class="nenpyo-era-btn" onclick="filterNenpyoEra('2016-2025', this)">🚀 2016~2025 現代</button>
+  </div>
+</div>
+
 <div class="table-responsive" style="margin-bottom:22px;">
 <table class="data-table" style="min-width:980px;">
 <thead>
@@ -31282,6 +31341,49 @@ function setSysTab(tabKey) {
                 <h4 style="color:#ef4444; margin-bottom:8px;">零細化與滅亡系統保護</h4>
                 <p style="font-size:0.85rem; line-height:1.7;">當血統支配率過低時發動零細配合，可為血統提供額外 +4~+8 爆發力 (爆発力)加成。</p>
             </div>`;
+    }
+}
+
+
+// 第 21 章：6 大世代年表篩選邏輯
+function filterNenpyoEra(eraKey, btn) {
+    document.querySelectorAll('.nenpyo-era-btn').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    
+    const rows = document.querySelectorAll('#nenpyoTableBody tr');
+    let visibleCount = 0;
+    
+    let startYr = 1968, endYr = 2025;
+    if (eraKey !== 'all') {
+        const parts = eraKey.split('-');
+        startYr = parseInt(parts[0]);
+        endYr = parseInt(parts[1]);
+    }
+    
+    rows.forEach(function(r) {
+        const firstTd = r.querySelector('td');
+        if (!firstTd) return;
+        const text = firstTd.textContent || '';
+        const m = text.match(/(\d{4})/);
+        if (m) {
+            const yr = parseInt(m[1]);
+            if (eraKey === 'all' || (yr >= startYr && yr <= endYr)) {
+                r.style.display = '';
+                visibleCount++;
+            } else {
+                r.style.display = 'none';
+            }
+        }
+    });
+    
+    const statEl = document.getElementById('nenpyoEraStat');
+    if (statEl) {
+        if (eraKey === 'all') {
+            statEl.innerHTML = '目前檢視：<strong style="color:var(--accent-color);">1968 ~ 2025 全世代總覽</strong> (共 ' + visibleCount + ' 年紀錄)';
+        } else {
+            const btnText = btn ? btn.textContent.trim() : eraKey;
+            statEl.innerHTML = '目前檢視：<strong style="color:var(--gold-color);">' + btnText + '</strong> (共 ' + visibleCount + ' 年紀錄)';
+        }
     }
 }
 
