@@ -41,7 +41,8 @@
 
 ## 4. 高級科技流光膠囊晶片軌道規範 (Futuristic Tech Capsule Chip Rail Standards)
 
-全站所有篩選與切換晶片（包含年代切換、世代選擇、分類篩選等）一律遵照以下標準樣式與動態邏輯：
+全站所有篩選與切換晶片（包含年代切換、世代選擇、分類篩選等）一律遵照以下標準樣式與動態邏輯。
+★ **只要使用者指示「晶片套用統一風格」，即全自動比照此規範進行統一升級：**
 
 1. **容器佈局 (Chip Rail)**：
    - 必須採用單行水平滑動膠囊軌道：`display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px;`。
