@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v02.94"></script>
-<script src="core_guides_data.js?v=v02.94"></script>
-<script src="yearly_recs_db.js?v=v02.94"></script>
-<script src="horse_subtopics_data.js?v=v02.94"></script>
+<script src="master_lookup_db.js?v=v02.95"></script>
+<script src="core_guides_data.js?v=v02.95"></script>
+<script src="yearly_recs_db.js?v=v02.95"></script>
+<script src="horse_subtopics_data.js?v=v02.95"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1761,7 +1761,7 @@ li {
 </style>
 
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v02.94) */
+/* Unified Amulet & Badge Tokens (v02.95) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -1792,7 +1792,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.94</span>
+<span class="version-badge">v02.95</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -5072,35 +5072,140 @@ li {
 </section>
 
 <!-- ==================== 第 17 章：特性昇華配合與母系融合 ==================== -->
+
 <section class="section-card" id="mod-traits">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-gem"></i> 第 17 章：特性昇華配合與母系融合</div>
+<div class="section-title"><i class="fa-solid fa-gem"></i> 第 17 章：特性昇華配合與母系融合 (Sublimation & Female Line Fusion)</div>
 </div>
 <div class="section-body">
-<div class="section-body">
-<div class="checklist-grid">
-<div class="checklist-card">
-<div class="checklist-card-header"><i class="fa-solid fa-gauge-high" style="color:var(--accent-cyan)"></i> SP 昇華配合 (Lv1~3)</div>
-<p style="font-size:12px; color:var(--text-muted);">
-              父母及祖先世代皆為 SP 系統。Lv1 爆發 +1；Lv2 爆發 +3；Lv3 爆發 <strong>+5 且瞬發力大幅躍升</strong>！
-            </p>
+
+<p style="font-size:0.86rem; line-height:1.8; margin-bottom:16px;">
+  在《賽馬大亨 10 2026》中，系統特性 (System Traits) 是除了血統稀有度外，唯一能直接大幅提升產駒 <strong>「瞬發力 (Spurt)」、「柔軟性 (Flexibility)」、「力量 (Power)」與「根性 (Grit)」</strong> 等硬核次要參數的頂級理論！同時結合 <strong>名門牝系配合 (母系融合)</strong> 更能大幅提升產駒傳承名門因子與超凡大物覺醒率！
+</p>
+
+<!-- 4 大底層機制卡片 -->
+<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:20px;">
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid var(--accent-cyan); border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:var(--accent-cyan); font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-gauge-high"></i> 1. SP 昇華配合 (SP昇華配合)</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      父母及祖先世代皆為 <strong>SP (Speed 速度) 系統</strong>。除爆發力加成外，產駒的 <strong>「瞬發力 (Spurt)」</strong> 將獲得極大幅度的底層天花板躍升！
+    </div>
+  </div>
+
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid var(--accent-red); border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:var(--accent-red); font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-shield"></i> 2. ST 昇華配合 (ST昇華配合)</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      父母及祖先世代皆為 <strong>ST (Stamina 耐力) 系統</strong>。除爆發力加成外，產駒的 <strong>「柔軟性、力量、根性」</strong> 將獲得全面大幅度的升華躍升！
+    </div>
+  </div>
+
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid var(--accent-gold); border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:var(--accent-gold); font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-yin-yang"></i> 3. SP・ST 融合配合 (SP・ST融合)</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      父系端全 3 代為純 SP 系統，母系端全 3 代為純 ST 系統（或反之）。爆發力 <strong style="color:var(--gold-color);">+5 點</strong>！實現速度與耐力陰陽調和，大幅補足產駒 <strong>「力量 (Power)」</strong>。
+    </div>
+  </div>
+
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid #a855f7; border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:#a855f7; font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-dna"></i> 4. 名門牝系融合 (名門牝系配合)</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      繁殖牝馬來自遊戲認定的 <strong>「名門牝系 (Famous Family)」</strong> 或自家主流母系。爆發力 <strong style="color:var(--gold-color);">+2 ~ +4 點</strong>，並完美傳承母系能力因子與大物覺醒率！
+    </div>
+  </div>
 </div>
-<div class="checklist-card">
-<div class="checklist-card-header"><i class="fa-solid fa-shield" style="color:var(--accent-red)"></i> ST 昇華配合 (Lv1~3)</div>
-<p style="font-size:12px; color:var(--text-muted);">
-              父母及祖先世代皆為 ST 系統。Lv1 爆發 +1；Lv2 爆發 +2；Lv3 爆發 <strong>+3 且柔軟/力量/根性極大提升</strong>！
-            </p>
+
+<!-- 爆發力與隱藏能力躍升對照大表 -->
+<div style="font-weight:800; font-size:0.92rem; color:var(--gold-color); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+  <i class="fa-solid fa-table"></i> 📊 特性昇華配合與母系融合 Lv1 ~ Lv3 爆發力與隱藏能力對照表
 </div>
-<div class="checklist-card">
-<div class="checklist-card-header"><i class="fa-solid fa-yin-yang" style="color:var(--accent-gold)"></i> SP・ST 融合配合</div>
-<p style="font-size:12px; color:var(--text-muted);">
-              一方至 3 代全為 SP 系，另一方至 3 代全為 ST 系。爆發力 (爆発力) <strong>+5</strong> 且力量 (Power) 大幅躍升！
-            </p>
+
+<div class="table-responsive" style="margin-bottom:20px;">
+<table class="data-table" style="min-width:840px;">
+<thead>
+<tr>
+<th style="min-width:140px; text-align:left !important;">配合理論類型 (日/中)</th>
+<th style="min-width:90px; text-align:left !important;">配合等級</th>
+<th style="min-width:280px; text-align:left !important;">4 代 16 祖先血統矩陣判定條件</th>
+<th style="min-width:110px; text-align:left !important;">爆發力加成</th>
+<th style="min-width:260px; text-align:left !important;">隱藏能力躍升與繁育評價 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background:rgba(6,182,212,0.06);">
+<td rowspan="3" style="text-align:left !important; vertical-align:middle;"><strong style="color:var(--accent-cyan);"><i class="fa-solid fa-gauge-high"></i> SP 昇華配合</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">(SP昇華配合)</span></td>
+<td style="text-align:left !important;"><strong>Lv1</strong></td>
+<td style="text-align:left !important;">種牡馬與繁殖牝馬皆為 SP 系統標籤</td>
+<td style="text-align:left !important;"><span class="badge-gold">+1</span></td>
+<td style="text-align:left !important;">基礎速度配合，小幅提升速度適性。</td>
+</tr>
+<tr style="background:rgba(6,182,212,0.09);">
+<td style="text-align:left !important;"><strong>Lv2</strong></td>
+<td style="text-align:left !important;">第 2 代祖先（父父、父母、母父、母母）全數為 SP 系統</td>
+<td style="text-align:left !important;"><span class="pill-safe">+3</span></td>
+<td style="text-align:left !important;">瞬發力獲得小幅提升。</td>
+</tr>
+<tr style="background:rgba(6,182,212,0.14);">
+<td style="text-align:left !important;"><strong style="color:var(--gold-color);">Lv3 (極致)</strong></td>
+<td style="text-align:left !important;"><strong>至第 3 代（全 8 位祖先）全數皆為 SP 系統</strong></td>
+<td style="text-align:left !important;"><span class="badge-rainbow">+5 (極致)</span></td>
+<td style="text-align:left !important;">⚡️ <strong>瞬發力 (Spurt) 大幅躍升！</strong> 適合打造短中距離一氣呵成名馬。</td>
+</tr>
+
+<tr style="background:rgba(239,68,68,0.06);">
+<td rowspan="3" style="text-align:left !important; vertical-align:middle;"><strong style="color:var(--accent-red);"><i class="fa-solid fa-shield"></i> ST 昇華配合</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">(ST昇華配合)</span></td>
+<td style="text-align:left !important;"><strong>Lv1</strong></td>
+<td style="text-align:left !important;">種牡馬與繁殖牝馬皆為 ST 系統標籤</td>
+<td style="text-align:left !important;"><span class="badge-gold">+1</span></td>
+<td style="text-align:left !important;">基礎耐力配合。</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.09);">
+<td style="text-align:left !important;"><strong>Lv2</strong></td>
+<td style="text-align:left !important;">第 2 代祖先（父父、父母、母父、母母）全數為 ST 系統</td>
+<td style="text-align:left !important;"><span class="pill-safe">+2</span></td>
+<td style="text-align:left !important;">柔軟度與根性小幅提升。</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.14);">
+<td style="text-align:left !important;"><strong style="color:var(--gold-color);">Lv3 (極致)</strong></td>
+<td style="text-align:left !important;"><strong>至第 3 代（全 8 位祖先）全數皆為 ST 系統</strong></td>
+<td style="text-align:left !important;"><span class="pill-power">+3~4 (極致)</span></td>
+<td style="text-align:left !important;">🛡 <strong>柔軟性/力量/根性極大提升！</strong> 適合打造長距離長勝長驅鐵馬。</td>
+</tr>
+
+<tr style="background:rgba(245,158,11,0.08);">
+<td style="text-align:left !important;"><strong style="color:var(--accent-gold);"><i class="fa-solid fa-yin-yang"></i> SP・ST 融合</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">(SP・ST融合)</span></td>
+<td style="text-align:left !important;"><strong>滿級</strong></td>
+<td style="text-align:left !important;"><strong>一方至 3 代全 SP 系統，另一方至 3 代全 ST 系統</strong></td>
+<td style="text-align:left !important;"><span class="badge-rainbow">+5 (融合)</span></td>
+<td style="text-align:left !important;">☯️ <strong>力量 (Power) 大幅躍升！</strong> 實現速度與耐力的陰陽調和。</td>
+</tr>
+
+<tr style="background:rgba(168,85,247,0.08);">
+<td style="text-align:left !important;"><strong style="color:#a855f7;"><i class="fa-solid fa-dna"></i> 名門牝系融合</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">(名門牝系配合)</span></td>
+<td style="text-align:left !important;"><strong>滿級</strong></td>
+<td style="text-align:left !important;"><strong>繁殖牝馬屬於遊戲認定的名門牝系 (Famous Family)</strong></td>
+<td style="text-align:left !important;"><span class="pill-safe">+2 ~ +4</span></td>
+<td style="text-align:left !important;">💎 <strong>傳承母系能力因子！</strong> 提高產駒大物覺醒率與血統傳承底蘊。</td>
+</tr>
+</tbody>
+</table>
 </div>
+
+<!-- 人工打造 SP/ST 血統與名門母系 4 大實戰指南 -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:20px;">
+  <div style="font-weight:bold; color:var(--gold-color); font-size:0.95rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+    <i class="fa-solid fa-lightbulb"></i> 💡 人工打造 SP / ST 血統與名門母系 4 大實戰指南
+  </div>
+  <ul style="font-size:0.84rem; color:var(--text-muted); line-height:1.75; padding-left:20px; margin:0;">
+    <li><strong>利用「系統確立」注入 SP / ST 標籤</strong>：開局許多無特性系統，可透過操控其子嗣獲勝 G1 或成為頂級種馬觸發【系統確立 (Establish Subline)】，人為注入 SP 或 ST 特性標籤，為下一代組建 3 代純淨矩陣。</li>
+    <li><strong>建立 3 代純淨 SP / ST 血統矩陣避坑點</strong>：在引入外血母馬時，務必確認其父父、父母、母父、母母皆帶有統一的 SP 或 ST 標籤，防止單一無特性血統污染 Lv3 昇華配合。</li>
+    <li><strong>自家名門牝系 (My Female Line) 的培育與主流化</strong>：連續 3 代使用同一家族母馬獲得【殿堂馬】或【重賞勝場】，可將自家母系升格為遊戲認定的「名門牝系」，固定獲得名門牝系配合加成 (+2~4 爆發力)。</li>
+    <li><strong>三冠配合與 SP/ST 昇華配合的雙重疊加效應</strong>：將【三冠配合 (Triple Crown Fusion)】與【SP 昇華配合 Lv3】疊加，能將產駒的爆發力拉至上限，同時獲得瞬發力 S 級的超凡成長能力！</li>
+  </ul>
 </div>
-</div>
+
 </div>
 </section>
+
 <!-- ==================== 第 18 章：特殊名馬配合與彩蛋配合 ==================== -->
 <section class="section-card" id="mod-special">
 <div class="section-header">
