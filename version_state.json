@@ -1,5 +1,5 @@
 {
-  "current_version": "v02.97",
+  "current_version": "v02.98",
   "history": [
     {
       "version": "v01.01",
@@ -1025,6 +1025,11 @@
       "version": "v02.97",
       "date": "2026-09-02",
       "description": "Chapter 21 6-Era Filter Chips Redesign (v02.97): Replaced crude white buttons with futuristic tech-blue/gold glowing capsule chip rail (.nenpyo-era-btn) and instant era filtering logic across 1968~2025."
+    },
+    {
+      "version": "v02.98",
+      "date": "2026-09-02",
+      "description": "Chapter 15 Vitality Source, Complement & Generation Gap Major Feature Expansion (v02.98): Added 4 core mechanics cards, Vitality Complement lifespan extension & 3x Multiplier matrix table, and 4 practical breeding guidelines."
     }
   ]
 }
