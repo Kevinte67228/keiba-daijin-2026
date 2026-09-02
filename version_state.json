@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.00",
+  "current_version": "v03.01",
   "history": [
     {
       "version": "v01.01",
@@ -1040,6 +1040,11 @@
       "version": "v03.00",
       "date": "2026-09-03",
       "description": "Chapter 23 Foal Age Filter Chips Addition (v03.00 Milestone): Added 0/1/2 Foal Age capsule filter chip rail with GEMINI.md standard styling and instant table filtering."
+    },
+    {
+      "version": "v03.01",
+      "date": "2026-09-03",
+      "description": "Foal Core Potential Estimator Calculator Feature Release (v03.01): Added top nav button next to Match Results, interactive modal with 4-stage capsule tabs, real-time SP & Sub-params estimation engine, and AI breeding advice."
     }
   ]
 }
