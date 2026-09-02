@@ -1,5 +1,5 @@
 {
-  "current_version": "v02.94",
+  "current_version": "v02.95",
   "history": [
     {
       "version": "v01.01",
@@ -1010,6 +1010,11 @@
       "version": "v02.94",
       "date": "2026-09-02",
       "description": "Chapter 16 Mail & Bottom Line Activation Major Feature Expansion (v02.94): Added 4 core mechanics cards, Lv1~Lv3 16-ancestor matrix probability table, exclusive law解密, and 4 practical breeding guidelines."
+    },
+    {
+      "version": "v02.95",
+      "date": "2026-09-02",
+      "description": "Chapter 17 Sublimation & Female Line Fusion Major Feature Expansion (v02.95): Added 4 core mechanics cards, SP/ST/Fusion/Famous Female Family matrix table with sub-param boosts, and 4 practical breeding guidelines."
     }
   ]
 }
