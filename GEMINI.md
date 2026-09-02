@@ -36,6 +36,8 @@
    - 凡引用之外部攻略網頁（如 Samurai Gamers, WPStud 等），必須 100% 全量無遺漏收錄所有分支要素（包含前置解鎖條件樹、週期、大成功率加減算公式、冷卻期懲罰等），嚴禁任意刪減。
 
 5. **標準高級科技流光膠囊晶片軌道規範 (Futuristic Tech Capsule Chip Rail Standards)**：
+   - **「晶片套用統一風格」快捷觸發指令**：凡使用者提及「晶片套用統一風格」、「套用Gemini.md風格」或類似要求時，一律自動比照規範 5 之【高級科技流光膠囊晶片軌道】進行全組 CSS 與自訂滾動條替換，無需重複確認。
+
    - **全站晶片風格一律統一為高級圓角膠囊 (.nenpyo-era-btn / .chip-btn)**：
      - 圓角造型：`border-radius: 20px !important; padding: 5px 14px !important;`。
      - 預設狀態 (Default)：`background: rgba(30, 41, 59, 0.75); color: #94a3b8; border: 1px solid rgba(56, 189, 248, 0.25);`。
