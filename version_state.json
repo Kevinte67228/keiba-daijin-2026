@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.02",
+  "current_version": "v03.03",
   "history": [
     {
       "version": "v01.01",
@@ -1050,6 +1050,11 @@
       "version": "v03.02",
       "date": "2026-09-03",
       "description": "Fix Foal Calculator Nav Button & Click Trigger (v03.02): Renamed buttons to '比賽戰績表' and '幼駒能力計算器', aligned styling with green gradient theme, and enhanced Modal click listener with z-index 99999."
+    },
+    {
+      "version": "v03.03",
+      "date": "2026-09-03",
+      "description": "Fix Foal Calculator Button Outer Border & Class (v03.03): Replaced nav-tab-btn with main-tab-btn for 100% outer border, radius and padding alignment with Match Results button."
     }
   ]
 }
