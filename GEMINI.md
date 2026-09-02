@@ -34,3 +34,12 @@
    - 快速跳轉目錄（36 大章節）必須維持三欄齊頭對齊（圖標固定 18px、金色章號固定 62px、標題自適應齊頭）。
 4. **外部攻略資料 100% 完整深度收錄 (Full Coverage & Zero Omission)**：
    - 凡引用之外部攻略網頁（如 Samurai Gamers, WPStud 等），必須 100% 全量無遺漏收錄所有分支要素（包含前置解鎖條件樹、週期、大成功率加減算公式、冷卻期懲罰等），嚴禁任意刪減。
+
+5. **標準高級科技流光膠囊晶片軌道規範 (Futuristic Tech Capsule Chip Rail Standards)**：
+   - **全站晶片風格一律統一為高級圓角膠囊 (.nenpyo-era-btn / .chip-btn)**：
+     - 圓角造型：`border-radius: 20px !important; padding: 5px 14px !important;`。
+     - 預設狀態 (Default)：`background: rgba(30, 41, 59, 0.75); color: #94a3b8; border: 1px solid rgba(56, 189, 248, 0.25);`。
+     - 懸停狀態 (Hover)：`background: rgba(56, 189, 248, 0.18); color: #38bdf8; border-color: #38bdf8; transform: translateY(-1px);`。
+     - 激活狀態 (Active State)：**金色立體流光發光樣式** (`background: linear-gradient(135deg, #f59e0b, #d97706); color: #0f172a; font-weight: 800; border-color: #f59e0b; box-shadow: 0 0 12px rgba(245, 158, 11, 0.45);`)。
+   - **單行水平滑動軌道 (.chip-rail)**：外層容器必須啟用 `overflow-x: auto; -webkit-overflow-scrolling: touch; display: flex; gap: 8px;`，嚴禁折行堆疊侵佔垂直視野。
+   - **強制防換行與斷詞**：晶片按鈕一律強制 `white-space: nowrap !important; word-break: keep-all !important;`。
