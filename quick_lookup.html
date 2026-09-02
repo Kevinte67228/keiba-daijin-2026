@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v02.93"></script>
-<script src="core_guides_data.js?v=v02.93"></script>
-<script src="yearly_recs_db.js?v=v02.93"></script>
-<script src="horse_subtopics_data.js?v=v02.93"></script>
+<script src="master_lookup_db.js?v=v02.94"></script>
+<script src="core_guides_data.js?v=v02.94"></script>
+<script src="yearly_recs_db.js?v=v02.94"></script>
+<script src="horse_subtopics_data.js?v=v02.94"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1761,7 +1761,7 @@ li {
 </style>
 
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v02.93) */
+/* Unified Amulet & Badge Tokens (v02.94) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -1792,7 +1792,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.93</span>
+<span class="version-badge">v02.94</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -4953,39 +4953,124 @@ li {
 </div>
 </section>
 <!-- ==================== 第 16 章：雄系活性化與雌系活性化配合 ==================== -->
+
 <section class="section-card" id="mod-lines">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-venus-mars"></i> 第 16 章：雄系活性化與雌系活性化配合</div>
+<div class="section-title"><i class="fa-solid fa-venus-mars"></i> 第 16 章：雄系活性化與雌系活性化配合 (Line Activation)</div>
 </div>
 <div class="section-body">
-<div class="section-body">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="tool-card">
-<h4 style="font-size:13px; font-weight:800; color:var(--text-highlight); margin-bottom:5px;">
-<i class="fa-solid fa-mars"></i> メールライン活性配合 (雄系活性)
-            </h4>
-<p style="font-size:12px; color:var(--text-muted); line-height:1.6;">
-              種牡馬為主流流行系統，母系端為零細系統。<br/>
-              • <strong>Lv1：</strong> 母+母母+母母母零細 → <span class="pill pill-power">+3</span><br/>
-              • <strong>Lv2：</strong> 母系至第 3 代全零細 → <span class="pill pill-power">+6</span><br/>
-              • <strong>Lv3：</strong> 全血統除父直系外全零細 → <span class="pill pill-power">+10 (極致)</span>
+
+<p style="font-size:0.86rem; line-height:1.8; margin-bottom:16px;">
+  在《賽馬大亨 10 2026》中，<strong>雄系活性化 (メールライン活性配合)</strong> 與 <strong>雌系活性化 (ボトムライン活性配合)</strong> 是利用血統「主流流行系統 (Major Sire Line)」與「零細稀有系統 (Minor Rare Line)」的龐大稀有度差異，單項提供高達 <strong style="color:var(--gold-color);">+10 點爆發力 (爆発力)</strong> 的頂級理論！
 </p>
+
+<!-- 4 大底層機制卡片 -->
+<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:20px;">
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid #38bdf8; border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:#38bdf8; font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-mars"></i> 1. 雄系活性化 (メールライン活性)</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      以<strong>主流流行種牡馬</strong>為主體，結合<strong>全零細母系血統</strong>。利用強勢父線激發稀有母線活性，最高可提供 <strong style="color:var(--gold-color);">+10 爆發力</strong>！
+    </div>
+  </div>
+
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid #a855f7; border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:#a855f7; font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-venus"></i> 2. 雌系活性化 (ボトムライン活性)</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      以<strong>名門流行母線 (母、母母、母母母)</strong>為主體，借用<strong>全零細父線種馬</strong>，極致激發母系能力因子遺傳天花板（最高 <strong style="color:var(--gold-color);">+10 爆發力</strong>）。
+    </div>
+  </div>
+
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid #ef4444; border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:#ef4444; font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-ban"></i> 3. 互斥排他性定律 (Exclusive Law)</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      雄系活性要求「父流行/母零細」，雌系活性要求「母流行/父零細」。兩者在邏輯上<strong>互斥</strong>，無法在同一次配合中同時觸發。
+    </div>
+  </div>
+
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid #4ade80; border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:#4ade80; font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-bolt"></i> 4. 與「零細配合」+14~16 疊加</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      活性化配合 (+10) 可與「零細配合 (Subline Sub-minor, +2~4)」完美疊加，單靠血統稀有度即可拉出 <strong>+14 ~ +16 點爆發力</strong>！
+    </div>
+  </div>
 </div>
-<div class="tool-card">
-<h4 style="font-size:13px; font-weight:800; color:var(--accent-purple); margin-bottom:5px;">
-<i class="fa-solid fa-venus"></i> ボトムライン活性配合 (雌系/底線活性)
-            </h4>
-<p style="font-size:12px; color:var(--text-muted); line-height:1.6;">
-              母線（母、母母、母母母）為流行或帶因子，種馬為零細。<br/>
-              • <strong>Lv1：</strong> 母線流行/帶因子，種馬零細 → <span class="pill pill-power">+3</span><br/>
-              • <strong>Lv2：</strong> 種馬至第 3 代全零細 → <span class="pill pill-power">+6</span><br/>
-              • <strong>Lv3：</strong> 母系至 3 代全流行，父系全零細 → <span class="pill pill-power">+10 (極致)</span>
-</p>
+
+<!-- 爆發力等級精算對照大表 -->
+<div style="font-weight:800; font-size:0.92rem; color:var(--gold-color); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+  <i class="fa-solid fa-table"></i> 📊 雄系 / 雌系活性化配合 Lv1 ~ Lv3 爆發力等級精算對照表
 </div>
+
+<div class="table-responsive" style="margin-bottom:20px;">
+<table class="data-table" style="min-width:820px;">
+<thead>
+<tr>
+<th style="min-width:140px; text-align:left !important;">活性化配合類型 (日/中)</th>
+<th style="min-width:90px; text-align:left !important;">配合等級</th>
+<th style="min-width:280px; text-align:left !important;">4 代 16 祖先血統矩陣判定條件</th>
+<th style="min-width:110px; text-align:left !important;">爆發力加成</th>
+<th style="min-width:260px; text-align:left !important;">繁育實戰建議 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background:rgba(56,189,248,0.06);">
+<td rowspan="3" style="text-align:left !important; vertical-align:middle;"><strong style="color:#38bdf8;"><i class="fa-solid fa-mars"></i> 雄系活性化</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">(メールライン活性)</span></td>
+<td style="text-align:left !important;"><strong>Lv1</strong></td>
+<td style="text-align:left !important;">母系前 3 代母馬（母、母母、母母母）皆為零細系統</td>
+<td style="text-align:left !important;"><span class="badge-gold">+3</span></td>
+<td style="text-align:left !important;">基礎入門配合，適合初開局過渡使用。</td>
+</tr>
+<tr style="background:rgba(56,189,248,0.09);">
+<td style="text-align:left !important;"><strong>Lv2</strong></td>
+<td style="text-align:left !important;">母系第 3 代全 4 個祖先系統皆為零細系統</td>
+<td style="text-align:left !important;"><span class="pill-safe">+6</span></td>
+<td style="text-align:left !important;">中期主流，搭配子系統配合效果顯著。</td>
+</tr>
+<tr style="background:rgba(56,189,248,0.14);">
+<td style="text-align:left !important;"><strong style="color:var(--gold-color);">Lv3 (極致)</strong></td>
+<td style="text-align:left !important;"><strong>全 4 代 16 祖先中，除父直系外 15 個祖先全數零細</strong></td>
+<td style="text-align:left !important;"><span class="badge-rainbow">+10 (極致)</span></td>
+<td style="text-align:left !important;"><strong>頂級爆發！</strong> 需特別規劃古老零細母系矩陣。</td>
+</tr>
+
+<tr style="background:rgba(168,85,247,0.06);">
+<td rowspan="3" style="text-align:left !important; vertical-align:middle;"><strong style="color:#a855f7;"><i class="fa-solid fa-venus"></i> 雌系活性化</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">(ボトムライン活性)</span></td>
+<td style="text-align:left !important;"><strong>Lv1</strong></td>
+<td style="text-align:left !important;">母線流行或帶因子，種牡馬父系為零細系統</td>
+<td style="text-align:left !important;"><span class="badge-gold">+3</span></td>
+<td style="text-align:left !important;">利用名牝母線搭配零細種馬。</td>
+</tr>
+<tr style="background:rgba(168,85,247,0.09);">
+<td style="text-align:left !important;"><strong>Lv2</strong></td>
+<td style="text-align:left !important;">母線流行，種牡馬至第 3 代全祖先皆為零細系統</td>
+<td style="text-align:left !important;"><span class="pill-safe">+6</span></td>
+<td style="text-align:left !important;">高級配合，適合拉高零細種馬子嗣素質。</td>
+</tr>
+<tr style="background:rgba(168,85,247,0.14);">
+<td style="text-align:left !important;"><strong style="color:var(--gold-color);">Lv3 (極致)</strong></td>
+<td style="text-align:left !important;"><strong>母系至第 3 代全流行，種牡馬父系全 4 代全數零細</strong></td>
+<td style="text-align:left !important;"><span class="badge-rainbow">+10 (極致)</span></td>
+<td style="text-align:left !important;"><strong>頂級爆發！</strong> 完美激發名門母系遺傳天花板。</td>
+</tr>
+</tbody>
+</table>
 </div>
+
+<!-- 人工造血與零細活性化 4 大實戰繁育指南 -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:20px;">
+  <div style="font-weight:bold; color:var(--gold-color); font-size:0.95rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+    <i class="fa-solid fa-lightbulb"></i> 💡 人工造血與零細活性化 4 大實戰繁育指南
+  </div>
+  <ul style="font-size:0.84rem; color:var(--text-muted); line-height:1.75; padding-left:20px; margin:0;">
+    <li><strong>古老瀕危名血打造 Lv3 母線</strong>：引進 Herod、Matchem、China Rock 等瀕臨滅絕的古老系統母馬作為母系祖先，能輕鬆湊齊母系全零細矩陣，穩定觸發雄系活性化 Lv3 (+10 爆發力)。</li>
+    <li><strong>配合「系統確立」創造永動循環</strong>：利用【系統確立 (Establish Subline)】將自家主力父系推升為流行系統，為下一代創造天生的「雄系活性化」繁育環境。</li>
+    <li><strong>避開近親交配 (Inbreeding) 陷阱</strong>：在規劃 Lv3 極致活性化時，務必確認 4 代內無重複祖先，防止近親交配導致體質與健康度扣減。</li>
+    <li><strong>Private 種牡馬保護零細父線</strong>：將稀有零細父系購入私人牧場（Private種牡馬），可永久鎖定其零細狀態不退役，為自家母馬提供穩定雌系活性化來源。</li>
+  </ul>
 </div>
+
 </div>
 </section>
+
 <!-- ==================== 第 17 章：特性昇華配合與母系融合 ==================== -->
 <section class="section-card" id="mod-traits">
 <div class="section-header">

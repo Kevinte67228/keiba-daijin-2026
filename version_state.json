@@ -1,5 +1,5 @@
 {
-  "current_version": "v02.93",
+  "current_version": "v02.94",
   "history": [
     {
       "version": "v01.01",
@@ -1005,6 +1005,11 @@
       "version": "v02.93",
       "date": "2026-09-02",
       "description": "Chapter 9 Foal Potential (仔出) Major Feature Expansion (v02.93): Added 4 core mechanics cards, 1~10 level potential & lower-bound probability matrix, and 4 practical breeding management guidelines."
+    },
+    {
+      "version": "v02.94",
+      "date": "2026-09-02",
+      "description": "Chapter 16 Mail & Bottom Line Activation Major Feature Expansion (v02.94): Added 4 core mechanics cards, Lv1~Lv3 16-ancestor matrix probability table, exclusive law解密, and 4 practical breeding guidelines."
     }
   ]
 }
