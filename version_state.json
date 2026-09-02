@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.05",
+  "current_version": "v03.06",
   "history": [
     {
       "version": "v01.01",
@@ -1065,6 +1065,11 @@
       "version": "v03.05",
       "date": "2026-09-03",
       "description": "Fix Foal Calculator Dropdown Dark Theme & Tab Content Stacking (v03.05): Optimized select option dropdown to dark #1e293b background and refined switchFoalCalcTab to accurately isolate stage contents without stacking."
+    },
+    {
+      "version": "v03.06",
+      "date": "2026-09-03",
+      "description": "Foal Growth Tracker & Potential DB Major Upgrade (v03.06): Upgraded Foal Calculator into a full multi-horse growth tracker with LocalStorage persistence, stage-by-stage growth editor, search & real-time SP estimation table."
     }
   ]
 }
