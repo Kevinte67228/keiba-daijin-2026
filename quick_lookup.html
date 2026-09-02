@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v02.97"></script>
-<script src="core_guides_data.js?v=v02.97"></script>
-<script src="yearly_recs_db.js?v=v02.97"></script>
-<script src="horse_subtopics_data.js?v=v02.97"></script>
+<script src="master_lookup_db.js?v=v02.98"></script>
+<script src="core_guides_data.js?v=v02.98"></script>
+<script src="yearly_recs_db.js?v=v02.98"></script>
+<script src="horse_subtopics_data.js?v=v02.98"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1761,7 +1761,7 @@ li {
 </style>
 
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v02.97) */
+/* Unified Amulet & Badge Tokens (v02.98) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -1827,7 +1827,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v02.97</span>
+<span class="version-badge">v02.98</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -4958,35 +4958,114 @@ li {
 </div>
 </section>
 <!-- ==================== 第 15 章：活力源化・活力補完與隔世遺傳 ==================== -->
+
 <section class="section-card" id="mod-vitality">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-seedling"></i> 第 15 章：活力源化・活力補完與隔世遺傳</div>
+<div class="section-title"><i class="fa-solid fa-seedling"></i> 第 15 章：活力源化・活力補完與隔世遺傳 (Vitality & Generation Gap)</div>
 </div>
 <div class="section-body">
-<div class="section-body">
-<div class="checklist-grid">
-<div class="checklist-card">
-<div class="checklist-card-header"><i class="fa-solid fa-award"></i> 活力源化因子</div>
-<p style="font-size:12px; color:var(--text-muted);">
-              父系與母系血統中同時出現金/銀/世界種馬因子。金/銀因子每個 +1，世界因子每個 +2（上限 +8）。
-            </p>
-</div>
-<div class="checklist-card">
-<div class="checklist-card-header"><i class="fa-solid fa-heart"></i> 活力補完 (完全型 +3)</div>
-<p style="font-size:12px; color:var(--text-muted);">
-              第 3 代 8 匹祖先全數符合名種馬、名牝或零細異系血統時成立。大幅延長產駒競走壽命並提供爆發 +3。
-            </p>
-</div>
-<div class="checklist-card">
-<div class="checklist-card-header"><i class="fa-solid fa-angles-down"></i> 隔世遺傳 (Generation Gap)</div>
-<p style="font-size:12px; color:var(--text-muted);">
-              父母皆無能力因子，但【父父】或【母父】帶因子時觸發。因子效果直接 <strong>×3 倍爆發！</strong>
+
+<p style="font-size:0.86rem; line-height:1.8; margin-bottom:16px;">
+  在《賽馬大亨 10 2026》中，<strong>活力源化因子 (Vitality Source)</strong>、<strong>活力補完 (Vitality Complement)</strong> 與 <strong>隔世遺傳 (Generation Gap 3x Multiplier)</strong> 是少數能同時提供高爆發力加成 (<strong style="color:var(--gold-color);">最高 +8 爆發 / 3 倍翻倍</strong>) 與大幅延長產駒 <strong>競走壽命 (Racing Lifespan)</strong> 的隱藏核心理論！
 </p>
+
+<!-- 4 大底層機制卡片 -->
+<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:20px;">
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid var(--accent-gold); border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:var(--accent-gold); font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-award"></i> 1. 活力源化因子 (Vitality Source)</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      父系與母系雙邊同時出現金/銀/世界種馬因子。金/銀因子每個 <strong style="color:var(--gold-color);">+1</strong>，世界大種馬因子每個 <strong style="color:var(--gold-color);">+2</strong>（最高上限 <strong style="color:var(--gold-color);">+8 爆發力</strong>）。
+    </div>
+  </div>
+
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid #ef4444; border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:#ef4444; font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-heart"></i> 2. 活力補完 (Vitality Complement)</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      第 3 代 8 匹祖先全數符合名種馬、名牝或零細貢獻系統時成立 (完全型 <strong style="color:var(--gold-color);">+3 爆發</strong>)。<strong>隱藏核心：大幅延長產駒競走壽命！</strong>
+    </div>
+  </div>
+
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid #a855f7; border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:#a855f7; font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-angles-down"></i> 3. 隔世遺傳 (Generation Gap 3x)</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      直系父母雙方完全無能力因子，但【父父】或【母父】帶因子時觸發。<strong>祖父因子效果直接 ×3 倍翻倍爆發！</strong>（如 +2 點直接爆發 <strong style="color:var(--gold-color);">+6 點</strong>）。
+    </div>
+  </div>
+
+  <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-left:4px solid #4ade80; border-radius:8px; padding:12px 14px;">
+    <div style="font-weight:bold; color:#4ade80; font-size:0.9rem; margin-bottom:4px;"><i class="fa-solid fa-hourglass-half"></i> 4. 抗衰退與競走壽命保護</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+      結合活力補完能有效防止產駒 4 歲成熟後早衰退役，使馬匹在 4~6 歲成熟期依然維持巔峰速度與體能連霸 G1 賽事。
+    </div>
+  </div>
 </div>
+
+<!-- 爆發力與壽命延長對照大表 -->
+<div style="font-weight:800; font-size:0.92rem; color:var(--gold-color); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+  <i class="fa-solid fa-table"></i> 📊 活力源化・活力補完與隔世遺傳 爆發力與壽命對照表
 </div>
+
+<div class="table-responsive" style="margin-bottom:20px;">
+<table class="data-table" style="min-width:840px;">
+<thead>
+<tr>
+<th style="min-width:150px; text-align:left !important;">配合理論類型 (日/中)</th>
+<th style="min-width:100px; text-align:left !important;">配合等級 / 型態</th>
+<th style="min-width:280px; text-align:left !important;">4 代 16 祖先血統矩陣判定條件</th>
+<th style="min-width:110px; text-align:left !important;">爆發力加成</th>
+<th style="min-width:250px; text-align:left !important;">隱藏效果與繁育實戰評價 (繁體中文)</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background:rgba(245,158,11,0.08);">
+<td style="text-align:left !important;"><strong style="color:var(--accent-gold);"><i class="fa-solid fa-award"></i> 活力源化因子</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">(活力源化因子)</span></td>
+<td style="text-align:left !important;"><strong>滿額 (+8)</strong></td>
+<td style="text-align:left !important;">父系與母系雙邊血統中同時出現金/銀/世界種馬因子</td>
+<td style="text-align:left !important;"><span class="badge-gold">最高 +8</span></td>
+<td style="text-align:left !important;">金/銀因子每個 +1，世界因子每個 +2，穩定提供高爆發。</td>
+</tr>
+
+<tr style="background:rgba(239,68,68,0.06);">
+<td rowspan="2" style="text-align:left !important; vertical-align:middle;"><strong style="color:#ef4444;"><i class="fa-solid fa-heart"></i> 活力補完</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">(活力補完)</span></td>
+<td style="text-align:left !important;"><strong>完全型</strong></td>
+<td style="text-align:left !important;"><strong>第 3 代 8 匹祖先全數符合名種馬、名牝或零細貢獻系統</strong></td>
+<td style="text-align:left !important;"><span class="pill-safe">+3</span></td>
+<td style="text-align:left !important;">🧡 <strong>大幅延長產駒競走壽命！</strong> 避免 4 歲成熟後早衰退役。</td>
+</tr>
+<tr style="background:rgba(239,68,68,0.09);">
+<td style="text-align:left !important;"><strong>不完全型</strong></td>
+<td style="text-align:left !important;">第 3 代 8 匹祖先中有 5~7 匹符合條件</td>
+<td style="text-align:left !important;"><span class="pill-version">+1 ~ +2</span></td>
+<td style="text-align:left !important;">中幅延長競走壽命與基礎完成度。</td>
+</tr>
+
+<tr style="background:rgba(168,85,247,0.08);">
+<td style="text-align:left !important;"><strong style="color:#a855f7;"><i class="fa-solid fa-angles-down"></i> 隔世遺傳</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">(隔世遺伝)</span></td>
+<td style="text-align:left !important;"><strong>翻倍型 (3x)</strong></td>
+<td style="text-align:left !important;"><strong>直系父母雙方完全無能力因子，【父父】或【母父】帶因子</strong></td>
+<td style="text-align:left !important;"><span class="badge-rainbow">因子效果 ×3 倍</span></td>
+<td style="text-align:left !important;">⚡️ <strong>祖父因子爆發力 ×3 倍翻倍！</strong> 適合利用平庸父母跳躍產出大物。</td>
+</tr>
+</tbody>
+</table>
 </div>
+
+<!-- 活力源化與隔世遺傳 4 大實戰繁育指南 -->
+<div style="background:rgba(15,23,42,0.7); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:20px;">
+  <div style="font-weight:bold; color:var(--gold-color); font-size:0.95rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+    <i class="fa-solid fa-lightbulb"></i> 💡 活力源化與隔世遺傳 4 大實戰繁育指南
+  </div>
+  <ul style="font-size:0.84rem; color:var(--text-muted); line-height:1.75; padding-left:20px; margin:0;">
+    <li><strong>挑選無能力因子父母觸發 3 倍爆發</strong>：故意使用完全無因子的平庸父/母馬配合，只要【父父】或【母父】帶有頂級 Speed/Sub-param 因子，即可觸發「隔世遺傳」，將原本 +2 的因子直接翻倍為 +6 爆發力！</li>
+    <li><strong>湊齊世界大種馬因子 (每個 +2) 源化技巧</strong>：在血統 4 代內引入已被認定為「世界大種馬 (World Sire)」的血統，每個世界因子提供 +2 爆發力，能極快速湊齊 +8 滿額源化爆發。</li>
+    <li><strong>利用活力補完延長競走壽命挑戰連霸</strong>：配種時湊齊第 3 代 8 祖先的健全度觸發「活力補完 (完全型)」，能為產駒注入更長的競走壽命條，適合挑戰古馬長距離王座連霸。</li>
+    <li><strong>避免直系因子打斷隔世遺傳</strong>：在規劃隔世遺傳時，務必嚴格確認直系父馬與母馬不帶有任何弱小能力因子，否則只要直系父/母帶有 1 個因子，就會直接中斷「隔世遺傳」的 3 倍翻倍觸發！</li>
+  </ul>
+</div>
+
 </div>
 </section>
+
 <!-- ==================== 第 16 章：雄系活性化與雌系活性化配合 ==================== -->
 
 <section class="section-card" id="mod-lines">
