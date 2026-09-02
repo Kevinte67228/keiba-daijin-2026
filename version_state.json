@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.01",
+  "current_version": "v03.02",
   "history": [
     {
       "version": "v01.01",
@@ -1045,6 +1045,11 @@
       "version": "v03.01",
       "date": "2026-09-03",
       "description": "Foal Core Potential Estimator Calculator Feature Release (v03.01): Added top nav button next to Match Results, interactive modal with 4-stage capsule tabs, real-time SP & Sub-params estimation engine, and AI breeding advice."
+    },
+    {
+      "version": "v03.02",
+      "date": "2026-09-03",
+      "description": "Fix Foal Calculator Nav Button & Click Trigger (v03.02): Renamed buttons to '比賽戰績表' and '幼駒能力計算器', aligned styling with green gradient theme, and enhanced Modal click listener with z-index 99999."
     }
   ]
 }
