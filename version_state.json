@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.30",
+  "current_version": "v03.31",
   "history": [
     {
       "version": "v01.01",
@@ -1190,6 +1190,11 @@
       "version": "v03.30",
       "date": "2026-09-04",
       "description": "Chapter 31 Stakes Table Filter Fix (v03.30): Restored missing filterCh38Stakes() function, connected region/grade/month/track dropdowns and search input with dynamic row filtering and count updating, verified 100% in real headless Chrome."
+    },
+    {
+      "version": "v03.31",
+      "date": "2026-09-04",
+      "description": "Unified Capsule Chip Rails for Chapters 43-46 (v03.31): Applied futuristic tech capsule chip style (.ch43-46-chip-rail, 20px rounded capsule, golden glow active state) across Ch43 breeding horses, Ch44 racehorses, Ch45 yearly recommendations, and Ch46 hall of fame nicknames. Verified 100% in real headless Chrome."
     }
   ]
 }
