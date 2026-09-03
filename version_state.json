@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.15",
+  "current_version": "v03.16",
   "history": [
     {
       "version": "v01.01",
@@ -1115,6 +1115,11 @@
       "version": "v03.15",
       "date": "2026-09-03",
       "description": "Fix Foal Dual Chip Tabs Switching Engine (v03.15): Refactored switchFoalEditTab to support index-based sibling matching for 100% reliable tab switching across both Modal popup and inline page dashboard."
+    },
+    {
+      "version": "v03.16",
+      "date": "2026-09-03",
+      "description": "Fix Chip Button Class Mismatch (v03.16): Unified switchFoalEditTab and switchFoalCalcTab with wildcard selector support for .foal-edit-tab-btn and .foal-calc-tab-btn to ensure 100% click switching across all panels."
     }
   ]
 }
