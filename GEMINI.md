@@ -51,3 +51,9 @@
    - **凍結置頂表頭 (Sticky Header)**：內部滾動時表頭一律啟用 `position: sticky !important; top: 0 !important; z-index: 10 !important; background: #1e293b !important;`，確保玩家滾動至底部時各欄位標題始終清晰可見。
    - **智慧動態收縮**：若動態篩選後行數減少至 15 筆以內，容器自動收縮解除限制高度，嚴禁留下無謂空白。
 
+7. **JavaScript 腳本完整性、防殘肢與零語法錯誤規範 (Script Integrity & Zero SyntaxError Guard)**：
+   - **嚴防「代碼斷頭與孤兒殘肢」(No Orphan Tokens)**：函式替換或正則清理時，必須精確確認函式邊界（`function ... {` 到最外層閉合 `}`），嚴禁留下孤立的 `});` 或未閉合大括號。否則瀏覽器編譯拋出 `SyntaxError` 會導致整個 `<script>` 區塊被整塊無聲拋棄，引發全站函式（如 `renderTable`, `init`, `switchMainPillar`）全面變成 `undefined`。
+   - **跨 Script 變數防衝突 (No Duplicate 'let')**：禁止在不同 `<script>` 區塊重複使用 `let` 或 `const` 宣告同名全域變數，跨模組共用一律掛載於 `window.xxx`。
+   - **發布前語法驗證與 CDP 真機診斷 SOP**：凡變更核心 JS 引擎，必須先以語法檢查器（如 `new Function(code)`）或真機 Headless Chrome (CDP) 驗證主控台 **0 SyntaxError、0 ScriptFailedToParse** 且 DOM 資料非空渲染後，方可推進版本並發布。
+
+
