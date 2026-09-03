@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.10",
+  "current_version": "v03.11",
   "history": [
     {
       "version": "v01.01",
@@ -1090,6 +1090,11 @@
       "version": "v03.10",
       "date": "2026-09-03",
       "description": "Fix Foal Calculator Modal Close Function (v03.10): Cleaned duplicate JS definitions, added try-catch protection, active class removal, and backdrop click to close for 100% smooth closing."
+    },
+    {
+      "version": "v03.11",
+      "date": "2026-09-03",
+      "description": "Fix Edit Foal Record Modal Trigger (v03.11): Added modal.classList.add('active') and element null-checks in editFoalRecord(id) for 100% edit modal popup reliability."
     }
   ]
 }
