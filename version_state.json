@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.12",
+  "current_version": "v03.13",
   "history": [
     {
       "version": "v01.01",
@@ -1100,6 +1100,11 @@
       "version": "v03.12",
       "date": "2026-09-03",
       "description": "Chapter 22-24 Ultimate Foal Potential Engine Upgrade (v03.12): Fully integrated 5 character badges (Mika, Kappa, Mitsui, Daikichi, Chichibu), 26-month Japanese/Traditional Chinese comment dropdowns, 9 special events, and historical training unlock estimation."
+    },
+    {
+      "version": "v03.13",
+      "date": "2026-09-03",
+      "description": "Restore Missing openAddFoalModal & closeAddFoalModal JS Functions (v03.13): Re-injected openAddFoalModal and closeAddFoalModal for 100% click reliability."
     }
   ]
 }
