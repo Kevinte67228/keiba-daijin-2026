@@ -86,3 +86,26 @@
 3. **即時連動與數量統計 (Dynamic Interaction)**：
    - 點擊晶片時自動觸發 `filterXXX(key, btn)`，即時對應隱藏/顯示表格資料。
    - 在晶片軌道上方動態顯示當前選取的世代/分類標籤與符合的資料列總數。
+
+---
+
+## 5. JavaScript 腳本完整性、防殘肢與零語法錯誤規範 (Script Integrity & Zero SyntaxError Guard)
+
+為避免代碼合併、正則清理或歷史腳本遷移時引發隱蔽性語法崩潰，所有開發與維護必須遵守以下防禦規範：
+
+1. **嚴防「代碼斷頭與孤兒殘肢」(No Orphan Tokens / Incomplete Function Deletions)**：
+   - 進行函式或舊腳本替換/移除時，嚴禁使用粗糙的正則匹配刪除部分區塊。
+   - 必須精確確認函式邊界（起始 `function ... {` 到最外層閉合 `}`），防止留下孤立的 `});`、`}` 或截斷的大括號。
+   - **嚴重後果警示**：若 `<script>` 區塊內部出現孤兒 token，瀏覽器 V8 引擎會在第一時間拋出 `SyntaxError: Unexpected token`，導致**整個 `<script>` 區塊被無聲丟棄**，內部所有全域變數與函式（如 `renderTable()`, `init()`, `switchMainPillar()`）直接變為 `undefined`，進而引發整頁按鈕癱瘓。
+
+2. **跨 Script 區塊變數命名防衝突 (No Duplicate 'let' Declarations Across Scripts)**：
+   - 禁止在不同的 `<script>` 標籤中以 `let` 或 `const` 重複宣告相同名稱的全域變數（例如 `let explosionChartInstance`）。
+   - 全域跨腳本共用之物件/實例，一律使用顯式 `window.xxx` 掛載或單一頂層宣告，避免觸發 `Uncaught SyntaxError: Identifier '...' has already been declared`。
+
+3. **模組解耦與純淨職責原則 (Single Responsibility per Engine Script)**：
+   - 獨立功能模組（如第 41 章史實馬資料庫引擎）應僅包含自身所需的資料、權重計算、渲染邏輯與事件綁定，嚴禁混入與自身無關的全站導覽或其它章節模擬器腳本（如爆發力模擬、牧場設施運算等）。
+
+4. **發布前語法驗證與 CDP 真機診斷 SOP (Pre-Deploy Syntax Verification & Real-Browser Testing)**：
+   - 凡涉及核心 JavaScript 引擎之變更，在正式部署發布前，必須執行語法健康檢查（如透過 `new Function(code)` 解析測試，或透過 Headless Chrome / CDP 協議載入運行）。
+   - 確認主控台 (Console) **0 SyntaxError、0 ScriptFailedToParse、0 ReferenceError**，且資料庫總筆數（如 15,389 匹）與表格 DOM 均已真實渲染出非空列後，方可推進版本並執行 `push_versioned_release.py`。
+
