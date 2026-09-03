@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.18",
+  "current_version": "v03.19",
   "history": [
     {
       "version": "v01.01",
@@ -1130,6 +1130,11 @@
       "version": "v03.18",
       "date": "2026-09-03",
       "description": "Fix Modal Chip Buttons Escaped Quotes Syntax Error (v03.18): Removed backslash escaped quotes in onclick attributes and split switchFoalEditTab / switchFoalCalcTab into robust isolated controllers."
+    },
+    {
+      "version": "v03.19",
+      "date": "2026-09-03",
+      "description": "Change Default Foal Birth Year to 1968 (v03.19): Updated default birth year from 2026 to 1968 across inputs, modal init, storage, and table render."
     }
   ]
 }
