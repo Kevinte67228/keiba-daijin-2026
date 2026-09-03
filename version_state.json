@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.09",
+  "current_version": "v03.10",
   "history": [
     {
       "version": "v01.01",
@@ -1085,6 +1085,11 @@
       "version": "v03.09",
       "date": "2026-09-03",
       "description": "Fix Foal Modal Save and Close Button Functions (v03.09): Defined robust saveFoalRecord() and closeAddFoalModal() with element checks, LocalStorage persistence, and alert validation."
+    },
+    {
+      "version": "v03.10",
+      "date": "2026-09-03",
+      "description": "Fix Foal Calculator Modal Close Function (v03.10): Cleaned duplicate JS definitions, added try-catch protection, active class removal, and backdrop click to close for 100% smooth closing."
     }
   ]
 }
