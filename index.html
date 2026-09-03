@@ -33033,6 +33033,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <script id="master-horse-db-engine">
 // ==================== 第 41 章 1.5 萬匹史實馬與 11 大推薦分類引擎 ====================
 // ==================== 第 41 章 1.5 萬匹史實馬與 11 大推薦分類引擎 ====================
+// ==================== 第 41 章 1.5 萬匹史實馬與 11 大推薦分類引擎 ====================
 let dbData = null;
         let currentTab = "cat1";
         let sortField = "sp";
@@ -34045,6 +34046,82 @@ if (document.readyState === 'loading') {
 // 額外備用：window.onload 確保所有資源載入後再次確認初始化
 window.addEventListener('load', () => {
     if (!dbData) _masterDbInit();
+});
+
+// ========================== 資料庫引擎啟動器 (三重保險) ==========================
+function _masterDbInit() {
+    // Step 1: 解包資料庫
+    if (window.MASTER_DB_DATA) {
+        dbData = window.MASTER_DB_DATA;
+    }
+    if (!dbData) return; // 資料尚未載入，放棄
+
+    // Step 2: 初始化年度篩選器（只在尚未初始化時執行）
+    const sel = document.getElementById('filterYear');
+    if (sel && sel.options.length < 2) {
+        if (typeof initYearFilter === 'function') initYearFilter();
+    }
+
+    // Step 3: 綁定分類晶片點擊（每個 btn 只綁一次）
+    document.querySelectorAll('#categoryTabs .tab-btn').forEach(btn => {
+        if (!btn._masterDbBound) {
+            btn._masterDbBound = true;
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#categoryTabs .tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentTab = btn.getAttribute('data-cat') || 'cat1';
+                renderTable();
+            });
+        }
+    });
+
+    // Step 4: 綁定篩選器 change/input（每個控件只綁一次）
+    ['filterYear','filterTicket','filterSex','filterSp','filterSt','filterTrack','filterDistance','filterRegion'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && !el._masterDbBound) {
+            el._masterDbBound = true;
+            el.addEventListener('change', renderTable);
+        }
+    });
+    const searchEl = document.getElementById('filterSearch');
+    if (searchEl && !searchEl._masterDbBound) {
+        searchEl._masterDbBound = true;
+        searchEl.addEventListener('input', renderTable);
+    }
+
+    // Step 5: 強制確保 tableViewWrapper 可見
+    const tw = document.getElementById('tableViewWrapper');
+    if (tw) tw.style.display = 'block';
+    const sb = document.querySelector('.stats-bar');
+    if (sb) sb.style.display = 'flex';
+    const fp = document.querySelector('.filter-panel');
+    if (fp) fp.style.display = 'grid';
+
+    // Step 6: 渲染表格
+    renderTable();
+}
+
+// 公開入口 (供 switchMainPillar 呼叫)
+window.initMasterHorseDb = _masterDbInit;
+
+// 使用 readyState 判斷立即/延後執行
+function _tryInit() {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', _masterDbInit);
+    } else {
+        // DOM 已就緒（interactive 或 complete）→ 立即執行
+        _masterDbInit();
+        // 500ms 後再執行一次確保萬無一失
+        setTimeout(_masterDbInit, 500);
+    }
+}
+_tryInit();
+
+// window.onload 再次備份
+window.addEventListener('load', function() {
+    if (!dbData || !window._CURRENT_RENDERED_ITEMS || window._CURRENT_RENDERED_ITEMS.length === 0) {
+        _masterDbInit();
+    }
 });
 
 </script>
