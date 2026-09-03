@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.11",
+  "current_version": "v03.12",
   "history": [
     {
       "version": "v01.01",
@@ -1095,6 +1095,11 @@
       "version": "v03.11",
       "date": "2026-09-03",
       "description": "Fix Edit Foal Record Modal Trigger (v03.11): Added modal.classList.add('active') and element null-checks in editFoalRecord(id) for 100% edit modal popup reliability."
+    },
+    {
+      "version": "v03.12",
+      "date": "2026-09-03",
+      "description": "Chapter 22-24 Ultimate Foal Potential Engine Upgrade (v03.12): Fully integrated 5 character badges (Mika, Kappa, Mitsui, Daikichi, Chichibu), 26-month Japanese/Traditional Chinese comment dropdowns, 9 special events, and historical training unlock estimation."
     }
   ]
 }

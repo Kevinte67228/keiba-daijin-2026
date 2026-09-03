@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.11"></script>
-<script src="core_guides_data.js?v=v03.11"></script>
-<script src="yearly_recs_db.js?v=v03.11"></script>
-<script src="horse_subtopics_data.js?v=v03.11"></script>
+<script src="master_lookup_db.js?v=v03.12"></script>
+<script src="core_guides_data.js?v=v03.12"></script>
+<script src="yearly_recs_db.js?v=v03.12"></script>
+<script src="horse_subtopics_data.js?v=v03.12"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1761,7 +1761,7 @@ li {
 </style>
 
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.11) */
+/* Unified Amulet & Badge Tokens (v03.12) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -1943,7 +1943,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.11</span>
+<span class="version-badge">v03.12</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -31874,7 +31874,8 @@ function calculateFoalPotential() {
 }
 
 
-// 🧮 幼駒成長履歷與能力推估資料庫 (Foal Growth Tracker DB Engine)
+
+// 🧮 22~24章 全面升級版 幼駒核心能力與評語精算引擎 (Ultimate Foal Potential Engine)
 let currentEditingFoalId = null;
 
 function getFoalRecords() {
@@ -31919,7 +31920,7 @@ function renderFoalTrackerTable() {
     
     let html = '';
     filtered.forEach(r => {
-        const scoreResult = calcFoalScore(r);
+        const res = calcFoalScore(r);
         html += `
         <tr>
           <td style="text-align:left !important;">
@@ -31927,25 +31928,24 @@ function renderFoalTrackerTable() {
             <span style="font-size:0.75rem; color:var(--text-muted);">${r.year || 2026}年產 (${r.sire || '父未填'} × ${r.dam || '母未填'})</span>
           </td>
           <td style="text-align:left !important; font-size:0.78rem;">
-            美香: <strong>${r.mika == 10 ? '<span style="color:var(--gold-color);">◎</span>' : (r.mika == 6 ? '○' : '△')}</strong> &nbsp;|&nbsp; 
-            河童木: <strong>${r.kappa == 10 ? '<span style="color:var(--gold-color);">◎</span>' : (r.kappa == 6 ? '○' : '△')}</strong>
+            美香: <strong>${fmtBadge(r.mika)}</strong> | 相馬: <strong>${fmtBadge(r.kappa)}</strong><br>
+            三井: <strong>${fmtBadge(r.mitsui)}</strong> | 大吉: <strong>${fmtBadge(r.daikichi)}</strong> | 知知夫: <strong>${fmtBadge(r.chichibu)}</strong>
           </td>
           <td style="text-align:left !important; font-size:0.78rem;">
-            ${r.isFenceJump ? '<span class="badge-rainbow" style="margin-bottom:2px; display:inline-block;">⚡ 柵越え (越欄大物)</span><br>' : ''}
-            ${r.isChunrai ? '<span class="pill-safe" style="margin-bottom:2px; display:inline-block;">👑 春雷/春嵐特別</span><br>' : ''}
-            ${r.isLegProb ? '<span style="color:#f87171;">⚠️ 腳部不安</span> ' : ''}
-            ${r.spComment == 77 ? '2歲SP: 大物感/破格速度' : (r.spComment == 72 ? '2歲SP: 相當有速度' : '2歲SP: 標準')}
+            ${res.eventBadges}
+            ${r.legWarn === 'leg_prob' ? '<span style="color:#f87171;">⚠️ 脚部不安</span> ' : ''}
+            <span style="color:var(--text-muted);">${res.spCommentText}</span>
           </td>
           <td style="text-align:left !important;">
-            <span class="${scoreResult.badgeClass}">${scoreResult.rankText}</span><br>
-            <strong style="color:#38bdf8; font-size:0.85rem;">SP: ${scoreResult.spRange}</strong>
+            <span class="${res.badgeClass}">${res.rankText}</span><br>
+            <strong style="color:#38bdf8; font-size:0.85rem;">SP: ${res.spRange}</strong>
           </td>
           <td style="text-align:left !important; font-size:0.78rem; color:var(--text-muted);">
-            ${scoreResult.advice}
+            ${res.advice}
           </td>
           <td style="text-align:left !important;">
-            <button onclick="editFoalRecord('${r.id}')" style="background:rgba(56,189,248,0.2); border:1px solid #38bdf8; color:#38bdf8; padding:3px 8px; border-radius:12px; font-size:0.75rem; cursor:pointer; margin-bottom:4px;">✏️ 編輯</button><br>
-            <button onclick="deleteFoalRecord('${r.id}')" style="background:rgba(239,68,68,0.2); border:1px solid #f87171; color:#f87171; padding:3px 8px; border-radius:12px; font-size:0.75rem; cursor:pointer;">🗑️ 刪除</button>
+            <button onclick="editFoalRecord('${r.id}'); if(event){event.stopPropagation();}" style="background:rgba(56,189,248,0.2); border:1px solid #38bdf8; color:#38bdf8; padding:3px 8px; border-radius:12px; font-size:0.75rem; cursor:pointer; margin-bottom:4px;">✏️ 編輯</button><br>
+            <button onclick="deleteFoalRecord('${r.id}'); if(event){event.stopPropagation();}" style="background:rgba(239,68,68,0.2); border:1px solid #f87171; color:#f87171; padding:3px 8px; border-radius:12px; font-size:0.75rem; cursor:pointer;">🗑️ 刪除</button>
           </td>
         </tr>
         `;
@@ -31953,32 +31953,74 @@ function renderFoalTrackerTable() {
     tbody.innerHTML = html;
 }
 
+function fmtBadge(val) {
+    val = parseInt(val || 6);
+    if (val === 10) return '<span style="color:var(--gold-color); font-weight:bold;">◎</span>';
+    if (val === 6) return '<span style="color:#38bdf8;">○</span>';
+    if (val === 3) return '<span style="color:#94a3b8;">△</span>';
+    return '<span style="color:#ef4444;">×</span>';
+}
+
 function calcFoalScore(r) {
     let mika = parseInt(r.mika || 6);
     let kappa = parseInt(r.kappa || 6);
+    let mitsui = parseInt(r.mitsui || 6);
+    let daikichi = parseInt(r.daikichi || 6);
+    let chichibu = parseInt(r.chichibu || 6);
+    
     let birth = parseInt(r.birth || 10);
     let growth = parseInt(r.growth1 || 6);
     let size = parseInt(r.size1 || 6);
+    let spurtFlex = parseInt(r.spurtFlex || 6);
     let baseSp = parseInt(r.spComment || 72);
+    let trainAdd = (parseInt(r.trainSuccess || 0)) * 1.5;
     
-    let totalScore = mika + kappa + birth + growth + size;
-    let finalSp = baseSp;
+    let totalScore = mika + kappa + mitsui + daikichi + chichibu + birth + growth + size + spurtFlex;
+    let finalSp = baseSp + trainAdd;
     
-    if (r.isFenceJump) { totalScore += 25; finalSp += 4; }
-    if (r.isFenceBreak) { totalScore += 15; }
-    if (r.isChunrai) { totalScore += 20; finalSp += 3; }
-    if (r.isTwins) { totalScore -= 15; finalSp -= 5; }
+    let eventBadgesHtml = '';
+    
+    if (r.isFenceJump) { 
+        totalScore += 25; finalSp += 4; 
+        eventBadgesHtml += '<span class="badge-rainbow" style="margin-bottom:2px; display:inline-block;">⚡ 柵越え (越欄怪物)</span> '; 
+    }
+    if (r.isFenceBreak) { 
+        totalScore += 15; 
+        eventBadgesHtml += '<span class="badge-gold" style="margin-bottom:2px; display:inline-block;">🔨 柵破壊</span> '; 
+    }
+    if (r.isChunrai) { 
+        totalScore += 20; finalSp += 3; 
+        eventBadgesHtml += '<span class="pill-safe" style="margin-bottom:2px; display:inline-block;">👑 春雷</span> '; 
+    }
+    if (r.isChunran) { 
+        totalScore += 18; finalSp += 2; 
+        eventBadgesHtml += '<span class="pill-safe" style="margin-bottom:2px; display:inline-block;">👑 春嵐</span> '; 
+    }
+    if (r.isRaijin) { 
+        totalScore += 15; 
+        eventBadgesHtml += '<span class="pill-version" style="margin-bottom:2px; display:inline-block;">⚡ 雷神(長距離)</span> '; 
+    }
+    if (r.isFujin) { 
+        totalScore += 15; 
+        eventBadgesHtml += '<span class="pill-version" style="margin-bottom:2px; display:inline-block;">🍃 風神(短距離)</span> '; 
+    }
+    if (r.isIchitodate) { totalScore += 5; }
+    if (r.isSaleHigh) { totalScore += 5; }
+    if (r.isTwins) { 
+        totalScore -= 15; finalSp -= 5; 
+        eventBadgesHtml += '<span style="color:#ef4444; font-weight:bold;">⚠️ 雙子誕生</span> '; 
+    }
     
     let rankText = 'A 級 (一流競走馬)';
     let badgeClass = 'pill-safe';
     
-    if (r.isFenceJump || r.isChunrai || totalScore >= 75) {
+    if (r.isFenceJump || r.isChunrai || totalScore >= 95) {
         rankText = 'S+ 級 (越欄怪物駒認證)';
         badgeClass = 'badge-rainbow';
-    } else if (totalScore >= 55 || finalSp >= 72) {
+    } else if (totalScore >= 70 || finalSp >= 72) {
         rankText = 'S 級 (超大物名駒)';
         badgeClass = 'badge-gold';
-    } else if (totalScore >= 35) {
+    } else if (totalScore >= 45) {
         rankText = 'A 級 (一流競走馬)';
         badgeClass = 'pill-safe';
     } else {
@@ -31986,11 +32028,13 @@ function calcFoalScore(r) {
         badgeClass = 'pill-version';
     }
     
-    let advice = '特別適合於一般重賞與 G1 賽事發揮。';
+    let spCommentText = r.spComment == 77 ? '2歲SP: 大物感/破格' : (r.spComment == 72 ? '2歲SP: 相當有速度' : '2歲SP: 標準');
+    
+    let advice = '適合投入常規重賞與 G1 賽事爭冠。';
     if (r.isFenceJump || r.isChunrai) {
-        advice = '🌟 越欄/三冠殿堂大物！建議優先使用【虹札/金札】鎖定引進。';
-    } else if (r.isLegProb) {
-        advice = '⚠️ 檢視到腳部不安，建議於 2 歲 9 月進行史實調教修復。';
+        advice = '🌟 越欄/三冠殿堂大物！建議優先使用【虹札/金札】鎖定引進！';
+    } else if (r.legWarn === 'leg_prob') {
+        advice = '⚠️ 檢視到「脚部不安」，建議於 2 歲 9 月進行史實調教修復短板。';
     }
     
     return {
@@ -31998,21 +32042,10 @@ function calcFoalScore(r) {
         rankText: rankText,
         badgeClass: badgeClass,
         spRange: `${(finalSp - 1.0).toFixed(1)} ~ ${(finalSp + 1.5).toFixed(1)}`,
+        eventBadges: eventBadgesHtml,
+        spCommentText: spCommentText,
         advice: advice
     };
-}
-
-function closeAddFoalModal() {
-    try {
-        const modal = document.getElementById('addFoalModal');
-        if (modal) {
-            modal.classList.remove('active');
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-    } catch(e) {
-        console.error('Error closing add foal modal:', e);
-    }
 }
 
 function saveFoalRecord() {
@@ -32024,41 +32057,35 @@ function saveFoalRecord() {
             return;
         }
         
-        const yearInput = document.getElementById('edit_foal_year');
-        const sireInput = document.getElementById('edit_foal_sire');
-        const damInput = document.getElementById('edit_foal_dam');
-        const mikaInput = document.getElementById('edit_mika');
-        const kappaInput = document.getElementById('edit_kappa');
-        const birthInput = document.getElementById('edit_birth');
-        const growth1Input = document.getElementById('edit_growth1');
-        const size1Input = document.getElementById('edit_size1');
-        const spCommentInput = document.getElementById('edit_sp_comment');
-        
-        const legProbChk = document.getElementById('edit_leg_problem');
-        const temperWildChk = document.getElementById('edit_temper_wild');
-        const fenceJumpChk = document.getElementById('edit_fence_jump');
-        const fenceBreakChk = document.getElementById('edit_fence_break');
-        const chunraiChk = document.getElementById('edit_chunrai');
-        const twinsChk = document.getElementById('edit_twins');
-        
         const record = {
             id: currentEditingFoalId || ('foal_' + Date.now()),
             name: name,
-            year: parseInt(yearInput ? yearInput.value : 2026) || 2026,
-            sire: (sireInput ? sireInput.value : '').trim(),
-            dam: (damInput ? damInput.value : '').trim(),
-            mika: mikaInput ? mikaInput.value : '6',
-            kappa: kappaInput ? kappaInput.value : '6',
-            birth: birthInput ? birthInput.value : '10',
-            growth1: growth1Input ? growth1Input.value : '6',
-            size1: size1Input ? size1Input.value : '6',
-            spComment: spCommentInput ? spCommentInput.value : '72',
-            isLegProb: legProbChk ? legProbChk.checked : false,
-            isTemperWild: temperWildChk ? temperWildChk.checked : false,
-            isFenceJump: fenceJumpChk ? fenceJumpChk.checked : false,
-            isFenceBreak: fenceBreakChk ? fenceBreakChk.checked : false,
-            isChunrai: chunraiChk ? chunraiChk.checked : false,
-            isTwins: twinsChk ? twinsChk.checked : false,
+            year: parseInt(document.getElementById('edit_foal_year')?.value || 2026) || 2026,
+            sire: (document.getElementById('edit_foal_sire')?.value || '').trim(),
+            dam: (document.getElementById('edit_foal_dam')?.value || '').trim(),
+            mika: document.getElementById('edit_mika')?.value || '6',
+            kappa: document.getElementById('edit_kappa')?.value || '6',
+            mitsui: document.getElementById('edit_mitsui')?.value || '6',
+            daikichi: document.getElementById('edit_daikichi')?.value || '6',
+            chichibu: document.getElementById('edit_chichibu')?.value || '6',
+            birth: document.getElementById('edit_birth')?.value || '10',
+            legWarn: document.getElementById('edit_leg_warn')?.value || 'none',
+            growth1: document.getElementById('edit_growth1')?.value || '6',
+            size1: document.getElementById('edit_size1')?.value || '6',
+            surface: document.getElementById('edit_surface')?.value || 'turf',
+            spurtFlex: document.getElementById('edit_spurt_flex')?.value || '6',
+            spComment: document.getElementById('edit_sp_comment')?.value || '72',
+            stGrit: document.getElementById('edit_st_grit')?.value || 'st_mid',
+            trainSuccess: document.getElementById('edit_train_success')?.value || '0',
+            isFenceJump: document.getElementById('edit_fence_jump')?.checked || false,
+            isFenceBreak: document.getElementById('edit_fence_break')?.checked || false,
+            isChunrai: document.getElementById('edit_chunrai')?.checked || false,
+            isChunran: document.getElementById('edit_chunran')?.checked || false,
+            isRaijin: document.getElementById('edit_raijin')?.checked || false,
+            isFujin: document.getElementById('edit_fujin')?.checked || false,
+            isIchitodate: document.getElementById('edit_ichitodate')?.checked || false,
+            isSaleHigh: document.getElementById('edit_sale_high')?.checked || false,
+            isTwins: document.getElementById('edit_twins')?.checked || false,
             updatedAt: Date.now()
         };
         
@@ -32079,62 +32106,6 @@ function saveFoalRecord() {
         alert('儲存過程發生問題：' + err.message);
     }
 }
-function openAddFoalModal() {
-    try {
-        currentEditingFoalId = null;
-        const titleEl = document.getElementById('addFoalModalTitle');
-        if (titleEl) titleEl.textContent = '➕ 新增幼駒成長檔案 (0~2 歲履歷與能力精算)';
-        
-        const nameEl = document.getElementById('edit_foal_name');
-        if (nameEl) nameEl.value = '';
-        
-        const yearEl = document.getElementById('edit_foal_year');
-        if (yearEl) yearEl.value = '2026';
-        
-        const sireEl = document.getElementById('edit_foal_sire');
-        if (sireEl) sireEl.value = '';
-        
-        const damEl = document.getElementById('edit_foal_dam');
-        if (damEl) damEl.value = '';
-        
-        const modal = document.getElementById('addFoalModal');
-        if (modal) {
-            modal.classList.add('active');
-            modal.style.display = 'flex';
-            modal.style.zIndex = '99999';
-            document.body.style.overflow = 'hidden';
-        }
-    } catch(e) {
-        console.error('Error opening add foal modal:', e);
-        const modal = document.getElementById('addFoalModal');
-        if (modal) {
-            modal.classList.add('active');
-            modal.style.display = 'flex';
-            modal.style.zIndex = '99999';
-        }
-    }
-}
-
-
-
-
-
-
-
-function switchFoalEditTab(tabId, btn) {
-    if (!btn) return;
-    const parent = btn.closest('#addFoalModal');
-    if (!parent) return;
-    
-    parent.querySelectorAll('.foal-edit-tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    parent.querySelectorAll('.foal-edit-tab-content').forEach(c => c.style.display = 'none');
-    const target = parent.querySelector('#' + tabId);
-    if (target) target.style.display = 'block';
-}
-
-
 
 function editFoalRecord(id) {
     try {
@@ -32146,53 +32117,37 @@ function editFoalRecord(id) {
         const titleEl = document.getElementById('addFoalModalTitle');
         if (titleEl) titleEl.textContent = '✏️ 編輯幼駒成長檔案 - ' + (r.name || '');
         
-        const nameEl = document.getElementById('edit_foal_name');
-        if (nameEl) nameEl.value = r.name || '';
+        document.getElementById('edit_foal_name').value = r.name || '';
+        document.getElementById('edit_foal_year').value = r.year || 2026;
+        document.getElementById('edit_foal_sire').value = r.sire || '';
+        document.getElementById('edit_foal_dam').value = r.dam || '';
         
-        const yearEl = document.getElementById('edit_foal_year');
-        if (yearEl) yearEl.value = r.year || 2026;
+        document.getElementById('edit_mika').value = r.mika || '6';
+        document.getElementById('edit_kappa').value = r.kappa || '6';
+        document.getElementById('edit_mitsui').value = r.mitsui || '6';
+        document.getElementById('edit_daikichi').value = r.daikichi || '6';
+        document.getElementById('edit_chichibu').value = r.chichibu || '6';
         
-        const sireEl = document.getElementById('edit_foal_sire');
-        if (sireEl) sireEl.value = r.sire || '';
+        document.getElementById('edit_birth').value = r.birth || '10';
+        document.getElementById('edit_leg_warn').value = r.legWarn || 'none';
+        document.getElementById('edit_growth1').value = r.growth1 || '6';
+        document.getElementById('edit_size1').value = r.size1 || '6';
+        document.getElementById('edit_surface').value = r.surface || 'turf';
+        document.getElementById('edit_spurt_flex').value = r.spurtFlex || '6';
         
-        const damEl = document.getElementById('edit_foal_dam');
-        if (damEl) damEl.value = r.dam || '';
+        document.getElementById('edit_sp_comment').value = r.spComment || '72';
+        document.getElementById('edit_st_grit').value = r.stGrit || 'st_mid';
+        document.getElementById('edit_train_success').value = r.trainSuccess || '0';
         
-        const mikaEl = document.getElementById('edit_mika');
-        if (mikaEl) mikaEl.value = r.mika || '6';
-        
-        const kappaEl = document.getElementById('edit_kappa');
-        if (kappaEl) kappaEl.value = r.kappa || '6';
-        
-        const birthEl = document.getElementById('edit_birth');
-        if (birthEl) birthEl.value = r.birth || '10';
-        
-        const growth1El = document.getElementById('edit_growth1');
-        if (growth1El) growth1El.value = r.growth1 || '6';
-        
-        const size1El = document.getElementById('edit_size1');
-        if (size1El) size1El.value = r.size1 || '6';
-        
-        const spCommentEl = document.getElementById('edit_sp_comment');
-        if (spCommentEl) spCommentEl.value = r.spComment || '72';
-        
-        const legProbEl = document.getElementById('edit_leg_problem');
-        if (legProbEl) legProbEl.checked = !!r.isLegProb;
-        
-        const temperWildEl = document.getElementById('edit_temper_wild');
-        if (temperWildEl) temperWildEl.checked = !!r.isTemperWild;
-        
-        const fenceJumpEl = document.getElementById('edit_fence_jump');
-        if (fenceJumpEl) fenceJumpEl.checked = !!r.isFenceJump;
-        
-        const fenceBreakEl = document.getElementById('edit_fence_break');
-        if (fenceBreakEl) fenceBreakEl.checked = !!r.isFenceBreak;
-        
-        const chunraiEl = document.getElementById('edit_chunrai');
-        if (chunraiEl) chunraiEl.checked = !!r.isChunrai;
-        
-        const twinsEl = document.getElementById('edit_twins');
-        if (twinsEl) twinsEl.checked = !!r.isTwins;
+        document.getElementById('edit_fence_jump').checked = !!r.isFenceJump;
+        document.getElementById('edit_fence_break').checked = !!r.isFenceBreak;
+        document.getElementById('edit_chunrai').checked = !!r.isChunrai;
+        document.getElementById('edit_chunran').checked = !!r.isChunran;
+        document.getElementById('edit_raijin').checked = !!r.isRaijin;
+        document.getElementById('edit_fujin').checked = !!r.isFujin;
+        document.getElementById('edit_ichitodate').checked = !!r.isIchitodate;
+        document.getElementById('edit_sale_high').checked = !!r.isSaleHigh;
+        document.getElementById('edit_twins').checked = !!r.isTwins;
         
         const modal = document.getElementById('addFoalModal');
         if (modal) {
@@ -32702,8 +32657,9 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
       <button onclick="closeAddFoalModal()" style="background:rgba(255,255,255,0.1); border:none; color:#fff; font-size:1.2rem; padding:4px 12px; border-radius:8px; cursor:pointer;">&times;</button>
     </div>
 
+    
     <!-- 幼駒基本資料輸入 -->
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:10px; margin-bottom:16px; background:rgba(30,41,59,0.5); padding:12px; border-radius:10px;">
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin-bottom:16px; background:rgba(30,41,59,0.5); padding:12px; border-radius:10px; border:1px solid var(--border-color);">
       <div>
         <label style="font-size:0.8rem; color:var(--text-muted);">幼駒名稱 / 代號 (*必填):</label>
         <input type="text" id="edit_foal_name" placeholder="例：閃光特快 / 2026一號" style="width:100%; padding:4px 8px; background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-main); border-radius:6px; font-size:0.82rem;">
@@ -32714,73 +32670,162 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
       </div>
       <div>
         <label style="font-size:0.8rem; color:var(--text-muted);">父馬 (種牡馬):</label>
-        <input type="text" id="edit_foal_sire" placeholder="例：Deep Impact" style="width:100%; padding:4px 8px; background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-main); border-radius:6px; font-size:0.82rem;">
+        <input type="text" id="edit_foal_sire" placeholder="例：Deep Impact (ディープインパクト)" style="width:100%; padding:4px 8px; background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-main); border-radius:6px; font-size:0.82rem;">
       </div>
       <div>
         <label style="font-size:0.8rem; color:var(--text-muted);">母馬 (繁殖牝馬):</label>
-        <input type="text" id="edit_foal_dam" placeholder="例：パシフィカス" style="width:100%; padding:4px 8px; background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-main); border-radius:6px; font-size:0.82rem;">
+        <input type="text" id="edit_foal_dam" placeholder="例：パシフィカス (Pacifica)" style="width:100%; padding:4px 8px; background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-main); border-radius:6px; font-size:0.82rem;">
       </div>
     </div>
 
     <!-- 階段膠囊切換軌道 -->
     <div class="chip-rail" style="display:flex; gap:8px; overflow-x:auto; margin-bottom:14px; padding-bottom:4px;">
-      <button class="foal-edit-tab-btn active" onclick="switchFoalEditTab('edit-tab-0yo', this)">🍼 0 歲期: 出生與印記</button>
-      <button class="foal-edit-tab-btn" onclick="switchFoalEditTab('edit-tab-1yo', this)">🐴 1 歲期: 體型與成長度</button>
-      <button class="foal-edit-tab-btn" onclick="switchFoalEditTab('edit-tab-2yo', this)">🏇 2 歲期: SP速度與警告</button>
-      <button class="foal-edit-tab-btn" onclick="switchFoalEditTab('edit-tab-events', this)">⚡ 9 大特殊成長事件</button>
+      <button class="foal-edit-tab-btn active" onclick="switchFoalEditTab('edit-tab-0yo', this)">🍼 0 歲期: 5大印記與出生評語</button>
+      <button class="foal-edit-tab-btn" onclick="switchFoalEditTab('edit-tab-1yo', this)">🐴 1 歲期: 體型與6大隱藏能力</button>
+      <button class="foal-edit-tab-btn" onclick="switchFoalEditTab('edit-tab-2yo', this)">🏇 2 歲期: SP/ST與調教解鎖</button>
+      <button class="foal-edit-tab-btn" onclick="switchFoalEditTab('edit-tab-events', this)">⚡ 24章 9大特殊成長事件</button>
     </div>
 
     <!-- 階段內容 -->
     <div style="background:rgba(30,41,59,0.4); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:16px;">
+      
+      <!-- Tab 1: 0歲期 5大人物印記 + 0歲下半年能力 -->
       <div id="edit-tab-0yo" class="foal-edit-tab-content">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:0.82rem; margin-bottom:10px;">
+        <h4 style="color:var(--gold-color); font-size:0.9rem; margin-bottom:8px;"><i class="fa-solid fa-users"></i> 22章 5 大人物印記 (0歲8月 / 1歲8月)</h4>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:8px; font-size:0.8rem; margin-bottom:12px;">
           <div>
-            <label style="color:var(--text-muted);">美香印記 (秘書/評價):</label>
+            <label style="color:var(--text-muted);">美香 (SP 速度):</label>
             <select id="edit_mika" class="calc-select"><option value="10">◎ (極度好評 +10)</option><option value="6" selected>○ (好評 +6)</option><option value="3">△ (普通 +3)</option><option value="0">× / 無 (0)</option></select>
           </div>
           <div>
-            <label style="color:var(--text-muted);">河童木印記 (相馬眼):</label>
+            <label style="color:var(--text-muted);">河童木 (相馬眼):</label>
             <select id="edit_kappa" class="calc-select"><option value="10">◎ (破格大物 +10)</option><option value="6" selected>○ (優秀 +6)</option><option value="3">△ (普通 +3)</option><option value="0">× / 無 (0)</option></select>
           </div>
+          <div>
+            <label style="color:var(--text-muted);">三井 (健康度):</label>
+            <select id="edit_mitsui" class="calc-select"><option value="10">◎ (體質極佳 +10)</option><option value="6" selected>○ (健全 +6)</option><option value="3">△ (普通 +3)</option><option value="0">× / 虛弱 (0)</option></select>
+          </div>
+          <div>
+            <label style="color:var(--text-muted);">大吉 (氣性/精神):</label>
+            <select id="edit_daikichi" class="calc-select"><option value="10">◎ (精神極佳 +10)</option><option value="6" selected>○ (良好 +6)</option><option value="3">△ (普通 +3)</option><option value="0">× / 暴烈 (0)</option></select>
+          </div>
+          <div>
+            <label style="color:var(--text-muted);">知知夫 (柔軟/耐力):</label>
+            <select id="edit_chichibu" class="calc-select"><option value="10">◎ (柔軟超群 +10)</option><option value="6" selected>○ (良好 +6)</option><option value="3">△ (普通 +3)</option><option value="0">× / 無 (0)</option></select>
+          </div>
         </div>
-        <div style="font-size:0.82rem;">
-          <label style="color:var(--text-muted);">0 歲 4 月 出生評語 (誕生):</label>
-          <select id="edit_birth" class="calc-select"><option value="15">破格 / 超大物誕生感 (+15)</option><option value="10" selected>優秀名駒氣息 (+10)</option><option value="5">普通平庸 (+5)</option></select>
+
+        <h4 style="color:var(--gold-color); font-size:0.9rem; margin-bottom:8px;"><i class="fa-solid fa-baby"></i> 23章 0歲 4月~12月 出生與月度評語</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:0.8rem;">
+          <div>
+            <label style="color:var(--text-muted);">0 歲 4 月 出生評語 (誕生):</label>
+            <select id="edit_birth" class="calc-select">
+              <option value="15">破格 / 超大物誕生感 (超越同齡 +15)</option>
+              <option value="10" selected>優秀名駒氣息 (+10)</option>
+              <option value="5">普通平庸 (+5)</option>
+            </select>
+          </div>
+          <div>
+            <label style="color:var(--text-muted);">0 歲 6~9 月 腳部狀態警告:</label>
+            <select id="edit_leg_warn" class="calc-select">
+              <option value="none" selected>健全無恙 (無需特別修復)</option>
+              <option value="leg_prob">⚠️ 脚部不安 (需要2歲9月史實調教)</option>
+              <option value="constitution_weak">⚠️ 體質虛弱 (需養生史實調教)</option>
+            </select>
+          </div>
         </div>
       </div>
 
+      <!-- Tab 2: 1歲期 體型步態 + 6大隱藏能力 -->
       <div id="edit-tab-1yo" class="foal-edit-tab-content" style="display:none;">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:0.82rem;">
+        <h4 style="color:var(--gold-color); font-size:0.9rem; margin-bottom:8px;"><i class="fa-solid fa-horse"></i> 23章 1歲 1~8月 馬格體型與步態</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:0.8rem; margin-bottom:12px;">
           <div>
             <label style="color:var(--text-muted);">1 歲 1 月 成長度評語:</label>
             <select id="edit_growth1" class="calc-select"><option value="10">順調超群 (+10)</option><option value="6" selected>普通順調 (+6)</option><option value="2">遲緩/晚熟 (+2)</option></select>
           </div>
           <div>
             <label style="color:var(--text-muted);">1 歲 3 月 馬格 (體型):</label>
-            <select id="edit_size" class="calc-select"><option value="10">雄偉絕佳 (+10)</option><option value="6" selected>標準體型 (+6)</option><option value="2">過小/過重 (+2)</option></select>
+            <select id="edit_size1" class="calc-select"><option value="10">雄偉絕佳 (+10)</option><option value="6" selected>標準體型 (+6)</option><option value="2">過小/過重 (+2)</option></select>
+          </div>
+        </div>
+
+        <h4 style="color:var(--gold-color); font-size:0.9rem; margin-bottom:8px;"><i class="fa-solid fa-masks-theater"></i> 23章 1歲 9~12月 6大隱藏次要能力評語</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:0.8rem;">
+          <div>
+            <label style="color:var(--text-muted);">跑道適性 (芝/泥地):</label>
+            <select id="edit_surface" class="calc-select">
+              <option value="turf" selected>芝 (草地) 適性超群</option>
+              <option value="dirt">ダート (泥地) 適性優秀</option>
+              <option value="all_round">芝泥萬能 (All-Rounder)</option>
+            </select>
+          </div>
+          <div>
+            <label style="color:var(--text-muted);">瞬發力 / 柔軟性評語:</label>
+            <select id="edit_spurt_flex" class="calc-select">
+              <option value="10" selected>瞬發力切味尖銳 / 柔軟超群 (+10)</option>
+              <option value="6">瞬發/柔軟良好 (+6)</option>
+              <option value="3">標準 (+3)</option>
+            </select>
           </div>
         </div>
       </div>
 
+      <!-- Tab 3: 2歲期 SP/ST/根性/力量 + 史實調教解鎖 -->
       <div id="edit-tab-2yo" class="foal-edit-tab-content" style="display:none;">
-        <div style="font-size:0.82rem; margin-bottom:10px;">
-          <label style="color:var(--text-muted);">2 歲 1~5 月 速度感評語 (SP):</label>
-          <select id="edit_sp_comment" class="calc-select"><option value="77">大物感 / 破格速度 (超越同齡 SP 76+)</option><option value="72" selected>相當有速度 (スピード感あり SP 70~75)</option><option value="67">標準速度 (標準的 SP 65~69)</option><option value="62">速度不足 (物足りない SP 64以下)</option></select>
+        <h4 style="color:var(--gold-color); font-size:0.9rem; margin-bottom:8px;"><i class="fa-solid fa-gauge-high"></i> 23章 2歲 1~6月 核心速度 (SP) 與耐力評語</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:0.8rem; margin-bottom:12px;">
+          <div>
+            <label style="color:var(--text-muted);">2 歲 1~5 月 核心速度感 (SP):</label>
+            <select id="edit_sp_comment" class="calc-select">
+              <option value="77">大物感 / 破格速度 (超越同齡 SP 76+)</option>
+              <option value="72" selected>相當有速度 (スピード感あり SP 70~75)</option>
+              <option value="67">標準速度 (標準的 SP 65~69)</option>
+              <option value="62">速度不足 (物足りない SP 64以下)</option>
+            </select>
+          </div>
+          <div>
+            <label style="color:var(--text-muted);">2 歲 ST 耐力與勝負根性:</label>
+            <select id="edit_st_grit" class="calc-select">
+              <option value="st_long" selected>長距離耐力豐富 / 根性強烈 (+10)</option>
+              <option value="st_mid">中距離標準 / 根性良好 (+6)</option>
+              <option value="st_short">短距離 / 根性普通 (+3)</option>
+            </select>
+          </div>
         </div>
-        <div style="font-size:0.82rem;">
-          <label><input type="checkbox" id="edit_leg_problem"> 腳部不安 (需要史實調教修復)</label><br>
-          <label><input type="checkbox" id="edit_temper_wild"> 氣性難 / 荒暴 (脾氣需修正)</label>
+
+        <h4 style="color:var(--gold-color); font-size:0.9rem; margin-bottom:8px;"><i class="fa-solid fa-dumbbell"></i> 22章 2歲 7月後 史實調教大成功解鎖</h4>
+        <div style="font-size:0.8rem;">
+          <label style="color:var(--text-muted);">史實調教大成功次數 (2歲下半年):</label>
+          <select id="edit_train_success" class="calc-select">
+            <option value="0" selected>0 次 (未進行或一般成功)</option>
+            <option value="1">1 次大成功 (SP/Sub-params 天花板 +1.5)</option>
+            <option value="2">2 次大成功 (SP/Sub-params 天花板 +3.0)</option>
+            <option value="3">3 次以上大成功 (極限超越天花板 +4.5)</option>
+          </select>
         </div>
       </div>
 
+      <!-- Tab 4: 24章 9大特殊出生與成長事件完全體 -->
       <div id="edit-tab-events" class="foal-edit-tab-content" style="display:none;">
-        <div style="font-size:0.82rem; line-height:1.8;">
-          <label style="color:#4ade80;"><input type="checkbox" id="edit_fence_jump"> ⚡ 柵越え (越欄事件 - 直升 S 級大物)</label><br>
-          <label style="color:#f59e0b;"><input type="checkbox" id="edit_fence_break"> 🔨 柵破壊 (毀柵事件 - 力量/氣性極致)</label><br>
-          <label style="color:#c084fc;"><input type="checkbox" id="edit_chunrai"> 👑 春雷 / 春嵐 (三冠血統特別事件)</label><br>
-          <label style="color:#ef4444;"><input type="checkbox" id="edit_twins"> ⚠️ 雙子誕生 (體質能力懲罰 -15)</label>
+        <h4 style="color:var(--gold-color); font-size:0.9rem; margin-bottom:8px;"><i class="fa-solid fa-bolt"></i> 24章 9 大特殊出生與成長事件完全圖鑑</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.82rem; line-height:1.8;">
+          <div>
+            <label style="color:#4ade80;"><input type="checkbox" id="edit_fence_jump"> ⚡ 柵越え (越欄事件 - 直升 S+ 級越欄怪物)</label><br>
+            <label style="color:#f59e0b;"><input type="checkbox" id="edit_fence_break"> 🔨 柵破壊 (毀柵事件 - 力量/暴烈氣性極致)</label><br>
+            <label style="color:#c084fc;"><input type="checkbox" id="edit_chunrai"> 👑 春雷 (Shunrai - 自育無敗三冠候補)</label><br>
+            <label style="color:#38bdf8;"><input type="checkbox" id="edit_chunran"> 👑 春嵐 (Shunran - 同歲三冠勁敵對決)</label><br>
+            <label style="color:#eab308;"><input type="checkbox" id="edit_raijin"> ⚡ 雷神 (Raijin - 長距離霸者認證)</label>
+          </div>
+          <div>
+            <label style="color:#06b6d4;"><input type="checkbox" id="edit_fujin"> 🍃 風神 (Fujin - 短距離/一氣呵成霸者)</label><br>
+            <label style="color:#a855f7;"><input type="checkbox" id="edit_ichitodate"> 🌟 一頭立 (獨生珍寶 - 當年重點照顧 +5)</label><br>
+            <label style="color:#f97316;"><input type="checkbox" id="edit_sale_high"> 💰 拍賣會最高價 (セール高額 - 潛力溢價)</label><br>
+            <label style="color:#ef4444;"><input type="checkbox" id="edit_twins"> ⚠️ 雙子誕生 (雙胞胎 - 體質嚴重大懲罰 -15)</label>
+          </div>
         </div>
       </div>
+
     </div>
 
     <!-- Modal Footer -->
