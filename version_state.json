@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.08",
+  "current_version": "v03.09",
   "history": [
     {
       "version": "v01.01",
@@ -1080,6 +1080,11 @@
       "version": "v03.08",
       "date": "2026-09-03",
       "description": "Fix Modal Overlay Active CSS Conflict (v03.08): Added modal.classList.add('active') to overcome .modal-overlay { display:none !important; } global CSS rule for 100% modal popup trigger."
+    },
+    {
+      "version": "v03.09",
+      "date": "2026-09-03",
+      "description": "Fix Foal Modal Save and Close Button Functions (v03.09): Defined robust saveFoalRecord() and closeAddFoalModal() with element checks, LocalStorage persistence, and alert validation."
     }
   ]
 }
