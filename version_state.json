@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.13",
+  "current_version": "v03.14",
   "history": [
     {
       "version": "v01.01",
@@ -1105,6 +1105,11 @@
       "version": "v03.13",
       "date": "2026-09-03",
       "description": "Restore Missing openAddFoalModal & closeAddFoalModal JS Functions (v03.13): Re-injected openAddFoalModal and closeAddFoalModal for 100% click reliability."
+    },
+    {
+      "version": "v03.14",
+      "date": "2026-09-03",
+      "description": "Fix Foal Edit Tab Chips Click (v03.14): Defined switchFoalEditTab(tabId, btn) JS function to enable 100% smooth switching between 0yo, 1yo, 2yo, and 9 events tabs in Add Foal Modal."
     }
   ]
 }
