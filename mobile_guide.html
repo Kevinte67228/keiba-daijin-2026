@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.23"></script>
-<script src="core_guides_data.js?v=v03.23"></script>
-<script src="yearly_recs_db.js?v=v03.23"></script>
-<script src="horse_subtopics_data.js?v=v03.23"></script>
+<script src="master_lookup_db.js?v=v03.24"></script>
+<script src="core_guides_data.js?v=v03.24"></script>
+<script src="yearly_recs_db.js?v=v03.24"></script>
+<script src="horse_subtopics_data.js?v=v03.24"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1757,7 +1757,7 @@ li {
 }
 </style>
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.23) */
+/* Unified Amulet & Badge Tokens (v03.24) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -1969,11 +1969,75 @@ li {
     border-bottom: 2px solid rgba(56, 189, 248, 0.4) !important;
 }
 </style>
+
+<style id="ch31-chips-style">
+/* 第 31 章高級科技流光膠囊晶片軌道規範 (GEMINI.md 規範 5) */
+.ch31-chip-rail {
+    display: flex !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 18px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(56, 189, 248, 0.4) rgba(15, 23, 42, 0.6) !important;
+}
+
+.ch31-chip-rail::-webkit-scrollbar {
+    height: 4px !important;
+}
+.ch31-chip-rail::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border-radius: 2px !important;
+}
+.ch31-chip-rail::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.4) !important;
+    border-radius: 2px !important;
+}
+.ch31-chip-rail::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.8) !important;
+}
+
+.ch31-chip-btn {
+    border-radius: 20px !important;
+    padding: 6px 16px !important;
+    background: rgba(30, 41, 59, 0.75) !important;
+    color: #94a3b8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.25) !important;
+    font-size: 0.84rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
+}
+
+.ch31-chip-btn:hover {
+    background: rgba(56, 189, 248, 0.18) !important;
+    color: #38bdf8 !important;
+    border-color: #38bdf8 !important;
+    transform: translateY(-1px) !important;
+}
+
+.ch31-chip-btn.active {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
+}
+</style>
+
 </head>
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.23</span>
+<span class="version-badge">v03.24</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -10695,13 +10759,13 @@ li {
 <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px; line-height:1.6;">
                 全量深度收錄《賽馬大亨 10 2026》日本中央 JRA、地方 NAR 交流重賞、歐美英法愛德、香港、中東及澳洲之全重賞賽事日程、賞金數據、全球 36 條三冠路線與系列賽體系、全 68 競馬場 / 136 賽道草質坡度庫與 7 大高難度頂級 G1 破局戰略手冊（全項目日/中並行對照）。
             </p>
-<!-- 4 大子分頁切換導航按鈕等寬網格 (Equal Unified Subtab Rail) -->
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:8px; margin-bottom:18px; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
-<button class="tab-btn active" id="btnStakesTab1" onclick="switchStakesSubTab('stakesTab1')" style="font-size:0.85rem; padding:8px 12px; text-align:center; justify-content:center; display:flex; align-items:center; gap:6px; width:100%; white-space:nowrap;">🏅 1. 重賞大表速查 (740)</button>
-<button class="tab-btn" id="btnStakesTab2" onclick="switchStakesSubTab('stakesTab2')" style="font-size:0.85rem; padding:8px 12px; text-align:center; justify-content:center; display:flex; align-items:center; gap:6px; width:100%; white-space:nowrap;">👑 2. 全球三冠系列 (36)</button>
-<button class="tab-btn" id="btnStakesTab3" onclick="switchStakesSubTab('stakesTab3')" style="font-size:0.85rem; padding:8px 12px; text-align:center; justify-content:center; display:flex; align-items:center; gap:6px; width:100%; white-space:nowrap;">🏆 3. G1 頂級攻略指南</button>
-<button class="tab-btn" id="btnStakesTab4" onclick="switchStakesSubTab('stakesTab4')" style="font-size:0.85rem; padding:8px 12px; text-align:center; justify-content:center; display:flex; align-items:center; gap:6px; width:100%; white-space:nowrap;">🏁 4. 競馬場特性庫 (68場 / 136賽道)</button>
-<button class="tab-btn" id="btnStakesTab5" onclick="switchStakesSubTab('stakesTab5')" style="font-size:0.85rem; padding:8px 12px; text-align:center; justify-content:center; display:flex; align-items:center; gap:6px; width:100%; white-space:nowrap;">⚡ 5. 賽事展開與適應能力庫 (64場)</button>
+<!-- 第 31 章 高級科技流光膠囊晶片軌道 (GEMINI.md 規範 5) -->
+<div class="ch31-chip-rail chip-rail">
+  <button class="ch31-chip-btn active" id="btnStakesTab1" onclick="switchStakesSubTab('stakesTab1')">🏅 1. 重賞大表速查 (740)</button>
+  <button class="ch31-chip-btn" id="btnStakesTab2" onclick="switchStakesSubTab('stakesTab2')">👑 2. 全球三冠系列 (36)</button>
+  <button class="ch31-chip-btn" id="btnStakesTab3" onclick="switchStakesSubTab('stakesTab3')">🏆 3. G1 頂級攻略指南</button>
+  <button class="ch31-chip-btn" id="btnStakesTab4" onclick="switchStakesSubTab('stakesTab4')">🏁 4. 競馬場特性庫 (68場 / 136賽道)</button>
+  <button class="ch31-chip-btn" id="btnStakesTab5" onclick="switchStakesSubTab('stakesTab5')">⚡ 5. 賽事展開與適應能力庫 (64場)</button>
 </div>
 <!-- 4 大內容容器 -->
 <div class="stakes-subtab-pane" id="stakesTab1">
