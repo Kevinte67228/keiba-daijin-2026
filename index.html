@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.17"></script>
-<script src="core_guides_data.js?v=v03.17"></script>
-<script src="yearly_recs_db.js?v=v03.17"></script>
-<script src="horse_subtopics_data.js?v=v03.17"></script>
+<script src="master_lookup_db.js?v=v03.18"></script>
+<script src="core_guides_data.js?v=v03.18"></script>
+<script src="yearly_recs_db.js?v=v03.18"></script>
+<script src="horse_subtopics_data.js?v=v03.18"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1761,7 +1761,7 @@ li {
 </style>
 
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.17) */
+/* Unified Amulet & Badge Tokens (v03.18) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -1943,7 +1943,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.17</span>
+<span class="version-badge">v03.18</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -32095,37 +32095,37 @@ function saveFoalRecord() {
 function switchFoalEditTab(tabId, btn) {
     if (!btn) return;
     try {
-        let container = btn.closest('#addFoalModal') || 
-                        btn.closest('#foalCalculatorModal') || 
-                        btn.closest('#pillar-foal-calc') || 
-                        btn.closest('.section-card') || 
-                        btn.closest('.section-body') || 
-                        document;
-
-        const buttons = container.querySelectorAll('.foal-edit-tab-btn, .foal-calc-tab-btn');
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const contents = container.querySelectorAll('.foal-edit-tab-content, .foal-calc-tab-content, .foal-calc-tab-content-p');
-        contents.forEach(c => c.style.display = 'none');
-
-        let target = container.querySelector('#' + tabId) || document.getElementById(tabId);
-        if (target) {
-            target.style.display = 'block';
-        } else {
-            const btnsArr = Array.from(buttons);
-            const idx = btnsArr.indexOf(btn);
-            if (idx !== -1 && contents[idx]) {
-                contents[idx].style.display = 'block';
+        const modal = document.getElementById('addFoalModal');
+        if (modal) {
+            modal.querySelectorAll('.foal-edit-tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            modal.querySelectorAll('.foal-edit-tab-content').forEach(c => c.style.display = 'none');
+            const target = modal.querySelector('#' + tabId);
+            if (target) {
+                target.style.display = 'block';
             }
         }
-    } catch (e) {
-        console.error('Error switching foal edit tab:', e);
+    } catch(e) {
+        console.error('switchFoalEditTab error:', e);
     }
 }
 
 function switchFoalCalcTab(tabId, btn) {
-    switchFoalEditTab(tabId, btn);
+    if (!btn) return;
+    try {
+        const panel = document.getElementById('sec-foal-calc-panel') || document.getElementById('pillar-foal-calc') || document;
+        panel.querySelectorAll('.foal-calc-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        panel.querySelectorAll('.foal-calc-tab-content').forEach(c => c.style.display = 'none');
+        const target = panel.querySelector('#' + tabId);
+        if (target) {
+            target.style.display = 'block';
+        }
+    } catch(e) {
+        console.error('switchFoalCalcTab error:', e);
+    }
 }
 
 function openAddFoalModal() {
@@ -32750,10 +32750,10 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 
     <!-- 階段膠囊切換軌道 -->
     <div class="chip-rail" style="display:flex; gap:8px; overflow-x:auto; margin-bottom:14px; padding-bottom:4px;">
-      <button class="foal-edit-tab-btn active" onclick="switchFoalEditTab(\'edit-tab-0yo\', this); if(event){event.stopPropagation();}">🍼 0 歲期: 5大印記與出生評語</button>
-      <button class="foal-edit-tab-btn" onclick="switchFoalEditTab(\'edit-tab-1yo\', this); if(event){event.stopPropagation();}">🐴 1 歲期: 體型與6大隱藏能力</button>
-      <button class="foal-edit-tab-btn" onclick="switchFoalEditTab(\'edit-tab-2yo\', this); if(event){event.stopPropagation();}">🏇 2 歲期: SP/ST與調教解鎖</button>
-      <button class="foal-edit-tab-btn" onclick="switchFoalEditTab(\'edit-tab-events\', this); if(event){event.stopPropagation();}">⚡ 24章 9大特殊成長事件</button>
+      <button class="foal-edit-tab-btn active" onclick="switchFoalEditTab('edit-tab-0yo', this)">🍼 0 歲期: 5大印記與出生評語</button>
+      <button class="foal-edit-tab-btn" onclick="switchFoalEditTab('edit-tab-1yo', this)">🐴 1 歲期: 體型與6大隱藏能力</button>
+      <button class="foal-edit-tab-btn" onclick="switchFoalEditTab('edit-tab-2yo', this)">🏇 2 歲期: SP/ST與調教解鎖</button>
+      <button class="foal-edit-tab-btn" onclick="switchFoalEditTab('edit-tab-events', this)">⚡ 24章 9大特殊成長事件</button>
     </div>
 
     <!-- 階段內容 -->
