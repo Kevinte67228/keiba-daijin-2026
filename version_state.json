@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.32",
+  "current_version": "v03.33",
   "history": [
     {
       "version": "v01.01",
@@ -1200,6 +1200,11 @@
       "version": "v03.32",
       "date": "2026-09-04",
       "description": "Section 42-46 Filter Chip Rails Unified (v03.32): Applied futuristic tech capsule chip style (.ch43-46-chip-rail, 20px rounded capsule, golden glow active state, smooth touch scrolling) to Section 42 (sire retirement era/region buttons) and Sections 43-46 filter chips. Cleaned legacy inline styles and verified 100% in real headless Chrome."
+    },
+    {
+      "version": "v03.33",
+      "date": "2026-09-04",
+      "description": "Terminology Clean & Unify (v03.33): Fully normalized all occurrences of '美州/美洲' across site/sires_retire_db.js (964 sire records), site/core_guides_data.js, and all HTML files to '美國'. Updated Section 42 filter chips, badge renderers, and conditions."
     }
   ]
 }
