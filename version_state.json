@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.06",
+  "current_version": "v03.07",
   "history": [
     {
       "version": "v01.01",
@@ -1070,6 +1070,11 @@
       "version": "v03.06",
       "date": "2026-09-03",
       "description": "Foal Growth Tracker & Potential DB Major Upgrade (v03.06): Upgraded Foal Calculator into a full multi-horse growth tracker with LocalStorage persistence, stage-by-stage growth editor, search & real-time SP estimation table."
+    },
+    {
+      "version": "v03.07",
+      "date": "2026-09-03",
+      "description": "Fix Add Foal Modal Button Click (v03.07): Enhanced openAddFoalModal JS with try-catch safety, z-index 99999 and body overflow lock for 100% click trigger reliability."
     }
   ]
 }
