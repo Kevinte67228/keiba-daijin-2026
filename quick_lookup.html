@@ -33032,8 +33032,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 
 <script id="master-horse-db-engine">
 // ==================== 第 41 章 1.5 萬匹史實馬與 11 大推薦分類引擎 ====================
-// ==================== 第 41 章 1.5 萬匹史實馬與 11 大推薦分類引擎 ====================
-// ==================== 第 41 章 1.5 萬匹史實馬與 11 大推薦分類引擎 ====================
 let dbData = null;
         let currentTab = "cat1";
         let sortField = "sp";
@@ -33100,6 +33098,38 @@ let dbData = null;
                 return trackWeights[item[field]] || 0;
             }
             return (item[field] || item.details || "").toString().toLowerCase();
+        });
+            document.querySelectorAll('.main-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const target = document.getElementById(pillarId);
+            if (target) {
+                target.style.display = 'block';
+                target.classList.add('active');
+            }
+            const btnMap = {
+                'pillar-db': 'tabPillarDb',
+                'pillar-breed': 'tabPillarBreed',
+                'pillar-foals': 'tabPillarFoals',
+                'pillar-train': 'tabPillarTrain',
+                'pillar-races': 'tabPillarRaces',
+                'pillar-ranch': 'tabPillarRanch',
+                'pillar-secrets': 'tabPillarSecrets',
+                'pillar-tracker': 'tabPillarTracker'
+            };
+            if (pillarId === 'pillar-tracker' && typeof renderTacticsGrid === 'function') {
+                renderTacticsGrid();
+            }
+            const btn = document.getElementById(btnMap[pillarId]);
+            if (btn) btn.classList.add('active');
+
+            if (pillarId === 'pillar-breed') {
+                if (typeof initSimulationChart === 'function') initSimulationChart();
+                if (typeof setSysTab === 'function') setSysTab('child');
+            }
+            if (pillarId === 'pillar-ranch') {
+                if (typeof initYearlyRecsUI === 'function') initYearlyRecsUI();
+            }
         }
 
         function scrollToTop() {
@@ -33111,7 +33141,7 @@ let dbData = null;
             const next = current === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', next);
             localStorage.setItem('keiba_theme', next);
-            if (explosionChartInstance) explosionChartInstance.update();
+            // chart update handled by main script
             makeTablesSortable();
         }
 
@@ -33316,145 +33346,6 @@ let dbData = null;
             } else {
                 statusEl.innerText = "⚠️ 未達子系統確立門檻 (全球需 ≥ 2.0% 或單區 ≥ 5.0%)";
                 statusEl.style.color = "#cbd5e1";
-            }
-        }
-
-        // ==================== 配合爆發力抽樣模擬器 (Section 1) ====================
-        let explosionChartInstance = null;
-        function initSimulationChart() {
-            const canvasEl = document.getElementById('explosionChart');
-            if (!canvasEl) return;
-            if (explosionChartInstance) return;
-            const ctx = canvasEl.getContext('2d');
-            explosionChartInstance = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: [],
-                    datasets: [{
-                        label: '抽樣次數 (加成值 b)',
-                        data: [],
-                        backgroundColor: 'rgba(56, 189, 248, 0.65)',
-                        borderColor: '#38bdf8',
-                        borderWidth: 1.5,
-                        borderRadius: 3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } } },
-                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } } }
-                    }
-                }
-            });
-        }
-
-        function runSimulation() {
-            initSimulationChart();
-            const bInput = document.getElementById('inputB') || document.getElementById('simB');
-            const facInput = document.getElementById('facilityLv');
-            const baseB = parseInt(bInput ? bInput.value : 30) || 30;
-            const facBonus = parseInt(facInput ? facInput.value : 3) || 0;
-            const B = baseB + facBonus;
-            const N = 1000;
-            const dist = new Array(B + 1).fill(0);
-
-            for (let i = 0; i < N; i++) {
-                const b = Math.floor(Math.random() * (B + 1));
-                dist[b]++;
-            }
-
-            if (explosionChartInstance) {
-                explosionChartInstance.data.labels = Array.from({ length: B + 1 }, (_, i) => `${i}`);
-                explosionChartInstance.data.datasets[0].data = dist;
-                explosionChartInstance.update();
-            }
-        }
-
-        function runExplosionSimulation() {
-            runSimulation();
-        }
-
-
-        // ==================== 14 大分類渲染引擎 ====================
-        function renderGuideCategory(catKey) {
-            const tableWrap = document.getElementById("tableViewWrapper");
-            const guideWrap = document.getElementById("guideViewWrapper");
-            const filterPanel = document.querySelector(".filter-panel");
-            const statsBar = document.querySelector(".stats-bar");
-
-            if (tableWrap) tableWrap.style.display = "none";
-            if (filterPanel) filterPanel.style.display = "none";
-            if (statsBar) statsBar.style.display = "none";
-            if (guideWrap) {
-                guideWrap.style.display = "block";
-                guideWrap.innerHTML = "";
-            }
-
-            if (!dbData) return;
-
-            if (catKey === "cat2") {
-                const list = Array.isArray(dbData.cat2) ? dbData.cat2 : [];
-                const headerCard = document.createElement("div");
-                headerCard.className = "callout callout-gold";
-                headerCard.innerHTML = `<i class="fa-solid fa-scroll fa-lg"></i><div><strong>📜 に入手すべきおすすめ馬について (1968~2023 全年代戰略指南)</strong><p style="font-size:0.82rem; margin-top:4px; margin-bottom:0;">包含各歷史年代開局核心目標、優先引進名駒、系統確立方向與繁殖策略解讀。</p></div>`;
-                guideWrap.appendChild(headerCard);
-
-                list.forEach(item => {
-                    const card = document.createElement("div");
-                    card.className = "section-card";
-                    card.style.marginBottom = "14px";
-                    card.innerHTML = `
-                        <div class="section-header" style="background:rgba(56,189,248,0.08);">
-                            <div class="section-title"><i class="fa-solid fa-calendar-days"></i> ${item.title || item.year + '年'}</div>
-                            <span class="pill pill-safe">${item.year} 年</span>
-                        </div>
-                        <div class="section-body">
-                            <p style="margin:0; line-height:1.7; color:var(--text-color); font-size:0.88rem;">${item.strategy_zh || item.strategy || "本年度史實產駒與拍賣會名駒具備高即戰力，建議依牧場配種設施與馬札存量妥善安排收購。"}</p>
-                        </div>
-                    `;
-                    guideWrap.appendChild(card);
-                });
-            } else if (catKey === "cat11") {
-                const g = dbData.cat11 || {};
-                const card = document.createElement("div");
-                card.className = "section-card";
-                card.innerHTML = `
-                    <div class="section-header" style="background:rgba(245,158,11,0.1);">
-                        <div class="section-title" style="color:var(--gold-color);"><i class="fa-solid fa-star"></i> ${g.title || "スーパースターホースとは (超級巨星名駒解析)"}</div>
-                    </div>
-                    <div class="section-body">
-                        <div class="callout callout-gold"><i class="fa-solid fa-trophy"></i><div><strong>定義與特徵</strong><p style="margin:4px 0 0 0;">${g.definition || "《賽馬大亨 10 2026》中具備歷史級統治力之頂級史實名駒 (SP 76+ 或 虹札神駒)。"}</p></div></div>
-                        <h4 style="color:var(--accent-color); margin-top:14px;">⚡ 核心四大優勢</h4>
-                        <ul style="line-height:1.8;">
-                            ${(g.key_traits || []).map(t => `<li>${t}</li>`).join('')}
-                        </ul>
-                        <h4 style="color:var(--gold-color); margin-top:14px;">🎯 主要獲取途徑</h4>
-                        <ul style="line-height:1.8;">
-                            ${(g.how_to_acquire || []).map(a => `<li>${a}</li>`).join('')}
-                        </ul>
-                    </div>
-                `;
-                guideWrap.appendChild(card);
-            } else if (catKey === "cat12") {
-                const g = dbData.cat12 || {};
-                const card = document.createElement("div");
-                card.className = "section-card";
-                card.innerHTML = `
-                    <div class="section-header" style="background:linear-gradient(90deg, rgba(239,68,68,0.15), rgba(59,130,246,0.15));">
-                        <div class="section-title" style="color:#f472b6;"><i class="fa-solid fa-rainbow"></i> ${g.title || "おすすめ虹札馬について (虹札兌換戰略與優先級總覽)"}</div>
-                    </div>
-                    <div class="section-body">
-                        <div class="callout callout-info"><i class="fa-solid fa-award"></i><div><strong>虹札運用黃金法則</strong><p style="margin:4px 0 0 0;">${g.description || "虹札 (虹のお守り) 是遊戲中最珍貴之最高階道具。合理運用能在 10~20 年內徹底確立自家牧場之絕對支配地位。"}</p></div></div>
-                        <h4 style="color:var(--accent-color); margin-top:14px;">👑 三大優先收購準則</h4>
-                        <ul style="line-height:1.8;">
-                            ${(g.rules || []).map(r => `<li>${r}</li>`).join('')}
-                        </ul>
-                    </div>
-                `;
-                guideWrap.appendChild(card);
             }
         }
 
@@ -33986,68 +33877,6 @@ let dbData = null;
             }
         }
 
-// ========================== 資料庫引擎啟動器 (雙保險) ==========================
-function _masterDbInit() {
-    // 解包資料庫
-    if (window.MASTER_DB_DATA && !dbData) {
-        dbData = window.MASTER_DB_DATA;
-    }
-
-    // 綁定分類晶片點擊事件（防重複綁定）
-    const btns = document.querySelectorAll('#categoryTabs .tab-btn');
-    btns.forEach(btn => {
-        if (!btn._masterDbBound) {
-            btn._masterDbBound = true;
-            btn.addEventListener('click', () => {
-                btns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentTab = btn.getAttribute('data-cat') || 'cat1';
-                if (typeof renderTable === 'function') renderTable();
-            });
-        }
-    });
-
-    // 初始化年度篩選器
-    if (typeof initYearFilter === 'function') {
-        const sel = document.getElementById('filterYear');
-        if (sel && sel.options.length < 2) initYearFilter();
-    }
-
-    // 綁定篩選器 change/input 事件（防重複綁定）
-    const filterChangeIds = ['filterYear','filterTicket','filterSex','filterSp','filterSt','filterTrack','filterDistance','filterRegion'];
-    filterChangeIds.forEach(id => {
-        const el = document.getElementById(id);
-        if (el && !el._masterDbBound) {
-            el._masterDbBound = true;
-            el.addEventListener('change', () => { if (typeof renderTable === 'function') renderTable(); });
-        }
-    });
-    const searchEl = document.getElementById('filterSearch');
-    if (searchEl && !searchEl._masterDbBound) {
-        searchEl._masterDbBound = true;
-        searchEl.addEventListener('input', () => { if (typeof renderTable === 'function') renderTable(); });
-    }
-
-    // 排序表頭點擊事件（防重複綁定）
-    if (typeof renderTable === 'function') renderTable();
-}
-
-// 公開入口 (供 switchMainPillar 呼叫)
-window.initMasterHorseDb = _masterDbInit;
-
-// 立即執行（腳本在 body 尾端，DOM 已完全解析）
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', _masterDbInit);
-} else {
-    // DOM 已就緒，立即執行
-    _masterDbInit();
-}
-
-// 額外備用：window.onload 確保所有資源載入後再次確認初始化
-window.addEventListener('load', () => {
-    if (!dbData) _masterDbInit();
-});
-
 // ========================== 資料庫引擎啟動器 (三重保險) ==========================
 function _masterDbInit() {
     // Step 1: 解包資料庫
@@ -34075,7 +33904,7 @@ function _masterDbInit() {
         }
     });
 
-    // Step 4: 綁定篩選器 change/input（每個控件只綁一次）
+    // Step 4: 綁定篩選器事件（每個控件只綁一次）
     ['filterYear','filterTicket','filterSex','filterSp','filterSt','filterTrack','filterDistance','filterRegion'].forEach(id => {
         const el = document.getElementById(id);
         if (el && !el._masterDbBound) {
@@ -34104,22 +33933,17 @@ function _masterDbInit() {
 // 公開入口 (供 switchMainPillar 呼叫)
 window.initMasterHorseDb = _masterDbInit;
 
-// 使用 readyState 判斷立即/延後執行
-function _tryInit() {
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', _masterDbInit);
-    } else {
-        // DOM 已就緒（interactive 或 complete）→ 立即執行
-        _masterDbInit();
-        // 500ms 後再執行一次確保萬無一失
-        setTimeout(_masterDbInit, 500);
-    }
+// 使用 readyState 判斷立即/延後執行（腳本在 body 尾端，DOM 已就緒）
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _masterDbInit);
+} else {
+    _masterDbInit();
+    setTimeout(_masterDbInit, 500);
 }
-_tryInit();
 
-// window.onload 再次備份
+// window.onload 備援（確保所有 JS 資源完整載入後再次確認）
 window.addEventListener('load', function() {
-    if (!dbData || !window._CURRENT_RENDERED_ITEMS || window._CURRENT_RENDERED_ITEMS.length === 0) {
+    if (!window._CURRENT_RENDERED_ITEMS || window._CURRENT_RENDERED_ITEMS.length === 0) {
         _masterDbInit();
     }
 });
