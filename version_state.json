@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.14",
+  "current_version": "v03.15",
   "history": [
     {
       "version": "v01.01",
@@ -1110,6 +1110,11 @@
       "version": "v03.14",
       "date": "2026-09-03",
       "description": "Fix Foal Edit Tab Chips Click (v03.14): Defined switchFoalEditTab(tabId, btn) JS function to enable 100% smooth switching between 0yo, 1yo, 2yo, and 9 events tabs in Add Foal Modal."
+    },
+    {
+      "version": "v03.15",
+      "date": "2026-09-03",
+      "description": "Fix Foal Dual Chip Tabs Switching Engine (v03.15): Refactored switchFoalEditTab to support index-based sibling matching for 100% reliable tab switching across both Modal popup and inline page dashboard."
     }
   ]
 }
