@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.26"></script>
-<script src="core_guides_data.js?v=v03.26"></script>
-<script src="yearly_recs_db.js?v=v03.26"></script>
-<script src="horse_subtopics_data.js?v=v03.26"></script>
+<script src="master_lookup_db.js?v=v03.27"></script>
+<script src="core_guides_data.js?v=v03.27"></script>
+<script src="yearly_recs_db.js?v=v03.27"></script>
+<script src="horse_subtopics_data.js?v=v03.27"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1757,7 +1757,7 @@ li {
 }
 </style>
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.26) */
+/* Unified Amulet & Badge Tokens (v03.27) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -2114,7 +2114,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.26</span>
+<span class="version-badge">v03.27</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -29133,9 +29133,9 @@ function filterTab5Racecourses() {
 <!-- ================= 支柱七：馬匹資料庫 ================= -->
 <!-- ================= 支柱七：馬匹資料庫 ================= -->
 <div class="pillar-content" id="pillar-db" style="display:none;">
-<div class="pillar-header" style="background:linear-gradient(135deg, rgba(234,179,8,0.15), rgba(15,23,42,0.8)); border-left:4px solid #eab308;">
-<h2><i class="fa-solid fa-magnifying-glass"></i> 👑 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 章 ~ 第 46 章)</h2>
-<p>收錄全 1.5 萬匹史實馬、2,898 匹種公馬引退年限、4,314 匹繁殖專用史實馬、16,570 匹全競走馬、32+9 全年代路線推薦大表與 976 條殿堂馬異名！</p>
+<div class="pillar-header-card" style="border-left: 5px solid #eab308 !important; padding: 16px 24px !important; margin-bottom: 18px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(234,179,8,0.15), rgba(15,23,42,0.85)) !important;">
+<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-magnifying-glass" style="color: #eab308;"></i> 👑 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 章 ~ 第 46 章)</h2>
+<p style="margin: 0 !important; color: var(--text-muted) !important; font-size: 0.85rem !important; line-height: 1.6 !important;">收錄全 1.5 萬匹史實馬、2,898 匹種公馬引退年限、4,314 匹繁殖專用史實馬、16,570 匹全競走馬、32+9 全年代路線推薦大表與 976 條殿堂馬異名！</p>
 </div>
 <div class="sections-container">
 <section class="section-card" id="sec-horse-db" style="margin-bottom:14px;">
@@ -31458,6 +31458,9 @@ function switchMainPillar(pillarId) {
     if (target) {
         target.style.display = 'block';
         target.classList.add('active');
+        if (pillarId === 'pillar-db' && typeof window.initMasterHorseDb === 'function') {
+            window.initMasterHorseDb();
+        }
     }
     const btnMap = {
         'pillar-db': 'tabPillarDb',
@@ -33097,44 +33100,6 @@ let dbData = null;
             return (item[field] || item.details || "").toString().toLowerCase();
         }
 
-        function switchMainPillar(pillarId) {
-            document.querySelectorAll('.pillar-content').forEach(el => {
-                el.style.display = 'none';
-                el.classList.remove('active');
-            });
-            document.querySelectorAll('.main-tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            const target = document.getElementById(pillarId);
-            if (target) {
-                target.style.display = 'block';
-                target.classList.add('active');
-            }
-            const btnMap = {
-                'pillar-db': 'tabPillarDb',
-                'pillar-breed': 'tabPillarBreed',
-                'pillar-foals': 'tabPillarFoals',
-                'pillar-train': 'tabPillarTrain',
-                'pillar-races': 'tabPillarRaces',
-                'pillar-ranch': 'tabPillarRanch',
-                'pillar-secrets': 'tabPillarSecrets',
-                'pillar-tracker': 'tabPillarTracker'
-            };
-            if (pillarId === 'pillar-tracker' && typeof renderTacticsGrid === 'function') {
-                renderTacticsGrid();
-            }
-            const btn = document.getElementById(btnMap[pillarId]);
-            if (btn) btn.classList.add('active');
-
-            if (pillarId === 'pillar-breed') {
-                if (typeof initSimulationChart === 'function') initSimulationChart();
-                if (typeof setSysTab === 'function') setSysTab('child');
-            }
-            if (pillarId === 'pillar-ranch') {
-                if (typeof initYearlyRecsUI === 'function') initYearlyRecsUI();
-            }
-        }
-
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -34019,12 +33984,45 @@ let dbData = null;
             }
         }
 
-// 自動掛載初始化
-window.addEventListener('DOMContentLoaded', () => {
+// 綁定所有自訂篩選器事件 (Year, Ticket, Sex, SP, ST, Track, Distance, Region, Search)
+function bindMasterFilterEvents() {
+    const filterIds = ['filterYear', 'filterTicket', 'filterSex', 'filterSp', 'filterSt', 'filterTrack', 'filterDistance', 'filterRegion'];
+    filterIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && !el._hasChangeEvent) {
+            el._hasChangeEvent = true;
+            el.addEventListener('change', () => {
+                if (typeof renderTable === 'function') renderTable();
+            });
+        }
+    });
+    
+    const searchEl = document.getElementById('filterSearch');
+    if (searchEl && !searchEl._hasInputEvent) {
+        searchEl._hasInputEvent = true;
+        searchEl.addEventListener('input', () => {
+            if (typeof renderTable === 'function') renderTable();
+        });
+    }
+}
+
+// 支援外部調用啟動
+window.initMasterHorseDb = function() {
+    ensureUnpackedDb();
     if (typeof initCategoryTabs === 'function') initCategoryTabs();
     if (typeof initYearFilter === 'function') initYearFilter();
-    if (typeof loadDatabase === 'function') loadDatabase();
+    bindMasterFilterEvents();
+    if (typeof renderTable === 'function') renderTable();
+};
+
+// 頁面載入自動初始化
+window.addEventListener('DOMContentLoaded', () => {
+    window.initMasterHorseDb();
+    setTimeout(() => {
+        window.initMasterHorseDb();
+    }, 500);
 });
+
 </script>
 
 </body>

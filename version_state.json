@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.26",
+  "current_version": "v03.27",
   "history": [
     {
       "version": "v01.01",
@@ -1170,6 +1170,11 @@
       "version": "v03.26",
       "date": "2026-09-03",
       "description": "Chapter 41 2-Row Equal Width Chips, Anti-Overlap Margin & Engine Click Fix (v03.26): Formatted chips into 2 equal-width rows, ensured 12px gap from scrollbar to strictly prohibit overlap, and restored full master db click & render engine."
+    },
+    {
+      "version": "v03.27",
+      "date": "2026-09-03",
+      "description": "Pillar 7 Header Anti-Overlap & Master DB Render Engine Fix (v03.27): Fixed Pillar 7 header padding to eliminate border overlap, bound filter events, and connected switchMainPillar with initMasterHorseDb."
     }
   ]
 }
