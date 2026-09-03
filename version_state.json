@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.22",
+  "current_version": "v03.23",
   "history": [
     {
       "version": "v01.01",
@@ -1150,6 +1150,11 @@
       "version": "v03.22",
       "date": "2026-09-03",
       "description": "Chapter 27 Long Tables Scrollbar & Sticky Header Upgrade (v03.22): Added 15-row height inner scrollbar (.scrollable-table-box) with sticky header for Chapter 27 Tables 5, 6, and 7 to eliminate excessive vertical scrolling."
+    },
+    {
+      "version": "v03.23",
+      "date": "2026-09-03",
+      "description": "Universal 15-Row Inner Scrollbar Engine Deployment (v03.23): Automatically applied 15-row height inner scrollbar (.scrollable-table-box) with sticky headers to all tables across the entire site exceeding 15 rows."
     }
   ]
 }
