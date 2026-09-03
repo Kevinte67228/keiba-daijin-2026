@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.20",
+  "current_version": "v03.21",
   "history": [
     {
       "version": "v01.01",
@@ -1140,6 +1140,11 @@
       "version": "v03.20",
       "date": "2026-09-03",
       "description": "Fix Foal Calculator Modal Chip Buttons Call (v03.20): Fixed chip buttons in foalCalculatorModal to call switchFoalCalcTab targeting #foalCalculatorModal."
+    },
+    {
+      "version": "v03.21",
+      "date": "2026-09-03",
+      "description": "Align Foal Calculator Modal with Chapter 22-24 Ultimate Engine (v03.21): Fully upgraded foalCalculatorModal with 5 character badges, 26-month comments, 9 special events and real-time synchronized calculation."
     }
   ]
 }
