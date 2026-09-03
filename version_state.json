@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.29",
+  "current_version": "v03.30",
   "history": [
     {
       "version": "v01.01",
@@ -1185,6 +1185,11 @@
       "version": "v03.29",
       "date": "2026-09-04",
       "description": "Fix Corrupted Master DB Engine Syntax Error (v03.29): Root cause identified via CDP as syntax error at orphaned '});' around line 68 due to partial function deletion. Reassembled clean engine from backup, verified in real headless Chrome rendering all 15,389 horses successfully."
+    },
+    {
+      "version": "v03.30",
+      "date": "2026-09-04",
+      "description": "Chapter 31 Stakes Table Filter Fix (v03.30): Restored missing filterCh38Stakes() function, connected region/grade/month/track dropdowns and search input with dynamic row filtering and count updating, verified 100% in real headless Chrome."
     }
   ]
 }

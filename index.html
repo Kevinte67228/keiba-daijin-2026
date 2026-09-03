@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.29"></script>
-<script src="core_guides_data.js?v=v03.29"></script>
-<script src="yearly_recs_db.js?v=v03.29"></script>
-<script src="horse_subtopics_data.js?v=v03.29"></script>
+<script src="master_lookup_db.js?v=v03.30"></script>
+<script src="core_guides_data.js?v=v03.30"></script>
+<script src="yearly_recs_db.js?v=v03.30"></script>
+<script src="horse_subtopics_data.js?v=v03.30"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1757,7 +1757,7 @@ li {
 }
 </style>
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.29) */
+/* Unified Amulet & Badge Tokens (v03.30) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -2114,7 +2114,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.29</span>
+<span class="version-badge">v03.30</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -31461,6 +31461,9 @@ function switchMainPillar(pillarId) {
         if (pillarId === 'pillar-db' && typeof window.initMasterHorseDb === 'function') {
             window.initMasterHorseDb();
         }
+        if (pillarId === 'pillar-races' && typeof filterCh38Stakes === 'function') {
+            filterCh38Stakes();
+        }
     }
     const btnMap = {
         'pillar-db': 'tabPillarDb',
@@ -31628,13 +31631,58 @@ function switchSeriesItem(groupIdx, itemId) {
     if (chip) chip.classList.add('active');
 }
 
+// 2-1. 章節 31：重賞賽事全篩選器 (地區、等級、月份、跑道、關鍵字搜尋)
+function filterCh38Stakes() {
+    const regionVal = document.getElementById('ch38FilterRegion')?.value || 'ALL';
+    const gradeVal = document.getElementById('ch38FilterGrade')?.value || 'ALL';
+    const monthVal = document.getElementById('ch38FilterMonth')?.value || 'ALL';
+    const trackVal = document.getElementById('ch38FilterTrack')?.value || 'ALL';
+    const searchVal = (document.getElementById('ch38SearchInput')?.value || '').trim().toLowerCase();
+
+    const table = document.getElementById('ch38StakesTable');
+    if (!table) return;
+
+    const rows = table.querySelectorAll('tbody tr');
+    let visibleCount = 0;
+
+    rows.forEach(r => {
+        const rRegion = r.getAttribute('data-region') || '';
+        const rGrade = r.getAttribute('data-grade') || '';
+        const rMonth = r.getAttribute('data-month') || '';
+        const rTrack = r.getAttribute('data-track') || '';
+        const rText = r.innerText.toLowerCase();
+
+        let match = true;
+
+        if (regionVal !== 'ALL' && rRegion !== regionVal) match = false;
+        if (gradeVal !== 'ALL' && !rGrade.includes(gradeVal)) match = false;
+        if (monthVal !== 'ALL' && rMonth !== monthVal) match = false;
+        if (trackVal !== 'ALL' && rTrack !== trackVal) match = false;
+        if (searchVal && !rText.includes(searchVal)) match = false;
+
+        if (match) {
+            r.style.display = '';
+            visibleCount++;
+        } else {
+            r.style.display = 'none';
+        }
+    });
+
+    const countEl = document.getElementById('ch38VisibleCount');
+    if (countEl) countEl.innerText = visibleCount.toLocaleString();
+
+    if (typeof applyUniversalScrollableTables === 'function') {
+        applyUniversalScrollableTables();
+    }
+}
+
 function resetCh38Filters() {
     if (document.getElementById('ch38FilterRegion')) document.getElementById('ch38FilterRegion').value = 'ALL';
     if (document.getElementById('ch38FilterGrade')) document.getElementById('ch38FilterGrade').value = 'ALL';
     if (document.getElementById('ch38FilterMonth')) document.getElementById('ch38FilterMonth').value = 'ALL';
     if (document.getElementById('ch38FilterTrack')) document.getElementById('ch38FilterTrack').value = 'ALL';
     if (document.getElementById('ch38SearchInput')) document.getElementById('ch38SearchInput').value = '';
-    if (typeof filterCh38Stakes === 'function') filterCh38Stakes();
+    filterCh38Stakes();
 }
 
 // 4. 章節 09：全配合理論分類晶片篩選
