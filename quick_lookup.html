@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.27"></script>
-<script src="core_guides_data.js?v=v03.27"></script>
-<script src="yearly_recs_db.js?v=v03.27"></script>
-<script src="horse_subtopics_data.js?v=v03.27"></script>
+<script src="master_lookup_db.js?v=v03.28"></script>
+<script src="core_guides_data.js?v=v03.28"></script>
+<script src="yearly_recs_db.js?v=v03.28"></script>
+<script src="horse_subtopics_data.js?v=v03.28"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1757,7 +1757,7 @@ li {
 }
 </style>
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.27) */
+/* Unified Amulet & Badge Tokens (v03.28) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -2114,7 +2114,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.27</span>
+<span class="version-badge">v03.28</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -33031,8 +33031,8 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </style>
 
 <script id="master-horse-db-engine">
-// ==================== 第 41 章 1.5 萬匹史實馬與 11 大推薦分類引擎 ====================
-let dbData = null;
+// ==================== 全域變數與資料庫邏輯 ====================
+        let dbData = null;
         let currentTab = "cat1";
         let sortField = "sp";
         let sortAsc = false;
@@ -33141,7 +33141,7 @@ let dbData = null;
             const next = current === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', next);
             localStorage.setItem('keiba_theme', next);
-            // chart update handled by main script
+            if (explosionChartInstance) explosionChartInstance.update();
             makeTablesSortable();
         }
 
@@ -33346,6 +33346,145 @@ let dbData = null;
             } else {
                 statusEl.innerText = "⚠️ 未達子系統確立門檻 (全球需 ≥ 2.0% 或單區 ≥ 5.0%)";
                 statusEl.style.color = "#cbd5e1";
+            }
+        }
+
+        // ==================== 配合爆發力抽樣模擬器 (Section 1) ====================
+        window.explosionChartInstance = window.explosionChartInstance || null;
+        function initSimulationChart() {
+            const canvasEl = document.getElementById('explosionChart');
+            if (!canvasEl) return;
+            if (explosionChartInstance) return;
+            const ctx = canvasEl.getContext('2d');
+            explosionChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: '抽樣次數 (加成值 b)',
+                        data: [],
+                        backgroundColor: 'rgba(56, 189, 248, 0.65)',
+                        borderColor: '#38bdf8',
+                        borderWidth: 1.5,
+                        borderRadius: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } } },
+                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } } }
+                    }
+                }
+            });
+        }
+
+        function runSimulation() {
+            initSimulationChart();
+            const bInput = document.getElementById('inputB') || document.getElementById('simB');
+            const facInput = document.getElementById('facilityLv');
+            const baseB = parseInt(bInput ? bInput.value : 30) || 30;
+            const facBonus = parseInt(facInput ? facInput.value : 3) || 0;
+            const B = baseB + facBonus;
+            const N = 1000;
+            const dist = new Array(B + 1).fill(0);
+
+            for (let i = 0; i < N; i++) {
+                const b = Math.floor(Math.random() * (B + 1));
+                dist[b]++;
+            }
+
+            if (explosionChartInstance) {
+                explosionChartInstance.data.labels = Array.from({ length: B + 1 }, (_, i) => `${i}`);
+                explosionChartInstance.data.datasets[0].data = dist;
+                explosionChartInstance.update();
+            }
+        }
+
+        function runExplosionSimulation() {
+            runSimulation();
+        }
+
+
+        // ==================== 14 大分類渲染引擎 ====================
+        function renderGuideCategory(catKey) {
+            const tableWrap = document.getElementById("tableViewWrapper");
+            const guideWrap = document.getElementById("guideViewWrapper");
+            const filterPanel = document.querySelector(".filter-panel");
+            const statsBar = document.querySelector(".stats-bar");
+
+            if (tableWrap) tableWrap.style.display = "none";
+            if (filterPanel) filterPanel.style.display = "none";
+            if (statsBar) statsBar.style.display = "none";
+            if (guideWrap) {
+                guideWrap.style.display = "block";
+                guideWrap.innerHTML = "";
+            }
+
+            if (!dbData) return;
+
+            if (catKey === "cat2") {
+                const list = Array.isArray(dbData.cat2) ? dbData.cat2 : [];
+                const headerCard = document.createElement("div");
+                headerCard.className = "callout callout-gold";
+                headerCard.innerHTML = `<i class="fa-solid fa-scroll fa-lg"></i><div><strong>📜 に入手すべきおすすめ馬について (1968~2023 全年代戰略指南)</strong><p style="font-size:0.82rem; margin-top:4px; margin-bottom:0;">包含各歷史年代開局核心目標、優先引進名駒、系統確立方向與繁殖策略解讀。</p></div>`;
+                guideWrap.appendChild(headerCard);
+
+                list.forEach(item => {
+                    const card = document.createElement("div");
+                    card.className = "section-card";
+                    card.style.marginBottom = "14px";
+                    card.innerHTML = `
+                        <div class="section-header" style="background:rgba(56,189,248,0.08);">
+                            <div class="section-title"><i class="fa-solid fa-calendar-days"></i> ${item.title || item.year + '年'}</div>
+                            <span class="pill pill-safe">${item.year} 年</span>
+                        </div>
+                        <div class="section-body">
+                            <p style="margin:0; line-height:1.7; color:var(--text-color); font-size:0.88rem;">${item.strategy_zh || item.strategy || "本年度史實產駒與拍賣會名駒具備高即戰力，建議依牧場配種設施與馬札存量妥善安排收購。"}</p>
+                        </div>
+                    `;
+                    guideWrap.appendChild(card);
+                });
+            } else if (catKey === "cat11") {
+                const g = dbData.cat11 || {};
+                const card = document.createElement("div");
+                card.className = "section-card";
+                card.innerHTML = `
+                    <div class="section-header" style="background:rgba(245,158,11,0.1);">
+                        <div class="section-title" style="color:var(--gold-color);"><i class="fa-solid fa-star"></i> ${g.title || "スーパースターホースとは (超級巨星名駒解析)"}</div>
+                    </div>
+                    <div class="section-body">
+                        <div class="callout callout-gold"><i class="fa-solid fa-trophy"></i><div><strong>定義與特徵</strong><p style="margin:4px 0 0 0;">${g.definition || "《賽馬大亨 10 2026》中具備歷史級統治力之頂級史實名駒 (SP 76+ 或 虹札神駒)。"}</p></div></div>
+                        <h4 style="color:var(--accent-color); margin-top:14px;">⚡ 核心四大優勢</h4>
+                        <ul style="line-height:1.8;">
+                            ${(g.key_traits || []).map(t => `<li>${t}</li>`).join('')}
+                        </ul>
+                        <h4 style="color:var(--gold-color); margin-top:14px;">🎯 主要獲取途徑</h4>
+                        <ul style="line-height:1.8;">
+                            ${(g.how_to_acquire || []).map(a => `<li>${a}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                guideWrap.appendChild(card);
+            } else if (catKey === "cat12") {
+                const g = dbData.cat12 || {};
+                const card = document.createElement("div");
+                card.className = "section-card";
+                card.innerHTML = `
+                    <div class="section-header" style="background:linear-gradient(90deg, rgba(239,68,68,0.15), rgba(59,130,246,0.15));">
+                        <div class="section-title" style="color:#f472b6;"><i class="fa-solid fa-rainbow"></i> ${g.title || "おすすめ虹札馬について (虹札兌換戰略與優先級總覽)"}</div>
+                    </div>
+                    <div class="section-body">
+                        <div class="callout callout-info"><i class="fa-solid fa-award"></i><div><strong>虹札運用黃金法則</strong><p style="margin:4px 0 0 0;">${g.description || "虹札 (虹のお守り) 是遊戲中最珍貴之最高階道具。合理運用能在 10~20 年內徹底確立自家牧場之絕對支配地位。"}</p></div></div>
+                        <h4 style="color:var(--accent-color); margin-top:14px;">👑 三大優先收購準則</h4>
+                        <ul style="line-height:1.8;">
+                            ${(g.rules || []).map(r => `<li>${r}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                guideWrap.appendChild(card);
             }
         }
 
@@ -33877,77 +34016,339 @@ let dbData = null;
             }
         }
 
-// ========================== 資料庫引擎啟動器 (三重保險) ==========================
-function _masterDbInit() {
-    // Step 1: 解包資料庫
-    if (window.MASTER_DB_DATA) {
-        dbData = window.MASTER_DB_DATA;
-    }
-    if (!dbData) return; // 資料尚未載入，放棄
+        
+        // ==================== 全域通用表格即時排序引擎 (Universal Table Sorter) ====================
+        const TICKET_WEIGHTS = { '虹': 6, '彩': 6, '金': 5, '銀': 4, '銅': 3, '緑': 2, '綠': 2, '無': 1, '-': 0 };
+        const RANK_WEIGHTS = { 'S+': 10, 'S': 9, 'A+': 8, 'A': 7, 'B+': 6, 'B': 5, 'C+': 4, 'C': 3, 'D': 2, 'E': 1, 'G': 0, '-': 0 };
+        const TRACK_WEIGHTS = { '◎': 4, '○': 3, '△': 2, '×': 1, '✕': 1, '-': 0 };
 
-    // Step 2: 初始化年度篩選器（只在尚未初始化時執行）
-    const sel = document.getElementById('filterYear');
-    if (sel && sel.options.length < 2) {
-        if (typeof initYearFilter === 'function') initYearFilter();
-    }
+        function parseSortValue(cellText) {
+            if (!cellText) return { type: 'str', val: '' };
+            const s = cellText.trim();
+            
+            // 1. Ticket Rank
+            if (TICKET_WEIGHTS[s] !== undefined) return { type: 'num', val: TICKET_WEIGHTS[s] };
+            
+            // 2. Ability Rank
+            if (RANK_WEIGHTS[s] !== undefined) return { type: 'num', val: RANK_WEIGHTS[s] };
+            
+            // 3. Track Aptitude
+            if (TRACK_WEIGHTS[s] !== undefined) return { type: 'num', val: TRACK_WEIGHTS[s] };
+            
+            // 4. Star Rating
+            if (s.includes('★')) {
+                const count = (s.match(/★/g) || []).length;
+                return { type: 'num', val: count };
+            }
+            
+            // 5. Percentage (e.g. +16%, 30%, 15.5%)
+            if (s.endsWith('%')) {
+                const num = parseFloat(s.replace(/[^0-9.-]/g, ''));
+                if (!isNaN(num)) return { type: 'num', val: num };
+            }
+            
+            // 6. Distance (e.g. 1800~3200m or 2000m)
+            const distMatch = s.match(/(\d+)(?:\s*[~～-]\s*\d+)?m/);
+            if (distMatch) {
+                return { type: 'num', val: parseInt(distMatch[1]) };
+            }
+            
+            // 7. Month + Week (e.g. 1月1週, 5月4週, 12月2週)
+            const monthWeekMatch = s.match(/^(\d+)月(?:(\d+)週)?/);
+            if (monthWeekMatch) {
+                const mNum = parseInt(monthWeekMatch[1]);
+                const wNum = monthWeekMatch[2] ? parseInt(monthWeekMatch[2]) : 1;
+                return { type: 'num', val: mNum * 10 + wNum };
+            }
+            
+            // 7b. Duration in Weeks (e.g. 4週, 6週間, 2週)
+            const weekMatch = s.match(/^(\d+)週/);
+            if (weekMatch) {
+                return { type: 'num', val: parseInt(weekMatch[1]) };
+            }
+            
+            // 8. Pure Number / Year / Price
+            const pureNum = parseFloat(s.replace(/,/g, ''));
+            if (!isNaN(pureNum) && /^[-+]?[0-9]*\.?[0-9]+$/.test(s.replace(/,/g, ''))) {
+                return { type: 'num', val: pureNum };
+            }
+            
+            // 9. Standard String
+            return { type: 'str', val: s.toLowerCase() };
+        }
 
-    // Step 3: 綁定分類晶片點擊（每個 btn 只綁一次）
-    document.querySelectorAll('#categoryTabs .tab-btn').forEach(btn => {
-        if (!btn._masterDbBound) {
-            btn._masterDbBound = true;
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('#categoryTabs .tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentTab = btn.getAttribute('data-cat') || 'cat1';
-                renderTable();
+        function sortTableByColumn(table, colIndex, headerEl) {
+            const tbody = table.querySelector('tbody');
+            if (!tbody) return;
+            
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            if (rows.length === 0) return;
+            
+            // Determine current sort direction
+            let isAsc = true;
+            if (headerEl.classList.contains('sorted-asc')) {
+                isAsc = false;
+            }
+            
+            // Reset all headers in this table
+            table.querySelectorAll('th').forEach(th => {
+                th.classList.remove('sorted-asc', 'sorted-desc');
+                const icon = th.querySelector('.sort-icon');
+                if (icon) icon.className = 'fa-solid fa-sort sort-icon';
+            });
+            
+            // Apply new state to clicked header
+            headerEl.classList.add(isAsc ? 'sorted-asc' : 'sorted-desc');
+            const icon = headerEl.querySelector('.sort-icon');
+            if (icon) {
+                icon.className = isAsc ? 'fa-solid fa-sort-up sort-icon' : 'fa-solid fa-sort-down sort-icon';
+            }
+            
+            // Sort rows
+            rows.sort((rowA, rowB) => {
+                const cellA = rowA.children[colIndex];
+                const cellB = rowB.children[colIndex];
+                const textA = cellA ? cellA.innerText : '';
+                const textB = cellB ? cellB.innerText : '';
+                
+                const valA = parseSortValue(textA);
+                const valB = parseSortValue(textB);
+                
+                if (valA.type === 'num' && valB.type === 'num') {
+                    return isAsc ? (valA.val - valB.val) : (valB.val - valA.val);
+                }
+                
+                const strA = String(valA.val);
+                const strB = String(valB.val);
+                return isAsc ? strA.localeCompare(strB, 'zh-Hant') : strB.localeCompare(strA, 'zh-Hant');
+            });
+            
+            // Re-append sorted rows
+            rows.forEach(r => tbody.appendChild(r));
+        }
+
+        function makeTablesSortable(root = document) {
+            const tables = root.querySelectorAll('table.data-table');
+            tables.forEach(table => {
+                if (table.id === 'horseTable') return; // horseTable has its own virtual sorting
+                
+                const thead = table.querySelector('thead');
+                if (!thead) return;
+                
+                const headers = thead.querySelectorAll('th');
+                headers.forEach((th, idx) => {
+                    if (th.getAttribute('data-sort-bound')) return;
+                    th.setAttribute('data-sort-bound', 'true');
+                    th.classList.add('sortable-th');
+                    
+                    // Add icon if missing
+                    if (!th.querySelector('.sort-icon')) {
+                        const iconSpan = document.createElement('span');
+                        iconSpan.innerHTML = '<i class="fa-solid fa-sort sort-icon"></i>';
+                        th.appendChild(iconSpan);
+                    }
+                    
+                    th.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        sortTableByColumn(table, idx, th);
+                    });
+                });
             });
         }
-    });
 
-    // Step 4: 綁定篩選器事件（每個控件只綁一次）
-    ['filterYear','filterTicket','filterSex','filterSp','filterSt','filterTrack','filterDistance','filterRegion'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el && !el._masterDbBound) {
-            el._masterDbBound = true;
-            el.addEventListener('change', renderTable);
+
+                        
+
+    function switchSeriesGroup(groupIdx) {
+        document.querySelectorAll('.series-group-pane').forEach(el => el.style.display = 'none');
+        const target = document.getElementById('serGroupContainer_' + groupIdx);
+        if (target) target.style.display = 'block';
+
+        for (let i = 0; i < 6; i++) {
+            const btn = document.getElementById('btnSerGroup_' + i);
+            if (btn) btn.classList.remove('active');
         }
-    });
-    const searchEl = document.getElementById('filterSearch');
-    if (searchEl && !searchEl._masterDbBound) {
-        searchEl._masterDbBound = true;
-        searchEl.addEventListener('input', renderTable);
+        const activeBtn = document.getElementById('btnSerGroup_' + groupIdx);
+        if (activeBtn) activeBtn.classList.add('active');
     }
 
-    // Step 5: 強制確保 tableViewWrapper 可見
-    const tw = document.getElementById('tableViewWrapper');
-    if (tw) tw.style.display = 'block';
-    const sb = document.querySelector('.stats-bar');
-    if (sb) sb.style.display = 'flex';
-    const fp = document.querySelector('.filter-panel');
-    if (fp) fp.style.display = 'grid';
+    function switchSeriesItem(groupIdx, itemId) {
+        const container = document.getElementById('serGroupContainer_' + groupIdx);
+        if (!container) return;
 
-    // Step 6: 渲染表格
-    renderTable();
-}
+        container.querySelectorAll('.series-item-card').forEach(el => el.style.display = 'none');
+        const card = document.getElementById('cardSer_' + itemId);
+        if (card) card.style.display = 'block';
 
-// 公開入口 (供 switchMainPillar 呼叫)
-window.initMasterHorseDb = _masterDbInit;
-
-// 使用 readyState 判斷立即/延後執行（腳本在 body 尾端，DOM 已就緒）
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', _masterDbInit);
-} else {
-    _masterDbInit();
-    setTimeout(_masterDbInit, 500);
-}
-
-// window.onload 備援（確保所有 JS 資源完整載入後再次確認）
-window.addEventListener('load', function() {
-    if (!window._CURRENT_RENDERED_ITEMS || window._CURRENT_RENDERED_ITEMS.length === 0) {
-        _masterDbInit();
+        container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        const chip = document.getElementById('chipSer_' + itemId);
+        if (chip) chip.classList.add('active');
     }
-});
 
+
+    function switchStakesSubTab(tabId) {
+        document.querySelectorAll('.stakes-subtab-pane').forEach(el => el.style.display = 'none');
+        const target = document.getElementById(tabId);
+        if (target) target.style.display = 'block';
+        
+        const btnMap = {
+            'stakesTab1': 'btnStakesTab1',
+            'stakesTab2': 'btnStakesTab2',
+            'stakesTab3': 'btnStakesTab3',
+            'stakesTab4': 'btnStakesTab4',
+            'stakesTab5': 'btnStakesTab5'
+        };
+        Object.values(btnMap).forEach(id => {
+            const b = document.getElementById(id);
+            if (b) b.classList.remove('active');
+        });
+        const activeBtn = document.getElementById(btnMap[tabId]);
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function filterCh38Stakes() {
+        const regionVal = document.getElementById('ch38FilterRegion')?.value || 'ALL';
+        const gradeVal = document.getElementById('ch38FilterGrade')?.value || 'ALL';
+        const monthVal = document.getElementById('ch38FilterMonth')?.value || 'ALL';
+        const trackVal = document.getElementById('ch38FilterTrack')?.value || 'ALL';
+        const searchVal = (document.getElementById('ch38SearchInput')?.value || '').trim().toLowerCase();
+
+        const table = document.getElementById('ch38StakesTable');
+        if (!table) return;
+
+        const rows = table.querySelectorAll('tbody tr');
+        let visibleCount = 0;
+
+        rows.forEach(r => {
+            const rRegion = r.getAttribute('data-region') || '';
+            const rGrade = r.getAttribute('data-grade') || '';
+            const rMonth = r.getAttribute('data-month') || '';
+            const rTrack = r.getAttribute('data-track') || '';
+            const rText = r.innerText.toLowerCase();
+
+            let match = true;
+
+            if (regionVal !== 'ALL' && rRegion !== regionVal) match = false;
+            if (gradeVal !== 'ALL' && !rGrade.includes(gradeVal)) match = false;
+            if (monthVal !== 'ALL' && rMonth !== monthVal) match = false;
+            if (trackVal !== 'ALL' && rTrack !== trackVal) match = false;
+            if (searchVal && !rText.includes(searchVal)) match = false;
+
+            if (match) {
+                r.style.display = '';
+                visibleCount++;
+            } else {
+                r.style.display = 'none';
+            }
+        });
+
+        const countEl = document.getElementById('ch38VisibleCount');
+        if (countEl) countEl.innerText = visibleCount.toLocaleString();
+    }
+
+    function resetCh38Filters() {
+        if (document.getElementById('ch38FilterRegion')) document.getElementById('ch38FilterRegion').value = 'ALL';
+        if (document.getElementById('ch38FilterGrade')) document.getElementById('ch38FilterGrade').value = 'ALL';
+        if (document.getElementById('ch38FilterMonth')) document.getElementById('ch38FilterMonth').value = 'ALL';
+        if (document.getElementById('ch38FilterTrack')) document.getElementById('ch38FilterTrack').value = 'ALL';
+        if (document.getElementById('ch38SearchInput')) document.getElementById('ch38SearchInput').value = '';
+        filterCh38Stakes();
+    }
+
+    function filterCh38Track(region, btn) {
+        if (btn && btn.parentElement) {
+            btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+        const table = document.getElementById('ch38TrackTable');
+        if (!table) return;
+
+        const rows = table.querySelectorAll('tbody tr');
+        rows.forEach(r => {
+            const rRegion = r.getAttribute('data-region') || '';
+            if (region === 'ALL' || rRegion.includes(region)) {
+                r.style.display = '';
+            } else {
+                r.style.display = 'none';
+            }
+        });
+    }
+
+
+        function init() {
+            ensureUnpackedDb();
+            initCategoryTabs();
+            if (typeof makeTablesSortable === "function") makeTablesSortable();
+            initYearFilter();
+            try { if (typeof initSimulationChart === "function") initSimulationChart(); } catch(e){}
+            try { if (typeof runSimulation === "function") runSimulation(); } catch(e){}
+            try { if (typeof setSysTab === "function") setSysTab("child"); } catch(e){}
+            try { if (typeof calculateDominance === "function") calculateDominance(); } catch(e){}
+
+            const bindChange = (id) => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener("change", renderTable);
+            };
+            bindChange("filterYear");
+            bindChange("filterTicket");
+            bindChange("filterSex");
+            bindChange("filterSp");
+            bindChange("filterSt");
+            bindChange("filterTrack");
+            bindChange("filterDistance");
+            bindChange("filterRegion");
+
+            const searchInput = document.getElementById("filterSearch");
+            if (searchInput) {
+                let timer = null;
+                searchInput.addEventListener("input", () => {
+                    clearTimeout(timer);
+                    timer = setTimeout(renderTable, 250);
+                });
+            }
+
+            const savedTheme = localStorage.getItem('keiba_theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+
+            // 配合大系、系統確立與計算機初始化
+            document.querySelectorAll('.calc-in').forEach(input => {
+                input.addEventListener('input', calculateDominance);
+            });
+            try { if (typeof calculateDominance === 'function') calculateDominance(); } catch(e){}
+            try { if (typeof setSysTab === 'function') setSysTab('child'); } catch(e){}
+
+                        initYearlyRecsUI();
+            // 確保表格容器可見
+            const _tw = document.getElementById("tableViewWrapper");
+            if (_tw) _tw.style.display = "block";
+            const _sb = document.querySelector(".stats-bar");
+            if (_sb) _sb.style.display = "flex";
+            const _fp = document.querySelector(".filter-panel");
+            if (_fp) _fp.style.display = "grid";
+            renderTable();
+
+            // 若資料庫非同步載入完成，自動立即重新渲染
+            let checkDbInterval = setInterval(() => {
+                if (window.MASTER_DB_DATA && (!dbData || !dbData.cat1 || dbData.cat1.length === 0)) {
+                    ensureUnpackedDb();
+                    renderTable();
+                    clearInterval(checkDbInterval);
+                }
+            }, 200);
+            setTimeout(() => clearInterval(checkDbInterval), 12000);
+        }
+
+        // 公開入口 (供 switchMainPillar 呼叫)
+        window.initMasterHorseDb = init;
+
+        // 自動啟動應用程式 (Auto Launch)
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
 </script>
 
 </body>

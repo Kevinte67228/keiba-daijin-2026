@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.27",
+  "current_version": "v03.28",
   "history": [
     {
       "version": "v01.01",
@@ -1175,6 +1175,11 @@
       "version": "v03.27",
       "date": "2026-09-03",
       "description": "Pillar 7 Header Anti-Overlap & Master DB Render Engine Fix (v03.27): Fixed Pillar 7 header padding to eliminate border overlap, bound filter events, and connected switchMainPillar with initMasterHorseDb."
+    },
+    {
+      "version": "v03.28",
+      "date": "2026-09-04",
+      "description": "Master DB Engine Complete Restore (v03.28): Injected working backup engine script directly, fixed duplicate explosionChartInstance/switchMainPillar declarations, restored init() with polling guard and renderTable correctly."
     }
   ]
 }
