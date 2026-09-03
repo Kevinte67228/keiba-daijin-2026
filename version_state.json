@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.33",
+  "current_version": "v03.34",
   "history": [
     {
       "version": "v01.01",
@@ -1205,6 +1205,11 @@
       "version": "v03.33",
       "date": "2026-09-04",
       "description": "Terminology Clean & Unify (v03.33): Fully normalized all occurrences of '美州/美洲' across site/sires_retire_db.js (964 sire records), site/core_guides_data.js, and all HTML files to '美國'. Updated Section 42 filter chips, badge renderers, and conditions."
+    },
+    {
+      "version": "v03.34",
+      "date": "2026-09-04",
+      "description": "Chapter 41 Detail Modal & Section 42 Capsule Chip Restoration (v03.34): Restored missing horseModal backdrop DOM in Chapter 41 and verified full 38-stat interactive ability modal via CDP headless Chrome. Unified Section 42 sire retirement era/region filter chips to GEMINI.md standard 5 futuristic tech capsule rails (.chip-btn, 20px rounded capsule, golden glow active state) with instant table filtering and verified 0 SyntaxError."
     }
   ]
 }
