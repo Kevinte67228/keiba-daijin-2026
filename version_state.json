@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.28",
+  "current_version": "v03.29",
   "history": [
     {
       "version": "v01.01",
@@ -1180,6 +1180,11 @@
       "version": "v03.28",
       "date": "2026-09-04",
       "description": "Master DB Engine Complete Restore (v03.28): Injected working backup engine script directly, fixed duplicate explosionChartInstance/switchMainPillar declarations, restored init() with polling guard and renderTable correctly."
+    },
+    {
+      "version": "v03.29",
+      "date": "2026-09-04",
+      "description": "Fix Corrupted Master DB Engine Syntax Error (v03.29): Root cause identified via CDP as syntax error at orphaned '});' around line 68 due to partial function deletion. Reassembled clean engine from backup, verified in real headless Chrome rendering all 15,389 horses successfully."
     }
   ]
 }
