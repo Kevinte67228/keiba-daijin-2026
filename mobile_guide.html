@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.08"></script>
-<script src="core_guides_data.js?v=v03.08"></script>
-<script src="yearly_recs_db.js?v=v03.08"></script>
-<script src="horse_subtopics_data.js?v=v03.08"></script>
+<script src="master_lookup_db.js?v=v03.09"></script>
+<script src="core_guides_data.js?v=v03.09"></script>
+<script src="yearly_recs_db.js?v=v03.09"></script>
+<script src="horse_subtopics_data.js?v=v03.09"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1761,7 +1761,7 @@ li {
 </style>
 
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.08) */
+/* Unified Amulet & Badge Tokens (v03.09) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -1943,7 +1943,7 @@ li {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.08</span>
+<span class="version-badge">v03.09</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -32003,6 +32003,83 @@ function calcFoalScore(r) {
     };
 }
 
+function closeAddFoalModal() {
+    try {
+        const modal = document.getElementById('addFoalModal');
+        if (modal) {
+            modal.classList.remove('active');
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    } catch(e) {
+        console.error('Error closing add foal modal:', e);
+    }
+}
+
+function saveFoalRecord() {
+    try {
+        const nameInput = document.getElementById('edit_foal_name');
+        const name = (nameInput ? nameInput.value : '').trim();
+        if (!name) {
+            alert('請輸入幼駒名稱或代號！');
+            return;
+        }
+        
+        const yearInput = document.getElementById('edit_foal_year');
+        const sireInput = document.getElementById('edit_foal_sire');
+        const damInput = document.getElementById('edit_foal_dam');
+        const mikaInput = document.getElementById('edit_mika');
+        const kappaInput = document.getElementById('edit_kappa');
+        const birthInput = document.getElementById('edit_birth');
+        const growth1Input = document.getElementById('edit_growth1');
+        const size1Input = document.getElementById('edit_size1');
+        const spCommentInput = document.getElementById('edit_sp_comment');
+        
+        const legProbChk = document.getElementById('edit_leg_problem');
+        const temperWildChk = document.getElementById('edit_temper_wild');
+        const fenceJumpChk = document.getElementById('edit_fence_jump');
+        const fenceBreakChk = document.getElementById('edit_fence_break');
+        const chunraiChk = document.getElementById('edit_chunrai');
+        const twinsChk = document.getElementById('edit_twins');
+        
+        const record = {
+            id: currentEditingFoalId || ('foal_' + Date.now()),
+            name: name,
+            year: parseInt(yearInput ? yearInput.value : 2026) || 2026,
+            sire: (sireInput ? sireInput.value : '').trim(),
+            dam: (damInput ? damInput.value : '').trim(),
+            mika: mikaInput ? mikaInput.value : '6',
+            kappa: kappaInput ? kappaInput.value : '6',
+            birth: birthInput ? birthInput.value : '10',
+            growth1: growth1Input ? growth1Input.value : '6',
+            size1: size1Input ? size1Input.value : '6',
+            spComment: spCommentInput ? spCommentInput.value : '72',
+            isLegProb: legProbChk ? legProbChk.checked : false,
+            isTemperWild: temperWildChk ? temperWildChk.checked : false,
+            isFenceJump: fenceJumpChk ? fenceJumpChk.checked : false,
+            isFenceBreak: fenceBreakChk ? fenceBreakChk.checked : false,
+            isChunrai: chunraiChk ? chunraiChk.checked : false,
+            isTwins: twinsChk ? twinsChk.checked : false,
+            updatedAt: Date.now()
+        };
+        
+        let list = getFoalRecords();
+        if (currentEditingFoalId) {
+            const idx = list.findIndex(r => r.id === currentEditingFoalId);
+            if (idx !== -1) list[idx] = record;
+            else list.unshift(record);
+        } else {
+            list.unshift(record);
+        }
+        
+        saveFoalRecordsList(list);
+        closeAddFoalModal();
+        renderFoalTrackerTable();
+    } catch(err) {
+        console.error('Error saving foal record:', err);
+        alert('儲存過程發生問題：' + err.message);
+    }
+}
 function openAddFoalModal() {
     try {
         currentEditingFoalId = null;
@@ -32039,22 +32116,9 @@ function openAddFoalModal() {
     }
 }
 
-function closeAddFoalModal() {
-    const modal = document.getElementById('addFoalModal');
-    if (modal) {
-        modal.classList.remove('active');
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-    }
-}
 
-function closeAddFoalModal() {
-    const modal = document.getElementById('addFoalModal');
-    if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-    }
-}
+
+
 
 
 
@@ -32071,46 +32135,7 @@ function switchFoalEditTab(tabId, btn) {
     if (target) target.style.display = 'block';
 }
 
-function saveFoalRecord() {
-    const name = document.getElementById('edit_foal_name')?.value.trim();
-    if (!name) {
-        alert('請輸入幼駒名稱或代號！');
-        return;
-    }
-    
-    const record = {
-        id: currentEditingFoalId || ('foal_' + Date.now()),
-        name: name,
-        year: parseInt(document.getElementById('edit_foal_year')?.value || 2026),
-        sire: document.getElementById('edit_foal_sire')?.value.trim() || '',
-        dam: document.getElementById('edit_foal_dam')?.value.trim() || '',
-        mika: document.getElementById('edit_mika')?.value || '6',
-        kappa: document.getElementById('edit_kappa')?.value || '6',
-        birth: document.getElementById('edit_birth')?.value || '10',
-        growth1: document.getElementById('edit_growth1')?.value || '6',
-        size1: document.getElementById('edit_size1')?.value || '6',
-        spComment: document.getElementById('edit_sp_comment')?.value || '72',
-        isLegProb: document.getElementById('edit_leg_problem')?.checked || false,
-        isTemperWild: document.getElementById('edit_temper_wild')?.checked || false,
-        isFenceJump: document.getElementById('edit_fence_jump')?.checked || false,
-        isFenceBreak: document.getElementById('edit_fence_break')?.checked || false,
-        isChunrai: document.getElementById('edit_chunrai')?.checked || false,
-        isTwins: document.getElementById('edit_twins')?.checked || false,
-        updatedAt: Date.now()
-    };
-    
-    let list = getFoalRecords();
-    if (currentEditingFoalId) {
-        const idx = list.findIndex(r => r.id === currentEditingFoalId);
-        if (idx !== -1) list[idx] = record;
-    } else {
-        list.unshift(record);
-    }
-    
-    saveFoalRecordsList(list);
-    closeAddFoalModal();
-    renderFoalTrackerTable();
-}
+
 
 function editFoalRecord(id) {
     const list = getFoalRecords();
