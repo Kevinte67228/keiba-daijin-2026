@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.16",
+  "current_version": "v03.17",
   "history": [
     {
       "version": "v01.01",
@@ -1120,6 +1120,11 @@
       "version": "v03.16",
       "date": "2026-09-03",
       "description": "Fix Chip Button Class Mismatch (v03.16): Unified switchFoalEditTab and switchFoalCalcTab with wildcard selector support for .foal-edit-tab-btn and .foal-calc-tab-btn to ensure 100% click switching across all panels."
+    },
+    {
+      "version": "v03.17",
+      "date": "2026-09-03",
+      "description": "Fix ID-First Chip Tab Switching & Hidden State Init (v03.17): Enforced ID-first matching with document fallback and added explicit display:none to tab-calc-1yo/2yo/events for 100% reliable tab switching."
     }
   ]
 }
