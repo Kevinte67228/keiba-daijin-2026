@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.34",
+  "current_version": "v03.35",
   "history": [
     {
       "version": "v01.01",
@@ -1210,6 +1210,11 @@
       "version": "v03.34",
       "date": "2026-09-04",
       "description": "Chapter 41 Detail Modal & Section 42 Capsule Chip Restoration (v03.34): Restored missing horseModal backdrop DOM in Chapter 41 and verified full 38-stat interactive ability modal via CDP headless Chrome. Unified Section 42 sire retirement era/region filter chips to GEMINI.md standard 5 futuristic tech capsule rails (.chip-btn, 20px rounded capsule, golden glow active state) with instant table filtering and verified 0 SyntaxError."
+    },
+    {
+      "version": "v03.35",
+      "date": "2026-09-04",
+      "description": "Chapter 45 Full Yearly Recommendations Data & Chip Engine Restoration (v03.35): Root cause eliminated duplicate orphaned stub script that triggered Uncaught SyntaxError (re-declaring currentRecsRegion). Restored full 11-route tables and ability tables for 32 Japanese years (1964-1995) and 9 Overseas years (1968-1976). Unified Section 45 chips to GEMINI.md standard 5 capsule rails (.chip-btn, 20px rounded capsule, golden glow active state) and verified 100% via CDP headless Chrome."
     }
   ]
 }
