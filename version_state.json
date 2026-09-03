@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.19",
+  "current_version": "v03.20",
   "history": [
     {
       "version": "v01.01",
@@ -1135,6 +1135,11 @@
       "version": "v03.19",
       "date": "2026-09-03",
       "description": "Change Default Foal Birth Year to 1968 (v03.19): Updated default birth year from 2026 to 1968 across inputs, modal init, storage, and table render."
+    },
+    {
+      "version": "v03.20",
+      "date": "2026-09-03",
+      "description": "Fix Foal Calculator Modal Chip Buttons Call (v03.20): Fixed chip buttons in foalCalculatorModal to call switchFoalCalcTab targeting #foalCalculatorModal."
     }
   ]
 }
