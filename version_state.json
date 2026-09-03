@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.31",
+  "current_version": "v03.32",
   "history": [
     {
       "version": "v01.01",
@@ -1195,6 +1195,11 @@
       "version": "v03.31",
       "date": "2026-09-04",
       "description": "Unified Capsule Chip Rails for Chapters 43-46 (v03.31): Applied futuristic tech capsule chip style (.ch43-46-chip-rail, 20px rounded capsule, golden glow active state) across Ch43 breeding horses, Ch44 racehorses, Ch45 yearly recommendations, and Ch46 hall of fame nicknames. Verified 100% in real headless Chrome."
+    },
+    {
+      "version": "v03.32",
+      "date": "2026-09-04",
+      "description": "Section 42-46 Filter Chip Rails Unified (v03.32): Applied futuristic tech capsule chip style (.ch43-46-chip-rail, 20px rounded capsule, golden glow active state, smooth touch scrolling) to Section 42 (sire retirement era/region buttons) and Sections 43-46 filter chips. Cleaned legacy inline styles and verified 100% in real headless Chrome."
     }
   ]
 }
