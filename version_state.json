@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.25",
+  "current_version": "v03.26",
   "history": [
     {
       "version": "v01.01",
@@ -1165,6 +1165,11 @@
       "version": "v03.25",
       "date": "2026-09-03",
       "description": "Chapter 41 Unified Tech Capsule Chip Rail Upgrade (v03.25): Applied GEMINI.md Rule 5 unified futuristic glowing gold capsule chip rail to Chapter 41 11 major horse database category tabs."
+    },
+    {
+      "version": "v03.26",
+      "date": "2026-09-03",
+      "description": "Chapter 41 2-Row Equal Width Chips, Anti-Overlap Margin & Engine Click Fix (v03.26): Formatted chips into 2 equal-width rows, ensured 12px gap from scrollbar to strictly prohibit overlap, and restored full master db click & render engine."
     }
   ]
 }
