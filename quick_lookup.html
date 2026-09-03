@@ -842,11 +842,11 @@
         .tab-btn:hover { border-color: var(--accent-color); }
         .category-tabs .tab-btn.active,
         .tab-btn.active {
-            background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
-            color: #0f172a;
-            border-color: #38bdf8;
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
-            font-weight: 800;
+            background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+            color: #0f172a !important;
+            border-color: #f59e0b !important;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
+            font-weight: 800 !important;
         }
 
         /* 篩選面板 */
@@ -33032,6 +33032,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 
 <script id="master-horse-db-engine">
 // ==================== 第 41 章 1.5 萬匹史實馬與 11 大推薦分類引擎 ====================
+// ==================== 第 41 章 1.5 萬匹史實馬與 11 大推薦分類引擎 ====================
 let dbData = null;
         let currentTab = "cat1";
         let sortField = "sp";
@@ -33984,43 +33985,66 @@ let dbData = null;
             }
         }
 
-// 綁定所有自訂篩選器事件 (Year, Ticket, Sex, SP, ST, Track, Distance, Region, Search)
-function bindMasterFilterEvents() {
-    const filterIds = ['filterYear', 'filterTicket', 'filterSex', 'filterSp', 'filterSt', 'filterTrack', 'filterDistance', 'filterRegion'];
-    filterIds.forEach(id => {
-        const el = document.getElementById(id);
-        if (el && !el._hasChangeEvent) {
-            el._hasChangeEvent = true;
-            el.addEventListener('change', () => {
+// ========================== 資料庫引擎啟動器 (雙保險) ==========================
+function _masterDbInit() {
+    // 解包資料庫
+    if (window.MASTER_DB_DATA && !dbData) {
+        dbData = window.MASTER_DB_DATA;
+    }
+
+    // 綁定分類晶片點擊事件（防重複綁定）
+    const btns = document.querySelectorAll('#categoryTabs .tab-btn');
+    btns.forEach(btn => {
+        if (!btn._masterDbBound) {
+            btn._masterDbBound = true;
+            btn.addEventListener('click', () => {
+                btns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentTab = btn.getAttribute('data-cat') || 'cat1';
                 if (typeof renderTable === 'function') renderTable();
             });
         }
     });
-    
-    const searchEl = document.getElementById('filterSearch');
-    if (searchEl && !searchEl._hasInputEvent) {
-        searchEl._hasInputEvent = true;
-        searchEl.addEventListener('input', () => {
-            if (typeof renderTable === 'function') renderTable();
-        });
+
+    // 初始化年度篩選器
+    if (typeof initYearFilter === 'function') {
+        const sel = document.getElementById('filterYear');
+        if (sel && sel.options.length < 2) initYearFilter();
     }
+
+    // 綁定篩選器 change/input 事件（防重複綁定）
+    const filterChangeIds = ['filterYear','filterTicket','filterSex','filterSp','filterSt','filterTrack','filterDistance','filterRegion'];
+    filterChangeIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && !el._masterDbBound) {
+            el._masterDbBound = true;
+            el.addEventListener('change', () => { if (typeof renderTable === 'function') renderTable(); });
+        }
+    });
+    const searchEl = document.getElementById('filterSearch');
+    if (searchEl && !searchEl._masterDbBound) {
+        searchEl._masterDbBound = true;
+        searchEl.addEventListener('input', () => { if (typeof renderTable === 'function') renderTable(); });
+    }
+
+    // 排序表頭點擊事件（防重複綁定）
+    if (typeof renderTable === 'function') renderTable();
 }
 
-// 支援外部調用啟動
-window.initMasterHorseDb = function() {
-    ensureUnpackedDb();
-    if (typeof initCategoryTabs === 'function') initCategoryTabs();
-    if (typeof initYearFilter === 'function') initYearFilter();
-    bindMasterFilterEvents();
-    if (typeof renderTable === 'function') renderTable();
-};
+// 公開入口 (供 switchMainPillar 呼叫)
+window.initMasterHorseDb = _masterDbInit;
 
-// 頁面載入自動初始化
-window.addEventListener('DOMContentLoaded', () => {
-    window.initMasterHorseDb();
-    setTimeout(() => {
-        window.initMasterHorseDb();
-    }, 500);
+// 立即執行（腳本在 body 尾端，DOM 已完全解析）
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _masterDbInit);
+} else {
+    // DOM 已就緒，立即執行
+    _masterDbInit();
+}
+
+// 額外備用：window.onload 確保所有資源載入後再次確認初始化
+window.addEventListener('load', () => {
+    if (!dbData) _masterDbInit();
 });
 
 </script>
