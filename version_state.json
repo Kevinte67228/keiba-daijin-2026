@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.07",
+  "current_version": "v03.08",
   "history": [
     {
       "version": "v01.01",
@@ -1075,6 +1075,11 @@
       "version": "v03.07",
       "date": "2026-09-03",
       "description": "Fix Add Foal Modal Button Click (v03.07): Enhanced openAddFoalModal JS with try-catch safety, z-index 99999 and body overflow lock for 100% click trigger reliability."
+    },
+    {
+      "version": "v03.08",
+      "date": "2026-09-03",
+      "description": "Fix Modal Overlay Active CSS Conflict (v03.08): Added modal.classList.add('active') to overcome .modal-overlay { display:none !important; } global CSS rule for 100% modal popup trigger."
     }
   ]
 }
