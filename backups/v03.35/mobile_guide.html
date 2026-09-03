@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.30"></script>
-<script src="core_guides_data.js?v=v03.30"></script>
-<script src="yearly_recs_db.js?v=v03.30"></script>
-<script src="horse_subtopics_data.js?v=v03.30"></script>
+<script src="master_lookup_db.js?v=v03.35"></script>
+<script src="core_guides_data.js?v=v03.35"></script>
+<script src="yearly_recs_db.js?v=v03.35"></script>
+<script src="horse_subtopics_data.js?v=v03.35"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1757,7 +1757,7 @@ li {
 }
 </style>
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.30) */
+/* Unified Amulet & Badge Tokens (v03.35) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -2110,11 +2110,132 @@ li {
 }
 </style>
 
+<style id="ch43-46-chips-style">
+/* ==========================================================================
+   第 42 ~ 46 章高級科技流光膠囊晶片軌道規範 (GEMINI.md 規範 5)
+   涵蓋：
+   - 第 42 章 (sec-sires-retire-db): 種公馬地域切換晶片、年代膠囊軌道 (#sireDecadeButtons)
+   - 第 43 章 (sec-breeding-only-horses): 馬札、性別、繫養地切換晶片
+   - 第 44 章 (sec-racehorses-full-db): 史實馬地域、性別、馬札切換晶片
+   - 第 45 章 (sec-yearly-recs-db): 區域切換晶片、年代滑動膠囊軌道 (#recsYearButtons)
+   - 第 46 章 (sec-nicknames-full-db): 稀有度、5 大異名分類切換晶片
+   ========================================================================== */
+.ch43-46-chip-rail {
+    display: flex !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 6px 4px 10px 4px !important;
+    margin-bottom: 8px !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(56, 189, 248, 0.4) rgba(15, 23, 42, 0.6) !important;
+}
+
+.ch43-46-chip-rail::-webkit-scrollbar {
+    height: 4px !important;
+}
+.ch43-46-chip-rail::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border-radius: 2px !important;
+}
+.ch43-46-chip-rail::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.4) !important;
+    border-radius: 2px !important;
+}
+.ch43-46-chip-rail::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.8) !important;
+}
+
+/* 統一第 42 ~ 46 章及全站所有篩選晶片按鈕樣式 (GEMINI.md 規範 5) */
+#sec-sires-retire-db button.pill,
+#sec-sires-retire-db button.chip-btn,
+#sec-sires-retire-db #sireDecadeButtons button,
+#sec-breeding-only-horses button.pill,
+#sec-breeding-only-horses button.chip-btn,
+#sec-racehorses-full-db button.pill,
+#sec-racehorses-full-db button.chip-btn,
+#sec-yearly-recs-db button.pill,
+#sec-yearly-recs-db button.chip-btn,
+#sec-yearly-recs-db #recsYearButtons .filter-btn,
+#sec-yearly-recs-db #recsYearButtons .chip-btn,
+#sec-nicknames-full-db button.pill,
+#sec-nicknames-full-db button.chip-btn,
+.ch43-46-chip-btn,
+.chip-btn,
+button.chip-btn {
+    background: rgba(30, 41, 59, 0.75) !important;
+    color: #94a3b8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.25) !important;
+    border-radius: 20px !important;
+    padding: 5px 14px !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease-in-out !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+    box-shadow: none !important;
+}
+
+/* 懸停狀態 */
+#sec-sires-retire-db button.pill:hover,
+#sec-sires-retire-db button.chip-btn:hover,
+#sec-sires-retire-db #sireDecadeButtons button:hover,
+#sec-breeding-only-horses button.pill:hover,
+#sec-breeding-only-horses button.chip-btn:hover,
+#sec-racehorses-full-db button.pill:hover,
+#sec-racehorses-full-db button.chip-btn:hover,
+#sec-yearly-recs-db button.pill:hover,
+#sec-yearly-recs-db button.chip-btn:hover,
+#sec-yearly-recs-db #recsYearButtons .filter-btn:hover,
+#sec-yearly-recs-db #recsYearButtons .chip-btn:hover,
+#sec-nicknames-full-db button.pill:hover,
+#sec-nicknames-full-db button.chip-btn:hover,
+.ch43-46-chip-btn:hover,
+.chip-btn:hover,
+button.chip-btn:hover {
+    background: rgba(56, 189, 248, 0.18) !important;
+    color: #38bdf8 !important;
+    border-color: #38bdf8 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 激活狀態 (金色立體流光發光樣式) */
+#sec-sires-retire-db button.pill.active,
+#sec-sires-retire-db button.chip-btn.active,
+#sec-sires-retire-db #sireDecadeButtons button.active,
+#sec-breeding-only-horses button.pill.active,
+#sec-breeding-only-horses button.chip-btn.active,
+#sec-racehorses-full-db button.pill.active,
+#sec-racehorses-full-db button.chip-btn.active,
+#sec-yearly-recs-db button.pill.active,
+#sec-yearly-recs-db button.chip-btn.active,
+#sec-yearly-recs-db #recsYearButtons .filter-btn.active,
+#sec-yearly-recs-db #recsYearButtons .chip-btn.active,
+#sec-nicknames-full-db button.pill.active,
+#sec-nicknames-full-db button.chip-btn.active,
+.ch43-46-chip-btn.active,
+.chip-btn.active,
+button.chip-btn.active {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
+    transform: none !important;
+}
+</style>
+
 </head>
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.30</span>
+<span class="version-badge">v03.35</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -5951,7 +6072,7 @@ li {
 <td style="text-align:left !important;"><span class="badge" style="background:#22c55e; color:#fff;">世界</span></td>
 <td style="text-align:left !important;"><strong>Rank C</strong></td>
 <td style="text-align:left !important;"><strong>1</strong></td>
-<td style="text-align:left !important;">於 4 個以上不同地域勇奪 G1 冠軍 (日本/美洲/歐洲/澳洲/香港/杜拜/沙烏地)。</td>
+<td style="text-align:left !important;">於 4 個以上不同地域勇奪 G1 冠軍 (日本/美國/歐洲/澳洲/香港/杜拜/沙烏地)。</td>
 <td style="text-align:left !important;">產駒適應能力<strong>「消耗戦」直接 +1</strong>！</td>
 </tr>
 <tr style="background:rgba(34,197,94,0.08);">
@@ -29295,25 +29416,25 @@ function filterTab5Racecourses() {
 <input id="sireSearchInput" oninput="filterSiresTable()" placeholder="搜尋種牡馬名、父馬名、子系統..." style="width:100%; padding:6px 10px 6px 30px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:6px; color:var(--text-main); font-size:12px;" type="text"/>
 </div>
 </div>
-<div class="md:col-span-4 flex gap-2">
-<button class="pill active" onclick="setSireRegionFilter('ALL', this)" style="padding:4px 10px; font-size:11px;">全部地域</button>
-<button class="pill" onclick="setSireRegionFilter('日本', this)" style="padding:4px 10px; font-size:11px;">🇯🇵 日本</button>
-<button class="pill" onclick="setSireRegionFilter('歐洲', this)" style="padding:4px 10px; font-size:11px;">🇪🇺 歐洲</button>
-<button class="pill" onclick="setSireRegionFilter('美洲', this)" style="padding:4px 10px; font-size:11px;">🇺🇸 美洲</button>
+<div class="md:col-span-4 ch43-46-chip-rail chip-rail">
+<button class="chip-btn active" onclick="setSireRegionFilter('ALL', this)">全部地域</button>
+<button class="chip-btn" onclick="setSireRegionFilter('日本', this)">🇯🇵 日本</button>
+<button class="chip-btn" onclick="setSireRegionFilter('歐洲', this)">🇪🇺 歐洲</button>
+<button class="chip-btn" onclick="setSireRegionFilter('美國', this)">🇺🇸 美國</button>
 </div>
 <div class="md:col-span-3 text-right">
 <span id="sireCountBadge" style="font-size:11.5px; color:var(--text-muted);">顯示共 2,898 匹名種公馬</span>
 </div>
 </div>
 <!-- 年代跳轉按鈕軌道 -->
-<div id="sireDecadeButtons" style="display:flex; overflow-x:auto; gap:6px; margin-top:10px; padding-bottom:4px; -webkit-overflow-scrolling:touch;">
-<button class="pill active" onclick="setSireDecadeFilter('ALL', this)" style="font-size:11px; white-space:nowrap;">全部年份 (1968~2025)</button>
-<button class="pill" onclick="setSireDecadeFilter('1968-1975', this)" style="font-size:11px; white-space:nowrap;">1968~1975最古</button>
-<button class="pill" onclick="setSireDecadeFilter('1976-1985', this)" style="font-size:11px; white-space:nowrap;">1976~1985時代</button>
-<button class="pill" onclick="setSireDecadeFilter('1986-1995', this)" style="font-size:11px; white-space:nowrap;">1986~1995黃金</button>
-<button class="pill" onclick="setSireDecadeFilter('1996-2005', this)" style="font-size:11px; white-space:nowrap;">1996~2005雙冠</button>
-<button class="pill" onclick="setSireDecadeFilter('2006-2015', this)" style="font-size:11px; white-space:nowrap;">2006~2015強豪</button>
-<button class="pill" onclick="setSireDecadeFilter('2016-2025', this)" style="font-size:11px; white-space:nowrap;">2016~2025現代</button>
+<div id="sireDecadeButtons" class="ch43-46-chip-rail chip-rail" style="margin-top:10px;">
+<button class="chip-btn active" onclick="setSireDecadeFilter('ALL', this)">全部年份 (1968~2025)</button>
+<button class="chip-btn" onclick="setSireDecadeFilter('1968-1975', this)">1968~1975最古</button>
+<button class="chip-btn" onclick="setSireDecadeFilter('1976-1985', this)">1976~1985時代</button>
+<button class="chip-btn" onclick="setSireDecadeFilter('1986-1995', this)">1986~1995黃金</button>
+<button class="chip-btn" onclick="setSireDecadeFilter('1996-2005', this)">1996~2005雙冠</button>
+<button class="chip-btn" onclick="setSireDecadeFilter('2006-2015', this)">2006~2015強豪</button>
+<button class="chip-btn" onclick="setSireDecadeFilter('2016-2025', this)">2016~2025現代</button>
 </div>
 </div>
 <!-- 種牡馬全量資料大表 -->
@@ -29361,32 +29482,32 @@ function filterTab5Racecourses() {
 </div>
 </div>
 <!-- 馬札篩選 -->
-<div class="md:col-span-5 flex flex-wrap gap-1">
-<button class="pill active" onclick="setBreedAmuletFilter('ALL', this)" style="padding:3px 8px; font-size:10.5px;">全部馬札</button>
-<button class="pill" onclick="setBreedAmuletFilter('虹', this)" style="padding:3px 8px; font-size:10.5px; color:#ec4899;">🌈 虹札</button>
-<button class="pill" onclick="setBreedAmuletFilter('金', this)" style="padding:3px 8px; font-size:10.5px; color:#eab308;">🥇 金札</button>
-<button class="pill" onclick="setBreedAmuletFilter('銀', this)" style="padding:3px 8px; font-size:10.5px; color:#94a3b8;">🥈 銀札</button>
-<button class="pill" onclick="setBreedAmuletFilter('銅', this)" style="padding:3px 8px; font-size:10.5px; color:#f97316;">🥉 銅札</button>
-<button class="pill" onclick="setBreedAmuletFilter('緑', this)" style="padding:3px 8px; font-size:10.5px; color:#22c55e;">🟢 綠札</button>
-<button class="pill" onclick="setBreedAmuletFilter('無', this)" style="padding:3px 8px; font-size:10.5px; color:#64748b;">⚪ 免費無札</button>
+<div class="md:col-span-5 ch43-46-chip-rail">
+<button class="pill active" onclick="setBreedAmuletFilter('ALL', this)">全部馬札</button>
+<button class="pill" onclick="setBreedAmuletFilter('虹', this)" style="  color:#ec4899;">🌈 虹札</button>
+<button class="pill" onclick="setBreedAmuletFilter('金', this)" style="  color:#eab308;">🥇 金札</button>
+<button class="pill" onclick="setBreedAmuletFilter('銀', this)" style="  color:#94a3b8;">🥈 銀札</button>
+<button class="pill" onclick="setBreedAmuletFilter('銅', this)" style="  color:#f97316;">🥉 銅札</button>
+<button class="pill" onclick="setBreedAmuletFilter('緑', this)" style="  color:#22c55e;">🟢 綠札</button>
+<button class="pill" onclick="setBreedAmuletFilter('無', this)" style="  color:#64748b;">⚪ 免費無札</button>
 </div>
 <!-- 性別篩選 -->
 <div class="md:col-span-3 text-right flex justify-end gap-1">
-<button class="pill active" onclick="setBreedSexFilter('ALL', this)" style="padding:3px 8px; font-size:10.5px;">全部性別</button>
-<button class="pill" onclick="setBreedSexFilter('牡', this)" style="padding:3px 8px; font-size:10.5px; color:#38bdf8;">♂ 牡馬</button>
-<button class="pill" onclick="setBreedSexFilter('牝', this)" style="padding:3px 8px; font-size:10.5px; color:#f472b6;">♀ 牝馬</button>
+<button class="pill active" onclick="setBreedSexFilter('ALL', this)">全部性別</button>
+<button class="pill" onclick="setBreedSexFilter('牡', this)" style="  color:#38bdf8;">♂ 牡馬</button>
+<button class="pill" onclick="setBreedSexFilter('牝', this)" style="  color:#f472b6;">♀ 牝馬</button>
 </div>
 </div>
 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; padding-top:8px; border-top:1px dashed var(--border-color);">
 <!-- 地域篩選 -->
 <div class="flex gap-2">
-<button class="pill active" onclick="setBreedRegionFilter('ALL', this)" style="font-size:11px;">全部繋養地</button>
-<button class="pill" onclick="setBreedRegionFilter('日本', this)" style="font-size:11px;">🇯🇵 日本</button>
-<button class="pill" onclick="setBreedRegionFilter('美國', this)" style="font-size:11px;">🇺🇸 美國</button>
-<button class="pill" onclick="setBreedRegionFilter('英國', this)" style="font-size:11px;">🇬🇧 英國</button>
-<button class="pill" onclick="setBreedRegionFilter('愛爾蘭', this)" style="font-size:11px;">🇮🇪 愛爾蘭</button>
-<button class="pill" onclick="setBreedRegionFilter('法國', this)" style="font-size:11px;">🇫🇷 法國</button>
-<button class="pill" onclick="setBreedRegionFilter('澳洲', this)" style="font-size:11px;">🇦🇺 澳洲</button>
+<button class="pill active" onclick="setBreedRegionFilter('ALL', this)">全部繋養地</button>
+<button class="pill" onclick="setBreedRegionFilter('日本', this)">🇯🇵 日本</button>
+<button class="pill" onclick="setBreedRegionFilter('美國', this)">🇺🇸 美國</button>
+<button class="pill" onclick="setBreedRegionFilter('英國', this)">🇬🇧 英國</button>
+<button class="pill" onclick="setBreedRegionFilter('愛爾蘭', this)">🇮🇪 愛爾蘭</button>
+<button class="pill" onclick="setBreedRegionFilter('法國', this)">🇫🇷 法國</button>
+<button class="pill" onclick="setBreedRegionFilter('澳洲', this)">🇦🇺 澳洲</button>
 </div>
 <span id="breedHorseCountBadge" style="font-size:11.5px; color:var(--text-muted);">顯示共 4,314 匹繁殖史實馬</span>
 </div>
@@ -29453,29 +29574,29 @@ function filterTab5Racecourses() {
 </div>
 </div>
 <!-- 區域切換 -->
-<div class="md:col-span-4 flex gap-1">
-<button class="pill active" onclick="setRacehorseRegionFilter('ALL', this)" style="padding:3px 8px; font-size:11px;">全部史實馬</button>
-<button class="pill" onclick="setRacehorseRegionFilter('日本', this)" style="padding:3px 8px; font-size:11px;">🇯🇵 日本賽駒 (7,884匹)</button>
-<button class="pill" onclick="setRacehorseRegionFilter('海外', this)" style="padding:3px 8px; font-size:11px;">🌍 海外賽駒 (8,686匹)</button>
+<div class="md:col-span-4 ch43-46-chip-rail">
+<button class="pill active" onclick="setRacehorseRegionFilter('ALL', this)">全部史實馬</button>
+<button class="pill" onclick="setRacehorseRegionFilter('日本', this)">🇯🇵 日本賽駒 (7,884匹)</button>
+<button class="pill" onclick="setRacehorseRegionFilter('海外', this)">🌍 海外賽駒 (8,686匹)</button>
 </div>
 <!-- 性別篩選 -->
 <div class="md:col-span-4 text-right flex justify-end gap-1">
-<button class="pill active" onclick="setRacehorseSexFilter('ALL', this)" style="padding:3px 8px; font-size:10.5px;">全部性別</button>
-<button class="pill" onclick="setRacehorseSexFilter('牡', this)" style="padding:3px 8px; font-size:10.5px; color:#38bdf8;">♂ 牡馬</button>
-<button class="pill" onclick="setRacehorseSexFilter('牝', this)" style="padding:3px 8px; font-size:10.5px; color:#f472b6;">♀ 牝馬</button>
-<button class="pill" onclick="setRacehorseSexFilter('騸', this)" style="padding:3px 8px; font-size:10.5px; color:#a855f7;">騸馬</button>
+<button class="pill active" onclick="setRacehorseSexFilter('ALL', this)">全部性別</button>
+<button class="pill" onclick="setRacehorseSexFilter('牡', this)" style="  color:#38bdf8;">♂ 牡馬</button>
+<button class="pill" onclick="setRacehorseSexFilter('牝', this)" style="  color:#f472b6;">♀ 牝馬</button>
+<button class="pill" onclick="setRacehorseSexFilter('騸', this)" style="  color:#a855f7;">騸馬</button>
 </div>
 </div>
 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; padding-top:8px; border-top:1px dashed var(--border-color);">
 <!-- 馬札篩選 -->
-<div class="flex flex-wrap gap-1">
-<button class="pill active" onclick="setRacehorseAmuletFilter('ALL', this)" style="padding:3px 8px; font-size:10.5px;">全部馬札</button>
-<button class="pill" onclick="setRacehorseAmuletFilter('虹', this)" style="padding:3px 8px; font-size:10.5px; color:#ec4899;">🌈 虹札</button>
-<button class="pill" onclick="setRacehorseAmuletFilter('金', this)" style="padding:3px 8px; font-size:10.5px; color:#eab308;">🥇 金札</button>
-<button class="pill" onclick="setRacehorseAmuletFilter('銀', this)" style="padding:3px 8px; font-size:10.5px; color:#94a3b8;">🥈 銀札</button>
-<button class="pill" onclick="setRacehorseAmuletFilter('銅', this)" style="padding:3px 8px; font-size:10.5px; color:#f97316;">🥉 銅札</button>
-<button class="pill" onclick="setRacehorseAmuletFilter('緑', this)" style="padding:3px 8px; font-size:10.5px; color:#22c55e;">🟢 綠札</button>
-<button class="pill" onclick="setRacehorseAmuletFilter('無', this)" style="padding:3px 8px; font-size:10.5px; color:#64748b;">⚪ 無札</button>
+<div class="ch43-46-chip-rail" style="margin-bottom:0 !important;">
+<button class="pill active" onclick="setRacehorseAmuletFilter('ALL', this)">全部馬札</button>
+<button class="pill" onclick="setRacehorseAmuletFilter('虹', this)" style="  color:#ec4899;">🌈 虹札</button>
+<button class="pill" onclick="setRacehorseAmuletFilter('金', this)" style="  color:#eab308;">🥇 金札</button>
+<button class="pill" onclick="setRacehorseAmuletFilter('銀', this)" style="  color:#94a3b8;">🥈 銀札</button>
+<button class="pill" onclick="setRacehorseAmuletFilter('銅', this)" style="  color:#f97316;">🥉 銅札</button>
+<button class="pill" onclick="setRacehorseAmuletFilter('緑', this)" style="  color:#22c55e;">🟢 綠札</button>
+<button class="pill" onclick="setRacehorseAmuletFilter('無', this)" style="  color:#64748b;">⚪ 無札</button>
 </div>
 <span id="racehorseCountBadge" style="font-size:11.5px; color:var(--text-muted);">顯示共 16,570 匹史實競走馬</span>
 </div>
@@ -29538,14 +29659,14 @@ function filterTab5Racecourses() {
 <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:18px;">
 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
 <!-- 區域切換晶片 -->
-<div class="flex gap-2">
-<button class="pill active" id="btnRecsRegionJapan" onclick="setRecsRegionFilter('japan', this)" style="font-size:12px; padding:4px 12px;">🇯🇵 日本推薦史實馬 (1964 ~ 1995)</button>
-<button class="pill" id="btnRecsRegionKaigai" onclick="setRecsRegionFilter('kaigai', this)" style="font-size:12px; padding:4px 12px;">🌍 海外推薦史實馬 (1968 ~ 1976)</button>
+<div class="ch43-46-chip-rail chip-rail" style="margin-bottom:0 !important;">
+<button class="chip-btn active" id="btnRecsRegionJapan" onclick="setRecsRegionFilter('japan', this)">🇯🇵 日本推薦史實馬 (1964 ~ 1995)</button>
+<button class="chip-btn" id="btnRecsRegionKaigai" onclick="setRecsRegionFilter('kaigai', this)">🌍 海外推薦史實馬 (1968 ~ 1976)</button>
 </div>
 <span id="recsCurrentYearBadge" style="font-size:12px; color:var(--gold-color); font-weight:700;">1964 年生推薦史實馬</span>
 </div>
-<!-- 全年代單行水平滑動膠囊軌道 -->
-<div id="recsYearButtons" style="display:flex; overflow-x:auto; gap:6px; padding:4px 0; -webkit-overflow-scrolling:touch; scrollbar-width:thin;">
+<!-- 全年代單行水平滑動膠囊軌道 (GEMINI.md 規範 5) -->
+<div id="recsYearButtons" class="ch43-46-chip-rail chip-rail" style="margin-top:10px; padding:4px 0;">
 <!-- Rendered via JS -->
 </div>
 </div>
@@ -29578,25 +29699,25 @@ function filterTab5Racecourses() {
 </div>
 </div>
 <!-- 稀有度篩選 -->
-<div class="md:col-span-4 flex gap-1">
-<button class="pill active" onclick="setNicknameRarityFilter('ALL', this)" style="padding:3px 8px; font-size:10.5px;">全部稀有度</button>
-<button class="pill" onclick="setNicknameRarityFilter('S', this)" style="padding:3px 8px; font-size:10.5px; color:#ec4899;">🌈 S (虹)</button>
-<button class="pill" onclick="setNicknameRarityFilter('A', this)" style="padding:3px 8px; font-size:10.5px; color:#eab308;">🥇 A (金)</button>
-<button class="pill" onclick="setNicknameRarityFilter('B', this)" style="padding:3px 8px; font-size:10.5px; color:#94a3b8;">🥈 B (銀)</button>
-<button class="pill" onclick="setNicknameRarityFilter('C', this)" style="padding:3px 8px; font-size:10.5px; color:#f97316;">🥉 C (銅)</button>
+<div class="md:col-span-4 ch43-46-chip-rail">
+<button class="pill active" onclick="setNicknameRarityFilter('ALL', this)">全部稀有度</button>
+<button class="pill" onclick="setNicknameRarityFilter('S', this)" style="  color:#ec4899;">🌈 S (虹)</button>
+<button class="pill" onclick="setNicknameRarityFilter('A', this)" style="  color:#eab308;">🥇 A (金)</button>
+<button class="pill" onclick="setNicknameRarityFilter('B', this)" style="  color:#94a3b8;">🥈 B (銀)</button>
+<button class="pill" onclick="setNicknameRarityFilter('C', this)" style="  color:#f97316;">🥉 C (銅)</button>
 </div>
 <div class="md:col-span-3 text-right">
 <span id="nicknameCountBadge" style="font-size:11.5px; color:var(--text-muted);">顯示共 976 條殿堂馬異名</span>
 </div>
 </div>
 <!-- 5 大分類切換軌道 -->
-<div style="display:flex; overflow-x:auto; gap:6px; margin-top:10px; padding-bottom:4px; -webkit-overflow-scrolling:touch;">
-<button class="pill active" onclick="setNicknameCategoryFilter('ALL', this)" style="font-size:11px; white-space:nowrap;">全部異名</button>
-<button class="pill" onclick="setNicknameCategoryFilter('通用 (日美歐共通)', this)" style="font-size:11px; white-space:nowrap;">🌐 通用 (日美歐共通)</button>
-<button class="pill" onclick="setNicknameCategoryFilter('日本史實馬專用', this)" style="font-size:11px; white-space:nowrap;">🇯🇵 固有 (日本史實馬)</button>
-<button class="pill" onclick="setNicknameCategoryFilter('海外史實馬專用', this)" style="font-size:11px; white-space:nowrap;">🌍 固有 (海外史實馬)</button>
-<button class="pill" onclick="setNicknameCategoryFilter('超級馬 (SH) 專用', this)" style="font-size:11px; white-space:nowrap;">⭐ 固有 (超級馬 SH)</button>
-<button class="pill" onclick="setNicknameCategoryFilter('世界 100 傑馬專用', this)" style="font-size:11px; white-space:nowrap;">👑 固有 (世界 100 傑馬)</button>
+<div class="ch43-46-chip-rail" style="margin-top:10px;">
+<button class="pill active" onclick="setNicknameCategoryFilter('ALL', this)">全部異名</button>
+<button class="pill" onclick="setNicknameCategoryFilter('通用 (日美歐共通)', this)">🌐 通用 (日美歐共通)</button>
+<button class="pill" onclick="setNicknameCategoryFilter('日本史實馬專用', this)">🇯🇵 固有 (日本史實馬)</button>
+<button class="pill" onclick="setNicknameCategoryFilter('海外史實馬專用', this)">🌍 固有 (海外史實馬)</button>
+<button class="pill" onclick="setNicknameCategoryFilter('超級馬 (SH) 專用', this)">⭐ 固有 (超級馬 SH)</button>
+<button class="pill" onclick="setNicknameCategoryFilter('世界 100 傑馬專用', this)">👑 固有 (世界 100 傑馬)</button>
 </div>
 </div>
 <!-- 異名數據大表 -->
@@ -30448,7 +30569,18 @@ let sireSortKey = 'retire_year';
 let sireSortAsc = true;
 
 function initSiresAndNenpyo() {
-  if (!window.WP10_SIRES_RETIRE_DATA) return;
+  if (!window.WP10_SIRES_RETIRE_DATA) {
+    if (!window._sirePollTimer) {
+      window._sirePollTimer = setInterval(() => {
+        if (window.WP10_SIRES_RETIRE_DATA) {
+          clearInterval(window._sirePollTimer);
+          window._sirePollTimer = null;
+          initSiresAndNenpyo();
+        }
+      }, 150);
+    }
+    return;
+  }
   
   // 1. Render Nenpyo
   const nenBody = document.getElementById('nenpyoTableBody');
@@ -30548,7 +30680,7 @@ function renderSiresTable() {
   displayList.forEach(s => {
     const regBadge = s.region === '日本' ? '<span class="badge" style="background:#ef4444; color:#fff;">日本</span>' :
                      s.region === '歐洲' ? '<span class="badge" style="background:#3b82f6; color:#fff;">歐洲</span>' :
-                     '<span class="badge" style="background:#22c55e; color:#fff;">美洲</span>';
+                     '<span class="badge" style="background:#22c55e; color:#fff;">美國</span>';
                      
     const privateBadge = s.unbuyable ? 
       '<span class="badge" style="background:#ef4444; color:#fff;">不可Private(超齡)</span>' :
@@ -31040,25 +31172,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
   initNicknamesTable();
 }
 </script>
-<script>
-let currentRecsRegion = 'japan';
-let currentRecsYearIndex = 0;
 
-
-
-
-
-
-
-
-
-
-
-window.addEventListener('DOMContentLoaded', initYearlyRecsTable);
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  initYearlyRecsTable();
-}
-</script>
 <!-- 📑 章節跳轉彈出抽屜 (Chapter Modal) -->
 <!-- 浮動按鈕群 (章節跳轉目錄 + 返回前一定位 + 回頂部) -->
 <div class="floating-btn-group" style="position:fixed; bottom:20px; right:16px; display:flex; flex-direction:column; gap:10px; z-index:9999;">
@@ -31458,8 +31572,14 @@ function switchMainPillar(pillarId) {
     if (target) {
         target.style.display = 'block';
         target.classList.add('active');
-        if (pillarId === 'pillar-db' && typeof window.initMasterHorseDb === 'function') {
-            window.initMasterHorseDb();
+        if (pillarId === 'pillar-db') {
+            if (typeof window.initMasterHorseDb === 'function') window.initMasterHorseDb();
+            if (typeof initSiresAndNenpyo === 'function') initSiresAndNenpyo();
+            if (typeof filterBreedingHorsesTable === 'function') filterBreedingHorsesTable();
+            if (typeof filterRacehorsesTable === 'function') filterRacehorsesTable();
+            if (typeof window.initYearlyRecsTable === 'function') window.initYearlyRecsTable();
+            if (typeof renderYearlyRecsUI === 'function') renderYearlyRecsUI();
+            if (typeof filterNicknamesTable === 'function') filterNicknamesTable();
         }
         if (pillarId === 'pillar-races' && typeof filterCh38Stakes === 'function') {
             filterCh38Stakes();
@@ -32556,48 +32676,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof initSimulationChart === 'function') setTimeout(initSimulationChart, 300);
 });
 </script>
-<script>
-// ==================== 第 45 章：全年代 11 大路線年度推薦史實馬渲染引擎 ====================
-let currentRecsRegion = 'japan';
-let currentRecsYearIndex = 0;
-
-function initYearlyRecsTable() {
-    if (!window.WP10_YEARLY_RECOMMENDATIONS_DATA) return;
-    renderYearChips();
-    renderYearContent();
-}
+<script id="yearly-recs-engine">
+// ==================== 第 45 章：全年代 11 大路線年度推薦史實馬渲染引擎 (GEMINI.md 規範 5 & 7) ====================
+window.currentRecsRegion = 'japan';
+window.currentRecsYearIndex = 0;
 
 function setRecsRegionFilter(region, btn) {
-    currentRecsRegion = region;
-    currentRecsYearIndex = 0;
+    window.currentRecsRegion = region;
+    window.currentRecsYearIndex = 0;
     if (btn) {
-        btn.parentElement.querySelectorAll('button').forEach(b => {
-            b.classList.remove('active');
-            b.style.background = 'rgba(255,255,255,0.08)';
-            b.style.color = '#cbd5e1';
-        });
+        btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        btn.style.background = 'var(--gold-color)';
-        btn.style.color = '#0f172a';
     }
     renderYearChips();
     renderYearContent();
 }
 
 function selectRecsYear(idx, btn) {
-    currentRecsYearIndex = idx;
+    window.currentRecsYearIndex = idx;
     if (btn) {
-        btn.parentElement.querySelectorAll('button').forEach(b => {
-            b.classList.remove('active');
-            b.style.background = 'rgba(255,255,255,0.08)';
-            b.style.color = '#cbd5e1';
-            b.style.border = '1px solid rgba(255,255,255,0.12)';
-        });
+        btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        btn.style.background = 'var(--gold-color)';
-        btn.style.color = '#0f172a';
-        btn.style.fontWeight = 'bold';
-        btn.style.border = '1px solid var(--gold-color)';
     }
     renderYearContent();
 }
@@ -32606,16 +32705,12 @@ function renderYearChips() {
     const container = document.getElementById('recsYearButtons');
     if (!container || !window.WP10_YEARLY_RECOMMENDATIONS_DATA) return;
     
-    const list = window.WP10_YEARLY_RECOMMENDATIONS_DATA[currentRecsRegion] || [];
+    const region = window.currentRecsRegion || 'japan';
+    const list = window.WP10_YEARLY_RECOMMENDATIONS_DATA[region] || [];
     let html = '';
     list.forEach((item, idx) => {
-        const isActive = idx === currentRecsYearIndex;
-        const bg = isActive ? 'var(--gold-color)' : 'rgba(255,255,255,0.08)';
-        const color = isActive ? '#0f172a' : '#cbd5e1';
-        const border = isActive ? '1px solid var(--gold-color)' : '1px solid rgba(255,255,255,0.12)';
-        const fw = isActive ? 'bold' : 'normal';
-        
-        html += `<button class="pill ${isActive ? 'active' : ''}" onclick="selectRecsYear(${idx}, this)" style="font-size:12px; white-space:nowrap; padding:4px 12px; cursor:pointer; background:${bg}; color:${color}; border:${border}; font-weight:${fw}; border-radius:14px; transition:all 0.15s ease;">${item.year_label}</button>`;
+        const isActive = idx === (window.currentRecsYearIndex || 0);
+        html += `<button class="chip-btn ${isActive ? 'active' : ''}" onclick="selectRecsYear(${idx}, this)">${item.year_label}</button>`;
     });
     container.innerHTML = html;
 }
@@ -32625,12 +32720,14 @@ function renderYearContent() {
     const badge = document.getElementById('recsCurrentYearBadge');
     if (!container || !window.WP10_YEARLY_RECOMMENDATIONS_DATA) return;
     
-    const list = window.WP10_YEARLY_RECOMMENDATIONS_DATA[currentRecsRegion] || [];
-    if (!list[currentRecsYearIndex]) return;
+    const region = window.currentRecsRegion || 'japan';
+    const list = window.WP10_YEARLY_RECOMMENDATIONS_DATA[region] || [];
+    const idx = window.currentRecsYearIndex || 0;
+    if (!list[idx]) return;
     
-    const item = list[currentRecsYearIndex];
+    const item = list[idx];
     if (badge) {
-        badge.textContent = `[${item.year_label}] ${currentRecsRegion === 'japan' ? '日本史實馬推薦' : '海外史實馬推薦'}`;
+        badge.textContent = `[${item.year_label}] ${region === 'japan' ? '日本史實馬推薦' : '海外史實馬推薦'}`;
     }
     
     let html = `<div style="border:2px solid var(--gold-color); border-radius:10px; padding:16px; background:rgba(15,23,42,0.9); box-shadow:0 4px 20px rgba(234,179,8,0.15);">
@@ -32662,11 +32759,41 @@ function renderYearContent() {
     
     html += `</div>`;
     container.innerHTML = html;
+    
+    if (typeof makeTablesSortable === 'function') {
+        makeTablesSortable(container);
+    }
 }
+
+function initYearlyRecsTable() {
+    if (window.WP10_YEARLY_RECOMMENDATIONS_DATA) {
+        renderYearChips();
+        renderYearContent();
+        return;
+    }
+    let attempts = 0;
+    const timer = setInterval(() => {
+        attempts++;
+        if (window.WP10_YEARLY_RECOMMENDATIONS_DATA) {
+            clearInterval(timer);
+            renderYearChips();
+            renderYearContent();
+        } else if (attempts > 50) {
+            clearInterval(timer);
+            console.warn('[WP10] WP10_YEARLY_RECOMMENDATIONS_DATA timeout');
+        }
+    }, 100);
+}
+
+// 掛載至全域 window
+window.initYearlyRecsTable = initYearlyRecsTable;
+window.renderYearlyRecsUI = initYearlyRecsTable;
+window.setRecsRegionFilter = setRecsRegionFilter;
+window.selectRecsYear = selectRecsYear;
 
 window.addEventListener('DOMContentLoaded', initYearlyRecsTable);
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    setTimeout(initYearlyRecsTable, 150);
+    initYearlyRecsTable();
 }
 </script>
 <!-- 🧮 幼駒能力計算器 Modal 彈窗 -->
@@ -33077,6 +33204,25 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     box-shadow: 0 0 12px rgba(16, 185, 129, 0.45) !important;
 }
 </style>
+
+
+    <!-- Modal 詳情彈出卡片 -->
+    <div class="modal-backdrop" id="horseModal" onclick="closeModal(event)" style="display:none;">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h2 id="mName">馬名載入中...</h2>
+                <div style="margin-top:6px; display:flex; gap:6px; align-items:center;">
+                    <span id="mTicket"></span>
+                    <span id="mSex" style="color:var(--text-muted); font-size:0.82rem;"></span>
+                    <span id="mRegion" style="color:var(--text-muted); font-size:0.82rem;"></span>
+                </div>
+            </div>
+            <div class="stat-grid" id="mGrid">
+                <!-- 動態注入能力與評語 -->
+            </div>
+        </div>
+    </div>
 
 <script id="master-horse-db-engine">
 // ==================== 第 41 章 1.5 萬匹史實馬與 11 大推薦分類引擎 ====================
@@ -33700,6 +33846,10 @@ function bindMasterFilterEvents() {
 }
 
 // 支援外部調用啟動
+window.openModalByIndex = openModalByIndex;
+window.openModalDirect = openModalDirect;
+window.closeModal = closeModal;
+
 window.initMasterHorseDb = function() {
     ensureUnpackedDb();
     if (typeof initCategoryTabs === 'function') initCategoryTabs();
