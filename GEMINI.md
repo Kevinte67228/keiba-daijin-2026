@@ -45,3 +45,9 @@
      - 激活狀態 (Active State)：**金色立體流光發光樣式** (`background: linear-gradient(135deg, #f59e0b, #d97706); color: #0f172a; font-weight: 800; border-color: #f59e0b; box-shadow: 0 0 12px rgba(245, 158, 11, 0.45);`)。
    - **單行水平滑動軌道 (.chip-rail)**：外層容器必須啟用 `overflow-x: auto; -webkit-overflow-scrolling: touch; display: flex; gap: 8px;`，嚴禁折行堆疊侵佔垂直視野。
    - **強制防換行與斷詞**：晶片按鈕一律強制 `white-space: nowrap !important; word-break: keep-all !important;`。
+
+6. **全域長清單/表格超過 15 筆自適應內滑桿規範 (Universal 15-Row Inner Scrollbar & Sticky Header Standards)**：
+   - **15 筆高度自適應內滑桿 (.scrollable-table-box)**：全站所有資料表格（含靜態百科表格與動態渲染資料庫大表），凡名單或行數超過 15 筆（`> 15 rows`）時，外層容器一律強制套用 `.scrollable-table-box`（`max-height: 640px !important; overflow-y: auto !important;`）。
+   - **凍結置頂表頭 (Sticky Header)**：內部滾動時表頭一律啟用 `position: sticky !important; top: 0 !important; z-index: 10 !important; background: #1e293b !important;`，確保玩家滾動至底部時各欄位標題始終清晰可見。
+   - **智慧動態收縮**：若動態篩選後行數減少至 15 筆以內，容器自動收縮解除限制高度，嚴禁留下無謂空白。
+
