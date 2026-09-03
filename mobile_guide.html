@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.24"></script>
-<script src="core_guides_data.js?v=v03.24"></script>
-<script src="yearly_recs_db.js?v=v03.24"></script>
-<script src="horse_subtopics_data.js?v=v03.24"></script>
+<script src="master_lookup_db.js?v=v03.25"></script>
+<script src="core_guides_data.js?v=v03.25"></script>
+<script src="yearly_recs_db.js?v=v03.25"></script>
+<script src="horse_subtopics_data.js?v=v03.25"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1757,7 +1757,7 @@ li {
 }
 </style>
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.24) */
+/* Unified Amulet & Badge Tokens (v03.25) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -2033,11 +2033,80 @@ li {
 }
 </style>
 
+
+<style id="ch41-chips-style">
+/* 第 41 章高級科技流光膠囊晶片軌道規範 (GEMINI.md 規範 5) */
+.category-tabs-wrapper {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin-bottom: 12px !important;
+    padding-bottom: 6px !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(56, 189, 248, 0.4) rgba(15, 23, 42, 0.5) !important;
+}
+
+.category-tabs-wrapper::-webkit-scrollbar {
+    height: 4px !important;
+}
+.category-tabs-wrapper::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border-radius: 2px !important;
+}
+.category-tabs-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.4) !important;
+    border-radius: 2px !important;
+}
+.category-tabs-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.8) !important;
+}
+
+#categoryTabs.category-tabs {
+    display: flex !important;
+    gap: 8px !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+#categoryTabs .tab-btn {
+    border-radius: 20px !important;
+    padding: 6px 16px !important;
+    background: rgba(30, 41, 59, 0.75) !important;
+    color: #94a3b8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.25) !important;
+    font-size: 0.84rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+    transition: all 0.2s ease !important;
+}
+
+#categoryTabs .tab-btn:hover {
+    background: rgba(56, 189, 248, 0.18) !important;
+    color: #38bdf8 !important;
+    border-color: #38bdf8 !important;
+    transform: translateY(-1px) !important;
+}
+
+#categoryTabs .tab-btn.active {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
+}
+</style>
+
 </head>
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.24</span>
+<span class="version-badge">v03.25</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -29071,7 +29140,7 @@ function filterTab5Racecourses() {
             </p>
 <!-- 14 大核心分類頁籤 - 滑動網格佈局 -->
 <div class="category-tabs-wrapper">
-<div class="category-tabs" id="categoryTabs">
+<div class="category-tabs chip-rail" id="categoryTabs">
 <button class="tab-btn active" data-cat="cat1">🐎 1. 史実馬一覧</button>
 <button class="tab-btn" data-cat="cat3">🇯🇵 2. 日本おすすめ幼駒</button>
 <button class="tab-btn" data-cat="cat4">🇪🇺 3. 海外おすすめ幼駒</button>
