@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.23",
+  "current_version": "v03.24",
   "history": [
     {
       "version": "v01.01",
@@ -1155,6 +1155,11 @@
       "version": "v03.23",
       "date": "2026-09-03",
       "description": "Universal 15-Row Inner Scrollbar Engine Deployment (v03.23): Automatically applied 15-row height inner scrollbar (.scrollable-table-box) with sticky headers to all tables across the entire site exceeding 15 rows."
+    },
+    {
+      "version": "v03.24",
+      "date": "2026-09-03",
+      "description": "Chapter 31 Unified Tech Capsule Chip Rail Upgrade (v03.24): Applied GEMINI.md Rule 5 unified futuristic glowing gold capsule chip rail to Chapter 31 stakes navigation."
     }
   ]
 }
