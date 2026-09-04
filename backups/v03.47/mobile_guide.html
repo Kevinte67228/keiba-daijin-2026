@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.42"></script>
-<script src="core_guides_data.js?v=v03.42"></script>
-<script src="yearly_recs_db.js?v=v03.42"></script>
-<script src="horse_subtopics_data.js?v=v03.42"></script>
+<script src="master_lookup_db.js?v=v03.47"></script>
+<script src="core_guides_data.js?v=v03.47"></script>
+<script src="yearly_recs_db.js?v=v03.47"></script>
+<script src="horse_subtopics_data.js?v=v03.47"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1799,8 +1799,63 @@ li {
     word-break: keep-all !important;
 }
 </style>
-<style id="ch21-era-chips-style">
-.nenpyo-era-btn {
+<style id="global-capsule-chips-style">
+/* ==========================================================================
+   全域標準高級科技流光膠囊晶片軌道規範 (GEMINI.md 規範 5 強化版)
+   - 杜絕點選/懸停/發光時上半部缺角或外框截斷
+   - 瀏覽器原生焦點輪廓徹底歸零 (Zero Outline Ring)
+   - 軌道上下配置足額安全緩衝邊距 (padding: 6px 4px 10px 4px)
+   ========================================================================== */
+
+/* 1. 全域單行水平滑動膠囊軌道 */
+.chip-rail,
+.era-chip-rail,
+.ch31-chip-rail,
+.ch43-46-chip-rail,
+.category-tabs,
+#nenpyoEraChipsRail,
+#foalAgeChipsRail,
+#eraChipRail,
+#recsYearButtons,
+#sireDecadeButtons,
+#categoryTabs {
+    display: flex !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-top: 6px !important;
+    padding-bottom: 10px !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(56, 189, 248, 0.35) rgba(15, 23, 42, 0.6) !important;
+}
+
+/* 2. 全域晶片按鈕本體造型 (消除預設外框與直角) */
+.nenpyo-era-btn,
+.chip-btn,
+button.chip-btn,
+.filter-btn,
+.foal-age-btn,
+.ch43-46-chip-btn,
+#eraChipRail .filter-btn,
+#eraChipRail .chip-btn,
+#sec-sires-retire-db button.pill,
+#sec-sires-retire-db button.chip-btn,
+#sec-sires-retire-db #sireDecadeButtons button,
+#sec-breeding-only-horses button.pill,
+#sec-breeding-only-horses button.chip-btn,
+#sec-racehorses-full-db button.pill,
+#sec-racehorses-full-db button.chip-btn,
+#sec-yearly-recs-db button.pill,
+#sec-yearly-recs-db button.chip-btn,
+#sec-yearly-recs-db #recsYearButtons .filter-btn,
+#sec-yearly-recs-db #recsYearButtons .chip-btn,
+#sec-nicknames-full-db button.pill,
+#sec-nicknames-full-db button.chip-btn {
     background: rgba(30, 41, 59, 0.75) !important;
     color: #94a3b8 !important;
     border: 1px solid rgba(56, 189, 248, 0.25) !important;
@@ -1809,112 +1864,206 @@ li {
     font-size: 0.82rem !important;
     font-weight: 700 !important;
     cursor: pointer !important;
-    transition: all 0.2s ease-in-out !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
     white-space: nowrap !important;
     word-break: keep-all !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 5px !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    box-sizing: border-box !important;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    user-select: none !important;
+    flex-shrink: 0 !important;
 }
 
-.nenpyo-era-btn:hover {
+/* 3. 懸停狀態 (微浮起科技藍流光) */
+.nenpyo-era-btn:hover,
+.chip-btn:hover,
+button.chip-btn:hover,
+.filter-btn:hover,
+.foal-age-btn:hover,
+.ch43-46-chip-btn:hover,
+#eraChipRail .filter-btn:hover,
+#eraChipRail .chip-btn:hover,
+#sec-sires-retire-db button.pill:hover,
+#sec-sires-retire-db button.chip-btn:hover,
+#sec-sires-retire-db #sireDecadeButtons button:hover,
+#sec-breeding-only-horses button.pill:hover,
+#sec-breeding-only-horses button.chip-btn:hover,
+#sec-racehorses-full-db button.pill:hover,
+#sec-racehorses-full-db button.chip-btn:hover,
+#sec-yearly-recs-db button.pill:hover,
+#sec-yearly-recs-db button.chip-btn:hover,
+#sec-yearly-recs-db #recsYearButtons .filter-btn:hover,
+#sec-yearly-recs-db #recsYearButtons .chip-btn:hover,
+#sec-nicknames-full-db button.pill:hover,
+#sec-nicknames-full-db button.chip-btn:hover {
     background: rgba(56, 189, 248, 0.18) !important;
     color: #38bdf8 !important;
     border-color: #38bdf8 !important;
-    transform: translateY(-1px);
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25) !important;
 }
 
-.nenpyo-era-btn.active {
+/* 4. 點選狀態 (:active 強制平穩回彈，防止衝出頂部邊界) */
+.nenpyo-era-btn:active,
+.chip-btn:active,
+button.chip-btn:active,
+.filter-btn:active,
+.foal-age-btn:active,
+.ch43-46-chip-btn:active,
+#eraChipRail .filter-btn:active,
+#eraChipRail .chip-btn:active,
+#sec-sires-retire-db button.pill:active,
+#sec-sires-retire-db button.chip-btn:active,
+#sec-sires-retire-db #sireDecadeButtons button:active,
+#sec-breeding-only-horses button.pill:active,
+#sec-breeding-only-horses button.chip-btn:active,
+#sec-racehorses-full-db button.pill:active,
+#sec-racehorses-full-db button.chip-btn:active,
+#sec-yearly-recs-db button.pill:active,
+#sec-yearly-recs-db button.chip-btn:active,
+#sec-yearly-recs-db #recsYearButtons .filter-btn:active,
+#sec-yearly-recs-db #recsYearButtons .chip-btn:active,
+#sec-nicknames-full-db button.pill:active,
+#sec-nicknames-full-db button.chip-btn:active {
+    transform: translateY(0) !important;
+    outline: none !important;
+}
+
+/* 5. 焦點狀態全域規整 (徹底杜絕缺角與外溢直角框) */
+.nenpyo-era-btn:focus,
+.nenpyo-era-btn:focus-visible,
+.chip-btn:focus,
+.chip-btn:focus-visible,
+button.chip-btn:focus,
+button.chip-btn:focus-visible,
+.filter-btn:focus,
+.filter-btn:focus-visible,
+.foal-age-btn:focus,
+.foal-age-btn:focus-visible,
+.ch43-46-chip-btn:focus,
+.ch43-46-chip-btn:focus-visible {
+    outline: none !important;
+}
+
+/* 6. 激活狀態 (金色立體流光發光樣式，無頂部截斷) */
+.nenpyo-era-btn.active,
+.chip-btn.active,
+button.chip-btn.active,
+.filter-btn.active,
+.foal-age-btn.active,
+.ch43-46-chip-btn.active,
+#eraChipRail .filter-btn.active,
+#eraChipRail .chip-btn.active,
+#sec-sires-retire-db button.pill.active,
+#sec-sires-retire-db button.chip-btn.active,
+#sec-sires-retire-db #sireDecadeButtons button.active,
+#sec-breeding-only-horses button.pill.active,
+#sec-breeding-only-horses button.chip-btn.active,
+#sec-racehorses-full-db button.pill.active,
+#sec-racehorses-full-db button.chip-btn.active,
+#sec-yearly-recs-db button.pill.active,
+#sec-yearly-recs-db button.chip-btn.active,
+#sec-yearly-recs-db #recsYearButtons .filter-btn.active,
+#sec-yearly-recs-db #recsYearButtons .chip-btn.active,
+#sec-nicknames-full-db button.pill.active,
+#sec-nicknames-full-db button.chip-btn.active {
     background: linear-gradient(135deg, #f59e0b, #d97706) !important;
     color: #0f172a !important;
     border-color: #f59e0b !important;
     font-weight: 800 !important;
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
-}
-</style>
-<style id="ch03-capsule-chips-style">
-/* 依據 GEMINI.md 規範 5 打造之標準高級科技流光膠囊晶片 */
-#eraChipRail .filter-btn, #eraChipRail .chip-btn {
-    background: rgba(30, 41, 59, 0.75) !important;
-    color: #94a3b8 !important;
-    border: 1px solid rgba(56, 189, 248, 0.25) !important;
-    border-radius: 20px !important;
-    padding: 5px 14px !important;
-    font-size: 0.82rem !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease-in-out !important;
-    white-space: nowrap !important;
-    word-break: keep-all !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 5px !important;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.45) !important;
+    transform: none !important;
+    outline: none !important;
 }
 
-#eraChipRail .filter-btn:hover, #eraChipRail .chip-btn:hover {
-    background: rgba(56, 189, 248, 0.18) !important;
-    color: #38bdf8 !important;
-    border-color: #38bdf8 !important;
-    transform: translateY(-1px);
-}
-
-#eraChipRail .filter-btn.active, #eraChipRail .chip-btn.active {
-    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+.nenpyo-era-btn.active:hover,
+.chip-btn.active:hover,
+button.chip-btn.active:hover,
+.filter-btn.active:hover,
+.foal-age-btn.active:hover,
+.ch43-46-chip-btn.active:hover {
+    background: linear-gradient(135deg, #fbbf24, #d97706) !important;
     color: #0f172a !important;
-    border-color: #f59e0b !important;
-    font-weight: 800 !important;
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
+    border-color: #fbbf24 !important;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.55) !important;
+    transform: translateY(-1px) !important;
+    outline: none !important;
 }
 
-/* 輕量美觀科技藍滾動條，替換原生粗白條 */
-#eraChipRail::-webkit-scrollbar, .chip-rail::-webkit-scrollbar {
+/* 7. 輕量美觀科技藍滾動條 */
+#eraChipRail::-webkit-scrollbar,
+.chip-rail::-webkit-scrollbar,
+.ch31-chip-rail::-webkit-scrollbar,
+.ch43-46-chip-rail::-webkit-scrollbar {
     height: 4px !important;
 }
-#eraChipRail::-webkit-scrollbar-track, .chip-rail::-webkit-scrollbar-track {
+#eraChipRail::-webkit-scrollbar-track,
+.chip-rail::-webkit-scrollbar-track,
+.ch31-chip-rail::-webkit-scrollbar-track,
+.ch43-46-chip-rail::-webkit-scrollbar-track {
     background: rgba(15, 23, 42, 0.6) !important;
     border-radius: 4px !important;
 }
-#eraChipRail::-webkit-scrollbar-thumb, .chip-rail::-webkit-scrollbar-thumb {
+#eraChipRail::-webkit-scrollbar-thumb,
+.chip-rail::-webkit-scrollbar-thumb,
+.ch31-chip-rail::-webkit-scrollbar-thumb,
+.ch43-46-chip-rail::-webkit-scrollbar-thumb {
     background: rgba(56, 189, 248, 0.35) !important;
     border-radius: 4px !important;
 }
-#eraChipRail::-webkit-scrollbar-thumb:hover, .chip-rail::-webkit-scrollbar-thumb:hover {
+#eraChipRail::-webkit-scrollbar-thumb:hover,
+.chip-rail::-webkit-scrollbar-thumb:hover,
+.ch31-chip-rail::-webkit-scrollbar-thumb:hover,
+.ch43-46-chip-rail::-webkit-scrollbar-thumb:hover {
     background: #38bdf8 !important;
 }
-</style>
-<style id="ch23-foal-age-chips-style">
-/* 依據 GEMINI.md 規範 5 打造之標準高級科技流光膠囊晶片 */
-.foal-age-btn {
-    background: rgba(30, 41, 59, 0.75) !important;
-    color: #94a3b8 !important;
-    border: 1px solid rgba(56, 189, 248, 0.25) !important;
-    border-radius: 20px !important;
-    padding: 5px 14px !important;
-    font-size: 0.82rem !important;
-    font-weight: 700 !important;
+
+/* 八大支柱快速跳轉標題與直達按鈕樣式 */
+.chapter-pillar-title {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    padding: 8px 14px !important;
+    margin-bottom: 10px !important;
+    border-radius: 8px !important;
+    background: rgba(30, 41, 59, 0.6) !important;
+    border: 1px solid rgba(56, 189, 248, 0.2) !important;
     cursor: pointer !important;
-    transition: all 0.2s ease-in-out !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    user-select: none !important;
+}
+.chapter-pillar-title:hover {
+    background: rgba(56, 189, 248, 0.15) !important;
+    border-color: #38bdf8 !important;
+    transform: translateX(4px);
+    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.25) !important;
+}
+.pillar-jump-tag {
+    font-size: 0.75rem !important;
+    padding: 3px 10px !important;
+    border-radius: 12px !important;
+    background: rgba(56, 189, 248, 0.15) !important;
+    color: #38bdf8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.35) !important;
     white-space: nowrap !important;
-    word-break: keep-all !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 5px !important;
+    gap: 4px !important;
+    transition: all 0.2s ease !important;
 }
-
-.foal-age-btn:hover {
-    background: rgba(56, 189, 248, 0.18) !important;
-    color: #38bdf8 !important;
-    border-color: #38bdf8 !important;
-    transform: translateY(-1px);
-}
-
-.foal-age-btn.active {
-    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+.chapter-pillar-title:hover .pillar-jump-tag {
+    background: #38bdf8 !important;
     color: #0f172a !important;
-    border-color: #f59e0b !important;
     font-weight: 800 !important;
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.5) !important;
 }
+
 </style>
 <style id="dark-calc-select-style">
 /* 下拉選單與選單選項暗黑科技風優化，徹底消除白底死角 */
@@ -2281,16 +2430,12 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.42</span>
+<span class="version-badge">v03.47</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
         </p>
-<div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
-<button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">📑 49 章快速跳轉</button>
-<button class="header-btn" onclick="clearPwaCache()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🔄 清除快取重載</button>
-<button class="header-btn" onclick="toggleAppTheme()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🌓 主題切換</button>
-</div>
+
 </div>
 <div id="loadingMsg" style="display:none; text-align:center; padding:10px; background:#1e1b4b; border:1px solid #3b82f6; border-radius:8px; margin-bottom:12px; color:#38bdf8; font-size:0.85rem;"></div>
 <!-- 8 大核心專題分頁導航列 -->
@@ -2363,7 +2508,6 @@ button.chip-btn.active {
 <div style="font-size:1.15rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-flag-checkered"></i> 👑【初年度完全攻略】開局第 1 年（1968年・體驗版範圍）全 52 週通關指南
         </div>
-<span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">完整全量圖文收錄・日中對照</span>
 </div>
 <p style="font-size:0.86rem; line-height:1.75; color:var(--text-main); margin-bottom:16px;">
         本攻略詳解《Winning Post 10 2026》<strong>開局第 1 年（初年度）</strong>的每週關鍵節點、事件觸發、知人相遇、能力解鎖、贈送馬匹選擇、春季配種與拍賣會淘金 SOP。無論是 1968 年最古劇本還是其他年代劇本開局，皆可遵循此流程奠定長達數十年的牧場霸業！
@@ -2595,10 +2739,6 @@ button.chip-btn.active {
 <div style="font-size:1.15rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-horse-head"></i> 🏇【全年代初期讓渡馬完全圖鑑】6 大節點讓渡名駒詳解 (1968~2027)
         </div>
-<span class="pill pill-gold" style="font-size:0.8rem; padding:4px 8px;">全劇本獨立分行・日中對照</span>
-</div>
-<div style="text-align:center; margin-bottom:20px;">
-<img alt="全年代初期讓渡馬指南" src="https://i0.wp.com/al-gest.com/wp-content/uploads/2026/03/ウイニングポスト10_2026_アイキャッチ画像-初期譲渡馬.jpg?fit=1200%2C630&amp;ssl=1" style="max-width:100%; border-radius:10px; border:1px solid var(--border-color); box-shadow:0 4px 14px rgba(0,0,0,0.5);"/>
 </div>
 <p style="font-size:0.86rem; line-height:1.75; color:var(--text-main); margin-bottom:16px;">
         在《Winning Post 10 2026》各年代劇本中，玩家在第 1 年將依序歷經 <strong>6 大讓渡節點</strong>：① 1月1週 初始 3 歲讓渡馬、② 1年目 200P 目標達成幼駒、③ 3月3週 繁殖牝馬讓渡、④ 3月3週 系列特典繋養、⑤ 3月5週 第 2 匹讓渡愛馬 (3~5歲)、⑥ 6月1週 2 歲讓渡幼駒。<strong>所有牡馬與牝馬選項皆已獨立分行清晰列出</strong>：
@@ -4275,9 +4415,8 @@ button.chip-btn.active {
 <div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-timeline"></i> 選擇出生年代 (1967 ~ 2023 年共 56 大世代)：
         </div>
-<span class="pill pill-gold" style="font-size:0.75rem;">支援即時排序與日/中對照 (共 496 匹推薦名駒)</span>
 </div>
-<div class="era-chip-rail" id="eraChipRail" style="display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:8px; scroll-behavior:smooth;">
+<div class="era-chip-rail" id="eraChipRail" style="display: flex; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 6px 4px 10px 4px; scroll-behavior: smooth;">
 <!-- Year buttons will be populated dynamically -->
 </div>
 </div><div id="eraDetailContainer">
@@ -6284,7 +6423,7 @@ button.chip-btn.active {
 </div>
 </div>
 <!-- 單行水平滑動膠囊軌道 -->
-<div class="chip-rail" id="nenpyoEraChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; scrollbar-width: thin;">
+<div class="chip-rail" id="nenpyoEraChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 6px 4px 10px 4px; scrollbar-width: thin;">
 <button class="nenpyo-era-btn active" onclick="filterNenpyoEra('all', this)">🌐 全部世代</button>
 <button class="nenpyo-era-btn" onclick="filterNenpyoEra('1968-1975', this)">🏛 1968~1975 最古</button>
 <button class="nenpyo-era-btn" onclick="filterNenpyoEra('1976-1985', this)">📜 1976~1985 時代</button>
@@ -6505,7 +6644,7 @@ button.chip-btn.active {
 </div>
 </div>
 <!-- 單行水平滑動膠囊軌道 -->
-<div class="chip-rail" id="foalAgeChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; scrollbar-width: thin;">
+<div class="chip-rail" id="foalAgeChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 6px 4px 10px 4px; scrollbar-width: thin;">
 <button class="foal-age-btn active" onclick="filterFoalAge('all', this)">🌐 全部歲數 (0~2歲全覽)</button>
 <button class="foal-age-btn" onclick="filterFoalAge('0 歲', this)">🍼 0 歲幼駒 (出生~離乳)</button>
 <button class="foal-age-btn" onclick="filterFoalAge('1 歲', this)">🐴 1 歲幼駒 (成長~體型)</button>
@@ -9818,7 +9957,6 @@ button.chip-btn.active {
 <div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-table-list"></i> 二、馬之個性 (ウマソナ) (馬之個性 (ウマソナ)) 全量數據庫完全對照表
         </div>
-<span class="badge badge-gold" style="font-size:0.78rem; padding:3px 8px;">日中並行・零遺漏完整收錄</span>
 </div>
 <div class="umasona-filter-panel" style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:8px; padding:14px 16px; margin-bottom:18px;">
 <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; align-items:center;">
@@ -28071,7 +28209,6 @@ function filterTab5Racecourses() {
 <div style="font-size:1.15rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-user-astronaut"></i> 一、日本頂級騎手實名數據庫 (戰法・距離適性與專屬特性)
         </div>
-<span class="badge badge-gold">日/中/實名完全對照</span>
 </div>
 <div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
 <table class="data-table">
@@ -29706,7 +29843,7 @@ function filterTab5Racecourses() {
 <span id="recsCurrentYearBadge" style="font-size:12px; color:var(--gold-color); font-weight:700;">1964 年生推薦史實馬</span>
 </div>
 <!-- 全年代單行水平滑動膠囊軌道 (GEMINI.md 規範 5) -->
-<div id="recsYearButtons" class="ch43-46-chip-rail chip-rail" style="margin-top:10px; padding:4px 0;">
+<div id="recsYearButtons" class="ch43-46-chip-rail chip-rail" style="margin-top: 10px; padding: 6px 4px 10px 4px;">
 <!-- Rendered via JS -->
 </div>
 </div>
@@ -31223,6 +31360,9 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <button class="btn-floating btn-jump" onclick="openChapterModal()" style="background:var(--gold-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="📑 49 章跳轉目錄">
 <i class="fa-solid fa-list-ol"></i>
 </button>
+<button class="btn-floating btn-cache" onclick="clearPwaCache()" style="background:#0284c7; color:#fff; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="🔄 清除快取重載">
+<i class="fa-solid fa-arrows-rotate"></i>
+</button>
 <button class="btn-floating btn-back" onclick="goBackLastPosition()" style="background:var(--accent-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="↩️ 返回前一定位">
 <i class="fa-solid fa-rotate-left"></i>
 </button>
@@ -31240,11 +31380,26 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <i class="fa-solid fa-magnifying-glass"></i>
 <input id="chapterFilterInput" oninput="filterChapterList()" placeholder="🔍 全局內文檢索：輸入任何關鍵字 (如: 爆發力 (爆発力), 評語, 三冠, 史實調教, 繁育, 異名, 推薦馬)..." type="text"/>
 </div>
+<!-- 八大支柱快捷跳轉導航列 -->
+<div class="chip-rail modal-pillar-chips" style="margin-bottom: 12px; padding: 6px 4px 10px 4px; display: flex; gap: 8px; overflow-x: auto;">
+  <button class="chip-btn" onclick="jumpToPillar('pillar-secrets')"><i class="fa-solid fa-crown" style="color:#38bdf8;"></i> 支柱一</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-breed')"><i class="fa-solid fa-dna" style="color:#06b6d4;"></i> 支柱二</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-foals')"><i class="fa-solid fa-horse" style="color:#10b981;"></i> 支柱三</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-train')"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> 支柱四</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-races')"><i class="fa-solid fa-trophy" style="color:#ec4899;"></i> 支柱五</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-ranch')"><i class="fa-solid fa-house-chimney" style="color:#a855f7;"></i> 支柱六</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-db')"><i class="fa-solid fa-magnifying-glass" style="color:#eab308;"></i> 支柱七</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-lectures')"><i class="fa-solid fa-graduation-cap" style="color:#6366f1;"></i> 支柱八</button>
+</div>
 <div class="chapter-list-container" id="chapterListContainer">
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#38bdf8; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-crown"></i> 👑 支柱一：開局劇本年代與史實攻略 (第 01 ~ 07 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-secrets')" style="color:#38bdf8;" title="點擊直達【支柱一】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-crown"></i> 支柱一：開局劇本年代與史實攻略 (第 01 ~ 07 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-start-guide')">
 <span class="jump-icon"><i class="fa-solid fa-flag-checkered"></i></span>
@@ -31284,9 +31439,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#06b6d4; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-dna"></i> 🧬 支柱二：配合繁育大系・四大指標與爆發力 (爆発力)理論 (第 08 ~ 21 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-breed')" style="color:#06b6d4;" title="點擊直達【支柱二】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-dna"></i> 支柱二：配合繁育大系・四大指標與爆發力 (爆発力)理論 (第 08 ~ 21 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-metrics')">
 <span class="jump-icon"><i class="fa-solid fa-gauge-high"></i></span>
@@ -31361,9 +31520,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#10b981; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-horse"></i> 🐎 支柱三：幼駒培育・相馬心法與出生事件 (第 22 ~ 24 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-foals')" style="color:#10b981;" title="點擊直達【支柱三】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-horse"></i> 支柱三：幼駒培育・相馬心法與出生事件 (第 22 ~ 24 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-potential')">
 <span class="jump-icon"><i class="fa-solid fa-eye"></i></span>
@@ -31383,9 +31546,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#f59e0b; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-bolt"></i> ⚡ 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (ウマソナ) (第 25 ~ 30 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-train')" style="color:#f59e0b;" title="點擊直達【支柱四】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-bolt"></i> 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (ウマソナ) (第 25 ~ 30 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-status-encyclopedia')">
 <span class="jump-icon"><i class="fa-solid fa-address-card"></i></span>
@@ -31420,9 +31587,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#ec4899; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-trophy"></i> 🏆 支柱五：重賞日程・全球三冠・熱潮與賽馬場特性 (第 31 ~ 35 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-races')" style="color:#ec4899;" title="點擊直達【支柱五】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-trophy"></i> 支柱五：重賞日程・全球三冠・熱潮與賽馬場特性 (第 31 ~ 35 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-stakes-master')">
 <span class="jump-icon"><i class="fa-solid fa-trophy"></i></span>
@@ -31452,9 +31623,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#a855f7; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-house-chimney"></i> 🏡 支柱六：牧場經營・人物技能・婚姻與俱樂部法人 (第 36 ~ 40 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-ranch')" style="color:#a855f7;" title="點擊直達【支柱六】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-house-chimney"></i> 支柱六：牧場經營・人物技能・婚姻與俱樂部法人 (第 36 ~ 40 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-farm-facilities')">
 <span class="jump-icon"><i class="fa-solid fa-house-chimney"></i></span>
@@ -31484,9 +31659,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#eab308; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-magnifying-glass"></i> 🏇 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 ~ 46 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-db')" style="color:#eab308;" title="點擊直達【支柱七】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-magnifying-glass"></i> 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 ~ 46 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-horse-db')">
 <span class="jump-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -31521,9 +31700,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#6366f1; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-graduation-cap"></i> 🎓 支柱八：名師實戰講堂・線上對戰與系統機能 (第 47 ~ 49 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-lectures')" style="color:#6366f1;" title="點擊直達【支柱八】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-graduation-cap"></i> 支柱八：名師實戰講堂・線上對戰與系統機能 (第 47 ~ 49 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-official-lectures')">
 <span class="jump-icon"><i class="fa-solid fa-graduation-cap"></i></span>
@@ -31678,6 +31861,23 @@ function closeChapterModal(event) {
     const m = document.getElementById("chapterModal");
     if (m) m.style.display = "none";
 }
+
+
+function jumpToPillar(pillarId) {
+    if (typeof recordCurrentPosition === 'function') recordCurrentPosition();
+    if (typeof switchMainPillar === 'function') switchMainPillar(pillarId);
+    if (typeof closeChapterModal === 'function') closeChapterModal();
+    setTimeout(() => {
+        const target = document.getElementById(pillarId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const headerCard = target.querySelector('.pillar-header-card') || target;
+            headerCard.classList.add('section-highlight-flash');
+            setTimeout(() => headerCard.classList.remove('section-highlight-flash'), 1800);
+        }
+    }, 120);
+}
+window.jumpToPillar = jumpToPillar;
 
 function jumpToChapter(pillarId, sectionId) {
     recordCurrentPosition();
