@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.52"></script>
-<script src="core_guides_data.js?v=v03.52"></script>
-<script src="yearly_recs_db.js?v=v03.52"></script>
-<script src="horse_subtopics_data.js?v=v03.52"></script>
+<script src="master_lookup_db.js?v=v03.53"></script>
+<script src="core_guides_data.js?v=v03.53"></script>
+<script src="yearly_recs_db.js?v=v03.53"></script>
+<script src="horse_subtopics_data.js?v=v03.53"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1744,7 +1744,46 @@ li {
 }
 /* ================== 結束強迫症校正 ================== */
 
-    </style>
+    
+/* 右下角浮動按鈕群大小與排版嚴格統一規範 (GEMINI.md) */
+.floating-btn-group {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    z-index: 9999 !important;
+}
+
+.floating-btn-group .btn-floating {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    max-width: 42px !important;
+    max-height: 42px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.1rem !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+    cursor: pointer !important;
+    transition: transform 0.2s ease, filter 0.2s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+.floating-btn-group .btn-floating:hover {
+    transform: scale(1.08) !important;
+    filter: brightness(1.15) !important;
+}
+
+</style>
 <style>
 @keyframes sectionFlashAnim {
   0% { box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.8), 0 0 25px rgba(234, 179, 8, 0.5); border-color: #eab308 !important; }
@@ -2465,7 +2504,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.52</span>
+<span class="version-badge">v03.53</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -31395,8 +31434,8 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <button class="btn-floating btn-cache" onclick="clearPwaCache()" style="background:#0284c7; color:#fff; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="🔄 清除快取重載">
 <i class="fa-solid fa-arrows-rotate"></i>
 </button>
-<button class="btn-floating btn-back" onclick="goBackLastPosition()" style="background:var(--accent-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="↩️ 返回前一定位">
-<i class="fa-solid fa-rotate-left"></i>
+<button class="btn-floating btn-back" onclick="goBackLastPosition()" style="background:var(--accent-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="⇄ 返回前一定位">
+<i class="fa-solid fa-right-left"></i>
 </button>
 <button class="btn-floating btn-top" onclick="scrollToTop()" style="background:var(--primary); color:#fff; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="⬆️ 回到頂部">
 <i class="fa-solid fa-arrow-up"></i>
@@ -33730,6 +33769,7 @@ function renderTable() {
                 { key: "sp", title: "SP" },
                 { key: "stamina", title: "ST" },
                 { key: "subpara_total", title: "サ" },
+                { key: "foal_quality", title: "仔出" },
                 { key: "growth", title: "成型(威力)" },
                 { key: "grass", title: "芝" },
                 { key: "dirt", title: "ダ" },
@@ -33777,7 +33817,7 @@ function renderTable() {
             if (items.length === 0) {
                 window._CURRENT_RENDERED_ITEMS = [];
                 const tr = document.createElement("tr");
-                tr.innerHTML = `<td colspan="14" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
+                tr.innerHTML = `<td colspan="15" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
                 tbody.appendChild(tr);
                 return;
             }
@@ -33808,6 +33848,7 @@ function renderTable() {
                     <td style="text-align:center; font-weight:bold; color:var(--accent-color);">${spVal}</td>
                     <td style="text-align:center; font-weight:bold; color:#38bdf8;">${stVal}</td>
                     <td style="text-align:center; font-weight:bold; color:var(--gold-color);">${subVal}</td>
+                    <td style="text-align:center; font-weight:bold; color:#ef4444;">${item.foal_quality || item.foal_count || "-"}</td>
                     <td style="text-align:center;">${growthVal}</td>
                     <td style="text-align:center;">${renderTrackBadge(item.grass)}</td>
                     <td style="text-align:center;">${renderTrackBadge(item.dirt)}</td>
@@ -33821,7 +33862,7 @@ function renderTable() {
 
             if (items.length > displayLimit) {
                 const trMore = document.createElement("tr");
-                trMore.innerHTML = `<td colspan="14" style="text-align:center; padding:15px; color:var(--accent-color); font-weight:bold;">已顯示前 200 筆（共 ${items.length.toLocaleString()} 筆）。請縮小篩選條件以精確瀏覽。</td>`;
+                trMore.innerHTML = `<td colspan="15" style="text-align:center; padding:15px; color:var(--accent-color); font-weight:bold;">已顯示前 200 筆（共 ${items.length.toLocaleString()} 筆）。請縮小篩選條件以精確瀏覽。</td>`;
                 tbody.appendChild(trMore);
             }
         }
