@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.51"></script>
-<script src="core_guides_data.js?v=v03.51"></script>
-<script src="yearly_recs_db.js?v=v03.51"></script>
-<script src="horse_subtopics_data.js?v=v03.51"></script>
+<script src="master_lookup_db.js?v=v03.52"></script>
+<script src="core_guides_data.js?v=v03.52"></script>
+<script src="yearly_recs_db.js?v=v03.52"></script>
+<script src="horse_subtopics_data.js?v=v03.52"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2361,6 +2361,59 @@ button.chip-btn {
     justify-content: center !important;
 }
 
+
+/* 第 09 章配合理論分類晶片：大小嚴格統一規範 (GEMINI.md 規範 5) */
+#sec-master-table .filter-bar {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    align-items: center !important;
+    padding: 6px 4px 10px 4px !important;
+    margin-bottom: 14px !important;
+    box-sizing: border-box !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(56, 189, 248, 0.4) rgba(15, 23, 42, 0.5) !important;
+}
+
+#sec-master-table .filter-bar::-webkit-scrollbar {
+    height: 4px !important;
+}
+#sec-master-table .filter-bar::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border-radius: 2px !important;
+}
+#sec-master-table .filter-bar::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.4) !important;
+    border-radius: 2px !important;
+}
+#sec-master-table .filter-bar::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.8) !important;
+}
+
+#sec-master-table .filter-bar .filter-btn {
+    width: 176px !important;
+    min-width: 176px !important;
+    max-width: 176px !important;
+    height: 36px !important;
+    border-radius: 20px !important;
+    padding: 5px 12px !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
 /* 第 43 章：每一排內部晶片大小嚴格統一規範 (GEMINI.md 規範 5) */
 #sec-breeding-only-horses .breeding-amulet-rail button.pill {
     min-width: 82px !important;
@@ -2428,7 +2481,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.51</span>
+<span class="version-badge">v03.52</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -4873,8 +4926,7 @@ button.chip-btn.active {
 <div class="section-title"><i class="fa-solid fa-table-list"></i> 第 09 章：全配合理論速查與加成總覽表 (全 39 條目)</div>
 </div>
 <div class="section-body">
-<div class="section-body">
-<div class="filter-bar">
+<div class="filter-bar chip-rail">
 <button class="filter-btn active" onclick="filterCategory('all', this)">全部理論 (36+)</button>
 <button class="filter-btn" onclick="filterCategory('basic', this)">相性與基礎</button>
 <button class="filter-btn" onclick="filterCategory('inbreed', this)">近親與異系</button>
@@ -5206,7 +5258,7 @@ button.chip-btn.active {
 <li><strong>及時停損防下降機制</strong>：若某匹母馬連續 3 年產駒無重賞表現，應暫停配合低能力架空種馬，換用高仔出種馬交配衝擊 G1，避免母馬仔出持續下滑至 1~2 級。</li>
 </ul>
 </div>
-</div></div></section>
+</div></section>
 <!-- ==================== 第 10 章：專屬 4 代血統矩陣圖譜總覽 ==================== -->
 <section class="section-card" id="sec-diagrams">
 <div class="section-header">
