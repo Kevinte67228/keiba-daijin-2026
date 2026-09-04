@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.48"></script>
-<script src="core_guides_data.js?v=v03.48"></script>
-<script src="yearly_recs_db.js?v=v03.48"></script>
-<script src="horse_subtopics_data.js?v=v03.48"></script>
+<script src="master_lookup_db.js?v=v03.49"></script>
+<script src="core_guides_data.js?v=v03.49"></script>
+<script src="yearly_recs_db.js?v=v03.49"></script>
+<script src="horse_subtopics_data.js?v=v03.49"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2428,7 +2428,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.48</span>
+<span class="version-badge">v03.49</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -31378,17 +31378,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <i class="fa-solid fa-magnifying-glass"></i>
 <input id="chapterFilterInput" oninput="filterChapterList()" placeholder="🔍 全局內文檢索：輸入任何關鍵字 (如: 爆發力 (爆発力), 評語, 三冠, 史實調教, 繁育, 異名, 推薦馬)..." type="text"/>
 </div>
-<!-- 八大支柱快捷跳轉導航列 -->
-<div class="chip-rail modal-pillar-chips" style="margin-bottom: 12px; padding: 6px 4px 10px 4px; display: flex; gap: 8px; overflow-x: auto;">
-  <button class="chip-btn" onclick="jumpToPillar('pillar-secrets')"><i class="fa-solid fa-crown" style="color:#38bdf8;"></i> 支柱一</button>
-  <button class="chip-btn" onclick="jumpToPillar('pillar-breed')"><i class="fa-solid fa-dna" style="color:#06b6d4;"></i> 支柱二</button>
-  <button class="chip-btn" onclick="jumpToPillar('pillar-foals')"><i class="fa-solid fa-horse" style="color:#10b981;"></i> 支柱三</button>
-  <button class="chip-btn" onclick="jumpToPillar('pillar-train')"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> 支柱四</button>
-  <button class="chip-btn" onclick="jumpToPillar('pillar-races')"><i class="fa-solid fa-trophy" style="color:#ec4899;"></i> 支柱五</button>
-  <button class="chip-btn" onclick="jumpToPillar('pillar-ranch')"><i class="fa-solid fa-house-chimney" style="color:#a855f7;"></i> 支柱六</button>
-  <button class="chip-btn" onclick="jumpToPillar('pillar-db')"><i class="fa-solid fa-magnifying-glass" style="color:#eab308;"></i> 支柱七</button>
-  <button class="chip-btn" onclick="jumpToPillar('pillar-lectures')"><i class="fa-solid fa-graduation-cap" style="color:#6366f1;"></i> 支柱八</button>
-</div>
+
 <div class="chapter-list-container" id="chapterListContainer">
 <div class="chapter-pillar-group">
 <div class="chapter-pillar-title" onclick="jumpToPillar('pillar-secrets')" style="color:#38bdf8;" title="點擊直達【支柱一】">
