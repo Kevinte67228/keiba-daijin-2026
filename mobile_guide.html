@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.47"></script>
-<script src="core_guides_data.js?v=v03.47"></script>
-<script src="yearly_recs_db.js?v=v03.47"></script>
-<script src="horse_subtopics_data.js?v=v03.47"></script>
+<script src="master_lookup_db.js?v=v03.48"></script>
+<script src="core_guides_data.js?v=v03.48"></script>
+<script src="yearly_recs_db.js?v=v03.48"></script>
+<script src="horse_subtopics_data.js?v=v03.48"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2044,25 +2044,7 @@ button.chip-btn.active:hover,
     transform: translateX(4px);
     box-shadow: 0 2px 10px rgba(56, 189, 248, 0.25) !important;
 }
-.pillar-jump-tag {
-    font-size: 0.75rem !important;
-    padding: 3px 10px !important;
-    border-radius: 12px !important;
-    background: rgba(56, 189, 248, 0.15) !important;
-    color: #38bdf8 !important;
-    border: 1px solid rgba(56, 189, 248, 0.35) !important;
-    white-space: nowrap !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 4px !important;
-    transition: all 0.2s ease !important;
-}
-.chapter-pillar-title:hover .pillar-jump-tag {
-    background: #38bdf8 !important;
-    color: #0f172a !important;
-    font-weight: 800 !important;
-    box-shadow: 0 0 8px rgba(56, 189, 248, 0.5) !important;
-}
+
 
 </style>
 <style id="dark-calc-select-style">
@@ -2430,7 +2412,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.47</span>
+<span class="version-badge">v03.48</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -31398,7 +31380,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     <i class="fa-solid fa-crown"></i> 支柱一：開局劇本年代與史實攻略 (第 01 ~ 07 章)
   
   </div>
-  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
 </div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-start-guide')">
@@ -31444,7 +31425,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     <i class="fa-solid fa-dna"></i> 支柱二：配合繁育大系・四大指標與爆發力 (爆発力)理論 (第 08 ~ 21 章)
   
   </div>
-  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
 </div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-metrics')">
@@ -31525,7 +31505,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     <i class="fa-solid fa-horse"></i> 支柱三：幼駒培育・相馬心法與出生事件 (第 22 ~ 24 章)
   
   </div>
-  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
 </div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-potential')">
@@ -31551,7 +31530,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     <i class="fa-solid fa-bolt"></i> 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (ウマソナ) (第 25 ~ 30 章)
   
   </div>
-  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
 </div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-status-encyclopedia')">
@@ -31592,7 +31570,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     <i class="fa-solid fa-trophy"></i> 支柱五：重賞日程・全球三冠・熱潮與賽馬場特性 (第 31 ~ 35 章)
   
   </div>
-  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
 </div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-stakes-master')">
@@ -31628,7 +31605,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     <i class="fa-solid fa-house-chimney"></i> 支柱六：牧場經營・人物技能・婚姻與俱樂部法人 (第 36 ~ 40 章)
   
   </div>
-  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
 </div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-farm-facilities')">
@@ -31664,7 +31640,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     <i class="fa-solid fa-magnifying-glass"></i> 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 ~ 46 章)
   
   </div>
-  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
 </div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-horse-db')">
@@ -31705,7 +31680,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     <i class="fa-solid fa-graduation-cap"></i> 支柱八：名師實戰講堂・線上對戰與系統機能 (第 47 ~ 49 章)
   
   </div>
-  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
 </div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-official-lectures')">

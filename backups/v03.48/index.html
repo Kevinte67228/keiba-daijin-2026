@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.43"></script>
-<script src="core_guides_data.js?v=v03.43"></script>
-<script src="yearly_recs_db.js?v=v03.43"></script>
-<script src="horse_subtopics_data.js?v=v03.43"></script>
+<script src="master_lookup_db.js?v=v03.48"></script>
+<script src="core_guides_data.js?v=v03.48"></script>
+<script src="yearly_recs_db.js?v=v03.48"></script>
+<script src="horse_subtopics_data.js?v=v03.48"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1744,7 +1744,23 @@ li {
 }
 /* ================== 結束強迫症校正 ================== */
 
-    </style>
+    
+/* ==========================================================================
+   馬匹 18 欄詳細檔案與八維雷達圖彈窗 (GEMINI.md 規範)
+   ========================================================================== */
+#horseModal .modal-card {
+    max-width: 920px !important;
+    width: 94% !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    background: #0f172a !important;
+    border: 2px solid var(--accent-gold) !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.85) !important;
+    padding: 20px !important;
+    border-radius: 14px !important;
+}
+
+</style>
 <style>
 @keyframes sectionFlashAnim {
   0% { box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.8), 0 0 25px rgba(234, 179, 8, 0.5); border-color: #eab308 !important; }
@@ -1799,8 +1815,63 @@ li {
     word-break: keep-all !important;
 }
 </style>
-<style id="ch21-era-chips-style">
-.nenpyo-era-btn {
+<style id="global-capsule-chips-style">
+/* ==========================================================================
+   全域標準高級科技流光膠囊晶片軌道規範 (GEMINI.md 規範 5 強化版)
+   - 杜絕點選/懸停/發光時上半部缺角或外框截斷
+   - 瀏覽器原生焦點輪廓徹底歸零 (Zero Outline Ring)
+   - 軌道上下配置足額安全緩衝邊距 (padding: 6px 4px 10px 4px)
+   ========================================================================== */
+
+/* 1. 全域單行水平滑動膠囊軌道 */
+.chip-rail,
+.era-chip-rail,
+.ch31-chip-rail,
+.ch43-46-chip-rail,
+.category-tabs,
+#nenpyoEraChipsRail,
+#foalAgeChipsRail,
+#eraChipRail,
+#recsYearButtons,
+#sireDecadeButtons,
+#categoryTabs {
+    display: flex !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-top: 6px !important;
+    padding-bottom: 10px !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(56, 189, 248, 0.35) rgba(15, 23, 42, 0.6) !important;
+}
+
+/* 2. 全域晶片按鈕本體造型 (消除預設外框與直角) */
+.nenpyo-era-btn,
+.chip-btn,
+button.chip-btn,
+.filter-btn,
+.foal-age-btn,
+.ch43-46-chip-btn,
+#eraChipRail .filter-btn,
+#eraChipRail .chip-btn,
+#sec-sires-retire-db button.pill,
+#sec-sires-retire-db button.chip-btn,
+#sec-sires-retire-db #sireDecadeButtons button,
+#sec-breeding-only-horses button.pill,
+#sec-breeding-only-horses button.chip-btn,
+#sec-racehorses-full-db button.pill,
+#sec-racehorses-full-db button.chip-btn,
+#sec-yearly-recs-db button.pill,
+#sec-yearly-recs-db button.chip-btn,
+#sec-yearly-recs-db #recsYearButtons .filter-btn,
+#sec-yearly-recs-db #recsYearButtons .chip-btn,
+#sec-nicknames-full-db button.pill,
+#sec-nicknames-full-db button.chip-btn {
     background: rgba(30, 41, 59, 0.75) !important;
     color: #94a3b8 !important;
     border: 1px solid rgba(56, 189, 248, 0.25) !important;
@@ -1809,112 +1880,188 @@ li {
     font-size: 0.82rem !important;
     font-weight: 700 !important;
     cursor: pointer !important;
-    transition: all 0.2s ease-in-out !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
     white-space: nowrap !important;
     word-break: keep-all !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 5px !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    box-sizing: border-box !important;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    user-select: none !important;
+    flex-shrink: 0 !important;
 }
 
-.nenpyo-era-btn:hover {
+/* 3. 懸停狀態 (微浮起科技藍流光) */
+.nenpyo-era-btn:hover,
+.chip-btn:hover,
+button.chip-btn:hover,
+.filter-btn:hover,
+.foal-age-btn:hover,
+.ch43-46-chip-btn:hover,
+#eraChipRail .filter-btn:hover,
+#eraChipRail .chip-btn:hover,
+#sec-sires-retire-db button.pill:hover,
+#sec-sires-retire-db button.chip-btn:hover,
+#sec-sires-retire-db #sireDecadeButtons button:hover,
+#sec-breeding-only-horses button.pill:hover,
+#sec-breeding-only-horses button.chip-btn:hover,
+#sec-racehorses-full-db button.pill:hover,
+#sec-racehorses-full-db button.chip-btn:hover,
+#sec-yearly-recs-db button.pill:hover,
+#sec-yearly-recs-db button.chip-btn:hover,
+#sec-yearly-recs-db #recsYearButtons .filter-btn:hover,
+#sec-yearly-recs-db #recsYearButtons .chip-btn:hover,
+#sec-nicknames-full-db button.pill:hover,
+#sec-nicknames-full-db button.chip-btn:hover {
     background: rgba(56, 189, 248, 0.18) !important;
     color: #38bdf8 !important;
     border-color: #38bdf8 !important;
-    transform: translateY(-1px);
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25) !important;
 }
 
-.nenpyo-era-btn.active {
+/* 4. 點選狀態 (:active 強制平穩回彈，防止衝出頂部邊界) */
+.nenpyo-era-btn:active,
+.chip-btn:active,
+button.chip-btn:active,
+.filter-btn:active,
+.foal-age-btn:active,
+.ch43-46-chip-btn:active,
+#eraChipRail .filter-btn:active,
+#eraChipRail .chip-btn:active,
+#sec-sires-retire-db button.pill:active,
+#sec-sires-retire-db button.chip-btn:active,
+#sec-sires-retire-db #sireDecadeButtons button:active,
+#sec-breeding-only-horses button.pill:active,
+#sec-breeding-only-horses button.chip-btn:active,
+#sec-racehorses-full-db button.pill:active,
+#sec-racehorses-full-db button.chip-btn:active,
+#sec-yearly-recs-db button.pill:active,
+#sec-yearly-recs-db button.chip-btn:active,
+#sec-yearly-recs-db #recsYearButtons .filter-btn:active,
+#sec-yearly-recs-db #recsYearButtons .chip-btn:active,
+#sec-nicknames-full-db button.pill:active,
+#sec-nicknames-full-db button.chip-btn:active {
+    transform: translateY(0) !important;
+    outline: none !important;
+}
+
+/* 5. 焦點狀態全域規整 (徹底杜絕缺角與外溢直角框) */
+.nenpyo-era-btn:focus,
+.nenpyo-era-btn:focus-visible,
+.chip-btn:focus,
+.chip-btn:focus-visible,
+button.chip-btn:focus,
+button.chip-btn:focus-visible,
+.filter-btn:focus,
+.filter-btn:focus-visible,
+.foal-age-btn:focus,
+.foal-age-btn:focus-visible,
+.ch43-46-chip-btn:focus,
+.ch43-46-chip-btn:focus-visible {
+    outline: none !important;
+}
+
+/* 6. 激活狀態 (金色立體流光發光樣式，無頂部截斷) */
+.nenpyo-era-btn.active,
+.chip-btn.active,
+button.chip-btn.active,
+.filter-btn.active,
+.foal-age-btn.active,
+.ch43-46-chip-btn.active,
+#eraChipRail .filter-btn.active,
+#eraChipRail .chip-btn.active,
+#sec-sires-retire-db button.pill.active,
+#sec-sires-retire-db button.chip-btn.active,
+#sec-sires-retire-db #sireDecadeButtons button.active,
+#sec-breeding-only-horses button.pill.active,
+#sec-breeding-only-horses button.chip-btn.active,
+#sec-racehorses-full-db button.pill.active,
+#sec-racehorses-full-db button.chip-btn.active,
+#sec-yearly-recs-db button.pill.active,
+#sec-yearly-recs-db button.chip-btn.active,
+#sec-yearly-recs-db #recsYearButtons .filter-btn.active,
+#sec-yearly-recs-db #recsYearButtons .chip-btn.active,
+#sec-nicknames-full-db button.pill.active,
+#sec-nicknames-full-db button.chip-btn.active {
     background: linear-gradient(135deg, #f59e0b, #d97706) !important;
     color: #0f172a !important;
     border-color: #f59e0b !important;
     font-weight: 800 !important;
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
-}
-</style>
-<style id="ch03-capsule-chips-style">
-/* 依據 GEMINI.md 規範 5 打造之標準高級科技流光膠囊晶片 */
-#eraChipRail .filter-btn, #eraChipRail .chip-btn {
-    background: rgba(30, 41, 59, 0.75) !important;
-    color: #94a3b8 !important;
-    border: 1px solid rgba(56, 189, 248, 0.25) !important;
-    border-radius: 20px !important;
-    padding: 5px 14px !important;
-    font-size: 0.82rem !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease-in-out !important;
-    white-space: nowrap !important;
-    word-break: keep-all !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 5px !important;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.45) !important;
+    transform: none !important;
+    outline: none !important;
 }
 
-#eraChipRail .filter-btn:hover, #eraChipRail .chip-btn:hover {
-    background: rgba(56, 189, 248, 0.18) !important;
-    color: #38bdf8 !important;
-    border-color: #38bdf8 !important;
-    transform: translateY(-1px);
-}
-
-#eraChipRail .filter-btn.active, #eraChipRail .chip-btn.active {
-    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+.nenpyo-era-btn.active:hover,
+.chip-btn.active:hover,
+button.chip-btn.active:hover,
+.filter-btn.active:hover,
+.foal-age-btn.active:hover,
+.ch43-46-chip-btn.active:hover {
+    background: linear-gradient(135deg, #fbbf24, #d97706) !important;
     color: #0f172a !important;
-    border-color: #f59e0b !important;
-    font-weight: 800 !important;
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
+    border-color: #fbbf24 !important;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.55) !important;
+    transform: translateY(-1px) !important;
+    outline: none !important;
 }
 
-/* 輕量美觀科技藍滾動條，替換原生粗白條 */
-#eraChipRail::-webkit-scrollbar, .chip-rail::-webkit-scrollbar {
+/* 7. 輕量美觀科技藍滾動條 */
+#eraChipRail::-webkit-scrollbar,
+.chip-rail::-webkit-scrollbar,
+.ch31-chip-rail::-webkit-scrollbar,
+.ch43-46-chip-rail::-webkit-scrollbar {
     height: 4px !important;
 }
-#eraChipRail::-webkit-scrollbar-track, .chip-rail::-webkit-scrollbar-track {
+#eraChipRail::-webkit-scrollbar-track,
+.chip-rail::-webkit-scrollbar-track,
+.ch31-chip-rail::-webkit-scrollbar-track,
+.ch43-46-chip-rail::-webkit-scrollbar-track {
     background: rgba(15, 23, 42, 0.6) !important;
     border-radius: 4px !important;
 }
-#eraChipRail::-webkit-scrollbar-thumb, .chip-rail::-webkit-scrollbar-thumb {
+#eraChipRail::-webkit-scrollbar-thumb,
+.chip-rail::-webkit-scrollbar-thumb,
+.ch31-chip-rail::-webkit-scrollbar-thumb,
+.ch43-46-chip-rail::-webkit-scrollbar-thumb {
     background: rgba(56, 189, 248, 0.35) !important;
     border-radius: 4px !important;
 }
-#eraChipRail::-webkit-scrollbar-thumb:hover, .chip-rail::-webkit-scrollbar-thumb:hover {
+#eraChipRail::-webkit-scrollbar-thumb:hover,
+.chip-rail::-webkit-scrollbar-thumb:hover,
+.ch31-chip-rail::-webkit-scrollbar-thumb:hover,
+.ch43-46-chip-rail::-webkit-scrollbar-thumb:hover {
     background: #38bdf8 !important;
 }
-</style>
-<style id="ch23-foal-age-chips-style">
-/* 依據 GEMINI.md 規範 5 打造之標準高級科技流光膠囊晶片 */
-.foal-age-btn {
-    background: rgba(30, 41, 59, 0.75) !important;
-    color: #94a3b8 !important;
-    border: 1px solid rgba(56, 189, 248, 0.25) !important;
-    border-radius: 20px !important;
-    padding: 5px 14px !important;
-    font-size: 0.82rem !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease-in-out !important;
-    white-space: nowrap !important;
-    word-break: keep-all !important;
-    display: inline-flex !important;
+
+/* 八大支柱快速跳轉標題與直達按鈕樣式 */
+.chapter-pillar-title {
+    display: flex !important;
+    justify-content: space-between !important;
     align-items: center !important;
-    gap: 5px !important;
-}
-
-.foal-age-btn:hover {
-    background: rgba(56, 189, 248, 0.18) !important;
-    color: #38bdf8 !important;
-    border-color: #38bdf8 !important;
-    transform: translateY(-1px);
-}
-
-.foal-age-btn.active {
-    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
-    color: #0f172a !important;
-    border-color: #f59e0b !important;
+    font-size: 0.95rem !important;
     font-weight: 800 !important;
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
+    padding: 8px 14px !important;
+    margin-bottom: 10px !important;
+    border-radius: 8px !important;
+    background: rgba(30, 41, 59, 0.6) !important;
+    border: 1px solid rgba(56, 189, 248, 0.2) !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    user-select: none !important;
 }
+.chapter-pillar-title:hover {
+    background: rgba(56, 189, 248, 0.15) !important;
+    border-color: #38bdf8 !important;
+    transform: translateX(4px);
+    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.25) !important;
+}
+
+
 </style>
 <style id="dark-calc-select-style">
 /* 下拉選單與選單選項暗黑科技風優化，徹底消除白底死角 */
@@ -2281,16 +2428,12 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.43</span>
+<span class="version-badge">v03.48</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
         </p>
-<div style="margin-top:8px; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;">
-<button class="header-btn btn-gold" onclick="openChapterModal()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">📑 49 章快速跳轉</button>
-<button class="header-btn" onclick="clearPwaCache()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🔄 清除快取重載</button>
-<button class="header-btn" onclick="toggleAppTheme()" style="white-space:nowrap !important; font-size:0.82rem; padding:6px 12px;">🌓 主題切換</button>
-</div>
+
 </div>
 <div id="loadingMsg" style="display:none; text-align:center; padding:10px; background:#1e1b4b; border:1px solid #3b82f6; border-radius:8px; margin-bottom:12px; color:#38bdf8; font-size:0.85rem;"></div>
 <!-- 8 大核心專題分頁導航列 -->
@@ -2594,9 +2737,6 @@ button.chip-btn.active {
 <div style="font-size:1.15rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-horse-head"></i> 🏇【全年代初期讓渡馬完全圖鑑】6 大節點讓渡名駒詳解 (1968~2027)
         </div>
-</div>
-<div style="text-align:center; margin-bottom:20px;">
-<img alt="全年代初期讓渡馬指南" src="https://i0.wp.com/al-gest.com/wp-content/uploads/2026/03/ウイニングポスト10_2026_アイキャッチ画像-初期譲渡馬.jpg?fit=1200%2C630&amp;ssl=1" style="max-width:100%; border-radius:10px; border:1px solid var(--border-color); box-shadow:0 4px 14px rgba(0,0,0,0.5);"/>
 </div>
 <p style="font-size:0.86rem; line-height:1.75; color:var(--text-main); margin-bottom:16px;">
         在《Winning Post 10 2026》各年代劇本中，玩家在第 1 年將依序歷經 <strong>6 大讓渡節點</strong>：① 1月1週 初始 3 歲讓渡馬、② 1年目 200P 目標達成幼駒、③ 3月3週 繁殖牝馬讓渡、④ 3月3週 系列特典繋養、⑤ 3月5週 第 2 匹讓渡愛馬 (3~5歲)、⑥ 6月1週 2 歲讓渡幼駒。<strong>所有牡馬與牝馬選項皆已獨立分行清晰列出</strong>：
@@ -4274,7 +4414,7 @@ button.chip-btn.active {
 <i class="fa-solid fa-timeline"></i> 選擇出生年代 (1967 ~ 2023 年共 56 大世代)：
         </div>
 </div>
-<div class="era-chip-rail" id="eraChipRail" style="display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:8px; scroll-behavior:smooth;">
+<div class="era-chip-rail" id="eraChipRail" style="display: flex; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 6px 4px 10px 4px; scroll-behavior: smooth;">
 <!-- Year buttons will be populated dynamically -->
 </div>
 </div><div id="eraDetailContainer">
@@ -6281,7 +6421,7 @@ button.chip-btn.active {
 </div>
 </div>
 <!-- 單行水平滑動膠囊軌道 -->
-<div class="chip-rail" id="nenpyoEraChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; scrollbar-width: thin;">
+<div class="chip-rail" id="nenpyoEraChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 6px 4px 10px 4px; scrollbar-width: thin;">
 <button class="nenpyo-era-btn active" onclick="filterNenpyoEra('all', this)">🌐 全部世代</button>
 <button class="nenpyo-era-btn" onclick="filterNenpyoEra('1968-1975', this)">🏛 1968~1975 最古</button>
 <button class="nenpyo-era-btn" onclick="filterNenpyoEra('1976-1985', this)">📜 1976~1985 時代</button>
@@ -6502,7 +6642,7 @@ button.chip-btn.active {
 </div>
 </div>
 <!-- 單行水平滑動膠囊軌道 -->
-<div class="chip-rail" id="foalAgeChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; scrollbar-width: thin;">
+<div class="chip-rail" id="foalAgeChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 6px 4px 10px 4px; scrollbar-width: thin;">
 <button class="foal-age-btn active" onclick="filterFoalAge('all', this)">🌐 全部歲數 (0~2歲全覽)</button>
 <button class="foal-age-btn" onclick="filterFoalAge('0 歲', this)">🍼 0 歲幼駒 (出生~離乳)</button>
 <button class="foal-age-btn" onclick="filterFoalAge('1 歲', this)">🐴 1 歲幼駒 (成長~體型)</button>
@@ -29701,7 +29841,7 @@ function filterTab5Racecourses() {
 <span id="recsCurrentYearBadge" style="font-size:12px; color:var(--gold-color); font-weight:700;">1964 年生推薦史實馬</span>
 </div>
 <!-- 全年代單行水平滑動膠囊軌道 (GEMINI.md 規範 5) -->
-<div id="recsYearButtons" class="ch43-46-chip-rail chip-rail" style="margin-top:10px; padding:4px 0;">
+<div id="recsYearButtons" class="ch43-46-chip-rail chip-rail" style="margin-top: 10px; padding: 6px 4px 10px 4px;">
 <!-- Rendered via JS -->
 </div>
 </div>
@@ -31218,6 +31358,9 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <button class="btn-floating btn-jump" onclick="openChapterModal()" style="background:var(--gold-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="📑 49 章跳轉目錄">
 <i class="fa-solid fa-list-ol"></i>
 </button>
+<button class="btn-floating btn-cache" onclick="clearPwaCache()" style="background:#0284c7; color:#fff; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="🔄 清除快取重載">
+<i class="fa-solid fa-arrows-rotate"></i>
+</button>
 <button class="btn-floating btn-back" onclick="goBackLastPosition()" style="background:var(--accent-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="↩️ 返回前一定位">
 <i class="fa-solid fa-rotate-left"></i>
 </button>
@@ -31235,11 +31378,25 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <i class="fa-solid fa-magnifying-glass"></i>
 <input id="chapterFilterInput" oninput="filterChapterList()" placeholder="🔍 全局內文檢索：輸入任何關鍵字 (如: 爆發力 (爆発力), 評語, 三冠, 史實調教, 繁育, 異名, 推薦馬)..." type="text"/>
 </div>
+<!-- 八大支柱快捷跳轉導航列 -->
+<div class="chip-rail modal-pillar-chips" style="margin-bottom: 12px; padding: 6px 4px 10px 4px; display: flex; gap: 8px; overflow-x: auto;">
+  <button class="chip-btn" onclick="jumpToPillar('pillar-secrets')"><i class="fa-solid fa-crown" style="color:#38bdf8;"></i> 支柱一</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-breed')"><i class="fa-solid fa-dna" style="color:#06b6d4;"></i> 支柱二</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-foals')"><i class="fa-solid fa-horse" style="color:#10b981;"></i> 支柱三</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-train')"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> 支柱四</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-races')"><i class="fa-solid fa-trophy" style="color:#ec4899;"></i> 支柱五</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-ranch')"><i class="fa-solid fa-house-chimney" style="color:#a855f7;"></i> 支柱六</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-db')"><i class="fa-solid fa-magnifying-glass" style="color:#eab308;"></i> 支柱七</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-lectures')"><i class="fa-solid fa-graduation-cap" style="color:#6366f1;"></i> 支柱八</button>
+</div>
 <div class="chapter-list-container" id="chapterListContainer">
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#38bdf8; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-crown"></i> 👑 支柱一：開局劇本年代與史實攻略 (第 01 ~ 07 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-secrets')" style="color:#38bdf8;" title="點擊直達【支柱一】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-crown"></i> 支柱一：開局劇本年代與史實攻略 (第 01 ~ 07 章)
+  
   </div>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-start-guide')">
 <span class="jump-icon"><i class="fa-solid fa-flag-checkered"></i></span>
@@ -31279,9 +31436,12 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#06b6d4; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-dna"></i> 🧬 支柱二：配合繁育大系・四大指標與爆發力 (爆発力)理論 (第 08 ~ 21 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-breed')" style="color:#06b6d4;" title="點擊直達【支柱二】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-dna"></i> 支柱二：配合繁育大系・四大指標與爆發力 (爆発力)理論 (第 08 ~ 21 章)
+  
   </div>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-metrics')">
 <span class="jump-icon"><i class="fa-solid fa-gauge-high"></i></span>
@@ -31356,9 +31516,12 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#10b981; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-horse"></i> 🐎 支柱三：幼駒培育・相馬心法與出生事件 (第 22 ~ 24 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-foals')" style="color:#10b981;" title="點擊直達【支柱三】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-horse"></i> 支柱三：幼駒培育・相馬心法與出生事件 (第 22 ~ 24 章)
+  
   </div>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-potential')">
 <span class="jump-icon"><i class="fa-solid fa-eye"></i></span>
@@ -31378,9 +31541,12 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#f59e0b; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-bolt"></i> ⚡ 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (ウマソナ) (第 25 ~ 30 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-train')" style="color:#f59e0b;" title="點擊直達【支柱四】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-bolt"></i> 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (ウマソナ) (第 25 ~ 30 章)
+  
   </div>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-status-encyclopedia')">
 <span class="jump-icon"><i class="fa-solid fa-address-card"></i></span>
@@ -31415,9 +31581,12 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#ec4899; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-trophy"></i> 🏆 支柱五：重賞日程・全球三冠・熱潮與賽馬場特性 (第 31 ~ 35 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-races')" style="color:#ec4899;" title="點擊直達【支柱五】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-trophy"></i> 支柱五：重賞日程・全球三冠・熱潮與賽馬場特性 (第 31 ~ 35 章)
+  
   </div>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-stakes-master')">
 <span class="jump-icon"><i class="fa-solid fa-trophy"></i></span>
@@ -31447,9 +31616,12 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#a855f7; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-house-chimney"></i> 🏡 支柱六：牧場經營・人物技能・婚姻與俱樂部法人 (第 36 ~ 40 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-ranch')" style="color:#a855f7;" title="點擊直達【支柱六】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-house-chimney"></i> 支柱六：牧場經營・人物技能・婚姻與俱樂部法人 (第 36 ~ 40 章)
+  
   </div>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-farm-facilities')">
 <span class="jump-icon"><i class="fa-solid fa-house-chimney"></i></span>
@@ -31479,9 +31651,12 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#eab308; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-magnifying-glass"></i> 🏇 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 ~ 46 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-db')" style="color:#eab308;" title="點擊直達【支柱七】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-magnifying-glass"></i> 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 ~ 46 章)
+  
   </div>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-horse-db')">
 <span class="jump-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -31516,9 +31691,12 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#6366f1; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-graduation-cap"></i> 🎓 支柱八：名師實戰講堂・線上對戰與系統機能 (第 47 ~ 49 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-lectures')" style="color:#6366f1;" title="點擊直達【支柱八】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-graduation-cap"></i> 支柱八：名師實戰講堂・線上對戰與系統機能 (第 47 ~ 49 章)
+  
   </div>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-official-lectures')">
 <span class="jump-icon"><i class="fa-solid fa-graduation-cap"></i></span>
@@ -31673,6 +31851,23 @@ function closeChapterModal(event) {
     const m = document.getElementById("chapterModal");
     if (m) m.style.display = "none";
 }
+
+
+function jumpToPillar(pillarId) {
+    if (typeof recordCurrentPosition === 'function') recordCurrentPosition();
+    if (typeof switchMainPillar === 'function') switchMainPillar(pillarId);
+    if (typeof closeChapterModal === 'function') closeChapterModal();
+    setTimeout(() => {
+        const target = document.getElementById(pillarId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const headerCard = target.querySelector('.pillar-header-card') || target;
+            headerCard.classList.add('section-highlight-flash');
+            setTimeout(() => headerCard.classList.remove('section-highlight-flash'), 1800);
+        }
+    }, 120);
+}
+window.jumpToPillar = jumpToPillar;
 
 function jumpToChapter(pillarId, sectionId) {
     recordCurrentPosition();
@@ -33624,11 +33819,817 @@ function renderTable() {
         }
 
 
+        // ==================== 馬匹 18 欄詳細檔案、八維能力雷達圖與血統引擎 (GEMINI.md) ====================
+const SIRE_LINE_DICT = {
+
+    "ミスタープロスペクター系": "ミスタープロスペクター系 (淘金者系 / Mr. Prospector 系)",
+
+    "サンデーサイレンス系": "サンデーサイレンス系 (週日寧靜系 / Sunday Silence 系)",
+
+    "ノーザンダンサー系": "ノーザンダンサー系 (北方舞蹈家系 / Northern Dancer 系)",
+
+    "テスコボーイ系": "テスコボーイ系 (特斯高男孩系 / Tesco Boy 系)",
+
+    "ナスルーラ系": "ナスルーラ系 (納斯魯拉系 / Nasrullah 系)",
+
+    "ロイヤルチャージャー系": "ロイヤルチャージャー系 (皇家衝鋒系 / Royal Charger 系)",
+
+    "ニアークティック系": "ニアークティック系 (新北極系 / Nearctic 系)",
+
+    "ヘイルトゥリーズン系": "ヘイルトゥリーズン系 (向理智致敬系 / Hail to Reason 系)",
+
+    "リファール系": "リファール系 (利法爾系 / Lyphard 系)",
+
+    "ダンジグ系": "ダンジグ系 (丹山/但席格系 / Danzig 系)",
+
+    "サドラーズウェルズ系": "サドラーズウェルズ系 (鞍匠井系 / Sadler's Wells 系)",
+
+    "ストームキャット系": "ストームキャット系 (風暴貓系 / Storm Cat 系)",
+
+    "キングマンボ系": "キングマンボ系 (金滿寶系 / Kingmambo 系)",
+
+    "ボワルセル系": "ボワルセル系 (白沙系 / Bois Roussel 系)",
+
+    "ハイペリオン系": "ハイペリオン系 (海佩里昂系 / Hyperion 系)",
+
+    "ファイントップ系": "ファイントップ系 (美高峰系 / Fine Top 系)",
+
+    "プリンスリーギフト系": "プリンスリーギフト系 (王子禮物系 / Princely Gift 系)",
+
+    "ヒンドスタン系": "ヒンドスタン系 (印度斯坦系 / Hindostan 系)",
+
+    "トウルビヨン系": "トウルビヨン系 (陀飛輪系 / Tourbillon 系)",
+
+    "ミルリーフ系": "ミルリーフ系 (磨坊草系 / Mill Reef 系)",
+
+    "ブランドフォード系": "ブランドフォード系 (白蘭福系 / Blandford 系)",
+
+    "マッチェム系": "マッチェム系 (馬湛系 / Matchem 系)",
+
+    "エクリプス系": "エクリプス系 (日蝕系 / Eclipse 系)",
+
+    "ヘロド系": "ヘロド系 (希律系 / Herod 系)",
+
+    "ネヴァーベンド系": "ネヴァーベンド系 (絕不屈服系 / Never Bend 系)",
+
+    "ボールドルーラー系": "ボールドルーラー系 (勇者統治者系 / Bold Ruler 系)",
+
+    "レッドゴッド系": "レッドゴッド系 (紅神系 / Red God 系)",
+
+    "グレイソヴリン系": "グレイソヴリン系 (灰君主系 / Grey Sovereign 系)",
+
+    "ゼダーン系": "ゼダーン系 (澤達恩系 / Zeddaan 系)",
+
+    "フォルティノ系": "フォルティノ系 (福爾蒂諾系 / Fortino 系)",
+
+    "カロ系": "カロ系 (卡羅系 / Caro 系)",
+
+    "リボー系": "リボー系 (里博系 / Ribot 系)",
+
+    "ネイティヴダンサー系": "ネイティヴダンサー系 (土著舞者系 / Native Dancer 系)",
+
+    "レイズアネイティヴ系": "レイズアネイティヴ系 (培育土著系 / Raise a Native 系)",
+
+    "ダマスカス系": "ダマスカス系 (大馬士革系 / Damascus 系)",
+
+    "サーアイヴァー系": "サーアイヴァー系 (艾佛爵士系 / Sir Ivor 系)",
+
+    "ロベルト系": "ロベルト系 (羅拔圖系 / Roberto 系)",
+
+    "ヌレイエフ系": "ヌレイエフ系 (雷利耶夫系 / Nureyev 系)",
+
+    "ニジンスキー系": "ニジンスキー系 (尼金斯基系 / Nijinsky 系)",
+
+    "ヴァイスリージェント系": "ヴァイスリージェント系 (副攝政系 / Vice Regent 系)",
+
+    "デピュティミニスター系": "デピュティミニスター系 (代理部長系 / Deputy Minister 系)",
+
+    "エーピーインディ系": "エーピーインディ系 (A.P. 印第系 / A.P. Indy 系)",
+
+    "アンブライドルド系": "アンブライドルド系 (不羈系 / Unbridled 系)",
+
+    "シーキングザゴールド系": "シーキングザゴールド系 (淘金尋寶系 / Seeking the Gold 系)",
+
+    "マキャヴェリアン系": "マキャヴェリアン系 (馬基雅維利系 / Machiavellian 系)",
+
+    "フォーティナイナー系": "フォーティナイナー系 (四十九人系 / Forty Niner 系)",
+
+    "ゴーンウエスト系": "ゴーンウエスト系 (西行系 / Gone West 系)",
+
+    "ディープインパクト系": "ディープインパクト系 (大震撼系 / Deep Impact 系)",
+
+    "キングカメハメハ系": "キングカメハメハ系 (夏威夷王系 / King Kamehameha 系)",
+
+    "ハーツクライ系": "ハーツクライ系 (真心呼喚系 / Heart's Cry 系)",
+
+    "ステイゴールド系": "ステイゴールド系 (黃金旅程系 / Stay Gold 系)",
+
+    "マンハッタンカフェ系": "マンハッタンカフェ系 (曼城茶座系 / Manhattan Cafe 系)",
+
+    "ダイワメジャー系": "ダイワメジャー系 (大和主將系 / Daiwa Major 系)",
+
+    "ロードカナロア系": "ロードカナロア系 (龍王系 / Lord Kanaloa 系)",
+
+    "オルフェーヴル系": "オルフェーヴル系 (黃金巨匠系 / Orfevre 系)",
+
+    "ドゥラメンテ系": "ドゥラメンテ系 (強韌美系 / Duramente 系)",
+
+    "キタサンブラック系": "キタサンブラック系 (北部玄駒系 / Kitasan Black 系)",
+
+    "エピファネイア系": "エピファネイア系 (神威啟示系 / Epiphaneia 系)",
+
+    "モーリス系": "モーリス系 (滿樂時系 / Maurice 系)"
+
+};
+
+        const GRADE_16_MAP = {
+            'S+': 16, 'S': 15, 'A+': 14, 'A': 13,
+            'B+': 12, 'B': 11, 'C+': 10, 'C': 9,
+            'D+': 8, 'D': 7, 'E+': 6, 'E': 5,
+            'F+': 4, 'F': 3, 'G+': 2, 'G': 1
+        };
+
+function numFromGrade(g, defVal) {
+
+    if (!g) return defVal || 11;
+
+    const s = String(g).trim().toUpperCase();
+
+    if (GRADE_16_MAP[s]) return GRADE_16_MAP[s];
+
+    const n = parseFloat(s);
+
+    if (!isNaN(n)) {
+
+        if (n > 16) return Math.min(16, Math.max(1, Math.round(n / 5)));
+
+        return Math.min(16, Math.max(1, Math.round(n)));
+
+    }
+
+    return defVal || 11;
+
+}
+
+function generateDynamicSvgRadar(params, labels, maxVal, size) {
+
+    maxVal = maxVal || 16;
+
+    size = size || 280;
+
+    const center = size / 2;
+
+    const radius = 80; // Plenty of room for outer labels
+
+    const numVars = params.length;
+
+    const angleSlice = (Math.PI * 2) / numVars;
+
+    
+
+    let svg = `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" style="max-width:100%; height:auto; overflow:visible;">`;
+
+    
+
+    // Web Grid (4 levels)
+
+    for (let level = 1; level <= 4; level++) {
+
+        const r = (radius / 4) * level;
+
+        let points = [];
+
+        for (let i = 0; i < numVars; i++) {
+
+            const angle = i * angleSlice - Math.PI / 2;
+
+            const x = center + r * Math.cos(angle);
+
+            const y = center + r * Math.sin(angle);
+
+            points.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+
+        }
+
+        svg += `<polygon points="${points.join(' ')}" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>`;
+
+    }
+
+    
+
+    // Axis lines and labels with safe anchor calculation
+
+    for (let i = 0; i < numVars; i++) {
+
+        const angle = i * angleSlice - Math.PI / 2;
+
+        const x = center + radius * Math.cos(angle);
+
+        const y = center + radius * Math.sin(angle);
+
+        svg += `<line x1="${center}" y1="${center}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>`;
+
+        
+
+        const lx = center + (radius + 24) * Math.cos(angle);
+
+        const ly = center + (radius + 24) * Math.sin(angle) + 4;
+
+        let anchor = "middle";
+
+        if (Math.cos(angle) > 0.25) anchor = "start";
+
+        else if (Math.cos(angle) < -0.25) anchor = "end";
+
+        svg += `<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anchor}" fill="#e2e8f0" font-size="10.5" font-weight="bold">${labels[i]}</text>`;
+
+    }
+
+    
+
+    // Data Polygon
+
+    let dataPoints = [];
+
+    for (let i = 0; i < numVars; i++) {
+
+        const r = (params[i] / maxVal) * radius;
+
+        const angle = i * angleSlice - Math.PI / 2;
+
+        const x = center + r * Math.cos(angle);
+
+        const y = center + r * Math.sin(angle);
+
+        dataPoints.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+
+    }
+
+    svg += `<polygon points="${dataPoints.join(' ')}" fill="rgba(34, 197, 94, 0.45)" stroke="#4ade80" stroke-width="2.5" filter="drop-shadow(0 0 6px rgba(74,222,128,0.6))"/>`;
+
+    
+
+    for (let pt of dataPoints) {
+
+        const [px, py] = pt.split(',');
+
+        svg += `<circle cx="${px}" cy="${py}" r="4" fill="#facc15" stroke="#ffffff" stroke-width="1.5"/>`;
+
+    }
+
+    svg += '</svg>';
+
+    return svg;
+
+}
+
+function generateTurfQualityTrackBar(grass, dirt, turfRange) {
+
+    grass = grass || '◎';
+
+    dirt = dirt || '○';
+
+    turfRange = turfRange || '3-5 (3-6)';
+
+    
+
+    let bestStart = 3, bestEnd = 5;
+
+    const m = turfRange.match(/(\d+)-(\d+)/);
+
+    if (m) {
+
+        bestStart = parseInt(m[1], 10);
+
+        bestEnd = parseInt(m[2], 10);
+
+    }
+
+    
+
+    let boxesHtml = '';
+
+    for (let i = 1; i <= 8; i++) {
+
+        let bg = '#334155';
+
+        let col = '#64748b';
+
+        let shadow = '';
+
+        if (i >= bestStart && i <= bestEnd) {
+
+            bg = '#eab308';
+
+            col = '#000';
+
+            shadow = 'box-shadow:0 0 6px rgba(234,179,8,0.5);';
+
+        } else if (i >= Math.max(1, bestStart - 1) && i <= Math.min(8, bestEnd + 1)) {
+
+            bg = '#22c55e';
+
+            col = '#000';
+
+        }
+
+        boxesHtml += `<div style="background:${bg}; color:${col}; font-weight:bold; font-size:0.72rem; text-align:center; padding:4px 0; border-radius:4px; ${shadow}">${i}</div>`;
+
+    }
+
+    
+
+    return `
+
+        <div style="background:rgba(30,41,59,0.8); border:1px solid var(--border-color); border-radius:8px; padding:10px; margin-bottom:12px;">
+
+            <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#94a3b8; margin-bottom:6px; flex-wrap:wrap; gap:4px;">
+
+                <span>🌱 芝質適性範圍：<strong style="color:#fcd34d;">${turfRange}</strong></span>
+
+                <span>馬場適性：<strong style="color:${grass === '◎' ? '#22c55e' : (grass === '×' ? '#ef4444' : '#60a5fa')};">芝 ${grass}</strong> / <strong style="color:${dirt === '◎' ? '#22c55e' : (dirt === '×' ? '#ef4444' : '#60a5fa')};">ダート泥地 ${dirt}</strong></span>
+
+            </div>
+
+            <div style="display:flex; align-items:center; gap:4px;">
+
+                <span style="font-size:0.7rem; color:#93c5fd; font-weight:bold;">軽</span>
+
+                <div style="display:grid; grid-template-columns:repeat(8, 1fr); gap:4px; flex:1;">
+
+                    ${boxesHtml}
+
+                </div>
+
+                <span style="font-size:0.7rem; color:#f87171; font-weight:bold;">重</span>
+
+            </div>
+
+            <div style="font-size:0.7rem; color:#94a3b8; margin-top:4px; text-align:right;"><span style="color:#eab308;">■</span> 得意芝質 | <span style="color:#22c55e;">■</span> 適性範圍 | <span style="color:#64748b;">■</span> 苦手</div>
+
+        </div>
+
+    `;
+
+}
+
+function generateVisualPedigreeTree(horse, cleanQuery) {
+
+    let sire = horse.sire || '-';
+
+    let dam = horse.dam || '-';
+
+    let damsire = horse.damsire || '-';
+
+    let sire_sire = '-';
+
+    let sire_dam = '-';
+
+    let dam_dam = '-';
+
+    let gg = ['-', '-', '-', '-', '-', '-', '-', '-'];
+
+    
+
+    // Famous presets
+
+    if (cleanQuery.includes('ファラオ') || cleanQuery.includes('pharoah')) {
+
+        sire = 'パイオニアオブザナイル';
+
+        dam = 'リトルプリンセスエンマ';
+
+        sire_sire = 'エンパイアメーカー';
+
+        sire_dam = 'スターオブゴーシェン';
+
+        damsire = 'ヤンキージェントルマン';
+
+        dam_dam = 'イクスクルーシヴロゼット';
+
+        gg = ['アンブライドルド', 'トゥーソード', 'ロードアットウォー', 'キャッスルエイト', '-', '-', '-', '-'];
+
+    } else if (cleanQuery.includes('ディープ') || cleanQuery.includes('deep')) {
+
+        sire = 'サンデーサイレンス';
+
+        dam = 'ウインドインハーヘア';
+
+        sire_sire = 'Halo';
+
+        sire_dam = 'Wishing Well';
+
+        damsire = 'Alzao';
+
+        dam_dam = 'Burghclere';
+
+        gg = ['Hail to Reason', 'Cosmah', 'Understanding', 'Mountain Flower', 'Lyphard', 'Lady Rebecca', 'Busted', 'Highclere'];
+
+    } else if (cleanQuery.includes('ノーザンダンサー') || cleanQuery.includes('northern')) {
+
+        sire = 'Nearctic';
+
+        dam = 'Natalma';
+
+        sire_sire = 'Nearco';
+
+        sire_dam = 'Lady Angela';
+
+        damsire = 'Native Dancer';
+
+        dam_dam = 'Almahmoud';
+
+        gg = ['Pharos', 'Nogara', 'Hyperion', 'Sister Sarah', 'Polynesian', 'Geisha', 'Mahmoud', 'Arbitrator'];
+
+    } else if (cleanQuery.includes('サンデー') || cleanQuery.includes('sunday')) {
+
+        sire = 'Halo';
+
+        dam = 'Wishing Well';
+
+        sire_sire = 'Hail to Reason';
+
+        sire_dam = 'Cosmah';
+
+        damsire = 'Understanding';
+
+        dam_dam = 'Mountain Flower';
+
+        gg = ['Turn-to', 'Nothirdchance', 'Cosmic Bomb', 'Almahmoud', 'Promised Land', 'Pretty Kitty', 'Montparnasse', 'Edelweiss'];
+
+    } else {
+
+        if (damsire === '-' && horse.sire_line) {
+
+            damsire = '母父血統因子';
+
+        }
+
+        sire_sire = horse.sire_line || '父系主力祖先';
+
+    }
+
+    
+
+    return `
+
+    <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:12px; margin-bottom:16px;">
+
+        <div style="font-size:0.85rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+
+            <i class="fa-solid fa-dna"></i> ◤ 血統情報 (4 代血統譜視覺矩陣圖)
+
+        </div>
+
+        
+
+        <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
+
+            <table style="width:100%; min-width:540px; border-collapse:separate; border-spacing:3px; font-size:0.75rem; text-align:left;">
+
+                <tbody>
+
+                    <tr>
+
+                        <td rowspan="4" style="background:rgba(59,130,246,0.3); border:1px solid rgba(59,130,246,0.6); color:#93c5fd; padding:10px 8px; border-radius:6px; font-weight:bold; width:33%;">
+
+                            <span style="font-size:0.68rem; color:#60a5fa;">父 (Sire)</span><br/>
+
+                            <strong>${sire}</strong>
+
+                        </td>
+
+                        <td rowspan="2" style="background:rgba(59,130,246,0.25); border:1px solid rgba(59,130,246,0.5); color:#bfdbfe; padding:6px 8px; border-radius:6px; font-weight:bold; width:33%;">
+
+                            <span style="font-size:0.68rem; color:#60a5fa;">祖父</span><br/>
+
+                            ${sire_sire}
+
+                        </td>
+
+                        <td style="background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:#dbeafe; padding:4px 6px; border-radius:4px; width:34%;">
+
+                            <span style="font-size:0.65rem; color:#60a5fa;">曾祖父</span> ${gg[0]}
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td style="background:rgba(244,114,182,0.2); border:1px solid rgba(244,114,182,0.4); color:#fbcfe8; padding:4px 6px; border-radius:4px;">
+
+                            <span style="font-size:0.65rem; color:#f472b6;">曾祖母</span> ${gg[1]}
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td rowspan="2" style="background:rgba(244,114,182,0.25); border:1px solid rgba(244,114,182,0.5); color:#fbcfe8; padding:6px 8px; border-radius:6px; font-weight:bold;">
+
+                            <span style="font-size:0.68rem; color:#f472b6;">祖母</span><br/>
+
+                            ${sire_dam}
+
+                        </td>
+
+                        <td style="background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:#dbeafe; padding:4px 6px; border-radius:4px;">
+
+                            <span style="font-size:0.65rem; color:#60a5fa;">曾祖父</span> ${gg[2]}
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td style="background:rgba(244,114,182,0.2); border:1px solid rgba(244,114,182,0.4); color:#fbcfe8; padding:4px 6px; border-radius:4px;">
+
+                            <span style="font-size:0.65rem; color:#f472b6;">曾祖母</span> ${gg[3]}
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td rowspan="4" style="background:rgba(244,114,182,0.3); border:1px solid rgba(244,114,182,0.6); color:#fbcfe8; padding:10px 8px; border-radius:6px; font-weight:bold;">
+
+                            <span style="font-size:0.68rem; color:#f472b6;">母 (Dam)</span><br/>
+
+                            <strong>${dam}</strong>
+
+                        </td>
+
+                        <td rowspan="2" style="background:rgba(59,130,246,0.25); border:1px solid rgba(59,130,246,0.5); color:#bfdbfe; padding:6px 8px; border-radius:6px; font-weight:bold;">
+
+                            <span style="font-size:0.68rem; color:#60a5fa;">外祖父 (母父)</span><br/>
+
+                            ${damsire}
+
+                        </td>
+
+                        <td style="background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:#dbeafe; padding:4px 6px; border-radius:4px;">
+
+                            <span style="font-size:0.65rem; color:#60a5fa;">曾祖父</span> ${gg[4]}
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td style="background:rgba(244,114,182,0.2); border:1px solid rgba(244,114,182,0.4); color:#fbcfe8; padding:4px 6px; border-radius:4px;">
+
+                            <span style="font-size:0.65rem; color:#f472b6;">曾祖母</span> ${gg[5]}
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td rowspan="2" style="background:rgba(244,114,182,0.25); border:1px solid rgba(244,114,182,0.5); color:#fbcfe8; padding:6px 8px; border-radius:6px; font-weight:bold;">
+
+                            <span style="font-size:0.68rem; color:#f472b6;">外祖母</span><br/>
+
+                            ${dam_dam}
+
+                        </td>
+
+                        <td style="background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:#dbeafe; padding:4px 6px; border-radius:4px;">
+
+                            <span style="font-size:0.65rem; color:#60a5fa;">曾祖父</span> ${gg[6]}
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td style="background:rgba(244,114,182,0.2); border:1px solid rgba(244,114,182,0.4); color:#fbcfe8; padding:4px 6px; border-radius:4px;">
+
+                            <span style="font-size:0.65rem; color:#f472b6;">曾祖母</span> ${gg[7]}
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+function generateBreedingInfoHtml(horse) {
+
+    const factor1 = horse.traits ? horse.traits.split(/[\n,、]/)[0] : 'スピード (SP)';
+
+    const factor2 = (horse.traits && horse.traits.split(/[\n,、]/).length > 1) ? horse.traits.split(/[\n,、]/)[1] : '-';
+
+    const inheritance = horse.inheritance || 'ST優, 母, ST, ST';
+
+    const inYear = horse.year ? `${parseInt(horse.year) + 4}年` : '經典退役年';
+
+    const scenarios = ['1973', '1984', '1991', '1998', '2005', '2012', '2024'];
+
+    const horseBirth = parseInt(horse.year) || 2000;
+
+    
+
+    // Scenario timeline marks
+
+    const initialMarks = scenarios.map(sc => (horseBirth <= parseInt(sc)) ? '<span style="color:#22c55e; font-weight:bold;">○</span>' : '-');
+
+    const spMarks = scenarios.map(sc => '-');
+
+
+
+    return `
+
+    <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:12px; margin-bottom:16px;">
+
+        <div style="font-size:0.85rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+
+            <i class="fa-solid fa-baby"></i> ◤ 繁殖情報 (繁育因子・系統確立・初年度登場年代)
+
+        </div>
+
+
+
+        <div style="font-size:0.8rem; font-weight:bold; color:var(--gold-color); margin-bottom:4px;">▍ 基本情報・備考</div>
+
+        <table style="width:100%; border-collapse:collapse; margin-bottom:10px; font-size:0.75rem; background:rgba(30,41,59,0.7); border-radius:6px; overflow:hidden; border:1px solid var(--border-color);">
+
+            <thead>
+
+                <tr style="background:rgba(15,23,42,0.9); border-bottom:1px solid var(--border-color);">
+
+                    <th style="padding:4px 8px; width:25%;">因子1</th>
+
+                    <th style="padding:4px 8px; width:25%;">因子2</th>
+
+                    <th style="padding:4px 8px; width:25%;">特殊配合</th>
+
+                    <th style="padding:4px 8px; width:25%;">仔出し</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+
+                    <td style="padding:5px 8px;"><strong>${factor1}</strong></td>
+
+                    <td style="padding:5px 8px;">${factor2}</td>
+
+                    <td style="padding:5px 8px;">稲妻配合・三冠</td>
+
+                    <td style="padding:5px 8px;"><strong style="color:#ef4444; font-size:0.9rem;">${horse.foal_quality || '8'}</strong></td>
+
+                </tr>
+
+                <tr style="background:rgba(15,23,42,0.9); border-bottom:1px solid var(--border-color);">
+
+                    <th colspan="2" style="padding:4px 8px;">確立時</th>
+
+                    <th colspan="2" style="padding:4px 8px;">継承優位</th>
+
+                </tr>
+
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+
+                    <td colspan="2" style="padding:5px 8px; color:var(--accent-color); font-weight:bold;">SP系統 (能力因子強化)</td>
+
+                    <td colspan="2" style="padding:5px 8px;">${inheritance}</td>
+
+                </tr>
+
+                <tr style="background:rgba(15,23,42,0.9); border-bottom:1px solid var(--border-color);">
+
+                    <th style="padding:4px 8px;">繁殖入り</th>
+
+                    <th style="padding:4px 8px;">引退年</th>
+
+                    <th colspan="2" style="padding:4px 8px;">繁殖地域</th>
+
+                </tr>
+
+                <tr>
+
+                    <td style="padding:5px 8px;">${inYear}</td>
+
+                    <td style="padding:5px 8px;">架空 (20~25歲)</td>
+
+                    <td colspan="2" style="padding:5px 8px;">${horse.region || '日本 / 美國 / 歐洲'}</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+
+        <div style="font-size:0.8rem; font-weight:bold; color:var(--gold-color); margin-bottom:4px;">▍ 初期繁殖登場 (劇本年代)</div>
+
+        <table style="width:100%; border-collapse:collapse; margin-bottom:10px; font-size:0.75rem; text-align:center; background:rgba(30,41,59,0.7); border-radius:6px; overflow:hidden; border:1px solid var(--border-color);">
+
+            <thead>
+
+                <tr style="background:rgba(15,23,42,0.9); border-bottom:1px solid var(--border-color);">
+
+                    ${scenarios.map(sc => `<th style="padding:4px 6px;">${sc}</th>`).join('')}
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    ${initialMarks.map(m => `<td style="padding:5px 6px;">${m}</td>`).join('')}
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+
+        <div style="font-size:0.8rem; font-weight:bold; color:var(--gold-color); margin-bottom:4px;">▍ SP繁殖登場</div>
+
+        <table style="width:100%; border-collapse:collapse; font-size:0.75rem; text-align:center; background:rgba(30,41,59,0.7); border-radius:6px; overflow:hidden; border:1px solid var(--border-color);">
+
+            <thead>
+
+                <tr style="background:rgba(15,23,42,0.9); border-bottom:1px solid var(--border-color);">
+
+                    ${scenarios.map(sc => `<th style="padding:4px 6px;">${sc}</th>`).join('')}
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    ${spMarks.map(m => `<td style="padding:5px 6px;">${m}</td>`).join('')}
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    `;
+
+}
+
+function getBilingualSireLine(lineName) {
+
+    if (!lineName || lineName === '-') return '主系系統 (日/中並行)';
+
+    const clean = lineName.trim();
+
+    if (SIRE_LINE_DICT[clean]) return SIRE_LINE_DICT[clean];
+
+    for (let k in SIRE_LINE_DICT) {
+
+        if (clean.includes(k) || k.includes(clean)) return SIRE_LINE_DICT[k];
+
+    }
+
+    return `${clean} (日/中並行)`;
+
+}
+
+
         function openModalDirect(item) {
             try {
                 if (!item) return;
+                ensureUnpackedDb();
+
                 const mName = document.getElementById("mName");
-                if (mName) mName.textContent = item.name || "未命名馬匹";
+                if (mName) {
+                    const enText = item.en_name ? ` <span style="font-size:0.92rem; color:#93c5fd; font-weight:normal;">(${item.en_name})</span>` : "";
+                    mName.innerHTML = `${item.name || "未命名名駒"}${enText} <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal;">(${item.year || '史實'}年產)</span>`;
+                }
                 const mTicket = document.getElementById("mTicket");
                 if (mTicket) mTicket.innerHTML = renderTicketBadge(item.ticket);
                 const mSex = document.getElementById("mSex");
@@ -33638,74 +34639,179 @@ function renderTable() {
 
                 const grid = document.getElementById("mGrid");
                 if (!grid) return;
+                grid.className = ""; // 清除舊版 2 欄限制
+                grid.style.display = "flex";
+                grid.style.flexDirection = "column";
+                grid.style.gap = "16px";
                 grid.innerHTML = "";
 
-                const addStat = (label, val, fullWidth = false) => {
-                    if (val === undefined || val === null || val === "") val = "-";
-                    const div = document.createElement("div");
-                    div.className = "stat-item" + (fullWidth ? " full-width" : "");
-                    div.innerHTML = `<div class="stat-label">${label}</div><div class="stat-value">${val}</div>`;
-                    grid.appendChild(div);
-                };
+                // 1. 抽取 8 維能力數值 (SP, 瞬發, 根性, 力量, 柔軟, 精神, 賢さ, 健康)
+                const spVal = typeof item.sp === 'number' ? Math.min(16, Math.max(1, Math.round(item.sp / 5))) : numFromGrade(item.sp_rank, 14);
+                const shunVal = numFromGrade(item.shunhatsu, 13);
+                const konjoVal = numFromGrade(item.konjo, 13);
+                const powerVal = numFromGrade(item.power, 13);
+                const junanVal = numFromGrade(item.junan, 13);
+                const seishinVal = numFromGrade(item.seishin, 13);
+                const keshikosaVal = numFromGrade(item.keshikosa, 13);
+                const kenkoVal = numFromGrade(item.kenko, 12);
 
-                const addTitle = (title) => {
-                    const div = document.createElement("div");
-                    div.className = "modal-section-title";
-                    div.textContent = title;
-                    grid.appendChild(div);
-                };
+                const radarParams = [spVal, shunVal, konjoVal, powerVal, junanVal, seishinVal, keshikosaVal, kenkoVal];
+                const radarLabels = [
+                    `SP (${item.sp_rank || (item.sp ? (item.sp >= 77 ? 'S' : (item.sp >= 72 ? 'A+' : (item.sp >= 68 ? 'A' : 'B'))) : 'A')})`,
+                    `瞬發 (${item.shunhatsu || 'A'})`,
+                    `根性 (${item.konjo || 'A'})`,
+                    `力量 (${item.power || 'A'})`,
+                    `柔軟 (${item.junan || 'A'})`,
+                    `精神 (${item.seishin || 'A'})`,
+                    `賢さ (${item.keshikosa || 'A'})`,
+                    `健康 (${item.kenko || 'B'})`
+                ];
 
-                // Section 1: 🎯 基本資料與身價評級
-                addTitle("🎯 基本資料與身價評級");
-                addStat("誕生年 / 生年", `${item.year || '-'} 年`);
-                addStat("お守り / 馬札", renderTicketBadge(item.ticket));
-                addStat("毛色 (Coat Color)", item.coat_color || "-");
-                addStat("所屬國 / 地區", item.country || item.region || "日本");
-                addStat("評判額 / 評價額", item.price ? `${item.price} 萬 (名聲: ${item.reputation || '-'})` : "-");
-                addStat("競走壽命 (Life)", item.life || "-");
+                // 2. 生成 SVG 八維雷達圖、芝質適性軌道與血統樹
+                const radarSvg = generateDynamicSvgRadar(radarParams, radarLabels, 16, 280);
+                const turfTrackBar = generateTurfQualityTrackBar(item.grass, item.dirt, item.shunhatsu_apt);
+                const bilingualSireLine = getBilingualSireLine(item.sire_line);
+                const visualPedigreeHtml = generateVisualPedigreeTree(item, (item.name || '').toLowerCase());
+                const breedingInfoHtml = generateBreedingInfoHtml(item);
 
-                // Section 2: ⚡ 核心能力與 8 大次能力 (Sub-parameters)
-                addTitle("⚡ 核心能力與 8 大次能力 (Sub-parameters)");
-                const spStr = item.sp_max ? `${item.sp || item.matched_sp || '-'} (上限: ${item.sp_max}) [${item.sp_rank || '-'}]` : (item.sp || item.matched_sp || "-");
-                addStat("スピード (SP 速度 / 上限)", spStr);
-                addStat("スタミナ (耐力 Stamina)", item.stamina || "-");
-                addStat("サブパラ合計 (次能力合計)", item.subpara_total || "-");
-                addStat("瞬發力 (瞬発)", renderRankBadge(item.shunhatsu));
-                addStat("勝負根性 (根性)", renderRankBadge(item.konjo));
-                addStat("力量 (パワー)", renderRankBadge(item.power));
-                addStat("精神力 (精神)", renderRankBadge(item.seishin));
-                addStat("智商 (賢さ)", renderRankBadge(item.keshikosa));
-                addStat("柔軟性 (柔軟)", renderRankBadge(item.junan));
-                addStat("健康 (Health)", renderRankBadge(item.kenko));
-                addStat("脚質 (跑法)", item.running_style || "-");
-                addStat("氣性 / 性格", `${item.temperament || '-'} / ${item.personality || '-'}`);
-
-                // Section 3: 🏟️ 賽道適性與 2026 三大新適性
-                addTitle("🏟️ 賽道適性與 2026 三大新適性");
-                addStat("適性距離", item.distance || "-");
-                addStat("馬場適性 (芝 / ダ)", `${renderTrackBadge(item.grass)} (芝) / ${renderTrackBadge(item.dirt)} (ダ)`);
-                addStat("瞬発力適性 (上限)", item.shunhatsu_apt || "-");
-                addStat("持続力適性 (上限)", item.jizoku_apt || "-");
-                addStat("消耗力適性 (上限)", item.shoumo_apt || "-");
-                addStat("轉彎適性 (小/左/右回り)", `${item.komawari || '-'} / ${item.hidarimawari || '-'} / ${item.migimawari || '-'}`);
-                addStat("體質弱點 (喉鳴/腳部/腰)", `${item.nodonari || '無'} / ${item.kyakubu_fuan || '無'} / ${item.koshi_no_amasa || '無'}`);
-
-                // Section 4: 🧬 血統世系與繁殖遺傳
-                addTitle("🧬 血統世系與繁殖遺傳");
-                addStat("父馬 (Sire)", `${item.sire || '-'} [${item.sire_line || '-'}]`);
-                addStat("母馬 (Dam)", `${item.dam || '-'} [${item.dam_line || '-'}]`);
-                addStat("成長型 (成長力)", `${item.growth || '-'} (${item.growth_cap || '普通'})`);
-                addStat("系統特性 / 遺伝", item.inheritance || "-");
-                addStat("仔出評級 (Foal Quality)", item.foal_quality || item.foal_count || "-");
-
-                // Section 5: ✨ 2026 特性・個性與戰略評析
-                addTitle("✨ 2026 特性・個性與戰略評析");
-                if (item.details && item.details !== "-") {
-                    addStat("💡 詳細特徵 / 配合建議", item.details, true);
+                // 3. 動態跨庫關聯查詢：主要史實產駒 (Progeny)
+                let progenyList = [];
+                const cleanName = (item.name || '').replace(/[\(\（].*?[\)\）]/g, '').trim().toLowerCase();
+                const allHorses = (dbData && dbData.cat1) ? dbData.cat1 : (window.WP10_HORSES_DB || []);
+                
+                if (allHorses.length > 0 && cleanName) {
+                    progenyList = allHorses.filter(h => {
+                        const s = (h.sire || '').toLowerCase();
+                        const d = (h.dam || '').toLowerCase();
+                        return s === cleanName || d === cleanName || (cleanName.length >= 3 && (s.includes(cleanName) || d.includes(cleanName)));
+                    });
                 }
-                addStat("史實固有特性 (Traits)", item.traits || "無特殊特性", true);
-                addStat("馬之個性 (ウマソナ)", item.umarsonality || "-", true);
-                addStat("AI 戰略評語", generateAIComment(item), true);
+
+                let progenyHtml = '';
+                if (progenyList.length > 0) {
+                    progenyHtml = '<div style="font-size:0.8rem; line-height:1.6;">' + progenyList.slice(0, 10).map(p => {
+                        const tBadge = renderTicketBadge(p.ticket);
+                        return `• <strong>${p.name}</strong> ${p.en_name ? `<small style="color:#94a3b8;">(${p.en_name})</small>` : ''} ${tBadge} (${p.year || '-'}年 / ${p.sex || '-'} / SP ${p.sp || '-'})`;
+                    }).join('<br/>') + (progenyList.length > 10 ? `<br/><small style="color:var(--text-muted);">...等共 ${progenyList.length} 匹史實登錄產駒</small>` : '') + '</div>';
+                } else {
+                    progenyHtml = '<span style="color:var(--text-muted); font-size:0.8rem;">無史實登錄產駒 / 繁育自創產駒主力</span>';
+                }
+
+                // 4. 動態跨庫關聯查詢：同母史實兄弟姐妹 (Siblings)
+                let siblingList = [];
+                if (item.dam && item.dam !== '-' && allHorses.length > 0) {
+                    const damQuery = item.dam.toLowerCase();
+                    siblingList = allHorses.filter(h => {
+                        const d = (h.dam || '').toLowerCase();
+                        const n = (h.name || '').toLowerCase();
+                        return (d === damQuery || (damQuery.length >= 3 && d.includes(damQuery))) && n !== cleanName;
+                    });
+                }
+
+                let siblingHtml = '';
+                if (siblingList.length > 0) {
+                    siblingHtml = '<div style="font-size:0.8rem; line-height:1.6;">' + siblingList.slice(0, 8).map(s => {
+                        const tBadge = renderTicketBadge(s.ticket);
+                        return `• <strong>${s.name}</strong> ${s.en_name ? `<small style="color:#94a3b8;">(${s.en_name})</small>` : ''} ${tBadge} (${s.year || '-'}年 / ${s.sex || '-'} / 父: ${s.sire || '-'} / SP ${s.sp || '-'})`;
+                    }).join('<br/>') + (siblingList.length > 8 ? `<br/><small style="color:var(--text-muted);">...等共 ${siblingList.length} 匹同母名駒</small>` : '') + '</div>';
+                } else {
+                    siblingHtml = '<span style="color:var(--text-muted); font-size:0.8rem;">無同母史實兄弟姐妹登錄</span>';
+                }
+
+                // 5. 組合注入完整 18 欄詳細履歷卡片 HTML
+                const spDisplay = item.sp_max ? `${item.sp || item.matched_sp || '-'} (上限: ${item.sp_max}) [${item.sp_rank || '-'}]` : `${item.sp || item.matched_sp || '-'} [${item.sp_rank || '-'}]`;
+
+                grid.innerHTML = `
+                    <!-- 模組 1: 八維雷達圖與核心數值適性區 -->
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:14px; align-items:stretch;">
+                        <!-- 左側：SVG 八維能力雷達圖 -->
+                        <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px; text-align:center; display:flex; flex-direction:column; justify-content:space-between;">
+                            <div style="font-size:0.88rem; font-weight:bold; color:var(--accent-gold); margin-bottom:8px;">
+                                📊 八維能力適性雷達圖 (8-Axis Radar Chart)
+                            </div>
+                            <div style="display:flex; justify-content:center; align-items:center; margin:4px 0;">
+                                ${radarSvg}
+                            </div>
+                            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:8px;">
+                                副屬性合計: <strong style="color:var(--gold-color);">${item.subpara_total || '-'}</strong> / SP 評級: <strong style="color:#4ade80;">${spDisplay}</strong>
+                            </div>
+                        </div>
+
+                        <!-- 右側：核心參數與 1~8 芝質適性軌道 -->
+                        <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px; display:flex; flex-direction:column; justify-content:space-between;">
+                            <div>
+                                <div style="font-size:0.88rem; font-weight:bold; color:var(--accent-color); margin-bottom:10px;">
+                                    ⚡ 核心能力數值與成長曲線
+                                </div>
+                                <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:6px; font-size:0.82rem; margin-bottom:12px;">
+                                    <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>SP (速度)：</strong><span style="color:var(--gold-color); font-weight:bold;">${item.sp || '-'}</span> (${item.sp_rank || '-'})</div>
+                                    <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>ST (耐力)：</strong><span style="color:#38bdf8; font-weight:bold;">${item.stamina || item.st || '50'}</span></div>
+                                    <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>適性距離：</strong>${item.distance || '-'}</div>
+                                    <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>腳質/跑法：</strong>${item.running_style || '-'}</div>
+                                    <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>成長型：</strong>${item.growth || '-'} (${item.growth_cap || '普通'})</div>
+                                    <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>氣性/性格：</strong>${item.temperament || '-'} / ${item.personality || '-'}</div>
+                                </div>
+
+                                <!-- 芝質適性 1~8 軌道 -->
+                                ${turfTrackBar}
+                            </div>
+
+                            <div style="font-size:0.8rem; line-height:1.6; border-top:1px solid rgba(255,255,255,0.08); padding-top:8px;">
+                                • <strong>史實固有特性：</strong><span style="color:#fcd34d;">${item.traits ? item.traits.replace(/\n/g, ' / ') : '標準特性組合'}</span><br/>
+                                • <strong>馬之個性 (ウマソナ)：</strong><span style="color:var(--accent-gold); font-weight:bold;">${(item.umarsonality || '普通').replace(/\n/g, '、')}</span><br/>
+                                • <strong>仔出し (產駒爆發力)：</strong><span style="color:#ef4444; font-weight:bold; font-size:0.95rem;">${item.foal_quality || item.foal_count || '-'}</span> (滿分 10)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 模組 2: 4 代血統譜視覺矩陣圖 -->
+                    ${visualPedigreeHtml}
+
+                    <!-- 模組 3: 賽道適性與 2026 三大展開適性 & 體質弱點 -->
+                    <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px;">
+                        <div style="font-size:0.88rem; font-weight:bold; color:var(--accent-color); margin-bottom:10px; display:flex; align-items:center; gap:6px;">
+                            <i class="fa-solid fa-flag-checkered"></i> 🏟️ 賽道適性、2026 三大展開上限與體質歷程
+                        </div>
+                        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:8px; font-size:0.8rem;">
+                            <div style="background:rgba(30,41,59,0.7); padding:6px 10px; border-radius:6px;"><strong>瞬発力適性：</strong>${item.shunhatsu_apt || '-'}</div>
+                            <div style="background:rgba(30,41,59,0.7); padding:6px 10px; border-radius:6px;"><strong>持続力適性：</strong>${item.jizoku_apt || '-'}</div>
+                            <div style="background:rgba(30,41,59,0.7); padding:6px 10px; border-radius:6px;"><strong>消耗力適性：</strong>${item.shoumo_apt || '-'}</div>
+                            <div style="background:rgba(30,41,59,0.7); padding:6px 10px; border-radius:6px;"><strong>轉彎適性：</strong>小 ${item.komawari || '-'} / 左 ${item.hidarimawari || '-'} / 右 ${item.migimawari || '-'}</div>
+                            <div style="background:rgba(30,41,59,0.7); padding:6px 10px; border-radius:6px;"><strong>體質弱點：</strong>喉鳴 ${item.nodonari || '無'} / 腳部不安 ${item.kyakubu_fuan || '無'} / 腰甘さ ${item.koshi_no_amasa || '無'}</div>
+                            <div style="background:rgba(30,41,59,0.7); padding:6px 10px; border-radius:6px;"><strong>身價與壽命：</strong>${item.price ? `${item.price}萬` : '-'} (名聲: ${item.reputation || '-'} / 壽命: ${item.life || '-'})</div>
+                        </div>
+                    </div>
+
+                    <!-- 模組 4: 繁殖情報與 SP 登場年代 -->
+                    ${breedingInfoHtml}
+
+                    <!-- 模組 5: 主要史實產駒與同母兄弟姐妹 -->
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:14px;">
+                        <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px;">
+                            <div style="font-size:0.85rem; font-weight:bold; color:var(--accent-gold); margin-bottom:8px;">
+                                🐎 主要史實產駒 (Progeny 跨庫動態檢索)
+                            </div>
+                            ${progenyHtml}
+                        </div>
+                        <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px;">
+                            <div style="font-size:0.85rem; font-weight:bold; color:#f472b6; margin-bottom:8px;">
+                                👥 同母名駒史實兄弟姐妹 (Siblings 跨庫動態檢索)
+                            </div>
+                            ${siblingHtml}
+                        </div>
+                    </div>
+
+                    <!-- 模組 6: AI 戰略評語與配合特徵 -->
+                    <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px;">
+                        <div style="font-size:0.88rem; font-weight:bold; color:var(--gold-color); margin-bottom:8px;">
+                            💡 AI 戰略評析與特徵備忘
+                        </div>
+                        <div style="font-size:0.84rem; line-height:1.6; color:#e2e8f0; background:rgba(30,41,59,0.6); padding:10px; border-radius:6px;">
+                            ${generateAIComment(item)}
+                            ${item.details && item.details !== '-' ? `<br/><span style="color:#93c5fd; margin-top:4px; display:inline-block;"><strong>特徵備忘：</strong>${item.details}</span>` : ''}
+                        </div>
+                    </div>
+                `;
 
                 const modal = document.getElementById("horseModal");
                 if (modal) modal.style.display = "flex";
@@ -33715,6 +34821,33 @@ function renderTable() {
                 if (modal) modal.style.display = "flex";
             }
         }
+
+        function openNativeHorseDossier(horseName) {
+            if (!horseName) return;
+            ensureUnpackedDb();
+            let horse = null;
+            const cleanQuery = String(horseName).replace(/[\(\（].*?[\)\）]/g, '').trim().toLowerCase();
+            const allHorses = (dbData && dbData.cat1) ? dbData.cat1 : (window.WP10_HORSES_DB || []);
+            if (allHorses.length > 0) {
+                horse = allHorses.find(h => {
+                    const n = (h.name || '').toLowerCase();
+                    const en = (h.en_name || '').toLowerCase();
+                    return n === cleanQuery || en === cleanQuery || n.includes(cleanQuery) || en.includes(cleanQuery) || cleanQuery.includes(n);
+                });
+            }
+            if (horse) {
+                openModalDirect(horse);
+            } else {
+                openModalDirect({ name: horseName, year: '史實', ticket: '金', sp: 75, sp_rank: 'A' });
+            }
+        }
+
+        window.openNativeHorseDossier = openNativeHorseDossier;
+        window.generateDynamicSvgRadar = generateDynamicSvgRadar;
+        window.generateTurfQualityTrackBar = generateTurfQualityTrackBar;
+        window.generateVisualPedigreeTree = generateVisualPedigreeTree;
+        window.generateBreedingInfoHtml = generateBreedingInfoHtml;
+        window.getBilingualSireLine = getBilingualSireLine;
 
         function closeModal(event) {
             if (event && event.target && event.target.closest('.modal-card') && !event.target.classList.contains('modal-close')) {
