@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.49"></script>
-<script src="core_guides_data.js?v=v03.49"></script>
-<script src="yearly_recs_db.js?v=v03.49"></script>
-<script src="horse_subtopics_data.js?v=v03.49"></script>
+<script src="master_lookup_db.js?v=v03.54"></script>
+<script src="core_guides_data.js?v=v03.54"></script>
+<script src="yearly_recs_db.js?v=v03.54"></script>
+<script src="horse_subtopics_data.js?v=v03.54"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1744,7 +1744,55 @@ li {
 }
 /* ================== 結束強迫症校正 ================== */
 
-    </style>
+    
+/* 右下角浮動按鈕群大小與排版嚴格統一規範 (GEMINI.md) */
+.floating-btn-group {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    z-index: 9999 !important;
+}
+
+.floating-btn-group .btn-floating {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    max-width: 42px !important;
+    max-height: 42px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.1rem !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+    cursor: pointer !important;
+    transition: transform 0.2s ease, filter 0.2s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+
+.btn-floating.btn-top {
+    background: #6366f1 !important;
+    color: #ffffff !important;
+}
+.btn-floating.btn-top:hover {
+    background: #4f46e5 !important;
+}
+
+.floating-btn-group .btn-floating:hover {
+    transform: scale(1.08) !important;
+    filter: brightness(1.15) !important;
+}
+
+</style>
 <style>
 @keyframes sectionFlashAnim {
   0% { box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.8), 0 0 25px rgba(234, 179, 8, 0.5); border-color: #eab308 !important; }
@@ -2345,6 +2393,59 @@ button.chip-btn {
     justify-content: center !important;
 }
 
+
+/* 第 09 章配合理論分類晶片：大小嚴格統一規範 (GEMINI.md 規範 5) */
+#sec-master-table .filter-bar {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    align-items: center !important;
+    padding: 6px 4px 10px 4px !important;
+    margin-bottom: 14px !important;
+    box-sizing: border-box !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(56, 189, 248, 0.4) rgba(15, 23, 42, 0.5) !important;
+}
+
+#sec-master-table .filter-bar::-webkit-scrollbar {
+    height: 4px !important;
+}
+#sec-master-table .filter-bar::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border-radius: 2px !important;
+}
+#sec-master-table .filter-bar::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.4) !important;
+    border-radius: 2px !important;
+}
+#sec-master-table .filter-bar::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.8) !important;
+}
+
+#sec-master-table .filter-bar .filter-btn {
+    width: 176px !important;
+    min-width: 176px !important;
+    max-width: 176px !important;
+    height: 36px !important;
+    border-radius: 20px !important;
+    padding: 5px 12px !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
 /* 第 43 章：每一排內部晶片大小嚴格統一規範 (GEMINI.md 規範 5) */
 #sec-breeding-only-horses .breeding-amulet-rail button.pill {
     min-width: 82px !important;
@@ -2412,7 +2513,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.49</span>
+<span class="version-badge">v03.54</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -4364,8 +4465,6 @@ button.chip-btn.active {
 <div class="section-title"><i class="fa-solid fa-calendar-days"></i> 第 03 章：按年代史實攻略與 1967~2023 各年代推薦名馬完全指南</div>
 <div class="section-meta">
 <span class="pill pill-gold">1967~2023 全世代深度解析</span>
-<span class="pill pill-safe">14 欄獨立齊頭大表</span>
-<span class="pill pill-magic">繁中攻略のポイント</span>
 </div>
 </div>
 <div class="section-body"><div class="callout callout-gold" style="margin-bottom:16px;">
@@ -4729,33 +4828,6 @@ button.chip-btn.active {
 </div>
 </div>
 <!-- 2026 全新核心：繁殖牝馬「活力 (Vitality)」與「活力增強」爆發體系 -->
-<!-- ==================== 一、官方 18 大數據模組架構說明 (燈泡說明) ==================== -->
-<div class="callout callout-gold" style="margin:20px 0 24px; font-size:0.84rem; line-height:1.75;">
-<i class="fa-solid fa-lightbulb" style="color:var(--accent-gold); font-size:1.35rem; margin-top:2px;"></i>
-<div>
-<strong style="color:var(--gold-color); font-size:0.95rem;">💡 官方 18 大深度數據與血統檔案模組說明：</strong><br/>
-        點擊下方大表中任何一匹名駒的「<strong style="color:#38bdf8;">調閱 18 欄</strong>」按鈕，即可於 App 內即時調閱專屬<strong>動態重繪 SVG 八維雷達圖、1~8 芝質輕重刻度軌道、日中雙語系統家族與即時產駒/兄弟姐妹譜系</strong>！完整收錄：<br/>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:6px; margin-top:8px; font-size:0.8rem; color:#cbd5e1;">
-<div>• <strong>基本情報</strong> (馬札/生年/毛色/體高)</div>
-<div>• <strong>能力適性</strong> (SP/耐力/次要合計)</div>
-<div>• <strong>特性技能</strong> (固有/通常/上位特性)</div>
-<div>• <strong>馬場適性</strong> (芝/泥地/1~8芝質)</div>
-<div>• <strong>戰法成長</strong> (腳質/成長型/成長力)</div>
-<div>• <strong>馬之個性 (ウマソナ)</strong> (個性/大賽鬥志發揮)</div>
-<div>• <strong>賽事備忘</strong> (經典戰功/賽事傾向)</div>
-<div>• <strong>體質弱點</strong> (氣性/性格/小迴/持病)</div>
-<div>• <strong>現役生涯</strong> (入廄/引退/所屬地域)</div>
-<div>• <strong>配種繁育</strong> (因子/仔出 (仔出し) 0~10 滿分)</div>
-<div>• <strong>繁殖生涯</strong> (退役年份/配種地域)</div>
-<div>• <strong>繁殖備忘</strong> (高爆發力 (爆発力)繁育戰略)</div>
-<div>• <strong>劇本狀態</strong> (各劇本開局登場身份)</div>
-<div>• <strong>配種行情</strong> (各年代開局配種費)</div>
-<div>• <strong>系統血系</strong> (父系/牝系日中同步)</div>
-<div>• <strong>4 代血統譜</strong> (14 匹血統因子)</div>
-<div>• <strong>主要史實產駒</strong> (實時關聯子嗣)</div>
-<div>• <strong>史實兄弟姐妹</strong> (同母名駒譜系)</div>
-</div>
-</div>
 </div>
 <div class="manual-replica-card" style="background:rgba(15,23,42,0.85); border:1px solid rgba(6,182,212,0.3); border-radius:10px; padding:20px; margin-top:24px; box-shadow:0 6px 20px rgba(0,0,0,0.3);">
 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(6,182,212,0.2); padding-bottom:10px; margin-bottom:16px;">
@@ -4886,8 +4958,7 @@ button.chip-btn.active {
 <div class="section-title"><i class="fa-solid fa-table-list"></i> 第 09 章：全配合理論速查與加成總覽表 (全 39 條目)</div>
 </div>
 <div class="section-body">
-<div class="section-body">
-<div class="filter-bar">
+<div class="filter-bar chip-rail">
 <button class="filter-btn active" onclick="filterCategory('all', this)">全部理論 (36+)</button>
 <button class="filter-btn" onclick="filterCategory('basic', this)">相性與基礎</button>
 <button class="filter-btn" onclick="filterCategory('inbreed', this)">近親與異系</button>
@@ -5219,7 +5290,7 @@ button.chip-btn.active {
 <li><strong>及時停損防下降機制</strong>：若某匹母馬連續 3 年產駒無重賞表現，應暫停配合低能力架空種馬，換用高仔出種馬交配衝擊 G1，避免母馬仔出持續下滑至 1~2 級。</li>
 </ul>
 </div>
-</div></div></section>
+</div></section>
 <!-- ==================== 第 10 章：專屬 4 代血統矩陣圖譜總覽 ==================== -->
 <section class="section-card" id="sec-diagrams">
 <div class="section-header">
@@ -29556,6 +29627,33 @@ function filterTab5Racecourses() {
 </div>
 <!-- 戰略與指南卡片容器 (Guide View) -->
 <div id="guideViewWrapper" style="display:none; margin-bottom:25px;"></div>
+<!-- ==================== 一、官方 18 大數據模組架構說明 (燈泡說明) ==================== -->
+<div class="callout callout-gold" style="margin:20px 0 24px; font-size:0.84rem; line-height:1.75;">
+<i class="fa-solid fa-lightbulb" style="color:var(--accent-gold); font-size:1.35rem; margin-top:2px;"></i>
+<div>
+<strong style="color:var(--gold-color); font-size:0.95rem;">💡 官方 18 大深度數據與血統檔案模組說明：</strong><br/>
+        點擊下方大表中任何一匹名駒的「<strong style="color:#38bdf8;">調閱 18 欄</strong>」按鈕，即可於 App 內即時調閱專屬<strong>動態重繪 SVG 八維雷達圖、1~8 芝質輕重刻度軌道、日中雙語系統家族與即時產駒/兄弟姐妹譜系</strong>！完整收錄：<br/>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:6px; margin-top:8px; font-size:0.8rem; color:#cbd5e1;">
+<div>• <strong>基本情報</strong> (馬札/生年/毛色/體高)</div>
+<div>• <strong>能力適性</strong> (SP/耐力/次要合計)</div>
+<div>• <strong>特性技能</strong> (固有/通常/上位特性)</div>
+<div>• <strong>馬場適性</strong> (芝/泥地/1~8芝質)</div>
+<div>• <strong>戰法成長</strong> (腳質/成長型/成長力)</div>
+<div>• <strong>馬之個性 (ウマソナ)</strong> (個性/大賽鬥志發揮)</div>
+<div>• <strong>賽事備忘</strong> (經典戰功/賽事傾向)</div>
+<div>• <strong>體質弱點</strong> (氣性/性格/小迴/持病)</div>
+<div>• <strong>現役生涯</strong> (入廄/引退/所屬地域)</div>
+<div>• <strong>配種繁育</strong> (因子/仔出 (仔出し) 0~10 滿分)</div>
+<div>• <strong>繁殖生涯</strong> (退役年份/配種地域)</div>
+<div>• <strong>繁殖備忘</strong> (高爆發力 (爆発力)繁育戰略)</div>
+<div>• <strong>劇本狀態</strong> (各劇本開局登場身份)</div>
+<div>• <strong>配種行情</strong> (各年代開局配種費)</div>
+<div>• <strong>系統血系</strong> (父系/牝系日中同步)</div>
+<div>• <strong>4 代血統譜</strong> (14 匹血統因子)</div>
+<div>• <strong>主要史實產駒</strong> (實時關聯子嗣)</div>
+<div>• <strong>史實兄弟姐妹</strong> (同母名駒譜系)</div>
+</div>
+</div>
 </div>
 </section>
 <section class="section-card" id="sec-sires-retire-db" style="margin-bottom:18px;">
@@ -31345,10 +31443,10 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <button class="btn-floating btn-cache" onclick="clearPwaCache()" style="background:#0284c7; color:#fff; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="🔄 清除快取重載">
 <i class="fa-solid fa-arrows-rotate"></i>
 </button>
-<button class="btn-floating btn-back" onclick="goBackLastPosition()" style="background:var(--accent-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="↩️ 返回前一定位">
-<i class="fa-solid fa-rotate-left"></i>
+<button class="btn-floating btn-back" onclick="goBackLastPosition()" style="background:var(--accent-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="⇄ 返回前一定位">
+<i class="fa-solid fa-right-left"></i>
 </button>
-<button class="btn-floating btn-top" onclick="scrollToTop()" style="background:var(--primary); color:#fff; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="⬆️ 回到頂部">
+<button class="btn-floating btn-top" onclick="scrollToTop()" style="background:#6366f1; color:#fff; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="⬆️ 回到頂部">
 <i class="fa-solid fa-arrow-up"></i>
 </button>
 </div>
@@ -33680,6 +33778,7 @@ function renderTable() {
                 { key: "sp", title: "SP" },
                 { key: "stamina", title: "ST" },
                 { key: "subpara_total", title: "サ" },
+                { key: "foal_quality", title: "仔出" },
                 { key: "growth", title: "成型(威力)" },
                 { key: "grass", title: "芝" },
                 { key: "dirt", title: "ダ" },
@@ -33727,7 +33826,7 @@ function renderTable() {
             if (items.length === 0) {
                 window._CURRENT_RENDERED_ITEMS = [];
                 const tr = document.createElement("tr");
-                tr.innerHTML = `<td colspan="14" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
+                tr.innerHTML = `<td colspan="15" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
                 tbody.appendChild(tr);
                 return;
             }
@@ -33758,6 +33857,7 @@ function renderTable() {
                     <td style="text-align:center; font-weight:bold; color:var(--accent-color);">${spVal}</td>
                     <td style="text-align:center; font-weight:bold; color:#38bdf8;">${stVal}</td>
                     <td style="text-align:center; font-weight:bold; color:var(--gold-color);">${subVal}</td>
+                    <td style="text-align:center; font-weight:bold; color:#ef4444;">${item.foal_quality || item.foal_count || "-"}</td>
                     <td style="text-align:center;">${growthVal}</td>
                     <td style="text-align:center;">${renderTrackBadge(item.grass)}</td>
                     <td style="text-align:center;">${renderTrackBadge(item.dirt)}</td>
@@ -33771,7 +33871,7 @@ function renderTable() {
 
             if (items.length > displayLimit) {
                 const trMore = document.createElement("tr");
-                trMore.innerHTML = `<td colspan="14" style="text-align:center; padding:15px; color:var(--accent-color); font-weight:bold;">已顯示前 200 筆（共 ${items.length.toLocaleString()} 筆）。請縮小篩選條件以精確瀏覽。</td>`;
+                trMore.innerHTML = `<td colspan="15" style="text-align:center; padding:15px; color:var(--accent-color); font-weight:bold;">已顯示前 200 筆（共 ${items.length.toLocaleString()} 筆）。請縮小篩選條件以精確瀏覽。</td>`;
                 tbody.appendChild(trMore);
             }
         }
