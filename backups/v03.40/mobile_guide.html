@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.35"></script>
-<script src="core_guides_data.js?v=v03.35"></script>
-<script src="yearly_recs_db.js?v=v03.35"></script>
-<script src="horse_subtopics_data.js?v=v03.35"></script>
+<script src="master_lookup_db.js?v=v03.40"></script>
+<script src="core_guides_data.js?v=v03.40"></script>
+<script src="yearly_recs_db.js?v=v03.40"></script>
+<script src="horse_subtopics_data.js?v=v03.40"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1757,7 +1757,7 @@ li {
 }
 </style>
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.35) */
+/* Unified Amulet & Badge Tokens (v03.39) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -2167,7 +2167,7 @@ button.chip-btn {
     color: #94a3b8 !important;
     border: 1px solid rgba(56, 189, 248, 0.25) !important;
     border-radius: 20px !important;
-    padding: 5px 14px !important;
+    padding: 5px 12px !important;
     font-size: 0.82rem !important;
     font-weight: 700 !important;
     cursor: pointer !important;
@@ -2179,7 +2179,38 @@ button.chip-btn {
     justify-content: center !important;
     gap: 6px !important;
     flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+    height: 32px !important;
+    line-height: 20px !important;
     box-shadow: none !important;
+}
+
+/* 第 44 章：每一排內部晶片大小嚴格統一規範 (GEMINI.md 規範 5) */
+#sec-racehorses-full-db .racehorse-region-rail button.pill {
+    min-width: 108px !important;
+    justify-content: center !important;
+}
+#sec-racehorses-full-db .racehorse-sex-rail button.pill {
+    min-width: 82px !important;
+    justify-content: center !important;
+}
+#sec-racehorses-full-db .racehorse-amulet-rail button.pill {
+    min-width: 82px !important;
+    justify-content: center !important;
+}
+
+/* 第 43 章：每一排內部晶片大小嚴格統一規範 (GEMINI.md 規範 5) */
+#sec-breeding-only-horses .breeding-amulet-rail button.pill {
+    min-width: 82px !important;
+    justify-content: center !important;
+}
+#sec-breeding-only-horses .breeding-sex-rail button.pill {
+    min-width: 82px !important;
+    justify-content: center !important;
+}
+#sec-breeding-only-horses .breeding-region-rail button.pill {
+    min-width: 82px !important;
+    justify-content: center !important;
 }
 
 /* 懸停狀態 */
@@ -2235,7 +2266,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.35</span>
+<span class="version-badge">v03.40</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -29309,7 +29340,7 @@ function filterTab5Racecourses() {
 <option value="ALL">全部性別</option>
 <option value="牡">牡馬</option>
 <option value="牝">牝馬</option>
-<option value="騙">騸馬</option>
+<option value="騸">⚲ 騸馬 (セン馬)</option>
 </select>
 </div>
 <div class="filter-group">
@@ -29474,33 +29505,31 @@ function filterTab5Racecourses() {
 </div>
 <!-- 篩選控制面板 -->
 <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:8px; padding:12px; margin-bottom:14px;">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
-<div class="md:col-span-4">
+<div style="margin-bottom:10px;">
 <div style="position:relative;">
 <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:12px;"></i>
 <input id="breedHorseSearchInput" oninput="filterBreedingHorsesTable()" placeholder="搜尋馬名 (日/英)、父馬、母馬、特性..." style="width:100%; padding:6px 10px 6px 30px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:6px; color:var(--text-main); font-size:12px;" type="text"/>
 </div>
 </div>
-<!-- 馬札篩選 -->
-<div class="md:col-span-5 ch43-46-chip-rail">
+<!-- 第一排：馬札篩選軌道 (每一排晶片大小嚴格統一 82px) -->
+<div class="ch43-46-chip-rail breeding-amulet-rail" style="margin-bottom:8px !important;">
 <button class="pill active" onclick="setBreedAmuletFilter('ALL', this)">全部馬札</button>
 <button class="pill" onclick="setBreedAmuletFilter('虹', this)" style="  color:#ec4899;">🌈 虹札</button>
 <button class="pill" onclick="setBreedAmuletFilter('金', this)" style="  color:#eab308;">🥇 金札</button>
 <button class="pill" onclick="setBreedAmuletFilter('銀', this)" style="  color:#94a3b8;">🥈 銀札</button>
 <button class="pill" onclick="setBreedAmuletFilter('銅', this)" style="  color:#f97316;">🥉 銅札</button>
 <button class="pill" onclick="setBreedAmuletFilter('緑', this)" style="  color:#22c55e;">🟢 綠札</button>
-<button class="pill" onclick="setBreedAmuletFilter('無', this)" style="  color:#64748b;">⚪ 免費無札</button>
+<button class="pill" onclick="setBreedAmuletFilter('無', this)" style="  color:#64748b;">⚪ 無札</button>
 </div>
-<!-- 性別篩選 -->
-<div class="md:col-span-3 text-right flex justify-end gap-1">
+<!-- 第二排：性別切換軌道 (每一排晶片大小嚴格統一 82px) -->
+<div class="ch43-46-chip-rail breeding-sex-rail" style="margin-bottom:8px !important;">
 <button class="pill active" onclick="setBreedSexFilter('ALL', this)">全部性別</button>
 <button class="pill" onclick="setBreedSexFilter('牡', this)" style="  color:#38bdf8;">♂ 牡馬</button>
 <button class="pill" onclick="setBreedSexFilter('牝', this)" style="  color:#f472b6;">♀ 牝馬</button>
 </div>
-</div>
-<div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; padding-top:8px; border-top:1px dashed var(--border-color);">
-<!-- 地域篩選 -->
-<div class="flex gap-2">
+<!-- 第三排：繋養地域篩選軌道 (每一排晶片大小嚴格統一 82px) -->
+<div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px; padding-top:8px; border-top:1px dashed var(--border-color);">
+<div class="ch43-46-chip-rail breeding-region-rail" style="margin-bottom:0 !important;">
 <button class="pill active" onclick="setBreedRegionFilter('ALL', this)">全部繋養地</button>
 <button class="pill" onclick="setBreedRegionFilter('日本', this)">🇯🇵 日本</button>
 <button class="pill" onclick="setBreedRegionFilter('美國', this)">🇺🇸 美國</button>
@@ -29509,7 +29538,7 @@ function filterTab5Racecourses() {
 <button class="pill" onclick="setBreedRegionFilter('法國', this)">🇫🇷 法國</button>
 <button class="pill" onclick="setBreedRegionFilter('澳洲', this)">🇦🇺 澳洲</button>
 </div>
-<span id="breedHorseCountBadge" style="font-size:11.5px; color:var(--text-muted);">顯示共 4,314 匹繁殖史實馬</span>
+<span id="breedHorseCountBadge" style="font-size:11.5px; color:var(--text-muted); white-space:nowrap; margin-left:12px;">顯示共 4,314 匹繁殖史實馬</span>
 </div>
 </div>
 <!-- 繁殖專用史實馬資料大表 -->
@@ -29566,30 +29595,28 @@ function filterTab5Racecourses() {
 </div>
 <!-- 篩選控制面板 -->
 <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:8px; padding:12px; margin-bottom:14px;">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
-<div class="md:col-span-4">
+<div style="margin-bottom:10px;">
 <div style="position:relative;">
 <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:12px;"></i>
 <input id="racehorseSearchInput" oninput="filterRacehorsesTable()" placeholder="搜尋競走馬名 (日/英)、父馬、母馬、特性、馬之個性 (ウマソナ)..." style="width:100%; padding:6px 10px 6px 30px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:6px; color:var(--text-main); font-size:12px;" type="text"/>
 </div>
 </div>
-<!-- 區域切換 -->
-<div class="md:col-span-4 ch43-46-chip-rail">
-<button class="pill active" onclick="setRacehorseRegionFilter('ALL', this)">全部史實馬</button>
-<button class="pill" onclick="setRacehorseRegionFilter('日本', this)">🇯🇵 日本賽駒 (7,884匹)</button>
-<button class="pill" onclick="setRacehorseRegionFilter('海外', this)">🌍 海外賽駒 (8,686匹)</button>
+<!-- 第一排：賽駒地域切換軌道 (每一排晶片大小嚴格統一 108px) -->
+<div class="ch43-46-chip-rail racehorse-region-rail" style="margin-bottom:8px !important;">
+<button class="pill active" onclick="setRacehorseRegionFilter('ALL', this)" title="全部史實賽駒 (16,570 匹)">全部賽駒</button>
+<button class="pill" onclick="setRacehorseRegionFilter('日本', this)" title="日本賽駒 (7,884 匹)">🇯🇵 日本賽駒</button>
+<button class="pill" onclick="setRacehorseRegionFilter('海外', this)" title="海外賽駒 (8,686 匹)">🌍 海外賽駒</button>
 </div>
-<!-- 性別篩選 -->
-<div class="md:col-span-4 text-right flex justify-end gap-1">
+<!-- 第二排：性別切換軌道 (每一排晶片大小嚴格統一 82px) -->
+<div class="ch43-46-chip-rail racehorse-sex-rail" style="margin-bottom:8px !important;">
 <button class="pill active" onclick="setRacehorseSexFilter('ALL', this)">全部性別</button>
 <button class="pill" onclick="setRacehorseSexFilter('牡', this)" style="  color:#38bdf8;">♂ 牡馬</button>
 <button class="pill" onclick="setRacehorseSexFilter('牝', this)" style="  color:#f472b6;">♀ 牝馬</button>
-<button class="pill" onclick="setRacehorseSexFilter('騸', this)" style="  color:#a855f7;">騸馬</button>
+<button class="pill" onclick="setRacehorseSexFilter('騸', this)" style="  color:#a855f7;" title="騸馬 / セン馬 (去勢馬，不可配種繁殖)">⚲ 騸馬</button>
 </div>
-</div>
-<div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; padding-top:8px; border-top:1px dashed var(--border-color);">
-<!-- 馬札篩選 -->
-<div class="ch43-46-chip-rail" style="margin-bottom:0 !important;">
+<!-- 第三排：馬札篩選軌道 (每一排晶片大小嚴格統一 82px) -->
+<div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px; padding-top:8px; border-top:1px dashed var(--border-color);">
+<div class="ch43-46-chip-rail racehorse-amulet-rail" style="margin-bottom:0 !important;">
 <button class="pill active" onclick="setRacehorseAmuletFilter('ALL', this)">全部馬札</button>
 <button class="pill" onclick="setRacehorseAmuletFilter('虹', this)" style="  color:#ec4899;">🌈 虹札</button>
 <button class="pill" onclick="setRacehorseAmuletFilter('金', this)" style="  color:#eab308;">🥇 金札</button>
@@ -29598,7 +29625,7 @@ function filterTab5Racecourses() {
 <button class="pill" onclick="setRacehorseAmuletFilter('緑', this)" style="  color:#22c55e;">🟢 綠札</button>
 <button class="pill" onclick="setRacehorseAmuletFilter('無', this)" style="  color:#64748b;">⚪ 無札</button>
 </div>
-<span id="racehorseCountBadge" style="font-size:11.5px; color:var(--text-muted);">顯示共 16,570 匹史實競走馬</span>
+<span id="racehorseCountBadge" style="font-size:11.5px; color:var(--text-muted); white-space:nowrap; margin-left:12px;">顯示共 16,570 匹史實競走馬</span>
 </div>
 </div>
 <!-- 競走馬全量數據大表 -->
@@ -29610,7 +29637,7 @@ function filterTab5Racecourses() {
 <th class="sortable-th" onclick="sortRacehorseTable('name_en')" style="min-width:150px; text-align:left !important;">英文馬名 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('amulet')" style="width:70px; text-align:left !important;">馬札 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('birth_year')" style="width:80px; text-align:left !important;">生年 ⇅</th>
-<th class="sortable-th" onclick="sortRacehorseTable('sex')" style="width:80px; text-align:left !important;">性別 ⇅</th>
+<th class="sortable-th" onclick="sortRacehorseTable('sex')" style="min-width:90px; text-align:left !important;">性別 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('coat')" style="width:80px; text-align:left !important;">毛色 ⇅</th>
 <th style="width:80px; text-align:left !important;">生國</th>
 <th class="sortable-th" onclick="sortRacehorseTable('stable_country')" style="width:80px; text-align:left !important;">所屬 ⇅</th>
@@ -30534,7 +30561,7 @@ function renderSelectedEra(yr) {
         <tr style="background:${rowBg}; border-bottom:1px solid rgba(255,255,255,0.05);">
             <td style="text-align:left !important;">${ticketBadge}</td>
             <td style="text-align:left !important;">${markPill}</td>
-            <td style="text-align:left !important;">${sexBadge}</td>
+            <td style="text-align:left !important; white-space:nowrap !important;">${sexBadge}</td>
             <td style="text-align:left !important;"><strong style="color:var(--gold-color); font-size:0.95rem;">${h.name}</strong></td>
             <td style="text-align:left !important; font-size:0.86rem; line-height:1.6; color:var(--text-color);">${h.comment}</td>
         </tr>
@@ -30836,14 +30863,14 @@ function renderBreedingTable() {
                     h.amulet === '緑' ? '<span class="badge" style="background:#22c55e; color:#fff;">綠</span>' :
                     '<span class="badge" style="background:#64748b; color:#fff;">無</span>';
                     
-    const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;">牝</strong>' : '<strong style="color:#38bdf8;">牡</strong>';
+    const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;" title="牝馬 (雌馬)">♀ 牝</strong>' : '<strong style="color:#38bdf8;" title="牡馬 (雄馬)">♂ 牡</strong>';
     
     html += `<tr>
       <td style="font-weight:700; text-align:left !important;">${h.name_jp}</td>
       <td style="color:var(--text-muted); font-size:11px; text-align:left !important;">${h.name_en}</td>
       <td style="text-align:left !important;">${amBadge}</td>
       <td style="font-weight:700; color:var(--primary); text-align:left !important;">${h.birth_year}</td>
-      <td style="text-align:left !important;">${sexBadge}</td>
+      <td style="text-align:left !important; white-space:nowrap !important;">${sexBadge}</td>
       <td style="text-align:left !important;">${h.coat}</td>
       <td style="text-align:left !important;">${h.birth_country}</td>
       <td style="text-align:left !important;">${h.stable_country}</td>
@@ -30984,6 +31011,11 @@ function renderRacehorsesTable() {
       va = racehorseAmuletMap[va] || 0;
       vb = racehorseAmuletMap[vb] || 0;
     }
+    if (racehorseSortKey === 'sex') {
+      const sOrder = s => s.includes('牡') ? 1 : (s.includes('牝') ? 2 : 3);
+      va = sOrder(a.sex);
+      vb = sOrder(b.sex);
+    }
     if (typeof va === 'string') {
       return racehorseSortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
     }
@@ -31015,14 +31047,14 @@ function renderRacehorsesTable() {
                     h.amulet === '緑' ? '<span class="badge" style="background:#22c55e; color:#fff;">綠</span>' :
                     '<span class="badge" style="background:#64748b; color:#fff;">無</span>';
                     
-    const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;">牝</strong>' : (h.sex.includes('騸') ? '<strong style="color:#a855f7;">騸</strong>' : '<strong style="color:#38bdf8;">牡</strong>');
+    const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;" title="牝馬 (雌馬)">♀ 牝</strong>' : (h.sex.includes('騸') ? '<strong style="color:#a855f7;" title="騸馬 / セン馬 (去勢馬，無法配種)">⚲ 騸 (セン)</strong>' : '<strong style="color:#38bdf8;" title="牡馬 (雄馬)">♂ 牡</strong>');
     
     html += `<tr>
       <td style="font-weight:700; text-align:left !important;">${h.name_jp}</td>
       <td style="color:var(--text-muted); font-size:11px; text-align:left !important;">${h.name_en || '-'}</td>
       <td style="text-align:left !important;">${amBadge}</td>
       <td style="font-weight:700; color:var(--primary); text-align:left !important;">${h.birth_year}</td>
-      <td style="text-align:left !important;">${sexBadge}</td>
+      <td style="text-align:left !important; white-space:nowrap !important;">${sexBadge}</td>
       <td style="text-align:left !important;">${h.coat}</td>
       <td style="text-align:left !important;">${h.birth_country}</td>
       <td style="text-align:left !important;">${h.stable_country}</td>
