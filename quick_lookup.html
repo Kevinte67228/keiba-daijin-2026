@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.45"></script>
-<script src="core_guides_data.js?v=v03.45"></script>
-<script src="yearly_recs_db.js?v=v03.45"></script>
-<script src="horse_subtopics_data.js?v=v03.45"></script>
+<script src="master_lookup_db.js?v=v03.46"></script>
+<script src="core_guides_data.js?v=v03.46"></script>
+<script src="yearly_recs_db.js?v=v03.46"></script>
+<script src="horse_subtopics_data.js?v=v03.46"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2021,6 +2021,49 @@ button.chip-btn.active:hover,
 .ch43-46-chip-rail::-webkit-scrollbar-thumb:hover {
     background: #38bdf8 !important;
 }
+
+/* 八大支柱快速跳轉標題與直達按鈕樣式 */
+.chapter-pillar-title {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    padding: 8px 14px !important;
+    margin-bottom: 10px !important;
+    border-radius: 8px !important;
+    background: rgba(30, 41, 59, 0.6) !important;
+    border: 1px solid rgba(56, 189, 248, 0.2) !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    user-select: none !important;
+}
+.chapter-pillar-title:hover {
+    background: rgba(56, 189, 248, 0.15) !important;
+    border-color: #38bdf8 !important;
+    transform: translateX(4px);
+    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.25) !important;
+}
+.pillar-jump-tag {
+    font-size: 0.75rem !important;
+    padding: 3px 10px !important;
+    border-radius: 12px !important;
+    background: rgba(56, 189, 248, 0.15) !important;
+    color: #38bdf8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.35) !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    transition: all 0.2s ease !important;
+}
+.chapter-pillar-title:hover .pillar-jump-tag {
+    background: #38bdf8 !important;
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.5) !important;
+}
+
 </style>
 <style id="dark-calc-select-style">
 /* 下拉選單與選單選項暗黑科技風優化，徹底消除白底死角 */
@@ -2387,7 +2430,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.45</span>
+<span class="version-badge">v03.46</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -31338,11 +31381,26 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <i class="fa-solid fa-magnifying-glass"></i>
 <input id="chapterFilterInput" oninput="filterChapterList()" placeholder="🔍 全局內文檢索：輸入任何關鍵字 (如: 爆發力 (爆発力), 評語, 三冠, 史實調教, 繁育, 異名, 推薦馬)..." type="text"/>
 </div>
+<!-- 八大支柱快捷跳轉導航列 -->
+<div class="chip-rail modal-pillar-chips" style="margin-bottom: 12px; padding: 6px 4px 10px 4px; display: flex; gap: 8px; overflow-x: auto;">
+  <button class="chip-btn" onclick="jumpToPillar('pillar-secrets')"><i class="fa-solid fa-crown" style="color:#38bdf8;"></i> 支柱一</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-breed')"><i class="fa-solid fa-dna" style="color:#06b6d4;"></i> 支柱二</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-foals')"><i class="fa-solid fa-horse" style="color:#10b981;"></i> 支柱三</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-train')"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> 支柱四</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-races')"><i class="fa-solid fa-trophy" style="color:#ec4899;"></i> 支柱五</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-ranch')"><i class="fa-solid fa-house-chimney" style="color:#a855f7;"></i> 支柱六</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-db')"><i class="fa-solid fa-magnifying-glass" style="color:#eab308;"></i> 支柱七</button>
+  <button class="chip-btn" onclick="jumpToPillar('pillar-lectures')"><i class="fa-solid fa-graduation-cap" style="color:#6366f1;"></i> 支柱八</button>
+</div>
 <div class="chapter-list-container" id="chapterListContainer">
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#38bdf8; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-crown"></i> 👑 支柱一：開局劇本年代與史實攻略 (第 01 ~ 07 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-secrets')" style="color:#38bdf8;" title="點擊直達【支柱一】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-crown"></i> 支柱一：開局劇本年代與史實攻略 (第 01 ~ 07 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-start-guide')">
 <span class="jump-icon"><i class="fa-solid fa-flag-checkered"></i></span>
@@ -31382,9 +31440,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#06b6d4; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-dna"></i> 🧬 支柱二：配合繁育大系・四大指標與爆發力 (爆発力)理論 (第 08 ~ 21 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-breed')" style="color:#06b6d4;" title="點擊直達【支柱二】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-dna"></i> 支柱二：配合繁育大系・四大指標與爆發力 (爆発力)理論 (第 08 ~ 21 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-metrics')">
 <span class="jump-icon"><i class="fa-solid fa-gauge-high"></i></span>
@@ -31459,9 +31521,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#10b981; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-horse"></i> 🐎 支柱三：幼駒培育・相馬心法與出生事件 (第 22 ~ 24 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-foals')" style="color:#10b981;" title="點擊直達【支柱三】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-horse"></i> 支柱三：幼駒培育・相馬心法與出生事件 (第 22 ~ 24 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-potential')">
 <span class="jump-icon"><i class="fa-solid fa-eye"></i></span>
@@ -31481,9 +31547,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#f59e0b; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-bolt"></i> ⚡ 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (ウマソナ) (第 25 ~ 30 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-train')" style="color:#f59e0b;" title="點擊直達【支柱四】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-bolt"></i> 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (ウマソナ) (第 25 ~ 30 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-status-encyclopedia')">
 <span class="jump-icon"><i class="fa-solid fa-address-card"></i></span>
@@ -31518,9 +31588,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#ec4899; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-trophy"></i> 🏆 支柱五：重賞日程・全球三冠・熱潮與賽馬場特性 (第 31 ~ 35 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-races')" style="color:#ec4899;" title="點擊直達【支柱五】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-trophy"></i> 支柱五：重賞日程・全球三冠・熱潮與賽馬場特性 (第 31 ~ 35 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-stakes-master')">
 <span class="jump-icon"><i class="fa-solid fa-trophy"></i></span>
@@ -31550,9 +31624,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#a855f7; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-house-chimney"></i> 🏡 支柱六：牧場經營・人物技能・婚姻與俱樂部法人 (第 36 ~ 40 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-ranch')" style="color:#a855f7;" title="點擊直達【支柱六】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-house-chimney"></i> 支柱六：牧場經營・人物技能・婚姻與俱樂部法人 (第 36 ~ 40 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-farm-facilities')">
 <span class="jump-icon"><i class="fa-solid fa-house-chimney"></i></span>
@@ -31582,9 +31660,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#eab308; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-magnifying-glass"></i> 🏇 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 ~ 46 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-db')" style="color:#eab308;" title="點擊直達【支柱七】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-magnifying-glass"></i> 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 ~ 46 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-horse-db')">
 <span class="jump-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -31619,9 +31701,13 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 </div>
 <div class="chapter-pillar-group">
-<div class="chapter-pillar-title" style="color:#6366f1; font-weight:800; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px; margin-bottom:10px;">
-<i class="fa-solid fa-graduation-cap"></i> 🎓 支柱八：名師實戰講堂・線上對戰與系統機能 (第 47 ~ 49 章)
+<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-lectures')" style="color:#6366f1;" title="點擊直達【支柱八】">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-graduation-cap"></i> 支柱八：名師實戰講堂・線上對戰與系統機能 (第 47 ~ 49 章)
+  
   </div>
+  <span class="pillar-jump-tag"><i class="fa-solid fa-arrow-right"></i> 直達支柱</span>
+</div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-official-lectures')">
 <span class="jump-icon"><i class="fa-solid fa-graduation-cap"></i></span>
@@ -31776,6 +31862,23 @@ function closeChapterModal(event) {
     const m = document.getElementById("chapterModal");
     if (m) m.style.display = "none";
 }
+
+
+function jumpToPillar(pillarId) {
+    if (typeof recordCurrentPosition === 'function') recordCurrentPosition();
+    if (typeof switchMainPillar === 'function') switchMainPillar(pillarId);
+    if (typeof closeChapterModal === 'function') closeChapterModal();
+    setTimeout(() => {
+        const target = document.getElementById(pillarId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const headerCard = target.querySelector('.pillar-header-card') || target;
+            headerCard.classList.add('section-highlight-flash');
+            setTimeout(() => headerCard.classList.remove('section-highlight-flash'), 1800);
+        }
+    }, 120);
+}
+window.jumpToPillar = jumpToPillar;
 
 function jumpToChapter(pillarId, sectionId) {
     recordCurrentPosition();
