@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.39"></script>
-<script src="core_guides_data.js?v=v03.39"></script>
-<script src="yearly_recs_db.js?v=v03.39"></script>
-<script src="horse_subtopics_data.js?v=v03.39"></script>
+<script src="master_lookup_db.js?v=v03.44"></script>
+<script src="core_guides_data.js?v=v03.44"></script>
+<script src="yearly_recs_db.js?v=v03.44"></script>
+<script src="horse_subtopics_data.js?v=v03.44"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -920,17 +920,32 @@
         }
 
         /* 百科卡片與區塊 */
-        .pillar-header-card {
-            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
-            border: 1px solid #3b82f6;
-            border-radius: 12px;
-            padding: 14px 18px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+/* 八大支柱旗艦級表頭卡片標準規範 (強制 24px 左側呼吸間距，杜絕文字交疊) */
+        .pillar-header-card, .pillar-header {
+            position: relative !important;
+            border-radius: 12px !important;
+            padding: 16px 24px !important;
+            padding-left: 24px !important;
+            margin-bottom: 20px !important;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+            box-sizing: border-box !important;
+            overflow: hidden !important;
         }
-        [data-theme="light"] .pillar-header-card {
-            background: linear-gradient(135deg, #e0f2fe 0%, #f1f5f9 100%);
-            border-color: #60a5fa;
+        .pillar-header-card h2, .pillar-header h2 {
+            margin: 0 0 8px 0 !important;
+            font-size: 1.25rem !important;
+            font-weight: 800 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            line-height: 1.4 !important;
+            color: var(--gold-color) !important;
+        }
+        .pillar-header-card p, .pillar-header p {
+            margin: 0 !important;
+            font-size: 0.86rem !important;
+            color: var(--text-muted) !important;
+            line-height: 1.6 !important;
         }
         .pillar-header-card h2 { font-size: 1.2rem; font-weight: 800; color: var(--gold-color); margin-bottom: 4px; }
         .pillar-header-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
@@ -2266,7 +2281,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.39</span>
+<span class="version-badge">v03.44</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -2326,9 +2341,9 @@ button.chip-btn.active {
 <!-- 7 大專題 Pillar 內容區 -->
 <!-- Pillar 1: 👑 開局劇本・最古劇本・守護符與通關秘技 -->
 <div class="pillar-content active" id="pillar-secrets">
-<div class="pillar-header-card">
-<h2>👑 開局劇本・守護符日曆・超級巨星馬與通關秘技 (Scenarios &amp; Secrets)</h2>
-<p>【第 1 章 ~ 第 7 章】開局劇本年代與史實名馬選拔指南、1968 年最古開局劇本完全攻略、按年代史實攻略與 1967~2023 各年代推薦名馬、守護符 (御守) 獲得全圖鑑與兌換日曆、超級巨星名駒 (スーパースターホース) 機制解析與歷代 SH 完全名單、+40 爆發力 (爆発力)滿貫公式與版本演進差異</p>
+<div class="pillar-header-card" style="border-left: 5px solid #f59e0b !important; padding: 16px 24px !important; margin-bottom: 20px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(15,23,42,0.88)) !important; box-sizing: border-box !important;">
+<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-crown" style="color: #f59e0b;"></i> 👑 支柱一：開局劇本年代與史實攻略 (第 01 章 ~ 第 07 章)</h2>
+<p style="margin: 0 !important; color: var(--text-muted) !important; font-size: 0.86rem !important; line-height: 1.6 !important;">【第 01 章 ~ 第 07 章】開局劇本年代與史實名馬選拔指南、1968 年最古開局劇本完全攻略、按年代史實攻略與 1967~2023 各年代推薦名馬、守護符 (御守) 獲得全圖鑑與兌換日曆、超級巨星名駒 (スーパースターホース) 機制解析與歷代 SH 完全名單、+40 爆發力 (爆発力)滿貫公式與版本演進差異</p>
 </div>
 <section class="section-card" id="sec-start-guide">
 <div class="section-header">
@@ -2348,7 +2363,6 @@ button.chip-btn.active {
 <div style="font-size:1.15rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-flag-checkered"></i> 👑【初年度完全攻略】開局第 1 年（1968年・體驗版範圍）全 52 週通關指南
         </div>
-<span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">完整全量圖文收錄・日中對照</span>
 </div>
 <p style="font-size:0.86rem; line-height:1.75; color:var(--text-main); margin-bottom:16px;">
         本攻略詳解《Winning Post 10 2026》<strong>開局第 1 年（初年度）</strong>的每週關鍵節點、事件觸發、知人相遇、能力解鎖、贈送馬匹選擇、春季配種與拍賣會淘金 SOP。無論是 1968 年最古劇本還是其他年代劇本開局，皆可遵循此流程奠定長達數十年的牧場霸業！
@@ -2580,10 +2594,6 @@ button.chip-btn.active {
 <div style="font-size:1.15rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-horse-head"></i> 🏇【全年代初期讓渡馬完全圖鑑】6 大節點讓渡名駒詳解 (1968~2027)
         </div>
-<span class="pill pill-gold" style="font-size:0.8rem; padding:4px 8px;">全劇本獨立分行・日中對照</span>
-</div>
-<div style="text-align:center; margin-bottom:20px;">
-<img alt="全年代初期讓渡馬指南" src="https://i0.wp.com/al-gest.com/wp-content/uploads/2026/03/ウイニングポスト10_2026_アイキャッチ画像-初期譲渡馬.jpg?fit=1200%2C630&amp;ssl=1" style="max-width:100%; border-radius:10px; border:1px solid var(--border-color); box-shadow:0 4px 14px rgba(0,0,0,0.5);"/>
 </div>
 <p style="font-size:0.86rem; line-height:1.75; color:var(--text-main); margin-bottom:16px;">
         在《Winning Post 10 2026》各年代劇本中，玩家在第 1 年將依序歷經 <strong>6 大讓渡節點</strong>：① 1月1週 初始 3 歲讓渡馬、② 1年目 200P 目標達成幼駒、③ 3月3週 繁殖牝馬讓渡、④ 3月3週 系列特典繋養、⑤ 3月5週 第 2 匹讓渡愛馬 (3~5歲)、⑥ 6月1週 2 歲讓渡幼駒。<strong>所有牡馬與牝馬選項皆已獨立分行清晰列出</strong>：
@@ -4260,7 +4270,6 @@ button.chip-btn.active {
 <div style="font-size:0.92rem; font-weight:bold; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-timeline"></i> 選擇出生年代 (1967 ~ 2023 年共 56 大世代)：
         </div>
-<span class="pill pill-gold" style="font-size:0.75rem;">支援即時排序與日/中對照 (共 496 匹推薦名駒)</span>
 </div>
 <div class="era-chip-rail" id="eraChipRail" style="display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:8px; scroll-behavior:smooth;">
 <!-- Year buttons will be populated dynamically -->
@@ -4502,9 +4511,9 @@ button.chip-btn.active {
 </div>
 <!-- Pillar 2: 🧬 配合繁育大系 -->
 <div class="pillar-content" id="pillar-breed" style="display:none;">
-<div class="pillar-header-card">
-<h2>🧬 配合繁育大系 (Breeding &amp; Lineage)</h2>
-<p>【第 8 章 ~ 第 21 章】四大指標、36+ 經典配合理論、2024~2026 最新理論、13 大遺傳因子、系統確立與主流牝系圖譜</p>
+<div class="pillar-header-card" style="border-left: 5px solid #8b5cf6 !important; padding: 16px 24px !important; margin-bottom: 20px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(15,23,42,0.88)) !important; box-sizing: border-box !important;">
+<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-dna" style="color: #8b5cf6;"></i> 🧬 支柱二：配合繁育大系・四大指標與爆發力理論 (第 08 章 ~ 第 21 章)</h2>
+<p style="margin: 0 !important; color: var(--text-muted) !important; font-size: 0.86rem !important; line-height: 1.6 !important;">【第 08 章 ~ 第 21 章】四大指標、36+ 經典配合理論、2024~2026 最新理論、13 大遺傳因子、系統確立與主流牝系圖譜</p>
 </div>
 <section class="section-card" id="sec-metrics">
 <div class="section-header">
@@ -6299,9 +6308,9 @@ button.chip-btn.active {
 </div>
 <!-- Pillar 3: 🐴 幼駒相馬・評語對照 -->
 <div class="pillar-content" id="pillar-foals" style="display:none;">
-<div class="pillar-header-card">
-<h2>🐴 幼駒相馬・評語對照・出生事件 (Foals &amp; Comments)</h2>
-<p>【第 22 章 ~ 第 24 章】0~3 歲幼駒評語完全手冊 (日文/中文/解讀三欄對照)、相馬眼 S 級評判心法、9 大特殊出生事件</p>
+<div class="pillar-header-card" style="border-left: 5px solid #10b981 !important; padding: 16px 24px !important; margin-bottom: 20px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(15,23,42,0.88)) !important; box-sizing: border-box !important;">
+<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-horse" style="color: #10b981;"></i> 🐎 支柱三：幼駒相馬・評語對照・出生事件 (第 22 章 ~ 第 24 章)</h2>
+<p style="margin: 0 !important; color: var(--text-muted) !important; font-size: 0.86rem !important; line-height: 1.6 !important;">【第 22 章 ~ 第 24 章】0~3 歲幼駒評語完全手冊 (日文/中文/解讀三欄對照)、相馬眼 S 級評判心法、9 大特殊出生事件</p>
 </div>
 <section class="section-card" id="sec-potential">
 <div class="section-header">
@@ -6728,9 +6737,9 @@ button.chip-btn.active {
 </div>
 <!-- Pillar 4: 🏋️ 調教培育・屬性特性・個性與關係性 -->
 <div class="pillar-content" id="pillar-train" style="display:none;">
-<div class="pillar-header-card">
-<h2>🏋️ 調教培育・基礎能力・個性進化與關係性 (Training &amp; Traits)</h2>
-<p>【第 25 章 ~ 第 29 章】五大人物與賽馬數值能力完全百科、四大比賽展開・適應能力與技能特性全書、史實調教全 40+ 種效果與 SP 雙馬合練、馬之個性 (ウマソナ) (馬之個性 (ウマソナ)) 克服與進化、2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</p>
+<div class="pillar-header-card" style="border-left: 5px solid #0ea5e9 !important; padding: 16px 24px !important; margin-bottom: 20px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(14,165,233,0.15), rgba(15,23,42,0.88)) !important; box-sizing: border-box !important;">
+<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-bolt" style="color: #0ea5e9;"></i> ⚡ 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (第 25 章 ~ 第 30 章)</h2>
+<p style="margin: 0 !important; color: var(--text-muted) !important; font-size: 0.86rem !important; line-height: 1.6 !important;">【第 25 章 ~ 第 30 章】五大人物與賽馬數值能力完全百科、四大比賽展開・適應能力與技能特性全書、史實調教全 40+ 種效果與 SP 雙馬合練、馬之個性 (ウマソナ) 克服與進化、2026 賽馬關係性 (宿敵/搭檔/激勵/絆)</p>
 </div>
 <section class="section-card" id="sec-status-encyclopedia">
 <div class="section-header">
@@ -9803,7 +9812,6 @@ button.chip-btn.active {
 <div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-table-list"></i> 二、馬之個性 (ウマソナ) (馬之個性 (ウマソナ)) 全量數據庫完全對照表
         </div>
-<span class="badge badge-gold" style="font-size:0.78rem; padding:3px 8px;">日中並行・零遺漏完整收錄</span>
 </div>
 <div class="umasona-filter-panel" style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:8px; padding:14px 16px; margin-bottom:18px;">
 <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; align-items:center;">
@@ -10975,9 +10983,9 @@ button.chip-btn.active {
 </div>
 <!-- Pillar 5: 🏆 重賞賽事實戰・賽馬場特性・草質與 Historia -->
 <div class="pillar-content" id="pillar-races" style="display:none;">
-<div class="pillar-header-card">
-<h2>🏆 全球重賞賽事・三冠系列賽・競馬場特性・Historia (Races &amp; Tracks)</h2>
-<p>【第 30 章 ~ 實戰專題】全重賞日程大百科、全球 36 條三冠系列賽體系、全 68 競馬場/136 賽道特性庫、2025/2026 適應能力與賽事展開戰型、賽馬熱潮、殿堂馬稱號與 Historia 歷史名場面</p>
+<div class="pillar-header-card" style="border-left: 5px solid #f97316 !important; padding: 16px 24px !important; margin-bottom: 20px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(249,115,22,0.15), rgba(15,23,42,0.88)) !important; box-sizing: border-box !important;">
+<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-trophy" style="color: #f97316;"></i> 🏆 支柱五：重賞日程・全球三冠・熱潮與賽馬場特性 (第 31 章 ~ 第 35 章)</h2>
+<p style="margin: 0 !important; color: var(--text-muted) !important; font-size: 0.86rem !important; line-height: 1.6 !important;">【第 31 章 ~ 第 35 章】全重賞日程大百科、全球 36 條三冠系列賽體系、全 68 競馬場/136 賽道特性庫、2025/2026 適應能力與賽事展開戰型、賽馬熱潮、殿堂馬稱號與 Historia 歷史名場面</p>
 </div>
 <!-- 第 23 章：全重賞日程・全球三冠系列賽・G1 頂級攻略與競馬場特性大百科 -->
 <section class="section-card" id="sec-stakes-master" style="margin-bottom:24px;">
@@ -27487,9 +27495,9 @@ function filterTab5Racecourses() {
 </div>
 <!-- Pillar 6: 🏰 牧場經營・人物技能・結婚伴侶與子孫進路 -->
 <div class="pillar-content" id="pillar-ranch" style="display:none;">
-<div class="pillar-header-card">
-<h2>🏰 牧場經營・人物技能・結婚伴侶與子孫家族 (Ranch &amp; Dynasty)</h2>
-<p>【第 33 章 ~ 第 35 章】牧場設施升級與美歐海外分場規劃、騎手/調教師/牧場長 18 大人物技能全書、知人/結婚相手/秘書/牧場長 40+ 全圖鑑與子孫誕生/教育方針/進路培育攻略</p>
+<div class="pillar-header-card" style="border-left: 5px solid #ec4899 !important; padding: 16px 24px !important; margin-bottom: 20px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(236,72,153,0.15), rgba(15,23,42,0.88)) !important; box-sizing: border-box !important;">
+<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-house-chimney" style="color: #ec4899;"></i> 🏡 支柱六：牧場經營・人物技能・婚姻與俱樂部法人 (第 36 章 ~ 第 40 章)</h2>
+<p style="margin: 0 !important; color: var(--text-muted) !important; font-size: 0.86rem !important; line-height: 1.6 !important;">【第 36 章 ~ 第 40 章】牧場設施升級與美歐海外分場規劃、騎手/調教師/牧場長 18 大人物技能全書、知人/結婚相手/秘書/牧場長 40+ 全圖鑑與子孫誕生/教育方針/進路培育攻略</p>
 </div>
 <section class="section-card" id="sec-farm-facilities">
 <div class="section-header">
@@ -28056,7 +28064,6 @@ function filterTab5Racecourses() {
 <div style="font-size:1.15rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
 <i class="fa-solid fa-user-astronaut"></i> 一、日本頂級騎手實名數據庫 (戰法・距離適性與專屬特性)
         </div>
-<span class="badge badge-gold">日/中/實名完全對照</span>
 </div>
 <div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
 <table class="data-table">
@@ -29285,9 +29292,9 @@ function filterTab5Racecourses() {
 <!-- ================= 支柱七：馬匹資料庫 ================= -->
 <!-- ================= 支柱七：馬匹資料庫 ================= -->
 <div class="pillar-content" id="pillar-db" style="display:none;">
-<div class="pillar-header-card" style="border-left: 5px solid #eab308 !important; padding: 16px 24px !important; margin-bottom: 18px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(234,179,8,0.15), rgba(15,23,42,0.85)) !important;">
-<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-magnifying-glass" style="color: #eab308;"></i> 👑 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 章 ~ 第 46 章)</h2>
-<p style="margin: 0 !important; color: var(--text-muted) !important; font-size: 0.85rem !important; line-height: 1.6 !important;">收錄全 1.5 萬匹史實馬、2,898 匹種公馬引退年限、4,314 匹繁殖專用史實馬、16,570 匹全競走馬、32+9 全年代路線推薦大表與 976 條殿堂馬異名！</p>
+<div class="pillar-header-card" style="border-left: 5px solid #eab308 !important; padding: 16px 24px !important; margin-bottom: 20px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(234,179,8,0.15), rgba(15,23,42,0.88)) !important; box-sizing: border-box !important;">
+<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-magnifying-glass" style="color: #eab308;"></i> 🏇 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 章 ~ 第 46 章)</h2>
+<p style="margin: 0 !important; color: var(--text-muted) !important; font-size: 0.86rem !important; line-height: 1.6 !important;">收錄全 1.5 萬匹史實馬、2,898 匹種公馬引退年限、4,314 匹繁殖專用史實馬、16,570 匹全競走馬、32+9 全年代路線推薦大表與 976 條殿堂馬異名！</p>
 </div>
 <div class="sections-container">
 <section class="section-card" id="sec-horse-db" style="margin-bottom:14px;">
@@ -29340,7 +29347,6 @@ function filterTab5Racecourses() {
 <option value="ALL">全部性別</option>
 <option value="牡">牡馬</option>
 <option value="牝">牝馬</option>
-<option value="騙">騸馬</option>
 </select>
 </div>
 <div class="filter-group">
@@ -29612,7 +29618,6 @@ function filterTab5Racecourses() {
 <button class="pill active" onclick="setRacehorseSexFilter('ALL', this)">全部性別</button>
 <button class="pill" onclick="setRacehorseSexFilter('牡', this)" style="  color:#38bdf8;">♂ 牡馬</button>
 <button class="pill" onclick="setRacehorseSexFilter('牝', this)" style="  color:#f472b6;">♀ 牝馬</button>
-<button class="pill" onclick="setRacehorseSexFilter('騸', this)" style="  color:#a855f7;">騸馬</button>
 </div>
 <!-- 第三排：馬札篩選軌道 (每一排晶片大小嚴格統一 82px) -->
 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px; padding-top:8px; border-top:1px dashed var(--border-color);">
@@ -29637,7 +29642,7 @@ function filterTab5Racecourses() {
 <th class="sortable-th" onclick="sortRacehorseTable('name_en')" style="min-width:150px; text-align:left !important;">英文馬名 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('amulet')" style="width:70px; text-align:left !important;">馬札 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('birth_year')" style="width:80px; text-align:left !important;">生年 ⇅</th>
-<th class="sortable-th" onclick="sortRacehorseTable('sex')" style="width:80px; text-align:left !important;">性別 ⇅</th>
+<th class="sortable-th" onclick="sortRacehorseTable('sex')" style="min-width:90px; text-align:left !important;">性別 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('coat')" style="width:80px; text-align:left !important;">毛色 ⇅</th>
 <th style="width:80px; text-align:left !important;">生國</th>
 <th class="sortable-th" onclick="sortRacehorseTable('stable_country')" style="width:80px; text-align:left !important;">所屬 ⇅</th>
@@ -29770,9 +29775,9 @@ function filterTab5Racecourses() {
 </div>
 <!-- ================= 支柱八：名師實戰講堂・線上對戰與系統機能 ================= -->
 <div class="pillar-content" id="pillar-lectures" style="display:none;">
-<div class="pillar-header" style="background:linear-gradient(135deg, rgba(99,102,241,0.15), rgba(15,23,42,0.8)); border-left:4px solid #6366f1;">
-<h2><i class="fa-solid fa-graduation-cap"></i> 🎓 支柱八：名師實戰講堂・線上對戰與系統機能 (第 47 章 ~ 第 49 章)</h2>
-<p>收錄吹里谷芽愛育成指南、リオン展開適應性徹底講座、線上模式最強馬ロード與電影級過場名場面！</p>
+<div class="pillar-header-card" style="border-left: 5px solid #6366f1 !important; padding: 16px 24px !important; margin-bottom: 20px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(15,23,42,0.88)) !important; box-sizing: border-box !important;">
+<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-graduation-cap" style="color: #6366f1;"></i> 🎓 支柱八：名師實戰講堂・線上對戰與系統機能 (第 47 章 ~ 第 49 章)</h2>
+<p style="margin: 0 !important; color: var(--text-muted) !important; font-size: 0.86rem !important; line-height: 1.6 !important;">收錄吹里谷芽愛育成指南、リオン展開適應性徹底講座、線上模式最強馬ロード與電影級過場名場面！</p>
 </div>
 <div class="sections-container">
 <section class="section-card" id="sec-official-lectures">
@@ -30240,9 +30245,9 @@ function filterTab5Racecourses() {
 <!-- Pillar Content: 🧮 幼駒能力計算器 -->
 <!-- Pillar Content: 🧮 幼駒能力計算器 暨 幼駒成長履歷紀錄庫 -->
 <div class="pillar-content" id="pillar-foal-calc" style="display:none;">
-<div class="pillar-header-card" style="background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(6,182,212,0.15)); border-bottom:1px solid rgba(16,185,129,0.3);">
-<h2>🧮 幼駒能力計算器 暨 幼駒成長履歷紀錄庫 (Foal Growth Tracker &amp; Potential DB)</h2>
-<p>為自家牧場的每一匹幼駒建立獨立檔案，隨遊戲進度記錄 0~2 歲評語與特別事件，實時自動精算推估 SP 速度值、7 大 Sub-params 與綜合評級。</p>
+<div class="pillar-header-card" style="border-left: 5px solid #10b981 !important; padding: 16px 24px !important; margin-bottom: 20px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(15,23,42,0.88)) !important; box-sizing: border-box !important;">
+<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-calculator" style="color: #10b981;"></i> 🧮 幼駒能力計算器 暨 幼駒成長履歷紀錄庫 (Foal Growth Tracker &amp; Potential DB)</h2>
+<p style="margin: 0 !important; color: var(--text-muted) !important; font-size: 0.86rem !important; line-height: 1.6 !important;">為自家牧場的每一匹幼駒建立獨立檔案，隨遊戲進度記錄 0~2 歲評語與特別事件，實時自動精算推估 SP 速度值、7 大 Sub-params 與綜合評級。</p>
 </div>
 <section class="section-card" id="sec-foal-calc-db">
 <div class="section-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
@@ -30290,9 +30295,9 @@ function filterTab5Racecourses() {
 </section>
 </div>
 <div class="pillar-content" id="pillar-tracker" style="display:none; padding-bottom:110px;">
-<div class="pillar-header-card">
-<h2>📊 實戰 13 大跑法比賽戰績紀錄儀 (橫向即時批次錄入大表)</h2>
-<p>橫向一行對應一匹馬的一場比賽戰績，支援同時進行多匹馬的 13 種跑法即時輸入、切換月份週別自動推薦重賞、自動計算最優跑法、以及 Google Sheets 雙向同步</p>
+<div class="pillar-header-card" style="border-left: 5px solid #38bdf8 !important; padding: 16px 24px !important; margin-bottom: 20px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(56,189,248,0.15), rgba(15,23,42,0.88)) !important; box-sizing: border-box !important;">
+<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-chart-line" style="color: #38bdf8;"></i> 📊 實戰 13 大跑法比賽戰績紀錄儀 (橫向即時批次錄入大表)</h2>
+<p style="margin: 0 !important; color: var(--text-muted) !important; font-size: 0.86rem !important; line-height: 1.6 !important;">橫向一行對應一匹馬的一場比賽戰績，支援同時進行多匹馬的 13 種跑法即時輸入、切換月份週別自動推薦重賞、自動計算最優跑法、以及 Google Sheets 雙向同步</p>
 </div>
 <!-- 頂部快速操作與 Google Sheets 管理欄 -->
 <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:16px 18px; margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.2);">
@@ -30561,7 +30566,7 @@ function renderSelectedEra(yr) {
         <tr style="background:${rowBg}; border-bottom:1px solid rgba(255,255,255,0.05);">
             <td style="text-align:left !important;">${ticketBadge}</td>
             <td style="text-align:left !important;">${markPill}</td>
-            <td style="text-align:left !important;">${sexBadge}</td>
+            <td style="text-align:left !important; white-space:nowrap !important;">${sexBadge}</td>
             <td style="text-align:left !important;"><strong style="color:var(--gold-color); font-size:0.95rem;">${h.name}</strong></td>
             <td style="text-align:left !important; font-size:0.86rem; line-height:1.6; color:var(--text-color);">${h.comment}</td>
         </tr>
@@ -30863,14 +30868,14 @@ function renderBreedingTable() {
                     h.amulet === '緑' ? '<span class="badge" style="background:#22c55e; color:#fff;">綠</span>' :
                     '<span class="badge" style="background:#64748b; color:#fff;">無</span>';
                     
-    const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;">牝</strong>' : '<strong style="color:#38bdf8;">牡</strong>';
+    const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;">♀ 牝</strong>' : '<strong style="color:#38bdf8;">♂ 牡</strong>';
     
     html += `<tr>
       <td style="font-weight:700; text-align:left !important;">${h.name_jp}</td>
       <td style="color:var(--text-muted); font-size:11px; text-align:left !important;">${h.name_en}</td>
       <td style="text-align:left !important;">${amBadge}</td>
       <td style="font-weight:700; color:var(--primary); text-align:left !important;">${h.birth_year}</td>
-      <td style="text-align:left !important;">${sexBadge}</td>
+      <td style="text-align:left !important; white-space:nowrap !important;">${sexBadge}</td>
       <td style="text-align:left !important;">${h.coat}</td>
       <td style="text-align:left !important;">${h.birth_country}</td>
       <td style="text-align:left !important;">${h.stable_country}</td>
@@ -31011,6 +31016,10 @@ function renderRacehorsesTable() {
       va = racehorseAmuletMap[va] || 0;
       vb = racehorseAmuletMap[vb] || 0;
     }
+    if (racehorseSortKey === 'sex') {
+      va = a.sex.includes('牡') ? 1 : 2;
+      vb = b.sex.includes('牡') ? 1 : 2;
+    }
     if (typeof va === 'string') {
       return racehorseSortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
     }
@@ -31042,14 +31051,14 @@ function renderRacehorsesTable() {
                     h.amulet === '緑' ? '<span class="badge" style="background:#22c55e; color:#fff;">綠</span>' :
                     '<span class="badge" style="background:#64748b; color:#fff;">無</span>';
                     
-    const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;">牝</strong>' : (h.sex.includes('騸') ? '<strong style="color:#a855f7;">騸</strong>' : '<strong style="color:#38bdf8;">牡</strong>');
+    const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;">♀ 牝</strong>' : '<strong style="color:#38bdf8;">♂ 牡</strong>';
     
     html += `<tr>
       <td style="font-weight:700; text-align:left !important;">${h.name_jp}</td>
       <td style="color:var(--text-muted); font-size:11px; text-align:left !important;">${h.name_en || '-'}</td>
       <td style="text-align:left !important;">${amBadge}</td>
       <td style="font-weight:700; color:var(--primary); text-align:left !important;">${h.birth_year}</td>
-      <td style="text-align:left !important;">${sexBadge}</td>
+      <td style="text-align:left !important; white-space:nowrap !important;">${sexBadge}</td>
       <td style="text-align:left !important;">${h.coat}</td>
       <td style="text-align:left !important;">${h.birth_country}</td>
       <td style="text-align:left !important;">${h.stable_country}</td>
