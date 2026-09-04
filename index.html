@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.40"></script>
-<script src="core_guides_data.js?v=v03.40"></script>
-<script src="yearly_recs_db.js?v=v03.40"></script>
-<script src="horse_subtopics_data.js?v=v03.40"></script>
+<script src="master_lookup_db.js?v=v03.41"></script>
+<script src="core_guides_data.js?v=v03.41"></script>
+<script src="yearly_recs_db.js?v=v03.41"></script>
+<script src="horse_subtopics_data.js?v=v03.41"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2282,7 +2282,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.40</span>
+<span class="version-badge">v03.41</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -29356,7 +29356,6 @@ function filterTab5Racecourses() {
 <option value="ALL">全部性別</option>
 <option value="牡">牡馬</option>
 <option value="牝">牝馬</option>
-<option value="騸">⚲ 騸馬 (セン馬)</option>
 </select>
 </div>
 <div class="filter-group">
@@ -29628,7 +29627,6 @@ function filterTab5Racecourses() {
 <button class="pill active" onclick="setRacehorseSexFilter('ALL', this)">全部性別</button>
 <button class="pill" onclick="setRacehorseSexFilter('牡', this)" style="  color:#38bdf8;">♂ 牡馬</button>
 <button class="pill" onclick="setRacehorseSexFilter('牝', this)" style="  color:#f472b6;">♀ 牝馬</button>
-<button class="pill" onclick="setRacehorseSexFilter('騸', this)" style="  color:#a855f7;" title="騸馬 / セン馬 (去勢馬，不可配種繁殖)">⚲ 騸馬</button>
 </div>
 <!-- 第三排：馬札篩選軌道 (每一排晶片大小嚴格統一 82px) -->
 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px; padding-top:8px; border-top:1px dashed var(--border-color);">
@@ -30879,7 +30877,7 @@ function renderBreedingTable() {
                     h.amulet === '緑' ? '<span class="badge" style="background:#22c55e; color:#fff;">綠</span>' :
                     '<span class="badge" style="background:#64748b; color:#fff;">無</span>';
                     
-    const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;" title="牝馬 (雌馬)">♀ 牝</strong>' : '<strong style="color:#38bdf8;" title="牡馬 (雄馬)">♂ 牡</strong>';
+    const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;">♀ 牝</strong>' : '<strong style="color:#38bdf8;">♂ 牡</strong>';
     
     html += `<tr>
       <td style="font-weight:700; text-align:left !important;">${h.name_jp}</td>
@@ -31028,9 +31026,8 @@ function renderRacehorsesTable() {
       vb = racehorseAmuletMap[vb] || 0;
     }
     if (racehorseSortKey === 'sex') {
-      const sOrder = s => s.includes('牡') ? 1 : (s.includes('牝') ? 2 : 3);
-      va = sOrder(a.sex);
-      vb = sOrder(b.sex);
+      va = a.sex.includes('牡') ? 1 : 2;
+      vb = b.sex.includes('牡') ? 1 : 2;
     }
     if (typeof va === 'string') {
       return racehorseSortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
@@ -31063,7 +31060,7 @@ function renderRacehorsesTable() {
                     h.amulet === '緑' ? '<span class="badge" style="background:#22c55e; color:#fff;">綠</span>' :
                     '<span class="badge" style="background:#64748b; color:#fff;">無</span>';
                     
-    const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;" title="牝馬 (雌馬)">♀ 牝</strong>' : (h.sex.includes('騸') ? '<strong style="color:#a855f7;" title="騸馬 / セン馬 (去勢馬，無法配種)">⚲ 騸 (セン)</strong>' : '<strong style="color:#38bdf8;" title="牡馬 (雄馬)">♂ 牡</strong>');
+    const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;">♀ 牝</strong>' : '<strong style="color:#38bdf8;">♂ 牡</strong>';
     
     html += `<tr>
       <td style="font-weight:700; text-align:left !important;">${h.name_jp}</td>
