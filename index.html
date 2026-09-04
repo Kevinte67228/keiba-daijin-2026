@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.44"></script>
-<script src="core_guides_data.js?v=v03.44"></script>
-<script src="yearly_recs_db.js?v=v03.44"></script>
-<script src="horse_subtopics_data.js?v=v03.44"></script>
+<script src="master_lookup_db.js?v=v03.45"></script>
+<script src="core_guides_data.js?v=v03.45"></script>
+<script src="yearly_recs_db.js?v=v03.45"></script>
+<script src="horse_subtopics_data.js?v=v03.45"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1815,8 +1815,63 @@ li {
     word-break: keep-all !important;
 }
 </style>
-<style id="ch21-era-chips-style">
-.nenpyo-era-btn {
+<style id="global-capsule-chips-style">
+/* ==========================================================================
+   全域標準高級科技流光膠囊晶片軌道規範 (GEMINI.md 規範 5 強化版)
+   - 杜絕點選/懸停/發光時上半部缺角或外框截斷
+   - 瀏覽器原生焦點輪廓徹底歸零 (Zero Outline Ring)
+   - 軌道上下配置足額安全緩衝邊距 (padding: 6px 4px 10px 4px)
+   ========================================================================== */
+
+/* 1. 全域單行水平滑動膠囊軌道 */
+.chip-rail,
+.era-chip-rail,
+.ch31-chip-rail,
+.ch43-46-chip-rail,
+.category-tabs,
+#nenpyoEraChipsRail,
+#foalAgeChipsRail,
+#eraChipRail,
+#recsYearButtons,
+#sireDecadeButtons,
+#categoryTabs {
+    display: flex !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-top: 6px !important;
+    padding-bottom: 10px !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(56, 189, 248, 0.35) rgba(15, 23, 42, 0.6) !important;
+}
+
+/* 2. 全域晶片按鈕本體造型 (消除預設外框與直角) */
+.nenpyo-era-btn,
+.chip-btn,
+button.chip-btn,
+.filter-btn,
+.foal-age-btn,
+.ch43-46-chip-btn,
+#eraChipRail .filter-btn,
+#eraChipRail .chip-btn,
+#sec-sires-retire-db button.pill,
+#sec-sires-retire-db button.chip-btn,
+#sec-sires-retire-db #sireDecadeButtons button,
+#sec-breeding-only-horses button.pill,
+#sec-breeding-only-horses button.chip-btn,
+#sec-racehorses-full-db button.pill,
+#sec-racehorses-full-db button.chip-btn,
+#sec-yearly-recs-db button.pill,
+#sec-yearly-recs-db button.chip-btn,
+#sec-yearly-recs-db #recsYearButtons .filter-btn,
+#sec-yearly-recs-db #recsYearButtons .chip-btn,
+#sec-nicknames-full-db button.pill,
+#sec-nicknames-full-db button.chip-btn {
     background: rgba(30, 41, 59, 0.75) !important;
     color: #94a3b8 !important;
     border: 1px solid rgba(56, 189, 248, 0.25) !important;
@@ -1825,111 +1880,162 @@ li {
     font-size: 0.82rem !important;
     font-weight: 700 !important;
     cursor: pointer !important;
-    transition: all 0.2s ease-in-out !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
     white-space: nowrap !important;
     word-break: keep-all !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 5px !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    box-sizing: border-box !important;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    user-select: none !important;
+    flex-shrink: 0 !important;
 }
 
-.nenpyo-era-btn:hover {
+/* 3. 懸停狀態 (微浮起科技藍流光) */
+.nenpyo-era-btn:hover,
+.chip-btn:hover,
+button.chip-btn:hover,
+.filter-btn:hover,
+.foal-age-btn:hover,
+.ch43-46-chip-btn:hover,
+#eraChipRail .filter-btn:hover,
+#eraChipRail .chip-btn:hover,
+#sec-sires-retire-db button.pill:hover,
+#sec-sires-retire-db button.chip-btn:hover,
+#sec-sires-retire-db #sireDecadeButtons button:hover,
+#sec-breeding-only-horses button.pill:hover,
+#sec-breeding-only-horses button.chip-btn:hover,
+#sec-racehorses-full-db button.pill:hover,
+#sec-racehorses-full-db button.chip-btn:hover,
+#sec-yearly-recs-db button.pill:hover,
+#sec-yearly-recs-db button.chip-btn:hover,
+#sec-yearly-recs-db #recsYearButtons .filter-btn:hover,
+#sec-yearly-recs-db #recsYearButtons .chip-btn:hover,
+#sec-nicknames-full-db button.pill:hover,
+#sec-nicknames-full-db button.chip-btn:hover {
     background: rgba(56, 189, 248, 0.18) !important;
     color: #38bdf8 !important;
     border-color: #38bdf8 !important;
-    transform: translateY(-1px);
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25) !important;
 }
 
-.nenpyo-era-btn.active {
+/* 4. 點選狀態 (:active 強制平穩回彈，防止衝出頂部邊界) */
+.nenpyo-era-btn:active,
+.chip-btn:active,
+button.chip-btn:active,
+.filter-btn:active,
+.foal-age-btn:active,
+.ch43-46-chip-btn:active,
+#eraChipRail .filter-btn:active,
+#eraChipRail .chip-btn:active,
+#sec-sires-retire-db button.pill:active,
+#sec-sires-retire-db button.chip-btn:active,
+#sec-sires-retire-db #sireDecadeButtons button:active,
+#sec-breeding-only-horses button.pill:active,
+#sec-breeding-only-horses button.chip-btn:active,
+#sec-racehorses-full-db button.pill:active,
+#sec-racehorses-full-db button.chip-btn:active,
+#sec-yearly-recs-db button.pill:active,
+#sec-yearly-recs-db button.chip-btn:active,
+#sec-yearly-recs-db #recsYearButtons .filter-btn:active,
+#sec-yearly-recs-db #recsYearButtons .chip-btn:active,
+#sec-nicknames-full-db button.pill:active,
+#sec-nicknames-full-db button.chip-btn:active {
+    transform: translateY(0) !important;
+    outline: none !important;
+}
+
+/* 5. 焦點狀態全域規整 (徹底杜絕缺角與外溢直角框) */
+.nenpyo-era-btn:focus,
+.nenpyo-era-btn:focus-visible,
+.chip-btn:focus,
+.chip-btn:focus-visible,
+button.chip-btn:focus,
+button.chip-btn:focus-visible,
+.filter-btn:focus,
+.filter-btn:focus-visible,
+.foal-age-btn:focus,
+.foal-age-btn:focus-visible,
+.ch43-46-chip-btn:focus,
+.ch43-46-chip-btn:focus-visible {
+    outline: none !important;
+}
+
+/* 6. 激活狀態 (金色立體流光發光樣式，無頂部截斷) */
+.nenpyo-era-btn.active,
+.chip-btn.active,
+button.chip-btn.active,
+.filter-btn.active,
+.foal-age-btn.active,
+.ch43-46-chip-btn.active,
+#eraChipRail .filter-btn.active,
+#eraChipRail .chip-btn.active,
+#sec-sires-retire-db button.pill.active,
+#sec-sires-retire-db button.chip-btn.active,
+#sec-sires-retire-db #sireDecadeButtons button.active,
+#sec-breeding-only-horses button.pill.active,
+#sec-breeding-only-horses button.chip-btn.active,
+#sec-racehorses-full-db button.pill.active,
+#sec-racehorses-full-db button.chip-btn.active,
+#sec-yearly-recs-db button.pill.active,
+#sec-yearly-recs-db button.chip-btn.active,
+#sec-yearly-recs-db #recsYearButtons .filter-btn.active,
+#sec-yearly-recs-db #recsYearButtons .chip-btn.active,
+#sec-nicknames-full-db button.pill.active,
+#sec-nicknames-full-db button.chip-btn.active {
     background: linear-gradient(135deg, #f59e0b, #d97706) !important;
     color: #0f172a !important;
     border-color: #f59e0b !important;
     font-weight: 800 !important;
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
-}
-</style>
-<style id="ch03-capsule-chips-style">
-/* 依據 GEMINI.md 規範 5 打造之標準高級科技流光膠囊晶片 */
-#eraChipRail .filter-btn, #eraChipRail .chip-btn {
-    background: rgba(30, 41, 59, 0.75) !important;
-    color: #94a3b8 !important;
-    border: 1px solid rgba(56, 189, 248, 0.25) !important;
-    border-radius: 20px !important;
-    padding: 5px 14px !important;
-    font-size: 0.82rem !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease-in-out !important;
-    white-space: nowrap !important;
-    word-break: keep-all !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 5px !important;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.45) !important;
+    transform: none !important;
+    outline: none !important;
 }
 
-#eraChipRail .filter-btn:hover, #eraChipRail .chip-btn:hover {
-    background: rgba(56, 189, 248, 0.18) !important;
-    color: #38bdf8 !important;
-    border-color: #38bdf8 !important;
-    transform: translateY(-1px);
-}
-
-#eraChipRail .filter-btn.active, #eraChipRail .chip-btn.active {
-    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+.nenpyo-era-btn.active:hover,
+.chip-btn.active:hover,
+button.chip-btn.active:hover,
+.filter-btn.active:hover,
+.foal-age-btn.active:hover,
+.ch43-46-chip-btn.active:hover {
+    background: linear-gradient(135deg, #fbbf24, #d97706) !important;
     color: #0f172a !important;
-    border-color: #f59e0b !important;
-    font-weight: 800 !important;
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
+    border-color: #fbbf24 !important;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.55) !important;
+    transform: translateY(-1px) !important;
+    outline: none !important;
 }
 
-/* 輕量美觀科技藍滾動條，替換原生粗白條 */
-#eraChipRail::-webkit-scrollbar, .chip-rail::-webkit-scrollbar {
+/* 7. 輕量美觀科技藍滾動條 */
+#eraChipRail::-webkit-scrollbar,
+.chip-rail::-webkit-scrollbar,
+.ch31-chip-rail::-webkit-scrollbar,
+.ch43-46-chip-rail::-webkit-scrollbar {
     height: 4px !important;
 }
-#eraChipRail::-webkit-scrollbar-track, .chip-rail::-webkit-scrollbar-track {
+#eraChipRail::-webkit-scrollbar-track,
+.chip-rail::-webkit-scrollbar-track,
+.ch31-chip-rail::-webkit-scrollbar-track,
+.ch43-46-chip-rail::-webkit-scrollbar-track {
     background: rgba(15, 23, 42, 0.6) !important;
     border-radius: 4px !important;
 }
-#eraChipRail::-webkit-scrollbar-thumb, .chip-rail::-webkit-scrollbar-thumb {
+#eraChipRail::-webkit-scrollbar-thumb,
+.chip-rail::-webkit-scrollbar-thumb,
+.ch31-chip-rail::-webkit-scrollbar-thumb,
+.ch43-46-chip-rail::-webkit-scrollbar-thumb {
     background: rgba(56, 189, 248, 0.35) !important;
     border-radius: 4px !important;
 }
-#eraChipRail::-webkit-scrollbar-thumb:hover, .chip-rail::-webkit-scrollbar-thumb:hover {
+#eraChipRail::-webkit-scrollbar-thumb:hover,
+.chip-rail::-webkit-scrollbar-thumb:hover,
+.ch31-chip-rail::-webkit-scrollbar-thumb:hover,
+.ch43-46-chip-rail::-webkit-scrollbar-thumb:hover {
     background: #38bdf8 !important;
-}
-</style>
-<style id="ch23-foal-age-chips-style">
-/* 依據 GEMINI.md 規範 5 打造之標準高級科技流光膠囊晶片 */
-.foal-age-btn {
-    background: rgba(30, 41, 59, 0.75) !important;
-    color: #94a3b8 !important;
-    border: 1px solid rgba(56, 189, 248, 0.25) !important;
-    border-radius: 20px !important;
-    padding: 5px 14px !important;
-    font-size: 0.82rem !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease-in-out !important;
-    white-space: nowrap !important;
-    word-break: keep-all !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 5px !important;
-}
-
-.foal-age-btn:hover {
-    background: rgba(56, 189, 248, 0.18) !important;
-    color: #38bdf8 !important;
-    border-color: #38bdf8 !important;
-    transform: translateY(-1px);
-}
-
-.foal-age-btn.active {
-    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
-    color: #0f172a !important;
-    border-color: #f59e0b !important;
-    font-weight: 800 !important;
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
 }
 </style>
 <style id="dark-calc-select-style">
@@ -2297,7 +2403,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.44</span>
+<span class="version-badge">v03.45</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 7 大專題完全對照攻略 (全 45 大章節)
@@ -4287,7 +4393,7 @@ button.chip-btn.active {
 <i class="fa-solid fa-timeline"></i> 選擇出生年代 (1967 ~ 2023 年共 56 大世代)：
         </div>
 </div>
-<div class="era-chip-rail" id="eraChipRail" style="display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:8px; scroll-behavior:smooth;">
+<div class="era-chip-rail" id="eraChipRail" style="display: flex; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 6px 4px 10px 4px; scroll-behavior: smooth;">
 <!-- Year buttons will be populated dynamically -->
 </div>
 </div><div id="eraDetailContainer">
@@ -6294,7 +6400,7 @@ button.chip-btn.active {
 </div>
 </div>
 <!-- 單行水平滑動膠囊軌道 -->
-<div class="chip-rail" id="nenpyoEraChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; scrollbar-width: thin;">
+<div class="chip-rail" id="nenpyoEraChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 6px 4px 10px 4px; scrollbar-width: thin;">
 <button class="nenpyo-era-btn active" onclick="filterNenpyoEra('all', this)">🌐 全部世代</button>
 <button class="nenpyo-era-btn" onclick="filterNenpyoEra('1968-1975', this)">🏛 1968~1975 最古</button>
 <button class="nenpyo-era-btn" onclick="filterNenpyoEra('1976-1985', this)">📜 1976~1985 時代</button>
@@ -6515,7 +6621,7 @@ button.chip-btn.active {
 </div>
 </div>
 <!-- 單行水平滑動膠囊軌道 -->
-<div class="chip-rail" id="foalAgeChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; scrollbar-width: thin;">
+<div class="chip-rail" id="foalAgeChipsRail" style="display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 6px 4px 10px 4px; scrollbar-width: thin;">
 <button class="foal-age-btn active" onclick="filterFoalAge('all', this)">🌐 全部歲數 (0~2歲全覽)</button>
 <button class="foal-age-btn" onclick="filterFoalAge('0 歲', this)">🍼 0 歲幼駒 (出生~離乳)</button>
 <button class="foal-age-btn" onclick="filterFoalAge('1 歲', this)">🐴 1 歲幼駒 (成長~體型)</button>
@@ -29714,7 +29820,7 @@ function filterTab5Racecourses() {
 <span id="recsCurrentYearBadge" style="font-size:12px; color:var(--gold-color); font-weight:700;">1964 年生推薦史實馬</span>
 </div>
 <!-- 全年代單行水平滑動膠囊軌道 (GEMINI.md 規範 5) -->
-<div id="recsYearButtons" class="ch43-46-chip-rail chip-rail" style="margin-top:10px; padding:4px 0;">
+<div id="recsYearButtons" class="ch43-46-chip-rail chip-rail" style="margin-top: 10px; padding: 6px 4px 10px 4px;">
 <!-- Rendered via JS -->
 </div>
 </div>

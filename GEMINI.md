@@ -38,12 +38,16 @@
 5. **標準高級科技流光膠囊晶片軌道規範 (Futuristic Tech Capsule Chip Rail Standards)**：
    - **「晶片套用統一風格」快捷觸發指令**：凡使用者提及「晶片套用統一風格」、「套用Gemini.md風格」或類似要求時，一律自動比照規範 5 之【高級科技流光膠囊晶片軌道】進行全組 CSS 與自訂滾動條替換，無需重複確認。
 
-   - **全站晶片風格一律統一為高級圓角膠囊 (.nenpyo-era-btn / .chip-btn)**：
-     - 圓角造型：`border-radius: 20px !important; padding: 5px 14px !important;`。
-     - 預設狀態 (Default)：`background: rgba(30, 41, 59, 0.75); color: #94a3b8; border: 1px solid rgba(56, 189, 248, 0.25);`。
-     - 懸停狀態 (Hover)：`background: rgba(56, 189, 248, 0.18); color: #38bdf8; border-color: #38bdf8; transform: translateY(-1px);`。
-     - 激活狀態 (Active State)：**金色立體流光發光樣式** (`background: linear-gradient(135deg, #f59e0b, #d97706); color: #0f172a; font-weight: 800; border-color: #f59e0b; box-shadow: 0 0 12px rgba(245, 158, 11, 0.45);`)。
-   - **單行水平滑動軌道 (.chip-rail)**：外層容器必須啟用 `overflow-x: auto; -webkit-overflow-scrolling: touch; display: flex; gap: 8px;`，嚴禁折行堆疊侵佔垂直視野。
+   - **全站晶片風格一律統一為高級圓角膠囊 (.nenpyo-era-btn / .chip-btn / .filter-btn)**：
+     - 圓角造型：`border-radius: 20px !important; padding: 5px 14px !important; box-sizing: border-box !important;`。
+     - 預設狀態 (Default)：`background: rgba(30, 41, 59, 0.75); color: #94a3b8; border: 1px solid rgba(56, 189, 248, 0.25); outline: none !important;`。
+     - 懸停狀態 (Hover)：`background: rgba(56, 189, 248, 0.18); color: #38bdf8; border-color: #38bdf8; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);`。
+     - 點選狀態 (:active)：強制平穩回彈 `transform: translateY(0) !important; outline: none !important;`，杜絕按壓位移超出軌道頂部邊界引發缺角。
+     - 激活狀態 (Active State)：**金色立體流光發光樣式** (`background: linear-gradient(135deg, #f59e0b, #d97706); color: #0f172a; font-weight: 800; border-color: #f59e0b; box-shadow: 0 0 10px rgba(245, 158, 11, 0.45); transform: none !important; outline: none !important;`)。
+     - 焦點輪廓歸零 (Zero Outline Ring)：全域晶片及 `:focus`、`:focus-visible` 一律強制 `outline: none !important; -webkit-tap-highlight-color: transparent !important;`，徹底根除瀏覽器原生白色矩形/粗方框外溢截斷致使「上半部缺角」。
+   - **防缺角單行水平滑動軌道 (.chip-rail)**：
+     - 外層容器必須啟用 `display: flex; gap: 8px; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; align-items: center; box-sizing: border-box;`，嚴禁折行堆疊。
+     - **上下安全內邊距防護**：軌道必須強制配置 `padding: 6px 4px 10px 4px !important;`（特別是 `padding-top: 6px !important;`），保留充足頂部緩衝空間，杜絕按鈕在浮起、發光或點選時因捲軸容器 `y=0` 邊界截斷圓角或光暈。
    - **強制防換行與斷詞**：晶片按鈕一律強制 `white-space: nowrap !important; word-break: keep-all !important;`。
 
 6. **全域長清單/表格超過 15 筆自適應內滑桿規範 (Universal 15-Row Inner Scrollbar & Sticky Header Standards)**：
