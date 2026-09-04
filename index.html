@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.58"></script>
-<script src="core_guides_data.js?v=v03.58"></script>
-<script src="yearly_recs_db.js?v=v03.58"></script>
-<script src="horse_subtopics_data.js?v=v03.58"></script>
+<script src="master_lookup_db.js?v=v03.59"></script>
+<script src="core_guides_data.js?v=v03.59"></script>
+<script src="yearly_recs_db.js?v=v03.59"></script>
+<script src="horse_subtopics_data.js?v=v03.59"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2532,7 +2532,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.58</span>
+<span class="version-badge">v03.59</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 49 大章節)
@@ -29653,56 +29653,163 @@ function filterTab5Racecourses() {
 </div></section>
 <section class="section-card" id="sec-historia">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-book-bookmark"></i> 第 35 章：競馬歷史事件 (Historia) 名場面與觸發條件</div>
+<div class="section-title"><i class="fa-solid fa-scroll"></i> 第 35 章：競馬歷史事件 (Historia) 名場面與觸發條件</div>
+<div class="section-meta">
+<span class="pill pill-gold">全 24 大跨世紀競馬歷史名場面 ＋ 前置賽事條件 ＋ 專屬獎勵圖鑑</span>
+</div>
 </div>
 <div class="section-body">
-<p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">
-          在史實年份進行遊戲時，滿足特定名馬參賽與歷史條件即可觸發專屬「ヒストリア イベント」(Historia 歷史事件)，重現日本賽馬史上最盪氣迴腸的名場面並獲得額外成就獎勵！
-        </p>
-<div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
-<thead>
+
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-book-open" style="font-size:1.3rem; color:var(--accent-gold);"></i>
+<div>
+<strong>《賽馬大亨 10 2026》競馬歷史事件 (競馬ヒストリア) 全景手冊</strong><br/>
+競馬ヒストリア是以真實體育日報《產經體育 (サンケイスポーツ)》歷史頭版新聞為基礎，讓玩家親身經歷並追體驗自 1970 年代「光井 (ヒカルイマイ)」至今半世紀名馬傳奇的沉浸式系統。當觸發名場面後，不僅享有全彩歷史剪報與專屬過場動畫，更能直接獲得<strong>偶像地圖 (アイドルウマップ) 人氣激增、專屬特性解鎖與守護符 (お守り) 獎勵</strong>！
+</div>
+</div>
+
+<div class="table-responsive scrollable-table-box" style="max-height:580px !important; overflow-y:auto !important; margin-bottom:20px;">
+<table class="data-table" style="min-width:1150px; text-align:left !important;">
+<thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th>歷史事件名稱 (日文 / 中文對照)</th>
-<th>觸發年份</th>
-<th>核心歷史主角 (日文 / 中文對照)</th>
-<th>事件重演條件與獎勵</th>
+<th class="sortable-th" style="text-align:left !important; width:110px;">年份 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:200px;">歷史事件名稱 (日/中) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:180px;">核心名馬 / 人物 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:280px;">觸發前置賽事與達成條件 ⇅</th>
+<th class="sortable-th" style="text-align:left !important;">事件獎勵與歷史影響 (日/中) ⇅</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>ＴＴＧ３強対決</strong><br/><small class="text-muted">(TTG 三強鼎立決戰)</small></td>
-<td>1976~1977</td>
-<td>トウショウボーイ (東昇)、テンポイント (天點)、グリーングラス (綠草)</td>
-<td>三強同場出戰有馬記念/菊花賞，觸發專屬名畫重演與馬主名聲暴漲。</td>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1971 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">光の駿馬<br/><span style="font-size:0.75rem; color:#94a3b8;">(光之駿馬・ヒカルイマイ)</span></td>
+<td style="text-align:left !important;">ヒカルイマイ (光井)</td>
+<td style="text-align:left !important;">出戰 1971 年日本打比大賽，並在最後直線以後方一氣作戰豪快逆轉奪冠。</td>
+<td style="text-align:left !important; color:#cbd5e1;">產經體育打比頭版紀念報導，解鎖「豪快」個性，贈銅札 1 枚。</td>
 </tr>
 <tr>
-<td><strong>皇帝降臨</strong><br/><small class="text-muted">(皇帝降臨・無敗三冠)</small></td>
-<td>1984~1985</td>
-<td>シンボリルドルフ (Symboli Rudolf / 魯鐸象徵)</td>
-<td>達成無敗三冠，重現日本賽馬史上首匹無敗三冠馬神話。</td>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1973 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">地方からの刺客<br/><span style="font-size:0.75rem; color:#94a3b8;">(海聖高・大井到中央奇蹟)</span></td>
+<td style="text-align:left !important;">ハイセイコー (海聖高)</td>
+<td style="text-align:left !important;">自地方大井轉戰中央，連勝彌生賞並稱霸 1973 年皐月賞。</td>
+<td style="text-align:left !important; color:#38bdf8;"><strong>自動引爆全日本第一次「競馬狂潮」！</strong> 粉絲人數暴增 50,000人。</td>
 </tr>
 <tr>
-<td><strong>オグリキャップ引退の奇跡</strong><br/><small class="text-muted">(小栗帽退役奇蹟之跑)</small></td>
-<td>1990</td>
-<td>オグリキャップ (Oguri Cap / 小栗帽)</td>
-<td>於有馬記念出戰並奪冠，觸發全場 17 萬人「小栗呼喊」傳奇動畫。</td>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1976 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">天馬と流星の激突<br/><span style="font-size:0.75rem; color:#94a3b8;">(天馬與流星公子世紀對決)</span></td>
+<td style="text-align:left !important;">トウショウボーイ × テンポイント</td>
+<td style="text-align:left !important;">兩馬同場出戰 1976 皐月賞與有馬紀念，並包辦冠亞軍。</td>
+<td style="text-align:left !important; color:#cbd5e1;">結成「強敵 (宿敵)」相関圖，雙方勝負根性與瞬發力突破上限。</td>
 </tr>
 <tr>
-<td><strong>トウカイテイオー奇跡の復活</strong><br/><small class="text-muted">(東海帝皇奇蹟之復活)</small></td>
-<td>1993</td>
-<td>トウカイテイオー (Tokai Teio / 東海帝皇)</td>
-<td>休養 364 天後於有馬記念直接復出奪冠，重現奇蹟之復活名場面！</td>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1977 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">スーパーカー暴走<br/><span style="font-size:0.75rem; color:#94a3b8;">(跑車狂飆・丸善斯基)</span></td>
+<td style="text-align:left !important;">マルゼンスキー (丸善斯基)</td>
+<td style="text-align:left !important;">以 8 馬身以上壓倒性差距稱霸朝日盃 3 歲錦標。</td>
+<td style="text-align:left !important; color:#cbd5e1;">獲得「異次元の速さ」專屬稱號，領放大逃能力提升。</td>
 </tr>
 <tr>
-<td><strong>サンデーサイレンス旋風</strong><br/><small class="text-muted">(週日寧靜王朝崛起)</small></td>
-<td>1994~1995</td>
-<td>サンデーサイレンス産駒 (週日寧靜產駒群)</td>
-<td>確立サンデーサイレンス(Sunday Silence)子系統，引爆日本現代賽馬黃金大繁榮。</td>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1984 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">無敗の皇帝誕生<br/><span style="font-size:0.75rem; color:#94a3b8;">(無敗皇帝・魯鐸象徵)</span></td>
+<td style="text-align:left !important;">シンボリルドルフ (魯鐸象徵)</td>
+<td style="text-align:left !important;">以無敗戰績依序制霸 1984 皐月賞、日本打比、菊花賞達成經典三冠。</td>
+<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">解鎖「無敗三冠達成」金色電影過場，贈金札 1 枚，直接入選顯彰馬。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1988 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">芦毛頂上決戦<br/><span style="font-size:0.75rem; color:#94a3b8;">(蘆毛頂上對決)</span></td>
+<td style="text-align:left !important;">オグリキャップ × タマモクロス</td>
+<td style="text-align:left !important;">兩匹蘆毛神駒在 1988 天皇賞（秋）直道廝殺包攬冠亞軍。</td>
+<td style="text-align:left !important; color:#38bdf8;"><strong>引爆第二次「賽馬狂潮」！</strong> 世間與輕度支持層人氣直接封頂。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1990 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">ラストランの奇跡<br/><span style="font-size:0.75rem; color:#94a3b8;">(小栗帽奇蹟復活之跑)</span></td>
+<td style="text-align:left !important;">オグリキャップ (小栗帽)</td>
+<td style="text-align:left !important;">在連遭挫敗後，於 1990 有馬紀念引退戰力克強敵奪得感動冠軍。</td>
+<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">全場 17 萬觀眾齊呼「小栗！」，獲得傳奇特性「奇蹟の復活」，贈虹札 1 枚！</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1992 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">世紀の対決・春の盾<br/><span style="font-size:0.75rem; color:#94a3b8;">(東海帝皇 vs 目白麥昆)</span></td>
+<td style="text-align:left !important;">トウカイテイオー × メジロマックイーン</td>
+<td style="text-align:left !important;">同場出賽 1992 春季天皇賞 (3200m)。</td>
+<td style="text-align:left !important; color:#cbd5e1;">解鎖「頂上對決」Historia 剪報，提升雙方長距離耐力與鬥志。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1993 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">奇跡の復活劇<br/><span style="font-size:0.75rem; color:#94a3b8;">(東海帝皇 364 天奇蹟)</span></td>
+<td style="text-align:left !important;">トウカイテイオー (東海帝皇)</td>
+<td style="text-align:left !important;">骨折休養整整 364 天未出賽，直通 1993 有馬紀念勇奪冠軍。</td>
+<td style="text-align:left !important; color:var(--accent-gold);">解鎖傳奇名場面「奇蹟の帝皇」，精神力滿格突破，贈金札 1 枚。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1994 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">影をも踏ませぬ三冠<br/><span style="font-size:0.75rem; color:#94a3b8;">(成田白仁 7 馬身三冠)</span></td>
+<td style="text-align:left !important;">ナリタブライアン (成田白仁)</td>
+<td style="text-align:left !important;">菊花賞以 7 馬身破紀錄時間達成經典三冠。</td>
+<td style="text-align:left !important; color:#cbd5e1;">解鎖特性「怪物」，海外主要 G1 勝率獲得巨額 Buff。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1998 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">異次元の逃亡劇<br/><span style="font-size:0.75rem; color:#94a3b8;">(無聲鈴鹿金鯱賞大差)</span></td>
+<td style="text-align:left !important;">サイレンススズカ (無聲鈴鹿)</td>
+<td style="text-align:left !important;">1998 金鯱賞 (G2) 直線領放大差獨贏 1 秒 8 奪冠。</td>
+<td style="text-align:left !important; color:#38bdf8;">解鎖專屬特性「異次元の逃亡者」，領放作戰時直線速度不衰退。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1998 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">悲願のダービー初制覇<br/><span style="font-size:0.75rem; color:#94a3b8;">(特別週與武豐初制霸)</span></td>
+<td style="text-align:left !important;">スペシャルウィーク × 武豐</td>
+<td style="text-align:left !important;">武豐騎手策騎特別週贏得 1998 日本打比大賽。</td>
+<td style="text-align:left !important; color:#cbd5e1;">武豐騎手友好度直接提升至 100，特別週獲得「打比馬」光環。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">2000 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">世紀末覇王降臨<br/><span style="font-size:0.75rem; color:#94a3b8;">(好歌劇年間無敗 G1 8勝)</span></td>
+<td style="text-align:left !important;">テイエムオペラオー (好歌劇)</td>
+<td style="text-align:left !important;">2000 年達成古馬中長距離 G1 全勝 (年間 8 戰 8 勝)。</td>
+<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">解鎖稱號「世紀末覇王」，獲得特別獎金 3 億日圓與金札 1 枚。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">2005 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">空を飛んだ無敗三冠<br/><span style="font-size:0.75rem; color:#94a3b8;">(大震撼飛翔三冠)</span></td>
+<td style="text-align:left !important;">ディープインパクト (大震撼)</td>
+<td style="text-align:left !important;">無敗制霸皐月賞、日本打比、菊花賞，重現飛翔直線尾段。</td>
+<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">全支持層人氣 100% 封頂，解鎖「英雄」頭銜與虹札 1 枚。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">2008 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">2センチの奇跡<br/><span style="font-size:0.75rem; color:#94a3b8;">(伏特加 vs 大和赤驥 2cm)</span></td>
+<td style="text-align:left !important;">ウオッカ × ダイワスカーレット</td>
+<td style="text-align:left !important;">出戰 2008 秋季天皇賞，雙姝極微差衝線包攬前兩名。</td>
+<td style="text-align:left !important; color:#f472b6;">解鎖名場面「牝馬雙壁」，雙方產駒獲得名牝系爆發力加成。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">2011 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">暴君の狂気三冠<br/><span style="font-size:0.75rem; color:#94a3b8;">(黃金巨匠暴君三冠)</span></td>
+<td style="text-align:left !important;">オルフェーヴル (黃金巨匠)</td>
+<td style="text-align:left !important;">2011 菊花賞大勝達成三冠，賽後過終點將池添謙一騎手甩落。</td>
+<td style="text-align:left !important; color:#cbd5e1;">解鎖個性「暴君」克服路線，瞬發力與意志力突破極限。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">2018 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">2分20秒6の衝撃<br/><span style="font-size:0.75rem; color:#94a3b8;">(杏目世界紀錄時間)</span></td>
+<td style="text-align:left !important;">アーモンドアイ (杏目)</td>
+<td style="text-align:left !important;">以 2 分 20 秒 6 超級破世界紀錄時間贏得 2018 日本盃。</td>
+<td style="text-align:left !important; color:var(--accent-gold);">世界 100 傑馬積分直衝第一名，解鎖專屬特性「九冠神話」。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">2023 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">世界最強の証明<br/><span style="font-size:0.75rem; color:#94a3b8;">(春秋分世界第一)</span></td>
+<td style="text-align:left !important;">イクイノックス (春秋分)</td>
+<td style="text-align:left !important;">2023 天皇賞（秋）跑出 1 分 55 秒 2 破紀錄時間連霸。</td>
+<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">榮獲世界浪琴表排位第一名 (135 磅)，退役直接進入顯彰馬。</td>
 </tr>
 </tbody>
 </table>
 </div>
+
 </div>
 </section>
 </div>
@@ -31302,204 +31409,212 @@ function filterTab5Racecourses() {
 <section class="section-card" id="sec-club-management">
 <div class="section-header">
 <div class="section-title"><i class="fa-solid fa-building-columns"></i> 第 39 章：賽馬俱樂部 (Club) 經營・法人化牧場與會員招募完全指南</div>
+<div class="section-meta">
+<span class="pill pill-gold">一口馬主招募公式 ＋ 俱樂部牧場設立 ＋ 知人加入門檻全書</span>
+</div>
 </div>
 <div class="section-body">
-<div class="callout callout-gold" style="margin-bottom:20px;">
-<i class="fa-solid fa-users"></i>
+
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-briefcase" style="font-size:1.3rem; color:var(--accent-gold);"></i>
 <div>
-<strong>《賽馬大亨 10 2026》 Web 手冊 3500 &amp; 4400 俱樂部法人經營完全收錄</strong><br/>
-                當馬主資金與名聲達到一定水準後，可申請設立專屬的「一口馬主」賽馬俱樂部法人（Club）。透過自主制定勝負服、設定募集口數與定價、招攬會員出資，並可解鎖專屬的「俱樂部牧場 (クラブ牧場)」，實現雙牧場協同繁育與巨額分紅利潤！
-            </div>
-</div>
-<!-- 一、俱樂部設立與營運流程 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-stamp"></i> 一、俱樂部法人設立條件、流程與代表選任
-                </div>
-<span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">法人化制度</span>
-</div>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:16px;">
-<div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
-<h4 style="color:#38bdf8; font-size:0.9rem; margin-top:0;">📋 1. 設立條件與資金門檻</h4>
-<p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
-                        馬主資產達 <strong>20 億日圓以上</strong> 且名聲達標時，知人將登門提議設立俱樂部。需支付 10 億日圓作為法人設立準備金與註冊資本。
-                    </p>
-</div>
-<div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
-<h4 style="color:#4ade80; font-size:0.9rem; margin-top:0;">👔 2. 俱樂部代表 (社長) 選任</h4>
-<p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
-                        可指派結識之知人或已成年的<strong>子孫 (家系後代)</strong> 擔任俱樂部代表社長。代表之「相馬眼」與「交涉力」將直接影響會員增長速度與募集成功率。
-                    </p>
-</div>
-<div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
-<h4 style="color:#facc15; font-size:0.9rem; margin-top:0;">🎨 3. 勝負服設計與冠名</h4>
-<p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
-                        可為俱樂部制定專屬的勝負服圖樣（配色、條紋、星形等）與專屬馬名冠名（如 Sunday Racing, Silk 等風格），與本場自用馬做明顯區隔。
-                    </p>
+<strong>《賽馬大亨 10 2026》賽馬俱樂部 (Club 法人) 商業經營體系</strong><br/>
+當名聲與資金達到頂級水準後，玩家將可設立<strong>「俱樂部法人 (一口馬主俱樂部)」</strong>。不僅能擴充自身馬匹管理上限至 40~60 匹，更可透過<strong>「一口馬主募集」</strong>吸納全國會員資金，並設立<strong>「俱樂部專用牧場」</strong>實現自產自銷的商業帝國！
 </div>
 </div>
+
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:20px;">
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3);">
+<h4 style="color:#38bdf8; margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-key"></i> 📋 俱樂部法人設立四大絕對門檻
+</h4>
+<ul style="line-height:1.8; font-size:0.82rem; margin:0; padding-left:18px;">
+<li><strong>1. 名聲值 (名声)：</strong>達到 <strong>1,000 以上</strong> (1,200 必出)。</li>
+<li><strong>2. 牧場設施：</strong>基本施設 Lv2 ＋ 廄舍 Lv2 以上。</li>
+<li><strong>3. 資金門檻：</strong>自家資金持有人 ≥ <strong>20 億日圓</strong> (設立時扣除 5 億開設資本)。</li>
+<li><strong>4. 關鍵知人結識：</strong>認識知人 <code>朝比奈すみれ (朝比奈堇)</code>，友好度達 10+。</li>
+<li>※ 在滿足上述條件下，於中央重賞獲勝後的次週將由朝比奈堇主動上門提案！</li>
+</ul>
 </div>
-<!-- 二、幼駒募集口數與定價營運 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.1rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-hand-holding-dollar"></i> 二、幼駒募集定價、一口口數與利潤分紅機制
-                </div>
-<span class="badge" style="background:var(--accent-color); color:#fff; font-size:0.8rem; padding:4px 8px;">一ロ馬主機制</span>
+
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(245,158,11,0.3);">
+<h4 style="color:var(--accent-gold); margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-chart-line"></i> 💰 一口馬主募集定價黃金公式
+</h4>
+<ul style="line-height:1.8; font-size:0.82rem; margin:0; padding-left:18px;">
+<li><strong>募集總額：</strong>幼駒評價額 × <strong>1.2 ~ 1.5 倍</strong>（兼具吸引力與最高利潤）。</li>
+<li><strong>劃分口數：</strong>常規馬 100~200 口；大物巨星馬設定 400~500 口。</li>
+<li><strong>100% 完售技巧：</strong>優先挑選<strong>「白毛/蘆毛、父馬知名度高、評價額適中」</strong>之幼駒，募集首日即可 100% 完售，快速回籠資金並提升俱樂部聲望！</li>
+</ul>
 </div>
-<div class="table-responsive" style="margin:0;">
-<table class="data-table">
-<thead>
+</div>
+
+<h3 style="color:#38bdf8; margin:20px 0 10px 0; font-size:1.05rem; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-users"></i> 【知人解鎖門檻】俱樂部累積會員人數與加入知人全覽表
+</h3>
+<p style="font-size:0.85rem; color:#94a3b8; margin-bottom:12px;">
+※ 隨著俱樂部成績優異與會員人數膨脹，各界知名人士將依序申請加入俱樂部成為忠實會員！
+</p>
+
+<div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:24px;">
+<table class="data-table" style="min-width:1050px; text-align:left !important;">
+<thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th style="min-width:140px; text-align:left !important;">募集口數類別</th>
-<th style="min-width:140px; text-align:left !important;">一口定價區間</th>
-<th style="min-width:280px; text-align:left !important;">會員受眾與滿額難易度</th>
-<th style="min-width:260px; text-align:left !important;">營運利潤與俱樂部名聲加成</th>
+<th class="sortable-th" style="text-align:left !important; width:160px;">會員人數門檻 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:220px;">新加入知人名單 (日/中) ⇅</th>
+<th class="sortable-th" style="text-align:left !important;">解鎖人物背景與身分 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:180px;">解鎖專屬效益 ⇅</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left !important;"><strong style="color:#f87171;">40 口 (少人數少額分攤)</strong></td>
-<td style="text-align:left !important;">高額 (1000萬~5000萬/口)</td>
-<td style="text-align:left !important;">針對高資產會員，需幼駒血統評級 A 以上才易售罄。</td>
-<td style="text-align:left !important;">初期資金回流極快，奪冠時俱樂部名聲大幅激增。</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">1,000 人達成</td>
+<td style="text-align:left !important;">井坂修三、有馬桜子</td>
+<td style="text-align:left !important;">著名賽馬雜誌特約記者、電視台知性女主播。</td>
+<td style="text-align:left !important; color:#cbd5e1;">增加媒體曝光率，評價提升。</td>
 </tr>
 <tr>
-<td style="text-align:left !important;"><strong style="color:var(--gold-color);">400 口 (主流標準俱樂部)</strong></td>
-<td style="text-align:left !important;">中額 (100萬~500萬/口)</td>
-<td style="text-align:left !important;">最均衡之募集模式，大眾會員接受度極高。</td>
-<td style="text-align:left !important;">會員數成長平穩，可維持每年穩健的分紅現金流。</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">3,000 人達成</td>
+<td style="text-align:left !important;">如月英里子、天本涼子</td>
+<td style="text-align:left !important;">海外馬產界名媛、資深血統研究家。</td>
+<td style="text-align:left !important; color:#38bdf8;">解鎖海外拍賣會 VIP 通道。</td>
 </tr>
 <tr>
-<td style="text-align:left !important;"><strong style="color:#38bdf8;">1000 口 (微型大眾口數)</strong></td>
-<td style="text-align:left !important;">低額 (10萬~50萬/口)</td>
-<td style="text-align:left !important;">入門門檻低，極易達成「滿額 (満口御礼)」。</td>
-<td style="text-align:left !important;">大幅引爆俱樂部狂潮與會員總人數成長。</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">5,000 人達成</td>
+<td style="text-align:left !important;">高井駆、相馬百合子</td>
+<td style="text-align:left !important;">新銳青年馬主、老牌相馬專家。</td>
+<td style="text-align:left !important; color:#cbd5e1;">相馬眼評價更為精準。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">10,000 人達成</td>
+<td style="text-align:left !important;">萩野鈴蘭、鳳雅輝</td>
+<td style="text-align:left !important;">宿敵財閥馬主千金與大少爺（化敵為友）。</td>
+<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">贈送銀札 1 枚，宿敵好感大增。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">20,000 人達成</td>
+<td style="text-align:left !important;">都大路漆黒、朝比奈すみれ</td>
+<td style="text-align:left !important;">宿敵大馬主元老、俱樂部引薦人兼秘書。</td>
+<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">贈送金札 1 枚，達成終極商業成就。</td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
-<!-- 三、俱樂部牧場設立與雙牧場連動 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.1rem; font-weight:800; color:#34d399; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-tree"></i> 三、俱樂部專屬牧場 (クラブ牧場) 設立與雙牧場協同
-                </div>
-<span class="badge" style="background:#059669; color:#fff; font-size:0.8rem; padding:4px 8px;">雙牧場系統</span>
-</div>
-<div style="font-size:0.84rem; line-height:1.75; color:var(--text-main); text-align:left !important;">
-<p style="margin:0 0 10px 0;">
-                    當俱樂部會員數突破 <strong>5,000 人</strong> 且俱樂部資金充裕時，可在日本另行開闢<strong>「俱樂部牧場」</strong>！
-                </p>
-<div style="background:rgba(6,95,70,0.2); border-left:3px solid #34d399; padding:10px 14px; border-radius:6px; margin-bottom:10px;">
-<strong>🔄 雙牧場協同繁育效益：</strong><br/>
-                    • 繁殖牝馬繫養規模翻倍（本場 20 頭 + 俱樂部牧場 20 頭 = 40 頭頂級母馬群）。<br/>
-                    • 優質幼駒可自由在「自留本場現役」與「移籍俱樂部募集」之間無縫分配。<br/>
-                    • 自家種牡馬可直接無償配種俱樂部牧場母馬，節省巨額配種費並加速自身系統確立！
-                </div>
+
+<div class="tool-card" style="background:rgba(15,23,42,0.85); border:1px solid rgba(56,189,248,0.3); padding:16px;">
+<h4 style="color:#38bdf8; margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-tree"></i> 🏰 俱樂部牧場 (Club Ranch) 設立條件
+</h4>
+<div style="font-size:0.84rem; color:var(--text-color); line-height:1.7;">
+當俱樂部法人經營成熟後，可建立專屬的「俱樂部牧場」：<br/>
+• <strong>門檻：</strong>名聲值 ≥ 3,000，自家資金 ≥ 20 億，<strong>俱樂部資金 ≥ 10 億日圓</strong>，生產者排行榜名列全國前 10 位。<br/>
+• <strong>種母馬配置：</strong>需持有繁殖牝馬 ≥ 10 頭，種牡馬 ≥ 5 頭。<br/>
+• <strong>效益：</strong>俱樂部牧場完全自產幼駒供會員募集，大幅減輕自家牧場負擔，實現利潤永動機！
 </div>
 </div>
+
 </div>
 </section><section class="section-card" id="sec-legend-match">
 <div class="section-header">
 <div class="section-title"><i class="fa-solid fa-trophy"></i> 第 40 章：傳奇對決 (The Legend Match)・世界百大名駒殿堂排行榜與顯彰馬決戰</div>
+<div class="section-meta">
+<span class="pill pill-gold">世界 100 傑偉業積分演算法 ＋ 傳奇入場券最速刷法 ＋ 跨時代魔王攻略</span>
+</div>
 </div>
 <div class="section-body">
-<div class="callout callout-gold" style="margin-bottom:20px;">
-<i class="fa-solid fa-award"></i>
+
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-crown" style="font-size:1.3rem; color:var(--accent-gold);"></i>
 <div>
-<strong>《賽馬大亨 10 2026》 Web 手冊 4650 &amp; 4670 傳奇挑戰系統完全收錄</strong><br/>
-                突破時空維度！玩家現役巔峰名駒可受邀參加夏季與冬季舉辦的夢幻大賽<strong>「The Legend Match (傳奇對決)」</strong>，與大震撼、神鷹、成田白仁、杏目、秘書處等歷史神獸同場競技；同時在<strong>「世界 100 傑馬殿堂」</strong>爭奪全球歷史第一排名！
-            </div>
-</div>
-<!-- 一、The Legend Match 傳奇對決規則 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-trophy"></i> 一、ザ・レジェンドマッチ (The Legend Match) 舉辦週期與參賽資格
-                </div>
-<span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">夢幻賽事</span>
-</div>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:16px;">
-<div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
-<h4 style="color:#38bdf8; font-size:0.9rem; margin-top:0;">🎫 1. 參賽邀請函 (入場券) 獲得</h4>
-<p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
-                        現役馬於 G1 賽事累積 <strong>3 勝以上</strong> 且鬥志/調子達到巔峰時，於 6 月與 12 月將收到主辦方發送之「傳奇對決特別邀請函」。
-                    </p>
-</div>
-<div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
-<h4 style="color:#facc15; font-size:0.9rem; margin-top:0;">⚔️ 2. 對戰陣容與跨時代神駒</h4>
-<p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
-                        賽事將隨機或指定匹配歷史跨時代巔峰神駒（如 <strong>ディープインパクト (大震撼)</strong>、<strong>トウカイテイオー (東海帝皇)</strong>、<strong>Secretariat (秘書處)</strong>）。
-                    </p>
-</div>
-<div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
-<h4 style="color:#4ade80; font-size:0.9rem; margin-top:0;">🎁 3. 獲勝獎勵與傳奇特性解鎖</h4>
-<p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
-                        擊敗傳奇名馬奪冠後，可獲得<strong>巨額特別獎金</strong>、<strong>金色/虹色御守</strong>，並直接解鎖極其稀有的【傳奇專屬特性 (Legend Trait)】！
-                    </p>
+<strong>《賽馬大亨 10 2026》世界頂級名駒殿堂・傳奇對決機制</strong><br/>
+「世界 100 傑馬排行榜 (World Best 100)」全面評定歷史至今所有頂級賽駒的生涯功績！旗下名駒只要累積足夠偉業積分殺入榜單，即可獲邀參加<strong>「The Legend Match (傳奇對決)」</strong>——在專屬虛擬殿堂賽場中，與不同歷史時代的無敗巨星（如 Secretariat、秘書處、皇帝、大震撼、春秋分）展開無差別世紀死鬥！
 </div>
 </div>
+
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:20px;">
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(245,158,11,0.3);">
+<h4 style="color:var(--accent-gold); margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-ticket"></i> 🎫 傳奇對決邀請函 (Ticket) 最速獲取法
+</h4>
+<ul style="line-height:1.8; font-size:0.82rem; margin:0; padding-left:18px;">
+<li><strong>1. 經典三冠達成：</strong>達成日本/歐洲/美國任意三冠，必獲 1 張傳奇邀請函。</li>
+<li><strong>2. 海外超級 G1 奪冠：</strong>凱旋門賞、育馬者盃經典賽、杜拜世界盃奪冠贈券。</li>
+<li><strong>3. 偉業積分達標：</strong>旗下名駒生涯累計勝場積分突破 1,000pt，年末自動獲贈。</li>
+</ul>
 </div>
-<!-- 二、世界 100 傑馬殿堂排行榜 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.1rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-earth-americas"></i> 二、世界 100 傑馬 (Top 100 Horses) 積分規則與登頂心法
-                </div>
-<span class="badge" style="background:var(--accent-color); color:#fff; font-size:0.8rem; padding:4px 8px;">世界排行榜</span>
-</div>
-<div style="font-size:0.84rem; line-height:1.7; color:var(--text-main); text-align:left !important;">
-<p style="margin:0 0 10px 0;">
-                    「世界 100 傑馬」收錄了全球有史以來最強的 100 匹殿堂級名駒。排行榜按國際 G1 大賽勝場加權積分進行排序：
-                </p>
-<div style="background:rgba(30,41,59,0.7); border-radius:8px; padding:12px; border-left:3px solid var(--gold-color); margin-bottom:12px;">
-<strong>🏆 積分加權計算法則：</strong><br/>
-                    • <strong>全球超頂級特級 G1</strong>（凱旋門賞、日本盃、美國育馬者盃經典賽、杜拜世界盃）：每勝獲得 <strong>+100 積分</strong>。<br/>
-                    • <strong>國內外常規 G1</strong>（經典三冠、天皇賞、有馬紀念等）：每勝獲得 <strong>+50 積分</strong>。<br/>
-                    • <strong>連勝加成</strong>：跨年度無敗連勝每多一場額外疊加 <strong>+15 積分</strong>。<br/>
-                    • 累積積分突破 <strong>800 分以上</strong> 即可強勢殺入全球前 10 名，超越歷史傳奇榮登世界第 1 名馬王座！
-                </div>
-</div>
-</div>
-<div class="manual-replica-card" style="background:rgba(15,23,42,0.85); border:1px solid rgba(236,72,153,0.3); border-radius:10px; padding:20px; margin-top:24px; box-shadow:0 6px 20px rgba(0,0,0,0.3);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(236,72,153,0.2); padding-bottom:10px; margin-bottom:16px;">
-<h3 style="font-size:1.1rem; color:#ec4899; margin:0; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-trophy"></i> 【深度指南】世界 100 傑馬排行榜・偉業點數與 The Legend Match 傳奇對決完全手冊
-        </h3>
-<span class="badge badge-pink" style="font-size:0.8rem;">世界百傑與傳奇對決</span>
-</div>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:16px;">
-<div style="text-align:center;">
-<img alt="世界100傑馬排行榜" src="images/manual/4650_01.png" style="max-width:100%; border-radius:8px; border:1px solid var(--border-color); box-shadow:0 4px 12px rgba(0,0,0,0.4);"/>
-<div style="font-size:0.8rem; color:var(--text-muted); margin-top:6px;">▲ 世界 100 傑馬排行榜 (World Top 100) 與偉業點數計算</div>
-</div>
-<div style="text-align:center;">
-<img alt="The Legend Match 傳奇對決" src="images/manual/4670_01.png" style="max-width:100%; border-radius:8px; border:1px solid var(--border-color); box-shadow:0 4px 12px rgba(0,0,0,0.4);"/>
-<div style="font-size:0.8rem; color:var(--text-muted); margin-top:6px;">▲ The Legend Match：跨世代殿堂名駒與歷史顯彰馬夢幻決戰</div>
+
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3);">
+<h4 style="color:#38bdf8; margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-calculator"></i> 📊 世界 100 傑馬偉業積分 (Points) 演算法
+</h4>
+<ul style="line-height:1.8; font-size:0.82rem; margin:0; padding-left:18px;">
+<li><strong>國內 G1 勝場：</strong>每勝 1 場獲得 <strong>100 pt</strong> (同一 G1 連霸額外 +50pt)。</li>
+<li><strong>海外主要 G1 勝場：</strong>英愛打比、英皇錦標每場 <strong>250 pt</strong>。</li>
+<li><strong>全球最高峰賽事：</strong>凱旋門賞、育馬者盃經典賽每場 <strong>400 pt</strong>！</li>
+<li><strong>連勝加成：</strong>達成無敗 10 連勝以上，總積分額外加乘 <strong>1.2 倍</strong>！</li>
+</ul>
 </div>
 </div>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:16px;">
-<div style="background:rgba(0,0,0,0.3); border-left:3px solid #ec4899; padding:10px 12px; border-radius:4px;">
-<strong style="color:#ec4899;"><i class="fa-solid fa-award"></i> 偉業點數 (偉業ポイント) 計算：</strong>
-<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">依據「全球 G1 勝利數」、「無敗三冠」、「連勝紀錄」、「破紀錄時間」與「國際評分 Rating」綜合評定。</p>
+
+<h3 style="color:var(--accent-gold); margin:20px 0 10px 0; font-size:1.05rem; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-skull-crossbones"></i> 【跨時代跨界魔王】傳奇對決各大關卡守門 Boss 與應對戰術
+</h3>
+<p style="font-size:0.85rem; color:#94a3b8; margin-bottom:12px;">
+※ 傳奇對決中各距離等級的最強守門神駒與克制指南。
+</p>
+
+<div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:20px;">
+<table class="data-table" style="min-width:1100px; text-align:left !important;">
+<thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
+<tr>
+<th class="sortable-th" style="text-align:left !important; width:150px;">對決戰線 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:220px;">傳奇守門魔王 (Boss) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:110px;">魔王 SP ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:280px;">魔王殺手級特性與特徵 ⇅</th>
+<th class="sortable-th" style="text-align:left !important;">玩家克制戰術與跑法建議 ⇅</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="white-space:nowrap; font-weight:bold; color:#38bdf8; text-align:left !important;">短距離 (1200m)</td>
+<td style="text-align:left !important;"><strong>ロードカナロア</strong> (龍王)</td>
+<td style="white-space:nowrap; text-align:left !important;"><span class="badge badge-rainbow">SP 78</span></td>
+<td style="text-align:left !important; color:#cbd5e1;">直線爆炸級加速、瞬發力 S+、短距離統治光環。</td>
+<td style="text-align:left !important; color:#10b981;">需派出極致大逃馬（如卡爾斯通輕快）提早拉開 4 馬身以上。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">一哩王道 (1600m)</td>
+<td style="text-align:left !important;"><strong>タイキシャトル</strong> (大樹快車)</td>
+<td style="white-space:nowrap; text-align:left !important;"><span class="badge badge-rainbow">SP 78</span></td>
+<td style="text-align:left !important; color:#cbd5e1;">先行領跑無解、力量滿格、任何馬場狀態不減速。</td>
+<td style="text-align:left !important; color:#10b981;">使用具備「根幹距離＋直線一氣」的超瞬發差馬在最後 100m 絕殺。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:bold; color:#ef4444; text-align:left !important;">中距離王道 (2000~2400m)</td>
+<td style="text-align:left !important;"><strong>ディープインパクト</strong> (大震撼)</td>
+<td style="white-space:nowrap; text-align:left !important;"><span class="badge badge-rainbow" style="font-weight:800;">SP 79</span></td>
+<td style="text-align:left !important; color:#cbd5e1;">固有「飛翔」、直道末腳光速、大舞台、四白流星。</td>
+<td style="text-align:left !important; color:#10b981;">自身馬匹 SP 需達 78+，搭配 SP 史實調教與宿敵特性正面死鬥！</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:bold; color:#a855f7; text-align:left !important;">泥地世界王者 (2000m)</td>
+<td style="text-align:left !important;"><strong>セクレタリアト</strong> (秘書處)</td>
+<td style="white-space:nowrap; text-align:left !important;"><span class="badge badge-rainbow" style="font-weight:800;">SP 79</span></td>
+<td style="text-align:left !important; color:#cbd5e1;">31 馬身神話、大舞台、紅き伝説、泥地全適性 ◎。</td>
+<td style="text-align:left !important; color:#10b981;">泥地最強怪物。需以自繁真・疾風黑色名駒搭配「交流重賞」騎手抵抗。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:bold; color:#10b981; text-align:left !important;">長距離馬拉松 (3000m+)</td>
+<td style="text-align:left !important;"><strong>メジロマックイーン</strong> (目白麥昆)</td>
+<td style="white-space:nowrap; text-align:left !important;"><span class="badge badge-gold">SP 76</span></td>
+<td style="text-align:left !important; color:#cbd5e1;">耐力 95 滿格、長距離不死身、呼吸節奏完美。</td>
+<td style="text-align:left !important; color:#10b981;">派遣耐力 90+ 且配備「長距離◎」騎手（如武豐），彎道提前提速。</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div style="background:rgba(0,0,0,0.3); border-left:3px solid #ec4899; padding:10px 12px; border-radius:4px;">
-<strong style="color:#ec4899;"><i class="fa-solid fa-gift"></i> 世界百傑登頂豐厚報酬：</strong>
-<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">自家馬榮登世界 No.1 時，可直接獲得 <strong>🌈 虹札 3 枚、金札 5 枚與專屬世界顯彰馬金色雕像</strong>！</p>
+
 </div>
-<div style="background:rgba(0,0,0,0.3); border-left:3px solid #ec4899; padding:10px 12px; border-radius:4px;">
-<strong style="color:#ec4899;"><i class="fa-solid fa-flag-checkered"></i> The Legend Match 出走資格：</strong>
-<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">僅限獲得「年度顯彰馬」或於「世界100傑馬排名前 10」之超級神駒方有資格受邀參賽。</p>
-</div>
-<div style="background:rgba(0,0,0,0.3); border-left:3px solid #ec4899; padding:10px 12px; border-radius:4px;">
-<strong style="color:#ec4899;"><i class="fa-solid fa-crown"></i> 擊敗歷史傳奇專屬報酬：</strong>
-<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">在傳奇對決中擊敗 Secretary (秘書處)、Deep Impact (大震撼) 等神駒，可解鎖專屬限定裝蹄鐵與超絕繁育因子！</p>
-</div>
-</div>
-</div></div>
 </section></div>
 <!-- Pillar 7: 🏇 馬匹資料庫互動速查 -->
 <!-- ================= 支柱七：馬匹資料庫 ================= -->
