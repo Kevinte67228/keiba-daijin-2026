@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.37",
+  "current_version": "v03.38",
   "history": [
     {
       "version": "v01.01",
@@ -1225,6 +1225,11 @@
       "version": "v03.37",
       "date": "2026-09-04",
       "description": "Restore and Clean Chapter 45 Full Yearly Recommendations & Overseas Database (v03.37): Eliminated raw Japanese introductory index notice noise in 1964; restored robust cell parsing for 11-route tables; added 9 overseas years (1968-1976) with legendary horses (Brigadier Gerard, Mill Reef); localized strategic analysis comments into Traditional Chinese; verified 100% via CDP headless Chrome."
+    },
+    {
+      "version": "v03.38",
+      "date": "2026-09-04",
+      "description": "修復第45章全年代推薦史實馬能力大表：採用正則狀態機徹底解決未閉合<td>單元格黏結問題，實現17欄位獨立清晰分列與繁體中文戰略評語卡片"
     }
   ]
 }
