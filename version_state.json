@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.36",
+  "current_version": "v03.37",
   "history": [
     {
       "version": "v01.01",
@@ -1220,6 +1220,11 @@
       "version": "v03.36",
       "date": "2026-09-04",
       "description": "Restore Full 18-Module Horse Dossier with 8-Axis SVG Radar Chart, Turf Quality Gauge, Pedigree Tree & Progeny Engine (v03.36): Root cause traced to v02.43 rollback which reverted modal to simple text stats. Restored complete 8-axis SVG radar chart (280x280), 1-8 turf gradation track bar, 4-generation visual pedigree tree, breeding & scenario SP schedule, and dynamic progeny/sibling cross-search. Verified 100% with 0 errors via CDP headless Chrome."
+    },
+    {
+      "version": "v03.37",
+      "date": "2026-09-04",
+      "description": "Restore and Clean Chapter 45 Full Yearly Recommendations & Overseas Database (v03.37): Eliminated raw Japanese introductory index notice noise in 1964; restored robust cell parsing for 11-route tables; added 9 overseas years (1968-1976) with legendary horses (Brigadier Gerard, Mill Reef); localized strategic analysis comments into Traditional Chinese; verified 100% via CDP headless Chrome."
     }
   ]
 }
