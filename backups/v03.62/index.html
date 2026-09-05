@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.58"></script>
-<script src="core_guides_data.js?v=v03.58"></script>
-<script src="yearly_recs_db.js?v=v03.58"></script>
-<script src="horse_subtopics_data.js?v=v03.58"></script>
+<script src="master_lookup_db.js?v=v03.62"></script>
+<script src="core_guides_data.js?v=v03.62"></script>
+<script src="yearly_recs_db.js?v=v03.62"></script>
+<script src="horse_subtopics_data.js?v=v03.62"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2532,7 +2532,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.58</span>
+<span class="version-badge">v03.62</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 49 大章節)
@@ -5918,54 +5918,54 @@ button.chip-btn.active {
 </p>
 
 <div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:20px;">
-<table class="data-table" style="min-width:1050px; text-align:left !important;">
+<table class="data-table" style="min-width:920px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:160px;">小技領域 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:200px;">核心機制痛點 ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">職業老手解決方案與具體操作 (SOP) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:150px;">預期實戰效益 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:150px; min-width:140px; white-space:nowrap !important;">小技領域 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; word-break:break-word;">核心機制痛點 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:380px;">職業老手解決方案與具體操作 (SOP) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:170px; min-width:150px; max-width:190px;">預期實戰效益 ⇅</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#38bdf8; text-align:left !important;">✈️ 海外遠征補償法</td>
-<td style="text-align:left !important;">遠征美歐 G1 時，若馬匹精神力不足或無遠征特性，易引發調子暴跌、能力 -1~2 階。</td>
-<td style="text-align:left !important;">
+<td style="white-space:nowrap !important; font-weight:bold; color:#38bdf8; text-align:left !important; width:150px; min-width:140px;">✈️ 海外遠征補償法</td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">遠征美歐 G1 時，若馬匹精神力不足或無遠征特性，易引發調子暴跌、能力 -1~2 階。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
 1. 遠征前 2 週執行<strong>「遠征用史實調教」</strong>（如「芝合わせ調教」）。<br/>
 2. 派遣具備<strong>「海外遠征○」或「交流重賞」</strong>特性之主戰騎手（如武豐、李慕華、川田將雅）。<br/>
 3. 抵達後第一週立即進行「微調整」恢復調子雙箭頭。
 </td>
-<td style="text-align:left !important; color:#10b981; font-weight:bold;">100% 免疫遠征 Debuff，凱旋門賞勝率大幅飆升。</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#10b981; font-weight:bold;">100% 免疫遠征 Debuff，凱旋門賞勝率大幅飆升。</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#f59e0b; text-align:left !important;">🛌 疲勞極限鎖定 (調子管理)</td>
-<td style="text-align:left !important;">連戰後疲勞變為「黃色/橙色」時，若繼續出賽極易引發故障（骨折/屈腱炎），導致引退。</td>
-<td style="text-align:left !important;">
+<td style="white-space:nowrap !important; font-weight:bold; color:#f59e0b; text-align:left !important; width:150px; min-width:140px;">🛌 疲勞極限鎖定 (調子管理)</td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">連戰後疲勞變為「黃色/橙色」時，若繼續出賽極易引發故障（骨折/屈腱炎），導致引退。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
 1. 牧場務必將<strong>「集団馬房 / 放牧場」</strong>升至 Lv3。<br/>
 2. 出賽 2~3 場後，只要疲勞升至微黃，立刻設定<strong>「短期放牧 1 週」</strong>。<br/>
 3. 1 週放牧即可清空所有疲勞，且調子不會跌破紅心，可無縫接軌下一場 G1。
 </td>
-<td style="text-align:left !important; color:#10b981; font-weight:bold;">競走生涯零重大事故，殿堂級名馬跑滿 5~6 歲。</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#10b981; font-weight:bold;">競走生涯零重大事故，殿堂級名馬跑滿 5~6 歲。</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#c084fc; text-align:left !important;">🏇 騎手特性速刷法</td>
-<td style="text-align:left !important;">新人騎手初始五維低、無特性，跑重賞容易在直線被包夾失速。</td>
-<td style="text-align:left !important;">
+<td style="white-space:nowrap !important; font-weight:bold; color:#c084fc; text-align:left !important; width:150px; min-width:140px;">🏇 騎手特性速刷法</td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">新人騎手初始五維低、無特性，跑重賞容易在直線被包夾失速。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
 1. 將 SP 75+ 的碾壓級馬匹指派該新人騎手出賽 G2/G3（非經典三冠核心）。<br/>
 2. 以大差獨贏累計該距離勝場，最快在 1~2 年內觸發騎手<strong>「大舞臺 / 根幹距離 / 差・追得意」</strong>特性覺醒。<br/>
 3. 友好度達 100 時還可獲贈銀札，一舉兩得！
 </td>
-<td style="text-align:left !important; color:#10b981; font-weight:bold;">自產專屬頂級神騎手，終身為自家牧場效力。</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#10b981; font-weight:bold;">自產專屬頂級神騎手，終身為自家牧場效力。</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#10b981; text-align:left !important;">🎯 賽事除外對策與賞金精算</td>
-<td style="text-align:left !important;">2~3 歲經典賽事因收得賞金不足遭到「除外 (無法出賽)」，錯失三冠入場券。</td>
-<td style="text-align:left !important;">
+<td style="white-space:nowrap !important; font-weight:bold; color:#10b981; text-align:left !important; width:150px; min-width:140px;">🎯 賽事除外對策與賞金精算</td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">2~3 歲經典賽事因收得賞金不足遭到「除外 (無法出賽)」，錯失三冠入場券。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
 1. 2 歲新馬戰獲勝後，避開熱門的重賞，優先報名出賽馬數少、競爭弱的偏遠 G3（如札幌 2 歲 S、新潟 2 歲 S、函館 2 歲 S）。<br/>
 2. 確保在 2 歲結束前累積 ≥ 1,600 萬收得賞金，次年 3 歲皐月賞與櫻花賞穩獲第一優先出走權。
 </td>
-<td style="text-align:left !important; color:#10b981; font-weight:bold;">100% 確保經典三冠出賽席位，絕不被除外。</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#10b981; font-weight:bold;">100% 確保經典三冠出賽席位，絕不被除外。</td>
 </tr>
 </tbody>
 </table>
@@ -5998,17 +5998,16 @@ button.chip-btn.active {
 </p>
 
 <div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:24px;">
-<table class="data-table" style="min-width:1150px; text-align:left !important;">
+<table class="data-table" style="min-width:980px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:150px;">版本代號 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:120px;">起始劇本年 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:280px;">核心賽事與系統機制 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:300px;">配種繁育與遺傳進化 ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">調教與日常育成重點 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:120px; min-width:110px; white-space:nowrap !important;">版本代號 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:110px; min-width:100px; white-space:nowrap !important;">起始劇本年 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:260px; min-width:230px; max-width:280px; white-space:normal !important; word-break:break-word;">核心賽事與系統機制 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:260px; min-width:230px; max-width:280px; white-space:normal !important; word-break:break-word;">配種繁育與遺傳進化 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:250px;">調教與日常育成重點 ⇅</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td style="white-space:nowrap; font-weight:bold; color:#94a3b8; text-align:left !important;">WP10<br/><span style="font-size:0.75rem; color:#64748b;">(2023 初版)</span></td>
 <td style="white-space:nowrap; text-align:left !important;">1973~2024</td>
@@ -6239,7 +6238,7 @@ button.chip-btn.active {
 </ul>
 <p style="margin:6px 0 0; color:var(--text-muted); font-size:0.82rem;">※ 玩家可於遊戲選單「資料 ➔ 活力増加契機一覧」隨時查詢當前解鎖條件，隨著活力增強次數提升，將逐步開啟【大～永續】的隱藏達成清單！</p>
 </div>
-</div></div></div>
+</div></div>
 <!-- 二、特殊名馬與彩蛋配合總表 -->
 <div style="background:rgba(15,23,42,0.6); border:1px solid var(--border-color); border-radius:10px; padding:16px;">
 <h3 style="font-size:0.95rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px; display:flex; align-items:center; gap:8px;">二、特殊名馬與趣味彩蛋配合完全速查表</h3>
@@ -7304,17 +7303,16 @@ button.chip-btn.active {
 </div>
 
 <div class="table-responsive scrollable-table-box" style="max-height:580px !important; overflow-y:auto !important; margin-bottom:20px;">
-<table class="data-table" style="min-width:1100px; text-align:left !important;">
+<table class="data-table" style="min-width:1020px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:170px;">特殊配合名稱 (日/中) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:120px;">爆發力加成 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:340px;">成立條件與檢核標準 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:220px;">五維與副屬性影響 ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">戰略價值與代表種公馬/名雌 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:180px; min-width:160px;">特殊配合名稱 (日/中) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:110px; min-width:100px; white-space:nowrap !important;">爆發力加成 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:280px; min-width:240px; max-width:300px; white-space:normal !important; word-break:break-word;">成立條件與檢核標準 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:200px; min-width:180px; max-width:220px; white-space:normal !important; word-break:break-word;">五維與副屬性影響 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:260px;">戰略價值與代表種公馬/名雌 ⇅</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td style="white-space:nowrap; font-weight:bold; color:#38bdf8; text-align:left !important;">稲妻配合<br/><span style="font-size:0.75rem; color:#94a3b8;">(稻妻配合 / Lightning)</span></td>
 <td style="white-space:nowrap; text-align:left !important;"><span class="badge badge-rainbow">爆發力 +6</span></td>
@@ -8762,17 +8760,16 @@ button.chip-btn.active {
 </div>
 
 <div class="table-responsive scrollable-table-box" style="max-height:580px !important; overflow-y:auto !important; margin-bottom:20px;">
-<table class="data-table" style="min-width:1150px; text-align:left !important;">
+<table class="data-table" style="min-width:1000px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:160px;">出生事件名稱 (日/中) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:110px;">發生時機 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:340px;">前置嚴格觸發條件 (父母馬門檻) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:240px;">能力保底與固定符號 ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">專屬個性 (ウマソナ) 與戰略評語 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:150px; min-width:140px;">出生事件名稱 (日/中) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:100px; min-width:90px; white-space:nowrap !important;">發生時機 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:280px; min-width:240px; max-width:300px; white-space:normal !important; word-break:break-word;">前置嚴格觸發條件 (父母馬門檻) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:220px; min-width:190px; max-width:240px; white-space:normal !important; word-break:break-word;">能力保底與固定符號 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:260px;">專屬個性 (ウマソナ) 與戰略評語 ⇅</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr style="background:rgba(234,179,8,0.06);">
 <td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">流星<br/><span style="font-size:0.75rem; color:#94a3b8;">(Ryusei / 流星)</span></td>
 <td style="white-space:nowrap; text-align:left !important;">4 月 1 週</td>
@@ -9968,13 +9965,13 @@ button.chip-btn.active {
 <p style="font-size:0.84rem; line-height:1.7; color:var(--text-main); margin-bottom:14px; text-align:left !important;">
                 賽駒持有通常特性時，透過<strong>「信任度達到 Lv2~3 於對應賽事大勝」</strong>或<strong>「執行上位評級 A 之史實調教大成功」</strong>，可將通常特性進化為上位特性（黃金框），效果數值翻倍！
             </p>
-<div class="table-responsive scrollable-table-box" style="margin:0;">
-<table class="data-table">
-<thead>
+<div class="table-responsive scrollable-table-box" style="max-height:640px !important; overflow-y:auto !important; margin:0;">
+<table class="data-table" style="min-width:860px; width:100%; text-align:left !important;">
+<thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="min-width:180px; text-align:left !important;">通常特性 (日/中) ⇅</th>
-<th class="sortable-th" style="min-width:180px; text-align:left !important;">上位進化特性 (日/中) ⇅</th>
-<th style="min-width:360px; text-align:left !important;">詳細具體數值與實戰效果 (繁體中文)</th>
+<th class="sortable-th" style="width:200px; min-width:180px; text-align:left !important; white-space:normal !important; line-height:1.5;">通常特性 (日/中) ⇅</th>
+<th class="sortable-th" style="width:200px; min-width:180px; text-align:left !important; white-space:normal !important; line-height:1.5;">上位進化特性 (日/中) ⇅</th>
+<th class="sortable-th" style="min-width:440px; max-width:580px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">詳細具體數值與實戰效果 (繁體中文) ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -10250,13 +10247,13 @@ button.chip-btn.active {
                 </div>
 <span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">共 59 種</span>
 </div>
-<div class="table-responsive scrollable-table-box" style="margin:0;">
-<table class="data-table">
-<thead>
+<div class="table-responsive scrollable-table-box" style="max-height:640px !important; overflow-y:auto !important; margin:0;">
+<table class="data-table" style="min-width:860px; width:100%; text-align:left !important;">
+<thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="min-width:240px; text-align:left !important;">固有特性名稱 (日/中) ⇅</th>
-<th class="sortable-th" style="min-width:140px; text-align:left !important;">類別 ⇅</th>
-<th style="min-width:380px; text-align:left !important;">解鎖條件與超常爆發效果 (繁體中文)</th>
+<th class="sortable-th" style="width:240px; min-width:200px; text-align:left !important; white-space:normal !important; line-height:1.5;">固有特性名稱 (日/中) ⇅</th>
+<th class="sortable-th" style="width:120px; min-width:100px; text-align:left !important; white-space:nowrap !important;">類別 ⇅</th>
+<th class="sortable-th" style="min-width:460px; max-width:600px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">解鎖條件與超常爆發效果 (繁體中文) ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -10685,13 +10682,13 @@ button.chip-btn.active {
                 </div>
 <span class="badge" style="background:#0284c7; color:#fff; font-size:0.8rem; padding:4px 8px;">共 60 種 (2026 全球神駒)</span>
 </div>
-<div class="table-responsive scrollable-table-box" style="margin:0;">
-<table class="data-table">
-<thead>
+<div class="table-responsive scrollable-table-box" style="max-height:640px !important; overflow-y:auto !important; margin:0;">
+<table class="data-table" style="min-width:860px; width:100%; text-align:left !important;">
+<thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="min-width:240px; text-align:left !important;">海外固有特性名稱 (日/中) ⇅</th>
-<th class="sortable-th" style="min-width:140px; text-align:left !important;">類別 ⇅</th>
-<th style="min-width:380px; text-align:left !important;">海外賽場發揮與壓制對手效果 (繁體中文)</th>
+<th class="sortable-th" style="width:240px; min-width:200px; text-align:left !important; white-space:normal !important; line-height:1.5;">海外固有特性名稱 (日/中) ⇅</th>
+<th class="sortable-th" style="width:120px; min-width:100px; text-align:left !important; white-space:nowrap !important;">類別 ⇅</th>
+<th class="sortable-th" style="min-width:460px; max-width:600px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">海外賽場發揮與壓制對手效果 (繁體中文) ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -11206,17 +11203,17 @@ button.chip-btn.active {
             累積滿 3 次一般調教大成功後解鎖 SP 調教。需安排 2 匹同地域賽馬共同合練（6 週），兩駒均可獲得超高能力增幅，並同步建立或加深 2026 版全新「宿敵 / 同門戰友 / 師徒」關係性！
         </p>
 <div class="table-responsive" style="margin-bottom:24px;">
-<table class="data-table">
+<table class="data-table" style="min-width:980px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th>年份</th>
-<th>SP 史實調教名稱</th>
-<th>等級</th>
-<th>提升屬性與詳細效果</th>
-<th>期間</th>
-<th>大成功率</th>
-<th>特性進化 (Evolution)</th>
-<th>調教適性 (馬之個性 (ウマソナ) / 走法)</th>
+<th class="sortable-th" style="width:75px; min-width:65px; text-align:left !important; white-space:nowrap !important;">年份 ⇅</th>
+<th class="sortable-th" style="width:170px; min-width:150px; text-align:left !important; white-space:normal !important; line-height:1.5;">SP 史實調教名稱 ⇅</th>
+<th class="sortable-th" style="width:65px; min-width:55px; text-align:left !important; white-space:nowrap !important;">等級 ⇅</th>
+<th class="sortable-th" style="width:220px; min-width:190px; max-width:250px; text-align:left !important; white-space:normal !important; line-height:1.5; word-break:break-word;">提升屬性與詳細效果 ⇅</th>
+<th class="sortable-th" style="width:65px; min-width:55px; text-align:left !important; white-space:nowrap !important;">期間 ⇅</th>
+<th class="sortable-th" style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important;">大成功率 ⇅</th>
+<th class="sortable-th" style="width:150px; min-width:130px; text-align:left !important; white-space:normal !important; line-height:1.5;">特性進化 ⇅</th>
+<th class="sortable-th" style="width:170px; min-width:150px; text-align:left !important; white-space:normal !important; line-height:1.5;">調教適性 (ウマソナ / 走法) ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -11305,18 +11302,18 @@ button.chip-btn.active {
 </div>
 <!-- ==================== 三、全 37 種一般競走馬史實調教完全圖鑑 ==================== -->
 <h3 style="font-size:1.05rem; color:#38bdf8; margin:28px 0 12px; display:flex; align-items:center; gap:8px; border-bottom:1px solid rgba(56,189,248,0.3); padding-bottom:6px;">二、全 37 種一般競走馬史實調教完全圖鑑 (含 2025/2026 新調教)</h3>
-<div class="table-responsive scrollable-table-box" style="margin-bottom:24px;">
-<table class="data-table">
-<thead>
+<div class="table-responsive scrollable-table-box" style="max-height:640px !important; overflow-y:auto !important; margin-bottom:24px;">
+<table class="data-table" style="min-width:980px; width:100%; text-align:left !important;">
+<thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th>年份</th>
-<th>史實調教名稱</th>
-<th>等級</th>
-<th>提升屬性與詳細效果</th>
-<th>期間</th>
-<th>大成功率</th>
-<th>特性進化 (Evolution)</th>
-<th>調教適性 (馬之個性 (ウマソナ) / 走法)</th>
+<th class="sortable-th" style="width:75px; min-width:65px; text-align:left !important; white-space:nowrap !important;">年份 ⇅</th>
+<th class="sortable-th" style="width:170px; min-width:150px; text-align:left !important; white-space:normal !important; line-height:1.5;">史實調教名稱 ⇅</th>
+<th class="sortable-th" style="width:65px; min-width:55px; text-align:left !important; white-space:nowrap !important;">等級 ⇅</th>
+<th class="sortable-th" style="width:220px; min-width:190px; max-width:250px; text-align:left !important; white-space:normal !important; line-height:1.5; word-break:break-word;">提升屬性與詳細效果 ⇅</th>
+<th class="sortable-th" style="width:65px; min-width:55px; text-align:left !important; white-space:nowrap !important;">期間 ⇅</th>
+<th class="sortable-th" style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important;">大成功率 ⇅</th>
+<th class="sortable-th" style="width:150px; min-width:130px; text-align:left !important; white-space:normal !important; line-height:1.5;">特性進化 ⇅</th>
+<th class="sortable-th" style="width:170px; min-width:150px; text-align:left !important; white-space:normal !important; line-height:1.5;">調教適性 (ウマソナ / 走法) ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -11698,19 +11695,19 @@ button.chip-btn.active {
 <p style="font-size:0.83rem; color:var(--text-muted); margin-bottom:12px;">
             幼駒史實調教<strong>僅限 1 歲 9 月 ~ 11 月期間開放執行</strong>。下位調教達成大成功後隨機解鎖對應上位調教：
         </p>
-<div class="table-responsive scrollable-table-box" style="margin-bottom:20px;">
-<table class="data-table">
-<thead>
+<div class="table-responsive scrollable-table-box" style="max-height:640px !important; overflow-y:auto !important; margin-bottom:20px;">
+<table class="data-table" style="min-width:1100px; width:100%; text-align:left !important;">
+<thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th>幼駒史實調教名稱</th>
-<th>等級</th>
-<th>提升屬性與效果</th>
-<th>期間</th>
-<th>大成功率</th>
-<th>特性進化</th>
-<th>調教適性 (ウマソナ)</th>
-<th>關聯設施</th>
-<th>開放與前置解鎖條件</th>
+<th class="sortable-th" style="width:160px; min-width:140px; text-align:left !important; white-space:normal !important; line-height:1.5;">幼駒史實調教名稱 ⇅</th>
+<th class="sortable-th" style="width:65px; min-width:55px; text-align:left !important; white-space:nowrap !important;">等級 ⇅</th>
+<th class="sortable-th" style="width:180px; min-width:160px; max-width:210px; text-align:left !important; white-space:normal !important; line-height:1.5;">提升屬性與效果 ⇅</th>
+<th class="sortable-th" style="width:65px; min-width:55px; text-align:left !important; white-space:nowrap !important;">期間 ⇅</th>
+<th class="sortable-th" style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important;">大成功率 ⇅</th>
+<th class="sortable-th" style="width:130px; min-width:110px; text-align:left !important; white-space:normal !important;">特性進化 ⇅</th>
+<th class="sortable-th" style="width:140px; min-width:120px; text-align:left !important; white-space:normal !important;">調教適性 (ウマソナ) ⇅</th>
+<th class="sortable-th" style="width:120px; min-width:100px; text-align:left !important; white-space:normal !important;">關聯設施 ⇅</th>
+<th class="sortable-th" style="width:180px; min-width:160px; max-width:220px; text-align:left !important; white-space:normal !important; line-height:1.5; word-break:break-word;">開放與前置解鎖條件 ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -12021,19 +12018,19 @@ button.chip-btn.active {
 <input class="filter-control" id="umasonaSearchInput" oninput="filterUmasonaSearch()" placeholder="🔍 即時搜尋馬之個性 (ウマソナ)名稱、日文原名、屬性、效果關鍵字 (如: 瞬發力, 遠征, 連戰, 調教, 逃げ)..." style="width:100%; padding:8px 12px 8px 36px; border-radius:6px; font-size:0.88rem; background:rgba(0,0,0,0.3); border:1px solid var(--border-color); color:var(--text-color); box-sizing:border-box;" type="text"/>
 <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:0.85rem;"></i>
 </div>
-</div><div class="table-responsive scrollable-table-box" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
-<thead>
+</div><div class="table-responsive scrollable-table-box" style="max-height:640px !important; overflow-y:auto !important; margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
+<table class="data-table" style="min-width:1260px; width:100%; text-align:left !important;">
+<thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th style="min-width:180px;">個性名稱 (日/中)</th>
-<th style="min-width:120px;">分類 (日/中)</th>
-<th style="min-width:90px;">效果類型</th>
-<th style="min-width:260px;">詳細具體數值效果 (繁體中文)</th>
-<th style="min-width:200px;">發動條件 (日/中)</th>
-<th style="min-width:130px;">對應賽事經驗</th>
-<th style="min-width:90px;">影響度</th>
-<th style="min-width:90px;">種類</th>
-<th style="min-width:280px;">進化 / 克服條件說明 (繁體中文)</th>
+<th class="sortable-th" style="width:160px; min-width:150px; text-align:left !important; white-space:normal !important;">個性名稱 (日/中) ⇅</th>
+<th class="sortable-th" style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;">分類 (日/中) ⇅</th>
+<th class="sortable-th" style="width:85px; min-width:75px; text-align:left !important; white-space:nowrap !important;">效果類型 ⇅</th>
+<th class="sortable-th" style="width:250px; min-width:230px; max-width:280px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">詳細具體數值效果 (繁體中文) ⇅</th>
+<th class="sortable-th" style="width:180px; min-width:160px; max-width:210px; text-align:left !important; white-space:normal !important; line-height:1.5;">發動條件 (日/中) ⇅</th>
+<th class="sortable-th" style="width:120px; min-width:110px; text-align:left !important; white-space:normal !important;">對應賽事經驗 ⇅</th>
+<th class="sortable-th" style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important;">影響度 ⇅</th>
+<th class="sortable-th" style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important;">種類 ⇅</th>
+<th class="sortable-th" style="width:260px; min-width:240px; max-width:290px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">進化 / 克服條件說明 (繁體中文) ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -12539,14 +12536,14 @@ button.chip-btn.active {
         </div>
 <span class="badge badge-blue" style="font-size:0.78rem; padding:3px 8px;">史實調教專屬適性</span>
 </div>
-<div class="table-responsive scrollable-table-box" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
-<thead>
+<div class="table-responsive scrollable-table-box" style="max-height:640px !important; overflow-y:auto !important; margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
+<table class="data-table" style="min-width:880px; width:100%; text-align:left !important;">
+<thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th style="min-width:180px;">馬之個性 (ウマソナ) (馬之個性 (ウマソナ))</th>
-<th style="min-width:180px;">習得觸發條件</th>
-<th style="min-width:100px;">初期所有</th>
-<th style="min-width:380px;">適性／克服專用之史實調教清單 (日/中)</th>
+<th class="sortable-th" style="width:160px; min-width:140px; text-align:left !important; white-space:normal !important;">馬之個性 (ウマソナ) ⇅</th>
+<th class="sortable-th" style="width:180px; min-width:160px; max-width:220px; text-align:left !important; white-space:normal !important; line-height:1.5;">習得觸發條件 ⇅</th>
+<th class="sortable-th" style="width:90px; min-width:80px; text-align:left !important; white-space:nowrap !important;">初期所有 ⇅</th>
+<th class="sortable-th" style="min-width:380px; max-width:520px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">適性／克服專用之史實調教清單 (日/中) ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -13047,14 +13044,14 @@ button.chip-btn.active {
 
 <h3 style="font-size:14px; font-weight:800; color:var(--text-highlight); margin:18px 0 10px 0;">一、四大關係性類型・成立條件與特性 (日/中對照)</h3>
 <div class="table-responsive scrollable-table-box" style="max-height:480px !important; overflow-y:auto !important; margin-bottom:20px;">
-<table class="data-table" style="min-width:980px; text-align:left !important;">
+<table class="data-table" style="min-width:1000px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="min-width:140px; text-align:left !important;">關係性類型 (日/中) ⇅</th>
-<th class="sortable-th" style="min-width:90px; text-align:left !important;">性別限定 ⇅</th>
-<th class="sortable-th" style="min-width:240px; text-align:left !important;">成立條件與激發途徑 ⇅</th>
-<th class="sortable-th" style="min-width:240px; text-align:left !important;">現役時期競走加成效益 ⇅</th>
-<th class="sortable-th" style="min-width:240px; text-align:left !important;">引退繁殖專屬加成 ⇅</th>
+<th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important;">關係性類型 (日/中) ⇅</th>
+<th class="sortable-th" style="width:100px; min-width:90px; text-align:left !important;">性別限定 ⇅</th>
+<th class="sortable-th" style="width:250px; min-width:230px; max-width:280px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">成立條件與激發途徑 ⇅</th>
+<th class="sortable-th" style="width:260px; min-width:240px; max-width:290px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">現役時期競走加成效益 ⇅</th>
+<th class="sortable-th" style="width:250px; min-width:230px; max-width:280px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">引退繁殖專屬加成 ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -13098,17 +13095,16 @@ button.chip-btn.active {
 </p>
 
 <div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:24px;">
-<table class="data-table" style="min-width:1150px; text-align:left !important;">
+<table class="data-table" style="min-width:940px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:120px;">年代 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:140px;">關係類型 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:220px;">核心名馬 A ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:220px;">核心名馬 B ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">經典歷史死鬥舞台與遊戲內戰略加成 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:80px; min-width:70px; white-space:nowrap !important;">年代 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:130px; min-width:120px; white-space:nowrap !important;">關係類型 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:180px; min-width:160px;">核心名馬 A ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:180px; min-width:160px;">核心名馬 B ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:340px;">經典歷史死鬥舞台與遊戲內戰略加成 ⇅</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td style="white-space:nowrap; font-weight:700; text-align:left !important;">1976 年</td>
 <td style="white-space:nowrap; text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">強敵 (宿敵)</span></td>
@@ -27995,7 +27991,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-danger" style="font-size:0.75rem;">⛰️ 急坂</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">有馬記念:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">皐月賞:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">有馬記念:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">皐月賞:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="中央關東" data-search="東京 東京 tokyo 日本 中央關東 芝: 瞬発戦◎ダート: 瞬発戦〇 ジャパンカップ: 総合戦◎日本ダービー: 瞬発戦⦿フェブラリーs: 消耗戦◎" data-slope="あり" data-tactics="芝: 瞬発戦◎ダート: 瞬発戦〇 ジャパンカップ: 総合戦◎日本ダービー: 瞬発戦⦿フェブラリーS: 消耗戦◎" data-zone="日本">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
@@ -28010,7 +28006,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや長い</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">◎</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">〇</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ジャパンカップ:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(234,179,8,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#facc15; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(234,179,8,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;👑 綜合戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fde047;"&gt;◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">日本ダービー:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;⚡ 瞬發戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#38bdf8;"&gt;⦿</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">フェブラリーS:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ジャパンカップ:</strong> <span class="pill" style="background:rgba(234,179,8,0.15); color:#facc15; border:1px solid rgba(234,179,8,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">👑 綜合戰 <b style="color:#fde047;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">日本ダービー:</strong> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">⦿</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">フェブラリーS:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="中央關西" data-search="阪神 阪神 hanshin 日本 中央關西 芝內: 持久戦◎芝外: 瞬発戦◎ダート: 消耗戦〇 宝塚記念: 持久戦◎大阪杯: 瞬発戦〇桜花賞: 瞬発戦◎朝日杯fs: 持久戦〇" data-slope="芝:急坂ダート: あり" data-tactics="芝內: 持久戦◎芝外: 瞬発戦◎ダート: 消耗戦〇 宝塚記念: 持久戦◎大阪杯: 瞬発戦〇桜花賞: 瞬発戦◎朝日杯FS: 持久戦〇" data-zone="日本">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
@@ -28025,7 +28021,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">芝內/ダート: やや短い芝外: やや長い</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-danger" style="font-size:0.72rem;">芝:急坂 / 泥:有</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿內:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🌿外:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">◎</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">宝塚記念:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">大阪杯:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;⚡ 瞬發戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#38bdf8;"&gt;〇</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">桜花賞:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;⚡ 瞬發戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#38bdf8;"&gt;◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">朝日杯FS:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;〇</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">宝塚記念:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">大阪杯:</strong> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">〇</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">桜花賞:</strong> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">朝日杯FS:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="中央關西" data-search="京都 京都 kyoto 日本 中央關西 芝內: 持久戦〇芝外: 持久戦◎ダート: 消耗戦△ 秋華賞: 瞬発戦〇菊花賞: 持久戦◎天皇賞春: 持久戦◎" data-slope="なし" data-tactics="芝內: 持久戦〇芝外: 持久戦◎ダート: 消耗戦△ 秋華賞: 瞬発戦〇菊花賞: 持久戦◎天皇賞春: 持久戦◎" data-zone="日本">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
@@ -28040,7 +28036,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">芝內/ダート: やや短い芝外: 普通</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿內:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🌿外:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">秋華賞:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;⚡ 瞬發戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#38bdf8;"&gt;〇</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">菊花賞:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">天皇賞春:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">秋華賞:</strong> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">〇</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">菊花賞:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">天皇賞春:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="ローカル" data-search="中京 中京 chukyo 日本 ローカル 芝: 瞬発戦〇ダート: 消耗戦〇 高松宮記念: 瞬発戦◎チャンピオンズc: 消耗戦◎" data-slope="芝: 急坂ダート: あり" data-tactics="芝: 瞬発戦〇ダート: 消耗戦〇 高松宮記念: 瞬発戦◎チャンピオンズC: 消耗戦◎" data-zone="日本">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
@@ -28055,7 +28051,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-danger" style="font-size:0.72rem;">芝:急坂 / 泥:有</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">高松宮記念:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;⚡ 瞬發戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#38bdf8;"&gt;◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">チャンピオンズC:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">高松宮記念:</strong> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">チャンピオンズC:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="ローカル" data-search="福島 福島 fukushima 日本 ローカル 芝: 消耗戦△ダート: 消耗戦△ /" data-slope="あり" data-tactics="芝: 消耗戦△ダート: 消耗戦△ /" data-zone="日本">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#1e3a8a; color:#93c5fd;">🇯🇵 日本</span></td>
@@ -28310,7 +28306,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-danger" style="font-size:0.75rem;">⛰️ 急坂</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">KGVI＆QES:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ゴールドC:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;⦿</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">KGVI＆QES:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ゴールドC:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">⦿</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="英國" data-search="エプソムダウンズ 葉森 epsom downs 歐洲 英國 持久戦◎ イギリスダービー: 持久戦⦿" data-slope="急坂" data-tactics="持久戦◎ イギリスダービー: 持久戦⦿" data-zone="歐洲">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
@@ -28325,7 +28321,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-danger" style="font-size:0.75rem;">⛰️ 急坂</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">イギリスダービー:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;⦿</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">イギリスダービー:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">⦿</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="英國" data-search="グッドウッド 古活 goodwood 歐洲 英國 持久戦◎ /" data-slope="なし" data-tactics="持久戦◎ /" data-zone="歐洲">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
@@ -28475,7 +28471,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">フランスダービー:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">フランスダービー:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="法國" data-search="ドーヴィル 多維爾 deauville 歐洲 法國 持久戦△ /" data-slope="なし" data-tactics="持久戦△ /" data-zone="歐洲">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
@@ -28505,7 +28501,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや長い</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">凱旋門賞:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;⦿</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">カドラン賞:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">凱旋門賞:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">⦿</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">カドラン賞:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="愛爾蘭" data-search="カラ 卻拉 curragh 歐洲 愛爾蘭 持久戦◎ アイルランドダービー: 持久戦◎" data-slope="あり" data-tactics="持久戦◎ アイルランドダービー: 持久戦◎" data-zone="歐洲">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
@@ -28520,7 +28516,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">長い</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">アイルランドダービー:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">アイルランドダービー:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="愛爾蘭" data-search="ナヴァン 納雲 navan 歐洲 愛爾蘭 持久戦◎ /" data-slope="あり" data-tactics="持久戦◎ /" data-zone="歐洲">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#065f46; color:#a7f3d0;">🇪🇺 歐洲</span></td>
@@ -28610,7 +28606,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">〇</b></span><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🌿直:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">△</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ドバイシーマクラシック:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;⚡ 瞬發戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#38bdf8;"&gt;◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ドバイターフ:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(6,182,212,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#22d3ee; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(6,182,212,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;⚡ 瞬發戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#38bdf8;"&gt;◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ドバイワールドカップ:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ドバイシーマクラシック:</strong> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ドバイターフ:</strong> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ドバイワールドカップ:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="沙地阿拉拍" data-search="キングアブドゥルアジーズ 安都拉茲 king abdulaziz 其他 沙地阿拉拍 芝: 持久戦〇ダート: 消耗戦◎ サウジカップ: 消耗戦◎" data-slope="なし" data-tactics="芝: 持久戦〇ダート: 消耗戦◎ サウジカップ: 消耗戦◎" data-zone="其他">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
@@ -28625,7 +28621,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">サウジカップ:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">サウジカップ:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="香港" data-search="シャティン 沙田 sha tin 其他 香港 瞬発戦〇 香港カップ: 持久戦◎香港マイル: 消耗戦◎" data-slope="なし" data-tactics="瞬発戦〇 香港カップ: 持久戦◎香港マイル: 消耗戦◎" data-zone="其他">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
@@ -28640,7 +28636,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">〇</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">香港カップ:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">香港マイル:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">香港カップ:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">香港マイル:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="澳洲" data-search="コーフィールド 考菲爾德 caulfield 其他 澳洲 瞬発戦〇 /" data-slope="なし" data-tactics="瞬発戦〇 /" data-zone="其他">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
@@ -28670,7 +28666,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🌿直:</span> <span class="pill" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">⚡ 瞬發戰 <b style="color:#38bdf8;">△</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">メルボルンカップ:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">メルボルンカップ:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="澳洲" data-search="ムーニーバレー 滿利谷 moonee valley 其他 澳洲 消耗戦◎ コックスプレート: 消耗戦◎" data-slope="なし" data-tactics="消耗戦◎ コックスプレート: 消耗戦◎" data-zone="其他">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
@@ -28685,7 +28681,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">かなり短い</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">コックスプレート:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">コックスプレート:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="澳洲" data-search="ロイヤルランドウィック 蘭域 royal randwick 其他 澳洲 持久戦△ ジ・エベレスト: 消耗戦◎シドニーc: 持久戦〇" data-slope="あり" data-tactics="持久戦△ ジ・エベレスト: 消耗戦◎シドニーC: 持久戦〇" data-zone="其他">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
@@ -28700,7 +28696,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge badge-warning" style="font-size:0.75rem;">↗️ 有坡道</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">△</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ジ・エベレスト:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">シドニーC:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;〇</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ジ・エベレスト:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">シドニーC:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="澳洲" data-search="ローズヒルガーデンズ 玫瑰崗 rosehill gardens 其他 澳洲 瞬発戦〇 /" data-slope="なし" data-tactics="瞬発戦〇 /" data-zone="其他">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#78350f; color:#fde68a;">🌍 海外其他</span></td>
@@ -28760,7 +28756,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ペガサスワールドC:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ペガサスワールドC:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="美國" data-search="キーンランド 堅蘭 keeneland 美國 美國 芝: 消耗戦〇ダート: 消耗戦〇 /" data-slope="なし" data-tactics="芝: 消耗戦〇ダート: 消耗戦〇 /" data-zone="美國">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
@@ -28805,7 +28801,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">BCターフ:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(16,185,129,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#34d399; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(16,185,129,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🛡️ 持久戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#6ee7b7;"&gt;〇</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">BCクラシック:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;⦿</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">BCスプリント:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;⦿</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">BCターフ:</strong> <span class="pill" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🛡️ 持久戰 <b style="color:#6ee7b7;">〇</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">BCクラシック:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">⦿</b></span><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">BCスプリント:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">⦿</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="美國" data-search="ターフウェーパーク 草道園 turfway park 美國 美國 ダート: 消耗戦〇 /" data-slope="なし" data-tactics="ダート: 消耗戦〇 /" data-zone="美國">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
@@ -28835,7 +28831,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ケンタッキーダービー:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;⦿</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ケンタッキーダービー:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">⦿</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="美國" data-search="デルマー 德爾馬 del mar 美國 美國 芝: 消耗戦△ダート: 消耗戦◎ パシフィッククラシック: 消耗戦◎" data-slope="なし" data-tactics="芝: 消耗戦△ダート: 消耗戦◎ パシフィッククラシック: 消耗戦◎" data-zone="美國">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
@@ -28850,7 +28846,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">パシフィッククラシック:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">パシフィッククラシック:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="美國" data-search="ピムリコ 賓利高 pimlico 美國 美國 芝: 消耗戦〇ダート: 消耗戦◎ プリークネスs: 消耗戦◎" data-slope="なし" data-tactics="芝: 消耗戦〇ダート: 消耗戦◎ プリークネスS: 消耗戦◎" data-zone="美國">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
@@ -28865,7 +28861,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">プリークネスS:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">プリークネスS:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="美國" data-search="フェアグラウンズ 費爾園 fair grounds 美國 美國 芝: 消耗戦△ダート: 消耗戦〇 プリークネスs: 消耗戦◎" data-slope="なし" data-tactics="芝: 消耗戦△ダート: 消耗戦〇 プリークネスS: 消耗戦◎" data-zone="美國">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
@@ -28880,7 +28876,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">普通</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">△</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">プリークネスS:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">プリークネスS:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="美國" data-search="ベルモントパーク 貝蒙園 belmont park 美國 美國 芝: 消耗戦〇ダート: 消耗戦◎ ベルモントs: 消耗戦◎" data-slope="なし" data-tactics="芝: 消耗戦〇ダート: 消耗戦◎ ベルモントS: 消耗戦◎" data-zone="美國">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
@@ -28895,7 +28891,7 @@ function filterTab5Racecourses() {
 <td style="text-align:left !important; white-space:nowrap; font-size:0.82rem; color:#38bdf8;">やや短い</td>
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted); font-size:0.75rem;">平坦 (無坡)</span></td>
 <td style="text-align:left !important; line-height:1.6;"><span style="color:#86efac; font-weight:600; font-size:0.8rem; margin-right:2px;">🌿芝:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">〇</b></span><span style="color:#fed7aa; font-weight:600; font-size:0.8rem; margin-left:4px; margin-right:2px;">🏜️泥:</span> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
-<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ベルモントS:</strong> <span <strong="" class="pill" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="background:rgba(249,115,22,0.15); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">color:</strong>#fb923c; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">border:</strong>1px solid rgba(249,115,22,0.4); <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">font-size:</strong>0.75rem; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">padding:</strong>2px 6px; <strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">margin:</strong>2px;"&gt;🔥 消耗戰 <b <strong="" style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">style="color:#fdba74;"&gt;◎</b></span></td>
+<td style="text-align:left !important; line-height:1.6; min-width:200px;"><strong style="color:var(--gold-color); font-size:0.82rem; margin-right:3px;">ベルモントS:</strong> <span class="pill" style="background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.4); font-size:0.75rem; padding:2px 6px; margin:2px;">🔥 消耗戰 <b style="color:#fdba74;">◎</b></span></td>
 </tr>
 <tr class="tab5-rc-row" data-region="美國" data-search="モンマスパーク 萬滿園 monmouth park 美國 美國 芝: 消耗戦△ダート: 消耗戦〇 /" data-slope="なし" data-tactics="芝: 消耗戦△ダート: 消耗戦〇 /" data-zone="美國">
 <td style="text-align:left !important; white-space:nowrap;"><span class="badge" style="background:#831843; color:#fbcfe8;">🇺🇸 美國</span></td>
@@ -28993,19 +28989,19 @@ function filterTab5Racecourses() {
 <span style="color:var(--accent-red); font-weight:bold;">*特別注意：</span> <code>米国芝3冠</code>、<code>米国芝牝馬3冠</code>、<code>香港トリプルクラウン</code>、<code>香港短距離3冠</code> <strong>不會</strong>成立三冠配合。
           </div>
 </div>
-<div class="table-responsive scrollable-table-box" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
-<thead>
-<tr>
-<th>三冠名稱 (中 / 日)</th>
-<th>構成賽事 (中 / 日對照)</th>
-<th>馬場</th>
-<th>路程</th>
-<th>時期</th>
-<th>守護符</th>
-<th>額外獎勵與繁育效果</th>
-</tr>
-</thead>
+<div class="table-responsive scrollable-table-box" style="max-height:640px !important; overflow-y:auto !important; margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
+<table class="data-table" style="min-width:1040px; width:100%; text-align:left !important;">
+          <thead>
+            <tr>
+              <th class="sortable-th" style="width:170px; min-width:150px; max-width:190px; text-align:left !important; position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important; white-space:normal !important; line-height:1.5;">三冠名稱 (中 / 日) ⇅</th>
+              <th class="sortable-th" style="width:220px; min-width:200px; max-width:250px; text-align:left !important; position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important; white-space:normal !important; line-height:1.5;">構成賽事 (中 / 日對照) ⇅</th>
+              <th class="sortable-th" style="width:80px; min-width:70px; text-align:left !important; position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important; white-space:nowrap !important;">馬場 ⇅</th>
+              <th class="sortable-th" style="width:90px; min-width:80px; text-align:left !important; position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important; white-space:nowrap !important;">路程 ⇅</th>
+              <th class="sortable-th" style="width:80px; min-width:70px; text-align:left !important; position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important; white-space:nowrap !important;">時期 ⇅</th>
+              <th class="sortable-th" style="width:100px; min-width:90px; text-align:left !important; position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important; white-space:nowrap !important;">守護符 ⇅</th>
+              <th class="sortable-th" style="width:300px; min-width:260px; max-width:350px; text-align:left !important; position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important; white-space:normal !important; line-height:1.6; word-break:break-word;">額外獎勵與繁育效果 ⇅</th>
+            </tr>
+          </thead>
 <tbody>
 <!-- 日本牡馬3冠 -->
 <tr>
@@ -29466,55 +29462,55 @@ function filterTab5Racecourses() {
 </p>
 
 <div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:24px;">
-<table class="data-table" style="min-width:1050px; text-align:left !important;">
+<table class="data-table" style="min-width:920px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:160px;">支持層群體 (日/中) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:220px;">群體核心偏好與關注點 ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">人氣最速提升實戰技巧 (SOP) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:180px;">支持度封頂專屬加成 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:160px; min-width:150px; white-space:nowrap !important;">支持層群體 (日/中) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; word-break:break-word;">群體核心偏好與關注點 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:380px;">人氣最速提升實戰技巧 (SOP) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:170px; min-width:150px; max-width:190px;">支持度封頂專屬加成 ⇅</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">競馬ファン<br/><span style="font-size:0.75rem; color:#94a3b8;">(賽馬硬核鐵粉)</span></td>
-<td style="text-align:left !important;">壓倒性競走成績、連勝紀錄、打破場地紀錄時間 (Record)、經典三冠制霸。</td>
-<td style="text-align:left !important;">
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:160px; min-width:150px;">競馬ファン<br/><span style="font-size:0.75rem; color:#94a3b8;">(賽馬硬核鐵粉)</span></td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">壓倒性競走成績、連勝紀錄、打破場地紀錄時間 (Record)、經典三冠制霸。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
 • 讓主力名駒出戰 G1 並以<strong>大差獲勝</strong>。<br/>
 • 達成八連勝、十連勝等歷史級連勝紀錄。<br/>
 • 征戰海外凱旋門賞或育馬者盃經典賽。
 </td>
-<td style="text-align:left !important; color:#38bdf8;">競走馬能力成長效率 +30%</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#38bdf8;">競走馬能力成長效率 +30%</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#f472b6; text-align:left !important;">世間 (ライト層)<br/><span style="font-size:0.75rem; color:#94a3b8;">(一般大眾與輕度粉絲)</span></td>
-<td style="text-align:left !important;">罕見外觀毛色 (白毛 / 蘆毛 / 尾花栗毛)、可愛個性 (ウマソナ 如人懐こい、甘えん坊)、戲劇性逆轉。</td>
-<td style="text-align:left !important;">
+<td style="white-space:nowrap !important; font-weight:bold; color:#f472b6; text-align:left !important; width:160px; min-width:150px;">世間 (ライト層)<br/><span style="font-size:0.75rem; color:#94a3b8;">(一般大眾與輕度粉絲)</span></td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">罕見外觀毛色 (白毛 / 蘆毛 / 尾花栗毛)、可愛個性 (ウマソナ 如人懐こい、甘えん坊)、戲劇性逆轉。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
 • 安排白毛或特色流星馬出賽有馬紀念等全民大賽。<br/>
 • 直線以<strong>「後方一氣 / 追い込み」</strong>作戰驚天大逆轉勝。<br/>
 • 保留親民討喜的個性。
 </td>
-<td style="text-align:left !important; color:#f472b6;">競馬狂潮引爆門檻大幅降低</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#f472b6;">週邊商品收入 +100% (增加牧場月收入)</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#10b981; text-align:left !important;">馬産地<br/><span style="font-size:0.75rem; color:#94a3b8;">(育馬產地與牧場關係者)</span></td>
-<td style="text-align:left !important;">良血名門血統、母父 2 因子、珍稀零細血脈復興、母系牝系活躍。</td>
-<td style="text-align:left !important;">
-• 使用高額配種費名種馬之後代。<br/>
-• 以瀕臨滅亡系統公馬奪得重賞。<br/>
-• 達成名門牝系認定。
+<td style="white-space:nowrap !important; font-weight:bold; color:#34d399; text-align:left !important; width:160px; min-width:150px;">馬産地<br/><span style="font-size:0.75rem; color:#94a3b8;">(生產牧場與育馬業者)</span></td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">名門血統復興、零細血脈重振、自繁馬制霸歷史重賞、確立新系統。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
+• 使用零細種牡馬產駒贏得大賽。<br/>
+• 建立自家名牝系與子系統確立。<br/>
+• 出售頂級自家產幼駒給各大馬主。
 </td>
-<td style="text-align:left !important; color:#10b981;">幼駒分娩固有特性率 +25%</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#34d399;">幼駒出生爆發力上限突破 +2，配合評價大幅提升</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#38bdf8; text-align:left !important;">トレセン関係者<br/><span style="font-size:0.75rem; color:#94a3b8;">(栗東・美浦調教訓練中心)</span></td>
-<td style="text-align:left !important;">調教評價「抜群」、極度充沛之體力與根性、完美狀態掌控、騎手固定搭檔。</td>
-<td style="text-align:left !important;">
-• 連續使用<strong>史實調教並取得「大成功」</strong>。<br/>
-• 保持雙箭頭紅心調子連續出賽。<br/>
-• 長期指派同一主戰騎手達成主從羈絆。
+<td style="white-space:nowrap !important; font-weight:bold; color:#a78bfa; text-align:left !important; width:160px; min-width:150px;">トレセン (厩舎・騎手)<br/><span style="font-size:0.75rem; color:#94a3b8;">(訓練中心・調教師與騎手)</span></td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">史實調教大成功率、固定的名馬主戰騎手、贏得騎手大獎賽 (如 MVJ)。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
+• 持續使用「SP 雙馬合練調教」並達成大成功。<br/>
+• 固定主戰騎手累計 G1 勝利場次。<br/>
+• 指派專屬廄舍調教師連續奪魁。
 </td>
-<td style="text-align:left !important; color:var(--accent-gold);">史實調教大成功率直接 +20%</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#a78bfa;">史實調教大成功機率 +25%，騎手調教師經驗獲取翻倍</td>
 </tr>
 </tbody>
 </table>
@@ -29550,16 +29546,16 @@ function filterTab5Racecourses() {
 </div>
 <h3 style="font-size:1rem; color:var(--accent-color); margin: 16px 0 8px;">一、經典異名稱號・獲得條件與支持層人氣加成</h3>
 <div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
-<thead>
-<tr>
-<th>異名稱號</th>
-<th>類型</th>
-<th>目標支持層</th>
-<th>人氣加成 (Boost)</th>
-<th>獲得達成條件</th>
-</tr>
-</thead>
+<table class="data-table" style="min-width:860px; width:100%; text-align:left !important;">
+          <thead>
+            <tr>
+              <th class="sortable-th" style="width:140px; min-width:120px; text-align:left !important; white-space:nowrap !important;">異名稱號 ⇅</th>
+              <th class="sortable-th" style="width:70px; min-width:60px; text-align:left !important; white-space:nowrap !important;">類型 ⇅</th>
+              <th class="sortable-th" style="width:160px; min-width:140px; text-align:left !important; white-space:normal !important; line-height:1.5;">目標支持層 ⇅</th>
+              <th class="sortable-th" style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;">人氣加成 (Boost) ⇅</th>
+              <th class="sortable-th" style="min-width:280px; max-width:380px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">獲得達成條件 ⇅</th>
+            </tr>
+          </thead>
 <tbody>
 <tr><td><strong>１０連勝</strong></td><td>後天</td><td>訓練中心 (トレセン)</td><td><span class="pill pill-gold">＋10%</span></td><td>達成 10 連勝以上紀錄。</td></tr>
 <tr><td><strong>賞金王</strong></td><td>後天</td><td>訓練中心 (トレセン)</td><td><span class="pill pill-gold">＋16% (極大)</span></td><td>榮登歷代生涯獲得總賞金第 1 名。</td></tr>
@@ -29583,15 +29579,15 @@ function filterTab5Racecourses() {
             榮獲 S / A 級殿堂馬稱號的賽馬，除了享有專屬銅像與人氣加成外，在退役配種或特定賽事時，<strong>若對應屬性達到 S+，比賽時有機率發動「限界突破」</strong>，展現超越數值上限的超絕實力！
         </p>
 <div class="table-responsive" style="margin-bottom:20px;">
-<table class="data-table" style="font-size:0.8rem;">
-<thead>
-<tr>
-<th>殿堂馬異名 (日/中)</th>
-<th>評級</th>
-<th>獲得條件 / 代表馬</th>
-<th>詳細特殊效果與 S+ 限界突破</th>
-</tr>
-</thead>
+<table class="data-table" style="min-width:880px; width:100%; text-align:left !important; font-size:0.82rem;">
+          <thead>
+            <tr>
+              <th class="sortable-th" style="width:200px; min-width:180px; text-align:left !important; white-space:normal !important; line-height:1.5;">殿堂馬異名 (日/中) ⇅</th>
+              <th class="sortable-th" style="width:60px; min-width:50px; text-align:left !important; white-space:nowrap !important;">評級 ⇅</th>
+              <th class="sortable-th" style="width:240px; min-width:200px; max-width:280px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">獲得條件 / 代表馬 ⇅</th>
+              <th class="sortable-th" style="min-width:320px; max-width:400px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">詳細特殊效果與 S+ 限界突破 ⇅</th>
+            </tr>
+          </thead>
 <tbody>
 <tr>
 <td><strong>競馬ブームの立役者</strong><br/><small>賽馬熱潮領軍者</small></td>
@@ -29653,56 +29649,162 @@ function filterTab5Racecourses() {
 </div></section>
 <section class="section-card" id="sec-historia">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-book-bookmark"></i> 第 35 章：競馬歷史事件 (Historia) 名場面與觸發條件</div>
+<div class="section-title"><i class="fa-solid fa-scroll"></i> 第 35 章：競馬歷史事件 (Historia) 名場面與觸發條件</div>
+<div class="section-meta">
+<span class="pill pill-gold">全 24 大跨世紀競馬歷史名場面 ＋ 前置賽事條件 ＋ 專屬獎勵圖鑑</span>
+</div>
 </div>
 <div class="section-body">
-<p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">
-          在史實年份進行遊戲時，滿足特定名馬參賽與歷史條件即可觸發專屬「ヒストリア イベント」(Historia 歷史事件)，重現日本賽馬史上最盪氣迴腸的名場面並獲得額外成就獎勵！
-        </p>
-<div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
-<thead>
+
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-book-open" style="font-size:1.3rem; color:var(--accent-gold);"></i>
+<div>
+<strong>《賽馬大亨 10 2026》競馬歷史事件 (競馬ヒストリア) 全景手冊</strong><br/>
+競馬ヒストリア是以真實體育日報《產經體育 (サンケイスポーツ)》歷史頭版新聞為基礎，讓玩家親身經歷並追體驗自 1970 年代「光井 (ヒカルイマイ)」至今半世紀名馬傳奇的沉浸式系統。當觸發名場面後，不僅享有全彩歷史剪報與專屬過場動畫，更能直接獲得<strong>偶像地圖 (アイドルウマップ) 人氣激增、專屬特性解鎖與守護符 (お守り) 獎勵</strong>！
+</div>
+</div>
+
+<div class="table-responsive scrollable-table-box" style="max-height:580px !important; overflow-y:auto !important; margin-bottom:20px;">
+<table class="data-table" style="min-width:1000px; width:100%; text-align:left !important;">
+<thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th>歷史事件名稱 (日文 / 中文對照)</th>
-<th>觸發年份</th>
-<th>核心歷史主角 (日文 / 中文對照)</th>
-<th>事件重演條件與獎勵</th>
+<th class="sortable-th" style="text-align:left !important; width:90px; min-width:80px; white-space:nowrap !important;">年份 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:180px; min-width:160px;">歷史事件名稱 (日/中) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:170px; min-width:150px;">核心名馬 / 人物 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:270px; min-width:230px; max-width:290px; white-space:normal !important; word-break:break-word;">觸發前置賽事與達成條件 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:290px;">事件獎勵與歷史影響 (日/中) ⇅</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
-<td><strong>ＴＴＧ３強対決</strong><br/><small class="text-muted">(TTG 三強鼎立決戰)</small></td>
-<td>1976~1977</td>
-<td>トウショウボーイ (東昇)、テンポイント (天點)、グリーングラス (綠草)</td>
-<td>三強同場出戰有馬記念/菊花賞，觸發專屬名畫重演與馬主名聲暴漲。</td>
-</tr>
-<tr>
-<td><strong>皇帝降臨</strong><br/><small class="text-muted">(皇帝降臨・無敗三冠)</small></td>
-<td>1984~1985</td>
-<td>シンボリルドルフ (Symboli Rudolf / 魯鐸象徵)</td>
-<td>達成無敗三冠，重現日本賽馬史上首匹無敗三冠馬神話。</td>
-</tr>
-<tr>
-<td><strong>オグリキャップ引退の奇跡</strong><br/><small class="text-muted">(小栗帽退役奇蹟之跑)</small></td>
-<td>1990</td>
-<td>オグリキャップ (Oguri Cap / 小栗帽)</td>
-<td>於有馬記念出戰並奪冠，觸發全場 17 萬人「小栗呼喊」傳奇動畫。</td>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1971 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">光の駿馬<br/><span style="font-size:0.75rem; color:#94a3b8;">(光之駿馬・ヒカルイマイ)</span></td>
+<td style="text-align:left !important;">ヒカルイマイ (光井)</td>
+<td style="text-align:left !important;">出戰 1971 年日本打比大賽，並在最後直線以後方一氣作戰豪快逆轉奪冠。</td>
+<td style="text-align:left !important; color:#cbd5e1;">產經體育打比頭版紀念報導，解鎖「豪快」個性，贈銅札 1 枚。</td>
 </tr>
 <tr>
-<td><strong>トウカイテイオー奇跡の復活</strong><br/><small class="text-muted">(東海帝皇奇蹟之復活)</small></td>
-<td>1993</td>
-<td>トウカイテイオー (Tokai Teio / 東海帝皇)</td>
-<td>休養 364 天後於有馬記念直接復出奪冠，重現奇蹟之復活名場面！</td>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1973 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">地方からの刺客<br/><span style="font-size:0.75rem; color:#94a3b8;">(海聖高・大井到中央奇蹟)</span></td>
+<td style="text-align:left !important;">ハイセイコー (海聖高)</td>
+<td style="text-align:left !important;">自地方大井轉戰中央，連勝彌生賞並稱霸 1973 年皐月賞。</td>
+<td style="text-align:left !important; color:#38bdf8;"><strong>自動引爆全日本第一次「競馬狂潮」！</strong> 粉絲人數暴增 50,000人。</td>
 </tr>
 <tr>
-<td><strong>サンデーサイレンス旋風</strong><br/><small class="text-muted">(週日寧靜王朝崛起)</small></td>
-<td>1994~1995</td>
-<td>サンデーサイレンス産駒 (週日寧靜產駒群)</td>
-<td>確立サンデーサイレンス(Sunday Silence)子系統，引爆日本現代賽馬黃金大繁榮。</td>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1976 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">天馬と流星の激突<br/><span style="font-size:0.75rem; color:#94a3b8;">(天馬與流星公子世紀對決)</span></td>
+<td style="text-align:left !important;">トウショウボーイ × テンポイント</td>
+<td style="text-align:left !important;">兩馬同場出戰 1976 皐月賞與有馬紀念，並包辦冠亞軍。</td>
+<td style="text-align:left !important; color:#cbd5e1;">結成「強敵 (宿敵)」相関圖，雙方勝負根性與瞬發力突破上限。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1977 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">スーパーカー暴走<br/><span style="font-size:0.75rem; color:#94a3b8;">(跑車狂飆・丸善斯基)</span></td>
+<td style="text-align:left !important;">マルゼンスキー (丸善斯基)</td>
+<td style="text-align:left !important;">以 8 馬身以上壓倒性差距稱霸朝日盃 3 歲錦標。</td>
+<td style="text-align:left !important; color:#cbd5e1;">獲得「異次元の速さ」專屬稱號，領放大逃能力提升。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1984 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">無敗の皇帝誕生<br/><span style="font-size:0.75rem; color:#94a3b8;">(無敗皇帝・魯鐸象徵)</span></td>
+<td style="text-align:left !important;">シンボリルドルフ (魯鐸象徵)</td>
+<td style="text-align:left !important;">以無敗戰績依序制霸 1984 皐月賞、日本打比、菊花賞達成經典三冠。</td>
+<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">解鎖「無敗三冠達成」金色電影過場，贈金札 1 枚，直接入選顯彰馬。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1988 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">芦毛頂上決戦<br/><span style="font-size:0.75rem; color:#94a3b8;">(蘆毛頂上對決)</span></td>
+<td style="text-align:left !important;">オグリキャップ × タマモクロス</td>
+<td style="text-align:left !important;">兩匹蘆毛神駒在 1988 天皇賞（秋）直道廝殺包攬冠亞軍。</td>
+<td style="text-align:left !important; color:#38bdf8;"><strong>引爆第二次「賽馬狂潮」！</strong> 世間與輕度支持層人氣直接封頂。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1990 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">ラストランの奇跡<br/><span style="font-size:0.75rem; color:#94a3b8;">(小栗帽奇蹟復活之跑)</span></td>
+<td style="text-align:left !important;">オグリキャップ (小栗帽)</td>
+<td style="text-align:left !important;">在連遭挫敗後，於 1990 有馬紀念引退戰力克強敵奪得感動冠軍。</td>
+<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">全場 17 萬觀眾齊呼「小栗！」，獲得傳奇特性「奇蹟の復活」，贈虹札 1 枚！</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1992 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">世紀の対決・春の盾<br/><span style="font-size:0.75rem; color:#94a3b8;">(東海帝皇 vs 目白麥昆)</span></td>
+<td style="text-align:left !important;">トウカイテイオー × メジロマックイーン</td>
+<td style="text-align:left !important;">同場出賽 1992 春季天皇賞 (3200m)。</td>
+<td style="text-align:left !important; color:#cbd5e1;">解鎖「頂上對決」Historia 剪報，提升雙方長距離耐力與鬥志。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1993 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">奇跡の復活劇<br/><span style="font-size:0.75rem; color:#94a3b8;">(東海帝皇 364 天奇蹟)</span></td>
+<td style="text-align:left !important;">トウカイテイオー (東海帝皇)</td>
+<td style="text-align:left !important;">骨折休養整整 364 天未出賽，直通 1993 有馬紀念勇奪冠軍。</td>
+<td style="text-align:left !important; color:var(--accent-gold);">解鎖傳奇名場面「奇蹟の帝皇」，精神力滿格突破，贈金札 1 枚。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1994 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">影をも踏ませぬ三冠<br/><span style="font-size:0.75rem; color:#94a3b8;">(成田白仁 7 馬身三冠)</span></td>
+<td style="text-align:left !important;">ナリタブライアン (成田白仁)</td>
+<td style="text-align:left !important;">菊花賞以 7 馬身破紀錄時間達成經典三冠。</td>
+<td style="text-align:left !important; color:#cbd5e1;">解鎖特性「怪物」，海外主要 G1 勝率獲得巨額 Buff。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1998 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">異次元の逃亡劇<br/><span style="font-size:0.75rem; color:#94a3b8;">(無聲鈴鹿金鯱賞大差)</span></td>
+<td style="text-align:left !important;">サイレンススズカ (無聲鈴鹿)</td>
+<td style="text-align:left !important;">1998 金鯱賞 (G2) 直線領放大差獨贏 1 秒 8 奪冠。</td>
+<td style="text-align:left !important; color:#38bdf8;">解鎖專屬特性「異次元の逃亡者」，領放作戰時直線速度不衰退。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">1998 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">悲願のダービー初制覇<br/><span style="font-size:0.75rem; color:#94a3b8;">(特別週與武豐初制霸)</span></td>
+<td style="text-align:left !important;">スペシャルウィーク × 武豐</td>
+<td style="text-align:left !important;">武豐騎手策騎特別週贏得 1998 日本打比大賽。</td>
+<td style="text-align:left !important; color:#cbd5e1;">武豐騎手友好度直接提升至 100，特別週獲得「打比馬」光環。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">2000 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">世紀末覇王降臨<br/><span style="font-size:0.75rem; color:#94a3b8;">(好歌劇年間無敗 G1 8勝)</span></td>
+<td style="text-align:left !important;">テイエムオペラオー (好歌劇)</td>
+<td style="text-align:left !important;">2000 年達成古馬中長距離 G1 全勝 (年間 8 戰 8 勝)。</td>
+<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">解鎖稱號「世紀末覇王」，獲得特別獎金 3 億日圓與金札 1 枚。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">2005 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">空を飛んだ無敗三冠<br/><span style="font-size:0.75rem; color:#94a3b8;">(大震撼飛翔三冠)</span></td>
+<td style="text-align:left !important;">ディープインパクト (大震撼)</td>
+<td style="text-align:left !important;">無敗制霸皐月賞、日本打比、菊花賞，重現飛翔直線尾段。</td>
+<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">全支持層人氣 100% 封頂，解鎖「英雄」頭銜與虹札 1 枚。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">2008 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">2センチの奇跡<br/><span style="font-size:0.75rem; color:#94a3b8;">(伏特加 vs 大和赤驥 2cm)</span></td>
+<td style="text-align:left !important;">ウオッカ × ダイワスカーレット</td>
+<td style="text-align:left !important;">出戰 2008 秋季天皇賞，雙姝極微差衝線包攬前兩名。</td>
+<td style="text-align:left !important; color:#f472b6;">解鎖名場面「牝馬雙壁」，雙方產駒獲得名牝系爆發力加成。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">2011 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">暴君の狂気三冠<br/><span style="font-size:0.75rem; color:#94a3b8;">(黃金巨匠暴君三冠)</span></td>
+<td style="text-align:left !important;">オルフェーヴル (黃金巨匠)</td>
+<td style="text-align:left !important;">2011 菊花賞大勝達成三冠，賽後過終點將池添謙一騎手甩落。</td>
+<td style="text-align:left !important; color:#cbd5e1;">解鎖個性「暴君」克服路線，瞬發力與意志力突破極限。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">2018 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">2分20秒6の衝撃<br/><span style="font-size:0.75rem; color:#94a3b8;">(杏目世界紀錄時間)</span></td>
+<td style="text-align:left !important;">アーモンドアイ (杏目)</td>
+<td style="text-align:left !important;">以 2 分 20 秒 6 超級破世界紀錄時間贏得 2018 日本盃。</td>
+<td style="text-align:left !important; color:var(--accent-gold);">世界 100 傑馬積分直衝第一名，解鎖專屬特性「九冠神話」。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap; font-weight:700; text-align:left !important;">2023 年</td>
+<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">世界最強の証明<br/><span style="font-size:0.75rem; color:#94a3b8;">(春秋分世界第一)</span></td>
+<td style="text-align:left !important;">イクイノックス (春秋分)</td>
+<td style="text-align:left !important;">2023 天皇賞（秋）跑出 1 分 55 秒 2 破紀錄時間連霸。</td>
+<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">榮獲世界浪琴表排位第一名 (135 磅)，退役直接進入顯彰馬。</td>
 </tr>
 </tbody>
 </table>
 </div>
+
 </div>
 </section>
 </div>
@@ -29729,14 +29831,14 @@ function filterTab5Racecourses() {
             海外牧場可讓玩家在歐美本地直接育馬，<strong>徹底消除海外遠征的能力減益 (Debuff)</strong>，並能以<strong>正規原價馬札</strong>於庭先取引購買強大海外史實幼駒！
         </p>
 <div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
+<table class="data-table" style="min-width:960px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th>海外牧場類別</th>
-<th>核心人物知人</th>
-<th>必要名聲與資金</th>
-<th>前置成績條件</th>
-<th>開設費用與馬匹上限</th>
+<th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;">海外牧場類別 ⇅</th>
+<th class="sortable-th" style="width:180px; min-width:160px; text-align:left !important; white-space:normal !important; line-height:1.5;">核心人物知人 ⇅</th>
+<th class="sortable-th" style="width:180px; min-width:160px; text-align:left !important; white-space:normal !important; line-height:1.5;">必要名聲與資金 ⇅</th>
+<th class="sortable-th" style="width:260px; min-width:240px; max-width:290px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">前置成績條件 ⇅</th>
+<th class="sortable-th" style="width:200px; min-width:180px; text-align:left !important; white-space:normal !important; line-height:1.5;">開設費用與馬匹上限 ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -29812,13 +29914,13 @@ function filterTab5Racecourses() {
             俱樂部系統允許玩家創立一口馬主法人，將次級幼駒或潛力馬募集給會員，不僅能賺取高額分紅與會員費，更能設立專屬俱樂部牧場！
         </p>
 <div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
+<table class="data-table" style="min-width:940px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th>項目類別</th>
-<th>設立必要條件</th>
-<th>觸發時機與設立費用</th>
-<th>後續自訂與經營細節</th>
+<th class="sortable-th" style="width:160px; min-width:140px; text-align:left !important; white-space:nowrap !important;">項目類別 ⇅</th>
+<th class="sortable-th" style="width:260px; min-width:240px; max-width:290px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">設立必要條件 ⇅</th>
+<th class="sortable-th" style="width:200px; min-width:180px; max-width:240px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">觸發時機與設立費用 ⇅</th>
+<th class="sortable-th" style="width:320px; min-width:280px; max-width:360px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">後續自訂與經營細節 ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -29865,13 +29967,13 @@ function filterTab5Racecourses() {
             隨著俱樂部戰績與人氣提升，知人們會陸續加入成為俱樂部會員，大幅提高會員收入與互動事件：
         </p>
 <div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
+<table class="data-table" style="min-width:760px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th>所需會員人口</th>
-<th>加入之知名知人角色 (日/中)</th>
-<th>所需會員人口</th>
-<th>加入之知名知人角色 (日/中)</th>
+<th class="sortable-th" style="width:140px; min-width:120px; text-align:left !important; white-space:nowrap !important;">所需會員人口 ⇅</th>
+<th class="sortable-th" style="min-width:220px; text-align:left !important; white-space:normal !important; line-height:1.5;">加入之知名知人角色 (日/中) ⇅</th>
+<th class="sortable-th" style="width:140px; min-width:120px; text-align:left !important; white-space:nowrap !important;">所需會員人口 ⇅</th>
+<th class="sortable-th" style="min-width:220px; text-align:left !important; white-space:normal !important; line-height:1.5;">加入之知名知人角色 (日/中) ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -29931,16 +30033,16 @@ function filterTab5Racecourses() {
 <p style="font-size:0.83rem; color:var(--text-muted); margin-bottom:12px;">
             牧場設施分為<strong>「放牧場設施」</strong>（繁育、放牧與休養）與<strong>「育成場設施」</strong>（幼駒與現役調教）。部分設施需要透過<strong>知人達成目標</strong>或<strong>特定日期</strong>解鎖。指派具有對應<strong>得意設施</strong>的牧場長或子孫工作人員進駐，可大幅提升設施運作效益！
         </p>
-<div class="table-responsive scrollable-table-box" style="margin-bottom:20px;">
-<table class="data-table" style="font-size:0.8rem;">
+<div class="table-responsive scrollable-table-box" style="max-height:640px !important; overflow-y:auto !important; margin-bottom:20px;">
+<table class="data-table" style="min-width:980px; width:100%; text-align:left !important; font-size:0.82rem;">
 <thead>
 <tr>
-<th>設施名稱 (日/中)</th>
-<th>場所</th>
-<th>面積</th>
-<th>解鎖時期與前置條件</th>
-<th>詳細設施效果說明</th>
-<th>得意牧場長 / 人員</th>
+<th class="sortable-th" style="width:170px; min-width:150px; text-align:left !important; position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important; white-space:normal !important; line-height:1.5;">設施名稱 (日/中) ⇅</th>
+<th class="sortable-th" style="width:75px; min-width:65px; text-align:left !important; position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important; white-space:nowrap !important;">場所 ⇅</th>
+<th class="sortable-th" style="width:65px; min-width:55px; text-align:left !important; position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important; white-space:nowrap !important;">面積 ⇅</th>
+<th class="sortable-th" style="width:200px; min-width:180px; max-width:240px; text-align:left !important; position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important; white-space:normal !important; line-height:1.6; word-break:break-word;">解鎖時期與前置條件 ⇅</th>
+<th class="sortable-th" style="width:310px; min-width:270px; max-width:350px; text-align:left !important; position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important; white-space:normal !important; line-height:1.6; word-break:break-word;">詳細設施效果說明 ⇅</th>
+<th class="sortable-th" style="width:150px; min-width:130px; text-align:left !important; position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important; white-space:normal !important; line-height:1.5;">得意牧場長 / 人員 ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -30279,16 +30381,16 @@ function filterTab5Racecourses() {
         </div>
 </div>
 <div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
+<table class="data-table" style="min-width:1040px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th style="min-width:140px;">騎手姓名 (遊戲假名)</th>
-<th style="min-width:140px;">實名對照 (日/中)</th>
-<th style="min-width:90px;">所屬</th>
-<th style="min-width:130px;">戰法能力 (逃/差/追)</th>
-<th style="min-width:140px;">距離能力 (短/哩/中/長)</th>
-<th style="min-width:280px;">核心特性技能 (繁體中文)</th>
-<th style="min-width:140px;">相性個性 / 弱點</th>
+<th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important;">騎手姓名 (遊戲假名) ⇅</th>
+<th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important;">實名對照 (日/中) ⇅</th>
+<th class="sortable-th" style="width:90px; min-width:80px; text-align:left !important; white-space:nowrap !important;">所屬 ⇅</th>
+<th class="sortable-th" style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important;">戰法能力 ⇅</th>
+<th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;">距離能力 ⇅</th>
+<th class="sortable-th" style="width:280px; min-width:260px; max-width:340px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">核心特性技能 (繁體中文) ⇅</th>
+<th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important;">相性個性 / 弱點 ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -30368,16 +30470,16 @@ function filterTab5Racecourses() {
 <span class="badge badge-blue">歐美世界級騎手</span>
 </div>
 <div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
+<table class="data-table" style="min-width:1020px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th style="min-width:140px;">騎手姓名 (遊戲假名)</th>
-<th style="min-width:140px;">實名對照 (日/中)</th>
-<th style="min-width:80px;">賽區</th>
-<th style="min-width:120px;">戰法能力</th>
-<th style="min-width:130px;">距離能力</th>
-<th style="min-width:280px;">核心特性技能 (繁體中文)</th>
-<th style="min-width:140px;">相性個性 (ウマソナ)</th>
+<th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important;">騎手姓名 (遊戲假名) ⇅</th>
+<th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important;">實名對照 (日/中) ⇅</th>
+<th class="sortable-th" style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important;">賽區 ⇅</th>
+<th class="sortable-th" style="width:120px; min-width:110px; text-align:left !important; white-space:nowrap !important;">戰法能力 ⇅</th>
+<th class="sortable-th" style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important;">距離能力 ⇅</th>
+<th class="sortable-th" style="width:280px; min-width:260px; max-width:340px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">核心特性技能 (繁體中文) ⇅</th>
+<th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important;">相性個性 (ウマソナ) ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -30439,16 +30541,16 @@ function filterTab5Racecourses() {
 <span class="badge badge-purple">日美歐名門練馬師</span>
 </div>
 <div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
+<table class="data-table" style="min-width:1020px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th style="min-width:140px;">調教師姓名 (遊戲名)</th>
-<th style="min-width:140px;">實名對照 (日/中)</th>
-<th style="min-width:80px;">所屬</th>
-<th style="min-width:140px;">五圍能力 (調/相/閃/體/重)</th>
-<th style="min-width:120px;">擅長距離</th>
-<th style="min-width:280px;">核心特性技能 (繁體中文)</th>
-<th style="min-width:130px;">得意個性</th>
+<th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important;">調教師姓名 (遊戲名) ⇅</th>
+<th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important;">實名對照 (日/中) ⇅</th>
+<th class="sortable-th" style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important;">所屬 ⇅</th>
+<th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;">五圍能力 ⇅</th>
+<th class="sortable-th" style="width:120px; min-width:110px; text-align:left !important; white-space:nowrap !important;">擅長距離 ⇅</th>
+<th class="sortable-th" style="width:280px; min-width:260px; max-width:340px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">核心特性技能 (繁體中文) ⇅</th>
+<th class="sortable-th" style="width:130px; min-width:120px; text-align:left !important;">得意個性 ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -30522,15 +30624,15 @@ function filterTab5Racecourses() {
         以下名馬在史實中於特定年份會<strong>從所屬賽區移籍至其他賽區</strong>（如 歐➔美、日➔美、歐➔澳 等）。若玩家未於移籍前在原賽區購入，移籍後若尚未開設對應海外牧場將無法購入！
     </p>
 <div class="table-responsive" style="margin-top:16px !important; margin-bottom:28px !important; padding-bottom:14px !important;">
-<table class="data-table">
+<table class="data-table" style="min-width:960px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th style="min-width:150px;">馬名 (日/中)</th>
-<th style="min-width:80px;">出生年</th>
-<th style="min-width:60px;">性別</th>
-<th style="min-width:80px;">SP (札)</th>
-<th style="min-width:180px;">移籍年份與路徑</th>
-<th style="min-width:260px;">歷史成就與戰略價值 (繁體中文)</th>
+<th class="sortable-th" style="width:160px; min-width:150px; text-align:left !important;">馬名 (日/中) ⇅</th>
+<th class="sortable-th" style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important;">出生年 ⇅</th>
+<th class="sortable-th" style="width:60px; min-width:50px; text-align:left !important; white-space:nowrap !important;">性別 ⇅</th>
+<th class="sortable-th" style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important;">SP (札) ⇅</th>
+<th class="sortable-th" style="width:180px; min-width:160px; text-align:left !important;">移籍年份與路徑 ⇅</th>
+<th class="sortable-th" style="min-width:280px; max-width:360px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">歷史成就與戰略價值 (繁體中文) ⇅</th>
 </tr>
 </thead>
 <tbody>
@@ -31213,14 +31315,14 @@ function filterTab5Racecourses() {
         </p>
 <!-- 時間軸與關鍵事件表格 -->
 <div class="table-responsive" style="margin-bottom:16px;">
-<table class="data-table">
-<thead>
-<tr>
-<th>發生時期</th>
-<th>核心事件</th>
-<th>詳細機制與 S/L (リセマラ) 刷屬性關鍵點</th>
-</tr>
-</thead>
+<table class="data-table" style="min-width:860px; width:100%; text-align:left !important;">
+          <thead>
+            <tr>
+              <th class="sortable-th" style="width:120px; min-width:100px; text-align:left !important; white-space:nowrap !important;">發生時期 ⇅</th>
+              <th class="sortable-th" style="width:180px; min-width:160px; text-align:left !important; white-space:normal !important; line-height:1.5;">核心事件 ⇅</th>
+              <th class="sortable-th" style="min-width:480px; max-width:620px; text-align:left !important; white-space:normal !important; line-height:1.7; word-break:break-word;">詳細機制與 S/L (リセマラ) 刷屬性關鍵點 ⇅</th>
+            </tr>
+          </thead>
 <tbody>
 <tr>
 <td><span class="pill pill-safe">2 月 1 週</span></td>
@@ -31302,204 +31404,212 @@ function filterTab5Racecourses() {
 <section class="section-card" id="sec-club-management">
 <div class="section-header">
 <div class="section-title"><i class="fa-solid fa-building-columns"></i> 第 39 章：賽馬俱樂部 (Club) 經營・法人化牧場與會員招募完全指南</div>
+<div class="section-meta">
+<span class="pill pill-gold">一口馬主招募公式 ＋ 俱樂部牧場設立 ＋ 知人加入門檻全書</span>
+</div>
 </div>
 <div class="section-body">
-<div class="callout callout-gold" style="margin-bottom:20px;">
-<i class="fa-solid fa-users"></i>
+
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-briefcase" style="font-size:1.3rem; color:var(--accent-gold);"></i>
 <div>
-<strong>《賽馬大亨 10 2026》 Web 手冊 3500 &amp; 4400 俱樂部法人經營完全收錄</strong><br/>
-                當馬主資金與名聲達到一定水準後，可申請設立專屬的「一口馬主」賽馬俱樂部法人（Club）。透過自主制定勝負服、設定募集口數與定價、招攬會員出資，並可解鎖專屬的「俱樂部牧場 (クラブ牧場)」，實現雙牧場協同繁育與巨額分紅利潤！
-            </div>
-</div>
-<!-- 一、俱樂部設立與營運流程 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-stamp"></i> 一、俱樂部法人設立條件、流程與代表選任
-                </div>
-<span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">法人化制度</span>
-</div>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:16px;">
-<div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
-<h4 style="color:#38bdf8; font-size:0.9rem; margin-top:0;">📋 1. 設立條件與資金門檻</h4>
-<p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
-                        馬主資產達 <strong>20 億日圓以上</strong> 且名聲達標時，知人將登門提議設立俱樂部。需支付 10 億日圓作為法人設立準備金與註冊資本。
-                    </p>
-</div>
-<div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
-<h4 style="color:#4ade80; font-size:0.9rem; margin-top:0;">👔 2. 俱樂部代表 (社長) 選任</h4>
-<p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
-                        可指派結識之知人或已成年的<strong>子孫 (家系後代)</strong> 擔任俱樂部代表社長。代表之「相馬眼」與「交涉力」將直接影響會員增長速度與募集成功率。
-                    </p>
-</div>
-<div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
-<h4 style="color:#facc15; font-size:0.9rem; margin-top:0;">🎨 3. 勝負服設計與冠名</h4>
-<p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
-                        可為俱樂部制定專屬的勝負服圖樣（配色、條紋、星形等）與專屬馬名冠名（如 Sunday Racing, Silk 等風格），與本場自用馬做明顯區隔。
-                    </p>
+<strong>《賽馬大亨 10 2026》賽馬俱樂部 (Club 法人) 商業經營體系</strong><br/>
+當名聲與資金達到頂級水準後，玩家將可設立<strong>「俱樂部法人 (一口馬主俱樂部)」</strong>。不僅能擴充自身馬匹管理上限至 40~60 匹，更可透過<strong>「一口馬主募集」</strong>吸納全國會員資金，並設立<strong>「俱樂部專用牧場」</strong>實現自產自銷的商業帝國！
 </div>
 </div>
+
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:20px;">
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3);">
+<h4 style="color:#38bdf8; margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-key"></i> 📋 俱樂部法人設立四大絕對門檻
+</h4>
+<ul style="line-height:1.8; font-size:0.82rem; margin:0; padding-left:18px;">
+<li><strong>1. 名聲值 (名声)：</strong>達到 <strong>1,000 以上</strong> (1,200 必出)。</li>
+<li><strong>2. 牧場設施：</strong>基本施設 Lv2 ＋ 廄舍 Lv2 以上。</li>
+<li><strong>3. 資金門檻：</strong>自家資金持有人 ≥ <strong>20 億日圓</strong> (設立時扣除 5 億開設資本)。</li>
+<li><strong>4. 關鍵知人結識：</strong>認識知人 <code>朝比奈すみれ (朝比奈堇)</code>，友好度達 10+。</li>
+<li>※ 在滿足上述條件下，於中央重賞獲勝後的次週將由朝比奈堇主動上門提案！</li>
+</ul>
 </div>
-<!-- 二、幼駒募集口數與定價營運 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.1rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-hand-holding-dollar"></i> 二、幼駒募集定價、一口口數與利潤分紅機制
-                </div>
-<span class="badge" style="background:var(--accent-color); color:#fff; font-size:0.8rem; padding:4px 8px;">一ロ馬主機制</span>
+
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(245,158,11,0.3);">
+<h4 style="color:var(--accent-gold); margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-chart-line"></i> 💰 一口馬主募集定價黃金公式
+</h4>
+<ul style="line-height:1.8; font-size:0.82rem; margin:0; padding-left:18px;">
+<li><strong>募集總額：</strong>幼駒評價額 × <strong>1.2 ~ 1.5 倍</strong>（兼具吸引力與最高利潤）。</li>
+<li><strong>劃分口數：</strong>常規馬 100~200 口；大物巨星馬設定 400~500 口。</li>
+<li><strong>100% 完售技巧：</strong>優先挑選<strong>「白毛/蘆毛、父馬知名度高、評價額適中」</strong>之幼駒，募集首日即可 100% 完售，快速回籠資金並提升俱樂部聲望！</li>
+</ul>
 </div>
-<div class="table-responsive" style="margin:0;">
-<table class="data-table">
-<thead>
+</div>
+
+<h3 style="color:#38bdf8; margin:20px 0 10px 0; font-size:1.05rem; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-users"></i> 【知人解鎖門檻】俱樂部累積會員人數與加入知人全覽表
+</h3>
+<p style="font-size:0.85rem; color:#94a3b8; margin-bottom:12px;">
+※ 隨著俱樂部成績優異與會員人數膨脹，各界知名人士將依序申請加入俱樂部成為忠實會員！
+</p>
+
+<div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:24px;">
+<table class="data-table" style="min-width:900px; width:100%; text-align:left !important;">
+<thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th style="min-width:140px; text-align:left !important;">募集口數類別</th>
-<th style="min-width:140px; text-align:left !important;">一口定價區間</th>
-<th style="min-width:280px; text-align:left !important;">會員受眾與滿額難易度</th>
-<th style="min-width:260px; text-align:left !important;">營運利潤與俱樂部名聲加成</th>
+<th class="sortable-th" style="text-align:left !important; width:150px; min-width:140px; white-space:nowrap !important;">會員人數門檻 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:200px; min-width:180px;">新加入知人名單 (日/中) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:360px;">解鎖人物背景與身分 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:180px; min-width:160px; max-width:200px;">解鎖專屬效益 ⇅</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left !important;"><strong style="color:#f87171;">40 口 (少人數少額分攤)</strong></td>
-<td style="text-align:left !important;">高額 (1000萬~5000萬/口)</td>
-<td style="text-align:left !important;">針對高資產會員，需幼駒血統評級 A 以上才易售罄。</td>
-<td style="text-align:left !important;">初期資金回流極快，奪冠時俱樂部名聲大幅激增。</td>
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:150px; min-width:140px;">1,000 人達成</td>
+<td style="text-align:left !important; width:200px; min-width:180px;">井坂修三、有馬桜子</td>
+<td style="text-align:left !important; min-width:360px; line-height:1.6; word-break:break-word;">著名賽馬雜誌特約記者、電視台知性女主播。</td>
+<td style="text-align:left !important; width:180px; min-width:160px; max-width:200px; white-space:normal !important; line-height:1.5; color:#cbd5e1;">增加媒體曝光率，評價提升。</td>
 </tr>
 <tr>
-<td style="text-align:left !important;"><strong style="color:var(--gold-color);">400 口 (主流標準俱樂部)</strong></td>
-<td style="text-align:left !important;">中額 (100萬~500萬/口)</td>
-<td style="text-align:left !important;">最均衡之募集模式，大眾會員接受度極高。</td>
-<td style="text-align:left !important;">會員數成長平穩，可維持每年穩健的分紅現金流。</td>
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:150px; min-width:140px;">3,000 人達成</td>
+<td style="text-align:left !important; width:200px; min-width:180px;">如月英里子、天本涼子</td>
+<td style="text-align:left !important; min-width:360px; line-height:1.6; word-break:break-word;">海外馬產界名媛、資深血統研究家。</td>
+<td style="text-align:left !important; width:180px; min-width:160px; max-width:200px; white-space:normal !important; line-height:1.5; color:#38bdf8;">解鎖海外拍賣會 VIP 通道。</td>
 </tr>
 <tr>
-<td style="text-align:left !important;"><strong style="color:#38bdf8;">1000 口 (微型大眾口數)</strong></td>
-<td style="text-align:left !important;">低額 (10萬~50萬/口)</td>
-<td style="text-align:left !important;">入門門檻低，極易達成「滿額 (満口御礼)」。</td>
-<td style="text-align:left !important;">大幅引爆俱樂部狂潮與會員總人數成長。</td>
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:150px; min-width:140px;">5,000 人達成</td>
+<td style="text-align:left !important; width:200px; min-width:180px;">高井駆、相馬百合子</td>
+<td style="text-align:left !important; min-width:360px; line-height:1.6; word-break:break-word;">新銳青年馬主、老牌相馬專家。</td>
+<td style="text-align:left !important; width:180px; min-width:160px; max-width:200px; white-space:normal !important; line-height:1.5; color:#cbd5e1;">相馬眼評價更為精準。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:150px; min-width:140px;">10,000 人達成</td>
+<td style="text-align:left !important; width:200px; min-width:180px;">萩野鈴蘭、鳳雅輝</td>
+<td style="text-align:left !important; min-width:360px; line-height:1.6; word-break:break-word;">宿敵財閥馬主千金與大少爺 (化敵為友)。</td>
+<td style="text-align:left !important; width:180px; min-width:160px; max-width:200px; white-space:normal !important; line-height:1.5; color:var(--accent-gold); font-weight:bold;">贈送銀札 1 枚，宿敵好感大增。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:150px; min-width:140px;">20,000 人達成</td>
+<td style="text-align:left !important; width:200px; min-width:180px;">都大路漆黒、朝比奈すみれ</td>
+<td style="text-align:left !important; min-width:360px; line-height:1.6; word-break:break-word;">宿敵大馬主元老、俱樂部引薦人兼秘書。</td>
+<td style="text-align:left !important; width:180px; min-width:160px; max-width:200px; white-space:normal !important; line-height:1.5; color:var(--accent-gold); font-weight:bold;">贈送金札 1 枚，達成終極商業成就。</td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
-<!-- 三、俱樂部牧場設立與雙牧場連動 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.1rem; font-weight:800; color:#34d399; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-tree"></i> 三、俱樂部專屬牧場 (クラブ牧場) 設立與雙牧場協同
-                </div>
-<span class="badge" style="background:#059669; color:#fff; font-size:0.8rem; padding:4px 8px;">雙牧場系統</span>
-</div>
-<div style="font-size:0.84rem; line-height:1.75; color:var(--text-main); text-align:left !important;">
-<p style="margin:0 0 10px 0;">
-                    當俱樂部會員數突破 <strong>5,000 人</strong> 且俱樂部資金充裕時，可在日本另行開闢<strong>「俱樂部牧場」</strong>！
-                </p>
-<div style="background:rgba(6,95,70,0.2); border-left:3px solid #34d399; padding:10px 14px; border-radius:6px; margin-bottom:10px;">
-<strong>🔄 雙牧場協同繁育效益：</strong><br/>
-                    • 繁殖牝馬繫養規模翻倍（本場 20 頭 + 俱樂部牧場 20 頭 = 40 頭頂級母馬群）。<br/>
-                    • 優質幼駒可自由在「自留本場現役」與「移籍俱樂部募集」之間無縫分配。<br/>
-                    • 自家種牡馬可直接無償配種俱樂部牧場母馬，節省巨額配種費並加速自身系統確立！
-                </div>
+
+<div class="tool-card" style="background:rgba(15,23,42,0.85); border:1px solid rgba(56,189,248,0.3); padding:16px;">
+<h4 style="color:#38bdf8; margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-tree"></i> 🏰 俱樂部牧場 (Club Ranch) 設立條件
+</h4>
+<div style="font-size:0.84rem; color:var(--text-color); line-height:1.7;">
+當俱樂部法人經營成熟後，可建立專屬的「俱樂部牧場」：<br/>
+• <strong>門檻：</strong>名聲值 ≥ 3,000，自家資金 ≥ 20 億，<strong>俱樂部資金 ≥ 10 億日圓</strong>，生產者排行榜名列全國前 10 位。<br/>
+• <strong>種母馬配置：</strong>需持有繁殖牝馬 ≥ 10 頭，種牡馬 ≥ 5 頭。<br/>
+• <strong>效益：</strong>俱樂部牧場完全自產幼駒供會員募集，大幅減輕自家牧場負擔，實現利潤永動機！
 </div>
 </div>
+
 </div>
 </section><section class="section-card" id="sec-legend-match">
 <div class="section-header">
 <div class="section-title"><i class="fa-solid fa-trophy"></i> 第 40 章：傳奇對決 (The Legend Match)・世界百大名駒殿堂排行榜與顯彰馬決戰</div>
+<div class="section-meta">
+<span class="pill pill-gold">世界 100 傑偉業積分演算法 ＋ 傳奇入場券最速刷法 ＋ 跨時代魔王攻略</span>
+</div>
 </div>
 <div class="section-body">
-<div class="callout callout-gold" style="margin-bottom:20px;">
-<i class="fa-solid fa-award"></i>
+
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-crown" style="font-size:1.3rem; color:var(--accent-gold);"></i>
 <div>
-<strong>《賽馬大亨 10 2026》 Web 手冊 4650 &amp; 4670 傳奇挑戰系統完全收錄</strong><br/>
-                突破時空維度！玩家現役巔峰名駒可受邀參加夏季與冬季舉辦的夢幻大賽<strong>「The Legend Match (傳奇對決)」</strong>，與大震撼、神鷹、成田白仁、杏目、秘書處等歷史神獸同場競技；同時在<strong>「世界 100 傑馬殿堂」</strong>爭奪全球歷史第一排名！
-            </div>
-</div>
-<!-- 一、The Legend Match 傳奇對決規則 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.1rem; font-weight:800; color:var(--gold-color); display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-trophy"></i> 一、ザ・レジェンドマッチ (The Legend Match) 舉辦週期與參賽資格
-                </div>
-<span class="badge badge-gold" style="font-size:0.8rem; padding:4px 8px;">夢幻賽事</span>
-</div>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:16px;">
-<div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
-<h4 style="color:#38bdf8; font-size:0.9rem; margin-top:0;">🎫 1. 參賽邀請函 (入場券) 獲得</h4>
-<p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
-                        現役馬於 G1 賽事累積 <strong>3 勝以上</strong> 且鬥志/調子達到巔峰時，於 6 月與 12 月將收到主辦方發送之「傳奇對決特別邀請函」。
-                    </p>
-</div>
-<div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
-<h4 style="color:#facc15; font-size:0.9rem; margin-top:0;">⚔️ 2. 對戰陣容與跨時代神駒</h4>
-<p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
-                        賽事將隨機或指定匹配歷史跨時代巔峰神駒（如 <strong>ディープインパクト (大震撼)</strong>、<strong>トウカイテイオー (東海帝皇)</strong>、<strong>Secretariat (秘書處)</strong>）。
-                    </p>
-</div>
-<div style="background:rgba(0,0,0,0.35); border:1px solid var(--border-color); border-radius:8px; padding:12px; text-align:left !important;">
-<h4 style="color:#4ade80; font-size:0.9rem; margin-top:0;">🎁 3. 獲勝獎勵與傳奇特性解鎖</h4>
-<p style="font-size:0.82rem; line-height:1.65; color:var(--text-main); margin:0;">
-                        擊敗傳奇名馬奪冠後，可獲得<strong>巨額特別獎金</strong>、<strong>金色/虹色御守</strong>，並直接解鎖極其稀有的【傳奇專屬特性 (Legend Trait)】！
-                    </p>
+<strong>《賽馬大亨 10 2026》世界頂級名駒殿堂・傳奇對決機制</strong><br/>
+「世界 100 傑馬排行榜 (World Best 100)」全面評定歷史至今所有頂級賽駒的生涯功績！旗下名駒只要累積足夠偉業積分殺入榜單，即可獲邀參加<strong>「The Legend Match (傳奇對決)」</strong>——在專屬虛擬殿堂賽場中，與不同歷史時代的無敗巨星（如 Secretariat、秘書處、皇帝、大震撼、春秋分）展開無差別世紀死鬥！
 </div>
 </div>
+
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:20px;">
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(245,158,11,0.3);">
+<h4 style="color:var(--accent-gold); margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-ticket"></i> 🎫 傳奇對決邀請函 (Ticket) 最速獲取法
+</h4>
+<ul style="line-height:1.8; font-size:0.82rem; margin:0; padding-left:18px;">
+<li><strong>1. 經典三冠達成：</strong>達成日本/歐洲/美國任意三冠，必獲 1 張傳奇邀請函。</li>
+<li><strong>2. 海外超級 G1 奪冠：</strong>凱旋門賞、育馬者盃經典賽、杜拜世界盃奪冠贈券。</li>
+<li><strong>3. 偉業積分達標：</strong>旗下名駒生涯累計勝場積分突破 1,000pt，年末自動獲贈。</li>
+</ul>
 </div>
-<!-- 二、世界 100 傑馬殿堂排行榜 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:12px; padding:18px; margin-bottom:24px; box-shadow:0 6px 20px rgba(0,0,0,0.4);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
-<div style="font-size:1.1rem; font-weight:800; color:var(--accent-color); display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-earth-americas"></i> 二、世界 100 傑馬 (Top 100 Horses) 積分規則與登頂心法
-                </div>
-<span class="badge" style="background:var(--accent-color); color:#fff; font-size:0.8rem; padding:4px 8px;">世界排行榜</span>
-</div>
-<div style="font-size:0.84rem; line-height:1.7; color:var(--text-main); text-align:left !important;">
-<p style="margin:0 0 10px 0;">
-                    「世界 100 傑馬」收錄了全球有史以來最強的 100 匹殿堂級名駒。排行榜按國際 G1 大賽勝場加權積分進行排序：
-                </p>
-<div style="background:rgba(30,41,59,0.7); border-radius:8px; padding:12px; border-left:3px solid var(--gold-color); margin-bottom:12px;">
-<strong>🏆 積分加權計算法則：</strong><br/>
-                    • <strong>全球超頂級特級 G1</strong>（凱旋門賞、日本盃、美國育馬者盃經典賽、杜拜世界盃）：每勝獲得 <strong>+100 積分</strong>。<br/>
-                    • <strong>國內外常規 G1</strong>（經典三冠、天皇賞、有馬紀念等）：每勝獲得 <strong>+50 積分</strong>。<br/>
-                    • <strong>連勝加成</strong>：跨年度無敗連勝每多一場額外疊加 <strong>+15 積分</strong>。<br/>
-                    • 累積積分突破 <strong>800 分以上</strong> 即可強勢殺入全球前 10 名，超越歷史傳奇榮登世界第 1 名馬王座！
-                </div>
-</div>
-</div>
-<div class="manual-replica-card" style="background:rgba(15,23,42,0.85); border:1px solid rgba(236,72,153,0.3); border-radius:10px; padding:20px; margin-top:24px; box-shadow:0 6px 20px rgba(0,0,0,0.3);">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(236,72,153,0.2); padding-bottom:10px; margin-bottom:16px;">
-<h3 style="font-size:1.1rem; color:#ec4899; margin:0; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-trophy"></i> 【深度指南】世界 100 傑馬排行榜・偉業點數與 The Legend Match 傳奇對決完全手冊
-        </h3>
-<span class="badge badge-pink" style="font-size:0.8rem;">世界百傑與傳奇對決</span>
-</div>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:16px;">
-<div style="text-align:center;">
-<img alt="世界100傑馬排行榜" src="images/manual/4650_01.png" style="max-width:100%; border-radius:8px; border:1px solid var(--border-color); box-shadow:0 4px 12px rgba(0,0,0,0.4);"/>
-<div style="font-size:0.8rem; color:var(--text-muted); margin-top:6px;">▲ 世界 100 傑馬排行榜 (World Top 100) 與偉業點數計算</div>
-</div>
-<div style="text-align:center;">
-<img alt="The Legend Match 傳奇對決" src="images/manual/4670_01.png" style="max-width:100%; border-radius:8px; border:1px solid var(--border-color); box-shadow:0 4px 12px rgba(0,0,0,0.4);"/>
-<div style="font-size:0.8rem; color:var(--text-muted); margin-top:6px;">▲ The Legend Match：跨世代殿堂名駒與歷史顯彰馬夢幻決戰</div>
+
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.3);">
+<h4 style="color:#38bdf8; margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-calculator"></i> 📊 世界 100 傑馬偉業積分 (Points) 演算法
+</h4>
+<ul style="line-height:1.8; font-size:0.82rem; margin:0; padding-left:18px;">
+<li><strong>國內 G1 勝場：</strong>每勝 1 場獲得 <strong>100 pt</strong> (同一 G1 連霸額外 +50pt)。</li>
+<li><strong>海外主要 G1 勝場：</strong>英愛打比、英皇錦標每場 <strong>250 pt</strong>。</li>
+<li><strong>全球最高峰賽事：</strong>凱旋門賞、育馬者盃經典賽每場 <strong>400 pt</strong>！</li>
+<li><strong>連勝加成：</strong>達成無敗 10 連勝以上，總積分額外加乘 <strong>1.2 倍</strong>！</li>
+</ul>
 </div>
 </div>
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:16px;">
-<div style="background:rgba(0,0,0,0.3); border-left:3px solid #ec4899; padding:10px 12px; border-radius:4px;">
-<strong style="color:#ec4899;"><i class="fa-solid fa-award"></i> 偉業點數 (偉業ポイント) 計算：</strong>
-<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">依據「全球 G1 勝利數」、「無敗三冠」、「連勝紀錄」、「破紀錄時間」與「國際評分 Rating」綜合評定。</p>
+
+<h3 style="color:var(--accent-gold); margin:20px 0 10px 0; font-size:1.05rem; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-skull-crossbones"></i> 【跨時代跨界魔王】傳奇對決各大關卡守門 Boss 與應對戰術
+</h3>
+<p style="font-size:0.85rem; color:#94a3b8; margin-bottom:12px;">
+※ 傳奇對決中各距離等級的最強守門神駒與克制指南。
+</p>
+
+<div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:20px;">
+<table class="data-table" style="min-width:860px; width:100%; text-align:left !important;">
+<thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
+<tr>
+<th class="sortable-th" style="text-align:left !important; width:125px; min-width:115px; max-width:130px; white-space:nowrap !important;">對決戰線 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:165px; min-width:150px; max-width:175px;">傳奇守門魔王 (Boss) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:75px; min-width:70px; max-width:80px; white-space:nowrap !important;">魔王 SP ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:220px; min-width:200px; max-width:240px; white-space:normal !important; word-break:break-word;">魔王殺手級特性與特徵 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:280px; min-width:250px; max-width:310px; white-space:normal !important; word-break:break-word;">玩家克制戰術與跑法建議 ⇅</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="white-space:nowrap !important; font-weight:bold; color:#38bdf8; text-align:left !important; width:125px; min-width:115px;">短距離 (1200m)</td>
+<td style="text-align:left !important; width:165px; min-width:150px;"><strong>ロードカナロア</strong> (龍王)</td>
+<td style="white-space:nowrap !important; text-align:left !important; width:75px; min-width:70px;"><span class="badge badge-rainbow">SP 78</span></td>
+<td style="text-align:left !important; width:220px; min-width:200px; max-width:240px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#cbd5e1;">直線爆炸級加速、瞬發力 S+、短距離統治光環。</td>
+<td style="text-align:left !important; width:280px; min-width:250px; max-width:310px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#10b981;">需派出極致大逃馬（如卡爾斯通輕快）提早拉開 4 馬身以上。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:125px; min-width:115px;">一哩王道 (1600m)</td>
+<td style="text-align:left !important; width:165px; min-width:150px;"><strong>タイキシャトル</strong> (大樹快車)</td>
+<td style="white-space:nowrap !important; text-align:left !important; width:75px; min-width:70px;"><span class="badge badge-rainbow">SP 78</span></td>
+<td style="text-align:left !important; width:220px; min-width:200px; max-width:240px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#cbd5e1;">先行領跑無解、力量滿格、任何馬場狀態不減速。</td>
+<td style="text-align:left !important; width:280px; min-width:250px; max-width:310px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#10b981;">使用具備「根幹距離＋直線一氣」的超瞬發差馬在最後 100m 絕殺。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap !important; font-weight:bold; color:#ef4444; text-align:left !important; width:125px; min-width:115px;">中距離 (2000~2400m)</td>
+<td style="text-align:left !important; width:165px; min-width:150px;"><strong>ディープインパクト</strong> (大震撼)</td>
+<td style="white-space:nowrap !important; text-align:left !important; width:75px; min-width:70px;"><span class="badge badge-rainbow" style="font-weight:800;">SP 79</span></td>
+<td style="text-align:left !important; width:220px; min-width:200px; max-width:240px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#cbd5e1;">固有「飛翔」、直道末腳光速、大舞台、四白流星。</td>
+<td style="text-align:left !important; width:280px; min-width:250px; max-width:310px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#10b981;">自身馬匹 SP 需達 78+，搭配 SP 史實調教與宿敵特性正面死鬥！</td>
+</tr>
+<tr>
+<td style="white-space:nowrap !important; font-weight:bold; color:#a855f7; text-align:left !important; width:125px; min-width:115px;">泥地王者 (2000m)</td>
+<td style="text-align:left !important; width:165px; min-width:150px;"><strong>セクレタリアト</strong> (秘書處)</td>
+<td style="white-space:nowrap !important; text-align:left !important; width:75px; min-width:70px;"><span class="badge badge-rainbow" style="font-weight:800;">SP 79</span></td>
+<td style="text-align:left !important; width:220px; min-width:200px; max-width:240px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#cbd5e1;">31 馬身神話、大舞台、紅き伝説、泥地全適性 ◎。</td>
+<td style="text-align:left !important; width:280px; min-width:250px; max-width:310px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#10b981;">泥地最強怪物。需以自繁真・疾風黑色名駒搭配「交流重賞」騎手抵抗。</td>
+</tr>
+<tr>
+<td style="white-space:nowrap !important; font-weight:bold; color:#10b981; text-align:left !important; width:125px; min-width:115px;">長距離 (3000m+)</td>
+<td style="text-align:left !important; width:165px; min-width:150px;"><strong>メジロマックイーン</strong> (目白麥昆)</td>
+<td style="white-space:nowrap !important; text-align:left !important; width:75px; min-width:70px;"><span class="badge badge-gold">SP 76</span></td>
+<td style="text-align:left !important; width:220px; min-width:200px; max-width:240px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#cbd5e1;">耐力 95 滿格、長距離不死身、呼吸節奏完美。</td>
+<td style="text-align:left !important; width:280px; min-width:250px; max-width:310px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#10b981;">派遣耐力 90+ 且配備「長距離◎」騎手（如武豐），彎道提前提速。</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div style="background:rgba(0,0,0,0.3); border-left:3px solid #ec4899; padding:10px 12px; border-radius:4px;">
-<strong style="color:#ec4899;"><i class="fa-solid fa-gift"></i> 世界百傑登頂豐厚報酬：</strong>
-<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">自家馬榮登世界 No.1 時，可直接獲得 <strong>🌈 虹札 3 枚、金札 5 枚與專屬世界顯彰馬金色雕像</strong>！</p>
+
 </div>
-<div style="background:rgba(0,0,0,0.3); border-left:3px solid #ec4899; padding:10px 12px; border-radius:4px;">
-<strong style="color:#ec4899;"><i class="fa-solid fa-flag-checkered"></i> The Legend Match 出走資格：</strong>
-<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">僅限獲得「年度顯彰馬」或於「世界100傑馬排名前 10」之超級神駒方有資格受邀參賽。</p>
-</div>
-<div style="background:rgba(0,0,0,0.3); border-left:3px solid #ec4899; padding:10px 12px; border-radius:4px;">
-<strong style="color:#ec4899;"><i class="fa-solid fa-crown"></i> 擊敗歷史傳奇專屬報酬：</strong>
-<p style="font-size:0.85rem; margin:4px 0 0; color:var(--text-color);">在傳奇對決中擊敗 Secretary (秘書處)、Deep Impact (大震撼) 等神駒，可解鎖專屬限定裝蹄鐵與超絕繁育因子！</p>
-</div>
-</div>
-</div></div>
 </section></div>
 <!-- Pillar 7: 🏇 馬匹資料庫互動速查 -->
 <!-- ================= 支柱七：馬匹資料庫 ================= -->
@@ -32013,6 +32123,7 @@ function filterTab5Racecourses() {
 </section>
 </div>
 </div>
+</div>
 <!-- ================= 支柱八：名師實戰講堂・線上對戰與系統機能 ================= -->
 <div class="pillar-content" id="pillar-lectures" style="display:none;">
 <div class="pillar-header-card" style="border-left: 5px solid #6366f1 !important; padding: 16px 24px !important; margin-bottom: 20px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(15,23,42,0.88)) !important; box-sizing: border-box !important;">
@@ -32383,14 +32494,14 @@ function filterTab5Racecourses() {
 <span class="badge" style="background:#0284c7; color:#fff; font-size:0.8rem; padding:4px 8px;">五大階段</span>
 </div>
 <div class="table-responsive" style="margin:0;">
-<table class="data-table">
-<thead>
-<tr>
-<th style="min-width:140px; text-align:left !important;">階段序號與名稱</th>
-<th style="min-width:200px; text-align:left !important;">核心玩法與操作目標</th>
-<th style="min-width:320px; text-align:left !important;">關鍵決策與技巧 (繁體中文)</th>
-</tr>
-</thead>
+<table class="data-table" style="min-width:860px; width:100%; text-align:left !important;">
+          <thead>
+            <tr>
+              <th class="sortable-th" style="width:160px; min-width:140px; text-align:left !important; white-space:nowrap !important;">階段序號與名稱 ⇅</th>
+              <th class="sortable-th" style="width:220px; min-width:200px; text-align:left !important; white-space:normal !important; line-height:1.5;">核心玩法與操作目標 ⇅</th>
+              <th class="sortable-th" style="min-width:460px; max-width:580px; text-align:left !important; white-space:normal !important; line-height:1.7; word-break:break-word;">關鍵決策與技巧 (繁體中文) ⇅</th>
+            </tr>
+          </thead>
 <tbody>
 <tr>
 <td style="text-align:left !important;"><strong style="color:var(--gold-color);">1. 配合 (專屬配種)</strong></td>
