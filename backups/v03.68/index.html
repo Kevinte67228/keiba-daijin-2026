@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.62"></script>
-<script src="core_guides_data.js?v=v03.62"></script>
-<script src="yearly_recs_db.js?v=v03.62"></script>
-<script src="horse_subtopics_data.js?v=v03.62"></script>
+<script src="master_lookup_db.js?v=v03.68"></script>
+<script src="core_guides_data.js?v=v03.68"></script>
+<script src="yearly_recs_db.js?v=v03.68"></script>
+<script src="horse_subtopics_data.js?v=v03.68"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1742,6 +1742,12 @@ li {
     display: none !important;
     position: fixed !important;
 }
+#favoritesModal.active, #favoritesModal.show {
+    display: flex !important;
+}
+#horseModal {
+    z-index: 100005 !important;
+}
 .modal.active, .modal.show, .drawer.active, .drawer.show, .chapter-drawer.active, .modal-detail.active, #jumpModal.active, #searchModal.active, .modal-overlay.active {
     display: flex !important;
 }
@@ -2532,7 +2538,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.63</span>
+<span class="version-badge">v03.68</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 49 大章節)
@@ -31932,7 +31938,7 @@ function filterTab5Racecourses() {
 <div style="margin-bottom:10px;">
 <div style="position:relative;">
 <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:12px;"></i>
-<input id="racehorseSearchInput" oninput="filterRacehorsesTable()" placeholder="搜尋競走馬名 (日/英)、父馬、母馬、特性、馬之個性 (ウマソナ)..." style="width:100%; padding:6px 10px 6px 30px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:6px; color:var(--text-main); font-size:12px;" type="text"/>
+<input id="racehorseSearchInput" oninput="filterRacehorsesTable()" placeholder="搜尋競走馬名 (中/日/英)、父馬、母馬、特性、馬之個性 (ウマソナ)..." style="width:100%; padding:6px 10px 6px 30px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:6px; color:var(--text-main); font-size:12px;" type="text"/>
 </div>
 </div>
 <!-- 第一排：賽駒地域切換軌道 (每一排晶片大小嚴格統一 108px) -->
@@ -31966,7 +31972,7 @@ function filterTab5Racecourses() {
 <table class="data-table" id="racehorsesFullTable" style="min-width:1700px;">
 <thead>
 <tr>
-<th class="sortable-th" onclick="sortRacehorseTable('name_jp')" style="min-width:160px; text-align:left !important;">日文馬名 ⇅</th>
+<th class="sortable-th" onclick="sortRacehorseTable('name_jp')" style="min-width:170px; text-align:left !important;">中文 / 日文馬名 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('name_en')" style="min-width:150px; text-align:left !important;">英文馬名 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('amulet')" style="width:70px; text-align:left !important;">馬札 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('birth_year')" style="width:80px; text-align:left !important;">生年 ⇅</th>
@@ -32783,7 +32789,11 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="racehorses_full_db.js"></script>
+<script src="unified_horses_full_db.js?v=v03.68"></script>
+<script>
+window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
+window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
+</script>
 <script src="nicknames_full_db.js"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
@@ -33202,7 +33212,12 @@ function renderBreedingTable() {
     const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;">♀ 牝</strong>' : '<strong style="color:#38bdf8;">♂ 牡</strong>';
     
     html += `<tr>
-      <td style="font-weight:700; text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('${h.name_jp}')">${h.name_jp}</a></td>
+      <td style="font-weight:700; text-align:left !important;">
+        <div style="display:flex; flex-direction:column; gap:2px; line-height:1.35;">
+          ${(h.name_zh || h.zh_name) ? `<span style="color:#fbbf24; font-weight:800; font-size:0.92rem; letter-spacing:0.02em;">${h.name_zh || h.zh_name}</span>` : ''}
+          <a class="horse-link" onclick="openNativeHorseDossier('${h.name_jp}')" style="font-size:0.84rem; color:#cbd5e1;">${h.name_jp}</a>
+        </div>
+      </td>
       <td style="color:var(--text-muted); font-size:11px; text-align:left !important;">${h.name_en}</td>
       <td style="text-align:left !important;">${amBadge}</td>
       <td style="font-weight:700; color:var(--primary); text-align:left !important;">${h.birth_year}</td>
@@ -33251,6 +33266,10 @@ let racehorseSortKey = 'birth_year';
 let racehorseSortAsc = true;
 
 const racehorseAmuletMap = { '虹': 6, '金': 5, '銀': 4, '銅': 3, '緑': 2, '無': 1 };
+
+function filterRacehorsesTable() {
+  renderRacehorsesTable();
+}
 
 function initRacehorsesTable() {
   if (!window.WP10_RACEHORSES_FULL_DATA) return;
@@ -33331,6 +33350,8 @@ function renderRacehorsesTable() {
   }
   if (query) {
     list = list.filter(h =>
+      (h.name_zh && h.name_zh.toLowerCase().includes(query)) ||
+      (h.zh_name && h.zh_name.toLowerCase().includes(query)) ||
       h.name_jp.toLowerCase().includes(query) ||
       (h.name_en && h.name_en.toLowerCase().includes(query)) ||
       h.sire.toLowerCase().includes(query) ||
@@ -33386,7 +33407,12 @@ function renderRacehorsesTable() {
     const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;">♀ 牝</strong>' : '<strong style="color:#38bdf8;">♂ 牡</strong>';
     
     html += `<tr>
-      <td style="font-weight:700; text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('${h.name_jp}')">${h.name_jp}</a></td>
+      <td style="font-weight:700; text-align:left !important;">
+        <div style="display:flex; flex-direction:column; gap:2px; line-height:1.35;">
+          ${(h.name_zh || h.zh_name) ? `<span style="color:#fbbf24; font-weight:800; font-size:0.92rem; letter-spacing:0.02em;">${h.name_zh || h.zh_name}</span>` : ''}
+          <a class="horse-link" onclick="openNativeHorseDossier('${h.name_jp}')" style="font-size:0.84rem; color:#cbd5e1;">${h.name_jp}</a>
+        </div>
+      </td>
       <td style="color:var(--text-muted); font-size:11px; text-align:left !important;">${h.name_en || '-'}</td>
       <td style="text-align:left !important;">${amBadge}</td>
       <td style="font-weight:700; color:var(--primary); text-align:left !important;">${h.birth_year}</td>
@@ -33901,14 +33927,20 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <script>
 // ==================== 核心 UI、歷史返回與章節跳轉引擎 ====================
 let jumpHistoryStack = [];
+window.jumpHistoryStack = jumpHistoryStack;
 
-function recordCurrentPosition() {
+function recordCurrentPosition(extraData) {
     const activePillar = document.querySelector('.pillar-content.active') || document.querySelector('.pillar-content[style*="display: block"]');
     const pillarId = activePillar ? activePillar.id : 'pillar-db';
     const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
-    jumpHistoryStack.push({ pillarId: pillarId, scrollY: scrollY });
-    if (jumpHistoryStack.length > 20) jumpHistoryStack.shift();
+    const entry = { pillarId: pillarId, scrollY: scrollY };
+    if (extraData && typeof extraData === 'object') {
+        Object.assign(entry, extraData);
+    }
+    jumpHistoryStack.push(entry);
+    if (jumpHistoryStack.length > 25) jumpHistoryStack.shift();
 }
+window.recordCurrentPosition = recordCurrentPosition;
 
 function goBackLastPosition() {
     if (jumpHistoryStack.length === 0) {
@@ -33916,11 +33948,24 @@ function goBackLastPosition() {
         return;
     }
     const lastPos = jumpHistoryStack.pop();
-    switchMainPillar(lastPos.pillarId);
+    if (lastPos.pillarId && typeof switchMainPillar === 'function') {
+        switchMainPillar(lastPos.pillarId);
+    }
     setTimeout(() => {
         window.scrollTo({ top: lastPos.scrollY, behavior: 'smooth' });
+        // 若該歷史位置帶有馬匹詳情物件，自動重新喚醒展開馬匹詳細檔案彈窗！
+        if (lastPos.reopenHorseModal) {
+            setTimeout(() => {
+                if (typeof openModalDirect === 'function') {
+                    openModalDirect(lastPos.reopenHorseModal);
+                } else if (typeof openNativeHorseDossier === 'function') {
+                    openNativeHorseDossier(lastPos.reopenHorseModal.name || lastPos.reopenHorseModal.name_jp);
+                }
+            }, 180);
+        }
     }, 120);
 }
+window.goBackLastPosition = goBackLastPosition;
 
 
 // 🚀 全域資料表格超過 15 筆自動掛載 15 筆高度內滑桿引擎 (Universal Auto-Scrollbar Engine)
@@ -35625,7 +35670,10 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
         <div class="modal-card" onclick="event.stopPropagation()">
             <span class="modal-close" onclick="closeModal()">&times;</span>
             <div class="modal-header">
-                <h2 id="mName">馬名載入中...</h2>
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                    <h2 id="mName" style="margin:0;">馬名載入中...</h2>
+                    <button id="btnModalFavToggle" onclick="toggleCurrentModalFavorite()" class="chip-btn" style="background:rgba(245,158,11,0.2); color:#fbbf24; border:1px solid #f59e0b; cursor:pointer; font-size:0.8rem; padding:4px 12px; font-weight:bold; border-radius:18px;">☆ 收藏至繁育名單</button>
+                </div>
                 <div style="margin-top:6px; display:flex; gap:6px; align-items:center;">
                     <span id="mTicket"></span>
                     <span id="mSex" style="color:var(--text-muted); font-size:0.82rem;"></span>
@@ -35637,6 +35685,26 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
             </div>
         </div>
     </div>
+    <!-- ⭐ 繁育計畫收藏夾 Modal -->
+    <div class="modal" id="favoritesModal" onclick="closeFavoritesModal(event)" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:99999; align-items:center; justify-content:center; -webkit-overflow-scrolling:touch;">
+        <div class="modal-card" onclick="event.stopPropagation()" style="background:#0f172a; border:1px solid #f59e0b; border-radius:12px; max-width:760px; width:92%; max-height:85vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 0 25px rgba(245,158,11,0.3);">
+            <div style="padding:14px 18px; background:rgba(245,158,11,0.12); border-bottom:1px solid rgba(245,158,11,0.3); display:flex; justify-content:space-between; align-items:center;">
+                <div style="font-size:1.05rem; font-weight:800; color:#fbbf24; display:flex; align-items:center; gap:8px;">
+                    <span>⭐ 我的繁育計畫與關注名單</span>
+                    <span id="favModalCountBadge" class="pill pill-safe" style="background:#f59e0b; color:#0f172a; font-weight:bold;">0 匹</span>
+                </div>
+                <span class="modal-close" onclick="closeFavoritesModal()" style="font-size:1.5rem; color:#94a3b8; cursor:pointer; font-weight:bold; line-height:1;">&times;</span>
+            </div>
+            <div id="favoritesListContainer" style="padding:16px; overflow-y:auto; flex:1; display:flex; flex-direction:column; gap:10px;">
+                <!-- 動態注入已收藏馬匹清單 -->
+            </div>
+            <div style="padding:10px 18px; background:rgba(15,23,42,0.95); border-top:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; font-size:0.75rem; color:#94a3b8;">
+                <span>💡 點擊馬匹即可直接展開 50 維檔案；所有名單自動保存於本機瀏覽器中。</span>
+                <button onclick="clearAllFavorites()" class="pill pill-danger" style="cursor:pointer; font-size:0.75rem; padding:3px 8px;">清空名單</button>
+            </div>
+        </div>
+    </div>
+
 
 <script id="master-horse-db-engine">
 // ==================== 第 41 章 1.5 萬匹史實馬與 11 大推薦分類引擎 ====================
@@ -35664,8 +35732,12 @@ let dbData = null;
         };
 
         function ensureUnpackedDb() {
+            if (!dbData) dbData = {};
             if (window.MASTER_DB_DATA) {
-                dbData = window.MASTER_DB_DATA;
+                Object.assign(dbData, window.MASTER_DB_DATA);
+            }
+            if (window.WP10_UNIFIED_HORSES_DATA) {
+                dbData.cat1 = window.WP10_UNIFIED_HORSES_DATA;
             }
         }
 
@@ -35802,9 +35874,11 @@ function renderTable() {
                 }
 
                 if (searchVal) {
-                    const name = (item.name || "").toLowerCase();
+                    const name = (item.name || item.name_jp || "").toLowerCase();
+                    const zh = (item.name_zh || item.zh_name || "").toLowerCase();
+                    const en = (item.en_name || item.name_en || "").toLowerCase();
                     const sire = (item.sire || "").toLowerCase();
-                    if (!name.includes(searchVal) && !sire.includes(searchVal)) return false;
+                    if (!name.includes(searchVal) && !zh.includes(searchVal) && !en.includes(searchVal) && !sire.includes(searchVal)) return false;
                 }
                 return true;
             });
@@ -35959,7 +36033,12 @@ function renderTable() {
 
                 tr.innerHTML = `
                     <td style="text-align:center;">${item.year || "-"}</td>
-                    <td><a class="horse-link" onclick="openModalByIndex(${idx})">${item.name || "-"}</a></td>
+                    <td>
+                        <a class="horse-link" onclick="openModalByIndex(${idx})" style="display:flex; flex-direction:column; line-height:1.35;">
+                            ${item.name_zh || item.zh_name ? `<span style="color:#fbbf24; font-weight:bold; font-size:0.92rem;">${item.name_zh || item.zh_name}</span>` : ''}
+                            <span style="font-size:0.82rem; color:#e2e8f0;">${item.name || item.name_jp || "-"}</span>
+                        </a>
+                    </td>
                     <td style="text-align:center;">${renderTicketBadge(item.ticket)}</td>
                     <td style="text-align:center;">${sexVal}</td>
                     <td style="text-align:center; font-weight:bold; color:var(--accent-color);">${spVal}</td>
@@ -36767,33 +36846,372 @@ function getBilingualSireLine(lineName) {
 }
 
 
+        // ==================== 我的繁育計畫 (Favorites) & 玩家 Memo 模組 ====================
+        function getFavoriteHorses() {
+            try {
+                const stored = localStorage.getItem('wp10_fav_horses');
+                return stored ? JSON.parse(stored) : [];
+            } catch (e) {
+                console.error("Error reading favorites:", e);
+                return [];
+            }
+        }
+
+        function saveFavoriteHorses(list) {
+            try {
+                localStorage.setItem('wp10_fav_horses', JSON.stringify(list));
+                updateFavCountBadges();
+            } catch (e) {
+                console.error("Error saving favorites:", e);
+            }
+        }
+
+        function isHorseFavorite(horseName) {
+            if (!horseName) return false;
+            const cleanName = String(horseName).replace(/[\(\（].*?[\)\）]/g, '').trim().toLowerCase();
+            const favs = getFavoriteHorses();
+            return favs.some(f => {
+                const fName = String(f.name || f.name_jp || '').replace(/[\(\（].*?[\)\）]/g, '').trim().toLowerCase();
+                return fName === cleanName;
+            });
+        }
+
+        function updateFavCountBadges() {
+            const count = getFavoriteHorses().length;
+            const b1 = document.getElementById("favCountBadge");
+            if (b1) b1.innerText = count;
+            const b2 = document.getElementById("favModalCountBadge");
+            if (b2) b2.innerText = `${count} 匹`;
+        }
+
+        function updateModalFavButtonState(horseName) {
+            const btn = document.getElementById("btnModalFavToggle");
+            if (!btn) return;
+            const isFav = isHorseFavorite(horseName);
+            if (isFav) {
+                btn.innerHTML = '<i class="fa-solid fa-star"></i> ★ 已加入繁育計畫 (點擊取消)';
+                btn.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+                btn.style.color = '#0f172a';
+                btn.style.borderColor = '#f59e0b';
+                btn.style.fontWeight = '800';
+                btn.style.boxShadow = '0 0 12px rgba(245, 158, 11, 0.45)';
+            } else {
+                btn.innerHTML = '<i class="fa-regular fa-star"></i> ☆ 收藏至繁育名單';
+                btn.style.background = 'rgba(30, 41, 59, 0.75)';
+                btn.style.color = '#fbbf24';
+                btn.style.borderColor = 'rgba(245, 158, 11, 0.35)';
+                btn.style.fontWeight = 'bold';
+                btn.style.boxShadow = 'none';
+            }
+        }
+
+        function toggleCurrentModalFavorite() {
+            if (!window._currentModalHorse) return;
+            toggleHorseFavorite(window._currentModalHorse);
+        }
+
+        function toggleHorseFavorite(horseOrName) {
+            let item = typeof horseOrName === 'string' ? null : horseOrName;
+            let name = typeof horseOrName === 'string' ? horseOrName : (horseOrName.name || horseOrName.name_jp || '');
+            if (!name && item) name = item.name || item.name_jp || '';
+            if (!name) return;
+
+            const cleanName = String(name).replace(/[\(\（].*?[\)\）]/g, '').trim().toLowerCase();
+            let favs = getFavoriteHorses();
+            const existingIdx = favs.findIndex(f => {
+                const fName = String(f.name || f.name_jp || '').replace(/[\(\（].*?[\)\）]/g, '').trim().toLowerCase();
+                return fName === cleanName;
+            });
+
+            if (existingIdx !== -1) {
+                favs.splice(existingIdx, 1);
+                saveFavoriteHorses(favs);
+                updateModalFavButtonState(name);
+                if (document.getElementById("favoritesModal") && document.getElementById("favoritesModal").style.display === "flex") {
+                    renderFavoritesList();
+                }
+            } else {
+                if (!item) {
+                    const all = window.WP10_UNIFIED_HORSES_DATA || (dbData && dbData.cat1) || [];
+                    item = all.find(h => {
+                        const n = (h.name || h.name_jp || '').toLowerCase();
+                        return n === cleanName;
+                    }) || { name: name };
+                }
+                favs.push({
+                    name: item.name || item.name_jp || name,
+                    en_name: item.en_name || item.name_en || '',
+                    year: item.year || item.birth_year || '史實',
+                    ticket: item.ticket || item.amulet || '金',
+                    sex: item.sex || '牡',
+                    sp: item.sp || item.matched_sp || 72,
+                    distance: item.distance || '2000m',
+                    sire: item.sire || '-',
+                    dam: item.dam || '-',
+                    addedAt: Date.now()
+                });
+                saveFavoriteHorses(favs);
+                updateModalFavButtonState(name);
+                if (document.getElementById("favoritesModal") && document.getElementById("favoritesModal").style.display === "flex") {
+                    renderFavoritesList();
+                }
+            }
+        }
+
+        function getHorseMemo(horseName) {
+            if (!horseName) return '';
+            try {
+                const clean = String(horseName).replace(/[\(\（].*?[\)\）]/g, '').trim();
+                const memos = JSON.parse(localStorage.getItem('wp10_horse_memos') || '{}');
+                return memos[clean] || '';
+            } catch (e) {
+                return '';
+            }
+        }
+
+        let _memoDebounceTimer = null;
+        function saveHorseMemo(horseName, text) {
+            if (!horseName) return;
+            const clean = String(horseName).replace(/[\(\（].*?[\)\）]/g, '').trim();
+            try {
+                const memos = JSON.parse(localStorage.getItem('wp10_horse_memos') || '{}');
+                if (!text || !text.trim()) {
+                    delete memos[clean];
+                } else {
+                    memos[clean] = text.trim();
+                }
+                localStorage.setItem('wp10_horse_memos', JSON.stringify(memos));
+                
+                const tip = document.getElementById("memoSavedTip");
+                if (tip) {
+                    tip.style.display = "inline";
+                    clearTimeout(_memoDebounceTimer);
+                    _memoDebounceTimer = setTimeout(() => {
+                        tip.style.display = "none";
+                    }, 1800);
+                }
+            } catch (e) {
+                console.error("Failed to save memo:", e);
+            }
+        }
+
+        function loadHorseMemo(horseName) {
+            const memoEl = document.getElementById("horseUserMemo");
+            if (!memoEl) return;
+            memoEl.value = getHorseMemo(horseName);
+        }
+
+        function openFavoritesModal() {
+            const modal = document.getElementById("favoritesModal");
+            if (modal) {
+                modal.classList.add("active");
+                modal.style.display = "flex";
+                renderFavoritesList();
+            }
+        }
+
+        function closeFavoritesModal(event) {
+            if (event && event.target) {
+                if (event.target.id !== "favoritesModal" && !event.target.classList.contains("modal-close")) {
+                    if (event.target.closest && event.target.closest('.modal-card')) return;
+                }
+            }
+            const modal = document.getElementById("favoritesModal");
+            if (modal) {
+                modal.classList.remove("active");
+                modal.style.display = "none";
+            }
+        }
+
+        function clearAllFavorites() {
+            if (!confirm("確定要清空所有已收藏的繁育名單嗎？此操作不可撤銷。")) return;
+            saveFavoriteHorses([]);
+            renderFavoritesList();
+            if (window._currentModalHorse) {
+                updateModalFavButtonState(window._currentModalHorse.name || window._currentModalHorse.name_jp);
+            }
+        }
+
+        function renderFavoritesList() {
+            const container = document.getElementById("favoritesListContainer");
+            if (!container) return;
+            updateFavCountBadges();
+            const list = getFavoriteHorses();
+
+            if (list.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align:center; padding:40px 20px; color:#94a3b8;">
+                        <div style="font-size:2.8rem; margin-bottom:12px;">🏇</div>
+                        <div style="font-size:0.95rem; font-weight:bold; color:#f8fafc; margin-bottom:6px;">繁育計畫關注名單為空</div>
+                        <div style="font-size:0.82rem; line-height:1.6; max-width:420px; margin:0 auto;">
+                            您可以在全站任何章節中點擊馬匹進入詳細檔案，按右上角「☆ 收藏至繁育名單」將其加入計畫。
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = `
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
+                    <div style="font-size:0.85rem; color:#94a3b8;">共計收藏 <strong style="color:#fbbf24;">${list.length}</strong> 匹重點繁育/賽事種馬與母馬</div>
+                    <div style="display:flex; gap:6px;">
+                        <button onclick="exportFavoritesJson()" class="chip-btn" style="background:rgba(56,189,248,0.15); color:#38bdf8; border:1px solid rgba(56,189,248,0.3); font-size:0.75rem; padding:3px 10px; border-radius:14px; cursor:pointer;">📤 匯出 JSON</button>
+                        <label class="chip-btn" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.3); font-size:0.75rem; padding:3px 10px; border-radius:14px; cursor:pointer; margin:0;">
+                            📥 匯入 JSON
+                            <input type="file" accept=".json" onchange="importFavoritesJson(this)" style="display:none;" />
+                        </label>
+                    </div>
+                </div>
+                <div class="table-responsive" style="max-height:55vh; overflow-y:auto; border:1px solid rgba(255,255,255,0.08); border-radius:8px;">
+                    <table class="data-table" style="min-width:680px; width:100%; border-collapse:collapse;">
+                        <thead style="position:sticky; top:0; background:#1e293b; z-index:5;">
+                            <tr>
+                                <th style="width:50px; text-align:left;">札</th>
+                                <th style="min-width:140px; text-align:left;">馬名 / 英文名</th>
+                                <th style="width:60px; text-align:left;">出生</th>
+                                <th style="width:50px; text-align:left;">性別</th>
+                                <th style="width:60px; text-align:left;">SP</th>
+                                <th style="min-width:140px; text-align:left;">血統 (父 / 母)</th>
+                                <th style="min-width:120px; text-align:left;">我的備忘 (Memo)</th>
+                                <th style="width:110px; text-align:left;">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            list.forEach((item) => {
+                const horseName = item.name || item.name_jp || '未命名';
+                const memo = getHorseMemo(horseName);
+                const tBadge = renderTicketBadge(item.ticket);
+                const sexHtml = item.sex === '牡' ? '<span style="color:#60a5fa; font-weight:bold;">牡</span>' : (item.sex === '牝' ? '<span style="color:#f472b6; font-weight:bold;">牝</span>' : (item.sex || '-'));
+                
+                html += `
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                        <td style="text-align:left;">${tBadge}</td>
+                        <td style="text-align:left;">
+                            <a class="horse-link" onclick="openNativeHorseDossier('${horseName.replace(/'/g, "\\'")}')" style="font-weight:bold; color:var(--accent-gold); cursor:pointer; display:flex; flex-direction:column; line-height:1.35;">
+                                ${item.name_zh || item.zh_name ? `<span style="color:#fbbf24; font-size:0.92rem; font-weight:bold;">${item.name_zh || item.zh_name}</span>` : ''}
+                                <span style="color:#f8fafc; font-size:0.82rem;">${horseName}</span>
+                            </a>
+                            ${item.en_name ? `<span style="font-size:0.75rem; color:#94a3b8;">${item.en_name}</span>` : ''}
+                        </td>
+                        <td style="text-align:left;">${item.year || '-'}</td>
+                        <td style="text-align:left;">${sexHtml}</td>
+                        <td style="text-align:left; color:#fbbf24; font-weight:bold;">${item.sp || '-'}</td>
+                        <td style="text-align:left; font-size:0.78rem; line-height:1.4;">
+                            <div style="color:#cbd5e1;">父: ${item.sire || '-'}</div>
+                            <div style="color:#94a3b8;">母: ${item.dam || '-'}</div>
+                        </td>
+                        <td style="text-align:left; font-size:0.78rem; color:#38bdf8; max-width:140px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${memo}">
+                            ${memo ? `📝 ${memo}` : '<span style="color:#64748b;">無筆記</span>'}
+                        </td>
+                        <td style="text-align:left; white-space:nowrap;">
+                            <button class="btn-detail" onclick="openNativeHorseDossier('${horseName.replace(/'/g, "\\'")}')" style="padding:2px 8px; font-size:0.75rem; margin-right:4px;">詳情</button>
+                            <button onclick="toggleHorseFavorite('${horseName.replace(/'/g, "\\'")}')" style="background:rgba(239,68,68,0.2); color:#ef4444; border:1px solid rgba(239,68,68,0.4); border-radius:4px; padding:2px 6px; font-size:0.75rem; cursor:pointer;" title="移除收藏">❌</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += `</tbody></table></div>`;
+            container.innerHTML = html;
+        }
+
+        function exportFavoritesJson() {
+            const list = getFavoriteHorses();
+            const memos = JSON.parse(localStorage.getItem('wp10_horse_memos') || '{}');
+            const data = {
+                title: "Winning Post 10 2026 - 我的繁育計畫",
+                exportDate: new Date().toISOString(),
+                favorites: list,
+                memos: memos
+            };
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `wp10_breeding_plan_${new Date().toISOString().slice(0,10)}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function importFavoritesJson(input) {
+            if (!input.files || input.files.length === 0) return;
+            const file = input.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (data.favorites && Array.isArray(data.favorites)) {
+                        const current = getFavoriteHorses();
+                        const map = new Map();
+                        current.forEach(item => map.set((item.name || item.name_jp).toLowerCase(), item));
+                        data.favorites.forEach(item => map.set((item.name || item.name_jp).toLowerCase(), item));
+                        const merged = Array.from(map.values());
+                        saveFavoriteHorses(merged);
+
+                        if (data.memos && typeof data.memos === 'object') {
+                            const existingMemos = JSON.parse(localStorage.getItem('wp10_horse_memos') || '{}');
+                            Object.assign(existingMemos, data.memos);
+                            localStorage.setItem('wp10_horse_memos', JSON.stringify(existingMemos));
+                        }
+
+                        alert(`成功匯入繁育計畫！目前共有 ${merged.length} 匹馬。`);
+                        renderFavoritesList();
+                    } else {
+                        alert("匯入失敗：JSON 格式不符。");
+                    }
+                } catch (err) {
+                    alert("匯入失敗：檔案解析錯誤。");
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // ==================== 詳情頁彈窗 (50+ 維度全要素大一統) ====================
         function openModalDirect(item) {
             try {
                 if (!item) return;
                 ensureUnpackedDb();
+                window._currentModalHorse = item;
+
+                const horseName = item.name || item.name_jp || "未命名";
+                const zhName = item.name_zh || item.zh_name || "";
+                const enName = item.en_name || item.name_en || "";
+                const birthYear = item.year || item.birth_year || '史實';
+                const ticketVal = item.ticket || item.amulet || '金';
+                const sexVal = item.sex || '牡';
+                const regionVal = item.region || item.country || item.stable_country || '日本';
+                const staminaVal = item.stamina || item.st || '50';
+                const grassVal = item.grass || item.turf || item.track || '-';
 
                 const mName = document.getElementById("mName");
                 if (mName) {
-                    const enText = item.en_name ? ` <span style="font-size:0.92rem; color:#93c5fd; font-weight:normal;">(${item.en_name})</span>` : "";
-                    mName.innerHTML = `${item.name || "未命名名駒"}${enText} <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal;">(${item.year || '史實'}年產)</span>`;
+                    const zhText = zhName ? `<span style="color:#fbbf24; font-weight:800; font-size:1.28rem; margin-right:8px; text-shadow:0 0 10px rgba(245,158,11,0.4);">${zhName}</span>` : "";
+                    const enText = enName ? ` <span style="font-size:0.92rem; color:#93c5fd; font-weight:normal;">(${enName})</span>` : "";
+                    mName.innerHTML = `${zhText}<span style="font-size:1.05rem; color:#f8fafc; font-weight:bold;">${horseName}</span>${enText} <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal;">(${birthYear}年產)</span>`;
                 }
                 const mTicket = document.getElementById("mTicket");
-                if (mTicket) mTicket.innerHTML = renderTicketBadge(item.ticket);
+                if (mTicket) mTicket.innerHTML = renderTicketBadge(ticketVal);
                 const mSex = document.getElementById("mSex");
-                if (mSex) mSex.innerHTML = item.sex === "牡" ? '<span style="color:#60a5fa; font-weight:bold;">牡馬</span>' : (item.sex === "牝" ? '<span style="color:#f472b6; font-weight:bold;">牝馬</span>' : (item.sex || "-"));
+                if (mSex) mSex.innerHTML = sexVal === "牡" ? '<span style="color:#60a5fa; font-weight:bold;">牡馬</span>' : (sexVal === "牝" ? '<span style="color:#f472b6; font-weight:bold;">牝馬</span>' : (sexVal || "-"));
                 const mRegion = document.getElementById("mRegion");
-                if (mRegion) mRegion.textContent = `所屬: ${item.region || item.country || '日本'} | 登場: ${item.year || '-'}年`;
+                if (mRegion) mRegion.textContent = `所屬: ${regionVal} | 誕生: ${birthYear}年`;
+
+                // 更新收藏按鈕狀態
+                updateModalFavButtonState(horseName);
 
                 const grid = document.getElementById("mGrid");
                 if (!grid) return;
-                grid.className = ""; // 清除舊版 2 欄限制
+                grid.className = "";
                 grid.style.display = "flex";
                 grid.style.flexDirection = "column";
                 grid.style.gap = "16px";
                 grid.innerHTML = "";
 
-                // 1. 抽取 8 維能力數值 (SP, 瞬發, 根性, 力量, 柔軟, 精神, 賢さ, 健康)
-                const spVal = typeof item.sp === 'number' ? Math.min(16, Math.max(1, Math.round(item.sp / 5))) : numFromGrade(item.sp_rank, 14);
+                // 1. 提取 8 維數值 (SP, 瞬發, 根性, 力量, 柔軟, 精神, 賢, 健康)
+                const spRaw = item.sp || item.matched_sp;
+                const spVal = typeof spRaw === 'number' ? Math.min(16, Math.max(1, Math.round(spRaw / 5))) : numFromGrade(item.sp_rank, 14);
                 const shunVal = numFromGrade(item.shunhatsu, 13);
                 const konjoVal = numFromGrade(item.konjo, 13);
                 const powerVal = numFromGrade(item.power, 13);
@@ -36804,7 +37222,7 @@ function getBilingualSireLine(lineName) {
 
                 const radarParams = [spVal, shunVal, konjoVal, powerVal, junanVal, seishinVal, keshikosaVal, kenkoVal];
                 const radarLabels = [
-                    `SP (${item.sp_rank || (item.sp ? (item.sp >= 77 ? 'S' : (item.sp >= 72 ? 'A+' : (item.sp >= 68 ? 'A' : 'B'))) : 'A')})`,
+                    `SP (${item.sp_rank || (spRaw ? (spRaw >= 77 ? 'S' : (spRaw >= 72 ? 'A+' : (spRaw >= 68 ? 'A' : 'B'))) : 'A')})`,
                     `瞬發 (${item.shunhatsu || 'A'})`,
                     `根性 (${item.konjo || 'A'})`,
                     `力量 (${item.power || 'A'})`,
@@ -36814,17 +37232,16 @@ function getBilingualSireLine(lineName) {
                     `健康 (${item.kenko || 'B'})`
                 ];
 
-                // 2. 生成 SVG 八維雷達圖、芝質適性軌道與血統樹
+                // 2. 渲染 SVG 八維雷達圖、芝質適性軌道與血統樹
                 const radarSvg = generateDynamicSvgRadar(radarParams, radarLabels, 16, 280);
-                const turfTrackBar = generateTurfQualityTrackBar(item.grass, item.dirt, item.shunhatsu_apt);
-                const bilingualSireLine = getBilingualSireLine(item.sire_line);
-                const visualPedigreeHtml = generateVisualPedigreeTree(item, (item.name || '').toLowerCase());
+                const turfTrackBar = generateTurfQualityTrackBar(grassVal, item.dirt, item.shunhatsu_apt);
+                const visualPedigreeHtml = generateVisualPedigreeTree(item, horseName.toLowerCase());
                 const breedingInfoHtml = generateBreedingInfoHtml(item);
 
-                // 3. 動態跨庫關聯查詢：主要史實產駒 (Progeny)
+                // 3. 動態關聯母馬主要產駒 (Progeny)
                 let progenyList = [];
-                const cleanName = (item.name || '').replace(/[\(\（].*?[\)\）]/g, '').trim().toLowerCase();
-                const allHorses = (dbData && dbData.cat1) ? dbData.cat1 : (window.WP10_HORSES_DB || []);
+                const cleanName = horseName.replace(/[\(\（].*?[\)\）]/g, '').trim().toLowerCase();
+                const allHorses = window.WP10_UNIFIED_HORSES_DATA || (dbData && dbData.cat1) || (window.WP10_HORSES_DB || []);
                 
                 if (allHorses.length > 0 && cleanName) {
                     progenyList = allHorses.filter(h => {
@@ -36837,65 +37254,73 @@ function getBilingualSireLine(lineName) {
                 let progenyHtml = '';
                 if (progenyList.length > 0) {
                     progenyHtml = '<div style="font-size:0.8rem; line-height:1.6;">' + progenyList.slice(0, 10).map(p => {
-                        const tBadge = renderTicketBadge(p.ticket);
-                        return `• <strong>${p.name}</strong> ${p.en_name ? `<small style="color:#94a3b8;">(${p.en_name})</small>` : ''} ${tBadge} (${p.year || '-'}年 / ${p.sex || '-'} / SP ${p.sp || '-'})`;
-                    }).join('<br/>') + (progenyList.length > 10 ? `<br/><small style="color:var(--text-muted);">...等共 ${progenyList.length} 匹史實登錄產駒</small>` : '') + '</div>';
+                        const pName = p.name || p.name_jp || '產駒';
+                        const tBadge = renderTicketBadge(p.ticket || p.amulet);
+                        return `<div>• ${tBadge} <a class="horse-link" onclick="openNativeHorseDossier('${pName.replace(/'/g, "\\'")}')" style="cursor:pointer; color:var(--accent-color); font-weight:bold;">${pName}</a> (${p.year || p.birth_year || '史實'}年, SP:${p.sp || '-'})</div>`;
+                    }).join('') + (progenyList.length > 10 ? `<div style="color:var(--text-muted); font-size:0.75rem;">...等共 ${progenyList.length} 匹產駒</div>` : '') + '</div>';
                 } else {
-                    progenyHtml = '<span style="color:var(--text-muted); font-size:0.8rem;">無史實登錄產駒 / 繁育自創產駒主力</span>';
+                    progenyHtml = '<div style="font-size:0.8rem; color:var(--text-muted);">無登錄史實產駒紀錄</div>';
                 }
 
-                // 4. 動態跨庫關聯查詢：同母史實兄弟姐妹 (Siblings)
-                let siblingList = [];
-                if (item.dam && item.dam !== '-' && allHorses.length > 0) {
-                    const damQuery = item.dam.toLowerCase();
-                    siblingList = allHorses.filter(h => {
-                        const d = (h.dam || '').toLowerCase();
-                        const n = (h.name || '').toLowerCase();
-                        return (d === damQuery || (damQuery.length >= 3 && d.includes(damQuery))) && n !== cleanName;
-                    });
-                }
-
+                // 4. 動態關聯同母名駒兄弟姐妹 (Siblings)
                 let siblingHtml = '';
-                if (siblingList.length > 0) {
-                    siblingHtml = '<div style="font-size:0.8rem; line-height:1.6;">' + siblingList.slice(0, 8).map(s => {
-                        const tBadge = renderTicketBadge(s.ticket);
-                        return `• <strong>${s.name}</strong> ${s.en_name ? `<small style="color:#94a3b8;">(${s.en_name})</small>` : ''} ${tBadge} (${s.year || '-'}年 / ${s.sex || '-'} / 父: ${s.sire || '-'} / SP ${s.sp || '-'})`;
-                    }).join('<br/>') + (siblingList.length > 8 ? `<br/><small style="color:var(--text-muted);">...等共 ${siblingList.length} 匹同母名駒</small>` : '') + '</div>';
+                if (item.dam && item.dam !== '-' && allHorses.length > 0) {
+                    const damName = item.dam.toLowerCase();
+                    const sibs = allHorses.filter(h => {
+                        const hDam = (h.dam || '').toLowerCase();
+                        const hName = (h.name || h.name_jp || '').toLowerCase();
+                        return hDam === damName && hName !== cleanName;
+                    });
+                    if (sibs.length > 0) {
+                        siblingHtml = '<div style="font-size:0.8rem; line-height:1.6;">' + sibs.slice(0, 8).map(s => {
+                            const sName = s.name || s.name_jp;
+                            const tBadge = renderTicketBadge(s.ticket || s.amulet);
+                            return `<div>• ${tBadge} <a class="horse-link" onclick="openNativeHorseDossier('${sName.replace(/'/g, "\\'")}')" style="cursor:pointer; color:#f472b6; font-weight:bold;">${sName}</a> (${s.year || s.birth_year || '史實'}年, 父:${s.sire || '-'})</div>`;
+                        }).join('') + (sibs.length > 8 ? `<div style="color:var(--text-muted); font-size:0.75rem;">...等共 ${sibs.length} 匹同母手足</div>` : '') + '</div>';
+                    } else {
+                        siblingHtml = '<div style="font-size:0.8rem; color:var(--text-muted);">同母兄弟尚未於史實庫登錄</div>';
+                    }
                 } else {
-                    siblingHtml = '<span style="color:var(--text-muted); font-size:0.8rem;">無同母史實兄弟姐妹登錄</span>';
+                    siblingHtml = '<div style="font-size:0.8rem; color:var(--text-muted);">無母馬資料可供檢索</div>';
                 }
 
-                // 5. 組合注入完整 18 欄詳細履歷卡片 HTML
-                const spDisplay = item.sp_max ? `${item.sp || item.matched_sp || '-'} (上限: ${item.sp_max}) [${item.sp_rank || '-'}]` : `${item.sp || item.matched_sp || '-'} [${item.sp_rank || '-'}]`;
+                // 5. 體質隱患檢查與標籤化
+                const defects = [];
+                if (item.nodonari && item.nodonari !== '無' && item.nodonari !== '-') defects.push(`⚠️ 喉鳴: ${item.nodonari}`);
+                if (item.kyakubu_fuan && item.kyakubu_fuan !== '無' && item.kyakubu_fuan !== '-') defects.push(`⚠️ 腳部不安: ${item.kyakubu_fuan}`);
+                if (item.koshi_no_amasa && item.koshi_no_amasa !== '無' && item.koshi_no_amasa !== '-') defects.push(`⚠️ 腰甘さ: ${item.koshi_no_amasa}`);
 
+                let defectHtml = '';
+                if (defects.length > 0) {
+                    defectHtml = defects.map(d => `<span class="pill pill-danger" style="margin-right:6px; font-weight:bold;">${d}</span>`).join('');
+                } else {
+                    defectHtml = '<span class="pill pill-safe" style="font-weight:bold;">✅ 體質健全 (無喉鳴/腳部不安/腰甘等已知隱患)</span>';
+                }
+
+                // 6. 中文推薦理由 / 戰略評語
+                const recReason = item.recommendation_reason || item.comment || '';
+
+                // 7. 組裝彈窗內部 HTML
                 grid.innerHTML = `
-                    <!-- 模組 1: 八維雷達圖與核心數值適性區 -->
-                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:14px; align-items:stretch;">
-                        <!-- 左側：SVG 八維能力雷達圖 -->
-                        <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px; text-align:center; display:flex; flex-direction:column; justify-content:space-between;">
-                            <div style="font-size:0.88rem; font-weight:bold; color:var(--accent-gold); margin-bottom:8px;">
-                                📊 八維能力適性雷達圖 (8-Axis Radar Chart)
+                    <!-- 模組 1: 八維雷達圖與核心數值 -->
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px;">
+                        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                            <div style="font-size:0.88rem; font-weight:bold; color:var(--accent-color); margin-bottom:6px;">
+                                📊 賽馬大亨八維核心能力雷達圖
                             </div>
-                            <div style="display:flex; justify-content:center; align-items:center; margin:4px 0;">
-                                ${radarSvg}
-                            </div>
-                            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:8px;">
-                                副屬性合計: <strong style="color:var(--gold-color);">${item.subpara_total || '-'}</strong> / SP 評級: <strong style="color:#4ade80;">${spDisplay}</strong>
-                            </div>
+                            ${radarSvg}
                         </div>
-
-                        <!-- 右側：核心參數與 1~8 芝質適性軌道 -->
-                        <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px; display:flex; flex-direction:column; justify-content:space-between;">
+                        <div style="display:flex; flex-direction:column; justify-content:space-between; gap:10px;">
                             <div>
                                 <div style="font-size:0.88rem; font-weight:bold; color:var(--accent-color); margin-bottom:10px;">
                                     ⚡ 核心能力數值與成長曲線
                                 </div>
                                 <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:6px; font-size:0.82rem; margin-bottom:12px;">
-                                    <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>SP (速度)：</strong><span style="color:var(--gold-color); font-weight:bold;">${item.sp || '-'}</span> (${item.sp_rank || '-'})</div>
-                                    <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>ST (耐力)：</strong><span style="color:#38bdf8; font-weight:bold;">${item.stamina || item.st || '50'}</span></div>
+                                    <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>SP (速度)：</strong><span style="color:var(--gold-color); font-weight:bold;">${spRaw || '-'}</span> (${item.sp_rank || '-'})</div>
+                                    <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>ST (耐力)：</strong><span style="color:#38bdf8; font-weight:bold;">${staminaVal}</span></div>
                                     <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>適性距離：</strong>${item.distance || '-'}</div>
                                     <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>腳質/跑法：</strong>${item.running_style || '-'}</div>
-                                    <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>成長型：</strong>${item.growth || '-'} (${item.growth_cap || '普通'})</div>
+                                    <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>成長型：</strong>${item.growth || item.growth_type || '-'} (${item.growth_cap || '普通'})</div>
                                     <div style="background:rgba(30,41,59,0.7); padding:6px 8px; border-radius:6px;"><strong>氣性/性格：</strong>${item.temperament || '-'} / ${item.personality || '-'}</div>
                                 </div>
 
@@ -36905,7 +37330,7 @@ function getBilingualSireLine(lineName) {
 
                             <div style="font-size:0.8rem; line-height:1.6; border-top:1px solid rgba(255,255,255,0.08); padding-top:8px;">
                                 • <strong>史實固有特性：</strong><span style="color:#fcd34d;">${item.traits ? item.traits.replace(/\n/g, ' / ') : '標準特性組合'}</span><br/>
-                                • <strong>馬之個性 (ウマソナ)：</strong><span style="color:var(--accent-gold); font-weight:bold;">${(item.umarsonality || '普通').replace(/\n/g, '、')}</span><br/>
+                                • <strong>馬之個性 (ウマソナ)：</strong><span style="color:var(--accent-gold); font-weight:bold;">${(item.umarsonality || item.umasona || '普通').replace(/\n/g, '、')}</span><br/>
                                 • <strong>仔出し (產駒爆發力)：</strong><span style="color:#ef4444; font-weight:bold; font-size:0.95rem;">${item.foal_quality || item.foal_count || '-'}</span> (滿分 10)
                             </div>
                         </div>
@@ -36914,18 +37339,20 @@ function getBilingualSireLine(lineName) {
                     <!-- 模組 2: 4 代血統譜視覺矩陣圖 -->
                     ${visualPedigreeHtml}
 
-                    <!-- 模組 3: 賽道適性與 2026 三大展開適性 & 體質弱點 -->
+                    <!-- 模組 3: 賽道適性、展開適性與體質弱點 -->
                     <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px;">
                         <div style="font-size:0.88rem; font-weight:bold; color:var(--accent-color); margin-bottom:10px; display:flex; align-items:center; gap:6px;">
                             <i class="fa-solid fa-flag-checkered"></i> 🏟️ 賽道適性、2026 三大展開上限與體質歷程
                         </div>
-                        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:8px; font-size:0.8rem;">
+                        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:8px; font-size:0.8rem; margin-bottom:10px;">
                             <div style="background:rgba(30,41,59,0.7); padding:6px 10px; border-radius:6px;"><strong>瞬発力適性：</strong>${item.shunhatsu_apt || '-'}</div>
                             <div style="background:rgba(30,41,59,0.7); padding:6px 10px; border-radius:6px;"><strong>持続力適性：</strong>${item.jizoku_apt || '-'}</div>
                             <div style="background:rgba(30,41,59,0.7); padding:6px 10px; border-radius:6px;"><strong>消耗力適性：</strong>${item.shoumo_apt || '-'}</div>
                             <div style="background:rgba(30,41,59,0.7); padding:6px 10px; border-radius:6px;"><strong>轉彎適性：</strong>小 ${item.komawari || '-'} / 左 ${item.hidarimawari || '-'} / 右 ${item.migimawari || '-'}</div>
-                            <div style="background:rgba(30,41,59,0.7); padding:6px 10px; border-radius:6px;"><strong>體質弱點：</strong>喉鳴 ${item.nodonari || '無'} / 腳部不安 ${item.kyakubu_fuan || '無'} / 腰甘さ ${item.koshi_no_amasa || '無'}</div>
                             <div style="background:rgba(30,41,59,0.7); padding:6px 10px; border-radius:6px;"><strong>身價與壽命：</strong>${item.price ? `${item.price}萬` : '-'} (名聲: ${item.reputation || '-'} / 壽命: ${item.life || '-'})</div>
+                        </div>
+                        <div style="background:rgba(30,41,59,0.7); padding:8px 10px; border-radius:6px; font-size:0.82rem; display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                            <strong>體質狀況：</strong> ${defectHtml}
                         </div>
                     </div>
 
@@ -36948,17 +37375,54 @@ function getBilingualSireLine(lineName) {
                         </div>
                     </div>
 
-                    <!-- 模組 6: AI 戰略評語與配合特徵 -->
-                    <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px;">
-                        <div style="font-size:0.88rem; font-weight:bold; color:var(--gold-color); margin-bottom:8px;">
-                            💡 AI 戰略評析與特徵備忘
+                    <!-- 模組 6: 🏆 中文推薦理由 / 戰略評語與 AI 綜合評析 -->
+                    <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:14px; display:flex; flex-direction:column; gap:10px;">
+                        ${recReason ? `
+                        <div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.35); border-radius:8px; padding:12px 14px;">
+                            <div style="font-size:0.88rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+                                <i class="fa-solid fa-crown"></i> 🏆 史實名馬中文推薦理由與戰略評價
+                            </div>
+                            <div style="font-size:0.85rem; line-height:1.7; color:#fef3c7;">
+                                ${recReason}
+                            </div>
+                        </div>` : ''}
+
+                        <div>
+                            <div style="font-size:0.88rem; font-weight:bold; color:var(--gold-color); margin-bottom:6px;">
+                                💡 AI 戰略評析與特徵備忘
+                            </div>
+                            <div style="font-size:0.84rem; line-height:1.6; color:#e2e8f0; background:rgba(30,41,59,0.6); padding:10px; border-radius:6px;">
+                                ${generateAIComment(item)}
+                                ${item.details && item.details !== '-' ? `<br/><span style="color:#93c5fd; margin-top:4px; display:inline-block;"><strong>特徵備忘：</strong>${item.details}</span>` : ''}
+                            </div>
                         </div>
-                        <div style="font-size:0.84rem; line-height:1.6; color:#e2e8f0; background:rgba(30,41,59,0.6); padding:10px; border-radius:6px;">
-                            ${generateAIComment(item)}
-                            ${item.details && item.details !== '-' ? `<br/><span style="color:#93c5fd; margin-top:4px; display:inline-block;"><strong>特徵備忘：</strong>${item.details}</span>` : ''}
+                    </div>
+
+                    <!-- 模組 7: 實戰調教推薦、關聯章節快速跳轉與玩家 Memo -->
+                    <div style="background:rgba(15,23,42,0.85); border:1px solid rgba(56,189,248,0.3); border-radius:10px; padding:14px; display:flex; flex-direction:column; gap:12px;">
+                        <div>
+                            <div style="font-size:0.88rem; font-weight:bold; color:#38bdf8; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+                                <i class="fa-solid fa-compass"></i> 實戰攻略關聯導航 (點擊直接跳轉)
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                                <button onclick="jumpToSection('pillar-train', 'sec-historical-train');" class="chip-btn" style="background:rgba(30,41,59,0.85); color:#38bdf8; border:1px solid rgba(56,189,248,0.3); font-size:0.8rem; padding:5px 12px; cursor:pointer; border-radius:18px;"><i class="fa-solid fa-dumbbell"></i> 🎯 查閱第28章：史實調教菜單與特效</button>
+                                <button onclick="jumpToSection('pillar-breed', 'sec-master-table');" class="chip-btn" style="background:rgba(30,41,59,0.85); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); font-size:0.8rem; padding:5px 12px; cursor:pointer; border-radius:18px;"><i class="fa-solid fa-dna"></i> 🧬 查閱第09章：配合理論與相性一覽</button>
+                                <button onclick="jumpToSection('pillar-races', 'sec-triple-crowns');" class="chip-btn" style="background:rgba(30,41,59,0.85); color:#f472b6; border:1px solid rgba(244,114,182,0.3); font-size:0.8rem; padding:5px 12px; cursor:pointer; border-radius:18px;"><i class="fa-solid fa-crown"></i> 👑 查閱第32章：三冠與重大賽事路線</button>
+                            </div>
+                        </div>
+
+                        <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:10px;">
+                            <div style="font-size:0.88rem; font-weight:bold; color:#38bdf8; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">
+                                <span><i class="fa-solid fa-pen-to-square"></i> 📝 我的配種/繁育備忘筆記 (玩家專屬，自動保存)</span>
+                                <span id="memoSavedTip" style="font-size:0.75rem; color:#4ade80; display:none;">✔ 已保存至本地！</span>
+                            </div>
+                            <textarea id="horseUserMemo" placeholder="在此記錄此馬匹的配種構想、預計母馬、調教方針或特別心得..." rows="2" style="width:100%; box-sizing:border-box; background:rgba(30,41,59,0.8); color:#f8fafc; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:8px 10px; font-size:0.85rem; line-height:1.5; resize:vertical; outline:none;" oninput="saveHorseMemo('${horseName.replace(/'/g, "\\'")}', this.value)"></textarea>
                         </div>
                     </div>
                 `;
+
+                // 載入該馬匹專屬 Memo
+                loadHorseMemo(horseName);
 
                 const modal = document.getElementById("horseModal");
                 if (modal) modal.style.display = "flex";
@@ -36969,10 +37433,10 @@ function getBilingualSireLine(lineName) {
             }
         }
 
-        
-window.WP10_SUPER_HORSES = [{"name": "サードステージ", "en_name": "Third Stage", "year": 2016, "ticket": "虹", "sex": "牡", "sp": "77(A+)", "sp_rank": "A+", "distance": "1800～3200m", "surface": "◎ / ×", "umasona": "エンターテイナー", "growth": "早め", "sire": "トウカイテイオー", "dam": "ファレノプシス", "region": "日本", "comment": "【架空 SH 超級馬】血統：トウカイテイオー × ファレノプシス，適性：1800～3200m (◎ / ×)，成長型：早め，個性：エンターテイナー。"}, {"name": "ユーティライズ", "en_name": "Utilize", "year": 2021, "ticket": "虹", "sex": "牝", "sp": "76(A+)", "sp_rank": "A+", "distance": "1400～2600m", "surface": "◎ / ×", "umasona": "不撓不屈", "growth": "早め", "sire": "ギンザグリングラス", "dam": "アサヒライジング", "region": "日本", "comment": "【架空 SH 超級馬】血統：ギンザグリングラス × アサヒライジング，適性：1400～2600m (◎ / ×)，成長型：早め，個性：不撓不屈。"}, {"name": "アイアンキング", "en_name": "Iron King", "year": 2021, "ticket": "金", "sex": "牡", "sp": "74(A)", "sp_rank": "A", "distance": "1700～2100m", "surface": "× / ◎", "umasona": "負けず嫌い", "growth": "早め", "sire": "ジャコモ", "dam": "インディアンブレッシング", "region": "米国", "comment": "【架空 SH 超級馬】血統：ジャコモ × インディアンブレッシング，適性：1700～2100m (× / ◎)，成長型：早め，個性：負けず嫌い。"}, {"name": "カマイタチ", "en_name": "Kamaitachi", "year": 2021, "ticket": "金", "sex": "牡", "sp": "74(A)", "sp_rank": "A", "distance": "1800～3000m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "早熟(鍋底)", "sire": "ブルーカナリ", "dam": "デューンズリヴァー", "region": "英国", "comment": "【架空 SH 超級馬】血統：ブルーカナリ × デューンズリヴァー，適性：1800～3000m (◎ / ×)，成長型：早熟(鍋底)，個性：負けず嫌い。"}, {"name": "インデュライン", "en_name": "Indurain", "year": 2021, "ticket": "金", "sex": "牡", "sp": "73(B+)", "sp_rank": "B+", "distance": "1400～2600m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "遅め", "sire": "クラックスマン", "dam": "タロッキ", "region": "英国", "comment": "【架空 SH 超級馬】血統：クラックスマン × タロッキ，適性：1400～2600m (◎ / ×)，成長型：遅め，個性：負けず嫌い。"}, {"name": "センチョク", "en_name": "Senchoku", "year": 2021, "ticket": "金", "sex": "牡", "sp": "72(B+)", "sp_rank": "B+", "distance": "1000～1400m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "早め", "sire": "カルストンライトオ", "dam": "エーシンヴァーゴウ", "region": "日本", "comment": "【架空 SH 超級馬】血統：カルストンライトオ × エーシンヴァーゴウ，適性：1000～1400m (◎ / ×)，成長型：早め，個性：負けず嫌い。"}, {"name": "ティーティ", "en_name": "T.T.", "year": 2021, "ticket": "金", "sex": "牝", "sp": "72(B+)", "sp_rank": "B+", "distance": "1500～2300m", "surface": "◎ / ◎", "umasona": "負けず嫌い", "growth": "早め", "sire": "ジオポンティ", "dam": "レイディシェイクスピア", "region": "米国", "comment": "【架空 SH 超級馬】血統：ジオポンティ × レイディシェイクスピア，適性：1500～2300m (◎ / ◎)，成長型：早め，個性：負けず嫌い。"}, {"name": "ルックミーダッド", "en_name": "Look Me Dad", "year": 2021, "ticket": "金", "sex": "牡", "sp": "70(B)", "sp_rank": "B+", "distance": "1600～2000m", "surface": "× / ◎", "umasona": "負けず嫌い", "growth": "早め", "sire": "カジノドライヴ", "dam": "ミラクルレジェンド", "region": "日本", "comment": "【架空 SH 超級馬】血統：カジノドライヴ × ミラクルレジェンド，適性：1600～2000m (× / ◎)，成長型：早め，個性：負けず嫌い。"}, {"name": "ルビーヴェイル", "en_name": "Ruby Veil", "year": 2021, "ticket": "銀", "sex": "牝", "sp": "70(B)", "sp_rank": "B+", "distance": "1500～2300m", "surface": "◎ / ◎", "umasona": "群れの一員", "growth": "早め", "sire": "メイショウサムソン", "dam": "スマートレイアー", "region": "日本", "comment": "【架空 SH 超級馬】血統：メイショウサムソン × スマートレイアー，適性：1500～2300m (◎ / ◎)，成長型：早め，個性：群れの一員。"}, {"name": "ツヴァイヘンダー", "en_name": "Zweihander", "year": 2022, "ticket": "金", "sex": "牡", "sp": "74(A)", "sp_rank": "A", "distance": "1200～1600m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "遅め", "sire": "デュランダル", "dam": "ワンカラット", "region": "日本", "comment": "【架空 SH 超級馬】血統：デュランダル × ワンカラット，適性：1200～1600m (◎ / ×)，成長型：遅め，個性：負けず嫌い。"}, {"name": "ロシアンルーレット", "en_name": "Russian Roulette", "year": 2022, "ticket": "金", "sex": "牡", "sp": "74(A)", "sp_rank": "A", "distance": "1800～3000m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "早め", "sire": "ウェイトゥパリス", "dam": "ブレスレット", "region": "愛国", "comment": "【架空 SH 超級馬】血統：ウェイトゥパリス × ブレスレット，適性：1800～3000m (◎ / ×)，成長型：早め，個性：負けず嫌い。"}, {"name": "アウトオブアメリカ", "en_name": "Out of America", "year": 2022, "ticket": "銀", "sex": "牡", "sp": "72(B+)", "sp_rank": "B+", "distance": "2200～3600m", "surface": "◎ / ◎", "umasona": "厩舎のボス", "growth": "早め", "sire": "パイロ", "dam": "ファッショニスタ", "region": "日本", "comment": "【架空 SH 超級馬】血統：パイロ × ファッショニスタ，適性：2200～3600m (◎ / ◎)，成長型：早め，個性：厩舎のボス。"}, {"name": "ミスターバルボア", "en_name": "Mr. Balboa", "year": 2022, "ticket": "金", "sex": "牡", "sp": "70(B)", "sp_rank": "B+", "distance": "1600～2400m", "surface": "× / ◎", "umasona": "負けず嫌い", "growth": "遅め", "sire": "ティズウェイ", "dam": "ストップチャージングマリア", "region": "米国", "comment": "【架空 SH 超級馬】血統：ティズウェイ × ストップチャージングマリア，適性：1600～2400m (× / ◎)，成長型：遅め，個性：負けず嫌い。"}, {"name": "ツキノヒカリ", "en_name": "Tsuki no Hikari", "year": 2022, "ticket": "金", "sex": "牝", "sp": "67(C)", "sp_rank": "B+", "distance": "1100～1500m", "surface": "◎ / ○", "umasona": "負けず嫌い", "growth": "遅め", "sire": "アドマイヤムーン", "dam": "ムーンライトベイ", "region": "日本", "comment": "【架空 SH 超級馬】血統：アドマイヤムーン × ムーンライトベイ，適性：1100～1500m (◎ / ○)，成長型：遅め，個性：負けず嫌い。"}, {"name": "プロタゴニスタ", "en_name": "Protagonista", "year": 2023, "ticket": "虹", "sex": "牡", "sp": "74(A)", "sp_rank": "A", "distance": "1400～2200m", "surface": "× / ◎", "umasona": "目立ちたがり", "growth": "早め", "sire": "アメリカンファラオ", "dam": "ビホルダー", "region": "米国", "comment": "【架空 SH 超級馬】血統：アメリカンファラオ × ビホルダー，適性：1400～2200m (× / ◎)，成長型：早め，個性：目立ちたがり。"}, {"name": "アンビリーバブル", "en_name": "Unbelievable", "year": 2023, "ticket": "金", "sex": "牡", "sp": "73(B+)", "sp_rank": "B+", "distance": "1800～3200m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "遅め", "sire": "スクリーンヒーロー", "dam": "カワカミプリンセス", "region": "日本", "comment": "【架空 SH 超級馬】血統：スクリーンヒーロー × カワカミプリンセス，適性：1800～3200m (◎ / ×)，成長型：遅め，個性：負けず嫌い。"}, {"name": "ネココネコロガール", "en_name": "Neko Koneko Girl", "year": 2023, "ticket": "銀", "sex": "牝", "sp": "73(B+)", "sp_rank": "B+", "distance": "1800～2600m", "surface": "◎ / ×", "umasona": "人懐っこい", "growth": "遅め", "sire": "ワンアンドオンリー", "dam": "ベッラレイア", "region": "日本", "comment": "【架空 SH 超級馬】血統：ワンアンドオンリー × ベッラレイア，適性：1800～2600m (◎ / ×)，成長型：遅め，個性：人懐っこい。"}, {"name": "ユリノローズ", "en_name": "Yuri no Rose", "year": 2023, "ticket": "金", "sex": "牝", "sp": "70(B)", "sp_rank": "B+", "distance": "1800～2400m", "surface": "◎ / ◎", "umasona": "負けず嫌い", "growth": "早め", "sire": "ジャスタウェイ", "dam": "パッションローズ", "region": "日本", "comment": "【架空 SH 超級馬】血統：ジャスタウェイ × パッションローズ，適性：1800～2400m (◎ / ◎)，成長型：早め，個性：負けず嫌い。"}, {"name": "バローインマスケラ", "en_name": "Ballo in Maschera", "year": 2023, "ticket": "金", "sex": "牝", "sp": "73(B+)", "sp_rank": "B+", "distance": "2200～3600m", "surface": "◎ / ×", "umasona": "甘えん坊", "growth": "早め", "sire": "ゴールデンホーン", "dam": "モリーマローン", "region": "英国", "comment": "【架空 SH 超級馬】血統：ゴールデンホーン × モリーマローン，適性：2200～3600m (◎ / ×)，成長型：早め，個性：甘えん坊。"}, {"name": "モナコマイスター", "en_name": "Monaco Meister", "year": 2023, "ticket": "銀", "sex": "牡", "sp": "71(B)", "sp_rank": "B+", "distance": "1400～1800m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "早め", "sire": "アルマンゾル", "dam": "エルヴェディヤ", "region": "仏国", "comment": "【架空 SH 超級馬】血統：アルマンゾル × エルヴェディヤ，適性：1400～1800m (◎ / ×)，成長型：早め，個性：負けず嫌い。"}, {"name": "サンダーマウンテン", "en_name": "Thunder Mountain", "year": 2023, "ticket": "金", "sex": "牡", "sp": "69(C+)", "sp_rank": "B+", "distance": "1300～1700m", "surface": "◎ / ◎", "umasona": "負けず嫌い", "growth": "晩成", "sire": "ナカヤマフェスタ", "dam": "マルセリーナ", "region": "日本", "comment": "【架空 SH 超級馬】血統：ナカヤマフェスタ × マルセリーナ，適性：1300～1700m (◎ / ◎)，成長型：晩成，個性：負けず嫌い。"}, {"name": "ファントムジオペラ", "en_name": "Phantom the Opera", "year": 2024, "ticket": "虹", "sex": "牡", "sp": "75(A)", "sp_rank": "A", "distance": "2200～3800m", "surface": "◎ / ×", "umasona": "いたずら好き", "growth": "遅め", "sire": "ストラディバリウス", "dam": "モリーマローン", "region": "英国", "comment": "【架空 SH 超級馬】血統：ストラディバリウス × モリーマローン，適性：2200～3800m (◎ / ×)，成長型：遅め，個性：いたずら好き。"}, {"name": "インプレグネイブル", "en_name": "Impregnable", "year": 2024, "ticket": "金", "sex": "牝", "sp": "73(B+)", "sp_rank": "B+", "distance": "1800～2400m", "surface": "× / ◎", "umasona": "負けず嫌い", "growth": "遅め", "sire": "マキシマムセキュリティ", "dam": "ミッドナイトビズー", "region": "米国", "comment": "【架空 SH 超級馬】血統：マキシマムセキュリティ × ミッドナイトビズー，適性：1800～2400m (× / ◎)，成長型：遅め，個性：負けず嫌い。"}, {"name": "クロスリング", "en_name": "Cross Ring", "year": 2024, "ticket": "金", "sex": "牡", "sp": "73(B+)", "sp_rank": "B+", "distance": "1800～2400m", "surface": "◎ / ◎", "umasona": "負けず嫌い", "growth": "超晩成", "sire": "パクスアメリカーナ", "dam": "ブランボヌール", "region": "日本", "comment": "【架空 SH 超級馬】血統：パクスアメリカーナ × ブランボヌール，適性：1800～2400m (◎ / ◎)，成長型：超晩成，個性：負けず嫌い。"}, {"name": "ユーエスエスケープ", "en_name": "US Escape", "year": 2024, "ticket": "金", "sex": "牡", "sp": "72(B+)", "sp_rank": "B+", "distance": "2100～3500m", "surface": "◎ / ◎", "umasona": "負けず嫌い", "growth": "晩成", "sire": "タニノフランケル", "dam": "ライラプス", "region": "日本", "comment": "【架空 SH 超級馬】血統：タニノフランケル × ライラプス，適性：2100～3500m (◎ / ◎)，成長型：晩成，個性：負けず嫌い。"}, {"name": "アレグリア", "en_name": "Alegria", "year": 2024, "ticket": "銀", "sex": "牝", "sp": "70(B)", "sp_rank": "B+", "distance": "1200～1600m", "surface": "◎ / ○", "umasona": "負けず嫌い", "growth": "早め", "sire": "ドバウィ", "dam": "ベアトリックスポッター", "region": "英国", "comment": "【架空 SH 超級馬】血統：ドバウィ × ベアトリックスポッター，適性：1200～1600m (◎ / ○)，成長型：早め，個性：負けず嫌い。"}, {"name": "ダークレジェンド", "en_name": "Dark Legend", "year": 2024, "ticket": "金", "sex": "牡", "sp": "69(C+)", "sp_rank": "B+", "distance": "1400～2400m", "surface": "× / ◎", "umasona": "負けず嫌い", "growth": "遅め", "sire": "インティ", "dam": "ホワイトフーガ", "region": "日本", "comment": "【架空 SH 超級馬】血統：インティ × ホワイトフーガ，適性：1400～2400m (× / ◎)，成長型：遅め，個性：負けず嫌い。"}, {"name": "ラナウェープライド", "en_name": "Runaway Pride", "year": 2024, "ticket": "銀", "sex": "牝", "sp": "69(C+)", "sp_rank": "B+", "distance": "1900～3300m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "遅め", "sire": "ダイワメジャー", "dam": "クィーンスプマンテ", "region": "日本", "comment": "【架空 SH 超級馬】血統：ダイワメジャー × クィーンスプマンテ，適性：1900～3300m (◎ / ×)，成長型：遅め，個性：負けず嫌い。"}, {"name": "ミライ", "en_name": "Mirai", "year": 2025, "ticket": "金", "sex": "牡", "sp": "73(B+)", "sp_rank": "B+", "distance": "1800～3000m", "surface": "◎ / ×", "umasona": "エンターテイナー", "growth": "早め", "sire": "キズナ", "dam": "トレヴ", "region": "仏国", "comment": "【架空 SH 超級馬】血統：キズナ × トレヴ，適性：1800～3000m (◎ / ×)，成長型：早め，個性：エンターテイナー。"}, {"name": "ムードメーカー", "en_name": "Mood Maker", "year": 2025, "ticket": "金", "sex": "牡", "sp": "72(B+)", "sp_rank": "B+", "distance": "1400～1800m", "surface": "◎ / ×", "umasona": "厩舎のボス", "growth": "早め", "sire": "メイショウボーラー", "dam": "ダンスファンタジア", "region": "日本", "comment": "【架空 SH 超級馬】血統：メイショウボーラー × ダンスファンタジア，適性：1400～1800m (◎ / ×)，成長型：早め，個性：厩舎のボス。"}, {"name": "アルシャイン", "en_name": "Alshain", "year": 2025, "ticket": "銀", "sex": "牝", "sp": "70(B)", "sp_rank": "B+", "distance": "1700～2500m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "早め", "sire": "エピファネイア", "dam": "ハープスター", "region": "日本", "comment": "【架空 SH 超級馬】血統：エピファネイア × ハープスター，適性：1700～2500m (◎ / ×)，成長型：早め，個性：負けず嫌い。"}, {"name": "カブキモノ", "en_name": "Kabukimono", "year": 2025, "ticket": "銀", "sex": "牡", "sp": "70(B)", "sp_rank": "B+", "distance": "1700～2500m", "surface": "○ / ◎", "umasona": "目立ちたがり", "growth": "早め", "sire": "オーセンティック", "dam": "スイススカイダイバー", "region": "米国", "comment": "【架空 SH 超級馬】血統：オーセンティック × スイススカイダイバー，適性：1700～2500m (○ / ◎)，成長型：早め，個性：目立ちたがり。"}];
+        window.WP10_SUPER_HORSES = [{"name": "サードステージ", "en_name": "Third Stage", "year": 2016, "ticket": "虹", "sex": "牡", "sp": "77(A+)", "sp_rank": "A+", "distance": "1800～3200m", "surface": "◎ / ×", "umasona": "エンターテイナー", "growth": "早め", "sire": "トウカイテイオー", "dam": "ファレノプシス", "region": "日本", "comment": "【架空 SH 超級馬】血統：トウカイテイオー × ファレノプシス，適性：1800～3200m (◎ / ×)，成長型：早め，個性：エンターテイナー。"}, {"name": "ユーティライズ", "en_name": "Utilize", "year": 2021, "ticket": "虹", "sex": "牝", "sp": "76(A+)", "sp_rank": "A+", "distance": "1400～2600m", "surface": "◎ / ×", "umasona": "不撓不屈", "growth": "早め", "sire": "ギンザグリングラス", "dam": "アサヒライジング", "region": "日本", "comment": "【架空 SH 超級馬】血統：ギンザグリングラス × アサヒライジング，適性：1400～2600m (◎ / ×)，成長型：早め，個性：不撓不屈。"}, {"name": "アイアンキング", "en_name": "Iron King", "year": 2021, "ticket": "金", "sex": "牡", "sp": "74(A)", "sp_rank": "A", "distance": "1700～2100m", "surface": "× / ◎", "umasona": "負けず嫌い", "growth": "早め", "sire": "ジャコモ", "dam": "インディアンブレッシング", "region": "米国", "comment": "【架空 SH 超級馬】血統：ジャコモ × インディアンブレッシング，適性：1700～2100m (× / ◎)，成長型：早め，個性：負けず嫌い。"}, {"name": "カマイタチ", "en_name": "Kamaitachi", "year": 2021, "ticket": "金", "sex": "牡", "sp": "74(A)", "sp_rank": "A", "distance": "1800～3000m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "早熟(鍋底)", "sire": "ブルーカナリ", "dam": "デューンズリヴァー", "region": "英国", "comment": "【架空 SH 超級馬】血統：ブルーカナリ × デューンズリヴァー，適性：1800～3000m (◎ / ×)，成長型：早熟(鍋底)，個性：負けず嫌い。"}, {"name": "インデュライン", "en_name": "Indurain", "year": 2021, "ticket": "金", "sex": "牡", "sp": "73(B+)", "sp_rank": "B+", "distance": "1400～2600m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "遅め", "sire": "クラックスマン", "dam": "タロッキ", "region": "英国", "comment": "【架空 SH 超級馬】血統：クラックスマン × タロッキ，適性：1400～2600m (◎ / ×)，成長型：遅め，個性：負けず嫌い。"}, {"name": "センチョク", "en_name": "Senchoku", "year": 2021, "ticket": "金", "sex": "牡", "sp": "72(B+)", "sp_rank": "B+", "distance": "1000～1400m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "早め", "sire": "カルストンライトオ", "dam": "エーシンヴァーゴウ", "region": "日本", "comment": "【架空 SH 超級馬】血統：カルストンライトオ × エーシンヴァーゴウ，適性：1000～1400m (◎ / ×)，成長型：早め，個性：負けず嫌い。"}, {"name": "ティーティ", "en_name": "T.T.", "year": 2021, "ticket": "金", "sex": "牝", "sp": "72(B+)", "sp_rank": "B+", "distance": "1500～2300m", "surface": "◎ / ◎", "umasona": "負けず嫌い", "growth": "早め", "sire": "ジオポンティ", "dam": "レイディシェイクスピア", "region": "米国", "comment": "【架空 SH 超級馬】血統：ジオポンティ × レイディシェイクスピア，適性：1500～2300m (◎ / ◎)，成長型：早め，個性：負けず嫌い。"}, {"name": "ルックミーダッド", "en_name": "Look Me Dad", "year": 2021, "ticket": "金", "sex": "牡", "sp": "70(B)", "sp_rank": "B+", "distance": "1600～2000m", "surface": "× / ◎", "umasona": "負けず嫌い", "growth": "早め", "sire": "カジノドライヴ", "dam": "ミラクルレジェンド", "region": "日本", "comment": "【架空 SH 超級馬】血統：カジノドライヴ × ミラクルレジェンド，適性：1600～2000m (× / ◎)，成長型：早め，個性：負けず嫌い。"}, {"name": "ルビーヴェイル", "en_name": "Ruby Veil", "year": 2021, "ticket": "銀", "sex": "牝", "sp": "70(B)", "sp_rank": "B+", "distance": "1500～2300m", "surface": "◎ / ◎", "umasona": "群れの一員", "growth": "早め", "sire": "メイショウサムソン", "dam": "スマートレイアー", "region": "日本", "comment": "【架空 SH 超級馬】血統：メイショウサムソン × スマートレイアー，適性：1500～2300m (◎ / ◎)，成長型：早め，個性：群れの一員。"}, {"name": "ツヴァイヘンダー", "en_name": "Zweihander", "year": 2022, "ticket": "金", "sex": "牡", "sp": "74(A)", "sp_rank": "A", "distance": "1200～1600m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "遅め", "sire": "デュランダル", "dam": "ワンカラット", "region": "日本", "comment": "【架空 SH 超級馬】血統：デュランダル × ワンカラット，適性：1200～1600m (◎ / ×)，成長型：遅め，個性：負けず嫌い。"}, {"name": "ロシアンルーレット", "en_name": "Russian Roulette", "year": 2022, "ticket": "金", "sex": "牡", "sp": "74(A)", "sp_rank": "A", "distance": "1800～3000m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "早め", "sire": "ウェイトゥパリス", "dam": "ブレスレット", "region": "愛国", "comment": "【架空 SH 超級馬】血統：ウェイトゥパリス × ブレスレット，適性：1800～3000m (◎ / ×)，成長型：早め，個性：負けず嫌い。"}, {"name": "アウトオブアメリカ", "en_name": "Out of America", "year": 2022, "ticket": "銀", "sex": "牡", "sp": "72(B+)", "sp_rank": "B+", "distance": "2200～3600m", "surface": "◎ / ◎", "umasona": "厩舎のボス", "growth": "早め", "sire": "パイロ", "dam": "ファッショニスタ", "region": "日本", "comment": "【架空 SH 超級馬】血統：パイロ × ファッショニスタ，適性：2200～3600m (◎ / ◎)，成長型：早め，個性：厩舎のボス。"}, {"name": "ミスターバルボア", "en_name": "Mr. Balboa", "year": 2022, "ticket": "金", "sex": "牡", "sp": "70(B)", "sp_rank": "B+", "distance": "1600～2400m", "surface": "× / ◎", "umasona": "負けず嫌い", "growth": "遅め", "sire": "ティズウェイ", "dam": "ストップチャージングマリア", "region": "米国", "comment": "【架空 SH 超級馬】血統：ティズウェイ × ストップチャージングマリア，適性：1600～2400m (× / ◎)，成長型：遅め，個性：負けず嫌い。"}, {"name": "ツキノヒカリ", "en_name": "Tsuki no Hikari", "year": 2022, "ticket": "金", "sex": "牝", "sp": "67(C)", "sp_rank": "B+", "distance": "1100～1500m", "surface": "◎ / ○", "umasona": "負けず嫌い", "growth": "遅め", "sire": "アドマイヤムーン", "dam": "ムーンライトベイ", "region": "日本", "comment": "【架空 SH 超級馬】血統：アドマイヤムーン × ムーンライトベイ，適性：1100～1500m (◎ / ○)，成長型：遅め，個性：負けず嫌い。"}, {"name": "プロタゴニスタ", "en_name": "Protagonista", "year": 2023, "ticket": "虹", "sex": "牡", "sp": "74(A)", "sp_rank": "A", "distance": "1400～2200m", "surface": "× / ◎", "umasona": "目立ちたがり", "growth": "早め", "sire": "アメリカンファラオ", "dam": "ビホルダー", "region": "米国", "comment": "【架空 SH 超級馬】血統：アメリカンファラオ × ビホルダー，適性：1400～2200m (× / ◎)，成長型：早め，個性：目立ちたがり。"}, {"name": "アンビリーバブル", "en_name": "Unbelievable", "year": 2023, "ticket": "金", "sex": "牡", "sp": "73(B+)", "sp_rank": "B+", "distance": "1800～3200m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "遅め", "sire": "スクリーンヒーロー", "dam": "カワカミプリンセス", "region": "日本", "comment": "【架空 SH 超級馬】血統：スクリーンヒーロー × カワカミプリンセス，適性：1800～3200m (◎ / ×)，成長型：遅め，個性：負けず嫌い。"}, {"name": "ネココネコロガール", "en_name": "Neko Koneko Girl", "year": 2023, "ticket": "銀", "sex": "牝", "sp": "73(B+)", "sp_rank": "B+", "distance": "1800～2600m", "surface": "◎ / ×", "umasona": "人懐っこい", "growth": "遅め", "sire": "ワンアンドオンリー", "dam": "ベッラレイア", "region": "日本", "comment": "【架空 SH 超級馬】血統：ワンアンドオンリー × ベッラレイア，適性：1800～2600m (◎ / ×)，成長型：遅め，個性：人懐っこい。"}, {"name": "ユリノローズ", "en_name": "Yuri no Rose", "year": 2023, "ticket": "金", "sex": "牝", "sp": "70(B)", "sp_rank": "B+", "distance": "1800～2400m", "surface": "◎ / ◎", "umasona": "負けず嫌い", "growth": "早め", "sire": "ジャスタウェイ", "dam": "パッションローズ", "region": "日本", "comment": "【架空 SH 超級馬】血統：ジャスタウェイ × パッションローズ，適性：1800～2400m (◎ / ◎)，成長型：早め，個性：負けず嫌い。"}, {"name": "バローインマスケラ", "en_name": "Ballo in Maschera", "year": 2023, "ticket": "金", "sex": "牝", "sp": "73(B+)", "sp_rank": "B+", "distance": "2200～3600m", "surface": "◎ / ×", "umasona": "甘えん坊", "growth": "早め", "sire": "ゴールデンホーン", "dam": "モリーマローン", "region": "英国", "comment": "【架空 SH 超級馬】血統：ゴールデンホーン × モリーマローン，適性：2200～3600m (◎ / ×)，成長型：早め，個性：甘えん坊。"}, {"name": "モナコマイスター", "en_name": "Monaco Meister", "year": 2023, "ticket": "銀", "sex": "牡", "sp": "71(B)", "sp_rank": "B+", "distance": "1400～1800m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "早め", "sire": "アルマンゾル", "dam": "エルヴェディヤ", "region": "仏国", "comment": "【架空 SH 超級馬】血統：アルマンゾル × エルヴェディヤ，適性：1400～1800m (◎ / ×)，成長型：早め，個性：負けず嫌い。"}, {"name": "サンダーマウンテン", "en_name": "Thunder Mountain", "year": 2023, "ticket": "金", "sex": "牡", "sp": "69(C+)", "sp_rank": "B+", "distance": "1300～1700m", "surface": "◎ / ◎", "umasona": "負けず嫌い", "growth": "晩成", "sire": "ナカヤマフェスタ", "dam": "マルセリーナ", "region": "日本", "comment": "【架空 SH 超級馬】血統：ナカヤマフェスタ × マルセリーナ，適性：1300～1700m (◎ / ◎)，成長型：晩成，個性：負けず嫌い。"}, {"name": "ファントムジオペラ", "en_name": "Phantom the Opera", "year": 2024, "ticket": "虹", "sex": "牡", "sp": "75(A)", "sp_rank": "A", "distance": "2200～3800m", "surface": "◎ / ×", "umasona": "いたずら好き", "growth": "遅め", "sire": "ストラディバリウス", "dam": "モリーマローン", "region": "英国", "comment": "【架空 SH 超級馬】血統：ストラディバリウス × モリーマローン，適性：2200～3800m (◎ / ×)，成長型：遅め，個性：いたずら好き。"}, {"name": "インプレグネイブル", "en_name": "Impregnable", "year": 2024, "ticket": "金", "sex": "牝", "sp": "73(B+)", "sp_rank": "B+", "distance": "1800～2400m", "surface": "× / ◎", "umasona": "負けず嫌い", "growth": "遅め", "sire": "マキシマムセキュリティ", "dam": "ミッドナイトビズー", "region": "米国", "comment": "【架空 SH 超級馬】血統：マキシマムセキュリティ × ミッドナイトビズー，適性：1800～2400m (× / ◎)，成長型：遅め，個性：負けず嫌い。"}, {"name": "クロスリング", "en_name": "Cross Ring", "year": 2024, "ticket": "金", "sex": "牡", "sp": "73(B+)", "sp_rank": "B+", "distance": "1800～2400m", "surface": "◎ / ◎", "umasona": "負けず嫌い", "growth": "超晩成", "sire": "パクスアメリカーナ", "dam": "ブランボヌール", "region": "日本", "comment": "【架空 SH 超級馬】血統：パクスアメリカーナ × ブランボヌール，適性：1800～2400m (◎ / ◎)，成長型：超晩成，個性：負けず嫌い。"}, {"name": "ユーエスエスケープ", "en_name": "US Escape", "year": 2024, "ticket": "金", "sex": "牡", "sp": "72(B+)", "sp_rank": "B+", "distance": "2100～3500m", "surface": "◎ / ◎", "umasona": "負けず嫌い", "growth": "晩成", "sire": "タニノフランケル", "dam": "ライラプス", "region": "日本", "comment": "【架空 SH 超級馬】血統：タニノフランケル × ライラプス，適性：2100～3500m (◎ / ◎)，成長型：晩成，個性：負けず嫌い。"}, {"name": "アレグリア", "en_name": "Alegria", "year": 2024, "ticket": "銀", "sex": "牝", "sp": "70(B)", "sp_rank": "B+", "distance": "1200～1600m", "surface": "◎ / ○", "umasona": "負けず嫌い", "growth": "早め", "sire": "ドバウィ", "dam": "ベアトリックスポッター", "region": "英国", "comment": "【架空 SH 超級馬】血統：ドバウィ × ベアトリックスポッター，適性：1200～1600m (◎ / ○)，成長型：早め，個性：負けず嫌い。"}, {"name": "ダークレジェンド", "en_name": "Dark Legend", "year": 2024, "ticket": "金", "sex": "牡", "sp": "69(C+)", "sp_rank": "B+", "distance": "1400～2400m", "surface": "× / ◎", "umasona": "負けず嫌い", "growth": "遅め", "sire": "インティ", "dam": "ホワイトフーガ", "region": "日本", "comment": "【架空 SH 超級馬】血統：インティ × ホワイトフーガ，適性：1400～2400m (× / ◎)，成長型：遅め，個性：負けず嫌い。"}, {"name": "ラナウェープライド", "en_name": "Runaway Pride", "year": 2024, "ticket": "銀", "sex": "牝", "sp": "69(C+)", "sp_rank": "B+", "distance": "1900～3300m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "遅め", "sire": "ダイワメジャー", "dam": "クィーンスプマンテ", "region": "日本", "comment": "【架空 SH 超級馬】血統：ダイワメジャー × クィーンスプマンテ，適性：1900～3300m (◎ / ×)，成長型：遅め，個性：負けず嫌い。"}, {"name": "ミライ", "en_name": "Mirai", "year": 2025, "ticket": "金", "sex": "牡", "sp": "73(B+)", "sp_rank": "B+", "distance": "1800～3000m", "surface": "◎ / ×", "umasona": "エンターテイナー", "growth": "早め", "sire": "キズナ", "dam": "トレヴ", "region": "仏国", "comment": "【架空 SH 超級馬】血統：キズナ × トレヴ，適性：1800～3000m (◎ / ×)，成長型：早め，個性：エンターテイナー。"}, {"name": "ムードメーカー", "en_name": "Mood Maker", "year": 2025, "ticket": "金", "sex": "牡", "sp": "72(B+)", "sp_rank": "B+", "distance": "1400～1800m", "surface": "◎ / ×", "umasona": "厩舎のボス", "growth": "早め", "sire": "メイショウボーラー", "dam": "ダンスファンタジア", "region": "日本", "comment": "【架空 SH 超級馬】血統：メイショウボーラー × ダンスファンタジア，適性：1400～1800m (◎ / ×)，成長型：早め，個性：厩舎のボス。"}, {"name": "アルシャイン", "en_name": "Alshain", "year": 2025, "ticket": "銀", "sex": "牝", "sp": "70(B)", "sp_rank": "B+", "distance": "1700～2500m", "surface": "◎ / ×", "umasona": "負けず嫌い", "growth": "早め", "sire": "エピファネイア", "dam": "ハープスター", "region": "日本", "comment": "【架空 SH 超級馬】血統：エピファネイア × ハープスター，適性：1700～2500m (◎ / ×)，成長型：早め，個性：負けず嫌い。"}, {"name": "カブキモノ", "en_name": "Kabukimono", "year": 2025, "ticket": "銀", "sex": "牡", "sp": "70(B)", "sp_rank": "B+", "distance": "1700～2500m", "surface": "○ / ◎", "umasona": "目立ちたがり", "growth": "早め", "sire": "オーセンティック", "dam": "スイススカイダイバー", "region": "米国", "comment": "【架空 SH 超級馬】血統：オーセンティック × スイススカイダイバー，適性：1700～2500m (○ / ◎)，成長型：早め，個性：目立ちたがり。"}];
 
-function openNativeHorseDossier(horseName) {
+        // ==================== 原生馬匹全域檢索與檔案彈窗 (全庫跨模組優先檢索) ====================
+        function openNativeHorseDossier(horseName) {
             if (!horseName) return;
             ensureUnpackedDb();
             let horse = null;
@@ -36980,34 +37444,48 @@ function openNativeHorseDossier(horseName) {
             const cleanQuery = rawStr.replace(/[\(\（].*?[\)\）]/g, '').trim().toLowerCase();
             const insideMatches = Array.from(rawStr.matchAll(/[\(\（](.*?)[\)\）]/g)).map(m => m[1].trim().toLowerCase());
             
-            const allHorses = (dbData && dbData.cat1) ? dbData.cat1 : (window.WP10_HORSES_DB || []);
+            // 1. 第一優先：檢索大一統馬匹總庫 (16,757 匹全史實馬)
+            const allHorses = window.WP10_UNIFIED_HORSES_DATA || (dbData && dbData.cat1) || (window.WP10_HORSES_DB || []);
 
-            // 1. Exact match in allHorses (15,389 horses)
+            const qVariants = [
+                cleanQuery,
+                cleanQuery.replace(/\u61be/g, '\u64bc'), // 憾 -> 撼
+                cleanQuery.replace(/\u64bc/g, '\u61be')  // 撼 -> 憾
+            ];
+
             if (allHorses.length > 0) {
                 if (cleanQuery) {
                     horse = allHorses.find(h => {
-                        const n = (h.name || '').toLowerCase();
-                        const en = (h.en_name || '').toLowerCase();
-                        return n === cleanQuery || en === cleanQuery;
+                        const n = (h.name || h.name_jp || '').toLowerCase();
+                        const zh = (h.name_zh || h.zh_name || '').toLowerCase();
+                        const en = (h.en_name || h.name_en || '').toLowerCase();
+                        return qVariants.includes(n) || qVariants.includes(zh) || qVariants.includes(en);
                     });
+                    if (!horse) {
+                        horse = allHorses.find(h => {
+                            const zh = (h.name_zh || h.zh_name || '').toLowerCase();
+                            return zh && qVariants.some(v => v.length >= 2 && (zh === v || zh.includes(v) || v.includes(zh)));
+                        });
+                    }
                 }
                 if (!horse && insideMatches.length > 0) {
                     for (const p of insideMatches) {
                         horse = allHorses.find(h => {
-                            const n = (h.name || '').toLowerCase();
-                            const en = (h.en_name || '').toLowerCase();
+                            const n = (h.name || h.name_jp || '').toLowerCase();
+                            const en = (h.en_name || h.name_en || '').toLowerCase();
                             return n === p || en === p;
                         });
                         if (horse) break;
                     }
                 }
-                // Longest candidate match contained in rawStr (prevents 'シン' from matching 'シンボリルドルフ')
+                // 模糊最長子字串匹配
                 if (!horse) {
                     let candidates = [];
                     for (let i = 0; i < allHorses.length; i++) {
                         const h = allHorses[i];
-                        if (h.name && h.name.length >= 2 && rawStr.includes(h.name)) {
-                            candidates.push({ len: h.name.length, horse: h });
+                        const hn = h.name || h.name_jp;
+                        if (hn && hn.length >= 2 && rawStr.includes(hn)) {
+                            candidates.push({ len: hn.length, horse: h });
                         }
                     }
                     if (candidates.length > 0) {
@@ -37017,34 +37495,7 @@ function openNativeHorseDossier(horseName) {
                 }
             }
 
-            // 2. Search in WP10_RACEHORSES_FULL_DATA (16,570 racehorses)
-            if (!horse && window.WP10_RACEHORSES_FULL_DATA && window.WP10_RACEHORSES_FULL_DATA.length > 0) {
-                const rHorse = window.WP10_RACEHORSES_FULL_DATA.find(h => {
-                    const nj = (h.name_jp || '').toLowerCase();
-                    const ne = (h.name_en || '').toLowerCase();
-                    return (cleanQuery && (nj === cleanQuery || ne === cleanQuery)) ||
-                           (insideMatches.some(p => nj === p || ne === p)) ||
-                           (nj.length >= 3 && rawStr.includes(nj));
-                });
-                if (rHorse) {
-                    horse = {
-                        name: rHorse.name_jp,
-                        en_name: rHorse.name_en,
-                        year: rHorse.year || rHorse.birth_year || '史實',
-                        ticket: rHorse.amulet || '金',
-                        sex: rHorse.sex || '牡',
-                        region: rHorse.region || '日本',
-                        sp: rHorse.sp || 72,
-                        sp_rank: rHorse.sp >= 77 ? 'S' : (rHorse.sp >= 72 ? 'A+' : (rHorse.sp >= 68 ? 'A' : 'B')),
-                        stamina: rHorse.st || 2000,
-                        growth: rHorse.growth || '普通',
-                        sire: rHorse.sire || '-',
-                        dam: rHorse.dam || '-'
-                    };
-                }
-            }
-
-            // 3. Search in WP10_SIRES_RETIRE_DATA.sires (2,898 sires)
+            // 2. 第二優先：檢索種牡馬引退名錄
             if (!horse && window.WP10_SIRES_RETIRE_DATA && window.WP10_SIRES_RETIRE_DATA.sires) {
                 const sHorse = window.WP10_SIRES_RETIRE_DATA.sires.find(s => {
                     const sn = (s.name || '').toLowerCase();
@@ -37068,7 +37519,7 @@ function openNativeHorseDossier(horseName) {
                 }
             }
 
-            // 4.5 Search in WP10_SUPER_HORSES (32 SH horses)
+            // 3. 第三優先：檢索超級架空馬 (SH)
             if (!horse && window.WP10_SUPER_HORSES) {
                 const sh = window.WP10_SUPER_HORSES.find(s => {
                     const sn = (s.name || '').toLowerCase();
@@ -37096,7 +37547,7 @@ function openNativeHorseDossier(horseName) {
                 }
             }
 
-            // 4. Search in WP10_BREEDING_ONLY_HORSES (4,314 breeding horses)
+            // 4. 第四優先：檢索純繁殖馬資料庫
             if (!horse && window.WP10_BREEDING_ONLY_HORSES) {
                 const bHorse = window.WP10_BREEDING_ONLY_HORSES.find(b => {
                     const bj = (b.name_jp || '').toLowerCase();
@@ -37121,7 +37572,7 @@ function openNativeHorseDossier(horseName) {
                 }
             }
 
-            // 5. Open modal direct or graceful fallback
+            // 5. 開啟詳情彈窗或安全降級
             if (horse) {
                 openModalDirect(horse);
             } else {
@@ -37136,7 +37587,53 @@ function openNativeHorseDossier(horseName) {
             }
         }
 
+        
+        // ==================== 跨支柱章節快速跳轉導航引擎 ====================
+        function jumpToSection(pillarId, sectionId) {
+            try {
+                // 1. 記錄跳轉前之支柱、滾動位置與當前開啟之馬匹對象 (以便浮框返回按鈕精確重開詳情頁)
+                const horseToReopen = window._currentModalHorse ? window._currentModalHorse : null;
+                if (typeof recordCurrentPosition === 'function') {
+                    recordCurrentPosition({ reopenHorseModal: horseToReopen });
+                } else if (window.recordCurrentPosition) {
+                    window.recordCurrentPosition({ reopenHorseModal: horseToReopen });
+                }
+
+                if (typeof closeModal === 'function') closeModal();
+                const m = document.getElementById('horseModal');
+                if (m) m.style.display = 'none';
+                if (typeof closeFavoritesModal === 'function') closeFavoritesModal();
+                if (typeof switchMainPillar === 'function') switchMainPillar(pillarId);
+                setTimeout(() => {
+                    const el = document.getElementById(sectionId);
+                    if (el) {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // 輕微高亮邊框視覺引導
+                        el.style.transition = 'box-shadow 0.4s ease';
+                        el.style.boxShadow = '0 0 20px rgba(56, 189, 248, 0.6)';
+                        setTimeout(() => {
+                            el.style.boxShadow = '';
+                        }, 2000);
+                    }
+                }, 120);
+            } catch (e) {
+                console.error('jumpToSection error:', e);
+            }
+        }
+        window.jumpToSection = jumpToSection;
+
         window.openNativeHorseDossier = openNativeHorseDossier;
+        window.toggleCurrentModalFavorite = toggleCurrentModalFavorite;
+        window.toggleHorseFavorite = toggleHorseFavorite;
+        window.openFavoritesModal = openFavoritesModal;
+        window.closeFavoritesModal = closeFavoritesModal;
+        window.clearAllFavorites = clearAllFavorites;
+        window.exportFavoritesJson = exportFavoritesJson;
+        window.importFavoritesJson = importFavoritesJson;
+        window.saveHorseMemo = saveHorseMemo;
+        window.getHorseMemo = getHorseMemo;
+        window.loadHorseMemo = loadHorseMemo;
+        window.updateFavCountBadges = updateFavCountBadges;
         window.generateDynamicSvgRadar = generateDynamicSvgRadar;
         window.generateTurfQualityTrackBar = generateTurfQualityTrackBar;
         window.generateVisualPedigreeTree = generateVisualPedigreeTree;
@@ -37327,6 +37824,7 @@ window.initMasterHorseDb = function() {
     if (typeof initYearFilter === 'function') initYearFilter();
     bindMasterFilterEvents();
     if (typeof renderTable === 'function') renderTable();
+    if (typeof updateFavCountBadges === 'function') updateFavCountBadges();
 };
 
 // 自動啟動應用程式 (Auto Launch)
