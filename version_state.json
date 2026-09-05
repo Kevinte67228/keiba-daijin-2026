@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.68",
+  "current_version": "v03.69",
   "history": [
     {
       "version": "v01.01",
@@ -1375,6 +1375,11 @@
       "version": "v03.68",
       "timestamp": "2026-09-05",
       "changes": "大一統馬匹庫 16,757 匹全量繁體中文馬名(name_zh/zh_name)注入實裝：馬匹詳細檔案彈窗(horseModal)金色立體顯眼雙語標題呈現、第41章史實推薦大表與第44章全競走馬庫支援金字中文雙行排版、全域搜尋引擎支援繁中馬名精確/模糊/錯字容錯檢索"
+    },
+    {
+      "version": "v03.69",
+      "timestamp": "2026-09-05",
+      "changes": "修復頂部頁首「⭐ 我的繁育計畫」點擊無反應問題：補齊 #favoritesModal.active 強制 flex 樣式，並於 openFavoritesModal/closeFavoritesModal 補齊 active class 切換與 z-index 階層優化"
     }
   ]
 }

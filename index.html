@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.68"></script>
-<script src="core_guides_data.js?v=v03.68"></script>
-<script src="yearly_recs_db.js?v=v03.68"></script>
-<script src="horse_subtopics_data.js?v=v03.68"></script>
+<script src="master_lookup_db.js?v=v03.69"></script>
+<script src="core_guides_data.js?v=v03.69"></script>
+<script src="yearly_recs_db.js?v=v03.69"></script>
+<script src="horse_subtopics_data.js?v=v03.69"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1742,6 +1742,12 @@ li {
     display: none !important;
     position: fixed !important;
 }
+#favoritesModal.active, #favoritesModal.show {
+    display: flex !important;
+}
+#horseModal {
+    z-index: 100005 !important;
+}
 .modal.active, .modal.show, .drawer.active, .drawer.show, .chapter-drawer.active, .modal-detail.active, #jumpModal.active, #searchModal.active, .modal-overlay.active {
     display: flex !important;
 }
@@ -2532,7 +2538,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.68</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.69</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 49 大章節)
@@ -32783,7 +32789,7 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.68"></script>
+<script src="unified_horses_full_db.js?v=v03.69"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
@@ -35687,7 +35693,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
                     <span>⭐ 我的繁育計畫與關注名單</span>
                     <span id="favModalCountBadge" class="pill pill-safe" style="background:#f59e0b; color:#0f172a; font-weight:bold;">0 匹</span>
                 </div>
-                <span onclick="closeFavoritesModal()" style="font-size:1.5rem; color:#94a3b8; cursor:pointer; font-weight:bold; line-height:1;">&times;</span>
+                <span class="modal-close" onclick="closeFavoritesModal()" style="font-size:1.5rem; color:#94a3b8; cursor:pointer; font-weight:bold; line-height:1;">&times;</span>
             </div>
             <div id="favoritesListContainer" style="padding:16px; overflow-y:auto; flex:1; display:flex; flex-direction:column; gap:10px;">
                 <!-- 動態注入已收藏馬匹清單 -->
@@ -36998,17 +37004,23 @@ function getBilingualSireLine(lineName) {
         function openFavoritesModal() {
             const modal = document.getElementById("favoritesModal");
             if (modal) {
+                modal.classList.add("active");
                 modal.style.display = "flex";
                 renderFavoritesList();
             }
         }
 
         function closeFavoritesModal(event) {
-            if (event && event.target && event.target.id !== "favoritesModal" && !event.target.classList.contains("modal-close")) {
-                return;
+            if (event && event.target) {
+                if (event.target.id !== "favoritesModal" && !event.target.classList.contains("modal-close")) {
+                    if (event.target.closest && event.target.closest('.modal-card')) return;
+                }
             }
             const modal = document.getElementById("favoritesModal");
-            if (modal) modal.style.display = "none";
+            if (modal) {
+                modal.classList.remove("active");
+                modal.style.display = "none";
+            }
         }
 
         function clearAllFavorites() {
