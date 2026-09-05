@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.59"></script>
-<script src="core_guides_data.js?v=v03.59"></script>
-<script src="yearly_recs_db.js?v=v03.59"></script>
-<script src="horse_subtopics_data.js?v=v03.59"></script>
+<script src="master_lookup_db.js?v=v03.60"></script>
+<script src="core_guides_data.js?v=v03.60"></script>
+<script src="yearly_recs_db.js?v=v03.60"></script>
+<script src="horse_subtopics_data.js?v=v03.60"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2532,7 +2532,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.59</span>
+<span class="version-badge">v03.60</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 49 大章節)
@@ -5918,54 +5918,54 @@ button.chip-btn.active {
 </p>
 
 <div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:20px;">
-<table class="data-table" style="min-width:1050px; text-align:left !important;">
+<table class="data-table" style="min-width:920px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:160px;">小技領域 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:200px;">核心機制痛點 ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">職業老手解決方案與具體操作 (SOP) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:150px;">預期實戰效益 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:150px; min-width:140px; white-space:nowrap !important;">小技領域 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; word-break:break-word;">核心機制痛點 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:380px;">職業老手解決方案與具體操作 (SOP) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:170px; min-width:150px; max-width:190px;">預期實戰效益 ⇅</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#38bdf8; text-align:left !important;">✈️ 海外遠征補償法</td>
-<td style="text-align:left !important;">遠征美歐 G1 時，若馬匹精神力不足或無遠征特性，易引發調子暴跌、能力 -1~2 階。</td>
-<td style="text-align:left !important;">
+<td style="white-space:nowrap !important; font-weight:bold; color:#38bdf8; text-align:left !important; width:150px; min-width:140px;">✈️ 海外遠征補償法</td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">遠征美歐 G1 時，若馬匹精神力不足或無遠征特性，易引發調子暴跌、能力 -1~2 階。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
 1. 遠征前 2 週執行<strong>「遠征用史實調教」</strong>（如「芝合わせ調教」）。<br/>
 2. 派遣具備<strong>「海外遠征○」或「交流重賞」</strong>特性之主戰騎手（如武豐、李慕華、川田將雅）。<br/>
 3. 抵達後第一週立即進行「微調整」恢復調子雙箭頭。
 </td>
-<td style="text-align:left !important; color:#10b981; font-weight:bold;">100% 免疫遠征 Debuff，凱旋門賞勝率大幅飆升。</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#10b981; font-weight:bold;">100% 免疫遠征 Debuff，凱旋門賞勝率大幅飆升。</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#f59e0b; text-align:left !important;">🛌 疲勞極限鎖定 (調子管理)</td>
-<td style="text-align:left !important;">連戰後疲勞變為「黃色/橙色」時，若繼續出賽極易引發故障（骨折/屈腱炎），導致引退。</td>
-<td style="text-align:left !important;">
+<td style="white-space:nowrap !important; font-weight:bold; color:#f59e0b; text-align:left !important; width:150px; min-width:140px;">🛌 疲勞極限鎖定 (調子管理)</td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">連戰後疲勞變為「黃色/橙色」時，若繼續出賽極易引發故障（骨折/屈腱炎），導致引退。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
 1. 牧場務必將<strong>「集団馬房 / 放牧場」</strong>升至 Lv3。<br/>
 2. 出賽 2~3 場後，只要疲勞升至微黃，立刻設定<strong>「短期放牧 1 週」</strong>。<br/>
 3. 1 週放牧即可清空所有疲勞，且調子不會跌破紅心，可無縫接軌下一場 G1。
 </td>
-<td style="text-align:left !important; color:#10b981; font-weight:bold;">競走生涯零重大事故，殿堂級名馬跑滿 5~6 歲。</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#10b981; font-weight:bold;">競走生涯零重大事故，殿堂級名馬跑滿 5~6 歲。</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#c084fc; text-align:left !important;">🏇 騎手特性速刷法</td>
-<td style="text-align:left !important;">新人騎手初始五維低、無特性，跑重賞容易在直線被包夾失速。</td>
-<td style="text-align:left !important;">
+<td style="white-space:nowrap !important; font-weight:bold; color:#c084fc; text-align:left !important; width:150px; min-width:140px;">🏇 騎手特性速刷法</td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">新人騎手初始五維低、無特性，跑重賞容易在直線被包夾失速。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
 1. 將 SP 75+ 的碾壓級馬匹指派該新人騎手出賽 G2/G3（非經典三冠核心）。<br/>
 2. 以大差獨贏累計該距離勝場，最快在 1~2 年內觸發騎手<strong>「大舞臺 / 根幹距離 / 差・追得意」</strong>特性覺醒。<br/>
 3. 友好度達 100 時還可獲贈銀札，一舉兩得！
 </td>
-<td style="text-align:left !important; color:#10b981; font-weight:bold;">自產專屬頂級神騎手，終身為自家牧場效力。</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#10b981; font-weight:bold;">自產專屬頂級神騎手，終身為自家牧場效力。</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#10b981; text-align:left !important;">🎯 賽事除外對策與賞金精算</td>
-<td style="text-align:left !important;">2~3 歲經典賽事因收得賞金不足遭到「除外 (無法出賽)」，錯失三冠入場券。</td>
-<td style="text-align:left !important;">
+<td style="white-space:nowrap !important; font-weight:bold; color:#10b981; text-align:left !important; width:150px; min-width:140px;">🎯 賽事除外對策與賞金精算</td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">2~3 歲經典賽事因收得賞金不足遭到「除外 (無法出賽)」，錯失三冠入場券。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
 1. 2 歲新馬戰獲勝後，避開熱門的重賞，優先報名出賽馬數少、競爭弱的偏遠 G3（如札幌 2 歲 S、新潟 2 歲 S、函館 2 歲 S）。<br/>
 2. 確保在 2 歲結束前累積 ≥ 1,600 萬收得賞金，次年 3 歲皐月賞與櫻花賞穩獲第一優先出走權。
 </td>
-<td style="text-align:left !important; color:#10b981; font-weight:bold;">100% 確保經典三冠出賽席位，絕不被除外。</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#10b981; font-weight:bold;">100% 確保經典三冠出賽席位，絕不被除外。</td>
 </tr>
 </tbody>
 </table>
@@ -29466,55 +29466,55 @@ function filterTab5Racecourses() {
 </p>
 
 <div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:24px;">
-<table class="data-table" style="min-width:1050px; text-align:left !important;">
+<table class="data-table" style="min-width:920px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:160px;">支持層群體 (日/中) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:220px;">群體核心偏好與關注點 ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">人氣最速提升實戰技巧 (SOP) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:180px;">支持度封頂專屬加成 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:160px; min-width:150px; white-space:nowrap !important;">支持層群體 (日/中) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; word-break:break-word;">群體核心偏好與關注點 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:380px;">人氣最速提升實戰技巧 (SOP) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:170px; min-width:150px; max-width:190px;">支持度封頂專屬加成 ⇅</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">競馬ファン<br/><span style="font-size:0.75rem; color:#94a3b8;">(賽馬硬核鐵粉)</span></td>
-<td style="text-align:left !important;">壓倒性競走成績、連勝紀錄、打破場地紀錄時間 (Record)、經典三冠制霸。</td>
-<td style="text-align:left !important;">
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:160px; min-width:150px;">競馬ファン<br/><span style="font-size:0.75rem; color:#94a3b8;">(賽馬硬核鐵粉)</span></td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">壓倒性競走成績、連勝紀錄、打破場地紀錄時間 (Record)、經典三冠制霸。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
 • 讓主力名駒出戰 G1 並以<strong>大差獲勝</strong>。<br/>
 • 達成八連勝、十連勝等歷史級連勝紀錄。<br/>
 • 征戰海外凱旋門賞或育馬者盃經典賽。
 </td>
-<td style="text-align:left !important; color:#38bdf8;">競走馬能力成長效率 +30%</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#38bdf8;">競走馬能力成長效率 +30%</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#f472b6; text-align:left !important;">世間 (ライト層)<br/><span style="font-size:0.75rem; color:#94a3b8;">(一般大眾與輕度粉絲)</span></td>
-<td style="text-align:left !important;">罕見外觀毛色 (白毛 / 蘆毛 / 尾花栗毛)、可愛個性 (ウマソナ 如人懐こい、甘えん坊)、戲劇性逆轉。</td>
-<td style="text-align:left !important;">
+<td style="white-space:nowrap !important; font-weight:bold; color:#f472b6; text-align:left !important; width:160px; min-width:150px;">世間 (ライト層)<br/><span style="font-size:0.75rem; color:#94a3b8;">(一般大眾與輕度粉絲)</span></td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">罕見外觀毛色 (白毛 / 蘆毛 / 尾花栗毛)、可愛個性 (ウマソナ 如人懐こい、甘えん坊)、戲劇性逆轉。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
 • 安排白毛或特色流星馬出賽有馬紀念等全民大賽。<br/>
 • 直線以<strong>「後方一氣 / 追い込み」</strong>作戰驚天大逆轉勝。<br/>
 • 保留親民討喜的個性。
 </td>
-<td style="text-align:left !important; color:#f472b6;">競馬狂潮引爆門檻大幅降低</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#f472b6;">週邊商品收入 +100% (增加牧場月收入)</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#10b981; text-align:left !important;">馬産地<br/><span style="font-size:0.75rem; color:#94a3b8;">(育馬產地與牧場關係者)</span></td>
-<td style="text-align:left !important;">良血名門血統、母父 2 因子、珍稀零細血脈復興、母系牝系活躍。</td>
-<td style="text-align:left !important;">
-• 使用高額配種費名種馬之後代。<br/>
-• 以瀕臨滅亡系統公馬奪得重賞。<br/>
-• 達成名門牝系認定。
+<td style="white-space:nowrap !important; font-weight:bold; color:#34d399; text-align:left !important; width:160px; min-width:150px;">馬産地<br/><span style="font-size:0.75rem; color:#94a3b8;">(生產牧場與育馬業者)</span></td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">名門血統復興、零細血脈重振、自繁馬制霸歷史重賞、確立新系統。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
+• 使用零細種牡馬產駒贏得大賽。<br/>
+• 建立自家名牝系與子系統確立。<br/>
+• 出售頂級自家產幼駒給各大馬主。
 </td>
-<td style="text-align:left !important; color:#10b981;">幼駒分娩固有特性率 +25%</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#34d399;">幼駒出生爆發力上限突破 +2，配合評價大幅提升</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#38bdf8; text-align:left !important;">トレセン関係者<br/><span style="font-size:0.75rem; color:#94a3b8;">(栗東・美浦調教訓練中心)</span></td>
-<td style="text-align:left !important;">調教評價「抜群」、極度充沛之體力與根性、完美狀態掌控、騎手固定搭檔。</td>
-<td style="text-align:left !important;">
-• 連續使用<strong>史實調教並取得「大成功」</strong>。<br/>
-• 保持雙箭頭紅心調子連續出賽。<br/>
-• 長期指派同一主戰騎手達成主從羈絆。
+<td style="white-space:nowrap !important; font-weight:bold; color:#a78bfa; text-align:left !important; width:160px; min-width:150px;">トレセン (厩舎・騎手)<br/><span style="font-size:0.75rem; color:#94a3b8;">(訓練中心・調教師與騎手)</span></td>
+<td style="text-align:left !important; width:230px; min-width:200px; max-width:250px; white-space:normal !important; line-height:1.6; word-break:break-word;">史實調教大成功率、固定的名馬主戰騎手、贏得騎手大獎賽 (如 MVJ)。</td>
+<td style="text-align:left !important; min-width:380px; line-height:1.7;">
+• 持續使用「SP 雙馬合練調教」並達成大成功。<br/>
+• 固定主戰騎手累計 G1 勝利場次。<br/>
+• 指派專屬廄舍調教師連續奪魁。
 </td>
-<td style="text-align:left !important; color:var(--accent-gold);">史實調教大成功率直接 +20%</td>
+<td style="text-align:left !important; width:170px; min-width:150px; max-width:190px; white-space:normal !important; line-height:1.5; color:#a78bfa;">史實調教大成功機率 +25%，騎手調教師經驗獲取翻倍</td>
 </tr>
 </tbody>
 </table>
