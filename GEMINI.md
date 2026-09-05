@@ -60,4 +60,12 @@
    - **跨 Script 變數防衝突 (No Duplicate 'let')**：禁止在不同 `<script>` 區塊重複使用 `let` 或 `const` 宣告同名全域變數，跨模組共用一律掛載於 `window.xxx`。
    - **發布前語法驗證與 CDP 真機診斷 SOP**：凡變更核心 JS 引擎，必須先以語法檢查器（如 `new Function(code)`）或真機 Headless Chrome (CDP) 驗證主控台 **0 SyntaxError、0 ScriptFailedToParse** 且 DOM 資料非空渲染後，方可推進版本並發布。
 
+8. **資料表格描述欄位自適應換行與防暴衝規範 (Table Text Wrapping & Anti-Stretch Standards)**：
+   - **禁止說明文字單行過長霸屏 (No Runaway Single-Line Text)**：全站所有資料表格中之「痛點」、「背景」、「觸發條件」、「機制說明」、「戰略評語」等長句欄位，表頭與單元格一律強制設定精確寬度與自適應折行（`width: 220px~280px; max-width: 260px~300px; white-space: normal !important; line-height: 1.6; word-break: break-word;`），嚴禁因缺少寬度限制或套用 `white-space: nowrap` 致使瀏覽器自動展開為數百 px 之單行長文本。
+   - **操作步驟與重點欄位權重優先 (Priority Width for SOP & Key Columns)**：表格中之核心「具體操作 (SOP)」、「解決方案」、「戰略加成」、「繁育價值」等欄位，必須分配充足寬度（`min-width: 340px~520px; line-height: 1.7;`），確保條列項目（1、2、3 或 •）具備充足橫向閱讀視野，杜絕字詞被嚴重壓縮破碎垂直換行。
+   - **表格最小寬度精確吻合欄數 (Optimized Table min-width)**：
+     - 4 欄以內之精簡概覽表格：`min-width` 嚴格控制在 `880px ~ 940px`，並配置 `width: 100%`，確保在平板端四欄能同時完整顯示，徹底根除無謂橫向拉伸。
+     - 5~6 欄之複合資料表格：`min-width` 控制在 `980px ~ 1050px`，各欄位依「標題/年代 (窄) ➔ 描述 (中) ➔ SOP/加成 (寬) ➔ 效益/評級 (中窄)」黃金比例分工，杜絕表格過度延伸出視野邊界。
+
+
 

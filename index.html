@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.60"></script>
-<script src="core_guides_data.js?v=v03.60"></script>
-<script src="yearly_recs_db.js?v=v03.60"></script>
-<script src="horse_subtopics_data.js?v=v03.60"></script>
+<script src="master_lookup_db.js?v=v03.61"></script>
+<script src="core_guides_data.js?v=v03.61"></script>
+<script src="yearly_recs_db.js?v=v03.61"></script>
+<script src="horse_subtopics_data.js?v=v03.61"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2532,7 +2532,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.60</span>
+<span class="version-badge">v03.61</span>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 49 大章節)
@@ -5998,17 +5998,16 @@ button.chip-btn.active {
 </p>
 
 <div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:24px;">
-<table class="data-table" style="min-width:1150px; text-align:left !important;">
+<table class="data-table" style="min-width:980px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:150px;">版本代號 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:120px;">起始劇本年 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:280px;">核心賽事與系統機制 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:300px;">配種繁育與遺傳進化 ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">調教與日常育成重點 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:120px; min-width:110px; white-space:nowrap !important;">版本代號 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:110px; min-width:100px; white-space:nowrap !important;">起始劇本年 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:260px; min-width:230px; max-width:280px; white-space:normal !important; word-break:break-word;">核心賽事與系統機制 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:260px; min-width:230px; max-width:280px; white-space:normal !important; word-break:break-word;">配種繁育與遺傳進化 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:250px;">調教與日常育成重點 ⇅</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td style="white-space:nowrap; font-weight:bold; color:#94a3b8; text-align:left !important;">WP10<br/><span style="font-size:0.75rem; color:#64748b;">(2023 初版)</span></td>
 <td style="white-space:nowrap; text-align:left !important;">1973~2024</td>
@@ -7304,17 +7303,16 @@ button.chip-btn.active {
 </div>
 
 <div class="table-responsive scrollable-table-box" style="max-height:580px !important; overflow-y:auto !important; margin-bottom:20px;">
-<table class="data-table" style="min-width:1100px; text-align:left !important;">
+<table class="data-table" style="min-width:1020px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:170px;">特殊配合名稱 (日/中) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:120px;">爆發力加成 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:340px;">成立條件與檢核標準 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:220px;">五維與副屬性影響 ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">戰略價值與代表種公馬/名雌 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:180px; min-width:160px;">特殊配合名稱 (日/中) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:110px; min-width:100px; white-space:nowrap !important;">爆發力加成 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:280px; min-width:240px; max-width:300px; white-space:normal !important; word-break:break-word;">成立條件與檢核標準 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:200px; min-width:180px; max-width:220px; white-space:normal !important; word-break:break-word;">五維與副屬性影響 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:260px;">戰略價值與代表種公馬/名雌 ⇅</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td style="white-space:nowrap; font-weight:bold; color:#38bdf8; text-align:left !important;">稲妻配合<br/><span style="font-size:0.75rem; color:#94a3b8;">(稻妻配合 / Lightning)</span></td>
 <td style="white-space:nowrap; text-align:left !important;"><span class="badge badge-rainbow">爆發力 +6</span></td>
@@ -8762,17 +8760,16 @@ button.chip-btn.active {
 </div>
 
 <div class="table-responsive scrollable-table-box" style="max-height:580px !important; overflow-y:auto !important; margin-bottom:20px;">
-<table class="data-table" style="min-width:1150px; text-align:left !important;">
+<table class="data-table" style="min-width:1000px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:160px;">出生事件名稱 (日/中) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:110px;">發生時機 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:340px;">前置嚴格觸發條件 (父母馬門檻) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:240px;">能力保底與固定符號 ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">專屬個性 (ウマソナ) 與戰略評語 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:150px; min-width:140px;">出生事件名稱 (日/中) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:100px; min-width:90px; white-space:nowrap !important;">發生時機 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:280px; min-width:240px; max-width:300px; white-space:normal !important; word-break:break-word;">前置嚴格觸發條件 (父母馬門檻) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:220px; min-width:190px; max-width:240px; white-space:normal !important; word-break:break-word;">能力保底與固定符號 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:260px;">專屬個性 (ウマソナ) 與戰略評語 ⇅</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr style="background:rgba(234,179,8,0.06);">
 <td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">流星<br/><span style="font-size:0.75rem; color:#94a3b8;">(Ryusei / 流星)</span></td>
 <td style="white-space:nowrap; text-align:left !important;">4 月 1 週</td>
@@ -13098,17 +13095,16 @@ button.chip-btn.active {
 </p>
 
 <div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:24px;">
-<table class="data-table" style="min-width:1150px; text-align:left !important;">
+<table class="data-table" style="min-width:940px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:120px;">年代 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:140px;">關係類型 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:220px;">核心名馬 A ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:220px;">核心名馬 B ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">經典歷史死鬥舞台與遊戲內戰略加成 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:80px; min-width:70px; white-space:nowrap !important;">年代 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:130px; min-width:120px; white-space:nowrap !important;">關係類型 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:180px; min-width:160px;">核心名馬 A ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:180px; min-width:160px;">核心名馬 B ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:340px;">經典歷史死鬥舞台與遊戲內戰略加成 ⇅</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td style="white-space:nowrap; font-weight:700; text-align:left !important;">1976 年</td>
 <td style="white-space:nowrap; text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">強敵 (宿敵)</span></td>
@@ -29669,17 +29665,16 @@ function filterTab5Racecourses() {
 </div>
 
 <div class="table-responsive scrollable-table-box" style="max-height:580px !important; overflow-y:auto !important; margin-bottom:20px;">
-<table class="data-table" style="min-width:1150px; text-align:left !important;">
+<table class="data-table" style="min-width:1000px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:110px;">年份 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:200px;">歷史事件名稱 (日/中) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:180px;">核心名馬 / 人物 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:280px;">觸發前置賽事與達成條件 ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">事件獎勵與歷史影響 (日/中) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:90px; min-width:80px; white-space:nowrap !important;">年份 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:180px; min-width:160px;">歷史事件名稱 (日/中) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:170px; min-width:150px;">核心名馬 / 人物 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:270px; min-width:230px; max-width:290px; white-space:normal !important; word-break:break-word;">觸發前置賽事與達成條件 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:290px;">事件獎勵與歷史影響 (日/中) ⇅</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td style="white-space:nowrap; font-weight:700; text-align:left !important;">1971 年</td>
 <td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">光の駿馬<br/><span style="font-size:0.75rem; color:#94a3b8;">(光之駿馬・ヒカルイマイ)</span></td>
@@ -31457,45 +31452,45 @@ function filterTab5Racecourses() {
 </p>
 
 <div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:24px;">
-<table class="data-table" style="min-width:1050px; text-align:left !important;">
+<table class="data-table" style="min-width:900px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:160px;">會員人數門檻 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:220px;">新加入知人名單 (日/中) ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">解鎖人物背景與身分 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:180px;">解鎖專屬效益 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:150px; min-width:140px; white-space:nowrap !important;">會員人數門檻 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:200px; min-width:180px;">新加入知人名單 (日/中) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:360px;">解鎖人物背景與身分 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:180px; min-width:160px; max-width:200px;">解鎖專屬效益 ⇅</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">1,000 人達成</td>
-<td style="text-align:left !important;">井坂修三、有馬桜子</td>
-<td style="text-align:left !important;">著名賽馬雜誌特約記者、電視台知性女主播。</td>
-<td style="text-align:left !important; color:#cbd5e1;">增加媒體曝光率，評價提升。</td>
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:150px; min-width:140px;">1,000 人達成</td>
+<td style="text-align:left !important; width:200px; min-width:180px;">井坂修三、有馬桜子</td>
+<td style="text-align:left !important; min-width:360px; line-height:1.6; word-break:break-word;">著名賽馬雜誌特約記者、電視台知性女主播。</td>
+<td style="text-align:left !important; width:180px; min-width:160px; max-width:200px; white-space:normal !important; line-height:1.5; color:#cbd5e1;">增加媒體曝光率，評價提升。</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">3,000 人達成</td>
-<td style="text-align:left !important;">如月英里子、天本涼子</td>
-<td style="text-align:left !important;">海外馬產界名媛、資深血統研究家。</td>
-<td style="text-align:left !important; color:#38bdf8;">解鎖海外拍賣會 VIP 通道。</td>
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:150px; min-width:140px;">3,000 人達成</td>
+<td style="text-align:left !important; width:200px; min-width:180px;">如月英里子、天本涼子</td>
+<td style="text-align:left !important; min-width:360px; line-height:1.6; word-break:break-word;">海外馬產界名媛、資深血統研究家。</td>
+<td style="text-align:left !important; width:180px; min-width:160px; max-width:200px; white-space:normal !important; line-height:1.5; color:#38bdf8;">解鎖海外拍賣會 VIP 通道。</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">5,000 人達成</td>
-<td style="text-align:left !important;">高井駆、相馬百合子</td>
-<td style="text-align:left !important;">新銳青年馬主、老牌相馬專家。</td>
-<td style="text-align:left !important; color:#cbd5e1;">相馬眼評價更為精準。</td>
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:150px; min-width:140px;">5,000 人達成</td>
+<td style="text-align:left !important; width:200px; min-width:180px;">高井駆、相馬百合子</td>
+<td style="text-align:left !important; min-width:360px; line-height:1.6; word-break:break-word;">新銳青年馬主、老牌相馬專家。</td>
+<td style="text-align:left !important; width:180px; min-width:160px; max-width:200px; white-space:normal !important; line-height:1.5; color:#cbd5e1;">相馬眼評價更為精準。</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">10,000 人達成</td>
-<td style="text-align:left !important;">萩野鈴蘭、鳳雅輝</td>
-<td style="text-align:left !important;">宿敵財閥馬主千金與大少爺（化敵為友）。</td>
-<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">贈送銀札 1 枚，宿敵好感大增。</td>
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:150px; min-width:140px;">10,000 人達成</td>
+<td style="text-align:left !important; width:200px; min-width:180px;">萩野鈴蘭、鳳雅輝</td>
+<td style="text-align:left !important; min-width:360px; line-height:1.6; word-break:break-word;">宿敵財閥馬主千金與大少爺 (化敵為友)。</td>
+<td style="text-align:left !important; width:180px; min-width:160px; max-width:200px; white-space:normal !important; line-height:1.5; color:var(--accent-gold); font-weight:bold;">贈送銀札 1 枚，宿敵好感大增。</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">20,000 人達成</td>
-<td style="text-align:left !important;">都大路漆黒、朝比奈すみれ</td>
-<td style="text-align:left !important;">宿敵大馬主元老、俱樂部引薦人兼秘書。</td>
-<td style="text-align:left !important; color:var(--accent-gold); font-weight:bold;">贈送金札 1 枚，達成終極商業成就。</td>
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:150px; min-width:140px;">20,000 人達成</td>
+<td style="text-align:left !important; width:200px; min-width:180px;">都大路漆黒、朝比奈すみれ</td>
+<td style="text-align:left !important; min-width:360px; line-height:1.6; word-break:break-word;">宿敵大馬主元老、俱樂部引薦人兼秘書。</td>
+<td style="text-align:left !important; width:180px; min-width:160px; max-width:200px; white-space:normal !important; line-height:1.5; color:var(--accent-gold); font-weight:bold;">贈送金札 1 枚，達成終極商業成就。</td>
 </tr>
 </tbody>
 </table>
@@ -31564,51 +31559,51 @@ function filterTab5Racecourses() {
 </p>
 
 <div class="table-responsive scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important; margin-bottom:20px;">
-<table class="data-table" style="min-width:1100px; text-align:left !important;">
+<table class="data-table" style="min-width:980px; width:100%; text-align:left !important;">
 <thead style="position:sticky; top:0; z-index:10; background:#1e293b !important;">
 <tr>
-<th class="sortable-th" style="text-align:left !important; width:150px;">對決戰線 ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:220px;">傳奇守門魔王 (Boss) ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:110px;">魔王 SP ⇅</th>
-<th class="sortable-th" style="text-align:left !important; width:280px;">魔王殺手級特性與特徵 ⇅</th>
-<th class="sortable-th" style="text-align:left !important;">玩家克制戰術與跑法建議 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:140px; min-width:130px; white-space:nowrap !important;">對決戰線 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:190px; min-width:170px;">傳奇守門魔王 (Boss) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:90px; min-width:80px; white-space:nowrap !important;">魔王 SP ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:240px; min-width:210px; max-width:260px; white-space:normal !important; word-break:break-word;">魔王殺手級特性與特徵 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:340px;">玩家克制戰術與跑法建議 ⇅</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#38bdf8; text-align:left !important;">短距離 (1200m)</td>
-<td style="text-align:left !important;"><strong>ロードカナロア</strong> (龍王)</td>
-<td style="white-space:nowrap; text-align:left !important;"><span class="badge badge-rainbow">SP 78</span></td>
-<td style="text-align:left !important; color:#cbd5e1;">直線爆炸級加速、瞬發力 S+、短距離統治光環。</td>
-<td style="text-align:left !important; color:#10b981;">需派出極致大逃馬（如卡爾斯通輕快）提早拉開 4 馬身以上。</td>
+<td style="white-space:nowrap !important; font-weight:bold; color:#38bdf8; text-align:left !important; width:140px; min-width:130px;">短距離 (1200m)</td>
+<td style="text-align:left !important; width:190px; min-width:170px;"><strong>ロードカナロア</strong> (龍王)</td>
+<td style="white-space:nowrap !important; text-align:left !important; width:90px; min-width:80px;"><span class="badge badge-rainbow">SP 78</span></td>
+<td style="text-align:left !important; width:240px; min-width:210px; max-width:260px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#cbd5e1;">直線爆炸級加速、瞬發力 S+、短距離統治光環。</td>
+<td style="text-align:left !important; min-width:340px; line-height:1.6; word-break:break-word; color:#10b981;">需派出極致大逃馬（如卡爾斯通輕快）提早拉開 4 馬身以上。</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:var(--accent-gold); text-align:left !important;">一哩王道 (1600m)</td>
-<td style="text-align:left !important;"><strong>タイキシャトル</strong> (大樹快車)</td>
-<td style="white-space:nowrap; text-align:left !important;"><span class="badge badge-rainbow">SP 78</span></td>
-<td style="text-align:left !important; color:#cbd5e1;">先行領跑無解、力量滿格、任何馬場狀態不減速。</td>
-<td style="text-align:left !important; color:#10b981;">使用具備「根幹距離＋直線一氣」的超瞬發差馬在最後 100m 絕殺。</td>
+<td style="white-space:nowrap !important; font-weight:bold; color:var(--accent-gold); text-align:left !important; width:140px; min-width:130px;">一哩王道 (1600m)</td>
+<td style="text-align:left !important; width:190px; min-width:170px;"><strong>タイキシャトル</strong> (大樹快車)</td>
+<td style="white-space:nowrap !important; text-align:left !important; width:90px; min-width:80px;"><span class="badge badge-rainbow">SP 78</span></td>
+<td style="text-align:left !important; width:240px; min-width:210px; max-width:260px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#cbd5e1;">先行領跑無解、力量滿格、任何馬場狀態不減速。</td>
+<td style="text-align:left !important; min-width:340px; line-height:1.6; word-break:break-word; color:#10b981;">使用具備「根幹距離＋直線一氣」的超瞬發差馬在最後 100m 絕殺。</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#ef4444; text-align:left !important;">中距離王道 (2000~2400m)</td>
-<td style="text-align:left !important;"><strong>ディープインパクト</strong> (大震撼)</td>
-<td style="white-space:nowrap; text-align:left !important;"><span class="badge badge-rainbow" style="font-weight:800;">SP 79</span></td>
-<td style="text-align:left !important; color:#cbd5e1;">固有「飛翔」、直道末腳光速、大舞台、四白流星。</td>
-<td style="text-align:left !important; color:#10b981;">自身馬匹 SP 需達 78+，搭配 SP 史實調教與宿敵特性正面死鬥！</td>
+<td style="white-space:nowrap !important; font-weight:bold; color:#ef4444; text-align:left !important; width:140px; min-width:130px;">中距離王道 (2000~2400m)</td>
+<td style="text-align:left !important; width:190px; min-width:170px;"><strong>ディープインパクト</strong> (大震撼)</td>
+<td style="white-space:nowrap !important; text-align:left !important; width:90px; min-width:80px;"><span class="badge badge-rainbow" style="font-weight:800;">SP 79</span></td>
+<td style="text-align:left !important; width:240px; min-width:210px; max-width:260px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#cbd5e1;">固有「飛翔」、直道末腳光速、大舞台、四白流星。</td>
+<td style="text-align:left !important; min-width:340px; line-height:1.6; word-break:break-word; color:#10b981;">自身馬匹 SP 需達 78+，搭配 SP 史實調教與宿敵特性正面死鬥！</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#a855f7; text-align:left !important;">泥地世界王者 (2000m)</td>
-<td style="text-align:left !important;"><strong>セクレタリアト</strong> (秘書處)</td>
-<td style="white-space:nowrap; text-align:left !important;"><span class="badge badge-rainbow" style="font-weight:800;">SP 79</span></td>
-<td style="text-align:left !important; color:#cbd5e1;">31 馬身神話、大舞台、紅き伝説、泥地全適性 ◎。</td>
-<td style="text-align:left !important; color:#10b981;">泥地最強怪物。需以自繁真・疾風黑色名駒搭配「交流重賞」騎手抵抗。</td>
+<td style="white-space:nowrap !important; font-weight:bold; color:#a855f7; text-align:left !important; width:140px; min-width:130px;">泥地世界王者 (2000m)</td>
+<td style="text-align:left !important; width:190px; min-width:170px;"><strong>セクレタリアト</strong> (秘書處)</td>
+<td style="white-space:nowrap !important; text-align:left !important; width:90px; min-width:80px;"><span class="badge badge-rainbow" style="font-weight:800;">SP 79</span></td>
+<td style="text-align:left !important; width:240px; min-width:210px; max-width:260px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#cbd5e1;">31 馬身神話、大舞台、紅き伝説、泥地全適性 ◎。</td>
+<td style="text-align:left !important; min-width:340px; line-height:1.6; word-break:break-word; color:#10b981;">泥地最強怪物。需以自繁真・疾風黑色名駒搭配「交流重賞」騎手抵抗。</td>
 </tr>
 <tr>
-<td style="white-space:nowrap; font-weight:bold; color:#10b981; text-align:left !important;">長距離馬拉松 (3000m+)</td>
-<td style="text-align:left !important;"><strong>メジロマックイーン</strong> (目白麥昆)</td>
-<td style="white-space:nowrap; text-align:left !important;"><span class="badge badge-gold">SP 76</span></td>
-<td style="text-align:left !important; color:#cbd5e1;">耐力 95 滿格、長距離不死身、呼吸節奏完美。</td>
-<td style="text-align:left !important; color:#10b981;">派遣耐力 90+ 且配備「長距離◎」騎手（如武豐），彎道提前提速。</td>
+<td style="white-space:nowrap !important; font-weight:bold; color:#10b981; text-align:left !important; width:140px; min-width:130px;">長距離馬拉松 (3000m+)</td>
+<td style="text-align:left !important; width:190px; min-width:170px;"><strong>メジロマックイーン</strong> (目白麥昆)</td>
+<td style="white-space:nowrap !important; text-align:left !important; width:90px; min-width:80px;"><span class="badge badge-gold">SP 76</span></td>
+<td style="text-align:left !important; width:240px; min-width:210px; max-width:260px; white-space:normal !important; line-height:1.6; word-break:break-word; color:#cbd5e1;">耐力 95 滿格、長距離不死身、呼吸節奏完美。</td>
+<td style="text-align:left !important; min-width:340px; line-height:1.6; word-break:break-word; color:#10b981;">派遣耐力 90+ 且配備「長距離◎」騎手（如武豐），彎道提前提速。</td>
 </tr>
 </tbody>
 </table>
