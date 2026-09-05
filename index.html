@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.65"></script>
-<script src="core_guides_data.js?v=v03.65"></script>
-<script src="yearly_recs_db.js?v=v03.65"></script>
-<script src="horse_subtopics_data.js?v=v03.65"></script>
+<script src="master_lookup_db.js?v=v03.66"></script>
+<script src="core_guides_data.js?v=v03.66"></script>
+<script src="yearly_recs_db.js?v=v03.66"></script>
+<script src="horse_subtopics_data.js?v=v03.66"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2532,7 +2532,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.65</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.66</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 49 大章節)
@@ -32783,7 +32783,7 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.65"></script>
+<script src="unified_horses_full_db.js?v=v03.66"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
@@ -37346,9 +37346,9 @@ function getBilingualSireLine(lineName) {
                                 <i class="fa-solid fa-compass"></i> 實戰攻略關聯導航 (點擊直接跳轉)
                             </div>
                             <div style="display:flex; flex-wrap:wrap; gap:8px;">
-                                <button onclick="switchMainPillar('p3'); location.hash='#ch21'; if(window.closeModal) window.closeModal();" class="chip-btn" style="background:rgba(30,41,59,0.85); color:#38bdf8; border:1px solid rgba(56,189,248,0.3); font-size:0.8rem; padding:5px 12px; cursor:pointer; border-radius:18px;">🎯 查閱第21章：史實調教菜單與特效</button>
-                                <button onclick="switchMainPillar('p3'); location.hash='#ch28'; if(window.closeModal) window.closeModal();" class="chip-btn" style="background:rgba(30,41,59,0.85); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); font-size:0.8rem; padding:5px 12px; cursor:pointer; border-radius:18px;">🧬 查閱第28章：配合理論與相性一覽</button>
-                                <button onclick="switchMainPillar('p3'); location.hash='#ch32'; if(window.closeModal) window.closeModal();" class="chip-btn" style="background:rgba(30,41,59,0.85); color:#f472b6; border:1px solid rgba(244,114,182,0.3); font-size:0.8rem; padding:5px 12px; cursor:pointer; border-radius:18px;">👑 查閱第32章：三冠與重大賽事路線</button>
+                                <button onclick="jumpToSection('pillar-train', 'sec-historical-train');" class="chip-btn" style="background:rgba(30,41,59,0.85); color:#38bdf8; border:1px solid rgba(56,189,248,0.3); font-size:0.8rem; padding:5px 12px; cursor:pointer; border-radius:18px;"><i class="fa-solid fa-dumbbell"></i> 🎯 查閱第28章：史實調教菜單與特效</button>
+                                <button onclick="jumpToSection('pillar-breed', 'sec-master-table');" class="chip-btn" style="background:rgba(30,41,59,0.85); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); font-size:0.8rem; padding:5px 12px; cursor:pointer; border-radius:18px;"><i class="fa-solid fa-dna"></i> 🧬 查閱第09章：配合理論與相性一覽</button>
+                                <button onclick="jumpToSection('pillar-races', 'sec-triple-crowns');" class="chip-btn" style="background:rgba(30,41,59,0.85); color:#f472b6; border:1px solid rgba(244,114,182,0.3); font-size:0.8rem; padding:5px 12px; cursor:pointer; border-radius:18px;"><i class="fa-solid fa-crown"></i> 👑 查閱第32章：三冠與重大賽事路線</button>
                             </div>
                         </div>
 
@@ -37514,6 +37514,33 @@ function getBilingualSireLine(lineName) {
                 });
             }
         }
+
+        
+        // ==================== 跨支柱章節快速跳轉導航引擎 ====================
+        function jumpToSection(pillarId, sectionId) {
+            try {
+                if (typeof closeModal === 'function') closeModal();
+                const m = document.getElementById('horseModal');
+                if (m) m.style.display = 'none';
+                if (typeof closeFavoritesModal === 'function') closeFavoritesModal();
+                if (typeof switchMainPillar === 'function') switchMainPillar(pillarId);
+                setTimeout(() => {
+                    const el = document.getElementById(sectionId);
+                    if (el) {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // 輕微高亮邊框視覺引導
+                        el.style.transition = 'box-shadow 0.4s ease';
+                        el.style.boxShadow = '0 0 20px rgba(56, 189, 248, 0.6)';
+                        setTimeout(() => {
+                            el.style.boxShadow = '';
+                        }, 2000);
+                    }
+                }, 120);
+            } catch (e) {
+                console.error('jumpToSection error:', e);
+            }
+        }
+        window.jumpToSection = jumpToSection;
 
         window.openNativeHorseDossier = openNativeHorseDossier;
         window.toggleCurrentModalFavorite = toggleCurrentModalFavorite;

@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.65",
+  "current_version": "v03.66",
   "history": [
     {
       "version": "v01.01",
@@ -1360,6 +1360,11 @@
       "version": "v03.65",
       "timestamp": "2026-09-05",
       "changes": "大一統史實馬匹總庫 (16,757匹，50+維度全要素整合)；底層架構整合並保留41章與44章雙重視圖；升級詳情頁彈窗(中文推薦理由/戰略評語、體質隱患標籤、調教與章節快速跳轉、玩家專屬Memo)；全新⭐我的繁育計畫關注名單管理抽屜(LocalStorage持久化、JSON匯出入)"
+    },
+    {
+      "version": "v03.66",
+      "timestamp": "2026-09-05",
+      "changes": "修復馬匹詳細檔案彈窗三大實戰導航跳轉按鈕（史實調教、配合理論、三冠路線）：精準對齊大百科支柱與章節錨點(pillar-train/sec-historical-train, pillar-breed/sec-master-table, pillar-races/sec-triple-crowns)，注入jumpToSection跨支柱平滑定位引擎並杜絕空白頁面"
     }
   ]
 }
