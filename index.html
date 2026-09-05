@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.69"></script>
-<script src="core_guides_data.js?v=v03.69"></script>
-<script src="yearly_recs_db.js?v=v03.69"></script>
-<script src="horse_subtopics_data.js?v=v03.69"></script>
+<script src="master_lookup_db.js?v=v03.70"></script>
+<script src="core_guides_data.js?v=v03.70"></script>
+<script src="yearly_recs_db.js?v=v03.70"></script>
+<script src="horse_subtopics_data.js?v=v03.70"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2538,7 +2538,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.69</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.70</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 49 大章節)
@@ -2603,6 +2603,136 @@ button.chip-btn.active {
 <div class="section-title"><i class="fa-solid fa-flag-checkered"></i> 第 01 章：開局劇本年代選拔・初年度52週圖文通關與全年代初期讓渡馬完全指南</div>
 </div>
 <div class="section-body">
+<!-- 悠悠日和：1971~2026年 9大劇本初期讓渡馬指南 -->
+<div id="yuruyuru-starter-horses" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.65); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:16px 18px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+    <div style="font-size:1.02rem; font-weight:800; color:#38bdf8; display:flex; align-items:center; gap:8px;">
+      <span>🐎 悠悠日和攻略：1971~2026 年 9 大開局歷史劇本初期讓渡馬推薦大表</span>
+      <span class="badge" style="background:#0284c7; color:#fff; font-weight:bold;">開局首選</span>
+    </div>
+    <div style="font-size:0.78rem; color:#94a3b8;">首選/次選名駒評級 ＋ 破局收益分析</div>
+  </div>
+  
+  <div class="scrollable-table-box table-responsive" style="max-height:480px !important; overflow-y:auto !important;">
+    <table class="data-table" style="min-width:1050px; width:100%;">
+      <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+        <tr>
+          <th style="width:100px; text-align:left !important;">劇本年代</th>
+          <th style="min-width:180px; text-align:left !important;">馬名 (日/中)</th>
+          <th style="width:60px; text-align:left !important;">性別</th>
+          <th style="width:70px; text-align:left !important;">馬札</th>
+          <th style="width:60px; text-align:left !important;">SP</th>
+          <th style="width:110px; text-align:left !important;">距離適性</th>
+          <th style="width:60px; text-align:left !important;">馬場</th>
+          <th style="width:140px; text-align:left !important;">悠悠日和評級</th>
+          <th style="min-width:340px; text-align:left !important;">戰略評語與破局分析</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">1971年</strong></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('オンワードガイ')"><strong style="color:#fbbf24;">オンワードガイ</strong><br><span style="font-size:0.8rem; color:#94a3b8;">向前進 (Onward Guy)</span></a></td>
+          <td style="text-align:left !important; color:#60a5fa; font-weight:bold;">牡</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#94a3b8; color:#fff;">銀</span></td>
+          <td style="text-align:left !important; font-weight:bold; color:#38bdf8;">68</td>
+          <td style="text-align:left !important;">1400-2400m</td>
+          <td style="text-align:left !important;">芝</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">★★★★★ 首選</span></td>
+          <td style="text-align:left !important; line-height:1.5;">朝日杯與有馬紀念有力競爭者，早期金運賺取機！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">1973年</strong></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('イチフジヒカリ')"><strong style="color:#fbbf24;">イチフジヒカリ</strong><br><span style="font-size:0.8rem; color:#94a3b8;">富士光 (Ichifuji Hikari)</span></a></td>
+          <td style="text-align:left !important; color:#60a5fa; font-weight:bold;">牡</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#f97316; color:#fff;">銅</span></td>
+          <td style="text-align:left !important; font-weight:bold; color:#38bdf8;">67</td>
+          <td style="text-align:left !important;">1600-2400m</td>
+          <td style="text-align:left !important;">芝</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">★★★★★ 首選</span></td>
+          <td style="text-align:left !important; line-height:1.5;">德比前哨戰強者，開局第一年即可豪奪重賞獎金。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">1984年</strong></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('ギャロップダイナ')"><strong style="color:#fbbf24;">ギャロップダイナ</strong><br><span style="font-size:0.8rem; color:#94a3b8;">奔馳秀奈 (Gallop Dyna)</span></a></td>
+          <td style="text-align:left !important; color:#60a5fa; font-weight:bold;">牡</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#f97316; color:#fff;">銅</span></td>
+          <td style="text-align:left !important; font-weight:bold; color:#38bdf8;">69</td>
+          <td style="text-align:left !important;">1600-2600m</td>
+          <td style="text-align:left !important;">芝</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">★★★★★ 破局首選</span></td>
+          <td style="text-align:left !important; line-height:1.5;">秋季天皇賞擊敗魯鐸象徵之傳奇伏兵！後期一哩/中長途通吃！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">1984年</strong></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('タカラスチール')"><strong style="color:#fbbf24;">タカラスチール</strong><br><span style="font-size:0.8rem; color:#94a3b8;">寶鋼 (Takara Steel)</span></a></td>
+          <td style="text-align:left !important; color:#f472b6; font-weight:bold;">牝</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#22c55e; color:#fff;">綠</span></td>
+          <td style="text-align:left !important; font-weight:bold; color:#38bdf8;">66</td>
+          <td style="text-align:left !important;">1100-1700m</td>
+          <td style="text-align:left !important;">芝</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">★★★★★ 雌馬首選</span></td>
+          <td style="text-align:left !important; line-height:1.5;">短途マイル女王，退役後產駒素質上乘，繁育價值巨大。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">1991年</strong></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('ナイスネイチャ')"><strong style="color:#fbbf24;">ナイスネイチャ</strong><br><span style="font-size:0.8rem; color:#94a3b8;">優秀素質 (Nice Nature)</span></a></td>
+          <td style="text-align:left !important; color:#60a5fa; font-weight:bold;">牡</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#f97316; color:#fff;">銅</span></td>
+          <td style="text-align:left !important; font-weight:bold; color:#38bdf8;">68</td>
+          <td style="text-align:left !important;">1800-2600m</td>
+          <td style="text-align:left !important;">芝</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">★★★★★ 穩定首選</span></td>
+          <td style="text-align:left !important; line-height:1.5;">殿堂級人氣王！有馬紀念連霸 3 著，重賞獎金收割極其穩定！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">1998年</strong></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('ステイゴールド')"><strong style="color:#fbbf24;">ステイゴールド</strong><br><span style="font-size:0.8rem; color:#94a3b8;">黃金旅程 (Stay Gold)</span></a></td>
+          <td style="text-align:left !important; color:#60a5fa; font-weight:bold;">牡</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#94a3b8; color:#fff;">銀</span></td>
+          <td style="text-align:left !important; font-weight:bold; color:#38bdf8;">71</td>
+          <td style="text-align:left !important;">2000-3000m</td>
+          <td style="text-align:left !important;">芝</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">★★★★★ 繁育神話</span></td>
+          <td style="text-align:left !important; line-height:1.5;">海外遠征香港瓶冠軍！引退後可產出黃金巨匠、黃金船等傳奇！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">2005年</strong></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('カンパニー')"><strong style="color:#fbbf24;">カンパニー</strong><br><span style="font-size:0.8rem; color:#94a3b8;">結伴行 (Company)</span></a></td>
+          <td style="text-align:left !important; color:#60a5fa; font-weight:bold;">牡</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#f97316; color:#fff;">銅</span></td>
+          <td style="text-align:left !important; font-weight:bold; color:#38bdf8;">70</td>
+          <td style="text-align:left !important;">1600-2000m</td>
+          <td style="text-align:left !important;">芝</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">★★★★★ 大器晚成</span></td>
+          <td style="text-align:left !important; line-height:1.5;">秋季天皇賞與一哩冠軍賽霸主，越老越強，8歲依然統治賽場。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">2012年</strong></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('エピファネイア')"><strong style="color:#fbbf24;">エピファネイア</strong><br><span style="font-size:0.8rem; color:#94a3b8;">神威啟示 (Epiphaneia)</span></a></td>
+          <td style="text-align:left !important; color:#60a5fa; font-weight:bold;">牡</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#eab308; color:#000;">金</span></td>
+          <td style="text-align:left !important; font-weight:bold; color:#38bdf8;">73</td>
+          <td style="text-align:left !important;">2000-3000m</td>
+          <td style="text-align:left !important;">芝</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">★★★★★ 世代巔峰</span></td>
+          <td style="text-align:left !important; line-height:1.5;">菊花賞與日本盃暴勝！現代超級種公馬，繁育價值連城！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">2025/2026年</strong></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('クロワデュノール')"><strong style="color:#fbbf24;">クロワデュノール</strong><br><span style="font-size:0.8rem; color:#94a3b8;">北十字星 (Croix du Nord)</span></a></td>
+          <td style="text-align:left !important; color:#60a5fa; font-weight:bold;">牡</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#eab308; color:#000;">金</span></td>
+          <td style="text-align:left !important; font-weight:bold; color:#38bdf8;">72</td>
+          <td style="text-align:left !important;">1800-2500m</td>
+          <td style="text-align:left !important;">芝</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">★★★★★ 現代新星</span></td>
+          <td style="text-align:left !important; line-height:1.5;">2026 最新經典熱門！北天十字，クラシック有力候補。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <div class="callout callout-gold" style="margin-bottom:16px;">
 <i class="fa-solid fa-calendar-check" style="font-size:1.2rem; color:var(--accent-gold);"></i>
 <div>
@@ -13016,6 +13146,100 @@ button.chip-btn.active {
 </div>
 </div>
 <div class="section-body">
+<!-- 悠悠日和：史實名場面・特殊關係性成立條件樹 -->
+<div id="yuruyuru-relations-special" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.65); border:1px solid rgba(245,158,11,0.35); border-radius:12px; padding:16px 18px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+    <div style="font-size:1.02rem; font-weight:800; color:#fbbf24; display:flex; align-items:center; gap:8px;">
+      <span>📖 悠悠日和考據：史實名場面・特殊關係性成立條件樹全圖鑑</span>
+      <span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:800;">2026核心</span>
+    </div>
+    <div style="font-size:0.78rem; color:#94a3b8;">10組傳奇宿命名場面 ＋ 雙向爆發力增益</div>
+  </div>
+  <div class="scrollable-table-box table-responsive" style="max-height:480px !important; overflow-y:auto !important; margin-bottom:14px;">
+    <table class="data-table" style="min-width:1050px; width:100%;">
+      <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+        <tr>
+          <th class="sortable-th" style="width:160px; text-align:left !important;">特殊關係 (日/中) ⇅</th>
+          <th class="sortable-th" style="min-width:240px; text-align:left !important;">對象名駒 (日/中並行) ⇅</th>
+          <th style="min-width:360px; text-align:left !important;">成立契機與史實名場面條件</th>
+          <th style="min-width:280px; text-align:left !important;">激鬥能力加成效果</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f59e0b;">竜虎のマッチレース</strong><br><span style="font-size:0.8rem; color:#94a3b8;">龍虎名勝負</span></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('ナリタブライアン')">ナリタブライアン (成田白仁)</a><br>× <a class="horse-link" onclick="openNativeHorseDossier('マヤノトップガン')">マヤノトップガン (摩耶重砲)</a></td>
+          <td style="text-align:left !important; white-space:normal !important; line-height:1.6;">1996年阪神大賞典（G2），兩馬直道並排鼻差死鬥，成田白仁奪冠第1著、摩耶重砲獲第2著，直接觸發強敵之終極名場面！</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:bold;">同場激戰時雙方爆發力大幅激增，勝負根性與精神力全滿格補正！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f59e0b;">元祖三強</strong><br><span style="font-size:0.8rem; color:#94a3b8;">元祖三強</span></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('マーチス')">マーチス (進行曲)</a><br>× <a class="horse-link" onclick="openNativeHorseDossier('タケシバオー')">タケシバオー (竹芝王)</a><br>× <a class="horse-link" onclick="openNativeHorseDossier('アサカオー')">アサカオー (朝香王)</a></td>
+          <td style="text-align:left !important; white-space:normal !important; line-height:1.6;">1968年皐月賞，三匹名駒同時包辦前 3 著以內，達成史上最傳奇的三強會師！</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:bold;">三馬同時出走經典三冠賽事時，三方均獲得全能力補正與激鬥鬥志增益！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f59e0b;">四つ脚同士の宿敵</strong><br><span style="font-size:0.8rem; color:#94a3b8;">四蹄宿敵之決戰</span></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('タケホープ')">タケホープ (竹希望)</a><br>× <a class="horse-link" onclick="openNativeHorseDossier('ハイセイコー')">ハイセイコー (喜高)</a></td>
+          <td style="text-align:left !important; white-space:normal !important; line-height:1.6;">1973年菊花賞，德比馬竹希望力壓皐月賞馬喜高奪冠，歷史宿敵關係正式確立！</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:bold;">長距離中長途中兩馬正面交鋒時，瞬發力與勝負根性發揮至 120% 極限！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f59e0b;">ＴＴＧ</strong><br><span style="font-size:0.8rem; color:#94a3b8;">TTG 傳奇三雄</span></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('テンポイント')">テンポイント (十點)</a><br>× <a class="horse-link" onclick="openNativeHorseDossier('トウショウボーイ')">トウショウボーイ (東商小子)</a><br>× <a class="horse-link" onclick="openNativeHorseDossier('グリーングラス')">グリーングラス (青草城)</a></td>
+          <td style="text-align:left !important; white-space:normal !important; line-height:1.6;">有馬紀念中，十點或東商小子奪冠，且青草城亦在同場出走（1977年名勝負重現）！</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:bold;">三雄同台出賽時，現場熱潮直接拉滿至『爆發熱潮』，所有出走馬疲勞減半且人氣大幅狂飆！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f59e0b;">平成三強の激闘</strong><br><span style="font-size:0.8rem; color:#94a3b8;">平成三強之激鬥</span></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('オグリキャップ')">オグリキャップ (小栗帽)</a><br>× <a class="horse-link" onclick="openNativeHorseDossier('スーパークリーク')">スーパークリーク (超級小溪)</a><br>× <a class="horse-link" onclick="openNativeHorseDossier('イナリワン')">イナリワン (稻荷一)</a></td>
+          <td style="text-align:left !important; white-space:normal !important; line-height:1.6;">天皇賞・秋或有馬紀念中，三馬中任兩匹包辦冠亞軍且第三匹進入前5著名次！</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:bold;">直接對決時獲得『世代霸者』狀態，即使狀態不佳（普通）亦可強制發揮絕好調水準！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f59e0b;">ＢＮＷ三冠鼎立</strong><br><span style="font-size:0.8rem; color:#94a3b8;">BNW 三冠鼎立</span></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('ビワハヤヒデ')">ビワハヤヒデ (琵琶晨光)</a><br>× <a class="horse-link" onclick="openNativeHorseDossier('ナリタタイシン')">ナリタタイシン (成田大進)</a><br>× <a class="horse-link" onclick="openNativeHorseDossier('ウイニングチケット')">ウイニングチケット (勝利獎券)</a></td>
+          <td style="text-align:left !important; white-space:normal !important; line-height:1.6;">1993年クラシック三冠（皐月賞・德比・菊花賞）中，三馬分別各奪一冠！</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:bold;">三馬均覺醒『世代頂峰』羈絆，引退作為種公馬/繁殖牝馬時，產駒初始能力 SP/根性 保底 B+！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f59e0b;">世紀末覇王と宿敵たち</strong><br><span style="font-size:0.8rem; color:#94a3b8;">世紀末霸王與永遠宿敵</span></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('テイエムオペラオー')">テイエムオペラオー (好歌劇)</a><br>× <a class="horse-link" onclick="openNativeHorseDossier('メイショウドトウ')">メイショウドトウ (名將戶仁)</a></td>
+          <td style="text-align:left !important; white-space:normal !important; line-height:1.6;">連續在 3 場以上之古馬 G1（如寶塚紀念、天皇賞秋、日本盃、有馬紀念）中包辦冠亞軍！</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:bold;">好歌劇獲得『無敵連霸』氣場，名將戶仁在挑戰其他賽事時自動獲得鬥志 S 補償！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f59e0b;">英雄と不屈の刺客</strong><br><span style="font-size:0.8rem; color:#94a3b8;">英雄與不屈的刺客</span></td>
+          <td style="text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('ディープインパクト')">ディープインパクト (大震撼)</a><br>× <a class="horse-link" onclick="openNativeHorseDossier('ハーツクライ')">ハーツクライ (心之昇)</a></td>
+          <td style="text-align:left !important; white-space:normal !important; line-height:1.6;">2005年有馬紀念，心之昇領放戰法擊敗無敗大震撼，達成世紀刺客名場面！</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:bold;">大震撼在後續海外遠征（如凱旋門賞、英王錦標）時適應力全滿；心之昇海外產駒爆發力直接 +3！</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- 關係等級 D 到 S 升級 SOP -->
+  <div style="font-size:0.92rem; font-weight:bold; color:#38bdf8; margin-bottom:8px;">📈 關係性等級從 D 到 S 快速進展 SOP（悠悠日和技巧指南）：</div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
+    <div style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.2); border-radius:8px; padding:10px;">
+      <div style="font-weight:bold; color:#f59e0b; margin-bottom:4px;">D ➔ C（初識與相遇）</div>
+      <div style="font-size:0.82rem; color:#cbd5e1; line-height:1.5;">兩馬在同牧場放牧相鄰（持續 4 週以上），或在同一場重賞中共同出走。</div>
+    </div>
+    <div style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.2); border-radius:8px; padding:10px;">
+      <div style="font-weight:bold; color:#f59e0b; margin-bottom:4px;">C ➔ B（相互意識）</div>
+      <div style="font-size:0.82rem; color:#cbd5e1; line-height:1.5;">在 G1/G2 直接對決且差距在 3 馬位內，或在牧場執行 SP 雙馬合練調教 2 次。</div>
+    </div>
+    <div style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.2); border-radius:8px; padding:10px;">
+      <div style="font-weight:bold; color:#f59e0b; margin-bottom:4px;">B ➔ A（因緣激化）</div>
+      <div style="font-size:0.82rem; color:#cbd5e1; line-height:1.5;">同年度內頂級 G1 交鋒 2 次以上，各自取得至少 1 次勝鞍，開始解鎖專屬特性加成。</div>
+    </div>
+    <div style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.2); border-radius:8px; padding:10px;">
+      <div style="font-weight:bold; color:#f59e0b; margin-bottom:4px;">A ➔ S（宿命羈絆）</div>
+      <div style="font-size:0.82rem; color:#cbd5e1; line-height:1.5;">在有馬紀念、寶塚紀念或經典三冠以頭差/鼻差決出勝負，正式確立終極關係！</div>
+    </div>
+  </div>
+</div>
+
 
 <div class="callout callout-gold" style="margin-bottom:16px;">
 <i class="fa-solid fa-heart-pulse" style="font-size:1.3rem; color:var(--accent-gold);"></i>
@@ -13180,6 +13404,7 @@ button.chip-btn.active {
   <button class="ch31-chip-btn" id="btnStakesTab3" onclick="switchStakesSubTab('stakesTab3')">🏆 3. G1 頂級攻略指南</button>
   <button class="ch31-chip-btn" id="btnStakesTab4" onclick="switchStakesSubTab('stakesTab4')">🏁 4. 競馬場特性庫 (68場 / 136賽道)</button>
   <button class="ch31-chip-btn" id="btnStakesTab5" onclick="switchStakesSubTab('stakesTab5')">⚡ 5. 賽事展開與適應能力庫 (64場)</button>
+  <button class="ch31-chip-btn" id="btnStakesTab6" onclick="switchStakesSubTab('stakesTab6')">🏇 6. JRA 56 賽道攻略與跑法勝率 (悠悠日和大數據)</button>
 </div>
 <!-- 4 大內容容器 -->
 <div class="stakes-subtab-pane" id="stakesTab1">
@@ -26797,6 +27022,49 @@ function filterTab5Racecourses() {
     if (countEl) countEl.innerText = count;
 }
 </script>
+
+<div class="stakes-subtab-pane" id="stakesTab6" style="display:none;">
+  <div style="background:var(--card-bg); border:1px solid rgba(56,189,248,0.3); border-radius:12px; padding:16px; margin-bottom:16px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+      <div>
+        <h4 style="margin:0 0 4px 0; color:#38bdf8; font-size:1.05rem;"><i class="fa-solid fa-chart-pie"></i> JRA 主要 56 賽道實戰勝率與跑法傾向大數據（悠悠日和精確集計）</h4>
+        <p style="margin:0; font-size:0.8rem; color:#94a3b8;">集計 JRA 10 大賽馬場平地戰・4 角位置對應之複勝率與勝率，精準掌握前殘與差追特性</p>
+      </div>
+      <div style="font-size:0.82rem; color:#fbbf24; font-weight:bold;">
+        大原則：4角先頭勝率 23.2% vs 後方待機 1.4% (差距 17 倍)
+      </div>
+    </div>
+    
+    <div class="chip-rail" style="display:flex; gap:8px; overflow-x:auto; margin-bottom:12px; padding-bottom:4px;">
+      <button class="chip-btn active" onclick="filterJraCourses('ALL', this)" style="border-radius:20px !important; padding:4px 12px; font-size:0.78rem;">全部賽道 (56)</button>
+      <button class="chip-btn" onclick="filterJraCourses('芝', this)" style="border-radius:20px !important; padding:4px 12px; font-size:0.78rem;">🌱 芝 (草地賽道)</button>
+      <button class="chip-btn" onclick="filterJraCourses('ダート', this)" style="border-radius:20px !important; padding:4px 12px; font-size:0.78rem;">🏜️ ダート (泥地賽道)</button>
+      <button class="chip-btn" onclick="filterJraCourses('前殘', this)" style="border-radius:20px !important; padding:4px 12px; font-size:0.78rem;">⚡ 逃先行極有利 TOP</button>
+      <button class="chip-btn" onclick="filterJraCourses('差し', this)" style="border-radius:20px !important; padding:4px 12px; font-size:0.78rem;">🏹 差追強勢 TOP</button>
+    </div>
+    
+    <div class="scrollable-table-box table-responsive" style="max-height:560px !important; overflow-y:auto !important;">
+      <table class="data-table" id="jraCoursesTable" style="min-width:1180px; width:100%;">
+        <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+          <tr>
+            <th class="sortable-th" onclick="sortJraCourses('rank')" style="width:60px; text-align:left !important;">排名 ⇅</th>
+            <th class="sortable-th" onclick="sortJraCourses('course')" style="min-width:170px; text-align:left !important;">賽馬場與賽道 ⇅</th>
+            <th class="sortable-th" onclick="sortJraCourses('type')" style="width:70px; text-align:left !important;">類別 ⇅</th>
+            <th class="sortable-th" onclick="sortJraCourses('escape_place_rate')" style="width:110px; text-align:left !important;">逃馬複勝率 ⇅</th>
+            <th class="sortable-th" onclick="sortJraCourses('escape_win_rate')" style="width:100px; text-align:left !important;">逃馬勝率 ⇅</th>
+            <th style="min-width:130px; text-align:left !important;">前殘有利度</th>
+            <th style="min-width:140px; text-align:left !important;">最佳推薦跑法</th>
+            <th style="min-width:130px; text-align:left !important;">內外檔偏差</th>
+            <th style="min-width:360px; text-align:left !important;">賽道地形特徵與戰略關鍵</th>
+          </tr>
+        </thead>
+        <tbody id="jraCoursesTableBody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 <div class="stakes-subtab-pane" id="stakesTab5" style="display:none;">
 <!-- 導言與戰略速覽卡片 -->
 <div style="background:linear-gradient(135deg, rgba(6,182,212,0.1), rgba(16,185,129,0.1)); border:1px solid rgba(6,182,212,0.3); border-radius:12px; padding:14px 16px; margin-bottom:16px;">
@@ -29802,6 +30070,83 @@ function filterTab5Racecourses() {
 <div class="section-title"><i class="fa-solid fa-warehouse"></i> 第 36 章：牧場設施升級與美歐海外分場規劃</div>
 </div>
 <div class="section-body">
+<!-- 悠悠日和：牧場設施建設性價比優先級與三大佈局 -->
+<div id="yuruyuru-facilities-guide" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.65); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:16px 18px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+    <div style="font-size:1.02rem; font-weight:800; color:#38bdf8; display:flex; align-items:center; gap:8px;">
+      <span>🏰 悠悠日和精選：牧場設施建設優先級與黃金三大流派推薦配置</span>
+      <span class="badge" style="background:#0284c7; color:#fff; font-weight:bold;">最強馬基礎</span>
+    </div>
+    <div style="font-size:0.78rem; color:#94a3b8;">性價比優先級評級 ＋ 三大流派佈局</div>
+  </div>
+  <div class="scrollable-table-box table-responsive" style="max-height:420px !important; overflow-y:auto !important; margin-bottom:14px;">
+    <table class="data-table" style="min-width:980px; width:100%;">
+      <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+        <tr>
+          <th style="min-width:200px; text-align:left !important;">設施名稱 (日/中)</th>
+          <th style="width:160px; text-align:left !important;">建設優先級評級</th>
+          <th style="min-width:480px; text-align:left !important;">核心戰略效益與悠悠日和評語</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">坂路コース・トラックコース</strong><br><span style="font-size:0.8rem; color:#94a3b8;">斜坡跑道 / 環形跑道</span></td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">最優先 ★★★★★</span></td>
+          <td style="text-align:left !important; line-height:1.6;">直接提高入廄前幼駒與養成馬的 SP 速度、瞬發力與體力，是培養 G1 級怪物的絕對基石！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">種牡馬繋養施設</strong><br><span style="font-size:0.8rem; color:#94a3b8;">種公馬繋養設施</span></td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">最優先 ★★★★★</span></td>
+          <td style="text-align:left !important; line-height:1.6;">擴建至最大可繋養高達 10 匹自定義名種馬，徹底免除配種權限制與天價配種費，自產體系的核心。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">集団馬房・幼駒育成施設</strong><br><span style="font-size:0.8rem; color:#94a3b8;">集體馬房 / 幼駒育成設施</span></td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">最優先 ★★★★★</span></td>
+          <td style="text-align:left !important; line-height:1.6;">大幅加快全體幼駒的成長度累積，提升早熟度並提早顯現素質，是兩歲 G1 搶錢的關鍵。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">花園・サイロ</strong><br><span style="font-size:0.8rem; color:#94a3b8;">花園 / 筒倉 (飼料儲備)</span></td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:bold;">優先高 ★★★★☆</span></td>
+          <td style="text-align:left !important; line-height:1.6;">提高幼駒健康、賢度與毛色光澤，減少受傷概率；筒倉可提升整體飼料品質，加快母馬產後恢復。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">温泉施設</strong><br><span style="font-size:0.8rem; color:#94a3b8;">溫泉設施</span></td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:bold;">優先高 ★★★★☆</span></td>
+          <td style="text-align:left !important; line-height:1.6;">大幅縮短賽駒放牧時的疲勞恢復週期（4週縮至2週），賽駒可頻繁出戰密集賽程賺取巨額獎金。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">活力増強施設 (2026新)</strong><br><span style="font-size:0.8rem; color:#94a3b8;">繁殖牝馬活力增強設施</span></td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:bold;">優先高 ★★★★☆</span></td>
+          <td style="text-align:left !important; line-height:1.6;">2026 必建新設施！提升老齡繁殖母馬受胎率，並提供爆發力遺傳活性化加成。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">観光施設・クラブハウス</strong><br><span style="font-size:0.8rem; color:#94a3b8;">觀光設施 / 俱樂部會所</span></td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#64748b; color:#fff;">普通中 ★★★☆☆</span></td>
+          <td style="text-align:left !important; line-height:1.6;">每月穩定貢獻門票與觀光收益，適合開局序盤缺錢時補貼牧場日常維護費用，後期資金充裕可拆除替換。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
+    <div style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.2); border-radius:8px; padding:12px;">
+      <div style="font-weight:bold; color:#38bdf8; margin-bottom:6px;">① 終極競走馬育成型（戰力最大化）</div>
+      <div style="font-size:0.82rem; color:#cbd5e1; line-height:1.6; margin-bottom:6px;">以制霸凱旋門賞、日本盃與經典三冠為目標，主力空間全部分配給調教體能。</div>
+      <div style="font-size:0.78rem; color:#f59e0b; font-weight:bold;">配置：坂路(最大) ＋ 環形跑道(最大) ＋ 逍遙馬道 ＋ 溫泉 ＋ 幼駒育成設施 ＋ 醫療設施</div>
+    </div>
+    <div style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.2); border-radius:8px; padding:12px;">
+      <div style="font-weight:bold; color:#38bdf8; margin-bottom:6px;">② 帝國血統繁育大亨型（繁育最大化）</div>
+      <div style="font-size:0.82rem; color:#cbd5e1; line-height:1.6; margin-bottom:6px;">以自製系統確立、維持龐大母系王國為目標，主力空間分配給種馬與母馬。</div>
+      <div style="font-size:0.78rem; color:#f59e0b; font-weight:bold;">配置：種牡馬繋養(最大) ＋ 活力增強設施 ＋ 集團馬房 ＋ 花園 ＋ 筒倉 ＋ 獸醫設施</div>
+    </div>
+    <div style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.2); border-radius:8px; padding:12px;">
+      <div style="font-weight:bold; color:#38bdf8; margin-bottom:6px;">③ 序盤經濟平衡型（開局拓荒首選）</div>
+      <div style="font-size:0.82rem; color:#cbd5e1; line-height:1.6; margin-bottom:6px;">適合新劇本前 5 年，在資金有限的情況下兼顧造馬與穩定現金流。</div>
+      <div style="font-size:0.78rem; color:#f59e0b; font-weight:bold;">配置：坂路(1級) ＋ 觀光設施 ＋ 基本馬房 ＋ 筒倉 ＋ 溫泉(1級)</div>
+    </div>
+  </div>
+</div>
+
 <div class="callout callout-gold">
 <i class="fa-solid fa-building-circle-check" style="font-size:1.2rem; color:var(--accent-gold);"></i>
 <div>
@@ -30349,6 +30694,180 @@ function filterTab5Racecourses() {
 <div class="section-title"><i class="fa-solid fa-user-tie"></i> 第 37 章：騎手・調教師・牧場長 18 大人物技能全書</div>
 </div>
 <div class="section-body">
+<!-- 悠悠日和：年代別神級調教師與王牌騎手矩陣 -->
+<div id="yuruyuru-personnel-guide" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.65); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:16px 18px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+    <div style="font-size:1.02rem; font-weight:800; color:#38bdf8; display:flex; align-items:center; gap:8px;">
+      <span>🏇 悠悠日和名將譜：年代別神級調教師 ＆ 王牌騎手推薦矩陣</span>
+      <span class="badge" style="background:#0284c7; color:#fff; font-weight:bold;">名伯樂</span>
+    </div>
+    <div style="font-size:0.78rem; color:#94a3b8;">1970年代～現代全劇本首選名將</div>
+  </div>
+  
+  <div style="font-weight:bold; color:#f59e0b; margin-bottom:8px;">👑 年代別神級調教師推薦清單：</div>
+  <div class="scrollable-table-box table-responsive" style="max-height:360px !important; overflow-y:auto !important; margin-bottom:16px;">
+    <table class="data-table" style="min-width:920px; width:100%;">
+      <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+        <tr>
+          <th style="width:110px; text-align:left !important;">年代</th>
+          <th style="min-width:160px; text-align:left !important;">姓名 (日/中)</th>
+          <th style="width:90px; text-align:left !important;">所屬</th>
+          <th style="width:140px; text-align:left !important;">得意路線</th>
+          <th style="width:90px; text-align:left !important;">成長力</th>
+          <th style="min-width:320px; text-align:left !important;">戰略評語與代表名駒</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:left !important;">1970年代</td>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">稲葉幸夫</strong> (稻葉幸夫)</td>
+          <td style="text-align:left !important;">美浦</td>
+          <td style="text-align:left !important;">芝・長距離</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">神級</span></td>
+          <td style="text-align:left !important; line-height:1.5;">70年代開局最強名伯樂，長距離耐力調教特化，培育無數名駒。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">1970年代</td>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">大久保正陽</strong> (大久保正陽)</td>
+          <td style="text-align:left !important;">栗東</td>
+          <td style="text-align:left !important;">萬能・クラシック</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:bold;">超高</span></td>
+          <td style="text-align:left !important; line-height:1.5;">成田白仁、目白善信之恩師，極度擅長培養大舞台勝負師。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">1980年代</td>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">池江泰郎</strong> (池江泰郎)</td>
+          <td style="text-align:left !important;">栗東</td>
+          <td style="text-align:left !important;">芝・王道中長途</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">神級</span></td>
+          <td style="text-align:left !important; line-height:1.5;">大震撼、目白麥昆傳奇練馬師，勝負根性與瞬發力養成全日本頂級。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">1980年代</td>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">伊藤雄二</strong> (伊藤雄二)</td>
+          <td style="text-align:left !important;">栗東</td>
+          <td style="text-align:left !important;">牝馬・マイル</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">神級</span></td>
+          <td style="text-align:left !important; line-height:1.5;">『牝馬名門』締造者，愛麗數碼之師，雌馬能力開發全日本第一。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">1990年代</td>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">藤沢和雄</strong> (藤澤和雄)</td>
+          <td style="text-align:left !important;">美浦</td>
+          <td style="text-align:left !important;">芝・短途/一哩</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">神級</span></td>
+          <td style="text-align:left !important; line-height:1.5;">日本現代調教革命先驅，馬體疲勞控管完美，賽駒壽命極長。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">1990年代</td>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">角居勝彦</strong> (角居勝彥)</td>
+          <td style="text-align:left !important;">栗東</td>
+          <td style="text-align:left !important;">海外遠征・王道</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">神級</span></td>
+          <td style="text-align:left !important; line-height:1.5;">伏特加之師，海外 G1 遠征大師，遠征 DEBUFF 自動減輕。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">2000年代</td>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">池江泰寿</strong> (池江泰壽)</td>
+          <td style="text-align:left !important;">栗東</td>
+          <td style="text-align:left !important;">芝・經典中長途</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">神級</span></td>
+          <td style="text-align:left !important; line-height:1.5;">黃金巨匠之師，傳承父業，爆發力與長途大賽統治力極強。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">2010年代～</td>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">矢作芳人</strong> (矢作芳人)</td>
+          <td style="text-align:left !important;">栗東</td>
+          <td style="text-align:left !important;">海外遠征・泥地</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">神級</span></td>
+          <td style="text-align:left !important; line-height:1.5;">『世界矢作』！出戰美國育馬者盃、中東杜拜與沙特盃之絕對首選！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">2010年代～</td>
+          <td style="text-align:left !important;"><strong style="color:#fbbf24;">木村哲也</strong> (木村哲也)</td>
+          <td style="text-align:left !important;">美浦</td>
+          <td style="text-align:left !important;">芝・頂級天王</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:bold;">超高</span></td>
+          <td style="text-align:left !important; line-height:1.5;">春秋分（Equinox）練馬師，現代關東第一旗手，SP維持力頂尖。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div style="font-weight:bold; color:#f59e0b; margin-bottom:8px;">🏇 年代別王牌騎手推薦清單：</div>
+  <div class="scrollable-table-box table-responsive" style="max-height:360px !important; overflow-y:auto !important;">
+    <table class="data-table" style="min-width:920px; width:100%;">
+      <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+        <tr>
+          <th style="width:110px; text-align:left !important;">年代</th>
+          <th style="min-width:160px; text-align:left !important;">姓名 (日/中)</th>
+          <th style="min-width:180px; text-align:left !important;">特性標籤</th>
+          <th style="width:80px; text-align:left !important;">評級</th>
+          <th style="min-width:340px; text-align:left !important;">戰略評語與主戰契合度</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:left !important;">1970年代</td>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">福永洋一</strong> (福永洋一)</td>
+          <td style="text-align:left !important;">天馬行空・長打・追込</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">SS</span></td>
+          <td style="text-align:left !important; line-height:1.5;">70年代絕世天才騎師，策騎任何賽駒均能逼出最高 SP 極限！</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">1970年代</td>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">郷原洋行</strong> (鄉原洋行)</td>
+          <td style="text-align:left !important;">剛腕・先行・勝負根性</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:bold;">S</span></td>
+          <td style="text-align:left !important; line-height:1.5;">剛腕重砲，直道強推極佳，泥地與重馬場勝率驚人。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">1980年代</td>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">岡部幸雄</strong> (岡部幸雄)</td>
+          <td style="text-align:left !important;">馬優先主義・自在・冷靜</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">SS</span></td>
+          <td style="text-align:left !important; line-height:1.5;">魯鐸象徵專屬主戰！日本殿堂騎師，控速與走位零失誤。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">1980年代</td>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">南井克巳</strong> (南井克巳)</td>
+          <td style="text-align:left !important;">追込・勝負根性・豪腕</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:bold;">S+</span></td>
+          <td style="text-align:left !important; line-height:1.5;">小栗帽、成田白仁主戰，大賽熱血騎師，直道逆轉神話。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">1990年代～</td>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">武豊</strong> (武豐)</td>
+          <td style="text-align:left !important;">天才・逃げ・マイル・王道</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ec4899; color:#fff; font-weight:bold;">SSS</span></td>
+          <td style="text-align:left !important; line-height:1.5;">賽馬大亨永遠的看板！逃先騎乘天下第一，大賽節奏掌控神域。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">2000年代～</td>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">福永祐一</strong> (福永祐一)</td>
+          <td style="text-align:left !important;">冷靜・德比制霸・聰慧</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">SS</span></td>
+          <td style="text-align:left !important; line-height:1.5;">三冠騎師（鐵鳥翱天主戰），走位精密，牝馬大賽勝率極高。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">2010年代～</td>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">ルメール (C.Lemaire)</strong> (李慕華)</td>
+          <td style="text-align:left !important;">外道橫掃・連霸・G1之神</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ec4899; color:#fff; font-weight:bold;">SSS</span></td>
+          <td style="text-align:left !important; line-height:1.5;">現代日本賽馬統治者！策騎 G1 實力直接提升半個檔次。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;">2010年代～</td>
+          <td style="text-align:left !important;"><strong style="color:#38bdf8;">川田将雅</strong> (川田將雅)</td>
+          <td style="text-align:left !important;">先行壓制・剛腕・重賞無雙</td>
+          <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">SS</span></td>
+          <td style="text-align:left !important; line-height:1.5;">現代頂級名將，先鋒戰術勝率冠絕全日本，意志堅定不移。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <div class="callout callout-gold" style="margin-bottom:16px;">
 <i class="fa-solid fa-users" style="font-size:1.2rem; color:var(--accent-gold);"></i>
 <div>
@@ -30677,6 +31196,103 @@ function filterTab5Racecourses() {
 <div class="section-title"><i class="fa-solid fa-ring"></i> 第 38 章：知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</div>
 </div>
 <div class="section-body">
+<!-- 悠悠日和：全結婚對象好感攻略與吹里谷芽愛最短結婚SOP -->
+<div id="yuruyuru-marriage-guide" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.65); border:1px solid rgba(244,114,182,0.35); border-radius:12px; padding:16px 18px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+    <div style="font-size:1.02rem; font-weight:800; color:#f472b6; display:flex; align-items:center; gap:8px;">
+      <span>💍 悠悠日和姻緣指南：全結婚對象好感攻略 ＆ 吹里谷芽愛最短結婚 SOP</span>
+      <span class="badge" style="background:#db2777; color:#fff; font-weight:bold;">姻緣全書</span>
+    </div>
+    <div style="font-size:0.78rem; color:#94a3b8;">知名秘書與知人角色達成條件</div>
+  </div>
+  
+  <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(244,114,182,0.3); border-radius:10px; padding:12px 16px; margin-bottom:14px;">
+    <div style="font-weight:bold; color:#f472b6; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+      <i class="fa-solid fa-heart"></i> 吹里谷芽愛（ふきやり めあ）最短結婚 5 步走 SOP：
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:8px;">
+      <div style="background:rgba(15,23,42,0.6); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+        <strong style="color:#fbcfe8; font-size:0.84rem;">第 1 步：開局就任</strong>
+        <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">開局直接選拔吹里谷芽愛作為專屬秘書，取得初始好感。</div>
+      </div>
+      <div style="background:rgba(15,23,42,0.6); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+        <strong style="color:#fbcfe8; font-size:0.84rem;">第 2 步：幼駒視察</strong>
+        <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">每年 4 月視察幼駒，由芽愛為優質幼駒命名，好感每次 +10。</div>
+      </div>
+      <div style="background:rgba(15,23,42,0.6); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+        <strong style="color:#fbcfe8; font-size:0.84rem;">第 3 步：G1 連霸</strong>
+        <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">在芽愛陪同下奪得日本德比、有馬紀念或凱旋門賞冠軍。</div>
+      </div>
+      <div style="background:rgba(15,23,42,0.6); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+        <strong style="color:#fbcfe8; font-size:0.84rem;">第 4 步：牧場達標</strong>
+        <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">基本設施擴建至 2 級以上，累計賺取獎金超過 30 億日圓。</div>
+      </div>
+      <div style="background:rgba(15,23,42,0.6); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
+        <strong style="color:#fbcfe8; font-size:0.84rem;">第 5 步：元旦求婚</strong>
+        <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">好感度達 100 滿格，於 1 月 1 週新年事件求婚結為夫妻！</div>
+      </div>
+    </div>
+  </div>
+  
+  <div style="font-weight:bold; color:#fbbf24; margin-bottom:8px;">全結婚對象詳細好感度提升攻略大表：</div>
+  <div class="scrollable-table-box table-responsive" style="max-height:360px !important; overflow-y:auto !important;">
+    <table class="data-table" style="min-width:920px; width:100%;">
+      <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+        <tr>
+          <th style="width:160px; text-align:left !important;">角色姓名 (日/中)</th>
+          <th style="width:110px; text-align:left !important;">身分類型</th>
+          <th style="min-width:320px; text-align:left !important;">好感度提升事件與條件</th>
+          <th style="min-width:320px; text-align:left !important;">結婚條件與子孫特性加成</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f472b6;">逢坂やよい</strong> (逢坂彌生)</td>
+          <td style="text-align:left !important;">預設秘書</td>
+          <td style="text-align:left !important; line-height:1.5;">擔任秘書期間多參與牧場建設與重賞奪冠，定期視察牧場。</td>
+          <td style="text-align:left !important; line-height:1.5;">擔任秘書滿 2 年以上，好感度 100，年初求婚；子孫具備高經營度。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f472b6;">志麻倉夕映</strong> (志麻倉夕映)</td>
+          <td style="text-align:left !important;">傳統秘書</td>
+          <td style="text-align:left !important; line-height:1.5;">帶領自家產駒贏得三冠賽事（皐月賞・德比・菊花賞）。</td>
+          <td style="text-align:left !important; line-height:1.5;">三冠制霸且好感度 100 後於年末觸發；子孫遺傳高體質。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f472b6;">リオンローザ</strong> (莉昂蘿莎)</td>
+          <td style="text-align:left !important;">海外秘書</td>
+          <td style="text-align:left !important; line-height:1.5;">出戰海外 G1 累計獲得 5 勝以上，並開設海外分場。</td>
+          <td style="text-align:left !important; line-height:1.5;">海外分場滿級且好感滿格；子孫具備天生海外遠征適性。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f472b6;">白鷺七夏</strong> (白鷺七夏)</td>
+          <td style="text-align:left !important;">名門千金</td>
+          <td style="text-align:left !important; line-height:1.5;">與白鷺名門家族建立深厚交情，在俱樂部法人化後招攬會員。</td>
+          <td style="text-align:left !important; line-height:1.5;">俱樂部會員達到一定規模後解鎖；子孫享有人氣加成。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f472b6;">汐見空</strong> (汐見空)</td>
+          <td style="text-align:left !important;">知人女性</td>
+          <td style="text-align:left !important; line-height:1.5;">在夏競馬系列賽（サマーシリーズ）中奪冠獲得注目。</td>
+          <td style="text-align:left !important; line-height:1.5;">夏季系列賽全制霸且友好度 100；子孫擅長小回與轉向。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f472b6;">宝塚舞子</strong> (寶塚舞子)</td>
+          <td style="text-align:left !important;">賽事偶像</td>
+          <td style="text-align:left !important; line-height:1.5;">以自家賽駒奪得寶塚紀念冠軍，並連續在關西重賞取得大勝。</td>
+          <td style="text-align:left !important; line-height:1.5;">寶塚紀念二連霸且好感滿格；子孫自帶高魅力與偶像光環。</td>
+        </tr>
+        <tr>
+          <td style="text-align:left !important;"><strong style="color:#f472b6;">有馬桜子</strong> (有馬櫻子)</td>
+          <td style="text-align:left !important;">名記主播</td>
+          <td style="text-align:left !important; line-height:1.5;">有馬紀念奪冠後受訪，每年競馬歷史事件 Historia 達成多項。</td>
+          <td style="text-align:left !important; line-height:1.5;">達成 10 項以上 Historia 事件且好感滿格求婚；子孫相馬眼頂級。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <div class="callout callout-gold" style="margin-bottom: 20px;">
 <i class="fa-solid fa-heart" style="font-size:1.4rem; color:#ec4899;"></i>
 <div>
@@ -32789,7 +33405,8 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.69"></script>
+<script src="unified_horses_full_db.js?v=v03.70"></script>
+<script src="yuruyuru_guides_db.js?v=v03.70"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
@@ -37834,6 +38451,112 @@ if (document.readyState === 'loading') {
     window.initMasterHorseDb();
 }
 
+
+
+// ==================== 悠悠日和 JRA 56 賽道渲染引擎 ====================
+let currentJraFilter = 'ALL';
+let jraSortKey = 'rank';
+let jraSortAsc = true;
+
+function renderJraCoursesTable() {
+  if (!window.WP10_YURUYURU_DATA || !window.WP10_YURUYURU_DATA.jra56CoursesRankings) return;
+  const tbody = document.getElementById('jraCoursesTableBody');
+  if (!tbody) return;
+  
+  let list = [...window.WP10_YURUYURU_DATA.jra56CoursesRankings];
+  
+  if (currentJraFilter === '芝') {
+    list = list.filter(c => c.type === '芝');
+  } else if (currentJraFilter === 'ダート') {
+    list = list.filter(c => c.type === 'ダート');
+  } else if (currentJraFilter === '前殘') {
+    list = list.filter(c => parseFloat(c.escape_place_rate) >= 60.0);
+  } else if (currentJraFilter === '差し') {
+    list = list.filter(c => c.best_style.includes('差し') || c.best_style.includes('追込') || parseFloat(c.escape_place_rate) < 40.0);
+  }
+  
+  list.sort((a, b) => {
+    let va = a[jraSortKey];
+    let vb = b[jraSortKey];
+    if (jraSortKey === 'escape_place_rate' || jraSortKey === 'escape_win_rate') {
+      va = parseFloat(va) || 0;
+      vb = parseFloat(vb) || 0;
+    }
+    if (typeof va === 'string') {
+      return jraSortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+    }
+    return jraSortAsc ? (va - vb) : (vb - va);
+  });
+  
+  let html = '';
+  list.forEach(item => {
+    const typeBadge = item.type === '芝' ? '<span class="badge" style="background:#22c55e; color:#fff;">芝</span>' : '<span class="badge" style="background:#d97706; color:#fff;">泥地</span>';
+    const rateColor = parseFloat(item.escape_place_rate) >= 60 ? '#ef4444' : (parseFloat(item.escape_place_rate) >= 45 ? '#f59e0b' : '#38bdf8');
+    
+    html += `<tr>
+      <td style="font-weight:bold; text-align:left !important;">#${item.rank}</td>
+      <td style="font-weight:bold; color:#f8fafc; text-align:left !important;">${item.course}</td>
+      <td style="text-align:left !important;">${typeBadge}</td>
+      <td style="font-weight:800; color:${rateColor}; text-align:left !important;">${item.escape_place_rate}</td>
+      <td style="color:#cbd5e1; font-weight:bold; text-align:left !important;">${item.escape_win_rate}</td>
+      <td style="text-align:left !important; font-weight:bold; color:#fbbf24;">${item.lead_fav}</td>
+      <td style="text-align:left !important; color:#38bdf8; font-weight:bold;">${item.best_style}</td>
+      <td style="text-align:left !important; color:#e2e8f0;">${item.bias}</td>
+      <td style="text-align:left !important; font-size:0.83rem; line-height:1.5; white-space:normal !important;">${item.feature}</td>
+    </tr>`;
+  });
+  
+  tbody.innerHTML = html;
+}
+
+function filterJraCourses(filter, btn) {
+  currentJraFilter = filter;
+  if (btn && btn.parentElement) {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  renderJraCoursesTable();
+}
+
+function sortJraCourses(key) {
+  if (jraSortKey === key) {
+    jraSortAsc = !jraSortAsc;
+  } else {
+    jraSortKey = key;
+    jraSortAsc = true;
+  }
+  renderJraCoursesTable();
+}
+
+// Hook into switchStakesSubTab to render tab6
+const originalSwitchStakesSubTab = window.switchStakesSubTab;
+window.switchStakesSubTab = function(tabId) {
+  if (typeof originalSwitchStakesSubTab === 'function') {
+    originalSwitchStakesSubTab(tabId);
+  } else {
+    document.querySelectorAll('.stakes-subtab-pane').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.ch31-chip-btn').forEach(b => b.classList.remove('active'));
+    const target = document.getElementById(tabId);
+    if (target) target.style.display = 'block';
+  }
+  
+  // Custom activate for tab6
+  document.querySelectorAll('.ch31-chip-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('btn' + tabId.charAt(0).toUpperCase() + tabId.slice(1));
+  if (btn) btn.classList.add('active');
+  
+  document.querySelectorAll('.stakes-subtab-pane').forEach(el => el.style.display = 'none');
+  const targetPane = document.getElementById(tabId);
+  if (targetPane) targetPane.style.display = 'block';
+  
+  if (tabId === 'stakesTab6') {
+    renderJraCoursesTable();
+  }
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (typeof renderJraCoursesTable === 'function') renderJraCoursesTable();
+});
 
 </script>
 
