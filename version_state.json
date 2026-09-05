@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.66",
+  "current_version": "v03.67",
   "history": [
     {
       "version": "v01.01",
@@ -1365,6 +1365,11 @@
       "version": "v03.66",
       "timestamp": "2026-09-05",
       "changes": "修復馬匹詳細檔案彈窗三大實戰導航跳轉按鈕（史實調教、配合理論、三冠路線）：精準對齊大百科支柱與章節錨點(pillar-train/sec-historical-train, pillar-breed/sec-master-table, pillar-races/sec-triple-crowns)，注入jumpToSection跨支柱平滑定位引擎並杜絕空白頁面"
+    },
+    {
+      "version": "v03.67",
+      "timestamp": "2026-09-05",
+      "changes": "全面升級浮動按鈕「⇄ 返回前一定位」雙向歷史堆疊：跨章節導航時自動保存當前馬匹物件，點擊浮框返回按鈕精確切回原始支柱與滾動座標，並平滑重新喚醒展開馬匹詳細檔案彈窗(reopenHorseModal)"
     }
   ]
 }
