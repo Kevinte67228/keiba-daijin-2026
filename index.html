@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.67"></script>
-<script src="core_guides_data.js?v=v03.67"></script>
-<script src="yearly_recs_db.js?v=v03.67"></script>
-<script src="horse_subtopics_data.js?v=v03.67"></script>
+<script src="master_lookup_db.js?v=v03.68"></script>
+<script src="core_guides_data.js?v=v03.68"></script>
+<script src="yearly_recs_db.js?v=v03.68"></script>
+<script src="horse_subtopics_data.js?v=v03.68"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2532,7 +2532,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.67</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.68</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 49 大章節)
@@ -31932,7 +31932,7 @@ function filterTab5Racecourses() {
 <div style="margin-bottom:10px;">
 <div style="position:relative;">
 <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:12px;"></i>
-<input id="racehorseSearchInput" oninput="filterRacehorsesTable()" placeholder="搜尋競走馬名 (日/英)、父馬、母馬、特性、馬之個性 (ウマソナ)..." style="width:100%; padding:6px 10px 6px 30px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:6px; color:var(--text-main); font-size:12px;" type="text"/>
+<input id="racehorseSearchInput" oninput="filterRacehorsesTable()" placeholder="搜尋競走馬名 (中/日/英)、父馬、母馬、特性、馬之個性 (ウマソナ)..." style="width:100%; padding:6px 10px 6px 30px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:6px; color:var(--text-main); font-size:12px;" type="text"/>
 </div>
 </div>
 <!-- 第一排：賽駒地域切換軌道 (每一排晶片大小嚴格統一 108px) -->
@@ -31966,7 +31966,7 @@ function filterTab5Racecourses() {
 <table class="data-table" id="racehorsesFullTable" style="min-width:1700px;">
 <thead>
 <tr>
-<th class="sortable-th" onclick="sortRacehorseTable('name_jp')" style="min-width:160px; text-align:left !important;">日文馬名 ⇅</th>
+<th class="sortable-th" onclick="sortRacehorseTable('name_jp')" style="min-width:170px; text-align:left !important;">中文 / 日文馬名 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('name_en')" style="min-width:150px; text-align:left !important;">英文馬名 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('amulet')" style="width:70px; text-align:left !important;">馬札 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('birth_year')" style="width:80px; text-align:left !important;">生年 ⇅</th>
@@ -32783,7 +32783,7 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.67"></script>
+<script src="unified_horses_full_db.js?v=v03.68"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
@@ -33206,7 +33206,12 @@ function renderBreedingTable() {
     const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;">♀ 牝</strong>' : '<strong style="color:#38bdf8;">♂ 牡</strong>';
     
     html += `<tr>
-      <td style="font-weight:700; text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('${h.name_jp}')">${h.name_jp}</a></td>
+      <td style="font-weight:700; text-align:left !important;">
+        <div style="display:flex; flex-direction:column; gap:2px; line-height:1.35;">
+          ${(h.name_zh || h.zh_name) ? `<span style="color:#fbbf24; font-weight:800; font-size:0.92rem; letter-spacing:0.02em;">${h.name_zh || h.zh_name}</span>` : ''}
+          <a class="horse-link" onclick="openNativeHorseDossier('${h.name_jp}')" style="font-size:0.84rem; color:#cbd5e1;">${h.name_jp}</a>
+        </div>
+      </td>
       <td style="color:var(--text-muted); font-size:11px; text-align:left !important;">${h.name_en}</td>
       <td style="text-align:left !important;">${amBadge}</td>
       <td style="font-weight:700; color:var(--primary); text-align:left !important;">${h.birth_year}</td>
@@ -33255,6 +33260,10 @@ let racehorseSortKey = 'birth_year';
 let racehorseSortAsc = true;
 
 const racehorseAmuletMap = { '虹': 6, '金': 5, '銀': 4, '銅': 3, '緑': 2, '無': 1 };
+
+function filterRacehorsesTable() {
+  renderRacehorsesTable();
+}
 
 function initRacehorsesTable() {
   if (!window.WP10_RACEHORSES_FULL_DATA) return;
@@ -33335,6 +33344,8 @@ function renderRacehorsesTable() {
   }
   if (query) {
     list = list.filter(h =>
+      (h.name_zh && h.name_zh.toLowerCase().includes(query)) ||
+      (h.zh_name && h.zh_name.toLowerCase().includes(query)) ||
       h.name_jp.toLowerCase().includes(query) ||
       (h.name_en && h.name_en.toLowerCase().includes(query)) ||
       h.sire.toLowerCase().includes(query) ||
@@ -33390,7 +33401,12 @@ function renderRacehorsesTable() {
     const sexBadge = h.sex.includes('牝') ? '<strong style="color:#f472b6;">♀ 牝</strong>' : '<strong style="color:#38bdf8;">♂ 牡</strong>';
     
     html += `<tr>
-      <td style="font-weight:700; text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('${h.name_jp}')">${h.name_jp}</a></td>
+      <td style="font-weight:700; text-align:left !important;">
+        <div style="display:flex; flex-direction:column; gap:2px; line-height:1.35;">
+          ${(h.name_zh || h.zh_name) ? `<span style="color:#fbbf24; font-weight:800; font-size:0.92rem; letter-spacing:0.02em;">${h.name_zh || h.zh_name}</span>` : ''}
+          <a class="horse-link" onclick="openNativeHorseDossier('${h.name_jp}')" style="font-size:0.84rem; color:#cbd5e1;">${h.name_jp}</a>
+        </div>
+      </td>
       <td style="color:var(--text-muted); font-size:11px; text-align:left !important;">${h.name_en || '-'}</td>
       <td style="text-align:left !important;">${amBadge}</td>
       <td style="font-weight:700; color:var(--primary); text-align:left !important;">${h.birth_year}</td>
@@ -35852,9 +35868,11 @@ function renderTable() {
                 }
 
                 if (searchVal) {
-                    const name = (item.name || "").toLowerCase();
+                    const name = (item.name || item.name_jp || "").toLowerCase();
+                    const zh = (item.name_zh || item.zh_name || "").toLowerCase();
+                    const en = (item.en_name || item.name_en || "").toLowerCase();
                     const sire = (item.sire || "").toLowerCase();
-                    if (!name.includes(searchVal) && !sire.includes(searchVal)) return false;
+                    if (!name.includes(searchVal) && !zh.includes(searchVal) && !en.includes(searchVal) && !sire.includes(searchVal)) return false;
                 }
                 return true;
             });
@@ -36009,7 +36027,12 @@ function renderTable() {
 
                 tr.innerHTML = `
                     <td style="text-align:center;">${item.year || "-"}</td>
-                    <td><a class="horse-link" onclick="openModalByIndex(${idx})">${item.name || "-"}</a></td>
+                    <td>
+                        <a class="horse-link" onclick="openModalByIndex(${idx})" style="display:flex; flex-direction:column; line-height:1.35;">
+                            ${item.name_zh || item.zh_name ? `<span style="color:#fbbf24; font-weight:bold; font-size:0.92rem;">${item.name_zh || item.zh_name}</span>` : ''}
+                            <span style="font-size:0.82rem; color:#e2e8f0;">${item.name || item.name_jp || "-"}</span>
+                        </a>
+                    </td>
                     <td style="text-align:center;">${renderTicketBadge(item.ticket)}</td>
                     <td style="text-align:center;">${sexVal}</td>
                     <td style="text-align:center; font-weight:bold; color:var(--accent-color);">${spVal}</td>
@@ -37054,8 +37077,11 @@ function getBilingualSireLine(lineName) {
                     <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
                         <td style="text-align:left;">${tBadge}</td>
                         <td style="text-align:left;">
-                            <a class="horse-link" onclick="openNativeHorseDossier('${horseName.replace(/'/g, "\\'")}')" style="font-weight:bold; color:var(--accent-gold); cursor:pointer;">${horseName}</a>
-                            ${item.en_name ? `<br/><span style="font-size:0.75rem; color:#94a3b8;">${item.en_name}</span>` : ''}
+                            <a class="horse-link" onclick="openNativeHorseDossier('${horseName.replace(/'/g, "\\'")}')" style="font-weight:bold; color:var(--accent-gold); cursor:pointer; display:flex; flex-direction:column; line-height:1.35;">
+                                ${item.name_zh || item.zh_name ? `<span style="color:#fbbf24; font-size:0.92rem; font-weight:bold;">${item.name_zh || item.zh_name}</span>` : ''}
+                                <span style="color:#f8fafc; font-size:0.82rem;">${horseName}</span>
+                            </a>
+                            ${item.en_name ? `<span style="font-size:0.75rem; color:#94a3b8;">${item.en_name}</span>` : ''}
                         </td>
                         <td style="text-align:left;">${item.year || '-'}</td>
                         <td style="text-align:left;">${sexHtml}</td>
@@ -37138,6 +37164,7 @@ function getBilingualSireLine(lineName) {
                 window._currentModalHorse = item;
 
                 const horseName = item.name || item.name_jp || "未命名";
+                const zhName = item.name_zh || item.zh_name || "";
                 const enName = item.en_name || item.name_en || "";
                 const birthYear = item.year || item.birth_year || '史實';
                 const ticketVal = item.ticket || item.amulet || '金';
@@ -37148,8 +37175,9 @@ function getBilingualSireLine(lineName) {
 
                 const mName = document.getElementById("mName");
                 if (mName) {
+                    const zhText = zhName ? `<span style="color:#fbbf24; font-weight:800; font-size:1.28rem; margin-right:8px; text-shadow:0 0 10px rgba(245,158,11,0.4);">${zhName}</span>` : "";
                     const enText = enName ? ` <span style="font-size:0.92rem; color:#93c5fd; font-weight:normal;">(${enName})</span>` : "";
-                    mName.innerHTML = `${horseName}${enText} <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal;">(${birthYear}年產)</span>`;
+                    mName.innerHTML = `${zhText}<span style="font-size:1.05rem; color:#f8fafc; font-weight:bold;">${horseName}</span>${enText} <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal;">(${birthYear}年產)</span>`;
                 }
                 const mTicket = document.getElementById("mTicket");
                 if (mTicket) mTicket.innerHTML = renderTicketBadge(ticketVal);
@@ -37407,13 +37435,26 @@ function getBilingualSireLine(lineName) {
             // 1. 第一優先：檢索大一統馬匹總庫 (16,757 匹全史實馬)
             const allHorses = window.WP10_UNIFIED_HORSES_DATA || (dbData && dbData.cat1) || (window.WP10_HORSES_DB || []);
 
+            const qVariants = [
+                cleanQuery,
+                cleanQuery.replace(/\u61be/g, '\u64bc'), // 憾 -> 撼
+                cleanQuery.replace(/\u64bc/g, '\u61be')  // 撼 -> 憾
+            ];
+
             if (allHorses.length > 0) {
                 if (cleanQuery) {
                     horse = allHorses.find(h => {
                         const n = (h.name || h.name_jp || '').toLowerCase();
+                        const zh = (h.name_zh || h.zh_name || '').toLowerCase();
                         const en = (h.en_name || h.name_en || '').toLowerCase();
-                        return n === cleanQuery || en === cleanQuery;
+                        return qVariants.includes(n) || qVariants.includes(zh) || qVariants.includes(en);
                     });
+                    if (!horse) {
+                        horse = allHorses.find(h => {
+                            const zh = (h.name_zh || h.zh_name || '').toLowerCase();
+                            return zh && qVariants.some(v => v.length >= 2 && (zh === v || zh.includes(v) || v.includes(zh)));
+                        });
+                    }
                 }
                 if (!horse && insideMatches.length > 0) {
                     for (const p of insideMatches) {
