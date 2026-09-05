@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.75"></script>
-<script src="core_guides_data.js?v=v03.75"></script>
-<script src="yearly_recs_db.js?v=v03.75"></script>
-<script src="horse_subtopics_data.js?v=v03.75"></script>
+<script src="master_lookup_db.js?v=v03.76"></script>
+<script src="core_guides_data.js?v=v03.76"></script>
+<script src="yearly_recs_db.js?v=v03.76"></script>
+<script src="horse_subtopics_data.js?v=v03.76"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2538,10 +2538,10 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.75</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.76</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
-            15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 49 大章節)
+            15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 50 大章節)
         </p>
 
 </div>
@@ -38327,19 +38327,83 @@ function filterTab5Racecourses() {
 </div>
 </div>
 </section>
+
+<section class="section-card" id="sec-era-horses-recs-handbook" style="margin-bottom:18px;">
+  <div class="section-header" style="background: linear-gradient(135deg, rgba(234,179,8,0.15), rgba(15,23,42,0.85)) !important;">
+    <div class="section-title"><i class="fa-solid fa-list-ol"></i> 第 47 章：年代別推薦史實名駒完全名冊 (1967~2023 全 56 大史實年代・496 匹名駒評級與戰略全書)</div>
+  </div>
+  <div class="section-body">
+    <!-- 頂部指引卡片 -->
+    <div class="callout callout-gold" style="margin-bottom:16px;">
+      <i class="fa-solid fa-chess-knight"></i>
+      <div>
+        <strong style="color:var(--gold-color); font-size:1.02rem;">《年代別推薦史實名駒完全指南》 (1967 ~ 2023 跨世紀 56 年代・496 匹史實名駒全收錄)</strong><br/>
+        深度收錄從 1968 年最古劇本可追溯之 <strong>1967 年生</strong> 起，橫跨昭和、平成至令和 <strong>2023 年生</strong> 全 56 大史實年代！<br/>
+        精準剖析各年代大勢背景、經典三冠競爭強度、馬札性價比評級 (虹/金/銀/銅/綠/無)、推薦星級 (◎/◯/▲/△)、成長曲線與最新版本 (2024➔2026) 昇格強化評價。
+      </div>
+    </div>
+
+    <!-- 2026 四大選拔革新說明卡 -->
+    <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(234,179,8,0.3); border-radius:10px; padding:14px 16px; margin-bottom:18px;">
+      <div style="font-weight:bold; color:#fbbf24; font-size:0.92rem; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>《賽馬大亨 10 2026》史實名駒選拔機制四大關鍵革新：</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:10px; font-size:0.82rem; color:#cbd5e1;">
+        <div style="background:rgba(30,41,59,0.7); padding:8px 12px; border-radius:6px; border-left:3px solid #38bdf8;">
+          <strong style="color:#38bdf8;">1. 名馬相関圖與羈絆強化</strong><br>
+          熱門世代（如元祖三強、TTG、平成三強、BNW）名駒具備特殊關係性，競走爆發力與退役繁育加成翻倍。
+        </div>
+        <div style="background:rgba(30,41,59,0.7); padding:8px 12px; border-radius:6px; border-left:3px solid #f59e0b;">
+          <strong style="color:#f59e0b;">2. Drama 因子與長線繁育</strong><br>
+          精選名駒自帶高階歷史因子或 Drama 因子，在作為種牡馬/繁殖牝馬確立系統時能發揮跨世代爆發力。
+        </div>
+        <div style="background:rgba(30,41,59,0.7); padding:8px 12px; border-radius:6px; border-left:3px solid #22c55e;">
+          <strong style="color:#22c55e;">3. 版本昇格與能力再評價</strong><br>
+          最新 2026 版中ドウデュース (Do Deuce) 升格為虹札、ベラジオオペラ (Bellagio Opera) 升格為銀札。
+        </div>
+        <div style="background:rgba(30,41,59,0.7); padding:8px 12px; border-radius:6px; border-left:3px solid #ec4899;">
+          <strong style="color:#ec4899;">4. 最新現役 2021~2023 世代收錄</strong><br>
+          實裝泥地怪物フォーエバーヤング (Forever Young) 與三冠牝馬候補エンブロイダリー等最新新星。
+        </div>
+      </div>
+    </div>
+
+    <!-- 年代選擇膠囊滑動軌道 (符合 GEMINI.md 規範 5: 高級科技流光膠囊軌道) -->
+    <div style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+      <div style="font-weight:bold; color:var(--gold-color); font-size:0.92rem; display:flex; align-items:center; gap:6px;">
+        <i class="fa-solid fa-calendar-days"></i> 請選擇欲查閱之史實出生年份 (1967 ~ 2023)：
+      </div>
+      <div style="font-size:0.78rem; color:#94a3b8;">左右水平滑動切換年代 ｜ 點選立即呈現該世代完整格局與名單</div>
+    </div>
+
+    <div class="chip-rail" id="eraChipRail" style="display:flex; gap:8px; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; align-items:center; box-sizing:border-box; padding:6px 4px 10px 4px !important; margin-bottom:16px;">
+      <!-- JS Dynamic Populated -->
+    </div>
+
+    <!-- 年代詳細內容渲染容器 -->
+    <div id="eraDetailContainer">
+      <div style="padding:30px; text-align:center; color:var(--text-muted); font-size:0.9rem;">
+        <i class="fa-solid fa-spinner fa-spin" style="margin-right:6px;"></i> 正在載入全年代推薦史實馬完全數據庫...
+      </div>
+    </div>
+  </div>
+</section>
+
+
 </div>
 </div>
 </div>
 <!-- ================= 支柱八：名師實戰講堂・線上對戰與系統機能 ================= -->
 <div class="pillar-content" id="pillar-lectures" style="display:none;">
 <div class="pillar-header-card" style="border-left: 5px solid #6366f1 !important; padding: 16px 24px !important; margin-bottom: 20px !important; border-radius: 12px !important; background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(15,23,42,0.88)) !important; box-sizing: border-box !important;">
-<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-graduation-cap" style="color: #6366f1;"></i> 🎓 支柱八：名師實戰講堂・線上對戰與系統機能 (第 47 章 ~ 第 49 章)</h2>
+<h2 style="margin-bottom: 6px !important; display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold-color) !important;"><i class="fa-solid fa-graduation-cap" style="color: #6366f1;"></i> 🎓 支柱八：名師實戰講堂・線上對戰與系統機能 (第 48 章 ~ 第 50 章)</h2>
 <p style="margin: 0 !important; color: var(--text-muted) !important; font-size: 0.86rem !important; line-height: 1.6 !important;">收錄吹里谷芽愛育成指南、リオン展開適應性徹底講座、線上模式最強馬ロード與電影級過場名場面！</p>
 </div>
 <div class="sections-container">
 <section class="section-card" id="sec-official-lectures">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-graduation-cap"></i> 第 47 章：名師實戰講堂 (吹里谷芽愛育成指南 &amp; リオン展開適應性徹底講座)</div>
+<div class="section-title"><i class="fa-solid fa-graduation-cap"></i> 第 48 章：名師實戰講堂 (吹里谷芽愛育成指南 &amp; リオン展開適應性徹底講座)</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom:20px;">
@@ -38681,7 +38745,7 @@ function filterTab5Racecourses() {
 </section>
 <section class="section-card" id="sec-online-strongest">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-globe"></i> 第 48 章：線上模式・最強馬之路 (最強馬ロード) 育成・前哨戰與全國大會對戰完全手冊</div>
+<div class="section-title"><i class="fa-solid fa-globe"></i> 第 49 章：線上模式・最強馬之路 (最強馬ロード) 育成・前哨戰與全國大會對戰完全手冊</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom:20px;">
@@ -38742,7 +38806,7 @@ function filterTab5Racecourses() {
 </section>
 <section class="section-card" id="sec-system-features">
 <div class="section-header">
-<div class="section-title"><i class="fa-solid fa-film"></i> 第 49 章：電影級過場名場面 (Cinema Event) 觸發條件與系統便利機能全書</div>
+<div class="section-title"><i class="fa-solid fa-film"></i> 第 50 章：電影級過場名場面 (Cinema Event) 觸發條件與系統便利機能全書</div>
 </div>
 <div class="section-body">
 <div class="callout callout-gold" style="margin-bottom:20px;">
@@ -39108,8 +39172,8 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.75"></script>
-<script src="yuruyuru_guides_db.js?v=v03.75"></script>
+<script src="unified_horses_full_db.js?v=v03.76"></script>
+<script src="yuruyuru_guides_db.js?v=v03.76"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
@@ -39164,71 +39228,72 @@ function renderSelectedEra(yr) {
     }
     
     const era = data.years[yr];
+    const isScrollable = era.horses.length > 15;
     
     let html = `
-    <div class="era-year-card" style="background:rgba(15,23,42,0.9); border:1px solid var(--border-color); border-radius:10px; padding:18px; margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(234,179,8,0.25); padding-bottom:8px; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
-            <h3 style="font-size:1.15rem; color:var(--gold-color); margin:0; display:flex; align-items:center; gap:8px;">
+    <div class="era-year-card" style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:18px; margin-bottom:14px; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(234,179,8,0.25); padding-bottom:10px; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+            <h3 style="font-size:1.1rem; color:var(--gold-color); margin:0; display:flex; align-items:center; gap:8px;">
                 <i class="fa-solid fa-horse-head"></i> 【${yr} 年出生世代】名馬格局與推薦名單 (共 ${era.horses.length} 匹)
             </h3>
-            <span class="badge badge-gold">第 ${yr - 1966} 世代</span>
+            <span class="badge badge-gold" style="white-space:nowrap !important;">第 ${yr - 1966} 世代</span>
         </div>
         
-        <div style="background:rgba(245,158,11,0.06); border-left:4px solid var(--gold-color); padding:12px 14px; border-radius:4px; margin-bottom:16px;">
+        <div style="background:rgba(245,158,11,0.08); border-left:4px solid var(--gold-color); padding:12px 16px; border-radius:6px; margin-bottom:16px;">
             <strong style="color:var(--gold-color); font-size:0.92rem;"><i class="fa-solid fa-chess-knight"></i> 【攻略のポイント / 世代戰略分析】：</strong>
-            <p style="font-size:0.88rem; line-height:1.65; margin:6px 0 0; color:var(--text-color);">
+            <p style="font-size:0.88rem; line-height:1.65; margin:6px 0 0; color:var(--text-color); white-space:normal !important; word-break:break-word;">
                 ${era.strategy || '該世代無特殊評述，請參考下方推薦馬名單。'}
             </p>
         </div>
         
-        <div class="table-responsive" style="margin-top:12px; -webkit-overflow-scrolling:touch;">
-            <table class="data-table" style="min-width:980px; width:100%; border-collapse:collapse; text-align:left !important;">
-                <thead>
+        <div class="${isScrollable ? 'scrollable-table-box ' : ''}table-responsive" style="${isScrollable ? 'max-height:560px !important; overflow-y:auto !important; ' : ''}margin-top:12px; -webkit-overflow-scrolling:touch;">
+            <table class="data-table" style="min-width:1080px; width:100%; border-collapse:collapse; text-align:left !important;">
+                <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
                     <tr>
-                        <th class="sortable-th" style="width:100px; text-align:left !important;">馬札等級 ⇅</th>
-                        <th class="sortable-th" style="width:80px; text-align:left !important;">推薦度 ⇅</th>
-                        <th class="sortable-th" style="width:70px; text-align:left !important;">性別 ⇅</th>
-                        <th class="sortable-th" style="width:200px; text-align:left !important;">馬名 (日文原名) ⇅</th>
-                        <th class="sortable-th" style="text-align:left !important;">詳細戰略評析與繁育價值 ⇅</th>
+                        <th class="sortable-th" style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;">馬札等級 ⇅</th>
+                        <th class="sortable-th" style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;">推薦度 ⇅</th>
+                        <th class="sortable-th" style="width:90px; min-width:80px; text-align:left !important; white-space:nowrap !important;">性別 ⇅</th>
+                        <th class="sortable-th" style="width:190px; min-width:170px; text-align:left !important;">名駒名稱 ⇅</th>
+                        <th class="sortable-th" style="min-width:480px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">詳細戰略評析與繁育價值 ⇅</th>
                     </tr>
                 </thead>
                 <tbody>
     `;
     
     era.horses.forEach(h => {
-        let ticketBadge = '<span class="badge badge-silver">無札</span>';
+        let ticketBadge = '<span class="badge" style="background:#334155; color:#94a3b8; white-space:nowrap !important;">無札</span>';
         let rowBg = 'rgba(255,255,255,0.02)';
         if (h.ticket.includes('虹')) {
-            ticketBadge = '<span class="badge badge-rainbow">🌈 虹札</span>';
+            ticketBadge = '<span class="badge" style="background:linear-gradient(135deg, #a855f7, #ec4899); color:#fff; font-weight:bold; white-space:nowrap !important;">🌈 虹札</span>';
             rowBg = 'rgba(168,85,247,0.08)';
         } else if (h.ticket.includes('金')) {
-            ticketBadge = '<span class="badge badge-gold">🥇 金札</span>';
+            ticketBadge = '<span class="badge badge-gold" style="white-space:nowrap !important;">🥇 金札</span>';
             rowBg = 'rgba(234,179,8,0.08)';
         } else if (h.ticket.includes('銀')) {
-            ticketBadge = '<span class="badge badge-silver">🥈 銀札</span>';
+            ticketBadge = '<span class="badge badge-silver" style="white-space:nowrap !important;">🥈 銀札</span>';
             rowBg = 'rgba(148,163,184,0.06)';
         } else if (h.ticket.includes('銅')) {
-            ticketBadge = '<span class="badge badge-bronze" style="background:rgba(217,119,6,0.2); color:#fbbf24; border:1px solid rgba(217,119,6,0.4);">🥉 銅札</span>';
+            ticketBadge = '<span class="badge badge-bronze" style="background:rgba(217,119,6,0.2); color:#fbbf24; border:1px solid rgba(217,119,6,0.4); white-space:nowrap !important;">🥉 銅札</span>';
             rowBg = 'rgba(217,119,6,0.05)';
         } else if (h.ticket.includes('綠') || h.ticket.includes('緑')) {
-            ticketBadge = '<span class="badge badge-green">🟢 綠札</span>';
+            ticketBadge = '<span class="badge badge-green" style="white-space:nowrap !important;">🟢 綠札</span>';
             rowBg = 'rgba(34,197,94,0.05)';
         }
         
-        let markPill = '<span class="pill pill-safe">◯ 推薦</span>';
-        if (h.mark.includes('◎')) markPill = '<span class="pill pill-power">◎ 頂級核心</span>';
-        else if (h.mark.includes('▲')) markPill = '<span class="pill pill-magic">▲ 專項奇兵</span>';
-        else if (h.mark.includes('△')) markPill = '<span class="pill pill-safe">△ 備選潛力</span>';
+        let markPill = '<span class="pill pill-safe" style="white-space:nowrap !important;">◯ 推薦</span>';
+        if (h.mark.includes('◎')) markPill = '<span class="pill pill-power" style="background:linear-gradient(135deg, #ef4444, #dc2626); color:#fff; font-weight:bold; white-space:nowrap !important;">◎ 頂級核心</span>';
+        else if (h.mark.includes('▲')) markPill = '<span class="pill pill-magic" style="background:rgba(168,85,247,0.25); color:#d8b4fe; border:1px solid rgba(168,85,247,0.4); white-space:nowrap !important;">▲ 專項奇兵</span>';
+        else if (h.mark.includes('△')) markPill = '<span class="pill pill-safe" style="background:rgba(59,130,246,0.2); color:#93c5fd; border:1px solid rgba(59,130,246,0.3); white-space:nowrap !important;">△ 備選潛力</span>';
         
-        let sexBadge = h.sex.includes('牝') ? '<span style="color:#f472b6; font-weight:bold;"><i class="fa-solid fa-venus"></i> 牝 (雌)</span>' : '<span style="color:#60a5fa; font-weight:bold;"><i class="fa-solid fa-mars"></i> 牡 (雄)</span>';
+        let sexBadge = h.sex.includes('牝') ? '<span style="color:#f472b6; font-weight:bold; white-space:nowrap !important;"><i class="fa-solid fa-venus"></i> 牝</span>' : '<span style="color:#60a5fa; font-weight:bold; white-space:nowrap !important;"><i class="fa-solid fa-mars"></i> 牡</span>';
         
         html += `
         <tr style="background:${rowBg}; border-bottom:1px solid rgba(255,255,255,0.05);">
-            <td style="text-align:left !important;">${ticketBadge}</td>
-            <td style="text-align:left !important;">${markPill}</td>
+            <td style="text-align:left !important; white-space:nowrap !important;">${ticketBadge}</td>
+            <td style="text-align:left !important; white-space:nowrap !important;">${markPill}</td>
             <td style="text-align:left !important; white-space:nowrap !important;">${sexBadge}</td>
-            <td style="text-align:left !important;"><strong style="color:var(--gold-color); font-size:0.95rem;">${h.name}</strong></td>
-            <td style="text-align:left !important; font-size:0.86rem; line-height:1.6; color:var(--text-color);">${h.comment}</td>
+            <td style="text-align:left !important;"><a class="horse-link" style="color:var(--gold-color); font-weight:bold; font-size:0.92rem; cursor:pointer;" onclick="openNativeHorseDossier('${h.name}')">${h.name}</a></td>
+            <td style="min-width:480px; text-align:left !important; font-size:0.85rem; line-height:1.65; color:var(--text-color); white-space:normal !important; word-break:break-word;">${h.comment}</td>
         </tr>
         `;
     });
@@ -39241,8 +39306,8 @@ function renderSelectedEra(yr) {
     `;
     
     container.innerHTML = html;
-    if (typeof enableUniversalTableSorting === 'function') {
-        enableUniversalTableSorting();
+    if (typeof makeTablesSortable === 'function') {
+        makeTablesSortable(container);
     }
 }
 
@@ -39891,7 +39956,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <!-- 📑 章節跳轉彈出抽屜 (Chapter Modal) -->
 <!-- 浮動按鈕群 (章節跳轉目錄 + 返回前一定位 + 回頂部) -->
 <div class="floating-btn-group" style="position:fixed; bottom:20px; right:16px; display:flex; flex-direction:column; gap:10px; z-index:9999;">
-<button class="btn-floating btn-jump" onclick="openChapterModal()" style="background:var(--gold-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="📑 49 章跳轉目錄">
+<button class="btn-floating btn-jump" onclick="openChapterModal()" style="background:var(--gold-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="📑 50 章跳轉目錄">
 <i class="fa-solid fa-list-ol"></i>
 </button>
 <button class="btn-floating btn-cache" onclick="clearPwaCache()" style="background:#0284c7; color:#fff; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="🔄 清除快取重載">
@@ -39907,7 +39972,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <div class="modal-backdrop" id="chapterModal" onclick="closeChapterModal(event)">
 <div class="chapter-modal-card" onclick="event.stopPropagation()">
 <div class="chapter-modal-header">
-<h2><i class="fa-solid fa-list-ol"></i> 📑 全 49 大章節快速跳轉</h2>
+<h2><i class="fa-solid fa-list-ol"></i> 📑 全 50 大章節快速跳轉</h2>
 <span class="modal-close" onclick="closeChapterModal()">×</span>
 </div>
 <div class="chapter-search-box">
@@ -40214,29 +40279,36 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <span class="jump-num">第 46 章</span>
 <span class="jump-title">殿堂馬稱號 (異名 / Nicknames) 全量數據庫與獲得條件完全圖鑑</span>
 </button>
+
+<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-era-horses-recs-handbook')">
+<span class="jump-icon"><i class="fa-solid fa-list-check"></i></span>
+<span class="jump-num">第 47 章</span>
+<span class="jump-title">年代別推薦史實名駒完全名冊 (1967~2023 全 56 大史實年代・496 匹名駒評級與戰略全書)</span>
+</button>
+
 </div>
 </div>
 <div class="chapter-pillar-group">
 <div class="chapter-pillar-title" onclick="jumpToPillar('pillar-lectures')" style="color:#6366f1;" title="點擊直達【支柱八】">
   <div style="display:flex; align-items:center; gap:8px;">
-    <i class="fa-solid fa-graduation-cap"></i> 支柱八：名師實戰講堂・線上對戰與系統機能 (第 47 ~ 49 章)
+    <i class="fa-solid fa-graduation-cap"></i> 支柱八：名師實戰講堂・線上對戰與系統機能 (第 48 ~ 50 章)
   
   </div>
 </div>
 <div class="chapter-items-grid">
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-official-lectures')">
 <span class="jump-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-<span class="jump-num">第 47 章</span>
+<span class="jump-num">第 48 章</span>
 <span class="jump-title">名師實戰講堂 (吹里谷芽愛育成指南 &amp; リオン展開適應性徹底講座)</span>
 </button>
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-online-strongest')">
 <span class="jump-icon"><i class="fa-solid fa-globe"></i></span>
-<span class="jump-num">第 48 章</span>
+<span class="jump-num">第 49 章</span>
 <span class="jump-title">線上模式・最強馬之路 (最強馬ロード) 育成・前哨戰與全國大會對戰完全手冊</span>
 </button>
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-system-features')">
 <span class="jump-icon"><i class="fa-solid fa-clapperboard"></i></span>
-<span class="jump-num">第 49 章</span>
+<span class="jump-num">第 50 章</span>
 <span class="jump-title">電影級過場名場面 (Cinema Event) 觸發條件與系統便利機能全書</span>
 </button>
 </div>
