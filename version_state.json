@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.69",
+  "current_version": "v03.70",
   "history": [
     {
       "version": "v01.01",
@@ -1380,6 +1380,11 @@
       "version": "v03.69",
       "timestamp": "2026-09-05",
       "changes": "修復頂部頁首「⭐ 我的繁育計畫」點擊無反應問題：補齊 #favoritesModal.active 強制 flex 樣式，並於 openFavoritesModal/closeFavoritesModal 補齊 active class 切換與 z-index 階層優化"
+    },
+    {
+      "version": "v03.70",
+      "timestamp": "2026-09-05",
+      "changes": "悠悠日和（YuruYuru-Biyori）全站 24 篇核心攻略 1:1 深度融入現有章節：建立專屬數據庫 yuruyuru_guides_db.js (涵蓋名馬相関圖特殊關係成立條件樹、關係性 D➔S 升級 SOP、2026 核心機制剖析、牧場設施性價比優先級與三大推薦配置、年代別神級調教師與王牌騎手推薦矩陣、全結婚對象好感攻略與吹里谷芽愛最短結婚 5 步走 SOP、1971~2026年 9 大開局歷史劇本初期讓渡馬推薦大表、JRA 56 大主要賽道實戰勝率與跑法傾向大數據)；全面融入第 01、30、31、36、37、38 章；第 31 章新增第 6 子標籤頁「🏇 6. JRA 56 賽道攻略與跑法勝率 (悠悠日和大數據)」；經 CDP 真機全量驗證 9 大項 0 報錯。"
     }
   ]
 }
