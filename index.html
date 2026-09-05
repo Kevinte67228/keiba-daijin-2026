@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.66"></script>
-<script src="core_guides_data.js?v=v03.66"></script>
-<script src="yearly_recs_db.js?v=v03.66"></script>
-<script src="horse_subtopics_data.js?v=v03.66"></script>
+<script src="master_lookup_db.js?v=v03.67"></script>
+<script src="core_guides_data.js?v=v03.67"></script>
+<script src="yearly_recs_db.js?v=v03.67"></script>
+<script src="horse_subtopics_data.js?v=v03.67"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2532,7 +2532,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.66</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.67</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 49 大章節)
@@ -32783,7 +32783,7 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.66"></script>
+<script src="unified_horses_full_db.js?v=v03.67"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
@@ -33905,14 +33905,20 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <script>
 // ==================== 核心 UI、歷史返回與章節跳轉引擎 ====================
 let jumpHistoryStack = [];
+window.jumpHistoryStack = jumpHistoryStack;
 
-function recordCurrentPosition() {
+function recordCurrentPosition(extraData) {
     const activePillar = document.querySelector('.pillar-content.active') || document.querySelector('.pillar-content[style*="display: block"]');
     const pillarId = activePillar ? activePillar.id : 'pillar-db';
     const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
-    jumpHistoryStack.push({ pillarId: pillarId, scrollY: scrollY });
-    if (jumpHistoryStack.length > 20) jumpHistoryStack.shift();
+    const entry = { pillarId: pillarId, scrollY: scrollY };
+    if (extraData && typeof extraData === 'object') {
+        Object.assign(entry, extraData);
+    }
+    jumpHistoryStack.push(entry);
+    if (jumpHistoryStack.length > 25) jumpHistoryStack.shift();
 }
+window.recordCurrentPosition = recordCurrentPosition;
 
 function goBackLastPosition() {
     if (jumpHistoryStack.length === 0) {
@@ -33920,11 +33926,24 @@ function goBackLastPosition() {
         return;
     }
     const lastPos = jumpHistoryStack.pop();
-    switchMainPillar(lastPos.pillarId);
+    if (lastPos.pillarId && typeof switchMainPillar === 'function') {
+        switchMainPillar(lastPos.pillarId);
+    }
     setTimeout(() => {
         window.scrollTo({ top: lastPos.scrollY, behavior: 'smooth' });
+        // 若該歷史位置帶有馬匹詳情物件，自動重新喚醒展開馬匹詳細檔案彈窗！
+        if (lastPos.reopenHorseModal) {
+            setTimeout(() => {
+                if (typeof openModalDirect === 'function') {
+                    openModalDirect(lastPos.reopenHorseModal);
+                } else if (typeof openNativeHorseDossier === 'function') {
+                    openNativeHorseDossier(lastPos.reopenHorseModal.name || lastPos.reopenHorseModal.name_jp);
+                }
+            }, 180);
+        }
     }, 120);
 }
+window.goBackLastPosition = goBackLastPosition;
 
 
 // 🚀 全域資料表格超過 15 筆自動掛載 15 筆高度內滑桿引擎 (Universal Auto-Scrollbar Engine)
@@ -37519,6 +37538,14 @@ function getBilingualSireLine(lineName) {
         // ==================== 跨支柱章節快速跳轉導航引擎 ====================
         function jumpToSection(pillarId, sectionId) {
             try {
+                // 1. 記錄跳轉前之支柱、滾動位置與當前開啟之馬匹對象 (以便浮框返回按鈕精確重開詳情頁)
+                const horseToReopen = window._currentModalHorse ? window._currentModalHorse : null;
+                if (typeof recordCurrentPosition === 'function') {
+                    recordCurrentPosition({ reopenHorseModal: horseToReopen });
+                } else if (window.recordCurrentPosition) {
+                    window.recordCurrentPosition({ reopenHorseModal: horseToReopen });
+                }
+
                 if (typeof closeModal === 'function') closeModal();
                 const m = document.getElementById('horseModal');
                 if (m) m.style.display = 'none';
