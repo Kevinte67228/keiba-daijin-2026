@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.74"></script>
-<script src="core_guides_data.js?v=v03.74"></script>
-<script src="yearly_recs_db.js?v=v03.74"></script>
-<script src="horse_subtopics_data.js?v=v03.74"></script>
+<script src="master_lookup_db.js?v=v03.75"></script>
+<script src="core_guides_data.js?v=v03.75"></script>
+<script src="yearly_recs_db.js?v=v03.75"></script>
+<script src="horse_subtopics_data.js?v=v03.75"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2538,7 +2538,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.74</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.75</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 49 大章節)
@@ -2604,7 +2604,7 @@ button.chip-btn.active {
 </div>
 <div class="section-body">
 <!-- 1971~2026年 9大劇本初期讓渡馬指南 -->
-<div id="yuruyuru-starter-horses" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.65); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:16px 18px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+<div id="starter-horses-guide" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.65); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:16px 18px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
     <div style="font-size:1.02rem; font-weight:800; color:#38bdf8; display:flex; align-items:center; gap:8px;">
       <span>🐎 1971~2026 年 9 大開局歷史劇本初期讓渡馬推薦大表</span>
@@ -16204,7 +16204,7 @@ button.chip-btn.active {
 </div>
 <div class="section-body">
 <!-- 史實名場面・特殊關係性成立條件樹 -->
-<div id="yuruyuru-relations-special" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.65); border:1px solid rgba(245,158,11,0.35); border-radius:12px; padding:16px 18px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+<div id="relations-special-tree" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.65); border:1px solid rgba(245,158,11,0.35); border-radius:12px; padding:16px 18px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
     <div style="font-size:1.02rem; font-weight:800; color:#fbbf24; display:flex; align-items:center; gap:8px;">
       <span>📖 史實名場面・特殊關係性成立條件樹全圖鑑</span>
@@ -33974,81 +33974,184 @@ function filterTab5Racecourses() {
 </div>
 <div class="section-body">
 <!-- 牧場設施建設性價比優先級與三大佈局 -->
-<div id="yuruyuru-facilities-guide" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.65); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:16px 18px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
-    <div style="font-size:1.02rem; font-weight:800; color:#38bdf8; display:flex; align-items:center; gap:8px;">
-      <span>🏰 牧場設施建設優先級與黃金三大流派推薦配置</span>
+<!-- 牧場設施建設性價比優先級與三大佈局 (完整昇華版) -->
+<div id="facilities-tier-guide" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.7); border:1px solid rgba(56,189,248,0.4); border-radius:12px; padding:18px 20px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+    <div style="font-size:1.05rem; font-weight:800; color:#38bdf8; display:flex; align-items:center; gap:8px;">
+      <i class="fa-solid fa-warehouse"></i>
+      <span>🏰 牧場設施 4 階段階梯升級排程與佔地配置藍圖</span>
       <span class="badge" style="background:#0284c7; color:#fff; font-weight:bold; white-space:nowrap !important;">最強馬基礎</span>
     </div>
-    <div style="font-size:0.78rem; color:#94a3b8;">性價比優先級評級 ＋ 三大流派佈局</div>
+    <div style="font-size:0.8rem; color:#94a3b8;">建設升級階段評級 ＋ 佔地與功效 ＋ 三大流派配置</div>
   </div>
-  <div class="scrollable-table-box table-responsive" style="max-height:420px !important; overflow-y:auto !important; margin-bottom:14px;">
-    <table class="data-table" style="min-width:880px; width:100%; text-align:left !important;">
+
+  <!-- 4 階段大表 -->
+  <div class="scrollable-table-box table-responsive" style="max-height:480px !important; overflow-y:auto !important; margin-bottom:16px;">
+    <table class="data-table" style="min-width:1040px; width:100%; text-align:left !important;">
       <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
         <tr>
-          <th class="sortable-th" style="width:220px; min-width:200px; text-align:left !important;">設施名稱 (日/中) ⇅</th>
-          <th class="sortable-th" style="width:160px; min-width:140px; text-align:left !important; white-space:nowrap !important;">建設優先級評級 ⇅</th>
-          <th class="sortable-th" style="min-width:500px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.7;">核心戰略效益與實戰評語 ⇅</th>
+          <th class="sortable-th" style="width:180px; min-width:160px; text-align:left !important;">設施名稱 (日/中) ⇅</th>
+          <th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;">建設優先級評級 ⇅</th>
+          <th class="sortable-th" style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important;">建設/擴張費 ⇅</th>
+          <th class="sortable-th" style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important;">佔地 ⇅</th>
+          <th class="sortable-th" style="min-width:400px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">核心功效與育成加成 ⇅</th>
+          <th class="sortable-th" style="width:260px; min-width:240px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">實戰佈局建議 ⇅</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td style="width:220px; min-width:200px; text-align:left !important;"><strong style="color:#fbbf24;">坂路コース・トラックコース</strong><br><span style="font-size:0.8rem; color:#94a3b8;">斜坡跑道 / 環形跑道</span></td>
-          <td style="width:160px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#ef4444; color:#fff; white-space:nowrap !important;">最優先 ★★★★★</span></td>
-          <td style="min-width:500px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">直接提高入廄前幼駒與養成馬的 SP 速度、瞬發力與體力，是培養 G1 級怪物的絕對基石！</td>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">坂路コース</strong><br><span style="font-size:0.78rem; color:#94a3b8;">斜坡跑道</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#ef4444; color:#fff; white-space:nowrap !important;">Tier 1 (最優先)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">1億 / 2億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">提升入廄前幼駒 (1~2歲) 的爆發力 (瞬發力) 與勝負根性。最大擴張為室內坂路，徹底免除冬季嚴寒訓練懲罰！</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">打造 G1 級別怪物的不可或缺基石。入廄前屬性直接決定成年上限。</td>
         </tr>
         <tr>
-          <td style="width:220px; min-width:200px; text-align:left !important;"><strong style="color:#fbbf24;">種牡馬繋養施設</strong><br><span style="font-size:0.8rem; color:#94a3b8;">種公馬繋養設施</span></td>
-          <td style="width:160px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#ef4444; color:#fff; white-space:nowrap !important;">最優先 ★★★★★</span></td>
-          <td style="min-width:500px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">擴建至最大可繋養高達 10 匹自定義名種馬，徹底免除配種權限制與天價配種費，自產體系的核心。</td>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">トラックコース</strong><br><span style="font-size:0.78rem; color:#94a3b8;">環形跑道</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#ef4444; color:#fff; white-space:nowrap !important;">Tier 1 (最優先)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">1億 / 2億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">全面鍛鍊入廄前幼駒之 SP 速度與走幅能力。三階段全面擴建後可轉化為全天候鋪裝賽道。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">與坂路並列雙核心！開局資金一充裕立即優先升滿。</td>
         </tr>
         <tr>
-          <td style="width:220px; min-width:200px; text-align:left !important;"><strong style="color:#fbbf24;">集団馬房・幼駒育成施設</strong><br><span style="font-size:0.8rem; color:#94a3b8;">集體馬房 / 幼駒育成設施</span></td>
-          <td style="width:160px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#ef4444; color:#fff; white-space:nowrap !important;">最優先 ★★★★★</span></td>
-          <td style="min-width:500px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">大幅加快全體幼駒的成長度累積，提升早熟度並提早顯現素質，是兩歲 G1 搶錢的關鍵。</td>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">種牡馬繋養施設</strong><br><span style="font-size:0.78rem; color:#94a3b8;">種公馬繋養設施</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#ef4444; color:#fff; white-space:nowrap !important;">Tier 1 (最優先)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">2億 / 4億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">可自立繋養高達 10 匹自定義名種馬。徹底免除對外巨額配種費，完全掌控子孫血統確立進度！</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">自產體系之王。想要確立自身血統者，此項設施為生命線。</td>
         </tr>
         <tr>
-          <td style="width:220px; min-width:200px; text-align:left !important;"><strong style="color:#fbbf24;">花園・サイロ</strong><br><span style="font-size:0.8rem; color:#94a3b8;">花園 / 筒倉 (飼料儲備)</span></td>
-          <td style="width:160px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:bold; white-space:nowrap !important;">優先高 ★★★★☆</span></td>
-          <td style="min-width:500px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">提高幼駒健康、賢度與毛色光澤，減少受傷概率；筒倉可提升整體飼料品質，加快母馬產後恢復。</td>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">集団馬房</strong><br><span style="font-size:0.78rem; color:#94a3b8;">幼駒集中馬房</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#ef4444; color:#fff; white-space:nowrap !important;">Tier 1 (最優先)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">1.5億 / 3億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">大幅促進當歲與 1 歲幼駒的早期精神成長、社交性格養成與精神力副屬性保底提升。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">防止幼駒在早期產生怯場、精神力過低等負面馬之個性 (ウマソナ)。</td>
         </tr>
         <tr>
-          <td style="width:220px; min-width:200px; text-align:left !important;"><strong style="color:#fbbf24;">温泉施設</strong><br><span style="font-size:0.8rem; color:#94a3b8;">溫泉設施</span></td>
-          <td style="width:160px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:bold; white-space:nowrap !important;">優先高 ★★★★☆</span></td>
-          <td style="min-width:500px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">大幅縮短賽駒放牧時的疲勞恢復週期（4週縮至2週），賽駒可頻繁出戰密集賽程賺取巨額獎金。</td>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">医療施設</strong><br><span style="font-size:0.78rem; color:#94a3b8;">醫療設施 (獸醫所)</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#ef4444; color:#fff; white-space:nowrap !important;">Tier 1 (最優先)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">1.2億 / 2.5億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">大幅降低放牧中繁殖牝馬與現役馬之生病、受傷率。最大擴建後可讓競走馬疲勞回復速度提升 30%！</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">長途征戰與密集出賽的救命設施，預防骨折或屈腱炎引退悲劇。</td>
         </tr>
         <tr>
-          <td style="width:220px; min-width:200px; text-align:left !important;"><strong style="color:#fbbf24;">活力増強施設 (2026新)</strong><br><span style="font-size:0.8rem; color:#94a3b8;">繁殖牝馬活力增強設施</span></td>
-          <td style="width:160px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:bold; white-space:nowrap !important;">優先高 ★★★★☆</span></td>
-          <td style="min-width:500px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">2026 必建新設施！提升老齡繁殖母馬受胎率，並提供爆發力遺傳活性化加成。</td>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">サイロ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">青貯飼料塔</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#ef4444; color:#fff; white-space:nowrap !important;">Tier 1 (最優先)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">8000萬 / 1.6億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">提供極致高營養飼料，促進幼駒骨骼與肌肉快速發育，入廄前全屬性成長幅度額外 +10%！</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">造價低廉但效益全面，開局前三年必建設施。</td>
         </tr>
         <tr>
-          <td style="width:220px; min-width:200px; text-align:left !important;"><strong style="color:#fbbf24;">観光施設・クラブハウス</strong><br><span style="font-size:0.8rem; color:#94a3b8;">觀光設施 / 俱樂部會所</span></td>
-          <td style="width:160px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#64748b; color:#fff; white-space:nowrap !important;">普通中 ★★★☆☆</span></td>
-          <td style="min-width:500px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">每月穩定貢獻門票與觀光收益，適合開局序盤缺錢時補貼牧場日常維護費用，後期資金充裕可拆除替換。</td>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">育成場</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育成場</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#0284c7; color:#fff; white-space:nowrap !important;">Tier 2 (次優先)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">1.5億 / 3億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">入廄前進行系統化基礎操練，提升幼駒競走壽命與體質適應力。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">對於早熟/晚成馬匹的穩定過渡發揮關鍵作用。</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">ウォーキングマシン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">自動走馬圈</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#0284c7; color:#fff; white-space:nowrap !important;">Tier 2 (次優先)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">1億 / 2億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">提供每日定時低強度體能運動，大幅加速疲勞消退並維持健康度指標穩定在 A 以上。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">避免馬匹因長期放牧導致體能下滑，常保巔峰體態。</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">温泉施設</strong><br><span style="font-size:0.78rem; color:#94a3b8;">溫泉設施</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#0284c7; color:#fff; white-space:nowrap !important;">Tier 2 (次優先)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">2億 / 4億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">全方位療癒慢性疲勞，並有極高機率治癒或減輕慢性蹄病、關節炎等棘手隱疾。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">高齡名馬長期遠征（如 5~7 歲古馬戰線）的續命神仙設施。</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">観光施設 / 神社</strong><br><span style="font-size:0.78rem; color:#94a3b8;">觀光設施 / 祈福神社</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#0284c7; color:#fff; white-space:nowrap !important;">Tier 2 (次優先)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">1億 / 2億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">每月穩定帶來數千萬至數億日圓的觀光門票收入，並可微幅提升賽事運勢與產駒祈願。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">中前期極佳的被動現金流來源，有效緩解赤字壓力。</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">キッズハウス</strong><br><span style="font-size:0.78rem; color:#94a3b8;">兒童之屋 (子孫繁衍)</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#d97706; color:#fff; white-space:nowrap !important;">Tier 3 (特定玩法)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">1.5億 / 3億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">大幅加速玩家子女之智力、體力與相馬成長！培育子女成為專屬名騎手或調教師的必備設施。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">子孫名門世家流派玩家的核心。不玩子孫系統則可延後建設。</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">ロンギ場</strong><br><span style="font-size:0.78rem; color:#94a3b8;">調教圈 / 馴化圈</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#d97706; color:#fff; white-space:nowrap !important;">Tier 3 (特定玩法)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">1億 / 2億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">針對有暴躁、任性、膽小等負面個性 (ウマソナ) 之幼駒進行性格矯正。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">高難度挑戰或近親交配產駒個性矯正專用。</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">花壇 / 景觀配置</strong><br><span style="font-size:0.78rem; color:#94a3b8;">景觀花壇</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#d97706; color:#fff; white-space:nowrap !important;">Tier 3 (特定玩法)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">5000萬</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">提升牧場整體美觀度與工作人員士氣，微幅提升產駒誕生時的幸運評價。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">土地充裕或追求完美牧場規劃時點綴建設。</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">ゲート</strong><br><span style="font-size:0.78rem; color:#94a3b8;">閘門練習場</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#475569; color:#fff; white-space:nowrap !important;">Tier 4 (後期強化)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">1億 / 2億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">針對 1~2 歲入廄前幼駒訓練起步與閘門反應，大幅降低出遲 (出閘落後) 機率。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">造價相對便宜，中後期多餘空地時隨時補上。</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbbf24;">角馬場</strong><br><span style="font-size:0.78rem; color:#94a3b8;">方型馬場</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#475569; color:#fff; white-space:nowrap !important;">Tier 4 (後期強化)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#e2e8f0;">1億 / 2億</td>
+          <td style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#38bdf8;">1 塊</td>
+          <td style="min-width:400px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">鍛鍊幼駒轉彎技巧與柔軟性副屬性。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">補齊幼駒副屬性短板的後期補充設施。</td>
         </tr>
       </tbody>
     </table>
   </div>
-  
+
+  <!-- 三大流派配置卡片 -->
+  <div style="font-weight:bold; color:#38bdf8; font-size:0.92rem; margin-bottom:10px; display:flex; align-items:center; gap:6px;">
+    <i class="fa-solid fa-compass"></i> 牧場三大黃金佔地佈局流派方案：
+  </div>
   <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
-    <div style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.2); border-radius:8px; padding:12px;">
-      <div style="font-weight:bold; color:#38bdf8; margin-bottom:6px;">① 終極競走馬育成型（戰力最大化）</div>
-      <div style="font-size:0.82rem; color:#cbd5e1; line-height:1.6; margin-bottom:6px;">以制霸凱旋門賞、日本盃與經典三冠為目標，主力空間全部分配給調教體能。</div>
-      <div style="font-size:0.78rem; color:#f59e0b; font-weight:bold;">配置：坂路(最大) ＋ 環形跑道(最大) ＋ 逍遙馬道 ＋ 溫泉 ＋ 幼駒育成設施 ＋ 醫療設施</div>
+    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(56,189,248,0.25); border-radius:8px; padding:12px 14px;">
+      <div style="font-weight:bold; color:#fde047; font-size:0.88rem; margin-bottom:6px;"><i class="fa-solid fa-trophy"></i> 流派一：【三冠怪物育成特化流】</div>
+      <div style="font-size:0.8rem; color:#cbd5e1; line-height:1.5;">
+        • <strong>核心配置</strong>：雙坂路 + 雙トラック + 集団馬房 + 医療設施 + サイロ + 溫泉。<br>
+        • <strong>策略核心</strong>：完全放棄觀光收益，將全部有限地皮堆砌在 SP 速度與勝負根性培育上，確保每世代產駒能正面抗衡歷史怪物。
+      </div>
     </div>
-    <div style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.2); border-radius:8px; padding:12px;">
-      <div style="font-weight:bold; color:#38bdf8; margin-bottom:6px;">② 帝國血統繁育大亨型（繁育最大化）</div>
-      <div style="font-size:0.82rem; color:#cbd5e1; line-height:1.6; margin-bottom:6px;">以自製系統確立、維持龐大母系王國為目標，主力空間分配給種馬與母馬。</div>
-      <div style="font-size:0.78rem; color:#f59e0b; font-weight:bold;">配置：種牡馬繋養(最大) ＋ 活力增強設施 ＋ 集團馬房 ＋ 花園 ＋ 筒倉 ＋ 獸醫設施</div>
+    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(56,189,248,0.25); border-radius:8px; padding:12px 14px;">
+      <div style="font-weight:bold; color:#38bdf8; font-size:0.88rem; margin-bottom:6px;"><i class="fa-solid fa-coins"></i> 流派二：【商業繁育金山流】</div>
+      <div style="font-size:0.8rem; color:#cbd5e1; line-height:1.5;">
+        • <strong>核心配置</strong>：種牡馬繋養設施 (升至最大10頭) + 雙觀光設施/神社 + 醫療設施 + サイロ。<br>
+        • <strong>策略核心</strong>：最大化種公馬出租配種費與觀光門票，開局 5~10 年快速聚斂數百億日圓現金流，支援海外牧場擴建。
+      </div>
     </div>
-    <div style="background:rgba(30,41,59,0.7); border:1px solid rgba(56,189,248,0.2); border-radius:8px; padding:12px;">
-      <div style="font-weight:bold; color:#38bdf8; margin-bottom:6px;">③ 序盤經濟平衡型（開局拓荒首選）</div>
-      <div style="font-size:0.82rem; color:#cbd5e1; line-height:1.6; margin-bottom:6px;">適合新劇本前 5 年，在資金有限的情況下兼顧造馬與穩定現金流。</div>
-      <div style="font-size:0.78rem; color:#f59e0b; font-weight:bold;">配置：坂路(1級) ＋ 觀光設施 ＋ 基本馬房 ＋ 筒倉 ＋ 溫泉(1級)</div>
+    <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(56,189,248,0.25); border-radius:8px; padding:12px 14px;">
+      <div style="font-weight:bold; color:#f472b6; font-size:0.88rem; margin-bottom:6px;"><i class="fa-solid fa-people-roof"></i> 流派三：【子孫名門世家流】</div>
+      <div style="font-size:0.8rem; color:#cbd5e1; line-height:1.5;">
+        • <strong>核心配置</strong>：キッズハウス (兒童之屋) + ロンギ場 + 坂路 + 醫療設施 + 自動走馬圈。<br>
+        • <strong>策略核心</strong>：專注培養下一代子孫成為三圍 A 以上的頂級騎手或調教師，打造傳承百年的賽馬名門世家！
+      </div>
     </div>
   </div>
 </div>
+<!-- /牧場設施建設性價比優先級與三大佈局 -->
 
 <div class="callout callout-gold">
 <i class="fa-solid fa-building-circle-check" style="font-size:1.2rem; color:var(--accent-gold);"></i>
@@ -34600,7 +34703,7 @@ function filterTab5Racecourses() {
 <!-- 年代別神級調教師與王牌騎手矩陣 -->
 
 <!-- SECTION 37 UPGRADE: COMPREHENSIVE JOCKEYS & TRAINERS MASTER DATABASE -->
-<div id="yuruyuru-personnel-guide" style="margin-top:20px; margin-bottom:28px; background:rgba(15,23,42,0.65); border:1px solid rgba(56,189,248,0.35); border-radius:14px; padding:20px 22px; box-shadow:0 6px 20px rgba(0,0,0,0.3);">
+<div id="personnel-master-guide" style="margin-top:20px; margin-bottom:28px; background:rgba(15,23,42,0.65); border:1px solid rgba(56,189,248,0.35); border-radius:14px; padding:20px 22px; box-shadow:0 6px 20px rgba(0,0,0,0.3);">
   
   <!-- Banner -->
   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px; border-bottom:1px solid rgba(56,189,248,0.25); padding-bottom:12px;">
@@ -35842,101 +35945,412 @@ function filterTab5Racecourses() {
 </div>
 <div class="section-body">
 <!-- 全結婚對象好感攻略與吹里谷芽愛最短結婚SOP -->
-<div id="yuruyuru-marriage-guide" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.65); border:1px solid rgba(244,114,182,0.35); border-radius:12px; padding:16px 18px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
-    <div style="font-size:1.02rem; font-weight:800; color:#f472b6; display:flex; align-items:center; gap:8px;">
-      <span>💍 全結婚對象好感攻略 ＆ 吹里谷芽愛最短結婚 SOP</span>
-      <span class="badge" style="background:#db2777; color:#fff; font-weight:bold;">姻緣全書</span>
+<!-- 知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑 (完整昇華版) -->
+<div id="marriage-deep-guide" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.7); border:1px solid rgba(244,114,182,0.4); border-radius:12px; padding:18px 20px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+    <div style="font-size:1.05rem; font-weight:800; color:#f472b6; display:flex; align-items:center; gap:8px;">
+      <i class="fa-solid fa-ring"></i>
+      <span>全 22 位知名結婚對象好感突破完全攻略 ＆ 吹里谷芽愛最短結婚 SOP</span>
+      <span class="badge" style="background:#db2777; color:#fff; font-weight:bold; white-space:nowrap !important;">姻緣全書</span>
     </div>
-    <div style="font-size:0.78rem; color:#94a3b8;">知名秘書與知人角色達成條件</div>
+    <div style="font-size:0.8rem; color:#94a3b8;">3 階段突破條件 ＋ 能力三圍 ＋ 育馬者盃 14 賽全制霸時程表</div>
   </div>
-  
-  <div style="background:rgba(30,41,59,0.85); border:1px solid rgba(244,114,182,0.3); border-radius:10px; padding:12px 16px; margin-bottom:14px;">
-    <div style="font-weight:bold; color:#f472b6; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
-      <i class="fa-solid fa-heart"></i> 吹里谷芽愛（ふきやり めあ）最短結婚 5 步走 SOP：
+
+  <!-- 吹里谷芽愛 最短結婚深度 SOP 卡片 -->
+  <div style="background:rgba(30,41,59,0.9); border:1px solid rgba(244,114,182,0.35); border-radius:10px; padding:16px 18px; margin-bottom:18px;">
+    <div style="font-weight:bold; color:#fbcfe8; font-size:0.96rem; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+      <i class="fa-solid fa-crown" style="color:#fbbf24;"></i>
+      <span>吹里谷芽愛（ふきやり めあ）全遊戲最高難度結婚・最短通關戰略 SOP</span>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:8px;">
-      <div style="background:rgba(15,23,42,0.6); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
-        <strong style="color:#fbcfe8; font-size:0.84rem;">第 1 步：開局就任</strong>
-        <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">開局直接選拔吹里谷芽愛作為專屬秘書，取得初始好感。</div>
+    <div style="font-size:0.84rem; color:#cbd5e1; line-height:1.6; margin-bottom:12px;">
+      吹里谷芽愛為本作最具挑戰性之秘書結婚對象，其好感度突破的核心門檻為：<strong style="color:#f472b6;">「JBC 4 大競走全制霸」➔「育馬者盃日 (BC Day) 累積 7 勝」➔「育馬者盃日 14 大競走同日/跨年全數制霸」</strong>。以下為 1973 年開局之兩大主流攻堅配置與全 14 場育馬者盃賽道對照表：
+    </div>
+    
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:10px; margin-bottom:14px;">
+      <div style="background:rgba(15,23,42,0.7); padding:10px 14px; border-radius:8px; border-left:3px solid #38bdf8;">
+        <strong style="color:#38bdf8; font-size:0.86rem;"><i class="fa-solid fa-flag"></i> 流派一：史實國內自產純血派（無海外牧場/無海外馬）</strong>
+        <div style="font-size:0.79rem; color:#cbd5e1; margin-top:4px; line-height:1.5;">
+          • <strong>主力核心</strong>：カブラヤオー、テスコガビー、エリモジョージ、トウショウボーイ、サクラショウリ、ハギノトップレディ、ホスピタリティ。<br>
+          • <strong>配種重點</strong>：利用トウショウボーイ、リファール、アイスカペイド與トウメイ、ミスチェリー、イチマルヨシ交配產出兩歲早熟泥地怪駒。
+        </div>
       </div>
-      <div style="background:rgba(15,23,42,0.6); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
-        <strong style="color:#fbcfe8; font-size:0.84rem;">第 2 步：幼駒視察</strong>
-        <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">每年 4 月視察幼駒，由芽愛為優質幼駒命名，好感每次 +10。</div>
+      <div style="background:rgba(15,23,42,0.7); padding:10px 14px; border-radius:8px; border-left:3px solid #f59e0b;">
+        <strong style="color:#f59e0b; font-size:0.86rem;"><i class="fa-solid fa-bolt"></i> 流派二：海外牧場 DLC ＋ 海外史實馬解禁極速派</strong>
+        <div style="font-size:0.79rem; color:#cbd5e1; margin-top:4px; line-height:1.5;">
+          • <strong>主力核心</strong>：アリダー (Alydar)、アファームド (Affirmed)、シアトルスルー (Seattle Slew)、ジェニュインリスク (Genuine Risk)、エクセラー (Exceller)。<br>
+          • <strong>破關時程</strong>：開局第 2 年開設海外牧場，利用海外世代神馬橫掃北美泥地與幼駒戰，最快於 1976~1982 年達成 14 賽全制霸！
+        </div>
       </div>
-      <div style="background:rgba(15,23,42,0.6); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
-        <strong style="color:#fbcfe8; font-size:0.84rem;">第 3 步：G1 連霸</strong>
-        <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">在芽愛陪同下奪得日本德比、有馬紀念或凱旋門賞冠軍。</div>
-      </div>
-      <div style="background:rgba(15,23,42,0.6); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
-        <strong style="color:#fbcfe8; font-size:0.84rem;">第 4 步：牧場達標</strong>
-        <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">基本設施擴建至 2 級以上，累計賺取獎金超過 30 億日圓。</div>
-      </div>
-      <div style="background:rgba(15,23,42,0.6); padding:8px 10px; border-radius:6px; border-left:3px solid #f472b6;">
-        <strong style="color:#fbcfe8; font-size:0.84rem;">第 5 步：元旦求婚</strong>
-        <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">好感度達 100 滿格，於 1 月 1 週新年事件求婚結為夫妻！</div>
-      </div>
+    </div>
+
+    <!-- 育馬者盃 14 賽事 + JBC 4 賽事戰略大表 -->
+    <div style="font-weight:bold; color:#fbbf24; font-size:0.88rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+      <i class="fa-solid fa-trophy"></i> 育馬者盃 (Breeders' Cup) 14 大賽事 ＆ JBC 4 大賽事出戰配比大表：
+    </div>
+    <div class="scrollable-table-box table-responsive" style="max-height:360px !important; overflow-y:auto !important;">
+      <table class="data-table" style="min-width:1060px; width:100%; text-align:left !important;">
+        <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+          <tr>
+            <th class="sortable-th" style="width:180px; min-width:160px; text-align:left !important;">賽事名稱 (日/中) ⇅</th>
+            <th class="sortable-th" style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;">條件與距離 ⇅</th>
+            <th class="sortable-th" style="width:230px; min-width:210px; text-align:left !important;">自產史實派推薦馬 ⇅</th>
+            <th class="sortable-th" style="width:230px; min-width:210px; text-align:left !important;">海外解禁推薦馬 ⇅</th>
+            <th class="sortable-th" style="min-width:320px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">戰略要點與致勝關鍵 ⇅</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCジュベナイルターフスプリント</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃兩歲草地短途</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">芝 1000m (2歲限定)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1979年 自家產駒 (トウショウボーイ×イチマルヨシ)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1977年 アリダー (Alydar)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">開局第 5 年前需產出具備早期熟度之極致草地短途幼駒，或直接解禁 Alydar 出走。</td>
+          </tr>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCジュベナイルフィリーズ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃兩歲雌馬大賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">泥 1700m (2歲牝馬限定)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1978年 自家產駒 (有力泥地早熟雌馬)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1979年 ジェニュインリスク (Genuine Risk)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">泥地副屬性力量與耐力需達 A 以上，早熟/早鍋曲線最容易奪冠。</td>
+          </tr>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCジュベナイルフィリーズターフ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃兩歲草地雌馬賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">芝 1600m (2歲牝馬限定)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1982年 シャダイソフィア (Shadai Sophia)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1982年 自家產駒 (ファラモンド×トウメイ)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">社台索菲亞草地瞬發力極強，若純血自家產駒則建議選用名牝トウメイ後代。</td>
+          </tr>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCジュベナイル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃兩歲大賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">泥 1700m (2歲牡馬限定)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1978年 自家產駒 (高能力泥地早熟公馬)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1977年 アファームド (Affirmed)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">北美泥地難度最高之兩歲賽，Affirmed 具備絕對統治力；自產則需 SP 72 以上。</td>
+          </tr>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCジュベナイルターフ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃兩歲草地大賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">芝 1600m (2歲牡馬限定)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1977年 サクラショウリ (Sakura Shori)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1977年 サクラショウリ (Sakura Shori)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">櫻花勝利兩歲時即具備頂級草地一哩實力，遠征北美獲勝機率極高。</td>
+          </tr>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCターフスプリント</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃草地短途大賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">芝 1000m (3歲以上)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1977年 テスコガビー (Tesco Gaby)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1976年 テスコガビー (Tesco Gaby)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">泰斯高加比極速領放，無論 1000m 還是短途均能橫掃世界對手。</td>
+          </tr>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCスプリント</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃短途大賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">泥 1200m (3歲以上)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1982年 自家產駒 (リファール×テスコガビー)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1976年 オネストプレジャー (Honest Pleasure)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">北美頂級泥地短途戰，Honest Pleasure 最早可在 1976 年達成，自產需高速度配搭。</td>
+          </tr>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCフィリー＆メアスプリント</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃雌馬短途大賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">泥 1400m (3歲以上牝馬)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1982年 ハギノトップレディ (Hagino Top Lady)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1976年 ディアリープレシャス (Dearly Precious)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">萩野頂峰女士具備極限二枚腰與極速爆發，適配 1400m 泥地短途。</td>
+          </tr>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCダートマイル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃泥地一哩大賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">泥 1600m (3歲以上)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1977年 スリーパレード (Three Parade)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1977年 シアトルスルー (Seattle Slew)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">西雅圖迴旋 (Seattle Slew) 出戰幾乎穩操勝券；自產派可派遣三巡遊。</td>
+          </tr>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCマイル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃一哩大賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">芝 1600m (3歲以上)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1976年 トウショウボーイ (Tosho Boy)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1976年 ウォロー (Wollow)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">天馬東商小子 1976 年巔峰期出戰北美草地一哩，瞬發力與速度完全碾壓。</td>
+          </tr>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCディスタフ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃雌馬長途大賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">泥 1800m (3歲以上牝馬)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1981年 ハギノトップレディ (Hagino Top Lady)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1980年 ジェニュインリスク (Genuine Risk)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">雌馬泥水中距離決戰，Genuine Risk 或頂峰女士均具備奪冠實力。</td>
+          </tr>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCクラシック</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃經典大賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">泥 2000m (3歲以上)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1982年 自家產駒 (アイスカペイド×トウメイ)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1976年 ボールドフォーブス (Bold Forbes)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">世界賽馬頂峰對決，自家產駒需 SP 75+ 泥地適性極高，海外馬派首推 Bold Forbes。</td>
+          </tr>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCフィリー＆メアターフ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃雌馬草地大賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">芝 2000m (3歲以上牝馬)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1976年 テスコガビー (Tesco Gaby)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1977年 テスコガビー (Tesco Gaby)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">女帝泰斯高加比連霸草地賽場，適性覆蓋極廣。</td>
+          </tr>
+          <tr>
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fbcfe8;">BCターフ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">育馬者盃草地大賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#38bdf8; border:1px solid #0284c7;">芝 2400m (3歲以上)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1977年 テンポイント (Ten Point)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1976年 エクセラー (Exceller)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">十點 (Ten Point) 1977 年出征海外草地 2400m 具備統治力，海外派首推 Exceller。</td>
+          </tr>
+          <tr style="background:rgba(234,179,8,0.05);">
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fef08a;">JBC2歳優駿</strong><br><span style="font-size:0.78rem; color:#ca8a04;">JBC 兩歲優駿</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#854d0e; color:#fef08a;">門別 泥 1800m (2歲限定)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1977年 ホスピタリティ (Hospitality)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1976年 ブレーブボーイ (Brave Boy)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">早熟泥地兩歲頂級名駒，早期地方交流戰核心。</td>
+          </tr>
+          <tr style="background:rgba(234,179,8,0.05);">
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fef08a;">JBCスプリント</strong><br><span style="font-size:0.78rem; color:#ca8a04;">JBC 短途錦標</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#854d0e; color:#fef08a;">地方 泥 1200m (3歲以上)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1978年 ホスピタリティ (Hospitality)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1977年 メイワキミコ (Meiwa Kimiko)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">短途衝刺爆發，需選用勝負根性與瞬發力兼備之名駒。</td>
+          </tr>
+          <tr style="background:rgba(234,179,8,0.05);">
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fef08a;">JBCレディスクラシック</strong><br><span style="font-size:0.78rem; color:#ca8a04;">JBC 雌馬經典賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#854d0e; color:#fef08a;">地方 泥 1800m (3歲以上牝馬)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1982年 自家產駒 (サーアイヴァー×ミスケイコ)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1979年 モデルスポート (Model Sport)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">泥地牝馬中距離賽事，Model Sport 具備極強統治力。</td>
+          </tr>
+          <tr style="background:rgba(234,179,8,0.05);">
+            <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fef08a;">JBCクラシック</strong><br><span style="font-size:0.78rem; color:#ca8a04;">JBC 經典大賽</span></td>
+            <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#854d0e; color:#fef08a;">地方 泥 2000m (3歲以上)</span></td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#cbd5e1; font-size:0.83rem;">1979年 ハツシバオー (Hatsushiba O)</td>
+            <td style="width:230px; min-width:210px; text-align:left !important; color:#fde047; font-size:0.83rem;">1977年 スリーパレード (Three Parade)</td>
+            <td style="min-width:320px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word; font-size:0.82rem; color:#94a3b8;">國內泥地最高榮譽，初柴王與三巡遊均為破關功臣。</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  
-  <div style="font-weight:bold; color:#fbbf24; margin-bottom:8px;">全結婚對象詳細好感度提升攻略大表：</div>
-  <div class="scrollable-table-box table-responsive" style="max-height:420px !important; overflow-y:auto !important;">
-    <table class="data-table" style="min-width:900px; width:100%; text-align:left !important;">
+
+  <!-- 全 22 位結婚對象三階段階梯突破大表 -->
+  <div style="font-weight:bold; color:#fbbf24; font-size:0.94rem; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+    <i class="fa-solid fa-users"></i> 全 22 位知名結婚對象・好感度 3 階段階梯突破與能力三圍完全對照大表：
+  </div>
+  <div class="scrollable-table-box table-responsive" style="max-height:540px !important; overflow-y:auto !important;">
+    <table class="data-table" style="min-width:1120px; width:100%; text-align:left !important;">
       <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
         <tr>
-          <th class="sortable-th" style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;">角色姓名 (日/中) ⇅</th>
-          <th class="sortable-th" style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;">身分類型 ⇅</th>
-          <th class="sortable-th" style="width:260px; min-width:240px; max-width:280px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">好感度提升事件與條件 ⇅</th>
-          <th class="sortable-th" style="min-width:380px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.7;">結婚條件與子孫特性加成 ⇅</th>
+          <th class="sortable-th" style="width:160px; min-width:150px; text-align:left !important;">對象名稱 (日/中) ⇅</th>
+          <th class="sortable-th" style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;">身分類別 ⇅</th>
+          <th class="sortable-th" style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important;">能力三圍 ⇅</th>
+          <th class="sortable-th" style="width:220px; min-width:200px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">第 1 階段好感突破 ⇅</th>
+          <th class="sortable-th" style="width:240px; min-width:220px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">第 2 階段好感突破 ⇅</th>
+          <th class="sortable-th" style="width:260px; min-width:240px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">第 3 階段 (結婚) 條件 ⇅</th>
+          <th class="sortable-th" style="min-width:320px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">實戰攻略點評與關鍵建議 ⇅</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><strong style="color:#f472b6;">逢坂やよい</strong> (逢坂彌生)</td>
-          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:rgba(244,114,182,0.2); color:#f472b6; border:1px solid #f472b6; white-space:nowrap !important;">預設秘書</span></td>
-          <td style="width:260px; min-width:240px; max-width:280px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word;">擔任秘書滿 2 年以上，好感度達 100 滿格，完成牧場基本設施擴建。</td>
-          <td style="min-width:380px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">年初（1月1週）自動觸發求婚事件。子孫高機率繼承『秘書業務處理』與『高智商』特性。</td>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">逢坂やよい</strong><br><span style="font-size:0.78rem; color:#94a3b8;">逢坂彌生</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">專屬秘書</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 A<br>運動 B<br>牧場 A</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">信頼等級 MAX 的所有馬累計達 10 匹</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">信頼等級 MAX 的所有馬累計達 20 匹</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">信頼等級 MAX 的所有馬累計達 30 匹</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">日常推進最自然解鎖的角色。多安排有緣騎手調教與賽事連勝，馬匹信賴度自自然然達到 MAX。</td>
         </tr>
         <tr>
-          <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><strong style="color:#f472b6;">志麻倉夕映</strong> (志麻倉夕映)</td>
-          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:rgba(244,114,182,0.2); color:#f472b6; border:1px solid #f472b6; white-space:nowrap !important;">傳統秘書</span></td>
-          <td style="width:260px; min-width:240px; max-width:280px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word;">帶領自家產駒贏得三冠賽事（經典三冠、秋古馬三冠等），好感度累積達滿。</td>
-          <td style="min-width:380px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">年末結算時求婚。婚後子孫具備極強的競走馬相性與血統鑑賞能力。</td>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">志麻倉夕映</strong><br><span style="font-size:0.78rem; color:#94a3b8;">志麻倉夕映</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">專屬秘書</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 A<br>運動 A<br>牧場 B</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">以海外遠征出賽贏得任 1 場賽事</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">贏得杜拜司馬經典賽 (ドバイSC)</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">同年度制霸杜拜世界盃日所有大賽 (全制霸)</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">中東遠征專用秘書。需在 3 月底準備草地 2410m (司馬)、泥地 2000m (世界盃) 等頂級馬橫掃杜拜。</td>
         </tr>
         <tr>
-          <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><strong style="color:#f472b6;">リオンローザ</strong> (莉昂蘿莎)</td>
-          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8; border:1px solid #38bdf8; white-space:nowrap !important;">海外知人</span></td>
-          <td style="width:260px; min-width:240px; max-width:280px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word;">自家產駒在歐洲或美國 G1 賽事累計 5 勝以上，並開設歐美海外分牧場。</td>
-          <td style="min-width:380px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">在海外牧場視察時求婚。子孫極易覺醒『海外遠征無畏』與『國際視野』神技。</td>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">吹里谷芽愛</strong><br><span style="font-size:0.78rem; color:#94a3b8;">吹里谷芽愛</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">專屬秘書</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 B<br>運動 A<br>牧場 A</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">制霸日本 JBC 全 4 大交流競走</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">育馬者盃日 (BC Day) 累積 7 場以上勝利</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">育馬者盃日 (BC Day) 14 大競走全數制霸</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">本作最高難度結婚挑戰！建議參考上方吹里谷專用時程表，利用海外牧場或 1973 年名駒陣容集中破關。</td>
         </tr>
         <tr>
-          <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><strong style="color:#f472b6;">白鷺七夏</strong> (白鷺七夏)</td>
-          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:rgba(251,191,36,0.2); color:#fbbf24; border:1px solid #fbbf24; white-space:nowrap !important;">名門千金</span></td>
-          <td style="width:260px; min-width:240px; max-width:280px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word;">與名門白鷺家族建立深厚情誼，俱樂部經營會員數達到指定規模。</td>
-          <td style="min-width:380px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">家族聚會時觸發訂婚。婚後獲得白鷺名門巨大資金支援與名門貴族人脈。</td>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">リオンローザ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">莉翁羅莎</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">專屬秘書</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 A<br>運動 B<br>牧場 A</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">自家生產馬累計贏得 4 個國家/地區的 GI</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">自家生產馬累計贏得 9 個國家/地區的 GI</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">自家生產馬同年度包攬日本、歐洲、美國年度代表馬</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">2025/2026 新增秘書。需三地各配置一匹頂級三冠馬/凱旋門/BC 霸主，極度考驗自家配種實力。</td>
         </tr>
         <tr>
-          <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><strong style="color:#f472b6;">汐見空</strong> (汐見空)</td>
-          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:rgba(34,197,94,0.2); color:#22c55e; border:1px solid #22c55e; white-space:nowrap !important;">知人女性</span></td>
-          <td style="width:260px; min-width:240px; max-width:280px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word;">夏季在函館、札幌等夏競馬系列賽奪得總冠軍，好感度升滿。</td>
-          <td style="min-width:380px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">夏競馬閉幕式時求婚。子孫普遍具備極高的『洋芝適性』與『耐熱性』。</td>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">汐見空</strong><br><span style="font-size:0.78rem; color:#94a3b8;">汐見空</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">知名偶像知人</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 C<br>運動 B<br>牧場 A</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">賽馬偶像排行榜 (偶像馬) 榮登前 3 名</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">累計觸發 1 次競馬熱潮 (競馬ブーム)</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">累計觸發 2 次競馬熱潮 (競馬ブーム)</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">配合高人氣偶像名駒連續奪冠激發熱潮。平常正常遊玩培育人氣馬即可自然達成。</td>
         </tr>
         <tr>
-          <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><strong style="color:#f472b6;">宝塚舞子</strong> (寶塚舞子)</td>
-          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:rgba(239,68,68,0.2); color:#ef4444; border:1px solid #ef4444; white-space:nowrap !important;">賽事偶像</span></td>
-          <td style="width:260px; min-width:240px; max-width:280px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word;">以自家賽駒勇奪寶塚紀念冠軍，並連續在關西春季重賞取得大勝。</td>
-          <td style="min-width:380px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">頒獎典禮後觸發求婚事件。子孫具備天生『萬人迷 (人氣名星)』氣場。</td>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">宝塚舞子</strong><br><span style="font-size:0.78rem; color:#94a3b8;">寶塚舞子</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">貴賓知人</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 A<br>運動 C<br>牧場 A</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">達成中央牡馬三冠或雌馬三冠</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">中央所屬馬連續 3 週贏得海外 GI</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">以無敗三冠馬之產駒再次達成無敗三冠！</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">條件極為嚴苛！第 3 階段需世代傳承無敗三冠，推薦由魯道夫象徵或大震撼之優質幼駒接力達成。</td>
         </tr>
         <tr>
-          <td style="width:150px; min-width:140px; text-align:left !important; white-space:nowrap !important;"><strong style="color:#f472b6;">有馬桜子</strong> (有馬櫻子)</td>
-          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:rgba(168,85,247,0.2); color:#a855f7; border:1px solid #a855f7; white-space:nowrap !important;">名記主播</span></td>
-          <td style="width:260px; min-width:240px; max-width:280px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word;">奪得有馬紀念冠軍受訪，並達成多項年度競馬歷史事件 (Historia)。</td>
-          <td style="min-width:380px; text-align:left !important; line-height:1.7; white-space:normal !important; word-break:break-word;">年末專訪時求婚。婚後自家名駒之媒體評價直接保底 S 級，名聲狂飆。</td>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">有馬桜子</strong><br><span style="font-size:0.78rem; color:#94a3b8;">有馬櫻子</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">資深知人</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 A<br>運動 B<br>牧場 A</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">牧場設置殿堂馬銅像 1 座</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">牧場設置金色殿堂馬像累計達 7 座</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">牧場設置帶有專屬稱號的殿堂馬像達 10 座</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">只要積極培育並讓頂級史實名馬達成殿堂入馬（如三冠、古馬王道），在歷史期即可輕鬆達成。</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">守永真彩</strong><br><span style="font-size:0.78rem; color:#94a3b8;">守永真彩</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">賽馬主播知人</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 B<br>運動 A<br>牧場 A</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">所有馬在日本德比 (東京優駿) 跑入前 3 名</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">同一年以同一匹馬包辦日本德比與凱旋門賞冠軍</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">以自己擁有的德比冠軍馬之後代再次奪得德比</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">第 2 階段同一年德比+凱旋門賞極具挑戰性，需 3 歲爆發型怪物（如成田白仁、大震撼水準）出戰。</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">エマトラド (欧)</strong><br><span style="font-size:0.78rem; color:#94a3b8;">艾瑪托拉多 (歐洲)</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">海外知人</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 A<br>運動 C<br>牧場 A</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">歐洲 GI 賽事跑入前 3 名以內</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">以所有馬達成歐洲三冠 (英德比+愛德比+英王錦標/凱旋門)</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">正式開設歐洲海外玩家牧場</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">歐洲三冠長途體力與適應力要求極高，建議直接買入歐洲史實三冠級名馬最為穩健。</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">エマトラド (美)</strong><br><span style="font-size:0.78rem; color:#94a3b8;">艾瑪托拉多 (美國)</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">海外知人</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 C<br>運動 A<br>牧場 B</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">美國 GI 賽事跑入前 3 名以內</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">以所有馬達成美國三冠 (肯塔基德比+必利時+貝蒙錦標)</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">正式開設美國海外玩家牧場</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">美國泥地三冠相較歐洲更易達成，持有西雅圖迴旋、誓約、美洲達標等名馬即可迅速突破。</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">ネイアローザ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">內亞羅莎</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">海外知人</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 A<br>運動 A<br>牧場 B</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">自家生產馬登上世界 100 傑馬競走馬排名榜</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">自家生產馬登上世界 100 傑馬排名第 30 名以內</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">自家生產馬榮獲世界 100 傑馬排行榜第 1 名！</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">2025/2026 新增角色。只要自產怪物馬橫掃多場國際一級賽，評分破 130 即可登頂世界第 1。</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">ナリアローザ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">娜莉亞羅莎</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">海外知人</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 C<br>運動 B<br>牧場 A</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">累計獲得 3 次世界名馬之固有特性</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">在極限之瞬發/持久/消耗/綜合戰中累計取得 3 勝</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">使所有馬之適應能力數值提升至 11 以上</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">2025/2026 新增角色。伴隨世界名馬對決機制自然解鎖，後期高爆發力馬匹極易完成。</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">如月英里子</strong><br><span style="font-size:0.78rem; color:#94a3b8;">如月英里子</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">名門千金</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 A<br>運動 A<br>牧場 C</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">以自家生產馬贏得任 1 場中央/國際 GI</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">使旗下子孫系統成功確立 1 個新血統系統</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">自家產駒在同一年內同時稱霸凱旋門賞與 BC 經典賽</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">血統確立愛好者首選。需培育能兼具歐洲重草（凱旋門）與美國重泥（BC經典）之全能怪物。</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">関屋未来</strong><br><span style="font-size:0.78rem; color:#94a3b8;">關屋未來</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">地方競馬知人</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 A<br>運動 B<br>牧場 B</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">贏得任 1 場地方交流重賞賽事</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">以所有馬達成日本泥地三冠 (羽田盃+東京德比+日本泥地德比)</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">同一匹馬在同一年連續稱霸帝王賞與東京大賞典</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">2024/2026 改制後條件改為泥地三冠。只要擁有一匹頂尖泥地史實馬即可全數通關，門檻極低。</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">小園紗姫</strong><br><span style="font-size:0.78rem; color:#94a3b8;">小園紗姬</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">賽事知人</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 B<br>運動 A<br>牧場 B</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">以第 1 人氣馬贏得任 1 場 GI 賽事</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">以無敗戰績達成國內牡馬經典三冠</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">以同一匹馬達成古馬中長距離王道全勝且年度無敗</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">經典三冠+古馬王道全年無敗。使用魯道夫象徵、成田白仁、大震撼等神馬一人即可包辦全條件。</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">桐原麗奈</strong><br><span style="font-size:0.78rem; color:#94a3b8;">桐原麗奈</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">調教助手知人</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 B<br>運動 A<br>牧場 B</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">累計獲得 10 種史實調教</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">累計獲得 20 種史實調教</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">累計獲得 30 種史實調教</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">隨著時間推進結識各年代名伯樂調教師，自然累積解鎖史實調教即可輕鬆達成。</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">滝宮花音</strong><br><span style="font-size:0.78rem; color:#94a3b8;">瀧宮花音</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">連線知人</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 A<br>運動 C<br>牧場 B</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">累計參加線上對戰 (Online) 10 次</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">線上排位升級至青銅 (Bronze) 段位</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">參加 1 次「線上大亨王決定戰」正式大會賽事</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">只需派遣自家主力參與連線模式對戰。條件達成後在往後的任何新存檔中均永久解鎖結婚資格！</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">水守弓美子</strong><br><span style="font-size:0.78rem; color:#94a3b8;">水守弓美子</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">投注專家知人</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 A<br>運動 A<br>牧場 B</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">在「馬券王決定戰」中單次結算達到 100 萬 pt</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">在「馬券王決定戰」中單次結算達到 1000 萬 pt</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">在「馬券王決定戰」中單次結算達到 1 億 pt！</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">於主選單馬券王模式多玩幾把高倍率過關即可達成，解鎖後於全遊戲存檔永久通用！</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">カルロ石堂</strong><br><span style="font-size:0.78rem; color:#94a3b8;">卡洛石堂</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">海外相馬知人 (男)</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 C<br>運動 A<br>牧場 A</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">粉絲投票中所有馬獲得優先出走權</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">同一匹馬在同一年稱霸春秋大獎賽 (寶塚+有馬)</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">以 3 歲雌馬贏得年底有馬紀念大賽</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">春秋大獎賽十分容易；3歲雌馬贏有馬紀念可在史實期派遣女帝泰斯高加比、貴婦人等達成。</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">足利拓海</strong><br><span style="font-size:0.78rem; color:#94a3b8;">足利拓海</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">短途專家 (男)</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 C<br>運動 A<br>牧場 B</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">贏得短距離 (1000~1400m) 重賞賽事</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">同一年內包辦春秋短途大賽 (高松宮記念+短途馬錦標)</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">達成香港短途三冠大滿貫 (主席短途獎等)</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">香港短途三冠需正面迎戰世界級頂尖衝刺手，需派遣速度 74+、瞬發力 S 的頂級短途名駒。</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">須田鷹雄</strong><br><span style="font-size:0.78rem; color:#94a3b8;">須田鷹雄</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">知名評論家 (男)</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 A<br>運動 B<br>牧場 B</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">澳洲 GI 賽事跑入前 3 名以內</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">贏得 2 次澳洲聖殿「珠穆朗瑪峰錦標 (The Everest)」</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">贏得 2 次澳洲國寶「墨爾本盃 (Melbourne Cup)」</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">鎖定澳洲春季嘉年華，分別準備 1200m 短途名駒與 3200m 超長途耐力馬各兩次奪冠即可。</td>
+        </tr>
+        <tr>
+          <td style="width:160px; min-width:150px; text-align:left !important;"><strong style="color:#fbcfe8;">高松凱旋</strong><br><span style="font-size:0.78rem; color:#94a3b8;">高松凱旋</span></td>
+          <td style="width:100px; min-width:90px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">獸醫知人 (男)</span></td>
+          <td style="width:140px; min-width:130px; text-align:left !important; white-space:nowrap !important; font-size:0.8rem; color:#38bdf8;">勉強 B<br>運動 B<br>牧場 A</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">以健康度 F 以下的賽駒贏得重賞冠軍</td>
+          <td style="width:240px; min-width:220px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#e2e8f0;">日本本土牧場設施「牧草」擴建至最高等級</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#fde047; font-weight:bold;">日本本土牧場設施「獸醫設施」擴建至最高等級</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">只要完成牧草與獸醫設施升級，並安排一匹健康度較差但能力優秀的名馬拿下一場 G3 即可。</td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+<!-- /知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑 -->
 
 <div class="callout callout-gold" style="margin-bottom: 20px;">
 <i class="fa-solid fa-heart" style="font-size:1.4rem; color:#ec4899;"></i>
@@ -37179,6 +37593,552 @@ function filterTab5Racecourses() {
 </tbody>
 </table>
 </div>
+
+<!-- 現代 51 大活躍名種公馬產駒特徵・血統相性與實戰育種大數據庫 -->
+<div id="modern-sires-database" style="margin-top:20px; margin-bottom:20px; background:rgba(15,23,42,0.7); border:1px solid rgba(234,179,8,0.45); border-radius:12px; padding:18px 20px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+    <div style="font-size:1.05rem; font-weight:800; color:#fbbf24; display:flex; align-items:center; gap:8px;">
+      <i class="fa-solid fa-dna"></i>
+      <span>現代 51 大活躍名種公馬產駒特徵・血統相性與實戰育種大數據庫</span>
+      <span class="badge" style="background:#b45309; color:#fff; font-weight:bold; white-space:nowrap !important;">現代種馬之巔 (51 匹)</span>
+    </div>
+    <div style="font-size:0.8rem; color:#94a3b8;">草泥勝率 ＋ 距離帶 ＋ 成長型 ＋ 代表產駒 ＋ 育種相性指南</div>
+  </div>
+
+  <div style="font-size:0.84rem; color:#cbd5e1; line-height:1.6; margin-bottom:12px;">
+    深度收錄當前活躍於中央競馬與遊戲現代時期的 <strong>51 匹頂級名種公馬 (Leading Sires)</strong>。精準解析其產駒真實戰力表現、草泥勝率/複勝率、得意賽場、巔峰成長曲線與代表 G1 榮譽產駒，為自產體系與配種理論提供最強數據支撐：
+  </div>
+
+  <div class="scrollable-table-box table-responsive" style="max-height:640px !important; overflow-y:auto !important;">
+    <table class="data-table" style="min-width:1220px; width:100%; text-align:left !important;">
+      <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+        <tr>
+          <th class="sortable-th" style="width:180px; min-width:160px; text-align:left !important;">種公馬名稱 (日/中) ⇅</th>
+          <th class="sortable-th" style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important;">草地成績 (勝/複) ⇅</th>
+          <th class="sortable-th" style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important;">泥地成績 (勝/複) ⇅</th>
+          <th class="sortable-th" style="width:180px; min-width:160px; text-align:left !important;">得意距離帶 ⇅</th>
+          <th class="sortable-th" style="width:160px; min-width:150px; text-align:left !important;">成長曲線 ⇅</th>
+          <th class="sortable-th" style="width:180px; min-width:160px; text-align:left !important;">最得意賽場 ⇅</th>
+          <th class="sortable-th" style="min-width:320px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">產駒特徵與育種戰略評語 ⇅</th>
+          <th class="sortable-th" style="width:220px; min-width:200px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">代表產駒 ⇅</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ロードカナロア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">龍王 (Lord Kanaloa)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.4% (複 27.6%)</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.7% (複 23.7%)</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">芝1500-1800mが最良ゾーン、複勝率30％超。芝1200m以下・芝2100-2400mも好相性</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">2歳・3歳から本格的に走り、4歳までがピーク。5歳以降は徐々に下降、6歳以上は明</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京(複31.9%)、函館(複29.5%)、中山(複28.6%)</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 18勝の超大物 ：アーモンドアイ8勝＋サートゥルナーリア・ステルヴィオ・ジャスティンパレス・ファストフォース・ブレイディヴェーグ・ダノンスコーピオン各1勝＋ベラジオオペラ・サトノレーヴ各2勝 912頭・7958戦・複勝率26.1％ ：現役種牡馬最大級のサンプル、平均人気6.6で堅実に馬券に絡む 芝27.</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">アーモンドアイ（牝／鹿毛）、サートゥルナーリア（牡／黒鹿毛）、ステルヴィオ（牡／黒鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ミッキーアイル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">米奇島 (Mikki Isle)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">7.8% (複 25.2%)</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.0% (複 24.7%)</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">芝1500-1600mが最良、芝1300-1400mも同水準。芝1900m以降は明確に苦手 ダート適</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">2歳から走るが本格化は4歳。5歳で急落・6歳以上はほぼ勝てない短ピーク型</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">函館(複37.9%)、札幌(複31.6%)、中京(複29.7%)</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">353頭・2875戦・複勝率25.0％ ：中堅サイアー水準、平均人気7.0で安定して馬券に絡む JRA中央G1未勝利だが、ナムラクレアが高松宮記念G1 2着3回・スプリンターズSG1 3着3回 の重賞戦線常連 函館芝が最強 ：66戦・勝率12.1％・複勝率37.9％は産駒の頂点 芝とダートがほぼ同率の万能型 ：芝25.</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ナムラクレア（牝／鹿毛）、ウィリアムバローズ（牡／鹿毛）、ララクリスティーヌ（牝／鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">キタサンブラック</strong><br><span style="font-size:0.78rem; color:#94a3b8;">北部玄駒 (Kitasan Black)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 10勝 ：イクイノックス5＋クロワデュノール4＋ソールオリエンス1 368頭・2890戦・複勝率30.9% ：中央リーディング上位水準（平均人気5.9） 札幌芝42.2%・函館芝41.1% ：洋芝で複勝率40%超の圧倒的成績 新潟芝は16.7%で最弱 ：キレ比べの外回りは消し 牡馬複勝率33.7% vs</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">イクイノックス｜歴代最強級の称</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">キズナ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">絆 (Kizuna)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">函館(複33.3%)、東京(複33.2%)、福島(複32.8%)</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">全体複勝率29.5%は現役トップ級 ：744頭・6868戦で勝率11.1%・複勝率29.5%、平均人気6.2 芝・ダート両刀が最大の武器 ：芝29.3%・ダ28.4%と馬場を問わず複勝率3割前後 障害で驚異の複勝率43.6% ：241戦・勝率18.3%は全種牡馬中トップクラス 芝の適距離は1800-2400m ：複勝率</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">⑥ 性別｜牡馬が一歩リード、JRA中央G1勝ち馬、重賞戦線の主力</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">エピファネイア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">神威啟示 (Epiphaneia)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">芝の中距離種牡馬 ：芝4670戦・複勝率27.2% vs ダ1425戦・19.4%で芝が明確に上 2歳の完成度が突出 ：芝2歳910戦・複勝率40.3%、デビュー直後から高確率で馬券に絡む 芝1500-2400mが主戦場 ：芝1500-1600m 29.4%、1900-2000m 30.1%、2100-2400m 28</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">エフフォーリア（牡）、デアリングタクト（牝）、ダノンデサイル（牡）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">リアルスティール</strong><br><span style="font-size:0.78rem; color:#94a3b8;">真實之鋼 (Real Steel)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">芝もダートも走る万能型 ：芝1449戦・複勝率28.3% / ダ1240戦・複勝率25.7%で両方安定 東京芝が最強条件 ：248戦・複勝率36.7%は全競馬場・全馬場で突出 芝1300-1400m・1700-2000mに二大ピーク ：芝1300-1400m複勝率30.6%、芝1700-1800m 30.8%、芝190</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">フォーエバーヤング（牡／鹿毛）、レーベンスティール（牡／黒鹿毛）、アドマイヤクワッズ（牡／鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ドレフォン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">卓夫 (Drefong)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G1勝ち馬、地方G1・重賞勝ち馬</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">アドマイヤマーズ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">頌讚火星 (Admire Mars)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">初年度世代だけでJRA中央G1 3勝 ：桜花賞・秋華賞・ヴィクトリアマイル（全てエンブロイダリー） 芝もダートも走れる万能型 ：芝426戦・複勝率24.4%、ダ211戦・複勝率27.5% フィリーサイアー ：牝馬複勝率26.1% vs 牡馬22.2%、牝馬の方が強い 2歳の早熟性 ：2歳複勝率29.3%でピーク、4歳1</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">エンブロイダリー（牝／鹿毛）、テレサ（牝／鹿毛）、ナムラクララ（牝／鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">モーリス</strong><br><span style="font-size:0.78rem; color:#94a3b8;">滿樂時 (Maurice)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 4勝 ：スプリンターズS・エリザベス女王杯・大阪杯・朝日杯FS 芝特化型 ：芝3643戦・複勝率26.0%、ダ1525戦・複勝率21.9% 2歳で抜群の早熟性 ：2歳複勝率34.0%でピーク、新興種牡馬全体でもトップクラスの2歳成績 5歳以降急落 ：3歳26.0%・4歳25.1%で安定、5歳18.3%・</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ジャックドール（牡／鹿毛）、ジェラルディーナ（牝／青鹿毛）、ピクシーナイト（牡／鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ルーラーシップ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">統治地位 (Rulership)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 3勝＋海外G1 1勝 ：菊花賞・マイルCS・天皇賞（春）＋ドバイターフ 芝とダートの両方で安定 ：芝3163戦・複勝率22.3%、ダ2459戦・複勝率19.8% 牡馬複勝率26.4% > 牝馬18.7% でコルトサイアー傾向が強い 4歳ピーク（複勝率28.2%）・晩成型 ：5歳21.0%、6歳以上14.</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ソウルラッシュ（牡／鹿毛）、ヘデントール（牡／鹿毛）、キセキ（牡／栗毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">コントレイル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">鐵鳥翱天 (Contrail)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">脚質・走り方の傾向、仕上がりの早さと成長曲線、バドリナート（牡・松永幸夫厩舎）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">スワーヴリチャード</strong><br><span style="font-size:0.78rem; color:#94a3b8;">斯瓦夫理察 (Suave Richard)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">初年度世代だけでJRA中央G1 4勝 ：ホープフルS・有馬記念・エリザベス女王杯・菊花賞 芝特化型 ：芝874戦・複勝率25.5%、ダ310戦・複勝率18.7% 芝中長距離が強い ：芝1700-1800m複勝率29.1%、芝1900-2000m複勝率31.4% 2歳の早熟性 ：2歳複勝率32.7%でファーストクロップサ</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">レガレイラ（牝／鹿毛）、アーバンシック（牡／鹿毛）、コラソンビート（牝／鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ゴールドシップ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">黃金船 (Gold Ship)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 2勝＋障害J・G1 1勝 ：オークス・宝塚記念・中山大障害を制覇 芝特化型 ：芝3138戦・複勝率21.0%、ダ605戦・複勝率17.0%、障害181戦・複勝率29.8% 長距離で本領発揮 ：芝2500-2800mで複勝率22.1%、芝2900m以上で勝率9.1% 4歳ピーク・5歳以降急落 ：4歳複勝率</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">メイショウタバル（牡／鹿毛）、ユーバーレーベン（牝／青鹿毛）、マイネルエンペラー（牡／黒鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ナダル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">拿達爾 (Nadal)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央で勝率15.3%・複勝率36.2% ：平均人気4.7で評価されつつこの数字 ダート特化型 ：ダ671戦・勝率16.4%・複勝率38.6%、芝は75戦のみ 中山ダ・新潟ダで複勝率47%超 ：中山ダ47.6%、新潟ダ47.5%は全競馬場のトップ ダ1400m複勝率41.1%・ダ1700-1800m複勝率38.9%</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">メモリアカフェ（牝／鹿毛）、メルキオル（牡／黒鹿毛）、クレーキング（牡／鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">レイデオロ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">雷神精靈 (Rey de Oro)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">2026年春シーズンでG2 2勝・G3 2勝・G1掲示板 ：阪神大賞典・日経賞・エプソムC・アンタレスS・天皇賞春3着 東京芝が勝率15.0%でトップ ：240戦・複勝率32.1%は全競馬場のトップ 芝2400m以上が真のコア ：156戦・勝率13.5%・複勝率34.0% 札幌芝・福島ダで複勝率33.3% ：ローカル開</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">アドマイヤテラ（牡／芦毛）、トロヴァトーレ（牡／青鹿毛）、ムルソー（牡／鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">インディチャンプ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">冠軍車手 (Indy Champ)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">初年度世代でG1 3着＋G2勝ち ：タイセイボーグ 阪神JF 3着・チューリップ賞 1着 勝率9.3％・複勝率28.6％ の新種牡馬として極めて高い水準 中山ダート複勝率50.0％ ：18戦・産駒最強条件 新潟芝複勝率44.4％ ：18戦・芝最強コース 阪神芝・福島芝も◎ ：阪神芝41.2％、福島芝30.8％ 東京芝は</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">タイセイボーグ（牝／鹿毛）、モルニケ（牝／黒鹿毛）、ブレナヴォン（牡／黒鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">シルバーステート</strong><br><span style="font-size:0.78rem; color:#94a3b8;">銀幕盛宴 (Silver State)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">2026年G1戦線で複数掲示板 ：オークス4着リアライズルミナス、大阪杯5着セイウンハーデス 芝中長距離が真のコア ：芝2000m勝率10.4%・複勝率29.3%、芝2200m複勝率31.4% 札幌芝・中山芝が◎ ：札幌芝複勝率31.7%（全競馬場トップ）、中山芝勝率9.4%・複勝率28.5% ダートは明確に苦手 ：8</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">リアライズルミナス（牝／黒鹿毛）、セイウンハーデス（牡／黒鹿毛）、ラヴァンダ（牝／黒鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ブリックスアンドモルタル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">磚石奧秘 (Bricks and Mortar)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">新潟(複23.8%)、札幌(複20.0%)、小倉(複23.1%)</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">② 実はダートのほうが勝率が高い、⑧ その他に見えてくる傾向</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">マインドユアビスケッツ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">萬全之策 (Mind Your Biscuits)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央で重賞2勝＋G1 3着の実績 ：ホウオウビスケッツ天皇賞秋3着・函館記念勝ち、マピュース中京記念勝ち ダート主戦場 ：1397戦・複勝率21.0％、ダ1700-1800mが681戦の最大ボリュームゾーン 函館ダートが圧倒的 ：52戦・勝率15.4％・複勝率42.3％は産駒最強 札幌ダ・東京ダも◎ ：札幌ダ複勝</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ホウオウビスケッツ（牡／鹿毛）、マピュース（牝／栗毛）、アムールドパリ（牝／芦毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">タワーオブロンドン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">倫敦塔 (Tower of London)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 1勝＋G1高松宮記念で2頭掲示板 ：パンジャタワー、レイピアの実績 芝1400mが効率最強 ：79戦・勝率7.6％・複勝率24.1％ ダート1700-1800mが隠れた狙い目 ：60戦・複勝率28.3％ 札幌芝が芝勝率トップ ：18戦・勝率16.7％・複勝率22.2％ 函館ダ・福島ダで爆発 ：函館ダ複勝</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">パンジャタワー（牡／鹿毛）、レイピア（牡／鹿毛）、タマモジャスミン（牝／鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">モズアスコット</strong><br><span style="font-size:0.78rem; color:#94a3b8;">摩茲雅谷 (Mozu Ascot)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">札幌(複31.8%)、函館(複30.8%)、小倉(複21.6%)</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">主な勝ち鞍（抜粋）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">リオンディーズ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">獅子之姿 (Leontes)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央で勝率7.5％・複勝率22.8％ 、495頭規模の安定種牡馬 芝2400m以上が勝率17.9％・複勝率28.6％ でテーオーロイヤル型の長距離適性 札幌ダート最強 ：80戦・勝率16.2％・複勝率31.2％ ダート1900m以上も複勝率31.9％ 、長距離適性は芝ダ両方で発揮 コルトサイアー傾向 ：牡馬複勝率</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ミュージアムマイル（牡／黒鹿毛）、テーオーロイヤル（牡／鹿毛）、アスクエジンバラ（牡／青鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">サトノダイヤモンド</strong><br><span style="font-size:0.78rem; color:#94a3b8;">里見光鑽 (Satono Diamond)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">重賞優勝產駒多數</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">オルフェーヴル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">黃金巨匠 (Orfevre)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">⑥ 障害戦は産駒の隠れた最強舞台、中央G1勝ち馬、地方G1・海外G1勝ち馬</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">アメリカンファラオ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">美國法老 (American Pharoah)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央で勝率12.8％・複勝率28.3％ の高水準、種牡馬としても安定した遺伝力 2歳の早熟性が圧倒的 ：2歳勝率17.9％・複勝率41.5％は現役種牡馬でも上位 意外な芝スプリント適性 ：芝〜1200m勝率19.4％・複勝率48.4％は産駒距離別トップ 小回りローカルダートこそエース ：小倉ダ35.3％、札幌ダ3</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">カフェファラオ（牡／鹿毛）、ダノンファラオ（牡／青鹿毛）、ルクソールカフェ（牡／鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ニューイヤーズデイ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">元旦 (New Year's Day)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">勝率9.5％・複勝率26.8％ の安定水準、平均人気6.7で人気薄でも結果を出す ダート1900m以上が最強 ：62戦・勝率16.1％・複勝率33.9％ ダート1700-1800mが主戦場 ：372戦・勝率10.8％・複勝率28.8％の最大ボリュームゾーン 中京ダ・阪神ダが◎ ：中京ダ複勝率35.6％、阪神ダ複勝率33</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">プレシャスデイ（牡／黒鹿毛）、ニホンピロホリデー（牝／黒鹿毛）、エートラックス（牡／黒鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">シスキン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">希斯金 (Siskin)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">G1・重賞戦線で名前を出した産駒</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">リアルインパクト</strong><br><span style="font-size:0.78rem; color:#94a3b8;">真實衝擊 (Real Impact)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">実はダートが主戦場 ：芝564戦に対しダ1320戦、ダート勝率9.4％・複勝率25.3％は芝より上 ダート1400mが圧倒的 ：306戦・勝率12.4％・複勝率31.0％は産駒の最強条件 京都競馬場が芝・ダート両得意 ：京都芝勝率14.3％・京都ダ勝率13.6％は産駒のWエース 3歳がピーク、5歳以降は急落 ：3歳勝率</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ラウダシオン（牡／鹿毛）、モズメイメイ（牝／鹿毛）、スウィートハピネス（牝／栗毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ウインブライト</strong><br><span style="font-size:0.78rem; color:#94a3b8;">溫布萊特 (Win Bright)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">札幌・函館の洋芝が最強 ：札幌芝複勝率52.9％、函館芝複勝率56.2％は産駒の頂点 芝短距離（〜1200m）が意外に強い ：44戦・勝率11.4％・複勝率40.9％ 芝長距離（2400m〜）も◎レベル ：41戦・勝率9.8％・複勝率36.6％ 福島芝・阪神芝も得意 ：福島芝複勝率29.7％、阪神芝35.3％ 父の主戦</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">フクノブルーレイク（牡／青鹿毛）、マイネルフルムーン（牡／青鹿毛）、ドーバーブライト（牡／芦毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ヘンリーバローズ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">亨利巴羅斯 (Henry Barows)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">芝もダートもこなす二刀流 ：芝111戦・複勝率24.3％、ダート121戦・複勝率23.1％でほぼ同水準 芝2000mが勝率13.8％でコア距離 ：芝1500-1600mも勝率11.5％、中距離全般に強い ダート1400mが複勝率29.4％ ：「ダート向きじゃない」は明確に誤り 阪神芝が複勝率42.9％ ：7戦と少サンプ</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ジェットマグナム（牡／黒鹿毛）、ローランドバローズ（牡／鹿毛）、ストームサンダー（牡／黒鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ミスターメロディ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">旋律先生 (Mr Melody)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">短距離が主戦場 ：芝1400m勝率10.9％、ダ〜1300m複勝率26.9％ 左回り芝が明確に得意 ：芝左回り勝率10.6％は右回り（5.4％）のほぼ2倍 ダートでは逆に右回り優勢 ：ダ右回り24.1％ vs 左回り13.0％、芝とは傾向が真逆 中山ダートが突出 ：60戦・勝率13.3％・複勝率28.3％は全競馬場の頂</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">タガノアラリア（牡／黒鹿毛）、クラスペディア（牡／黒鹿毛）、スリールミニョン（牝／鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ポエティックフレア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">詩人之躍 (Poetic Flare)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">東京芝が圧倒的に得意 ：23戦7勝・複勝率47.8％は全競馬場で最高水準 芝マイル〜1800mが主戦場 ：芝1500-1600mで勝率20.8％、芝1800mで複勝率57.7％ 2歳戦の完成度が高い ：2歳時の複勝率49.2％、新馬・OP特別を着実に勝ち上がる 京都芝も穴場 ：勝率15.0％ながら複勝率60.0％、馬券</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">リアライズシリウス（牡3／芦毛）、カフジエメンタール（牡3／鹿毛）、ラストスマイル（牡3／栗毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">サートゥルナーリア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">農神節慶 (Saturnalia)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">札幌(複44.1%)、東京(複38.8%)、中京(複33.0%)</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">② 芝が圧倒的、ダートは苦戦、G1勝ち馬、G2・G3勝ち馬</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ハービンジャー</strong><br><span style="font-size:0.78rem; color:#94a3b8;">無敵先鋒 (Harbinger)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G1勝ち馬、中央G2・G3勝ち馬</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">アルアイン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">艾恩 (Al Ain)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">② 主戦場は芝、ダートは平均以下、中央G2勝ち・G1掲示板実績の産駒、中央OP・3勝クラスの活躍馬</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">フィエールマン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">氣自豪 (Fierement)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">中山(複34.5%)、札幌(複35.3%)、東京(複30.1%)</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">重賞戦線に名前が出てきた産駒</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ディープブリランテ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">迪比經典 (Deep Brillante)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G2・G3勝ち馬、地方転厩後の活躍馬</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">フォーウィールドライブ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">四輪驅動 (Four Wheel Drive)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">地方交流Jpn2/Jpn3勝ち馬、中央オープン・3勝クラス勝ち馬</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ワールドプレミア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">世界之霸 (World Premiere)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">距離適性、コース適性</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ロジャーバローズ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">羅傑巴羅斯 (Roger Barows)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央リステッド勝ち馬</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ホッコータルマエ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">北港火山 (Hokko Tarumae)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">JRA重賞勝ち馬、地方交流G2/G3勝ち馬、地方重賞勝ち馬</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ダノンプレミアム</strong><br><span style="font-size:0.78rem; color:#94a3b8;">野田優驥 (Danon Premium)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">距離適性、コース適性、馬場状態</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">グレーターロンドン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">大倫敦 (Greater London)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G3勝ち馬、中央リステッド・G2級の活躍馬、中央オープン・3勝クラス級の活躍馬</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ファインニードル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">鐵膽威龍 (Fine Needle)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">② 主戦場は芝、ダートは平均的、中央G3勝ち馬、中央オープン・リステッド級の活躍馬</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ジャスタウェイ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">賈斯汀 (Just A Way)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G1勝ち馬・G1級活躍馬、中央G2・G3勝ち馬、地方G1勝ち馬・交流重賞勝ち馬</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">イスラボニータ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">艾島 (Isla Bonita)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G3勝ち馬、地方G2勝ち馬・中央オープン級</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ミッキーロケット</strong><br><span style="font-size:0.78rem; color:#94a3b8;">米奇火箭 (Mikki Rocket)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央重賞戦線で名前を出した産駒、地方転厩後に活躍する産駒</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ルヴァンスレーヴ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">日蝕生輝 (Le Vent Se Leve)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">父シンボリクリスエス×米国ダート系 の本格派ダートサイヤー、芝17.2％対ダート30.8％の極端なダート特化型 185頭・1,113戦・複勝率29.7％ はデビュー4年目の中堅サイヤーとして高水準 ダート1800-1900mが主戦場 ：435戦・勝率14.5％・複勝率39.5％でここに数字が集中 ダート2000m以上も</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">シルバーレシオ（牡／鹿毛）、メルカントゥール（牡／鹿毛）、ソルジャーフィルド（牡／鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">シニスターミニスター</strong><br><span style="font-size:0.78rem; color:#94a3b8;">險峰 (Sinister Minister)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">米国産の輸入種牡馬 、父Old Trieste（A.P. Indy系）の本格ダート血統を伝えるダート専門サイヤー 328頭・3,039戦・複勝率28.5％ と豊富なサンプルを持つ、ダート界の主力サイヤーの一角 芝は複勝率2.2％で完全なダート専用 、芝に出てきた産駒は基本的に消し ダ1800-1900mが主戦場 ：1,</td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">テーオーケインズ（牡／栗毛）、キングズソード（牡／栗毛）、ミックファイア（牡／黒鹿毛）</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">エフフォーリア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">樂透心 (Efforia)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">重賞優勝產駒多數</td>
+        </tr>
+        <tr>
+          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">サリオス</strong><br><span style="font-size:0.78rem; color:#94a3b8;">敬愛鬥神 (Salios)</span></td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
+          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
+          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
+          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">重賞優勝產駒多數</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /現代 51 大活躍名種公馬產駒特徵・血統相性與實戰育種大數據庫 -->
 </div>
 </section>
 <section class="section-card" id="sec-racehorses-full-db" style="margin-bottom:18px;">
@@ -37835,6 +38795,104 @@ function filterTab5Racecourses() {
 </div>
 </div>
 </div>
+
+<!-- 官方 DLC 擴充包實用度與性價比評鑑大表 -->
+<div id="dlc-evaluation-guide" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.7); border:1px solid rgba(234,179,8,0.4); border-radius:12px; padding:18px 20px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+    <div style="font-size:1.05rem; font-weight:800; color:#fbbf24; display:flex; align-items:center; gap:8px;">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>🎮 官方 DLC 擴充包實用度與性價比評鑑完全指南</span>
+      <span class="badge" style="background:#ca8a04; color:#fff; font-weight:bold; white-space:nowrap !important;">精明選購</span>
+    </div>
+    <div style="font-size:0.8rem; color:#94a3b8;">永久增益 ＋ 設施擴建 ＋ 新手推薦指數評級</div>
+  </div>
+
+  <div style="font-size:0.84rem; color:#cbd5e1; line-height:1.6; margin-bottom:12px;">
+    《賽馬大亨 10 2026》提供多項官方下載內容 (DLC)。按效益可分為<strong>「終身永續型 (強烈推薦)」</strong>、<strong>「海外捷徑型」</strong>、<strong>「名馬購入權」</strong>與<strong>「外觀飾品」</strong>。建議優先入手一次購買終身受用的永續功能型 DLC：
+  </div>
+
+  <div class="scrollable-table-box table-responsive" style="max-height:480px !important; overflow-y:auto !important;">
+    <table class="data-table" style="min-width:1080px; width:100%; text-align:left !important;">
+      <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+        <tr>
+          <th class="sortable-th" style="width:240px; min-width:220px; text-align:left !important;">DLC 名稱 (日/中) ⇅</th>
+          <th class="sortable-th" style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;">分類類別 ⇅</th>
+          <th class="sortable-th" style="width:160px; min-width:150px; text-align:left !important; white-space:nowrap !important;">性價比推薦度 ⇅</th>
+          <th class="sortable-th" style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;">官方售價 ⇅</th>
+          <th class="sortable-th" style="min-width:380px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">核心效果與解鎖權益 ⇅</th>
+          <th class="sortable-th" style="width:260px; min-width:240px; text-align:left !important; white-space:normal !important; word-break:break-word; line-height:1.6;">實戰選購點評 ⇅</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width:240px; min-width:220px; text-align:left !important;"><strong style="color:#fde047;">馬所有可能数＆牧場面積拡張＆工事期間短縮＆新施設DLCフルセット</strong><br><span style="font-size:0.78rem; color:#94a3b8;">馬匹所有數與牧場面積擴建＋新設施全套組</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">永續強化型</span></td>
+          <td style="width:160px; min-width:150px; text-align:left !important; white-space:nowrap !important;"><span style="color:#22c55e; font-weight:bold; font-size:0.83rem;">★★★★★ (必買神級)</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important; font-size:0.83rem; color:#fbcfe8;">¥ 1,760</td>
+          <td style="min-width:380px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">競走馬/繁殖牝馬/種牡馬所有上限各 +5 匹，放牧場面積 +5、育成面積 +2，工程工期縮短 50%，贈送專屬新設施「低酸素トレッドミル (低氧跑台)」！</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">本作最具性價比的 DLC，沒有之一！一次性永久大幅擴充馬匹上限與牧場容量，任何階段玩家均強烈推薦入手。</td>
+        </tr>
+        <tr>
+          <td style="width:240px; min-width:220px; text-align:left !important;"><strong style="color:#fde047;">米国・欧州牧場 最速開設セット</strong><br><span style="font-size:0.78rem; color:#94a3b8;">美歐海外牧場最速開設套組</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">海外拓展型</span></td>
+          <td style="width:160px; min-width:150px; text-align:left !important; white-space:nowrap !important;"><span style="color:#38bdf8; font-weight:bold; font-size:0.83rem;">★★★★☆ (強烈推薦)</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important; font-size:0.83rem; color:#fbcfe8;">¥ 1,320</td>
+          <td style="min-width:380px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">原本需要通關特定海外名勝、累積龐大聲望與資產才能解鎖的美歐牧場，在遊戲開始第 2 年 2 月 1 週即可直接無條件開設！</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">大幅縮短通關流程，第 2 年立即開啟海外繁育，免去遠征負擔，是衝刺歐洲三冠與美洲三冠的捷徑。</td>
+        </tr>
+        <tr>
+          <td style="width:240px; min-width:220px; text-align:left !important;"><strong style="color:#fde047;">史実調教使用可能数＋１（永続型）</strong><br><span style="font-size:0.78rem; color:#94a3b8;">史實調教使用次數上限＋1 (永續型)</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">核心數值型</span></td>
+          <td style="width:160px; min-width:150px; text-align:left !important; white-space:nowrap !important;"><span style="color:#38bdf8; font-weight:bold; font-size:0.83rem;">★★★★☆ (強烈推薦)</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important; font-size:0.83rem; color:#fbcfe8;">¥ 1,100</td>
+          <td style="min-width:380px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">永久性使每週史實調教的使用次數上限與可執行次數各增加 1 次！</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">史實調教是拉開賽駒數值天花板的核心機制。每週額外多一次調教，能讓所有主力賽駒副屬性快速鍛鍊至 S+。</td>
+        </tr>
+        <tr>
+          <td style="width:240px; min-width:220px; text-align:left !important;"><strong style="color:#fde047;">秘書・知人・牧場長・騎手・調教師 最速結婚可能セット</strong><br><span style="font-size:0.78rem; color:#94a3b8;">秘書知人騎調最速結婚套組</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">特殊便利型</span></td>
+          <td style="width:160px; min-width:150px; text-align:left !important; white-space:nowrap !important;"><span style="color:#38bdf8; font-weight:bold; font-size:0.83rem;">★★★★☆ (休閒推薦)</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important; font-size:0.83rem; color:#fbcfe8;">¥ 990</td>
+          <td style="min-width:380px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">已相識之未婚秘書、知人、牧場長與部分現役騎師/調教師，於第 2 年 1 月 1 週即可直接求婚結婚！</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">直接免除如吹里谷芽愛 (BC全勝) 等地獄級繁瑣門檻，適合想立即體驗子孫培育與家庭系統的玩家。</td>
+        </tr>
+        <tr>
+          <td style="width:240px; min-width:220px; text-align:left !important;"><strong style="color:#fde047;">１９７３年スタート スターホース購入権フルセット (全10頭)</strong><br><span style="font-size:0.78rem; color:#94a3b8;">1973年名馬購入權全套組 (全10頭)</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">名馬購入型</span></td>
+          <td style="width:160px; min-width:150px; text-align:left !important; white-space:nowrap !important;"><span style="color:#fbbf24; font-weight:bold; font-size:0.83rem;">★★★☆☆ (新手選配)</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important; font-size:0.83rem; color:#fbcfe8;">¥ 1,980</td>
+          <td style="min-width:380px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">免費獲得 カブラヤオー、テスコガビー、エリモジョージ 等 10 匹 1973 開局最強歷史名馬之所有權，無需金札/虹札。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">適合沒有前代繼承存檔、開局缺乏馬札的新手玩家快速站穩腳跟。</td>
+        </tr>
+        <tr>
+          <td style="width:240px; min-width:220px; text-align:left !important;"><strong style="color:#fde047;">激闘繰り広げし優駿たち 購入権フルセット (全25頭)</strong><br><span style="font-size:0.78rem; color:#94a3b8;">激鬥優駿購入權全套組 (全25頭)</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">名馬購入型</span></td>
+          <td style="width:160px; min-width:150px; text-align:left !important; white-space:nowrap !important;"><span style="color:#fbbf24; font-weight:bold; font-size:0.83rem;">★★★☆☆ (新手選配)</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important; font-size:0.83rem; color:#fbcfe8;">¥ 3,520</td>
+          <td style="min-width:380px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">獲得成田白仁、琵琶晨光、摩耶重砲、小栗帽等傳奇名駒的直接購買權。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">適合對特定歷史世代名馬有深厚情懷，且不想花時間刷札的玩家。</td>
+        </tr>
+        <tr>
+          <td style="width:240px; min-width:220px; text-align:left !important;"><strong style="color:#fde047;">地方の威信を背負う名馬たち 購入権セット (全5頭)</strong><br><span style="font-size:0.78rem; color:#94a3b8;">地方威信名馬購入權套組 (全5頭)</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">免費特典型</span></td>
+          <td style="width:160px; min-width:150px; text-align:left !important; white-space:nowrap !important;"><span style="color:#22c55e; font-weight:bold; font-size:0.83rem;">★★★★★ (免費必領)</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important; font-size:0.83rem; color:#fbcfe8;">免費 (Free)</td>
+          <td style="min-width:380px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">收錄地方傳奇名駒，包含地方名將之購入權。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">官方免費提供，開局務必直接下載領取！</td>
+        </tr>
+        <tr>
+          <td style="width:240px; min-width:220px; text-align:left !important;"><strong style="color:#fde047;">秘書追加衣装・追加コスチューム全種</strong><br><span style="font-size:0.78rem; color:#94a3b8;">秘書追加服裝套組 (全套)</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#334155; color:#cbd5e1; border:1px solid #475569;">外觀飾品型</span></td>
+          <td style="width:160px; min-width:150px; text-align:left !important; white-space:nowrap !important;"><span style="color:#94a3b8; font-weight:bold; font-size:0.83rem;">★★☆☆☆ (依愛好選購)</span></td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important; font-size:0.83rem; color:#fbcfe8;">¥ 330 ~ 880</td>
+          <td style="min-width:380px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">為逢坂彌生、吹里谷芽愛、志麻倉夕映等秘書更換多套專屬季節服飾與特別立繪。</td>
+          <td style="width:260px; min-width:240px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#94a3b8;">純外觀視覺增益，不影響任何遊戲數值，喜愛秘書立繪的玩家可自由選購。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /官方 DLC 擴充包實用度與性價比評鑑大表 -->
 </div>
 </section>
 </div>
@@ -38050,8 +39108,8 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.74"></script>
-<script src="yuruyuru_guides_db.js?v=v03.74"></script>
+<script src="unified_horses_full_db.js?v=v03.75"></script>
+<script src="yuruyuru_guides_db.js?v=v03.75"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
