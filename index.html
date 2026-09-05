@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.71"></script>
-<script src="core_guides_data.js?v=v03.71"></script>
-<script src="yearly_recs_db.js?v=v03.71"></script>
-<script src="horse_subtopics_data.js?v=v03.71"></script>
+<script src="master_lookup_db.js?v=v03.72"></script>
+<script src="core_guides_data.js?v=v03.72"></script>
+<script src="yearly_recs_db.js?v=v03.72"></script>
+<script src="horse_subtopics_data.js?v=v03.72"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2538,7 +2538,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.71</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.72</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
             15,389 匹全史實馬庫 ＋ 11 大年度推薦 ＋ 740+ 重賞三冠 ＋ 8 大專題完全對照攻略 (全 49 大章節)
@@ -6195,16 +6195,164 @@ button.chip-btn.active {
 </table>
 </div>
 
-<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(245,158,11,0.3); padding:16px;">
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(245,158,11,0.3); padding:16px; margin-bottom:24px;">
 <h4 style="color:var(--accent-gold); margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
 <i class="fa-solid fa-fire"></i> 🔥 2026 版七大必知核心變更守則
 </h4>
 <ul style="line-height:1.8; font-size:0.83rem; margin:0; padding-left:20px; color:#cbd5e1;">
-<li><strong>1. 1968 劇本為最佳開拓起點：</strong>從最古年代起手，可完整保留所有史實即將滅亡的珍貴血系，並以零代價建立 Northern Dancer 與 China Rock 支配帝國。</li>
-<li><strong>2. 積極培養「同馬房名駒相関圖」：</strong>日常訓練時多安排 2 匹主力馬合練，建立「親友」或「強敵」關係，同場出賽可互相激發鬥志，引退後更提供配種爆發力。</li>
-<li><strong>3. 繁育必須盯緊 Drama 因子：</strong>2026 的 Drama 因子激活後可直接帶來 4 階段活力加成，徹底扭轉舊版遠親活力不足的瓶頸。</li>
+<li><strong>1. 1968 劇本為最佳開拓起點：</strong>從系列最古年代起手，可完整保留所有史實即將滅亡的珍貴老血脈，並以零代價建立 Northern Dancer 與 China Rock 支配帝國。</li>
+<li><strong>2. 積極培養「同馬房名駒相関圖」：</strong>日常訓練時多安排 2 匹主力馬合練，建立「親友」或「強敵」關係，同場出賽可互相激發鬥志，引退後更提供高額配種爆發力。</li>
+<li><strong>3. 繁育必須盯緊 Drama 因子：</strong>2026 的 Drama 因子激活後可直接帶來 4 階段活力加成，累積戲劇指數可進一步晉升為全血統頂點的「始祖系統」。</li>
 <li><strong>4. 基準交配優先於盲目堆砌爆發力：</strong>即使爆發力相同，符合基準交配的幼駒成長度大幅提升，2~3 歲發育速度提升 30% 以上。</li>
+<li><strong>5. 善用矯正馬具化解不良個性：</strong>針對具備「分心」「膽怯」「暴躁」等不良ウマソナ的賽駒，直接配戴面罩 (メンコ) 或眼罩 (ブリンカー)，賽場折合大幅提升。</li>
+<li><strong>6. 繁殖牝馬活力增強週期化運用：</strong>配合牧場活力增強設施，將母馬活力槽拉至最大時配種，享受因子效力與爆發力雙重爆發。</li>
+<li><strong>7. 線上最強馬之路 SSR 卡與極限突破：</strong>收集頂級名馬卡片（如大震撼等）進行限界突破，直接提高配種產駒能力上限並緩和固有特性習得條件。</li>
 </ul>
+</div>
+
+<h3 style="color:var(--accent-gold); margin:24px 0 10px 0; font-size:1.05rem; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-wand-magic-sparkles"></i> 【細部進化】2025 ➔ 2026 細微機制與視覺體驗升級全覽表
+</h3>
+<p style="font-size:0.85rem; color:#94a3b8; margin-bottom:12px;">
+※ 彙整 2026 版本在賽事演出、裝備自訂、賽制報酬與傳奇對決等細節層面的全面進化項目。
+</p>
+
+<div class="table-responsive" style="margin-bottom:24px;">
+<table class="data-table" style="min-width:980px; width:100%; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="text-align:left !important; width:160px; min-width:140px; white-space:nowrap !important;">進化領域 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:220px; min-width:200px; white-space:nowrap !important;">機制 / 演出項目 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:240px; min-width:220px; max-width:260px; white-space:normal !important; word-break:break-word;">2025 前代規格 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:380px; white-space:normal !important; line-height:1.7;">2026 最新旗艦進化效果與實戰價值 ⇅</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left !important; font-weight:bold; color:#38bdf8;">賽道四季動態視覺</td>
+<td style="text-align:left !important; font-weight:bold; color:#f8fafc;">賽場天候與季節粒子</td>
+<td style="text-align:left !important; color:#94a3b8; font-size:0.82rem;">標準晴雨陰雪天候，賽道周邊景色固定無季節動態。</td>
+<td style="text-align:left !important; font-size:0.84rem; color:#cbd5e1;">
+<strong>實裝春季櫻花飛舞與秋季落葉紅葉動態特效</strong>。不同季節出賽時賽道景緻大幅改變，搭配 3D 擬真馬體光影，賽事沉浸感大幅躍升。
+</td>
+</tr>
+<tr>
+<td style="text-align:left !important; font-weight:bold; color:#a855f7;">賽駒馬具深度自訂</td>
+<td style="text-align:left !important; font-weight:bold; color:#f8fafc;">額革・鼻革樣式與色彩</td>
+<td style="text-align:left !important; color:#94a3b8; font-size:0.82rem;">基本單色馬具，款式選擇較為有限。</td>
+<td style="text-align:left !important; font-size:0.84rem; color:#cbd5e1;">
+<strong>額革 (Browband) 與鼻革 (Noseband) 款式、圖紋與配色倍增</strong>。可為愛駒量身打造專屬配色戰袍，更容易辨識自家名駒。
+</td>
+</tr>
+<tr>
+<td style="text-align:left !important; font-weight:bold; color:#f59e0b;">種牡馬年度結算</td>
+<td style="text-align:left !important; font-weight:bold; color:#f8fafc;">種牡馬 10 傑排行榜報酬</td>
+<td style="text-align:left !important; color:#94a3b8; font-size:0.82rem;">僅給予標準名聲值與金錢獎勵。</td>
+<td style="text-align:left !important; font-size:0.84rem; color:#cbd5e1;">
+<strong>上榜報酬全面加碼升級</strong>！旗下種牡馬榮登年度 10 傑時，追加發放珍稀馬札 (符咒) 與限定繁育支援特權，激勵玩家建立自家強勢父系。
+</td>
+</tr>
+<tr>
+<td style="text-align:left !important; font-weight:bold; color:#10b981;">傳奇對決模式</td>
+<td style="text-align:left !important; font-weight:bold; color:#f8fafc;">傳奇對決 (ザ・レジェンドマッチ)</td>
+<td style="text-align:left !important; color:#94a3b8; font-size:0.82rem;">固定場地與對手，無法於賽前變更戰術方針。</td>
+<td style="text-align:left !important; font-size:0.84rem; color:#cbd5e1;">
+<strong>追加全新比賽賽馬場、引退名駒出走勝利數累計計數器</strong>，並開放賽前即時更換作戰方針，挑戰歷史頂級霸主更加靈活多變。
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3 style="color:var(--accent-gold); margin:24px 0 10px 0; font-size:1.05rem; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-horse-head"></i> 【2026 全新架空名駒】三大架空超級名馬 (Superstar Horses / SH) 戰略評析
+</h3>
+<p style="font-size:0.85rem; color:#94a3b8; margin-bottom:12px;">
+※ 2026 版在最新年代劇本中新加入了 3 匹具備極高潛力的架空超級名駒，是配合理論與名馬相関圖的絕佳基石。
+</p>
+
+<div class="table-responsive" style="margin-bottom:24px;">
+<table class="data-table" style="min-width:980px; width:100%; text-align:left !important;">
+<thead>
+<tr>
+<th class="sortable-th" style="text-align:left !important; width:200px; min-width:180px; white-space:nowrap !important;">名駒名稱 (日/中並行) ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:90px; min-width:80px; white-space:nowrap !important;">性別/馬札 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:160px; min-width:140px; white-space:nowrap !important;">適性距離 / 跑法 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; width:220px; min-width:200px; max-width:240px; white-space:normal !important; word-break:break-word;">核心戰略定位 ⇅</th>
+<th class="sortable-th" style="text-align:left !important; min-width:340px; white-space:normal !important; line-height:1.7;">相関圖與 Drama 因子繁育建議 ⇅</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left !important;">
+<strong style="color:#fbbf24;">主角</strong><br/>
+<span style="font-size:0.82rem; color:#94a3b8;">プロタゴニスタ (Protagonista)</span>
+</td>
+<td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:bold;">金札 牡</span></td>
+<td style="text-align:left !important;">2000m~2600m<br/><span style="font-size:0.78rem; color:#38bdf8;">先行 / 先驅</span></td>
+<td style="text-align:left !important; font-size:0.84rem; color:#cbd5e1;">最新世代王道中長途旗艦馬，八維能力極為平衡且精神力出眾。</td>
+<td style="text-align:left !important; font-size:0.84rem; color:#cbd5e1;">
+<strong>當代相関圖核心樞紐馬</strong>。極易與同世代史實名駒激發「宿敵・強敵」關係；引退後具備優秀速度因子，是建立新子系統的最佳首選種牡馬。
+</td>
+</tr>
+<tr>
+<td style="text-align:left !important;">
+<strong style="color:#fbbf24;">歌劇魅影</strong><br/>
+<span style="font-size:0.82rem; color:#94a3b8;">ファントムジオペラ (Phantom the Opera)</span>
+</td>
+<td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:bold;">金札 牡</span></td>
+<td style="text-align:left !important;">1200m~1600m<br/><span style="font-size:0.78rem; color:#ec4899;">差 / 追込</span></td>
+<td style="text-align:left !important; font-size:0.84rem; color:#cbd5e1;">極致一哩瞬發爆發型短途霸主，具備頂級瞬發力與勝負根性。</td>
+<td style="text-align:left !important; font-size:0.84rem; color:#cbd5e1;">
+<strong>Drama 因子收割機</strong>。在一哩 G1 戰役中常態上演最後直道大逆轉，極易獲得金級「逆轉・豪腳」Drama 因子，引退後提供超高遺傳加成。
+</td>
+</tr>
+<tr>
+<td style="text-align:left !important;">
+<strong style="color:#fbbf24;">未來</strong><br/>
+<span style="font-size:0.82rem; color:#94a3b8;">ミライ (Mirai)</span>
+</td>
+<td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#0f172a; font-weight:bold;">金札 牝</span></td>
+<td style="text-align:left !important;">1800m~2400m<br/><span style="font-size:0.78rem; color:#10b981;">自在 / 先行</span></td>
+<td style="text-align:left !important; font-size:0.84rem; color:#cbd5e1;">頂級母系基石名雌，適應性廣泛且健康度極佳，產駒素質極穩定。</td>
+<td style="text-align:left !important; font-size:0.84rem; color:#cbd5e1;">
+<strong>始祖系統基礎母系土壤</strong>。自帶滿格活力值與高仔出能力，配合活力增強設施可產生連續性爆發力加成，是培育自家世界名牝系的核心引擎。
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3 style="color:var(--accent-gold); margin:24px 0 10px 0; font-size:1.05rem; display:flex; align-items:center; gap:8px;">
+<i class="fa-solid fa-scale-balanced"></i> 【換代決策指南】WP10 2026 購置與升級客觀評判矩陣 (針對 2024 / 2025 玩家)
+</h3>
+<p style="font-size:0.85rem; color:#94a3b8; margin-bottom:12px;">
+※ 針對手持 2024 或 2025 前作玩家之客觀升級評估，從遊玩風格、繁育深度與新機制體驗切入分析。
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4" style="margin-bottom:20px;">
+<div class="tool-card" style="border-left:4px solid #10b981; background:rgba(16,185,129,0.08); padding:16px;">
+<h4 style="color:#10b981; margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-circle-check"></i> 🌟 強烈推薦升級入手的情況
+</h4>
+<ul style="line-height:1.8; font-size:0.83rem; margin:0; padding-left:18px; color:#cbd5e1;">
+<li><strong>熱愛血統繁育與長線連貫性：</strong>2026 最大的突破是將「現役活躍 (Drama 因子、名馬相関圖)」與「繁育價值 (活力增強、始祖系統)」完整串聯成一體，不再只是單純配種。</li>
+<li><strong>喜愛馬匹故事感與宿命對決：</strong>名馬相関圖賦予賽駒立體的人際與友情/強敵羈絆，使得名勝負重現極具戲劇性。</li>
+<li><strong>渴望從 1968 年開拓世界血統：</strong>想從元祖三強時代重新奠定全球繁育霸業，享受系列最古老劇本的開荒樂趣。</li>
+<li><strong>追求線上最強馬培育極限：</strong>重視 SSR 卡片與限界突破機制帶來的極致育成樂趣。</li>
+</ul>
+</div>
+
+<div class="tool-card" style="border-left:4px solid #64748b; background:rgba(100,116,139,0.08); padding:16px;">
+<h4 style="color:#94a3b8; margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
+<i class="fa-solid fa-clock"></i> ⏳ 可先觀望或特價入手的情況
+</h4>
+<ul style="line-height:1.8; font-size:0.83rem; margin:0; padding-left:18px; color:#cbd5e1;">
+<li><strong>純競速派（只跑比賽不深入繁育）：</strong>若平時遊玩偏好快速推進日程、只求拿 G1 獎杯而不花時間研究相関圖或血脈活性化，前作 2025 已具備成熟的競速系統。</li>
+<li><strong>只專注現代開局劇本：</strong>若習慣從 2024~2026 年現代開始遊玩，且對早期血統確立較不感興趣。</li>
+<li><strong>時間有限的休閒玩家：</strong>2026 繁育深度大增，需要花費更多心思規劃合練與活力增強，若遊戲時間零碎可等待後續特惠。</li>
+</ul>
+</div>
 </div>
 
 </div>
@@ -33405,8 +33553,8 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.71"></script>
-<script src="yuruyuru_guides_db.js?v=v03.71"></script>
+<script src="unified_horses_full_db.js?v=v03.72"></script>
+<script src="yuruyuru_guides_db.js?v=v03.72"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
