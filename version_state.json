@@ -1,6 +1,11 @@
 {
-  "current_version": "v03.80",
+  "current_version": "v03.81",
   "history": [
+    {
+      "version": "v03.81",
+      "date": "2026-09-06",
+      "description": "Feat: Complete redesign of JBIS database page (jbis_horse.html) with dark sci-fi tech theme matching horse dossier modal styling, featuring 4-gen / 5-gen visual pedigree matrix, radar charts, and stallion progeny sorting"
+    },
     {
       "version": "v03.80",
       "date": "2026-09-06",
