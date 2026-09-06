@@ -18,6 +18,16 @@
     init: function() {
       if (this.isReady) return;
       console.log('[JBISEngine] Initializing universal horse index (JBIS Priority + Original DB Fallback)...');
+      // Curated parents mapping for foreign ancestors (Brilliant Speed family)
+      this.curatedParentMap.set('Speed Succeeds', { sire: 'Gone West(USA)', dam: 'Daijin(USA)', source: 'jbis_curated' });
+      this.curatedParentMap.set('Speed Succeeds(USA)', { sire: 'Gone West(USA)', dam: 'Daijin(USA)', source: 'jbis_curated' });
+      this.curatedParentMap.set('Gone West', { sire: 'Mr. Prospector(USA)', dam: 'Secrettame(USA)', source: 'jbis_curated' });
+      this.curatedParentMap.set('Gone West(USA)', { sire: 'Mr. Prospector(USA)', dam: 'Secrettame(USA)', source: 'jbis_curated' });
+      this.curatedParentMap.set('Daijin', { sire: 'Deputy Minister(CAN)', dam: 'Passing Mood(CAN)', source: 'jbis_curated' });
+      this.curatedParentMap.set('Daijin(USA)', { sire: 'Deputy Minister(CAN)', dam: 'Passing Mood(CAN)', source: 'jbis_curated' });
+      this.curatedParentMap.set('Dynaformer', { sire: 'Roberto(USA)', dam: 'Andover Way(USA)', source: 'jbis_curated' });
+      this.curatedParentMap.set('Dynaformer(USA)', { sire: 'Roberto(USA)', dam: 'Andover Way(USA)', source: 'jbis_curated' });
+
 
       // 1. Index Breeding Only Horses (4,314 horses)
       if (window.WP10_BREEDING_ONLY_HORSES && Array.isArray(window.WP10_BREEDING_ONLY_HORSES)) {

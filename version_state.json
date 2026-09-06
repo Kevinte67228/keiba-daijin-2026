@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.90",
+  "current_version": "v03.91",
   "history": [
     {
       "version": "v03.88",
@@ -1475,6 +1475,10 @@
       "version": "v03.90",
       "date": "2026-09-06",
       "description": "Brilliant Speed(USA) 海外種牡馬 1:1 JBIS 比對完整復刻：6顆綠色膠囊切換、2代母系血統補完、海外戰績累計表與10戰重賞紀錄、生年月日與退役狀態全要素對齊"
+    },
+    {
+      "version": "v03.91",
+      "description": "Brilliant Speed 1:1 JBIS 海外產地/年度累計大表與中文馬名日中並行完美收錄"
     }
   ],
   "version": "v03.74",
