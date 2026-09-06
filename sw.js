@@ -6,6 +6,9 @@ const CACHE_NAME = "wp10-2026-v03.76";
 const CORE_ASSETS = [
   './',
   './index.html',
+  './jbis_horse.html',
+  './jbis_engine.js',
+  './jbis_pedigree_db.js',
   './master_lookup_db.js',
   './core_guides_data.js',
   './yearly_recs_db.js',
