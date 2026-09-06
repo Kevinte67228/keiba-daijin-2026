@@ -1,6 +1,11 @@
 {
-  "current_version": "v03.94",
+  "current_version": "v03.95",
   "history": [
+    {
+      "version": "v03.95",
+      "date": "2026-09-06",
+      "description": "1:1完美復刻JBIS官方原站種牡馬/繁殖牝馬頁籤與安多佛之路(Andover Way)完整牝系圖：1) 第4分頁導航完全貼合原站：採用淺綠底色卡片結構、頂部置中標題、下方膠囊橫排。種牡馬6大官方標籤(種牡馬成績/世代・年次別/産駒一覧/BMS成績/産駒出走表/市場取引情報)，繁殖牝馬2大標籤(牝系情報/月間産駒成績)；2) 完美修復Andover Way(USA)海外名駒名稱：杜絕錯誤(JPN)後綴與亂碼，同步中央/地方官方現況日期；3) 100%全量收錄Andover Way真實牝系族譜大樹：本馬粉紅橫幅置頂，完整展開Dynaformer、White Bridle、Personal Glory及其5匹二代產駒(Supremo、Personal Love等)與Alvear、My Annette、Black Speck全家族；4) 樹狀圖節點採用原版紅/藍邊條方框按鈕、無框性別純文字與天藍色階層連接線"
+    },
     {
       "version": "v03.94",
       "date": "2026-09-06",

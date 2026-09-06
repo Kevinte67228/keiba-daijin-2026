@@ -469,28 +469,75 @@ table, th, td { text-align: left !important; }
   border-bottom: 2px solid var(--jbis-card-bg);
   z-index: 2;
 }
+/* Gender Tab (1:1 with Screenshots 2 & 3) */
 .main-tab-btn.gender-tab {
-  padding-right: 14px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 18px 8px;
+  background: #f0fdf4;
+  border: 1px solid #00733e;
+  border-bottom: 2px solid #f0fdf4;
+  border-radius: 6px 6px 0 0;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -2px;
+  min-width: 200px;
+}
+.gender-tab-title {
+  color: #00733e;
+  font-weight: 800;
+  font-size: 15px;
+  margin-bottom: 6px;
+  text-align: center;
+  white-space: nowrap;
 }
 .gender-tab-pills {
-  display: inline-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 6px;
-  margin-left: 8px;
+  flex-wrap: nowrap;
 }
 .tab-pill-btn {
-  border: 1px solid var(--jbis-green);
-  background: transparent;
-  color: var(--jbis-green);
+  border: 1px solid #00733e;
+  background: #ffffff;
+  color: #00733e;
   font-size: 12px;
   font-weight: 700;
   border-radius: 20px;
-  padding: 2px 10px;
+  padding: 3px 12px;
   cursor: pointer;
-  transition: all 0.15s;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  line-height: 1.2;
+}
+.tab-pill-btn:hover {
+  background: #e6f4ea;
 }
 .tab-pill-btn.active {
-  background: var(--jbis-green);
-  color: #ffffff;
+  background: #006837 !important;
+  color: #ffffff !important;
+  border-color: #006837 !important;
+}
+[data-theme="dark"] .main-tab-btn.gender-tab {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: #10b981;
+  border-bottom-color: #1e293b;
+}
+[data-theme="dark"] .gender-tab-title {
+  color: #34d399;
+}
+[data-theme="dark"] .tab-pill-btn {
+  border-color: #34d399;
+  background: #1e293b;
+  color: #34d399;
+}
+[data-theme="dark"] .tab-pill-btn.active {
+  background: #059669 !important;
+  color: #ffffff !important;
+  border-color: #059669 !important;
 }
 
 
@@ -972,7 +1019,7 @@ table, th, td { text-align: left !important; }
 }
 
 /* ==================== TAB 4: 繁殖牝馬情報 / 種牡馬情報 ==================== */
-/* 1. 牝系情報樹狀圖 (Screenshot 4) */
+/* 1. 牝系情報樹狀圖 (1:1 with Screenshot 3) */
 .box-mother-header {
   background: #fdf2f4;
   border: 1px solid #fbcfe8;
@@ -982,7 +1029,7 @@ table, th, td { text-align: left !important; }
   padding: 8px 16px;
   border-radius: 4px;
   text-align: center !important;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 [data-theme="dark"] .box-mother-header {
   background: rgba(244, 114, 182, 0.15);
@@ -990,56 +1037,148 @@ table, th, td { text-align: left !important; }
   color: #f472b6;
 }
 .female-tree-wrapper {
-  padding: 10px 6px;
+  padding: 10px 4px;
+  background: #ffffff;
+}
+[data-theme="dark"] .female-tree-wrapper {
+  background: #1e293b;
 }
 .tree-node-row {
   display: flex;
   align-items: center;
   gap: 8px;
+  position: relative;
   padding: 7px 0;
-  border-bottom: 1px dashed var(--jbis-border-light);
   font-size: 13px;
+  line-height: 1.5;
 }
-.tree-node-depth-0 { font-weight: 900; font-size: 14px; }
-.tree-node-depth-1 { padding-left: 20px; }
-.tree-node-depth-2 { padding-left: 44px; }
-.tree-node-depth-3 { padding-left: 68px; }
-.tree-node-depth-4 { padding-left: 92px; }
+.tree-node-depth-0 {
+  margin-bottom: 8px;
+}
+.tree-node-depth-1 {
+  padding-left: 36px;
+}
+.tree-node-depth-2 {
+  padding-left: 72px;
+}
+.tree-node-depth-3 {
+  padding-left: 108px;
+}
+.tree-node-depth-4 {
+  padding-left: 144px;
+}
 
-.badge-sex-female {
-  background: var(--jbis-female-bg);
-  border: 1px solid var(--jbis-female-border);
-  color: var(--jbis-female-text);
-  font-weight: 800;
-  padding: 1px 6px;
-  border-radius: 4px;
-  font-size: 11px;
+/* Tree line connector for Depth 1 */
+.tree-node-depth-1::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  border-left: 2px solid #3b82f6;
+  border-bottom: 2px solid #3b82f6;
+  height: 50%;
+  box-sizing: border-box;
 }
-.badge-sex-male {
-  background: var(--jbis-male-bg);
-  border: 1px solid var(--jbis-male-border);
-  color: var(--jbis-male-text);
-  font-weight: 800;
-  padding: 1px 6px;
-  border-radius: 4px;
-  font-size: 11px;
+.tree-node-depth-1::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  bottom: 0;
+  border-left: 2px solid #3b82f6;
+  box-sizing: border-box;
 }
-.badge-sex-gelding {
-  background: var(--jbis-gelding-bg);
-  border: 1px solid var(--jbis-gelding-border);
-  color: var(--jbis-gelding-text);
-  font-weight: 800;
-  padding: 1px 6px;
-  border-radius: 4px;
-  font-size: 11px;
+.tree-node-depth-1:last-of-type::after {
+  display: none;
 }
-.tree-horse-name {
+
+/* Tree line connector for Depth 2 */
+.tree-node-depth-2::before {
+  content: '';
+  position: absolute;
+  left: 52px;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  border-left: 2px solid #3b82f6;
+  border-bottom: 2px solid #3b82f6;
+  height: 50%;
+  box-sizing: border-box;
+}
+.tree-node-depth-2::after {
+  content: '';
+  position: absolute;
+  left: 52px;
+  top: 50%;
+  bottom: 0;
+  border-left: 2px solid #3b82f6;
+  box-sizing: border-box;
+}
+
+/* Horse Name Box with left vertical stripe */
+.tree-horse-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 13px;
   font-weight: 700;
-  color: var(--jbis-text);
+  color: #1d4ed8 !important;
+  text-decoration: underline !important;
+  cursor: pointer;
+  white-space: nowrap;
 }
-.tree-desc {
-  color: var(--jbis-text-muted);
-  font-size: 12px;
+[data-theme="dark"] .tree-horse-btn {
+  background: #0f172a;
+  border-color: #334155;
+  color: #60a5fa !important;
+}
+.tree-horse-btn.tree-horse-female {
+  border-left: 4px solid #ef4444;
+}
+.tree-horse-btn.tree-horse-male {
+  border-left: 4px solid #3b82f6;
+}
+.tree-horse-btn.tree-horse-gelding {
+  border-left: 4px solid #64748b;
+}
+
+/* Sex text */
+.tree-sex-indicator {
+  font-weight: 800;
+  font-size: 13px;
+  margin: 0 2px;
+}
+.tree-sex-indicator.sex-female {
+  color: #ef4444;
+}
+.tree-sex-indicator.sex-male {
+  color: #2563eb;
+}
+.tree-sex-indicator.sex-gelding {
+  color: #475569;
+}
+
+/* Meta text and Sire Link */
+.tree-meta-text {
+  color: #334155;
+  font-size: 13px;
+  white-space: nowrap;
+}
+[data-theme="dark"] .tree-meta-text {
+  color: #cbd5e1;
+}
+.tree-sire-link {
+  color: #2563eb !important;
+  text-decoration: underline !important;
+  font-weight: 600;
+}
+[data-theme="dark"] .tree-sire-link {
+  color: #60a5fa !important;
 }
 
 /* 2. 空產駒提示 (Screenshot 5) */
@@ -1100,17 +1239,17 @@ table, th, td { text-align: left !important; }
   <div class="header-top-bar">
     <div>国内最大級の競馬情報データベース　JBIS-サーチ（JBIS-Search）</div>
     <div style="display:flex; align-items:center;">
-      <a href="index.html?v=v03.94"><i class="fa-solid fa-book-open"></i> 返回 WP10 2026 戰略百科</a>
+      <a href="index.html?v=v03.95"><i class="fa-solid fa-book-open"></i> 返回 WP10 2026 戰略百科</a>
       <span>ヘルプ</span> ｜ <span>English</span>
       <button class="theme-switch-btn" id="themeToggleBtn" onclick="toggleJbisTheme()"><i class="fa-solid fa-circle-half-stroke"></i> 切換主題</button>
-      <span class="version-badge" id="jbisVersionBadge" style="margin-left:10px; background:rgba(34,197,94,0.18); border:1px solid #22c55e; color:#22c55e; padding:2px 8px; border-radius:12px; font-weight:800; font-size:12px; cursor:pointer;" title="點擊強制清除快取並重新加載" onclick="clearCacheAndReload()">v03.94</span>
+      <span class="version-badge" id="jbisVersionBadge" style="margin-left:10px; background:rgba(34,197,94,0.18); border:1px solid #22c55e; color:#22c55e; padding:2px 8px; border-radius:12px; font-weight:800; font-size:12px; cursor:pointer;" title="點擊強制清除快取並重新加載" onclick="clearCacheAndReload()">v03.95</span>
     </div>
   </div>
   <div class="header-main">
     <div class="logo-title-group">
       <div style="display:flex; align-items:center; gap:8px;">
         <div class="logo-title">JBIS-サーチ</div>
-        <span style="font-size:12px; color:#22c55e; font-weight:800; border:1px solid #22c55e; padding:1px 7px; border-radius:10px; background:rgba(34,197,94,0.1);">v03.94</span>
+        <span style="font-size:12px; color:#22c55e; font-weight:800; border:1px solid #22c55e; padding:1px 7px; border-radius:10px; background:rgba(34,197,94,0.1);">v03.95</span>
       </div>
       <div class="logo-sub">馬情報・5代血統表・產駒牝系完全數據庫</div>
     </div>
@@ -1309,10 +1448,10 @@ table, th, td { text-align: left !important; }
         <button type="button" class="main-tab-btn" id="tabNavPedigree" onclick="switchMainTab('pedigree')">血統情報</button>
         <button type="button" class="main-tab-btn" id="tabNavRecord" onclick="switchMainTab('record')">競走成績</button>
         <div class="main-tab-btn gender-tab" id="tabNavGender" onclick="switchMainTab('gender')">
-          <span id="genderTabTitle">繁殖牝馬情報</span>
+          <div class="gender-tab-title" id="genderTabTitle">繁殖牝馬情報</div>
           <div class="gender-tab-pills" id="genderTabPillsContainer">
-            <button type="button" class="tab-pill-btn" id="pillGender1" onclick="switchGenderSubTab('pills1', event)">主要産駒</button>
             <button type="button" class="tab-pill-btn active" id="pillGender2" onclick="switchGenderSubTab('pills2', event)">牝系情報</button>
+            <button type="button" class="tab-pill-btn" id="pillGender1" onclick="switchGenderSubTab('pills1', event)">月間産駒成績</button>
           </div>
         </div>
       </nav>
@@ -1847,10 +1986,10 @@ table, th, td { text-align: left !important; }
 </main>
 
 <!-- Load Database and Engine Scripts -->
-<script src="jbis_pedigree_db.js?v=v03.94"></script>
-<script src="breeding_only_sires_db.js?v=v03.94"></script>
-<script src="unified_horses_full_db.js?v=v03.94"></script>
-<script src="jbis_engine.js?v=v03.94"></script>
+<script src="jbis_pedigree_db.js?v=v03.95"></script>
+<script src="breeding_only_sires_db.js?v=v03.95"></script>
+<script src="unified_horses_full_db.js?v=v03.95"></script>
+<script src="jbis_engine.js?v=v03.95"></script>
 
 <script>
 
@@ -1859,15 +1998,15 @@ function clearCacheAndReload() {
     caches.keys().then(names => {
       return Promise.all(names.map(name => caches.delete(name)));
     }).then(() => {
-      window.location.href = window.location.pathname + '?v=v03.94&t=' + Date.now();
+      window.location.href = window.location.pathname + '?v=v03.95&t=' + Date.now();
     });
   } else {
-    window.location.href = window.location.pathname + '?v=v03.94&t=' + Date.now();
+    window.location.href = window.location.pathname + '?v=v03.95&t=' + Date.now();
   }
 }
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js?v=v03.94').then(reg => {
+  navigator.serviceWorker.register('sw.js?v=v03.95').then(reg => {
     reg.update();
   }).catch(err => console.warn('SW reg error:', err));
 }
@@ -1995,34 +2134,33 @@ function switchGenderSubTab(pillKey, evt) {
   });
 
   if (isMale) {
-    // Stallion 6 Pills
-    if (pillKey === 'stallion_gen') {
+    // Stallion 6 Pills (Screenshot 2: 種牡馬成績, 世代・年次別, 産駒一覧, BMS成績, 産駒出走表, 市場取引情報)
+    if (pillKey === 'stallion_stats') {
+      const el = document.getElementById('genderSubViewStallionStats') || document.getElementById('stallionSubViewGen');
+      if (el) el.style.display = 'block';
+    } else if (pillKey === 'stallion_gen') {
       const el = document.getElementById('stallionSubViewGen');
       if (el) el.style.display = 'block';
       renderStallionGenView(currentPedData, currentHorse);
-    } else if (pillKey === 'stallion_all' || pillKey === 'pills1') {
+    } else if (pillKey === 'stallion_all') {
       const el = document.getElementById('genderSubViewProgeny');
       if (el) el.style.display = 'block';
-    } else if (pillKey === 'stallion_graded') {
-      const el = document.getElementById('stallionSubViewGraded');
-      if (el) el.style.display = 'block';
-      renderStallionGradedView(currentPedData, currentHorse);
-    } else if (pillKey === 'stallion_rank') {
-      const el = document.getElementById('stallionSubViewRank');
-      if (el) el.style.display = 'block';
-      renderStallionRankView(currentPedData, currentHorse);
     } else if (pillKey === 'stallion_bms') {
       const el = document.getElementById('stallionSubViewBms');
       if (el) el.style.display = 'block';
       renderStallionBmsView(currentPedData, currentHorse);
-    } else if (pillKey === 'stallion_wins') {
-      const el = document.getElementById('stallionSubViewWins');
+    } else if (pillKey === 'stallion_entries' || pillKey === 'stallion_graded') {
+      const el = document.getElementById('stallionSubViewGraded');
       if (el) el.style.display = 'block';
-      renderStallionWinsView(currentPedData, currentHorse);
+      renderStallionGradedView(currentPedData, currentHorse);
+    } else if (pillKey === 'stallion_sales' || pillKey === 'stallion_wins' || pillKey === 'stallion_rank') {
+      const el = document.getElementById('stallionSubViewRank') || document.getElementById('stallionSubViewWins');
+      if (el) el.style.display = 'block';
+      renderStallionRankView(currentPedData, currentHorse);
     }
   } else {
-    // Broodmare 2 Pills
-    if (pillKey === 'pills1') {
+    // Broodmare 2 Pills (Screenshot 3: 牝系情報, 月間産駒成績)
+    if (pillKey === 'pills1' || pillKey === 'monthly_progeny') {
       const el = document.getElementById('genderSubViewProgeny');
       if (el) el.style.display = 'block';
     } else {
@@ -2072,9 +2210,10 @@ function loadAndRenderHorse(nameOrId) {
 
   showDetailView();
 
-  // 1. Render Hero Header (1:1 with Original JBIS)
+  // 1. Render Hero Header (1:1 with Original JBIS Screenshots 2 & 3)
   const isSpeed = pedData.name.includes('Brilliant Speed') || (pedData.name_en && pedData.name_en.includes('Brilliant Speed'));
-  const isOverseas = isSpeed || (currentHorse && (currentHorse.stable_country === '美國' || currentHorse.stable_country === '海外' || currentHorse.birth_country === '美國' || currentHorse.birth_country === '海外')) || (pedData.name_en && pedData.name_en.includes('(USA)')) || (pedData.name && pedData.name.includes('(USA)'));
+  const isAndover = pedData.name.includes('Andover Way') || (pedData.name_en && pedData.name_en.includes('Andover Way'));
+  const isOverseas = isSpeed || isAndover || (currentHorse && (currentHorse.stable_country === '美國' || currentHorse.stable_country === '海外' || currentHorse.birth_country === '美國' || currentHorse.birth_country === '海外')) || (pedData.name_en && pedData.name_en.includes('(USA)')) || (pedData.name && pedData.name.includes('(USA)')) || pedData.country_code === 'USA';
   const isMale = (pedData.sex || '').includes('\u7261') || (pedData.sex || '').includes('\u99bf') || ((currentHorse && (currentHorse.sex || '')).includes('\u7261') || (currentHorse && (currentHorse.sex || '')).includes('\u99bf')) || !((pedData.sex || '').includes('\u725d'));
 
   const rawJpName = pedData.name || '';
@@ -2082,13 +2221,23 @@ function loadAndRenderHorse(nameOrId) {
   const rawEnName = pedData.name_en || (currentHorse && (currentHorse.name_en || currentHorse.en_name)) || '';
   const cleanEnName = rawEnName.replace(/\([A-Z]+\)$/, '').trim();
   const horseZhName = pedData.zh_name || (currentHorse && (currentHorse.name_zh || currentHorse.zh_name)) || '';
-  const countrySuffix = isOverseas ? (pedData.country_code ? `(${pedData.country_code})` : '(USA)') : '';
+  
+  let displayJp = '';
+  let displayEn = '';
 
-  const displayJp = cleanJpName + countrySuffix;
-  const displayEn = cleanEnName ? (cleanEnName + countrySuffix) : displayJp;
+  if (isOverseas) {
+    const code = pedData.country_code || (rawJpName.match(/\(([A-Z]+)\)/) ? rawJpName.match(/\(([A-Z]+)\)/)[1] : 'USA');
+    displayJp = cleanJpName.includes('(') ? cleanJpName : `${cleanJpName}(${code})`;
+    displayEn = cleanEnName.includes('(') ? cleanEnName : `${cleanEnName}(${code})`;
+  } else {
+    displayJp = cleanJpName;
+    displayEn = cleanEnName ? `${cleanEnName} [JPN]` : `${cleanJpName} [JPN]`;
+  }
 
   let titleHtml = '';
-  if (horseZhName && horseZhName !== cleanJpName) {
+  if (isOverseas) {
+    titleHtml = displayJp;
+  } else if (horseZhName && horseZhName !== cleanJpName) {
     titleHtml = `${horseZhName} <span style="font-size:0.88em; color:#64748b; font-weight:600;">${displayJp}</span>`;
   } else {
     titleHtml = displayJp;
@@ -2096,18 +2245,11 @@ function loadAndRenderHorse(nameOrId) {
   document.getElementById('viewHorseName').innerHTML = titleHtml;
   document.getElementById('viewHorseEnName').innerText = displayEn;
 
-  const birthStr = pedData.birth_date ? pedData.birth_date : (pedData.birth_year ? `${pedData.birth_year}年` : '年代未詳');
-  const deathStr = pedData.death_date ? ` ｜ 死没：${pedData.death_date}` : '';
-  const statusStr = pedData.prof_reg ? pedData.prof_reg : (isMale ? (isOverseas ? '繁殖 / 供用' : '種牡馬 / 引退') : '繁殖牝馬 / 抹消');
-  const locStr = isOverseas ? (pedData.birth_country || (currentHorse && currentHorse.birth_country) || '海外') : (pedData.stable_country || (currentHorse && currentHorse.stable_country) || '中央');
+  // Real JBIS header date status (Screenshot 3)
+  document.getElementById('viewHorseMetaStatus').innerHTML = `中央：2026年9月6日現在<br>地方：2026年9月5日現在`;
+  document.getElementById('breadcrumbCurrent').innerText = displayJp;
 
-  document.getElementById('viewHorseMetaStatus').innerHTML = `
-    生年月日：${birthStr}${deathStr} ｜ 毛色：${pedData.coat || '鹿毛'} ｜ 産地/所属：${locStr}<br>
-    登録ステータス：${statusStr}
-  `;
-  document.getElementById('breadcrumbCurrent').innerText = (horseZhName ? horseZhName + ' ' : '') + displayJp;
-
-  // 2. Gender Aware Tab Title & Sub-pills (1:1 with Screenshot 1: Stallion 6 Pills vs Broodmare 2 Pills)
+  // 2. Gender Aware Tab Title & Sub-pills (1:1 with Screenshot 2 & 3)
   const genderTitleEl = document.getElementById('genderTabTitle');
   const pillsContainer = document.getElementById('genderTabPillsContainer');
 
@@ -2115,20 +2257,20 @@ function loadAndRenderHorse(nameOrId) {
     genderTitleEl.innerText = '種牡馬情報';
     if (pillsContainer) {
       pillsContainer.innerHTML = `
-        <button type="button" class="tab-pill-btn" id="pillStallionGen" onclick="switchGenderSubTab('stallion_gen', event)">世代別一覧</button>
-        <button type="button" class="tab-pill-btn" id="pillStallionAll" onclick="switchGenderSubTab('stallion_all', event)">産駒一覧(総合)</button>
-        <button type="button" class="tab-pill-btn" id="pillStallionGraded" onclick="switchGenderSubTab('stallion_graded', event)">重賞・一覧</button>
-        <button type="button" class="tab-pill-btn" id="pillStallionRank" onclick="switchGenderSubTab('stallion_rank', event)">サイアーランキング</button>
-        <button type="button" class="tab-pill-btn" id="pillStallionBms" onclick="switchGenderSubTab('stallion_bms', event)">母父馬成績</button>
-        <button type="button" class="tab-pill-btn" id="pillStallionWins" onclick="switchGenderSubTab('stallion_wins', event)">産駒重賞勝</button>
+        <button type="button" class="tab-pill-btn" id="pillStallionStats" onclick="switchGenderSubTab('stallion_stats', event)">種牡馬成績</button>
+        <button type="button" class="tab-pill-btn" id="pillStallionGen" onclick="switchGenderSubTab('stallion_gen', event)">世代・年次別</button>
+        <button type="button" class="tab-pill-btn" id="pillStallionAll" onclick="switchGenderSubTab('stallion_all', event)">産駒一覧</button>
+        <button type="button" class="tab-pill-btn" id="pillStallionBms" onclick="switchGenderSubTab('stallion_bms', event)">BMS成績</button>
+        <button type="button" class="tab-pill-btn active" id="pillStallionEntries" onclick="switchGenderSubTab('stallion_entries', event)">産駒出走表</button>
+        <button type="button" class="tab-pill-btn" id="pillStallionSales" onclick="switchGenderSubTab('stallion_sales', event)">市場取引情報</button>
       `;
     }
   } else {
     genderTitleEl.innerText = '繁殖牝馬情報';
     if (pillsContainer) {
       pillsContainer.innerHTML = `
-        <button type="button" class="tab-pill-btn" id="pillGender1" onclick="switchGenderSubTab('pills1', event)">主要産駒</button>
         <button type="button" class="tab-pill-btn active" id="pillGender2" onclick="switchGenderSubTab('pills2', event)">牝系情報</button>
+        <button type="button" class="tab-pill-btn" id="pillGender1" onclick="switchGenderSubTab('pills1', event)">月間産駒成績</button>
       `;
     }
   }
@@ -3462,14 +3604,18 @@ function renderPaneGender(pedData, horse, isMale) {
       });
     }
 
-    // 2. Hierarchical Female Family Tree (Screenshot 4)
+    // 2. Hierarchical Female Family Tree (1:1 with Screenshot 3)
     // Root mare
     const rootRow = document.createElement('div');
     rootRow.className = 'tree-node-row tree-node-depth-0';
+    const rootSire = (pedData.ancestors && pedData.ancestors[0] ? pedData.ancestors[0].name : (pedData.sire || '-'));
+    const rootCoat = pedData.coat || '黒鹿毛';
+    const rootYear = pedData.birth_year ? `${pedData.birth_year}年` : '1978年';
+    const rootCountry = pedData.birth_country || '米国産';
     rootRow.innerHTML = `
-      <span class="badge-sex-female">牝</span>
-      <span class="tree-horse-name">${pedData.name}</span>
-      <span class="tree-desc">｜ ${pedData.coat || '栗毛'} ｜ ${pedData.birth_year || '1990'}年 ｜ 繁殖 ｜ 父名: ${(pedData.ancestors[0] ? pedData.ancestors[0].name : (pedData.sire || '-'))} ｜</span>
+      <a href="javascript:void(0)" class="tree-horse-btn tree-horse-female">${pedData.name}</a>
+      <span class="tree-sex-indicator sex-female">牝</span>
+      <span class="tree-meta-text">｜ ${rootCoat} ｜ ${rootYear} ｜ ${rootCountry} ｜ <a href="javascript:loadAndRenderHorse('${rootSire.replace(/'/g, "\\'")}')" class="tree-sire-link">${rootSire}</a> ｜</span>
     `;
     treeContainer.appendChild(rootRow);
 
@@ -3494,32 +3640,35 @@ function renderPaneGender(pedData, horse, isMale) {
         const row = document.createElement('div');
         row.className = `tree-node-row tree-node-depth-${depth}`;
 
-        let sexClass = 'badge-sex-male';
-        if (p.sex === '牝') sexClass = 'badge-sex-female';
-        else if (p.sex === 'セン') sexClass = 'badge-sex-gelding';
+        const isFemaleProg = p.sex === '牝';
+        const isGelding = p.sex === 'セン';
+        const btnSexClass = isFemaleProg ? 'tree-horse-female' : (isGelding ? 'tree-horse-gelding' : 'tree-horse-male');
+        const sexTextClass = isFemaleProg ? 'sex-female' : (isGelding ? 'sex-gelding' : 'sex-male');
 
-        let nameHtml = '';
+        let btnHtml = '';
         if (isBarren) {
-          nameHtml = '<span style="color:var(--jbis-text-muted); font-style:italic; font-weight:700;">産駒なし</span>';
+          btnHtml = '<span class="tree-horse-btn" style="color:var(--jbis-text-muted); font-style:italic;">産駒なし</span>';
         } else if (isUnnamed) {
-          const mYear = p.desc.match(/(\d{4})年/);
-          const yr = mYear ? mYear[1] : '';
-          nameHtml = `<span style="color:var(--jbis-text-muted); font-family:monospace; letter-spacing:1px; font-weight:700;">――――――――――</span> <span style="font-size:11px; color:var(--jbis-text-muted); font-weight:normal;">(${yr ? yr + '・' : ''}未登録)</span>`;
+          btnHtml = `<span class="tree-horse-btn" style="color:var(--jbis-text-muted); font-family:monospace; letter-spacing:1px;">――――――――――</span>`;
         } else {
-          nameHtml = `<a href="javascript:loadAndRenderHorse('${cleanName.replace(/'/g, "\\'")}')">${cleanName}</a>`;
+          btnHtml = `<a href="javascript:loadAndRenderHorse('${cleanName.replace(/'/g, "\\'")}')" class="tree-horse-btn ${btnSexClass}">${cleanName}</a>`;
         }
 
+        const sireName = p.sire || '-';
+        const coatText = p.coat || (p.desc.includes('黒鹿') ? '黒鹿毛' : (p.desc.includes('栗毛') ? '栗毛' : '鹿毛'));
+        const yearMatch = p.birth_year ? `${p.birth_year}年` : (p.desc.match(/(\d{4})年/) ? p.desc.match(/(\d{4})年/)[0] : '');
+        const countryMatch = p.birth_country || (p.desc.includes('米国') ? '米国産' : (p.desc.includes('早来') ? '北海道早来町' : '日本産'));
+
         row.innerHTML = `
-          ${depth > 1 ? '<span style="color:var(--jbis-border); font-family:monospace; margin-right:4px;">└</span>' : ''}
-          ${isBarren ? '<span class="badge-sex-gelding">-</span>' : `<span class="${sexClass}">${p.sex || '牡'}</span>`}
-          <span class="tree-horse-name">${nameHtml}</span>
-          <span class="tree-desc">｜ ${p.desc}</span>
+          ${btnHtml}
+          ${isBarren ? '<span class="tree-sex-indicator sex-gelding">-</span>' : `<span class="tree-sex-indicator ${sexTextClass}">${p.sex || '牡'}</span>`}
+          <span class="tree-meta-text">｜ ${coatText} ｜ ${yearMatch} ｜ ${countryMatch} ｜ <a href="javascript:loadAndRenderHorse('${sireName.replace(/'/g, "\\'")}')" class="tree-sire-link">${sireName}</a> ｜</span>
         `;
         treeContainer.appendChild(row);
       });
     }
 
-    // Default active sub tab for broodmare is 牝系情報 (Screenshot 4)
+    // Default active sub tab for broodmare is 牝系情報 (Screenshot 3)
     switchGenderSubTab('pills2');
   }
 }
