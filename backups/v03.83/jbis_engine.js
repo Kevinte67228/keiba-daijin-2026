@@ -200,10 +200,6 @@
       for (let i = 0; i < variants.length; i++) {
         if (this.horseMap.has(variants[i])) return this.horseMap.get(variants[i]);
       }
-      
-      for (const [key, h] of this.horseMap.entries()) {
-        if (key.includes(q) || q.includes(key)) return h;
-      }
       return null;
     },
 
@@ -272,15 +268,15 @@
     search: function(params) {
       this.init();
       params = params || {};
-      const kw = (params.keyword || '').trim().toLowerCase();
-      const match = params.match || 'prefix';
-      const sid = params.sid || 'horse';
-      const sexFilter = params.sex || [];
-      const belongFilter = params.belong || [];
+      const kw = (params.keyword || params.kw || '').trim().toLowerCase();
+      const match = params.match || params.matchMode || 'prefix';
+      const sid = params.sid || params.field || 'horse';
+      const sexFilter = params.sex || params.sexes || [];
+      const belongFilter = params.belong || params.belongs || [];
       const entryFilter = params.entry || [];
-      const colorFilter = params.color || [];
-      const birthFrom = params.birth_f ? parseInt(params.birth_f, 10) : null;
-      const birthTo = params.birth_t ? parseInt(params.birth_t, 10) : null;
+      const colorFilter = params.color || params.colors || [];
+      const birthFrom = params.birth_f != null ? parseInt(params.birth_f, 10) : (params.birthFrom != null ? parseInt(params.birthFrom, 10) : null);
+      const birthTo = params.birth_t != null ? parseInt(params.birth_t, 10) : (params.birthTo != null ? parseInt(params.birthTo, 10) : null);
       const exactBirth = params.birth ? parseInt(params.birth, 10) : null;
       const page = Math.max(1, parseInt(params.page || 1, 10));
       const pageSize = Math.min(100, Math.max(10, parseInt(params.pageSize || 20, 10)));
@@ -291,16 +287,24 @@
         'color_01': '栗毛', 'color_02': '栃栗毛', 'color_03': '鹿毛', 'color_04': '黒鹿毛',
         'color_05': '青鹿毛', 'color_06': '青毛', 'color_07': '芦毛', 'color_08': '白毛'
       };
-      const allowedColors = colorFilter.map(c => colorMap[c]).filter(Boolean);
+      const allowedColors = colorFilter.map(c => colorMap[c] || c).filter(Boolean);
 
       let results = this.allHorsesList.filter(h => {
         if (kw) {
           let targetField = '';
-          if (sid === 'horse') {
-            targetField = ((h.name_jp || '') + ' ' + (h.name_en || '') + ' ' + (h.zh_name || '')).toLowerCase();
+          if (sid === 'horse' || sid === 'name') {
+            targetField = ((h.name_jp || '') + ' ' + (h.name || '') + ' ' + (h.name_en || '') + ' ' + (h.zh_name || '')).toLowerCase();
           } else if (sid === 'sire') {
             targetField = (h.sire || '').toLowerCase();
-          } else if (sid === 'mare') {
+            if ((h.sex || '').includes('牡') || (h.sex || '').includes('雄')) {
+              targetField += ' ' + ((h.name_jp || '') + ' ' + (h.name || '') + ' ' + (h.zh_name || '')).toLowerCase();
+            }
+          } else if (sid === 'mare' || sid === 'dam') {
+            targetField = (h.dam || '').toLowerCase();
+            if ((h.sex || '').includes('牝') || (h.sex || '').includes('雌')) {
+              targetField += ' ' + ((h.name_jp || '') + ' ' + (h.name || '') + ' ' + (h.zh_name || '')).toLowerCase();
+            }
+          } else if (sid === 'brother') {
             targetField = (h.dam || '').toLowerCase();
           } else if (sid === 'trainer' || sid === 'jockey' || sid === 'breeder' || sid === 'owner') {
             targetField = ((h.stable_country || '') + ' ' + (h.birth_country || '')).toLowerCase();
@@ -313,7 +317,7 @@
             if (!words.some(w => w === kw) && targetField !== kw) return false;
           } else if (match === 'prefix') {
             const words = targetField.split(/\s+/);
-            if (!words.some(w => w.startsWith(kw)) && !targetField.startsWith(kw)) return false;
+            if (!words.some(w => w.startsWith(kw)) && !targetField.startsWith(kw) && !targetField.includes(kw)) return false;
           } else {
             if (!targetField.includes(kw)) return false;
           }
@@ -322,18 +326,18 @@
         if (sexFilter.length > 0) {
           const s = (h.sex || '');
           let matchedSex = false;
-          if (sexFilter.includes('sex_1') && (s.includes('牡') || s.includes('雄'))) matchedSex = true;
-          if (sexFilter.includes('sex_2') && (s.includes('牝') || s.includes('雌'))) matchedSex = true;
-          if (sexFilter.includes('sex_3') && s.includes('セン')) matchedSex = true;
+          if ((sexFilter.includes('sex_1') || sexFilter.includes('牡')) && (s.includes('牡') || s.includes('雄'))) matchedSex = true;
+          if ((sexFilter.includes('sex_2') || sexFilter.includes('牝')) && (s.includes('牝') || s.includes('雌'))) matchedSex = true;
+          if ((sexFilter.includes('sex_3') || sexFilter.includes('セン')) && s.includes('セン')) matchedSex = true;
           if (!matchedSex) return false;
         }
 
         if (belongFilter.length > 0) {
           const loc = (h.stable_country || h.birth_country || '');
           let matchedBelong = false;
-          if (belongFilter.includes('belong_1') && (loc.includes('中央') || loc.includes('日本'))) matchedBelong = true;
-          if (belongFilter.includes('belong_2') && loc.includes('地方')) matchedBelong = true;
-          if (belongFilter.includes('belong_3') && (loc.includes('海外') || loc.includes('美') || loc.includes('歐'))) matchedBelong = true;
+          if ((belongFilter.includes('belong_1') || belongFilter.includes('中央')) && (loc.includes('中央') || loc.includes('日本'))) matchedBelong = true;
+          if ((belongFilter.includes('belong_2') || belongFilter.includes('地方')) && loc.includes('地方')) matchedBelong = true;
+          if ((belongFilter.includes('belong_3') || belongFilter.includes('海外')) && (loc.includes('海外') || loc.includes('美') || loc.includes('歐') || loc.includes('愛') || loc.includes('英') || loc.includes('法'))) matchedBelong = true;
           if (!matchedBelong) return false;
         }
 
