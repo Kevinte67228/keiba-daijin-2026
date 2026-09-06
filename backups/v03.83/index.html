@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.78"></script>
-<script src="core_guides_data.js?v=v03.78"></script>
-<script src="yearly_recs_db.js?v=v03.78"></script>
-<script src="horse_subtopics_data.js?v=v03.78"></script>
+<script src="master_lookup_db.js?v=v03.84"></script>
+<script src="core_guides_data.js?v=v03.84"></script>
+<script src="yearly_recs_db.js?v=v03.84"></script>
+<script src="horse_subtopics_data.js?v=v03.84"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1845,7 +1845,7 @@ li {
 }
 </style>
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.39) */
+/* Unified Amulet & Badge Tokens (v03.84) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -2538,7 +2538,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.79</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.84</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="jbis_horse.html" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;">
@@ -2609,11 +2609,11 @@ button.chip-btn.active {
 <div class="section-title"><i class="fa-solid fa-flag-checkered"></i> 第 01 章：開局劇本年代選拔・初年度52週圖文通關與全年代初期讓渡馬完全指南</div>
 </div>
 <div class="section-body">
-<!-- 1971~2026年 9大劇本初期讓渡馬指南 -->
+<!-- 1968~2026年 10大劇本初期讓渡馬指南 -->
 <div id="starter-horses-guide" style="margin-top:16px; margin-bottom:20px; background:rgba(15,23,42,0.65); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:16px 18px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
     <div style="font-size:1.02rem; font-weight:800; color:#38bdf8; display:flex; align-items:center; gap:8px;">
-      <span>🐎 1971~2026 年 9 大開局歷史劇本初期讓渡馬推薦大表</span>
+      <span>🐎 1968~2026 年 10 大開局歷史劇本初期讓渡馬推薦大表</span>
       <span class="badge" style="background:#0284c7; color:#fff; font-weight:bold; white-space:nowrap !important;">開局首選</span>
     </div>
     <div style="font-size:0.78rem; color:#94a3b8;">首選/次選名駒評級 ＋ 破局收益分析</div>
@@ -2635,6 +2635,39 @@ button.chip-btn.active {
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td style="width:90px; min-width:85px; text-align:left !important; white-space:nowrap !important;">1968年</td>
+          <td style="width:180px; min-width:170px; text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('タニノハローモア')"><strong style="color:#fbbf24;">タニノハローモア</strong><br><span style="font-size:0.8rem; color:#94a3b8;">谷野哈羅摩 (Tanino Hello More)</span></a></td>
+          <td style="width:50px; text-align:left !important; white-space:nowrap !important;">牡</td>
+          <td style="width:60px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#94a3b8; color:#0f172a; font-weight:bold; white-space:nowrap !important;">銀札</span></td>
+          <td style="width:50px; text-align:left !important; font-weight:bold; color:#38bdf8; white-space:nowrap !important;">70</td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;">1600-2600m</td>
+          <td style="width:50px; text-align:left !important; white-space:nowrap !important;">芝</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#ef4444; color:#fff; white-space:nowrap !important;">★★★★★ 德比首選</span></td>
+          <td style="min-width:340px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word;">史實日本德比 (東京優駿) 冠軍！開局第一年橫掃經典三冠路線，賺取巨額賞金與名聲的破局王牌！</td>
+        </tr>
+        <tr>
+          <td style="width:90px; min-width:85px; text-align:left !important; white-space:nowrap !important;">1968年 (牝)</td>
+          <td style="width:180px; min-width:170px; text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('ファインローズ')"><strong style="color:#fbbf24;">ファインローズ</strong><br><span style="font-size:0.8rem; color:#94a3b8;">優質玫瑰 (Fine Rose)</span></a></td>
+          <td style="width:50px; text-align:left !important; white-space:nowrap !important;">牝</td>
+          <td style="width:60px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#b45309; color:#fff; white-space:nowrap !important;">銅札</span></td>
+          <td style="width:50px; text-align:left !important; font-weight:bold; color:#38bdf8; white-space:nowrap !important;">65</td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;">1400-2200m</td>
+          <td style="width:50px; text-align:left !important; white-space:nowrap !important;">芝</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#10b981; color:#fff; white-space:nowrap !important;">★★★★☆ 牝系基盤</span></td>
+          <td style="min-width:340px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word;">開局 3 歲牝馬起家首選，晚熟但中後期穩定進帳牝馬重賞，引退後是構建自家早期母馬群的重要基盤！</td>
+        </tr>
+        <tr>
+          <td style="width:90px; min-width:85px; text-align:left !important; white-space:nowrap !important;">1968年 (古)</td>
+          <td style="width:180px; min-width:170px; text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('メジロタイヨウ')"><strong style="color:#fbbf24;">メジロタイヨウ</strong><br><span style="font-size:0.8rem; color:#94a3b8;">目白太陽 (Mejiro Taiyo)</span></a></td>
+          <td style="width:50px; text-align:left !important; white-space:nowrap !important;">牡</td>
+          <td style="width:60px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#94a3b8; color:#0f172a; font-weight:bold; white-space:nowrap !important;">銀札</span></td>
+          <td style="width:50px; text-align:left !important; font-weight:bold; color:#38bdf8; white-space:nowrap !important;">68</td>
+          <td style="width:110px; min-width:100px; text-align:left !important; white-space:nowrap !important;">2000-3200m</td>
+          <td style="width:50px; text-align:left !important; white-space:nowrap !important;">芝</td>
+          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important;"><span class="badge" style="background:#ef4444; color:#fff; white-space:nowrap !important;">★★★★★ 霸者長途</span></td>
+          <td style="min-width:340px; text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word;">秋季天皇賞霸主！China Rock 血統晚成名將，長距離賽道極具統治力，開局長途金運收割機！</td>
+        </tr>
         <tr>
           <td style="width:90px; min-width:85px; text-align:left !important; white-space:nowrap !important;">1971年</td>
           <td style="width:180px; min-width:170px; text-align:left !important;"><a class="horse-link" onclick="openNativeHorseDossier('オンワードガイ')"><strong style="color:#fbbf24;">オンワードガイ</strong><br><span style="font-size:0.8rem; color:#94a3b8;">向前進 (Onward Guy)</span></a></td>
@@ -39178,15 +39211,15 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.78"></script>
-<script src="yuruyuru_guides_db.js?v=v03.78"></script>
+<script src="unified_horses_full_db.js?v=v03.84"></script>
+<script src="yuruyuru_guides_db.js?v=v03.84"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v03.79"></script>
-<script src="jbis_engine.js?v=v03.79"></script><script>
+<script src="jbis_pedigree_db.js?v=v03.84"></script>
+<script src="jbis_engine.js?v=v03.84"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -43010,7 +43043,7 @@ function generateVisualPedigreeTree(horse, cleanQuery) {
         // Chinese translation / parents lookup
         if (name && name !== '-') {
             totalFilled++;
-            if (source === 'fallback') fallbackCount++;
+            if (source === 'fallback' || source === 'original_db') fallbackCount++;
 
             if (typeof findPedigreeParents === 'function') {
                 const p = findPedigreeParents(name);
@@ -43047,7 +43080,7 @@ function generateVisualPedigreeTree(horse, cleanQuery) {
             glow = 'box-shadow:0 0 6px rgba(245,158,11,0.45);';
         }
 
-        const isFallback = slot.source === 'fallback';
+        const isFallback = (slot.source === 'fallback' || slot.source === 'original_db');
         const sourceBadge = isFallback ? '<span title="由舊有大資料庫補全" style="font-size:0.52rem; background:rgba(99,102,241,0.25); color:#a5b4fc; border:1px solid rgba(99,102,241,0.5); padding:0 2px; border-radius:2px; margin-left:3px;">補</span>' : '';
 
         const roleHtml = `<div style="font-size:0.62rem; color:${sexColor}; font-weight:normal; margin-bottom:2px; display:flex; align-items:center; justify-content:space-between;">

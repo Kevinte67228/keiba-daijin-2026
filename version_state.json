@@ -1,6 +1,11 @@
 {
-  "current_version": "v03.83",
+  "current_version": "v03.84",
   "history": [
+    {
+      "version": "v03.84",
+      "date": "2026-09-06",
+      "description": "Fix: Resolve quick search failure when searching by 母馬 (dam), 父馬 (sire), or 馬情報 (horse); properly switch views to search results table, sync category and keyword, fix filter parameter mapping in jbis_engine.js"
+    },
     {
       "version": "v03.83",
       "date": "2026-09-06",
