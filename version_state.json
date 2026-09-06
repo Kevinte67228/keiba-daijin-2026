@@ -1,6 +1,11 @@
 {
-  "current_version": "v03.79",
+  "current_version": "v03.80",
   "history": [
+    {
+      "version": "v03.80",
+      "date": "2026-09-06",
+      "description": "Feat: Add 1968 scenario starter horses (Tanino Hello More, Fine Rose, Mejiro Taiyo) to Chapter 1, aligning with 2026 10 major historical start scenarios"
+    },
     {
       "version": "v03.79",
       "date": "2026-09-06",
