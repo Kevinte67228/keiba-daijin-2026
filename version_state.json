@@ -1,6 +1,11 @@
 {
-  "current_version": "v03.78",
+  "current_version": "v03.79",
   "history": [
+    {
+      "version": "v03.79",
+      "date": "2026-09-06",
+      "description": "Feat: Multi-tier ancestry fallback (JBIS prioritized + original DB supplementary) with complete 4-generation 30-ancestor coverage and source attribution"
+    },
     {
       "version": "v03.78",
       "date": "2026-09-06",
