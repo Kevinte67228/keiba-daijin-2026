@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.89",
+  "current_version": "v03.90",
   "history": [
     {
       "version": "v03.88",
@@ -1470,6 +1470,11 @@
       "version": "v03.89",
       "timestamp": "2026-09-06T19:35:00+08:00",
       "summary": "Fix Tab 2/Tab 3 sub-navigation buttons disappearing by preventing event bubbling, adding clearCacheAndReload, header version badges, cache-control headers, and bumping cache to v03.89"
+    },
+    {
+      "version": "v03.90",
+      "date": "2026-09-06",
+      "description": "Brilliant Speed(USA) 海外種牡馬 1:1 JBIS 比對完整復刻：6顆綠色膠囊切換、2代母系血統補完、海外戰績累計表與10戰重賞紀錄、生年月日與退役狀態全要素對齊"
     }
   ],
   "version": "v03.74",
