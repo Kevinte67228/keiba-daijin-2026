@@ -1,6 +1,11 @@
 {
-  "current_version": "v03.81",
+  "current_version": "v03.82",
   "history": [
+    {
+      "version": "v03.82",
+      "date": "2026-09-06",
+      "description": "Feat: Reskin JBIS database page (jbis_horse.html) with exact 1:1 original layout and DOM structure, skinned in dark sci-fi tech theme matching horse dossier modal"
+    },
     {
       "version": "v03.81",
       "date": "2026-09-06",
