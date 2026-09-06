@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.89"></script>
-<script src="core_guides_data.js?v=v03.89"></script>
-<script src="yearly_recs_db.js?v=v03.89"></script>
-<script src="horse_subtopics_data.js?v=v03.89"></script>
+<script src="master_lookup_db.js?v=v03.93"></script>
+<script src="core_guides_data.js?v=v03.93"></script>
+<script src="yearly_recs_db.js?v=v03.93"></script>
+<script src="horse_subtopics_data.js?v=v03.93"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1845,7 +1845,7 @@ li {
 }
 </style>
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.89) */
+/* Unified Amulet & Badge Tokens (v03.93) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -2538,10 +2538,10 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.89</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.93</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
-      <a href="jbis_horse.html?v=v03.89" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;">
+      <a href="jbis_horse.html?v=v03.93" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;">
         <i class="fa-solid fa-dna" style="color:#4ade80; font-size:1.1rem;"></i> 🔍 JBIS 1:1 馬情報・全史實馬 5 代血統與產駒檢索系統
         <span style="background:#22c55e; color:#0f172a; font-size:0.75rem; padding:2px 8px; border-radius:10px; font-weight:900;">全新登場</span>
       </a>
@@ -39211,15 +39211,15 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.89"></script>
-<script src="yuruyuru_guides_db.js?v=v03.89"></script>
+<script src="unified_horses_full_db.js?v=v03.93"></script>
+<script src="yuruyuru_guides_db.js?v=v03.93"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v03.89"></script>
-<script src="jbis_engine.js?v=v03.89"></script><script>
+<script src="jbis_pedigree_db.js?v=v03.93"></script>
+<script src="jbis_engine.js?v=v03.93"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -39997,7 +39997,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <!-- 📑 章節跳轉彈出抽屜 (Chapter Modal) -->
 <!-- 浮動按鈕群 (章節跳轉目錄 + 返回前一定位 + 回頂部) -->
 <div class="floating-btn-group" style="position:fixed; bottom:20px; right:16px; display:flex; flex-direction:column; gap:10px; z-index:9999;">
-<a href="jbis_horse.html?v=v03.89" target="_blank" class="btn-floating btn-jbis" style="background:#00733e; color:#ffffff !important; width:42px; height:42px; border-radius:50%; border:1.5px solid #4ade80; box-shadow:0 4px 12px rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; font-size:1.1rem; text-decoration:none; margin-bottom:8px;" title="🔍 開啟 JBIS 5代血統檢索系統">
+<a href="jbis_horse.html?v=v03.93" target="_blank" class="btn-floating btn-jbis" style="background:#00733e; color:#ffffff !important; width:42px; height:42px; border-radius:50%; border:1.5px solid #4ade80; box-shadow:0 4px 12px rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; font-size:1.1rem; text-decoration:none; margin-bottom:8px;" title="🔍 開啟 JBIS 5代血統檢索系統">
 <i class="fa-solid fa-dna" style="color:#4ade80;"></i>
 </a>
 <button class="btn-floating btn-jump" onclick="openChapterModal()" style="background:var(--gold-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="📑 50 章跳轉目錄">
@@ -43190,7 +43190,7 @@ function generateVisualPedigreeTree(horse, cleanQuery) {
                 ${curatedBadge}
                 ${fallbackBadge}
             </div>
-            <a href="jbis_horse.html?v=v03.89&name=${encodeURIComponent(safeTargetName)}" target="_blank" 
+            <a href="jbis_horse.html?v=v03.93&name=${encodeURIComponent(safeTargetName)}" target="_blank" 
                class="btn btn-sm" 
                style="background:linear-gradient(135deg, #0284c7, #0369a1); color:#ffffff; font-size:0.75rem; font-weight:bold; border-radius:5px; padding:4px 10px; text-decoration:none; display:inline-flex; align-items:center; gap:5px; box-shadow:0 2px 6px rgba(2,132,199,0.35);">
                 <i class="fa-solid fa-magnifying-glass-chart"></i> JBIS 5代血統/家族樹 ↗

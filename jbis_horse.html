@@ -621,15 +621,25 @@ table, th, td { text-align: left !important; }
 
 /* Section Title Headers */
 .jbis-sec-title {
+  position: relative;
   font-size: 18px;
-  font-weight: 900;
-  color: var(--jbis-text);
-  border-bottom: 2px solid var(--jbis-green);
-  padding-bottom: 6px;
+  font-weight: 800;
+  color: #111827;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 8px;
   margin: 28px 0 16px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+}
+.jbis-sec-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 72px;
+  height: 2px;
+  background: #006837;
 }
 .jbis-sec-title:first-child { margin-top: 0; }
 
@@ -671,28 +681,51 @@ table, th, td { text-align: left !important; }
   color: #0284c7;
 }
 
-/* 2. Profile Grid Table */
+/* 2. Profile Grid Table (1:1 with Original JBIS Screenshot) */
 .profile-grid-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   margin-bottom: 24px;
-  border: 1px solid var(--jbis-border);
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
   font-size: 13px;
 }
+.profile-grid-table tr {
+  height: 38px;
+}
 .profile-grid-table th {
-  background: var(--jbis-green);
+  background: #006837;
   color: #ffffff;
-  width: 85px;
+  width: 84px;
+  min-width: 84px;
   text-align: center !important;
-  font-weight: 800;
-  padding: 8px 6px;
-  border: 1px solid var(--jbis-border-light);
+  font-weight: 500;
+  padding: 7px 8px;
+  border: none;
+  white-space: nowrap;
 }
 .profile-grid-table td {
-  background: var(--jbis-card-bg);
-  color: var(--jbis-text);
-  padding: 8px 12px;
-  border: 1px solid var(--jbis-border-light);
+  background: #ffffff;
+  color: #111827;
+  padding: 7px 14px;
+  border: none;
+  font-size: 13px;
+  text-align: left !important;
+}
+.profile-grid-table tr.profile-row-record th,
+.profile-grid-table tr.profile-row-record td {
+  border-top: 1px solid #d1d5db;
+}
+.prof-sex-male {
+  color: #0284c7;
+  font-weight: 600;
+}
+.prof-sex-female {
+  color: #db2777;
+  font-weight: 600;
 }
 
 /* 3. Cumulative & Race Tables */
@@ -1067,17 +1100,17 @@ table, th, td { text-align: left !important; }
   <div class="header-top-bar">
     <div>国内最大級の競馬情報データベース　JBIS-サーチ（JBIS-Search）</div>
     <div style="display:flex; align-items:center;">
-      <a href="index.html?v=v03.93"><i class="fa-solid fa-book-open"></i> 返回 WP10 2026 戰略百科</a>
+      <a href="index.html?v=v03.94"><i class="fa-solid fa-book-open"></i> 返回 WP10 2026 戰略百科</a>
       <span>ヘルプ</span> ｜ <span>English</span>
       <button class="theme-switch-btn" id="themeToggleBtn" onclick="toggleJbisTheme()"><i class="fa-solid fa-circle-half-stroke"></i> 切換主題</button>
-      <span class="version-badge" id="jbisVersionBadge" style="margin-left:10px; background:rgba(34,197,94,0.18); border:1px solid #22c55e; color:#22c55e; padding:2px 8px; border-radius:12px; font-weight:800; font-size:12px; cursor:pointer;" title="點擊強制清除快取並重新加載" onclick="clearCacheAndReload()">v03.93</span>
+      <span class="version-badge" id="jbisVersionBadge" style="margin-left:10px; background:rgba(34,197,94,0.18); border:1px solid #22c55e; color:#22c55e; padding:2px 8px; border-radius:12px; font-weight:800; font-size:12px; cursor:pointer;" title="點擊強制清除快取並重新加載" onclick="clearCacheAndReload()">v03.94</span>
     </div>
   </div>
   <div class="header-main">
     <div class="logo-title-group">
       <div style="display:flex; align-items:center; gap:8px;">
         <div class="logo-title">JBIS-サーチ</div>
-        <span style="font-size:12px; color:#22c55e; font-weight:800; border:1px solid #22c55e; padding:1px 7px; border-radius:10px; background:rgba(34,197,94,0.1);">v03.93</span>
+        <span style="font-size:12px; color:#22c55e; font-weight:800; border:1px solid #22c55e; padding:1px 7px; border-radius:10px; background:rgba(34,197,94,0.1);">v03.94</span>
       </div>
       <div class="logo-sub">馬情報・5代血統表・產駒牝系完全數據庫</div>
     </div>
@@ -1316,38 +1349,38 @@ table, th, td { text-align: left !important; }
           <a href="javascript:switchMainTab('pedigree')" class="link-5gen-more">5代血統表を見る &gt;</a>
         </div>
 
-        <!-- 2. プロフィール (Profile Grid Table with Green Th) -->
+        <!-- 2. プロフィール (1:1 Original JBIS Table) -->
         <div class="jbis-sec-title">プロフィール</div>
         <table class="profile-grid-table">
           <tr>
             <th id="profHeadReg">登録</th>
-            <td id="profReg">繁殖</td>
+            <td id="profReg" style="width: 15%;">繁殖</td>
             <th id="profHeadBreed">品種</th>
-            <td id="profBreed">サラ</td>
+            <td id="profBreed" style="width: 15%;">サラ</td>
             <th id="profHeadSex">性別</th>
-            <td id="profSex"><span style="color:#db2777; font-weight:800;">牝</span></td>
+            <td id="profSex" style="width: 15%;"><span class="prof-sex-female">牝</span></td>
             <th id="profHeadBirth">生年月日</th>
             <td id="profBirth">1990.04.11</td>
           </tr>
           <tr>
             <th id="profHeadCoat">毛色</th>
             <td id="profCoat">栗毛</td>
-            <th id="profHeadStable">所属</th>
-            <td id="profStable">栗東 (中央)</td>
+            <th id="profHeadStable">産地</th>
+            <td id="profStable">北海道早来町</td>
             <th id="profHeadOwner">馬主</th>
             <td colspan="3" id="profOwner">近藤英子</td>
           </tr>
           <tr>
-            <th id="profHeadBreeder">生産者</th>
+            <th id="profHeadBreeder">生産牧場</th>
             <td colspan="3" id="profBreeder">社台ファーム</td>
             <th id="profHeadTrainer">調教師</th>
             <td colspan="3" id="profTrainer">中村均 (栗東)</td>
           </tr>
-          <tr>
+          <tr class="profile-row-record">
             <th id="profHeadRecord">戦績</th>
             <td colspan="3" id="profRecord">国内：7戦2勝</td>
             <th id="profHeadPrize">総賞金</th>
-            <td colspan="3" id="profPrize" style="font-weight:800; color:var(--jbis-green);">3,184.6万円</td>
+            <td colspan="3" id="profPrize">3,184.6万円</td>
           </tr>
         </table>
 
@@ -1814,10 +1847,10 @@ table, th, td { text-align: left !important; }
 </main>
 
 <!-- Load Database and Engine Scripts -->
-<script src="jbis_pedigree_db.js?v=v03.93"></script>
-<script src="breeding_only_sires_db.js?v=v03.93"></script>
-<script src="unified_horses_full_db.js?v=v03.93"></script>
-<script src="jbis_engine.js?v=v03.93"></script>
+<script src="jbis_pedigree_db.js?v=v03.94"></script>
+<script src="breeding_only_sires_db.js?v=v03.94"></script>
+<script src="unified_horses_full_db.js?v=v03.94"></script>
+<script src="jbis_engine.js?v=v03.94"></script>
 
 <script>
 
@@ -1826,15 +1859,15 @@ function clearCacheAndReload() {
     caches.keys().then(names => {
       return Promise.all(names.map(name => caches.delete(name)));
     }).then(() => {
-      window.location.href = window.location.pathname + '?v=v03.93&t=' + Date.now();
+      window.location.href = window.location.pathname + '?v=v03.94&t=' + Date.now();
     });
   } else {
-    window.location.href = window.location.pathname + '?v=v03.93&t=' + Date.now();
+    window.location.href = window.location.pathname + '?v=v03.94&t=' + Date.now();
   }
 }
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js?v=v03.93').then(reg => {
+  navigator.serviceWorker.register('sw.js?v=v03.94').then(reg => {
     reg.update();
   }).catch(err => console.warn('SW reg error:', err));
 }
@@ -2180,41 +2213,44 @@ function renderPaneBasic(pedData, horse) {
   document.getElementById('miniMGMDamName').onclick = () => { if(damDam.name) loadAndRenderHorse(damDam.name); };
   document.getElementById('miniMGMMeta').innerText = damDam.info || '';
 
-  // Profile Grid (Universal Dynamic Engine)
+  // Profile Grid (1:1 Original JBIS Engine)
   const thBirth = document.getElementById('profHeadBirth');
   const thStable = document.getElementById('profHeadStable');
   const thBreeder = document.getElementById('profHeadBreeder');
 
   if (thBirth) thBirth.innerText = '生年月日';
-  if (thStable) thStable.innerText = isOverseas ? '産地' : '所属';
-  if (thBreeder) thBreeder.innerText = isOverseas ? '生産牧場' : '生産者';
+  if (thStable) thStable.innerText = '産地';
+  if (thBreeder) thBreeder.innerText = '生産牧場';
 
   document.getElementById('profReg').innerText = pedData.prof_reg || (isMale ? (isOverseas ? '繁殖' : '種牡馬') : '繁殖');
   document.getElementById('profBreed').innerText = pedData.prof_breed || 'サラ';
-  document.getElementById('profSex').innerHTML = isMale ? '<span style="color:#0284c7; font-weight:800;">牡</span>' : '<span style="color:#db2777; font-weight:800;">牝</span>';
+  document.getElementById('profSex').innerHTML = isMale ? '<span class="prof-sex-male">牡</span>' : '<span class="prof-sex-female">牝</span>';
 
-  // Birth date
-  document.getElementById('profBirth').innerText = pedData.birth_date || (pedData.birth_year ? `${pedData.birth_year}年` : '-');
+  // Birth date in dot format YYYY.MM.DD
+  let rawBDate = pedData.birth_date || (pedData.birth_year ? `${pedData.birth_year}.01.01` : '');
+  document.getElementById('profBirth').innerText = rawBDate.replace(/\//g, '.');
   document.getElementById('profCoat').innerText = pedData.coat || (horse && horse.coat) || '鹿毛';
 
-  // Stable / Location
-  let stableStr = '-';
+  // 産地 (Origin / Birth Location)
+  let originStr = '';
   if (isOverseas) {
-    stableStr = pedData.birth_country || (horse && horse.birth_country) || '海外';
-    if (stableStr === '美國' || stableStr === 'USA') stableStr = '米';
+    originStr = pedData.birth_country || (horse && horse.birth_country) || '米国産';
+    if (originStr === '美國' || originStr === 'USA') originStr = '米国産';
+    else if (originStr === '愛爾蘭' || originStr === 'IRE') originStr = '愛国産';
   } else {
-    stableStr = pedData.stable_country || (horse && horse.stable_country) || '中央';
+    originStr = pedData.birth_country || (horse && horse.birth_country) || '北海道早来町';
+    if (originStr === '日本') originStr = '北海道早来町';
   }
-  document.getElementById('profStable').innerText = stableStr;
+  document.getElementById('profStable').innerText = originStr;
 
-  // Owner, Breeder, Trainer
-  document.getElementById('profOwner').innerText = pedData.prof_owner || (horse && horse.owner) || '-';
-  document.getElementById('profBreeder').innerText = pedData.prof_breeder || (horse && horse.breeder) || '-';
-  document.getElementById('profTrainer').innerText = pedData.prof_trainer || (horse && horse.trainer) || (isOverseas ? '[海外]' : '-');
+  // Owner, Breeder, Trainer (blank if empty)
+  document.getElementById('profOwner').innerText = pedData.prof_owner || (horse && horse.owner) || '';
+  document.getElementById('profBreeder').innerText = pedData.prof_breeder || (horse && horse.breeder) || '';
+  document.getElementById('profTrainer').innerText = pedData.prof_trainer || (horse && horse.trainer) || (isOverseas ? '[海外]' : '');
 
   // Record & Prize
-  document.getElementById('profRecord').innerText = pedData.prof_record || '-';
-  document.getElementById('profPrize').innerText = pedData.prof_prize || '-';
+  document.getElementById('profRecord').innerText = pedData.prof_record || '';
+  document.getElementById('profPrize').innerText = pedData.prof_prize || '';
 
   // Annual Cumulative Table & Major Achievements Table (Dual Mode Engine)
   const annualThead = document.getElementById('annualCumulativeThead');
