@@ -26,6 +26,8 @@
       this.curatedParentMap.set('Daijin', { sire: 'Deputy Minister(CAN)', dam: 'Passing Mood(CAN)', source: 'jbis_curated' });
       this.curatedParentMap.set('Daijin(USA)', { sire: 'Deputy Minister(CAN)', dam: 'Passing Mood(CAN)', source: 'jbis_curated' });
       this.curatedParentMap.set('Dynaformer', { sire: 'Roberto(USA)', dam: 'Andover Way(USA)', source: 'jbis_curated' });
+    this.curatedParentMap.set('Andover Way', { sire: 'His Majesty(USA)', dam: 'On the Trail(USA)', source: 'jbis_curated' });
+    this.curatedParentMap.set('Andover Way(USA)', { sire: 'His Majesty(USA)', dam: 'On the Trail(USA)', source: 'jbis_curated' });
       this.curatedParentMap.set('Dynaformer(USA)', { sire: 'Roberto(USA)', dam: 'Andover Way(USA)', source: 'jbis_curated' });
 
 
@@ -296,6 +298,11 @@
       if (existing.dam) {
         if (!this.damProgenyMap.has(existing.dam)) this.damProgenyMap.set(existing.dam, []);
         this.damProgenyMap.get(existing.dam).push(existing);
+        const cleanDam = existing.dam.replace(/\(.*?\)/g, '').trim();
+        if (cleanDam && cleanDam !== existing.dam) {
+          if (!this.damProgenyMap.has(cleanDam)) this.damProgenyMap.set(cleanDam, []);
+          this.damProgenyMap.get(cleanDam).push(existing);
+        }
       }
     },
 
@@ -525,8 +532,28 @@
       const horse = this.findHorse(nameOrId);
       const jbisCache = window.WP10_JBIS_CURATED_DB || {};
 
+      const cleanQ = String(nameOrId).replace(/\(.*?\)/g, '').trim().toLowerCase();
       for (const [jid, cdata] of Object.entries(jbisCache)) {
-        if (cdata.id === nameOrId || cdata.name === nameOrId || (horse && cdata.name === horse.name_jp)) {
+        const cNameClean = (cdata.name || '').replace(/\(.*?\)/g, '').trim().toLowerCase();
+        const cJpClean = (cdata.name_jp || '').replace(/\(.*?\)/g, '').trim();
+        const cZhClean = (cdata.name_zh || '').trim();
+        const cEnClean = (cdata.name_en || '').replace(/\(.*?\)/g, '').trim().toLowerCase();
+
+        if (
+          cdata.id === nameOrId ||
+          cdata.name === nameOrId ||
+          cNameClean === cleanQ ||
+          cEnClean === cleanQ ||
+          (cJpClean && (cJpClean === nameOrId || cJpClean === cleanQ)) ||
+          (cZhClean && (cZhClean === nameOrId || cZhClean === cleanQ)) ||
+          (horse && (
+            cdata.name === horse.name_jp ||
+            cJpClean === (horse.name_jp || '') ||
+            cNameClean === (horse.name_en || '').toLowerCase() ||
+            cEnClean === (horse.name_en || '').toLowerCase() ||
+            cdata.id === horse.id
+          ))
+        ) {
           return this.formatCuratedPedigree(cdata, horse);
         }
       }
@@ -635,14 +662,32 @@
         }
       }
 
-      return {
+      return Object.assign({
         id: cdata.id,
         name: cdata.name,
         name_en: cdata.name_en || (horseObj ? horseObj.name_en : ''),
-        zh_name: horseObj ? (horseObj.zh_name || horseObj.name_zh || '') : '',
-        birth_year: horseObj ? horseObj.birth_year : null,
-        sex: isMale ? '牡' : (isFemale ? '牝' : (horseObj ? horseObj.sex : '牡')),
-        coat: horseObj ? horseObj.coat : '鹿毛',
+        zh_name: cdata.name_zh || (horseObj ? (horseObj.zh_name || horseObj.name_zh || '') : ''),
+        birth_year: cdata.birth_year || (horseObj ? horseObj.birth_year : null),
+        birth_date: cdata.birth_date || '',
+        death_date: cdata.death_date || '',
+        sex: cdata.sex || (isMale ? '牡' : (isFemale ? '牝' : (horseObj ? horseObj.sex : '牡'))),
+        coat: cdata.coat || (horseObj ? horseObj.coat : '鹿毛'),
+        birth_country: cdata.birth_country || (horseObj ? horseObj.birth_country : ''),
+        stable_country: cdata.stable_country || (horseObj ? horseObj.stable_country : ''),
+        country_code: cdata.country_code || '',
+        prof_reg: cdata.prof_reg || (isMale ? '種牡馬' : '繁殖'),
+        prof_breed: cdata.prof_breed || 'サラ',
+        prof_owner: cdata.prof_owner || (horseObj ? horseObj.owner : ''),
+        prof_breeder: cdata.prof_breeder || (horseObj ? horseObj.breeder : ''),
+        prof_trainer: cdata.prof_trainer || (horseObj ? horseObj.trainer : ''),
+        prof_record: cdata.prof_record || '',
+        prof_prize: cdata.prof_prize || '',
+        annual_type: cdata.annual_type || '',
+        annual_records: cdata.annual_records || null,
+        major_races: cdata.major_races || null,
+        overseas_races: cdata.overseas_races || null,
+        major_footer: cdata.major_footer || '',
+        races: cdata.races || null,
         family_no: cdata.family_no || 'F9-a',
         base_mare: cdata.base_mare || '',
         crosses: (cdata.crosses && cdata.crosses.length > 0) ? cdata.crosses : this.detectCrosses(ancestors),
@@ -651,7 +696,7 @@
         broodmare_info: cdata.broodmare_info || null,
         is_curated: true,
         horse_profile: horseObj
-      };
+      }, cdata, { ancestors: ancestors });
     },
 
     synthesizePedigree: function(horse) {
@@ -821,8 +866,26 @@
         name_en: horse.name_en || horse.en_name || '',
         zh_name: horse.zh_name || horse.name_zh || '',
         birth_year: horse.birth_year || horse.year || null,
+        birth_date: horse.birth_date || (horse.birth_year ? (horse.birth_year + '年') : ''),
+        death_date: horse.death_date || '',
         sex: isMale ? '牡' : (isFemale ? '牝' : (horse.sex || '牡')),
         coat: horse.coat || '鹿毛',
+        birth_country: horse.birth_country || (horse.region === '海外' ? '海外' : '日本'),
+        stable_country: horse.stable_country || (horse.region === '海外' ? '海外' : '中央'),
+        country_code: horse.country_code || ((horse.region === '海外' || (horse.birth_country && (horse.birth_country.includes('米') || horse.birth_country.includes('USA')))) ? 'USA' : 'JPN'),
+        prof_reg: isMale ? (horse.region === '海外' ? '繁殖' : '種牡馬') : '繁殖',
+        prof_breed: 'サラ',
+        prof_owner: horse.owner || '',
+        prof_breeder: horse.breeder || '',
+        prof_trainer: horse.trainer || (horse.region === '海外' ? '[海外]' : ''),
+        prof_record: horse.prof_record || '',
+        prof_prize: horse.prof_prize || '',
+        annual_type: horse.annual_type || (horse.region === '海外' ? 'overseas' : 'domestic'),
+        annual_records: horse.annual_records || null,
+        major_races: horse.major_races || null,
+        overseas_races: horse.overseas_races || null,
+        major_footer: horse.major_footer || '',
+        races: horse.races || null,
         family_no: familyNo,
         base_mare: horse.base_mare || (horse.dam_line || ''),
         crosses: crosses,
