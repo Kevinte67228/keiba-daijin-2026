@@ -43,7 +43,7 @@ window.WP10_JBIS_CURATED_DB = {
       { "idx": 6, "name": "On the Trail(USA)", "id": "", "sex": "female", "info": "黒鹿毛 1964", "tags": ["血統"] },
       { "idx": 31, "name": "Speed Succeeds(USA)", "id": "", "sex": "female", "info": "黒鹿毛 2001", "tags": ["血統", "繁殖"] },
       { "idx": 32, "name": "Gone West(USA)", "id": "", "sex": "male", "info": "鹿毛 1984", "tags": ["血統", "競走", "種"] },
-      { "idx": 33, "name": "Daijin(USA)", "id": "", "sex": "female", "info": "鹿毛 1989", "tags": ["血統", "繁殖"] },
+      { "idx": 33, "name": "Daijin(USA)", "id": "", "sex": "female", "info": "鹿毛 1992", "tags": ["血統", "繁殖"] },
       { "idx": 34, "name": "Mr. Prospector(USA)", "id": "", "sex": "male", "info": "鹿毛 1970", "tags": ["血統"] },
       { "idx": 35, "name": "Secrettame(USA)", "id": "", "sex": "female", "info": "栗毛 1978", "tags": ["血統"] },
       { "idx": 36, "name": "Deputy Minister(CAN)", "id": "", "sex": "male", "info": "黒鹿毛 1979", "tags": ["血統"] },

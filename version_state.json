@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.91",
+  "current_version": "v03.92",
   "history": [
     {
       "version": "v03.88",
@@ -1479,6 +1479,10 @@
     {
       "version": "v03.91",
       "description": "Brilliant Speed 1:1 JBIS 海外產地/年度累計大表與中文馬名日中並行完美收錄"
+    },
+    {
+      "version": "v03.92",
+      "description": "修正布利利亞外祖母大臣(Daijin)出生年份為1992(1:1符合JBIS原站)"
     }
   ],
   "version": "v03.74",
