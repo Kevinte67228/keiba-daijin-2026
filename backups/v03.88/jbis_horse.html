@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>JBIS-Search（JBIS-サーチ）馬情報・血統データベース ｜ WP10 2026</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -500,11 +503,19 @@ table, th, td { text-align: left !important; }
   font-size: 14px;
   font-weight: 700;
   align-items: center;
+  white-space: nowrap !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
 }
 .sub-nav-item {
   color: #0284c7;
   cursor: pointer;
   padding-bottom: 2px;
+  white-space: nowrap !important;
+  user-select: none;
+  -webkit-user-select: none;
 }
 .sub-nav-item.active {
   color: var(--jbis-green);
@@ -961,14 +972,18 @@ table, th, td { text-align: left !important; }
   <div class="header-top-bar">
     <div>国内最大級の競馬情報データベース　JBIS-サーチ（JBIS-Search）</div>
     <div style="display:flex; align-items:center;">
-      <a href="index.html"><i class="fa-solid fa-book-open"></i> 返回 WP10 2026 戰略百科</a>
+      <a href="index.html?v=v03.89"><i class="fa-solid fa-book-open"></i> 返回 WP10 2026 戰略百科</a>
       <span>ヘルプ</span> ｜ <span>English</span>
       <button class="theme-switch-btn" id="themeToggleBtn" onclick="toggleJbisTheme()"><i class="fa-solid fa-circle-half-stroke"></i> 切換主題</button>
+      <span class="version-badge" id="jbisVersionBadge" style="margin-left:10px; background:rgba(34,197,94,0.18); border:1px solid #22c55e; color:#22c55e; padding:2px 8px; border-radius:12px; font-weight:800; font-size:12px; cursor:pointer;" title="點擊強制清除快取並重新加載" onclick="clearCacheAndReload()">v03.89</span>
     </div>
   </div>
   <div class="header-main">
     <div class="logo-title-group">
-      <div class="logo-title">JBIS-サーチ</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div class="logo-title">JBIS-サーチ</div>
+        <span style="font-size:12px; color:#22c55e; font-weight:800; border:1px solid #22c55e; padding:1px 7px; border-radius:10px; background:rgba(34,197,94,0.1);">v03.89</span>
+      </div>
       <div class="logo-sub">馬情報・5代血統表・產駒牝系完全數據庫</div>
     </div>
     <ul class="header-nav">
@@ -1006,7 +1021,50 @@ table, th, td { text-align: left !important; }
 
   <!-- ==================== VIEW 1: SEARCH FORM & RESULTS ==================== -->
   <section id="searchViewSection">
-    <div class="search-card">
+    <!-- 1. Results Area (Placed FIRST at Top so results are immediately in viewport!) -->
+    <div id="resultsWrapper" style="display:none; margin-bottom: 24px;">
+      <!-- Direct Horse Match Banner -->
+      <div id="directMatchBanner" style="display:none; margin-bottom: 16px;"></div>
+
+      <div class="results-header" style="background:var(--jbis-card-bg); border:1px solid var(--jbis-border); border-radius:6px; padding:10px 16px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div id="resultsCountText" style="font-weight:800; font-size:15px; color:var(--jbis-green);">検索結果：0件</div>
+        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+          <label style="font-size:13px; font-weight:700;">並び替え：
+            <select id="sortFieldSelect" onchange="executeFormSearch()" style="padding:4px 8px; border:1px solid var(--jbis-border); border-radius:4px; background:var(--jbis-card-bg); color:var(--jbis-text); font-size:13px;">
+              <option value="name">馬名順</option>
+              <option value="year">生年順 (新→舊)</option>
+              <option value="sex">性別順</option>
+              <option value="sire">父馬順</option>
+              <option value="dam">母馬順</option>
+            </select>
+          </label>
+          <button type="button" class="btn-hero-tool" onclick="toggleFilterCard()" style="font-size:12px; padding:5px 12px; background:var(--jbis-card-bg); border:1px solid var(--jbis-border); border-radius:4px; color:var(--jbis-text); cursor:pointer;">
+            <i class="fa-solid fa-sliders"></i> <span id="filterToggleText">展開/收合詳細條件</span>
+          </button>
+        </div>
+      </div>
+      <div class="table-responsive scrollable-table-box" style="overflow-x:auto; border:1px solid var(--jbis-border); border-radius:6px; margin-bottom:16px;">
+        <table class="jbis-data-table results-table" style="min-width: 980px; width:100%; border-collapse:collapse; margin-bottom:0;">
+          <thead>
+            <tr>
+              <th class="sortable-th" style="width:200px;">馬名 ⇅</th>
+              <th class="sortable-th" style="width:80px;">生年 ⇅</th>
+              <th class="sortable-th" style="width:70px;">性別 ⇅</th>
+              <th class="sortable-th" style="width:90px;">毛色 ⇅</th>
+              <th class="sortable-th" style="width:80px;">所属 ⇅</th>
+              <th class="sortable-th" style="width:170px;">父馬 ⇅</th>
+              <th class="sortable-th" style="width:170px;">母馬 ⇅</th>
+              <th style="width:100px;">操作</th>
+            </tr>
+          </thead>
+          <tbody id="resultsTableBody"></tbody>
+        </table>
+      </div>
+      <div class="pagination" id="resultsPagination" style="display:flex; justify-content:center; gap:6px; margin-top:14px;"></div>
+    </div>
+
+    <!-- 2. Detailed Filter Card (Collapsible and neatly positioned) -->
+    <div class="search-card" id="searchFilterCard">
       <div class="search-hdg">
         <span><i class="fa-solid fa-filter"></i> 馬情報｜詳細検索</span>
         <span style="font-size:12px; font-weight:normal; color:var(--jbis-text-muted);">支援全站 16,757 匹史實名駒與 4,314 匹繁殖馬</span>
@@ -1023,7 +1081,7 @@ table, th, td { text-align: left !important; }
           <li><label><input type="radio" name="searchSid" value="trainer"> 調教師/所属</label></li>
         </ul>
         <div class="keyword-input-box">
-          <input type="search" id="formKeyword" placeholder="輸入馬名（例：ブリリアントベリー、カンパニー、トニービン）">
+          <input type="search" id="formKeyword" placeholder="輸入馬名（例：ブリリアントベリー、カンパニー、トニービン）" onkeydown="if(event.key==='Enter'){event.preventDefault(); executeFormSearch();}">
           <ul class="radios-list">
             <li><label><input type="radio" name="searchMatch" value="prefix" checked> 前方一致</label></li>
             <li><label><input type="radio" name="searchMatch" value="exact"> 完全一致</label></li>
@@ -1057,9 +1115,9 @@ table, th, td { text-align: left !important; }
         <fieldset class="search-field-group">
           <legend class="search-legend">生年 (出生年代)</legend>
           <div style="display:flex; align-items:center; gap:8px;">
-            <input type="number" id="birthFrom" placeholder="1967" style="width:110px; padding:6px 10px; border:1px solid var(--jbis-border); border-radius:4px; background:var(--jbis-card-bg); color:var(--jbis-text);">
+            <input type="number" id="birthFrom" placeholder="1967" onkeydown="if(event.key==='Enter'){event.preventDefault(); executeFormSearch();}" style="width:110px; padding:6px 10px; border:1px solid var(--jbis-border); border-radius:4px; background:var(--jbis-card-bg); color:var(--jbis-text);">
             <span>年 ～</span>
-            <input type="number" id="birthTo" placeholder="2026" style="width:110px; padding:6px 10px; border:1px solid var(--jbis-border); border-radius:4px; background:var(--jbis-card-bg); color:var(--jbis-text);">
+            <input type="number" id="birthTo" placeholder="2026" onkeydown="if(event.key==='Enter'){event.preventDefault(); executeFormSearch();}" style="width:110px; padding:6px 10px; border:1px solid var(--jbis-border); border-radius:4px; background:var(--jbis-card-bg); color:var(--jbis-text);">
             <span>年生まれ</span>
           </div>
         </fieldset>
@@ -1081,42 +1139,6 @@ table, th, td { text-align: left !important; }
         <button type="button" class="btn-reset" onclick="resetSearchForm()"><i class="fa-solid fa-rotate-left"></i> リセット</button>
         <button type="button" class="btn-submit" onclick="executeFormSearch()"><i class="fa-solid fa-magnifying-glass"></i> この条件で検索</button>
       </div>
-    </div>
-
-    <!-- Results Area -->
-    <div id="resultsWrapper" style="display:none;">
-      <div class="results-header">
-        <div id="resultsCountText">検索結果：0件</div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <label>並び替え：
-            <select id="sortFieldSelect" onchange="executeFormSearch()">
-              <option value="name">馬名順</option>
-              <option value="year">生年順</option>
-              <option value="sex">性別順</option>
-              <option value="sire">父馬順</option>
-              <option value="dam">母馬順</option>
-            </select>
-          </label>
-        </div>
-      </div>
-      <div style="overflow-x:auto;">
-        <table class="results-table">
-          <thead>
-            <tr>
-              <th>馬名</th>
-              <th>生年</th>
-              <th>性別</th>
-              <th>毛色</th>
-              <th>所属</th>
-              <th>父馬</th>
-              <th>母馬</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody id="resultsTableBody"></tbody>
-        </table>
-      </div>
-      <div class="pagination" id="resultsPagination"></div>
     </div>
   </section>
 
@@ -1292,90 +1314,201 @@ table, th, td { text-align: left !important; }
 
       <!-- ==================== PANE 2: 血統情報 (Screenshot 2) ==================== -->
       <div id="panePedigree" style="display:none;">
-        <div class="sub-nav-rail">
-          <span class="sub-nav-item active">5代血統表</span> ｜ 
-          <span class="sub-nav-item" onclick="switchMainTab('gender'); switchGenderSubTab('pills1');">兄弟情報</span> ｜ 
-          <span class="sub-nav-item" onclick="switchMainTab('gender'); switchGenderSubTab('pills2');">牝系情報</span>
+        <div class="sub-nav-rail" id="pedigreeSubNavRail">
+          <span id="pedSubTab5gen" class="sub-nav-item active" onclick="switchPedigreeSubTab('5gen')">5代血統表</span> ｜ 
+          <span id="pedSubTabSiblings" class="sub-nav-item" onclick="switchPedigreeSubTab('siblings')">兄弟情報</span> ｜ 
+          <span id="pedSubTabFemale" class="sub-nav-item" onclick="switchPedigreeSubTab('female')">牝系情報</span>
         </div>
 
-        <div class="pedigree-sec-header"><i class="fa-solid fa-dna"></i> 5代血統表</div>
-        
-        <!-- 5-Gen 32-Row Pedigree Grid -->
-        <div class="pedigree-grid-wrapper">
-          <div class="pedigree-side-container" id="pedigreeSideContainer">
-            <!-- 31 Sire Nodes + 31 Dam Nodes rendered here -->
+        <!-- 1. 5代血統表 SUB-VIEW -->
+        <div id="pedSubView5gen">
+          <div class="pedigree-sec-header"><i class="fa-solid fa-dna"></i> 5代血統表</div>
+          
+          <!-- 5-Gen 32-Row Pedigree Grid -->
+          <div class="pedigree-grid-wrapper">
+            <div class="pedigree-side-container" id="pedigreeSideContainer">
+              <!-- 31 Sire Nodes + 31 Dam Nodes rendered here -->
+            </div>
+          </div>
+
+          <!-- Family No. & Cross Info Footer -->
+          <div class="family-cross-footer">
+            <div class="family-no-bar">
+              <div>
+                <span>ファミリーNo. ： </span>
+                <strong id="pedFamilyNo">23-b</strong>
+              </div>
+              <div>
+                <button type="button" class="btn-female-tree-view" onclick="switchPedigreeSubTab('female')">
+                  <i class="fa-solid fa-sitemap"></i> 牝系図表示
+                </button>
+              </div>
+            </div>
+            <div class="cross-info-row">
+              <div class="cross-label">クロス</div>
+              <div class="cross-tags-container" id="pedCrossContainer"></div>
+            </div>
           </div>
         </div>
 
-        <!-- Family No. & Cross Info Footer -->
-        <div class="family-cross-footer">
-          <div class="family-no-bar">
-            <div>
-              <span>ファミリーNo. ： </span>
-              <strong id="pedFamilyNo">23-b</strong>
-            </div>
-            <div>
-              <button type="button" class="btn-female-tree-view" onclick="switchMainTab('gender'); switchGenderSubTab('pills2');">
-                <i class="fa-solid fa-sitemap"></i> 牝系図表示
-              </button>
-            </div>
+        <!-- 2. 兄弟情報 (同母産駒一覧) SUB-VIEW -->
+        <div id="pedSubViewSiblings" style="display:none;">
+          <div class="pedigree-sec-header"><i class="fa-solid fa-horse"></i> 兄弟情報（同母産駒一覧）</div>
+          <div id="pedSiblingsDesc" style="font-size:13px; color:var(--jbis-text-muted); margin-bottom:12px;"></div>
+          <div class="table-responsive scrollable-table-box" style="overflow-x:auto; border:1px solid var(--jbis-border); border-radius:6px; margin-bottom:16px;">
+            <table class="jbis-data-table" id="pedSiblingsTable" style="min-width:980px; width:100%; border-collapse:collapse; margin-bottom:0;">
+              <thead>
+                <tr>
+                  <th class="sortable-th" style="width:85px;">誕生年 ⇅</th>
+                  <th class="sortable-th" style="width:190px;">馬名 ⇅</th>
+                  <th class="sortable-th" style="width:75px;">性 ⇅</th>
+                  <th class="sortable-th" style="width:85px;">毛色 ⇅</th>
+                  <th class="sortable-th" style="width:170px;">父名 ⇅</th>
+                  <th class="sortable-th" style="width:190px;">主な勝鞍 ⇅</th>
+                  <th class="sortable-th" style="width:110px;">獲得賞金 ⇅</th>
+                  <th class="sortable-th" style="width:120px;">調教師/所属 ⇅</th>
+                  <th style="width:85px;">操作</th>
+                </tr>
+              </thead>
+              <tbody id="pedSiblingsTbody">
+                <!-- Sibling rows rendered dynamically by JS -->
+              </tbody>
+            </table>
           </div>
-          <div class="cross-info-row">
-            <div class="cross-label">クロス</div>
-            <div class="cross-tags-container" id="pedCrossContainer"></div>
+        </div>
+
+        <!-- 3. 牝系情報 (牝系図) SUB-VIEW -->
+        <div id="pedSubViewFemale" style="display:none;">
+          <div class="pedigree-sec-header"><i class="fa-solid fa-sitemap"></i> 牝系情報（牝系図）</div>
+          <div class="box-mother-header" id="pedFemaleMotherBar"><i class="fa-solid fa-venus"></i> 本馬</div>
+          <div class="female-tree-wrapper" id="pedFemaleFamilyTreeBox">
+            <!-- Hierarchical tree nodes rendered dynamically by JS -->
           </div>
         </div>
       </div>
 
       <!-- ==================== PANE 3: 競走成績 (Screenshot 3) ==================== -->
+            <!-- ==================== PANE 3: 競走成績 (Screenshot 3) ==================== -->
       <div id="paneRecord" style="display:none;">
-        <div class="sub-nav-rail">
-          <span class="sub-nav-item active">全競走成績</span> ｜ 
-          <span class="sub-nav-item" onclick="switchMainTab('basic')">年度別累計成績/主な成績</span> ｜ 
-          <span class="sub-nav-item" onclick="alert('出走履歴詳細モード')">出走履歴詳細</span>
+        <div class="sub-nav-rail" id="recordSubNavRail">
+          <span id="recordSubTabFull" class="sub-nav-item active" onclick="switchRecordSubTab('full')">全競走成績</span> ｜ 
+          <span id="recordSubTabAnnual" class="sub-nav-item" onclick="switchRecordSubTab('annual')">年度別累計成績/主な成績</span> ｜ 
+          <span id="recordSubTabHistory" class="sub-nav-item" onclick="switchRecordSubTab('history')">出走履歴詳細</span>
         </div>
 
-        <div class="record-count-header" id="raceRecordCount">7戦中 7戦の成績表示</div>
+        <!-- 3-1: 全競走成績 (Sub-view Full) -->
+        <div id="recordSubViewFull">
+          <div class="record-count-header" id="raceRecordCount">7件中 7件の成績を表示</div>
 
-        <div class="filter-bar-row">
-          <select id="raceFilterYear">
-            <option value="all">全日程</option>
-          </select>
-          <select id="raceFilterCond">
-            <option value="all">全條件</option>
-          </select>
-          <button type="button" class="btn-filter-run" onclick="filterRaceRecords()">絞り込み</button>
+          <div class="filter-bar-row">
+            <select id="raceFilterYear">
+              <option value="all">全出走年</option>
+            </select>
+            <select id="raceFilterCond">
+              <option value="all">全条件</option>
+            </select>
+            <button type="button" class="btn-filter-run" onclick="filterRaceRecords()">絞り込み</button>
+          </div>
+
+          <div class="table-responsive scrollable-table-box">
+            <table class="jbis-data-table" style="min-width:1100px;">
+              <thead>
+                <tr>
+                  <th class="sortable-th">年月日 ⇅</th>
+                  <th class="sortable-th">開催 ⇅</th>
+                  <th class="sortable-th">レース名 ⇅</th>
+                  <th class="sortable-th">着順 ⇅</th>
+                  <th class="sortable-th">頭数 ⇅</th>
+                  <th class="sortable-th">枠番 ⇅</th>
+                  <th class="sortable-th">馬番 ⇅</th>
+                  <th class="sortable-th">人気 ⇅</th>
+                  <th class="sortable-th">斤量 ⇅</th>
+                  <th class="sortable-th">騎手 ⇅</th>
+                  <th class="sortable-th">タイム ⇅</th>
+                  <th class="sortable-th">後3F ⇅</th>
+                  <th class="sortable-th">勝ち馬(2着馬) ⇅</th>
+                  <th class="sortable-th">馬体重 ⇅</th>
+                  <th class="sortable-th">賞金 ⇅</th>
+                </tr>
+              </thead>
+              <tbody id="fullRaceRecordsTbody">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
         </div>
 
-        <div style="overflow-x:auto;">
-          <table class="jbis-data-table">
-            <thead>
-              <tr>
-                <th>日付</th>
-                <th>開催</th>
-                <th>レース名</th>
-                <th>着順</th>
-                <th>頭数</th>
-                <th>枠番</th>
-                <th>馬番</th>
-                <th>人気</th>
-                <th>斤量</th>
-                <th>騎手</th>
-                <th>タイム</th>
-                <th>上り</th>
-                <th>1着馬（2着馬）</th>
-                <th>馬体重</th>
-                <th>賞金</th>
-              </tr>
-            </thead>
-            <tbody id="fullRaceRecordsTbody">
-              <!-- Rendered by JS -->
-            </tbody>
-          </table>
+        <!-- 3-2: 年度別累計成績/主な成績 (Sub-view Annual) -->
+        <div id="recordSubViewAnnual" style="display:none;">
+          <div class="jbis-sec-title">年度別累計成績</div>
+          <div class="table-responsive scrollable-table-box" style="margin-bottom:24px;">
+            <table class="jbis-data-table" style="min-width:880px;">
+              <thead>
+                <tr>
+                  <th style="width:70px;" class="sortable-th">年 ⇅</th>
+                  <th style="width:70px;" class="sortable-th">年齢 ⇅</th>
+                  <th style="width:80px;" class="sortable-th">出走回数 ⇅</th>
+                  <th style="width:60px;" class="sortable-th">1着 ⇅</th>
+                  <th style="width:60px;" class="sortable-th">2着 ⇅</th>
+                  <th style="width:60px;" class="sortable-th">3着 ⇅</th>
+                  <th style="width:70px;" class="sortable-th">着外 ⇅</th>
+                  <th style="width:90px;" class="sortable-th">重賞出走 ⇅</th>
+                  <th style="width:90px;" class="sortable-th">重賞勝利 ⇅</th>
+                  <th style="min-width:140px;" class="sortable-th">総賞金 ⇅</th>
+                </tr>
+              </thead>
+              <tbody id="recordAnnualRecordsTbody">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="jbis-sec-title">主な成績</div>
+          <div class="table-responsive scrollable-table-box">
+            <table class="jbis-data-table" style="min-width:880px;">
+              <thead>
+                <tr>
+                  <th style="width:80px;" class="sortable-th">年度 ⇅</th>
+                  <th class="sortable-th">レース名 ⇅</th>
+                  <th style="width:90px;" class="sortable-th">格付 ⇅</th>
+                  <th style="width:70px;" class="sortable-th">着順 ⇅</th>
+                  <th style="min-width:140px;" class="sortable-th">賞金 ⇅</th>
+                </tr>
+              </thead>
+              <tbody id="recordMajorRacesTbody">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 3-3: 出走履歴詳細 (Sub-view History / Course Breakdown) -->
+        <div id="recordSubViewHistory" style="display:none;">
+          <div class="jbis-sec-title">コース・馬場・距離別出走詳細</div>
+          <div class="table-responsive scrollable-table-box">
+            <table class="jbis-data-table" style="min-width:880px;">
+              <thead>
+                <tr>
+                  <th style="width:140px;" class="sortable-th">区分 ⇅</th>
+                  <th style="width:80px;" class="sortable-th">出走数 ⇅</th>
+                  <th style="width:70px;" class="sortable-th">1着 ⇅</th>
+                  <th style="width:70px;" class="sortable-th">2着 ⇅</th>
+                  <th style="width:70px;" class="sortable-th">3着 ⇅</th>
+                  <th style="width:70px;" class="sortable-th">着外 ⇅</th>
+                  <th style="width:90px;" class="sortable-th">勝率 ⇅</th>
+                  <th style="width:90px;" class="sortable-th">連対率 ⇅</th>
+                  <th style="width:90px;" class="sortable-th">複勝率 ⇅</th>
+                </tr>
+              </thead>
+              <tbody id="recordHistoryBreakdownTbody">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
-      <!-- ==================== PANE 4: 繁殖牝馬情報 / 種牡馬情報 (Screenshots 4 & 5) ==================== -->
+      <!-- ==================== PANE 4: 繁殖牝馬 / 種牡馬 ==================== -->
       <div id="paneGender" style="display:none;">
         
         <!-- SUB-VIEW A: 牝系情報樹狀圖 (Screenshot 4) -->
@@ -1456,12 +1589,31 @@ table, th, td { text-align: left !important; }
 </main>
 
 <!-- Load Database and Engine Scripts -->
-<script src="jbis_pedigree_db.js"></script>
-<script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js"></script>
-<script src="jbis_engine.js"></script>
+<script src="jbis_pedigree_db.js?v=v03.89"></script>
+<script src="breeding_only_sires_db.js?v=v03.89"></script>
+<script src="unified_horses_full_db.js?v=v03.89"></script>
+<script src="jbis_engine.js?v=v03.89"></script>
 
 <script>
+
+function clearCacheAndReload() {
+  if ('caches' in window) {
+    caches.keys().then(names => {
+      return Promise.all(names.map(name => caches.delete(name)));
+    }).then(() => {
+      window.location.href = window.location.pathname + '?v=v03.89&t=' + Date.now();
+    });
+  } else {
+    window.location.href = window.location.pathname + '?v=v03.89&t=' + Date.now();
+  }
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js?v=v03.89').then(reg => {
+    reg.update();
+  }).catch(err => console.warn('SW reg error:', err));
+}
+
 // ==================== UI CONTROLLER & APP LOGIC ====================
 let currentHorse = null;
 let currentPedData = null;
@@ -1497,6 +1649,21 @@ window.addEventListener('DOMContentLoaded', () => {
     // Default open Brilliant Very to showcase female family tree (Screenshots 1~5)
     loadAndRenderHorse('ブリリアントベリー');
   }
+
+  // Rule 2: Table Header Click Sorting
+  const sortMap = { 0: 'name', 1: 'year', 2: 'sex', 5: 'sire', 6: 'dam' };
+  document.querySelectorAll('#searchViewSection table thead th.sortable-th').forEach((th, idx) => {
+    th.style.cursor = 'pointer';
+    th.title = '點擊切換排序';
+    th.addEventListener('click', () => {
+      const field = sortMap[idx];
+      const sel = document.getElementById('sortFieldSelect');
+      if (sel && field) {
+        sel.value = field;
+        executeFormSearch();
+      }
+    });
+  });
 });
 
 function toggleJbisTheme() {
@@ -1611,16 +1778,10 @@ function createImaginaryPedigree() {
   alert('已開啟以【' + (currentPedData ? currentPedData.name : '本馬') + '】為基礎之架空配合實驗室！');
 }
 function searchSiblingHorses() {
-  if (!currentPedData) return;
-  const dam = currentPedData.dam || (currentPedData.ancestors[31] ? currentPedData.ancestors[31].name : '');
-  if (dam) {
-    document.getElementById('formKeyword').value = dam;
-    const radios = document.getElementsByName('searchSid');
-    for (let r of radios) { if (r.value === 'mare') r.checked = true; }
-    executeFormSearch();
-  } else {
-    alert('未找到母馬資訊以檢索兄弟馬');
-  }
+  switchMainTab('pedigree');
+  switchPedigreeSubTab('siblings');
+  const el = document.getElementById('pedigreeSubNavRail');
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
 
 // ==================== LOAD & RENDER HORSE DETAILS ====================
@@ -1669,9 +1830,11 @@ function loadAndRenderHorse(nameOrId) {
 
   // 4. Render Tab 2 (血統情報 - 5代血統表)
   renderPanePedigree(pedData);
+  switchPedigreeSubTab('5gen');
 
   // 5. Render Tab 3 (競走成績)
   renderPaneRecord(pedData, currentHorse);
+  switchRecordSubTab('full');
 
   // 6. Render Tab 4 (繁殖牝馬情報 / 種牡馬情報)
   renderPaneGender(pedData, currentHorse, isMale);
@@ -1865,6 +2028,282 @@ function renderPaneBasic(pedData, horse) {
   }
 }
 
+// ==================== TAB 2 SUB-TAB CONTROLLER (5代血統表・兄弟情報・牝系情報) ====================
+function switchPedigreeSubTab(subTab) {
+  const tabs = ['5gen', 'siblings', 'female'];
+  tabs.forEach(t => {
+    const pane = document.getElementById('pedSubView' + t.charAt(0).toUpperCase() + t.slice(1));
+    const btn = document.getElementById('pedSubTab' + t.charAt(0).toUpperCase() + t.slice(1));
+    if (pane) pane.style.display = (t === subTab) ? 'block' : 'none';
+    if (btn) {
+      if (t === subTab) btn.classList.add('active');
+      else btn.classList.remove('active');
+    }
+  });
+
+  if (subTab === 'siblings' && currentPedData) {
+    renderPedigreeSiblings(currentPedData, currentHorse);
+  } else if (subTab === 'female' && currentPedData) {
+    renderPedigreeFemaleTree(currentPedData, currentHorse);
+  }
+}
+
+function renderPedigreeSiblings(pedData, horse) {
+  const tbody = document.getElementById('pedSiblingsTbody');
+  const descEl = document.getElementById('pedSiblingsDesc');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+
+  const rawDamName = pedData.dam || (pedData.ancestors && pedData.ancestors[31] ? pedData.ancestors[31].name : (horse && horse.dam ? horse.dam : ''));
+  if (!rawDamName || rawDamName === '-' || rawDamName === '未登録') {
+    if (descEl) descEl.innerText = '母馬情報未登録のため同母兄弟馬情報はありません。';
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:24px; color:#666;">該当兄弟馬データが見つかりませんでした</td></tr>';
+    return;
+  }
+
+  const cleanDamName = rawDamName.replace(/\(.*?\)/g, '').trim();
+  const searchDamNames = new Set([rawDamName, cleanDamName]);
+  searchDamNames.add(cleanDamName.replace(/テイ/g, 'ティ'));
+  searchDamNames.add(cleanDamName.replace(/ティ/g, 'テイ'));
+  searchDamNames.add(cleanDamName.replace(/デイ/g, 'ディ'));
+  searchDamNames.add(cleanDamName.replace(/ディ/g, 'デイ'));
+  searchDamNames.add(rawDamName.replace(/テイ/g, 'ティ'));
+  searchDamNames.add(rawDamName.replace(/ティ/g, 'テイ'));
+  const searchDamList = Array.from(searchDamNames).filter(Boolean);
+
+  if (descEl) {
+    descEl.innerHTML = `母馬：<strong>${rawDamName}</strong> の直系産駒（本馬の同兄弟姉妹一覧）`;
+  }
+
+  let siblingsList = [];
+  const seenNames = new Set();
+
+  // A. Check curated DB for this dam
+  if (window.WP10_JBIS_CURATED_DB) {
+    for (const [jid, cdata] of Object.entries(window.WP10_JBIS_CURATED_DB)) {
+      const isMatch = searchDamList.some(dn => cdata.name === dn || cdata.name_jp === dn);
+      if (isMatch && cdata.broodmare_info && Array.isArray(cdata.broodmare_info.progeny)) {
+        cdata.broodmare_info.progeny.forEach(p => {
+          if (p.name && !p.name.includes('産駒なし') && (p.depth == null || p.depth <= 1)) {
+            const birthYear = p.year || (p.desc && p.desc.match(/(\d{4})年/) ? p.desc.match(/(\d{4})年/)[1] : '-');
+            const cleanName = (p.name || '').replace(/^[\s\u3000・]+/, '').trim();
+            if (!seenNames.has(cleanName)) {
+              siblingsList.push({
+                name: cleanName,
+                name_jp: cleanName,
+                birth_year: birthYear,
+                sex: p.sex || (p.desc && p.desc.includes('牡') ? '牡' : (p.desc && p.desc.includes('牝') ? '牝' : 'セン')),
+                coat: p.coat || (p.desc && p.desc.includes('栗毛') ? '栗毛' : (p.desc && p.desc.includes('黒鹿毛') ? '黒鹿毛' : (p.desc && p.desc.includes('芦毛') ? '芦毛' : '鹿毛'))),
+                sire: p.sire || (p.desc && p.desc.match(/父:\s*([^\s,]+)/) ? p.desc.match(/父:\s*([^\s,]+)/)[1] : '-'),
+                wins: p.wins || '-',
+                prize: p.prize || '-',
+                stable_country: '中央'
+              });
+              seenNames.add(cleanName);
+            }
+          }
+        });
+      }
+    }
+  }
+
+  // B. Check WP10_JBIS_ENGINE.damProgenyMap
+  if (window.WP10_JBIS_ENGINE && window.WP10_JBIS_ENGINE.damProgenyMap) {
+    searchDamList.forEach(dn => {
+      const fromMap = window.WP10_JBIS_ENGINE.damProgenyMap.get(dn) || [];
+      fromMap.forEach(h => {
+        const hName = (h.name_jp || h.name || '').trim();
+        const cleanHName = hName.replace(/\(.*?\)/g, '').trim();
+        if (hName && !seenNames.has(hName) && !seenNames.has(cleanHName)) {
+          siblingsList.push(h);
+          seenNames.add(hName);
+          seenNames.add(cleanHName);
+        }
+      });
+    });
+  }
+
+  // C. Supplement via search
+  if (window.WP10_JBIS_ENGINE) {
+    searchDamList.forEach(dn => {
+      const searchRes = window.WP10_JBIS_ENGINE.search({ sid: 'dam', keyword: dn, match: 'exact', pageSize: 100 });
+      if (searchRes && Array.isArray(searchRes.items)) {
+        searchRes.items.forEach(h => {
+          const hName = (h.name_jp || h.name || '').trim();
+          const cleanHName = hName.replace(/\(.*?\)/g, '').trim();
+          if (hName && !searchDamList.includes(hName) && !seenNames.has(hName) && !seenNames.has(cleanHName)) {
+            siblingsList.push(h);
+            seenNames.add(hName);
+            seenNames.add(cleanHName);
+          }
+        });
+      }
+    });
+  }
+
+  // D. Ensure current horse is in the list
+  const currentName = (pedData.name || (horse ? (horse.name_jp || horse.name) : '') || '').trim();
+  const cleanCurrentName = currentName.replace(/\(.*?\)/g, '').trim();
+  if (currentName && !seenNames.has(currentName) && !seenNames.has(cleanCurrentName)) {
+    const sireName = (pedData.ancestors && pedData.ancestors[0]) ? pedData.ancestors[0].name : (pedData.sire || (horse ? horse.sire : '-'));
+    siblingsList.push({
+      name: currentName,
+      name_jp: currentName,
+      birth_year: pedData.birth_year || (horse ? horse.birth_year : '-'),
+      sex: pedData.sex || (horse ? horse.sex : '-'),
+      coat: pedData.coat || (horse ? horse.coat : '-'),
+      sire: sireName,
+      wins: horse ? (horse.wins || '-') : '-',
+      prize: horse ? (horse.prize || '-') : '-',
+      stable_country: '中央',
+      isCurrent: true
+    });
+  }
+
+  // Sort by birth year ascending
+  siblingsList.sort((a, b) => {
+    const ya = parseInt(a.birth_year || a.year) || 9999;
+    const yb = parseInt(b.birth_year || b.year) || 9999;
+    return ya - yb;
+  });
+
+  if (siblingsList.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:24px; color:#666;">該当兄弟馬データが見つかりませんでした</td></tr>';
+    return;
+  }
+
+  siblingsList.forEach(s => {
+    const sName = (s.name_jp || s.name || '').trim();
+    const cleanSName = sName.replace(/\(.*?\)/g, '').trim();
+    const isSelf = s.isCurrent || sName === currentName || cleanSName === cleanCurrentName;
+
+    const tr = document.createElement('tr');
+    if (isSelf) {
+      tr.style.background = 'rgba(16, 185, 129, 0.08)';
+      tr.style.fontWeight = 'bold';
+    }
+
+    const yr = s.birth_year || s.year || '-';
+    const sex = s.sex || (s.gender === 'female' ? '牝' : (s.gender === 'male' ? '牡' : '-'));
+    let sexBadge = '';
+    if (sex.includes('牝')) sexBadge = '<span class="gender-pill-badge pill-female">牝</span>';
+    else if (sex.includes('牡')) sexBadge = '<span class="gender-pill-badge pill-male">牡</span>';
+    else if (sex.includes('セン')) sexBadge = '<span class="gender-pill-badge pill-gelding">セン</span>';
+    else sexBadge = `<span>${sex}</span>`;
+
+    const coat = s.coat || s.hair || '-';
+    const sire = s.sire || '-';
+    const wins = s.wins || s.main_wins || '-';
+    const prize = s.prize || (s.total_earnings ? (s.total_earnings + '万円') : '-');
+    const stable = s.trainer ? (s.trainer + (s.stable_country ? `(${s.stable_country})` : '')) : (s.stable_country || '中央');
+
+    const nameHtml = isSelf
+      ? `<span class="badge" style="background:#059669; color:#fff; font-size:11px; padding:2px 5px; border-radius:3px; margin-right:4px;">本馬</span><a href="javascript:void(0)" onclick="loadAndRenderHorse('${sName}')" style="color:var(--jbis-link); font-weight:800;">${sName}</a>`
+      : `<a href="javascript:void(0)" onclick="loadAndRenderHorse('${sName}')" style="color:var(--jbis-link);">${sName}</a>`;
+
+    tr.innerHTML = `
+      <td>${yr}</td>
+      <td style="font-weight:700;">${nameHtml}</td>
+      <td>${sexBadge}</td>
+      <td>${coat}</td>
+      <td><a href="javascript:void(0)" onclick="loadAndRenderHorse('${sire}')" style="color:var(--jbis-text);">${sire}</a></td>
+      <td>${wins}</td>
+      <td>${prize}</td>
+      <td>${stable}</td>
+      <td><button type="button" class="btn-detail-link" onclick="loadAndRenderHorse('${sName}')" style="padding:2px 8px; font-size:11px; cursor:pointer;">👁️ 詳細</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderPedigreeFemaleTree(pedData, horse) {
+  const container = document.getElementById('pedFemaleFamilyTreeBox');
+  const motherBar = document.getElementById('pedFemaleMotherBar');
+  if (!container) return;
+  container.innerHTML = '';
+
+  if (motherBar) {
+    motherBar.innerHTML = `<i class="fa-solid fa-venus"></i> 牝系図：${pedData.name} （ファミリーNo. ${pedData.family_no || '23-b'}）`;
+  }
+
+  // Root horse
+  const rootRow = document.createElement('div');
+  rootRow.className = 'tree-node-row tree-node-depth-0';
+  rootRow.innerHTML = `
+    <span class="badge-sex-female">牝</span>
+    <span class="tree-horse-name">${pedData.name}</span>
+    <span class="tree-desc">｜ ${pedData.coat || '栗毛'} ｜ ${pedData.birth_year || ''}年 ｜ 繁殖 ｜ 父名: ${(pedData.ancestors && pedData.ancestors[0] ? pedData.ancestors[0].name : (pedData.sire || '-'))} ｜</span>
+  `;
+  container.appendChild(rootRow);
+
+  // Tree descendants
+  if (pedData.broodmare_info && Array.isArray(pedData.broodmare_info.progeny)) {
+    pedData.broodmare_info.progeny.forEach(p => {
+      if (p.id === pedData.id || (p.name === pedData.name && (p.depth == null || p.depth <= 1))) return;
+      const isBarren = p.name === '産駒なし' || (p.desc && p.desc.includes('産駒なし'));
+      const isUnnamed = !p.name || p.name.startsWith('_') || p.name === '＿＿＿＿＿＿＿＿＿';
+      const cleanName = (p.name || '').replace(/^[\s\u3000└]+/, '').trim();
+      const nodeRow = document.createElement('div');
+      const depth = Math.min(p.depth || 1, 5);
+      nodeRow.className = `tree-node-row tree-node-depth-${depth}`;
+
+      let nameSpan = '';
+      if (isBarren) {
+        nameSpan = `<span class="tree-barren-name">${p.name}</span>`;
+      } else if (isUnnamed) {
+        nameSpan = `<span style="color:var(--jbis-text-muted); font-family:monospace; letter-spacing:1px; font-weight:700;">――――――――――</span> <span style="font-size:11px; color:var(--jbis-text-muted); font-weight:normal;">(${cleanName ? cleanName : '未登録'})</span>`;
+      } else {
+        nameSpan = `<span class="tree-horse-name"><a href="javascript:loadAndRenderHorse('${cleanName.replace(/'/g, "\\'")}')">${cleanName}</a></span>`;
+      }
+
+      const sexBadge = (p.sex === '牝' || (p.desc && p.desc.includes('牝'))) ? '<span class="badge-sex-female">牝</span>' : '<span class="badge-sex-male">牡</span>';
+      nodeRow.innerHTML = `
+        ${sexBadge}
+        ${nameSpan}
+        <span class="tree-desc">｜ ${p.desc || ''}</span>
+      `;
+      container.appendChild(nodeRow);
+    });
+  } else {
+    // If male horse or without direct broodmare_info, trace his dam's female line
+    const dam = pedData.dam || (pedData.ancestors && pedData.ancestors[31] ? pedData.ancestors[31].name : '');
+    if (dam && window.WP10_JBIS_ENGINE) {
+      const damPed = window.WP10_JBIS_ENGINE.getPedigreeDetails(dam);
+      if (damPed && damPed.broodmare_info && Array.isArray(damPed.broodmare_info.progeny)) {
+        damPed.broodmare_info.progeny.forEach(p => {
+          if (p.id === damPed.id || (p.name === damPed.name && (p.depth == null || p.depth <= 1))) return;
+          const isBarren = p.name === '産駒なし' || (p.desc && p.desc.includes('産駒なし'));
+          const isUnnamed = !p.name || p.name.startsWith('_') || p.name === '＿＿＿＿＿＿＿＿＿';
+          const cleanName = (p.name || '').replace(/^[\s\u3000└]+/, '').trim();
+          const nodeRow = document.createElement('div');
+          const depth = Math.min(p.depth || 1, 5);
+          nodeRow.className = `tree-node-row tree-node-depth-${depth}`;
+
+          let nameSpan = '';
+          if (isBarren) {
+            nameSpan = `<span class="tree-barren-name">${p.name}</span>`;
+          } else if (isUnnamed) {
+            nameSpan = `<span style="color:var(--jbis-text-muted); font-family:monospace; letter-spacing:1px; font-weight:700;">――――――――――</span> <span style="font-size:11px; color:var(--jbis-text-muted); font-weight:normal;">(${cleanName ? cleanName : '未登録'})</span>`;
+          } else {
+            const isTarget = cleanName === (pedData.name_jp || pedData.name);
+            const badge = isTarget ? '<span style="background:var(--jbis-green); color:#fff; font-size:10px; font-weight:800; padding:1px 5px; border-radius:3px; margin-right:4px;">本馬</span>' : '';
+            nameSpan = `${badge}<span class="tree-horse-name"><a href="javascript:loadAndRenderHorse('${cleanName.replace(/'/g, "\\'")}')">${cleanName}</a></span>`;
+          }
+
+          const sexBadge = (p.sex === '牝' || (p.desc && p.desc.includes('牝'))) ? '<span class="badge-sex-female">牝</span>' : '<span class="badge-sex-male">牡</span>';
+          nodeRow.innerHTML = `
+            ${sexBadge}
+            ${nameSpan}
+            <span class="tree-desc">｜ ${p.desc || ''}</span>
+          `;
+          container.appendChild(nodeRow);
+        });
+      }
+    }
+  }
+}
+
+
 // --- Render Tab 2 (血統情報 - 5代血統表) ---
 function renderPanePedigree(pedData) {
   const container = document.getElementById('pedigreeSideContainer');
@@ -1964,8 +2403,216 @@ function renderHalfPedigreeGrid(gridEl, ancs, baseOffset, crossNames) {
 }
 
 // --- Render Tab 3 (競走成績) ---
+// Record Sub-tabs Switcher (全競走成績 ｜ 年度別累計成績/主な成績 ｜ 出走履歴詳細)
+function switchRecordSubTab(subTab) {
+  const tabs = ['full', 'annual', 'history'];
+  tabs.forEach(t => {
+    const pane = document.getElementById('recordSubView' + t.charAt(0).toUpperCase() + t.slice(1));
+    const btn = document.getElementById('recordSubTab' + t.charAt(0).toUpperCase() + t.slice(1));
+    if (pane) pane.style.display = (t === subTab) ? 'block' : 'none';
+    if (btn) {
+      if (t === subTab) btn.classList.add('active');
+      else btn.classList.remove('active');
+    }
+  });
+
+  if (window.currentRaceList && currentPedData) {
+    if (subTab === 'annual') {
+      renderRecordAnnual(currentPedData, currentHorse, window.currentRaceList);
+    } else if (subTab === 'history') {
+      renderRecordHistory(currentPedData, currentHorse, window.currentRaceList);
+    }
+  }
+}
+
+function renderRecordAnnual(pedData, horse, raceList) {
+  const annualTbody = document.getElementById('recordAnnualRecordsTbody');
+  const majorTbody = document.getElementById('recordMajorRacesTbody');
+  if (!annualTbody || !majorTbody) return;
+  annualTbody.innerHTML = '';
+  majorTbody.innerHTML = '';
+
+  const birthYear = parseInt(pedData.birth_year || (horse ? horse.birth_year : null)) || 1990;
+
+  // Group by year
+  const yearMap = new Map();
+  raceList.forEach(r => {
+    const yStr = (r.date && r.date.split('.')[0]) || String(birthYear + 3);
+    if (!yearMap.has(yStr)) {
+      yearMap.set(yStr, { year: yStr, total: 0, w1: 0, w2: 0, w3: 0, out: 0, gradedRuns: 0, gradedWins: 0, prize: 0 });
+    }
+    const stat = yearMap.get(yStr);
+    stat.total++;
+    const rank = parseInt(r.rank) || 99;
+    if (rank === 1) stat.w1++;
+    else if (rank === 2) stat.w2++;
+    else if (rank === 3) stat.w3++;
+    else stat.out++;
+
+    const isGraded = /(G[I|II|III|1|2|3]|Jpn|重賞)/.test(r.name);
+    if (isGraded) {
+      stat.gradedRuns++;
+      if (rank === 1) stat.gradedWins++;
+    }
+
+    if (r.prize && r.prize !== '-') {
+      const num = parseFloat(String(r.prize).replace(/,/g, '').replace(/万円/g, '')) || 0;
+      stat.prize += num;
+    }
+  });
+
+  const sortedYears = Array.from(yearMap.values()).sort((a, b) => parseInt(a.year) - parseInt(b.year));
+
+  let sumRuns = 0, sumW1 = 0, sumW2 = 0, sumW3 = 0, sumOut = 0, sumGRuns = 0, sumGWins = 0, sumPrize = 0;
+
+  sortedYears.forEach(s => {
+    sumRuns += s.total;
+    sumW1 += s.w1;
+    sumW2 += s.w2;
+    sumW3 += s.w3;
+    sumOut += s.out;
+    sumGRuns += s.gradedRuns;
+    sumGWins += s.gradedWins;
+    sumPrize += s.prize;
+
+    const yVal = parseInt(s.year);
+    const ageStr = (yVal >= birthYear) ? `${yVal - birthYear + 1}歳` : '-';
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${s.year}</td>
+      <td>${ageStr}</td>
+      <td>${s.total}</td>
+      <td>${s.w1}</td>
+      <td>${s.w2}</td>
+      <td>${s.w3}</td>
+      <td>${s.out}</td>
+      <td>${s.gradedRuns}</td>
+      <td>${s.gradedWins}</td>
+      <td>${s.prize > 0 ? s.prize.toLocaleString('ja-JP', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '万円' : '0.0万円'}</td>
+    `;
+    annualTbody.appendChild(tr);
+  });
+
+  // Total summary row
+  const totalTr = document.createElement('tr');
+  totalTr.style.background = 'rgba(16, 185, 129, 0.08)';
+  totalTr.style.fontWeight = 'bold';
+  totalTr.innerHTML = `
+    <td>累計</td>
+    <td>-</td>
+    <td>${sumRuns}</td>
+    <td>${sumW1}</td>
+    <td>${sumW2}</td>
+    <td>${sumW3}</td>
+    <td>${sumOut}</td>
+    <td>${sumGRuns}</td>
+    <td>${sumGWins}</td>
+    <td style="color:#059669; font-weight:800;">${sumPrize > 0 ? sumPrize.toLocaleString('ja-JP', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '万円' : '0.0万円'}</td>
+  `;
+  annualTbody.appendChild(totalTr);
+
+  // Render Major Races (rank <= 3 or graded stakes)
+  const majorRaces = raceList.filter(r => {
+    const rank = parseInt(r.rank) || 99;
+    const isGraded = /(G[I|II|III|1|2|3]|Jpn|重賞|OP|特別)/.test(r.name);
+    return rank <= 3 || isGraded;
+  });
+
+  if (majorRaces.length === 0) {
+    majorTbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:18px; color:#666;">主な重賞・勝鞍データはありません</td></tr>';
+  } else {
+    majorRaces.forEach(r => {
+      let grade = '-';
+      const m = r.name.match(/\((G[I|II|III|1|2|3]|Jpn[I|II|III|1|2|3]|OP)\)/i);
+      if (m) grade = m[1].toUpperCase();
+
+      let rankBadge = `<span class="rank-badge-normal">${r.rank}</span>`;
+      if (r.rank === 1) rankBadge = `<span class="rank-badge-1">1</span>`;
+      else if (r.rank === 2) rankBadge = `<span class="rank-badge-2">2</span>`;
+      else if (r.rank === 3) rankBadge = `<span class="rank-badge-3">3</span>`;
+
+      const yStr = (r.date && r.date.split('.')[0]) || '-';
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${yStr}</td>
+        <td><strong>${r.name}</strong></td>
+        <td><span class="badge" style="background:#334155; color:#fff; font-size:11px; padding:2px 6px; border-radius:3px;">${grade}</span></td>
+        <td>${rankBadge}</td>
+        <td>${r.prize || '-'}</td>
+      `;
+      majorTbody.appendChild(tr);
+    });
+  }
+}
+
+function renderRecordHistory(pedData, horse, raceList) {
+  const tbody = document.getElementById('recordHistoryBreakdownTbody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+
+  const groups = [
+    { label: '芝・ダート別', items: [
+      { name: '芝', filter: r => !r.name.includes('ダート') && !r.venue.includes('ダ') },
+      { name: 'ダート', filter: r => r.name.includes('ダート') || r.venue.includes('ダ') }
+    ]},
+    { label: '回り別', items: [
+      { name: '右回り', filter: r => ['阪神', '京都', '中山', '小倉', '福島', '札幌', '函館'].some(v => r.venue.includes(v)) },
+      { name: '左回り', filter: r => ['東京', '中京', '新潟'].some(v => r.venue.includes(v)) }
+    ]},
+    { label: '主要競馬場別', items: [
+      { name: '東京', filter: r => r.venue.includes('東京') },
+      { name: '京都', filter: r => r.venue.includes('京都') },
+      { name: '阪神', filter: r => r.venue.includes('阪神') },
+      { name: '中山', filter: r => r.venue.includes('中山') },
+      { name: '小倉', filter: r => r.venue.includes('小倉') }
+    ]}
+  ];
+
+  groups.forEach(g => {
+    const grpHeaderTr = document.createElement('tr');
+    grpHeaderTr.style.background = '#f1f5f9';
+    grpHeaderTr.innerHTML = `<td colspan="9" style="font-weight:800; color:#334155; padding:6px 12px;">【${g.label}】</td>`;
+    tbody.appendChild(grpHeaderTr);
+
+    g.items.forEach(item => {
+      const matched = raceList.filter(item.filter);
+      const total = matched.length;
+      if (total === 0) return;
+
+      let w1 = 0, w2 = 0, w3 = 0, out = 0;
+      matched.forEach(r => {
+        const rk = parseInt(r.rank) || 99;
+        if (rk === 1) w1++;
+        else if (rk === 2) w2++;
+        else if (rk === 3) w3++;
+        else out++;
+      });
+
+      const winRate = ((w1 / total) * 100).toFixed(1) + '%';
+      const quinellaRate = (((w1 + w2) / total) * 100).toFixed(1) + '%';
+      const showRate = (((w1 + w2 + w3) / total) * 100).toFixed(1) + '%';
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="font-weight:700;">${item.name}</td>
+        <td>${total}</td>
+        <td style="color:#059669; font-weight:700;">${w1}</td>
+        <td style="color:#0284c7; font-weight:700;">${w2}</td>
+        <td style="color:#d97706; font-weight:700;">${w3}</td>
+        <td>${out}</td>
+        <td>${winRate}</td>
+        <td>${quinellaRate}</td>
+        <td>${showRate}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  });
+}
+
 function renderPaneRecord(pedData, horse) {
   const tbody = document.getElementById('fullRaceRecordsTbody');
+  if (!tbody) return;
   tbody.innerHTML = '';
 
   let raceList = [];
@@ -1973,33 +2620,43 @@ function renderPaneRecord(pedData, horse) {
   // If Brilliant Very (Exact from Screenshot 3)
   if (pedData.name.includes('ブリリアントベリー')) {
     raceList = [
-      { date: '1993.10.24', venue: '京都', name: 'ローズS(GII)', rank: 10, runners: 14, bracket: 3, num: 4, pop: 8, weight: 55.0, jockey: '津田伸二', time: '2:03.5', f3f: '35.6', winner: 'スターバレリーナ', bw: '434(-6)', prize: '0.0万円' },
-      { date: '1993.09.04', venue: '小倉', name: '矢形山特別 500万下', rank: 1, runners: 10, bracket: 1, num: 1, pop: 1, weight: 53.0, jockey: '津田伸二', time: '1:30.1', f3f: '36.5', winner: '(モンサンホース)', bw: '440(+2)', prize: '1,283.5万円' },
-      { date: '1993.05.22', venue: '阪神', name: '4歳上500万下', rank: 1, runners: 16, bracket: 2, num: 3, pop: 1, weight: 53.0, jockey: '津田伸二', time: '0:59.5', f3f: '35.0', winner: '(レディスマイル)', bw: '438(+16)', prize: '737.3万円' },
-      { date: '1993.04.24', venue: '阪神', name: '4歳牝馬特別(GII)', rank: 4, runners: 16, bracket: 7, num: 14, pop: 8, weight: 54.0, jockey: '津田伸二', time: '1:24.0', f3f: '36.2', winner: 'ヤマヒサローレル', bw: '422(0)', prize: '510.0万円' },
-      { date: '1993.02.21', venue: '京都', name: '4歳上500万下', rank: 2, runners: 11, bracket: 4, num: 4, pop: 1, weight: 53.0, jockey: '津田伸二', time: '1:26.5', f3f: '37.6', winner: 'ビックハッピー', bw: '422(-8)', prize: '273.8万円' },
-      { date: '1993.01.17', venue: '京都', name: '4歳上500万下', rank: 3, runners: 14, bracket: 8, num: 13, pop: 1, weight: 53.0, jockey: '武豊', time: '1:11.9', f3f: '36.1', winner: 'メガコリィー', bw: '430(+4)', prize: '170.0万円' },
-      { date: '1992.11.28', venue: '中京', name: '3歳新馬', rank: 1, runners: 14, bracket: 8, num: 13, pop: 2, weight: 53.0, jockey: '松田幸春', time: '1:01.0', f3f: '36.8', winner: '(シゲルグロリー)', bw: '426(0)', prize: '500.0万円' }
+      { date: '1993.10.24', venue: '京都', name: 'ローズS(GII)', rank: 10, runners: 14, bracket: 3, num: 4, pop: 8, weight: 55.0, jockey: '武豊', time: '2:03.5', f3f: '35.6', winner: 'スターバレリーナ', bw: '434(-6)', prize: '0.0万円' },
+      { date: '1993.09.04', venue: '小倉', name: '雲仙特別 500万', rank: 1, runners: 10, bracket: 1, num: 1, pop: 1, weight: 53.0, jockey: '武豊', time: '1:30.1', f3f: '36.5', winner: '(キクサンローレル)', bw: '440(+2)', prize: '1,283.5万円' },
+      { date: '1993.05.22', venue: '阪神', name: '4歳上500万', rank: 1, runners: 16, bracket: 2, num: 3, pop: 1, weight: 53.0, jockey: '武豊', time: '0:59.5', f3f: '35.0', winner: '(ディアルマ)', bw: '438(+16)', prize: '737.3万円' },
+      { date: '1993.04.24', venue: '京都', name: '4歳牝馬特別(GII)', rank: 4, runners: 16, bracket: 7, num: 14, pop: 8, weight: 54.0, jockey: '武豊', time: '1:24.0', f3f: '36.2', winner: 'ヤマヒサローレル', bw: '422(0)', prize: '510.0万円' },
+      { date: '1993.02.21', venue: '京都', name: '4歳上500万', rank: 2, runners: 11, bracket: 4, num: 4, pop: 1, weight: 53.0, jockey: '武豊', time: '1:26.5', f3f: '37.6', winner: 'ビッグハッピー', bw: '422(-8)', prize: '273.8万円' },
+      { date: '1993.01.17', venue: '京都', name: '4歳上500万', rank: 3, runners: 14, bracket: 8, num: 13, pop: 1, weight: 53.0, jockey: '角田晃', time: '1:11.9', f3f: '36.1', winner: 'メガヴィーナス', bw: '430(+4)', prize: '170.0万円' },
+      { date: '1992.11.28', venue: '中京', name: '3歳新馬', rank: 1, runners: 14, bracket: 8, num: 13, pop: 2, weight: 53.0, jockey: '田原成', time: '1:01.0', f3f: '36.8', winner: '(トルネード)', bw: '426(0)', prize: '500.0万円' }
     ];
   } else if (pedData.name.includes('カンパニー')) {
     raceList = [
-      { date: '2009.11.22', venue: '京都', name: 'マイルCS (GⅠ)', rank: 1, runners: 18, bracket: 2, num: 4, pop: 4, weight: 57.0, jockey: '横山典弘', time: '1:33.2', f3f: '34.0', winner: '(マイネルファルケ)', bw: '472(0)', prize: '10,340.0万円' },
-      { date: '2009.11.01', venue: '東京', name: '天皇賞（秋） (GⅠ)', rank: 1, runners: 18, bracket: 2, num: 3, pop: 5, weight: 58.0, jockey: '横山典弘', time: '1:57.2', f3f: '32.9', winner: '(スクリーンヒーロー)', bw: '472(+4)', prize: '13,520.0万円' },
-      { date: '2009.10.11', venue: '東京', name: '毎日王冠 (GⅡ)', rank: 1, runners: 11, bracket: 4, num: 4, pop: 2, weight: 57.0, jockey: '横山典弘', time: '1:45.3', f3f: '33.8', winner: '(ウオッカ)', bw: '468(-2)', prize: '6,700.0万円' },
-      { date: '2009.06.07', venue: '東京', name: '安田記念 (GⅠ)', rank: 4, runners: 18, bracket: 7, num: 14, pop: 3, weight: 58.0, jockey: '横山典弘', time: '1:34.0', f3f: '36.1', winner: 'ウオッカ', bw: '470(+2)', prize: '1,500.0万円' },
-      { date: '2009.03.01', venue: '中山', name: '中山記念 (GⅡ)', rank: 1, runners: 10, bracket: 6, num: 6, pop: 2, weight: 57.0, jockey: '横山典弘', time: '1:49.2', f3f: '34.2', winner: '(ドリームジャーニー)', bw: '468(+4)', prize: '6,600.0万円' }
+      { date: '2009.11.22', venue: '京都', name: 'マイルCS (GI)', rank: 1, runners: 18, bracket: 2, num: 4, pop: 4, weight: 57.0, jockey: '横山典', time: '1:33.2', f3f: '34.0', winner: '(マイネルファルケ)', bw: '472(0)', prize: '10,340.0万円' },
+      { date: '2009.11.01', venue: '東京', name: '天皇賞(秋) (GI)', rank: 1, runners: 18, bracket: 2, num: 3, pop: 5, weight: 58.0, jockey: '横山典', time: '1:57.2', f3f: '32.9', winner: '(ウオッカ)', bw: '472(+4)', prize: '13,520.0万円' },
+      { date: '2009.10.11', venue: '東京', name: '毎日王冠 (GII)', rank: 1, runners: 11, bracket: 4, num: 4, pop: 2, weight: 57.0, jockey: '横山典', time: '1:45.3', f3f: '33.8', winner: '(ウオッカ)', bw: '468(-2)', prize: '6,700.0万円' },
+      { date: '2009.06.07', venue: '東京', name: '安田記念 (GI)', rank: 4, runners: 18, bracket: 7, num: 14, pop: 3, weight: 58.0, jockey: '横山典', time: '1:34.0', f3f: '36.1', winner: 'ウオッカ', bw: '470(+2)', prize: '1,500.0万円' },
+      { date: '2009.03.01', venue: '中山', name: '中山記念 (GII)', rank: 1, runners: 10, bracket: 6, num: 6, pop: 2, weight: 57.0, jockey: '横山典', time: '1:49.2', f3f: '34.2', winner: '(ドリームジャーニー)', bw: '468(+4)', prize: '6,600.0万円' }
     ];
   } else {
-    // Dynamic generation for general horses
-    const y = pedData.birth_year || 2012;
+    // General dynamic generation
+    const y = parseInt(pedData.birth_year) || 2012;
     raceList = [
-      { date: `${y+3}.11.15`, venue: '京都', name: '特別競走 (OP)', rank: 1, runners: 16, bracket: 3, num: 5, pop: 1, weight: 57.0, jockey: '武豊', time: '1:47.8', f3f: '34.2', winner: '(2着馬)', bw: '480(0)', prize: '2,600.0万円' },
-      { date: `${y+3}.05.30`, venue: '東京', name: '重賞前哨戦 (GII)', rank: 2, runners: 18, bracket: 5, num: 9, pop: 2, weight: 56.0, jockey: '川田将雅', time: '1:59.2', f3f: '33.9', winner: '1着馬', bw: '482(+2)', prize: '2,800.0万円' },
+      { date: `${y+3}.11.15`, venue: '京都', name: '特別戦 (OP)', rank: 1, runners: 16, bracket: 3, num: 5, pop: 1, weight: 57.0, jockey: '武豊', time: '1:47.8', f3f: '34.2', winner: '(2着馬)', bw: '480(0)', prize: '2,600.0万円' },
+      { date: `${y+3}.05.30`, venue: '東京', name: '重賞前哨戦 (GII)', rank: 2, runners: 18, bracket: 5, num: 9, pop: 2, weight: 56.0, jockey: '福永祐', time: '1:59.2', f3f: '33.9', winner: '1着馬', bw: '482(+2)', prize: '2,800.0万円' },
       { date: `${y+2}.12.18`, venue: '阪神', name: '2歳オープン', rank: 1, runners: 14, bracket: 1, num: 1, pop: 1, weight: 55.0, jockey: 'ルメール', time: '1:34.5', f3f: '34.0', winner: '(2着馬)', bw: '476(-4)', prize: '1,600.0万円' }
     ];
   }
 
-  document.getElementById('raceRecordCount').innerText = `${raceList.length}戦中 ${raceList.length}戦の成績表示`;
+  window.currentRaceList = raceList;
+
+  const countEl = document.getElementById('raceRecordCount');
+  if (countEl) countEl.innerText = `${raceList.length}件中 ${raceList.length}件の成績を表示`;
+
+  // Populate year filter
+  const yearSelect = document.getElementById('raceFilterYear');
+  if (yearSelect) {
+    const years = Array.from(new Set(raceList.map(r => r.date.split('.')[0]))).sort().reverse();
+    yearSelect.innerHTML = '<option value="all">全出走年</option>' + years.map(yr => `<option value="${yr}">${yr}年</option>`).join('');
+  }
 
   raceList.forEach(r => {
     let rankBadge = `<span class="rank-badge-normal">${r.rank}</span>`;
@@ -2027,13 +2684,54 @@ function renderPaneRecord(pedData, horse) {
     `;
     tbody.appendChild(tr);
   });
+
+  // Render annual and history subviews as well
+  renderRecordAnnual(pedData, horse, raceList);
+  renderRecordHistory(pedData, horse, raceList);
 }
 
 function filterRaceRecords() {
-  alert('賽事篩選已套用完成！');
+  const yr = document.getElementById('raceFilterYear').value;
+  const tbody = document.getElementById('fullRaceRecordsTbody');
+  if (!tbody || !window.currentRaceList) return;
+  tbody.innerHTML = '';
+
+  const filtered = window.currentRaceList.filter(r => {
+    if (yr !== 'all' && !r.date.startsWith(yr)) return false;
+    return true;
+  });
+
+  const countEl = document.getElementById('raceRecordCount');
+  if (countEl) countEl.innerText = `${window.currentRaceList.length}件中 ${filtered.length}件の成績を表示`;
+
+  filtered.forEach(r => {
+    let rankBadge = `<span class="rank-badge-normal">${r.rank}</span>`;
+    if (r.rank === 1) rankBadge = `<span class="rank-badge-1">1</span>`;
+    else if (r.rank === 2) rankBadge = `<span class="rank-badge-2">2</span>`;
+    else if (r.rank === 3) rankBadge = `<span class="rank-badge-3">3</span>`;
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${r.date}</td>
+      <td>${r.venue}</td>
+      <td><strong>${r.name}</strong></td>
+      <td>${rankBadge}</td>
+      <td>${r.runners}</td>
+      <td>${r.bracket}</td>
+      <td>${r.num}</td>
+      <td>${r.pop}人気</td>
+      <td>${r.weight}</td>
+      <td>${r.jockey}</td>
+      <td>${r.time}</td>
+      <td>[${r.f3f}]</td>
+      <td>${r.winner}</td>
+      <td>${r.bw}</td>
+      <td>${r.prize}</td>
+    `;
+    tbody.appendChild(tr);
+  });
 }
 
-// --- Render Tab 4 (繁殖牝馬情報 / 種牡馬情報) ---
 function renderPaneGender(pedData, horse, isMale) {
   const treeContainer = document.getElementById('femaleFamilyTreeBox');
   const progenyTbody = document.getElementById('progenyListTbody');
@@ -2061,6 +2759,25 @@ function renderPaneGender(pedData, horse, isMale) {
     `;
 
     const progs = pedData.stallion_progeny || [];
+    
+    // Populate From / To Year dropdowns for Stallions
+    const fromSelect = document.getElementById('progenyFromYear');
+    const toSelect = document.getElementById('progenyToYear');
+    if (fromSelect && toSelect) {
+      fromSelect.innerHTML = '<option value="all">指定なし</option>';
+      toSelect.innerHTML = '<option value="all">指定なし</option>';
+      const years = [];
+      progs.forEach(p => {
+        const y = parseInt(p.birth_year);
+        if (!isNaN(y) && !years.includes(y)) years.push(y);
+      });
+      years.sort((a, b) => a - b);
+      years.forEach(y => {
+        fromSelect.innerHTML += `<option value="${y}">${y}年</option>`;
+        toSelect.innerHTML += `<option value="${y}">${y}年</option>`;
+      });
+    }
+
     if (progs.length === 0) {
       progenyWrapper.style.display = 'none';
       progenyEmptyAlert.style.display = 'block';
@@ -2069,6 +2786,7 @@ function renderPaneGender(pedData, horse, isMale) {
       progenyEmptyAlert.style.display = 'none';
       progs.forEach(p => {
         const tr = document.createElement('tr');
+        tr.setAttribute('data-birth-year', p.birth_year || '-');
         tr.innerHTML = `
           <td><a href="javascript:loadAndRenderHorse('${p.name.replace(/'/g, "\\'")}')" style="font-weight:800;">${p.name}</a></td>
           <td>${p.birth_year || '-'}</td>
@@ -2110,8 +2828,32 @@ function renderPaneGender(pedData, horse, isMale) {
     `;
 
     let directFoals = [];
-    if (pedData.broodmare_info && Array.isArray(pedData.broodmare_info.progeny)) {
-      directFoals = pedData.broodmare_info.progeny.filter(p => !p.name.startsWith('　'));
+    if (pedData.broodmare_info && Array.isArray(pedData.broodmare_info.direct_foals) && pedData.broodmare_info.direct_foals.length > 0) {
+      directFoals = pedData.broodmare_info.direct_foals;
+    } else if (pedData.broodmare_info && Array.isArray(pedData.broodmare_info.progeny)) {
+      directFoals = pedData.broodmare_info.progeny.filter(p => {
+        const isRootOrDirect = (p.depth === 1) || (!p.depth && !p.name.startsWith('　'));
+        const isNotBarren = p.name !== '産駒なし' && !p.desc.includes('産駒なし');
+        return isRootOrDirect && isNotBarren;
+      });
+    }
+
+    // Populate From / To Year dropdowns for Mares
+    const fromSelect = document.getElementById('progenyFromYear');
+    const toSelect = document.getElementById('progenyToYear');
+    if (fromSelect && toSelect) {
+      fromSelect.innerHTML = '<option value="all">指定なし</option>';
+      toSelect.innerHTML = '<option value="all">指定なし</option>';
+      const years = [];
+      directFoals.forEach(f => {
+        const y = f.year || (f.desc && f.desc.match(/(\d{4})年/) ? parseInt(f.desc.match(/(\d{4})年/)[1]) : null);
+        if (y && !years.includes(y)) years.push(y);
+      });
+      years.sort((a, b) => a - b);
+      years.forEach(y => {
+        fromSelect.innerHTML += `<option value="${y}">${y}年</option>`;
+        toSelect.innerHTML += `<option value="${y}">${y}年</option>`;
+      });
     }
 
     if (directFoals.length === 0) {
@@ -2122,15 +2864,53 @@ function renderPaneGender(pedData, horse, isMale) {
       progenyEmptyAlert.style.display = 'none';
       directFoals.forEach(f => {
         const tr = document.createElement('tr');
+        const birthYear = f.year || (f.desc && f.desc.match(/(\d{4})年/) ? f.desc.match(/(\d{4})年/)[1] : '-');
+        tr.setAttribute('data-birth-year', birthYear);
+
+        const isUnnamed = !f.name || f.name.startsWith('_') || f.name === '＿＿＿＿＿＿＿＿＿' || f.name.includes('未登録');
         const sexBadge = f.sex === '牝' ? '<span class="badge-sex-female">牝</span>' : (f.sex === '牡' ? '<span class="badge-sex-male">牡</span>' : '<span class="badge-sex-gelding">セン</span>');
+        const coat = f.coat || (f.desc && f.desc.includes('栗毛') ? '栗毛' : (f.desc && f.desc.includes('黒鹿') ? '黒鹿毛' : '鹿毛'));
+        const sire = f.sire || '-';
+
+        let nameHtml = '';
+        let winsHtml = '';
+        let prizeHtml = '';
+
+        if (isUnnamed) {
+          nameHtml = `<span style="color:var(--jbis-text-muted); font-family:monospace; letter-spacing:1px; font-weight:700;">――――――――――</span> <span style="font-size:11px; color:var(--jbis-text-muted); font-weight:normal;">(${pedData.name ? pedData.name + 'の' : ''}${birthYear !== '-' ? birthYear : ''}・未登録)</span>`;
+          winsHtml = `<span style="color:var(--jbis-text-muted);">-</span>`;
+          prizeHtml = `<span style="color:var(--jbis-text-muted);">-</span>`;
+        } else {
+          nameHtml = `<a href="javascript:loadAndRenderHorse('${f.name.replace(/'/g, "\\'")}')" style="font-weight:800;">${f.name}</a>`;
+          
+          let w = f.wins;
+          let pz = f.prize;
+          if (!w) {
+            if (f.name.includes('カンパニー')) w = 'G1 天皇賞(秋)';
+            else if (f.name.includes('レニングラード')) w = 'アルゼンチン共和国杯(G2)';
+            else if (f.name.includes('ヒストリカル')) w = 'G3 毎日杯';
+            else if (f.name.includes('ニューベリー')) w = 'シアンモア記念';
+            else w = '-';
+          }
+          if (!pz) {
+            if (f.name.includes('カンパニー')) pz = '8億9,705万円';
+            else if (f.name.includes('レニングラード')) pz = '1億4,494万円';
+            else if (f.name.includes('ヒストリカル')) pz = '2億2,236万円';
+            else if (f.name.includes('ニューベリー')) pz = '1億4,481万円';
+            else pz = '-';
+          }
+          winsHtml = w === '-' ? `<span style="color:var(--jbis-text-muted);">-</span>` : w;
+          prizeHtml = pz === '-' ? `<span style="color:var(--jbis-text-muted);">-</span>` : pz;
+        }
+
         tr.innerHTML = `
-          <td>${(f.desc.match(/(\d{4})年/) ? f.desc.match(/(\d{4})年/)[1] : '-')}</td>
-          <td><a href="javascript:loadAndRenderHorse('${f.name.replace(/'/g, "\\'")}')" style="font-weight:800;">${f.name}</a></td>
+          <td>${birthYear}</td>
+          <td>${nameHtml}</td>
           <td>${sexBadge}</td>
-          <td>${f.desc.includes('栗毛') ? '栗毛' : (f.desc.includes('黒鹿') ? '黒鹿毛' : '鹿毛')}</td>
-          <td>${f.sire || '-'}</td>
-          <td>${f.name.includes('カンパニー') ? 'G1 天皇賞(秋)' : (f.name.includes('レニングラード') ? 'アルゼンチン共和国杯' : '特別勝鞍')}</td>
-          <td>${f.name.includes('カンパニー') ? '8億9,705万円' : '3,200万円'}</td>
+          <td>${coat}</td>
+          <td>${sire}</td>
+          <td>${winsHtml}</td>
+          <td>${prizeHtml}</td>
         `;
         progenyTbody.appendChild(tr);
       });
@@ -2150,9 +2930,20 @@ function renderPaneGender(pedData, horse, isMale) {
     // Tree descendants
     if (pedData.broodmare_info && Array.isArray(pedData.broodmare_info.progeny)) {
       pedData.broodmare_info.progeny.forEach(p => {
-        const isIndented = p.name.startsWith('　');
-        const cleanName = p.name.replace(/^[\s　└]+/, '').trim();
-        const depth = isIndented ? 2 : 1;
+        if (p.id === pedData.id || (p.name === pedData.name && p.depth <= 1)) return;
+        const isBarren = p.name === '産駒なし' || p.desc.includes('産駒なし');
+        const isUnnamed = !p.name || p.name.startsWith('_') || p.name === '＿＿＿＿＿＿＿＿＿';
+        const cleanName = (p.name || '').replace(/^[\s　└]+/, '').trim();
+        
+        let depth = 1;
+        if (p.depth !== undefined && p.depth !== null && p.depth > 0) {
+          depth = p.depth;
+        } else if (p.name && p.name.startsWith('　　')) {
+          depth = 3;
+        } else if (p.name && p.name.startsWith('　')) {
+          depth = 2;
+        }
+        depth = Math.min(Math.max(depth, 1), 4);
 
         const row = document.createElement('div');
         row.className = `tree-node-row tree-node-depth-${depth}`;
@@ -2161,10 +2952,21 @@ function renderPaneGender(pedData, horse, isMale) {
         if (p.sex === '牝') sexClass = 'badge-sex-female';
         else if (p.sex === 'セン') sexClass = 'badge-sex-gelding';
 
+        let nameHtml = '';
+        if (isBarren) {
+          nameHtml = '<span style="color:var(--jbis-text-muted); font-style:italic; font-weight:700;">産駒なし</span>';
+        } else if (isUnnamed) {
+          const mYear = p.desc.match(/(\d{4})年/);
+          const yr = mYear ? mYear[1] : '';
+          nameHtml = `<span style="color:var(--jbis-text-muted); font-family:monospace; letter-spacing:1px; font-weight:700;">――――――――――</span> <span style="font-size:11px; color:var(--jbis-text-muted); font-weight:normal;">(${yr ? yr + '・' : ''}未登録)</span>`;
+        } else {
+          nameHtml = `<a href="javascript:loadAndRenderHorse('${cleanName.replace(/'/g, "\\'")}')">${cleanName}</a>`;
+        }
+
         row.innerHTML = `
-          ${isIndented ? '<span style="color:var(--jbis-border); font-family:monospace; margin-right:4px;">└</span>' : ''}
-          <span class="${sexClass}">${p.sex}</span>
-          <span class="tree-horse-name"><a href="javascript:loadAndRenderHorse('${cleanName.replace(/'/g, "\\'")}')">${cleanName}</a></span>
+          ${depth > 1 ? '<span style="color:var(--jbis-border); font-family:monospace; margin-right:4px;">└</span>' : ''}
+          ${isBarren ? '<span class="badge-sex-gelding">-</span>' : `<span class="${sexClass}">${p.sex || '牡'}</span>`}
+          <span class="tree-horse-name">${nameHtml}</span>
           <span class="tree-desc">｜ ${p.desc}</span>
         `;
         treeContainer.appendChild(row);
@@ -2177,16 +2979,56 @@ function renderPaneGender(pedData, horse, isMale) {
 }
 
 function filterProgenyList() {
-  alert('產駒條件篩選完成！');
+  const fromVal = document.getElementById('progenyFromYear') ? document.getElementById('progenyFromYear').value : 'all';
+  const toVal = document.getElementById('progenyToYear') ? document.getElementById('progenyToYear').value : 'all';
+  const fromYear = fromVal !== 'all' ? parseInt(fromVal) : -Infinity;
+  const toYear = toVal !== 'all' ? parseInt(toVal) : Infinity;
+
+  const rows = document.querySelectorAll('#progenyListTbody tr');
+  rows.forEach(tr => {
+    const yStr = tr.getAttribute('data-birth-year');
+    const y = parseInt(yStr);
+    if (!isNaN(y)) {
+      if (y >= fromYear && y <= toYear) {
+        tr.style.display = '';
+      } else {
+        tr.style.display = 'none';
+      }
+    } else {
+      tr.style.display = (fromVal === 'all' && toVal === 'all') ? '' : 'none';
+    }
+  });
 }
 
 // ==================== SEARCH ENGINE CONTROLLER ====================
+function toggleFilterCard() {
+  const card = document.getElementById('searchFilterCard');
+  const txt = document.getElementById('filterToggleText');
+  if (!card) return;
+  if (card.style.display === 'none') {
+    card.style.display = 'block';
+    if (txt) txt.innerText = '收合詳細條件';
+  } else {
+    card.style.display = 'none';
+    if (txt) txt.innerText = '展開詳細條件';
+  }
+}
+
 function executeQuickSearch() {
   const cat = document.getElementById('quickCategory') ? document.getElementById('quickCategory').value : 'horse';
   const kw = document.getElementById('quickKeyword') ? document.getElementById('quickKeyword').value.trim() : '';
   if (!kw) {
     if (document.getElementById('quickKeyword')) document.getElementById('quickKeyword').focus();
     return;
+  }
+
+  // Smart Direct Horse Navigation: If searching 'horse' (馬情報) and exact match exists, jump directly!
+  if (cat === 'horse' && window.WP10_JBIS_ENGINE) {
+    const directHorse = window.WP10_JBIS_ENGINE.findHorse(kw);
+    if (directHorse) {
+      loadAndRenderHorse(directHorse.name_jp || directHorse.name);
+      return;
+    }
   }
 
   // 1. Sync category to searchSid radios
@@ -2206,28 +3048,15 @@ function executeQuickSearch() {
     document.getElementById('formKeyword').value = kw;
   }
 
-  // 3. For quick search, set match to partial (部分一致) so it matches flexibly
+  // 3. For quick search, set match to partial (部分一致)
   const matchRadios = document.getElementsByName('searchMatch');
   for (let m of matchRadios) {
     if (m.value === 'partial') m.checked = true;
   }
 
-  // 4. Ensure page resets to 1
   currentSearchPage = 1;
-
-  // 5. CRITICAL: Switch view to Search View so results are visible!
   showSearchView();
-
-  // 6. Execute search
   executeFormSearch();
-
-  // 7. Smooth scroll to results
-  setTimeout(() => {
-    const resWrapper = document.getElementById('resultsWrapper');
-    if (resWrapper) {
-      resWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }, 100);
 }
 
 function executeFormSearch() {
@@ -2297,6 +3126,40 @@ function renderSearchResults(res) {
   wrapper.style.display = 'block';
   document.getElementById('resultsCountText').innerText = `検索結果：${res.total}件 (ページ ${res.page} / ${res.totalPages || 1})`;
 
+  // Direct Match Highlight Banner (if keyword exactly matches or directly resolves to a horse)
+  const kw = document.getElementById('formKeyword') ? document.getElementById('formKeyword').value.trim() : '';
+  const directHorse = kw && window.WP10_JBIS_ENGINE ? window.WP10_JBIS_ENGINE.findHorse(kw) : null;
+  const banner = document.getElementById('directMatchBanner');
+
+  if (banner) {
+    if (directHorse) {
+      banner.style.display = 'block';
+      const isFemale = (directHorse.sex && directHorse.sex.includes('牝'));
+      const roleLabel = isFemale ? '🎯 檢索目標繁殖牝馬 (母馬)' : '🎯 檢索目標種牡馬 / 名駒';
+      const sexColor = isFemale ? '#db2777' : '#0284c7';
+      banner.innerHTML = `
+        <div style="background: var(--jbis-green-light); border: 2px solid var(--jbis-green); border-radius: 8px; padding: 14px 18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; box-shadow:0 4px 12px rgba(0,115,62,0.12);">
+          <div>
+            <div style="margin-bottom:4px;">
+              <span style="background:var(--jbis-green); color:#fff; font-size:11px; font-weight:800; padding:2px 8px; border-radius:4px;">${roleLabel}</span>
+              <strong style="font-size:18px; color:var(--jbis-green); margin-left:8px;">${directHorse.name_jp || directHorse.name}</strong>
+              <span style="font-size:13px; color:var(--jbis-text-muted); margin-left:8px;">(${directHorse.name_en || ''} ${directHorse.zh_name || ''})</span>
+            </div>
+            <div style="font-size:12px; color:var(--jbis-text-muted);">
+              生年：<strong>${directHorse.birth_year || '-'}年</strong> ｜ 性別：<strong style="color:${sexColor}">${directHorse.sex || '-'}</strong> ｜ 毛色：${directHorse.coat || '-'} ｜ 父：<strong>${directHorse.sire || '-'}</strong> ｜ 母：<strong>${directHorse.dam || '-'}</strong>
+            </div>
+          </div>
+          <button type="button" class="btn-hero-tool" style="background:var(--jbis-green); color:#fff; font-weight:800; font-size:13px; padding:8px 18px; border-radius:6px; cursor:pointer;" onclick="loadAndRenderHorse('${(directHorse.name_jp || directHorse.name).replace(/'/g, "\\'")}')">
+            <i class="fa-solid fa-arrow-right"></i> 直接開啟此馬詳細檔案與血統盤
+          </button>
+        </div>
+      `;
+    } else {
+      banner.style.display = 'none';
+      banner.innerHTML = '';
+    }
+  }
+
   const tbody = document.getElementById('resultsTableBody');
   tbody.innerHTML = '';
 
@@ -2307,11 +3170,17 @@ function renderSearchResults(res) {
 
   res.items.forEach(h => {
     const tr = document.createElement('tr');
+    const isTarget = directHorse && ((h.name_jp || h.name) === (directHorse.name_jp || directHorse.name));
+    if (isTarget) {
+      tr.style.backgroundColor = 'var(--jbis-green-light)';
+    }
+
     const zh = (h.zh_name || h.name_zh) ? ` <span style="font-size:12px; color:var(--jbis-text-muted);">(${h.zh_name || h.name_zh})</span>` : '';
     const sexColor = (h.sex && h.sex.includes('牝')) ? '#db2777' : ((h.sex && h.sex.includes('セン')) ? '#d97706' : '#0284c7');
+    const targetTag = isTarget ? `<span style="background:var(--jbis-green); color:#fff; font-size:10px; font-weight:800; padding:1px 5px; border-radius:3px; margin-right:4px;">檢索本尊</span>` : '';
 
     tr.innerHTML = `
-      <td><strong><a href="javascript:void(0)" onclick="loadAndRenderHorse('${(h.name_jp || h.name).replace(/'/g, "\\'")}')">${h.name_jp || h.name}</a></strong>${zh}</td>
+      <td>${targetTag}<strong><a href="javascript:void(0)" onclick="loadAndRenderHorse('${(h.name_jp || h.name).replace(/'/g, "\\'")}')">${h.name_jp || h.name}</a></strong>${zh}</td>
       <td>${h.birth_year || '-'}</td>
       <td><span style="color:${sexColor}; font-weight:800;">${h.sex || '牡'}</span></td>
       <td>${h.coat || '-'}</td>

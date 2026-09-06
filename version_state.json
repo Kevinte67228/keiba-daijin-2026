@@ -1,5 +1,5 @@
 {
-  "current_version": "v03.88",
+  "current_version": "v03.89",
   "history": [
     {
       "version": "v03.88",
@@ -1465,6 +1465,11 @@
       "version": "v03.76",
       "timestamp": "2026-09-06",
       "changes": "里程碑大升級：全站擴展為 50 大章節體系 (v03.76)！新增獨立第 47 章【年代別推薦史實名駒完全名冊 (1967~2023 全 56 大史實年代・496 匹名駒評級與戰略全書)】（全面支援 56 年代單行水平膠囊滑動切換、各年代戰略格局分析、全馬札評級、推薦星級與原生檔案彈窗連動）；同步將原第 47~49 章向後依序遞延為第 48~50 章（名師講堂、線上最強馬之路、電影級名場面）；全面校正全站章節標題、支柱導航描述、跳轉目錄彈窗 (TOC Modal) 與跳轉按鈕連結；經 CDP 真機驗證 50 大章節 0 報錯。"
+    },
+    {
+      "version": "v03.89",
+      "timestamp": "2026-09-06T19:35:00+08:00",
+      "summary": "Fix Tab 2/Tab 3 sub-navigation buttons disappearing by preventing event bubbling, adding clearCacheAndReload, header version badges, cache-control headers, and bumping cache to v03.89"
     }
   ],
   "version": "v03.74",
