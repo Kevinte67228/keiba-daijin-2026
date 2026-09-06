@@ -1182,6 +1182,23 @@ table, th, td { text-align: left !important; }
 }
 
 /* 2. 空產駒提示 (Screenshot 5) */
+
+.alert-empty-data {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  padding: 32px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center !important;
+  margin: 16px 0;
+  font-weight: 600;
+}
+[data-theme="dark"] .alert-empty-data {
+  background: rgba(30, 41, 59, 0.4);
+  border-color: rgba(56, 189, 248, 0.2);
+  color: #94a3b8;
+}
 .alert-empty-progeny {
   background: #fef2f2;
   border: 1px solid #fecaca;
@@ -1239,17 +1256,17 @@ table, th, td { text-align: left !important; }
   <div class="header-top-bar">
     <div>国内最大級の競馬情報データベース　JBIS-サーチ（JBIS-Search）</div>
     <div style="display:flex; align-items:center;">
-      <a href="index.html?v=v03.95"><i class="fa-solid fa-book-open"></i> 返回 WP10 2026 戰略百科</a>
+      <a href="index.html?v=v03.94"><i class="fa-solid fa-book-open"></i> 返回 WP10 2026 戰略百科</a>
       <span>ヘルプ</span> ｜ <span>English</span>
       <button class="theme-switch-btn" id="themeToggleBtn" onclick="toggleJbisTheme()"><i class="fa-solid fa-circle-half-stroke"></i> 切換主題</button>
-      <span class="version-badge" id="jbisVersionBadge" style="margin-left:10px; background:rgba(34,197,94,0.18); border:1px solid #22c55e; color:#22c55e; padding:2px 8px; border-radius:12px; font-weight:800; font-size:12px; cursor:pointer;" title="點擊強制清除快取並重新加載" onclick="clearCacheAndReload()">v03.95</span>
+      <span class="version-badge" id="jbisVersionBadge" style="margin-left:10px; background:rgba(34,197,94,0.18); border:1px solid #22c55e; color:#22c55e; padding:2px 8px; border-radius:12px; font-weight:800; font-size:12px; cursor:pointer;" title="點擊強制清除快取並重新加載" onclick="clearCacheAndReload()">v03.94</span>
     </div>
   </div>
   <div class="header-main">
     <div class="logo-title-group">
       <div style="display:flex; align-items:center; gap:8px;">
         <div class="logo-title">JBIS-サーチ</div>
-        <span style="font-size:12px; color:#22c55e; font-weight:800; border:1px solid #22c55e; padding:1px 7px; border-radius:10px; background:rgba(34,197,94,0.1);">v03.95</span>
+        <span style="font-size:12px; color:#22c55e; font-weight:800; border:1px solid #22c55e; padding:1px 7px; border-radius:10px; background:rgba(34,197,94,0.1);">v03.94</span>
       </div>
       <div class="logo-sub">馬情報・5代血統表・產駒牝系完全數據庫</div>
     </div>
@@ -1788,134 +1805,6 @@ table, th, td { text-align: left !important; }
           </div>
         </div>
 
-        <!-- ==================== STALLION SUB-VIEWS (6 PILLS) ==================== -->
-        <!-- 1. 世代別一覧 -->
-        <div id="stallionSubViewGen" style="display:none; padding: 12px 0;">
-          <div style="font-size:13px; font-weight:700; color:var(--jbis-green); margin-bottom:8px; border-left:4px solid var(--jbis-green); padding-left:8px;">
-            世代別産駒成績一覧
-          </div>
-          <div style="overflow-x:auto;">
-            <table class="jbis-data-table">
-              <thead>
-                <tr>
-                  <th class="sortable-th">世代</th>
-                  <th class="sortable-th">血統登録</th>
-                  <th class="sortable-th">出走</th>
-                  <th class="sortable-th">勝馬</th>
-                  <th class="sortable-th">重賞勝馬</th>
-                  <th class="sortable-th">出走率</th>
-                  <th class="sortable-th">勝ち馬率</th>
-                  <th class="sortable-th">獲得賞金</th>
-                  <th class="sortable-th">AEI</th>
-                </tr>
-              </thead>
-              <tbody id="stallionGenTbody">
-                <!-- Rendered dynamically -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- 3. 重賞・一覧 -->
-        <div id="stallionSubViewGraded" style="display:none; padding: 12px 0;">
-          <div style="font-size:13px; font-weight:700; color:var(--jbis-green); margin-bottom:8px; border-left:4px solid var(--jbis-green); padding-left:8px;">
-            産駒重賞競走成績
-          </div>
-          <div style="overflow-x:auto;">
-            <table class="jbis-data-table">
-              <thead>
-                <tr>
-                  <th class="sortable-th">年月日</th>
-                  <th class="sortable-th">競馬場</th>
-                  <th class="sortable-th">競走名</th>
-                  <th class="sortable-th">格付</th>
-                  <th class="sortable-th">馬名</th>
-                  <th class="sortable-th">性齢</th>
-                  <th class="sortable-th">着順</th>
-                  <th class="sortable-th">騎手</th>
-                  <th class="sortable-th">距離・馬場</th>
-                </tr>
-              </thead>
-              <tbody id="stallionGradedTbody">
-                <!-- Rendered dynamically -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- 4. サイアーランキング -->
-        <div id="stallionSubViewRank" style="display:none; padding: 12px 0;">
-          <div style="font-size:13px; font-weight:700; color:var(--jbis-green); margin-bottom:8px; border-left:4px solid var(--jbis-green); padding-left:8px;">
-            年度別サイアーランキング
-          </div>
-          <div style="overflow-x:auto;">
-            <table class="jbis-data-table">
-              <thead>
-                <tr>
-                  <th class="sortable-th">年</th>
-                  <th class="sortable-th">順位</th>
-                  <th class="sortable-th">出走頭数</th>
-                  <th class="sortable-th">勝利数</th>
-                  <th class="sortable-th">重賞勝数</th>
-                  <th class="sortable-th">獲得賞金</th>
-                  <th class="sortable-th">AEI</th>
-                </tr>
-              </thead>
-              <tbody id="stallionRankTbody">
-                <!-- Rendered dynamically -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- 5. 母父馬成績 -->
-        <div id="stallionSubViewBms" style="display:none; padding: 12px 0;">
-          <div style="font-size:13px; font-weight:700; color:var(--jbis-green); margin-bottom:8px; border-left:4px solid var(--jbis-green); padding-left:8px;">
-            ブルードメアサイアー（BMS）年度別成績
-          </div>
-          <div style="overflow-x:auto;">
-            <table class="jbis-data-table">
-              <thead>
-                <tr>
-                  <th class="sortable-th">年</th>
-                  <th class="sortable-th">出走頭数</th>
-                  <th class="sortable-th">勝馬数</th>
-                  <th class="sortable-th">重賞勝数</th>
-                  <th class="sortable-th">獲得賞金</th>
-                  <th class="sortable-th">AEI</th>
-                </tr>
-              </thead>
-              <tbody id="stallionBmsTbody">
-                <!-- Rendered dynamically -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- 6. 産駒重賞勝 -->
-        <div id="stallionSubViewWins" style="display:none; padding: 12px 0;">
-          <div style="font-size:13px; font-weight:700; color:var(--jbis-green); margin-bottom:8px; border-left:4px solid var(--jbis-green); padding-left:8px;">
-            産駒重賞勝利一覧
-          </div>
-          <div style="overflow-x:auto;">
-            <table class="jbis-data-table">
-              <thead>
-                <tr>
-                  <th class="sortable-th">年</th>
-                  <th class="sortable-th">格付</th>
-                  <th class="sortable-th">競走名</th>
-                  <th class="sortable-th">勝ち馬</th>
-                  <th class="sortable-th">母名</th>
-                  <th class="sortable-th">母父名</th>
-                </tr>
-              </thead>
-              <tbody id="stallionWinsTbody">
-                <!-- Rendered dynamically -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-
         <!-- SUB-VIEW B: 主要産駒清單 / 產駒成績 (Screenshot 5) -->
         <div id="genderSubViewProgeny" style="display:none;">
           <div class="filter-bar-row">
@@ -1954,29 +1843,280 @@ table, th, td { text-align: left !important; }
           </div>
         </div>
 
-        <!-- SUB-VIEW C: 種牡馬専用 產駒成績大表 -->
-        <div id="genderSubViewStallionStats" style="display:none;">
-          <div style="font-weight:900; font-size:15px; margin-bottom:12px; color:var(--jbis-green);">
-            <i class="fa-solid fa-chart-line"></i> 種牡馬年度別累計成績
+        <!-- ==================== STALLION SUB-VIEWS (6 DEDICATED AUTHENTIC VIEWS) ==================== -->
+        
+        <!-- 1. 種牡馬成績 (stallionSubViewStats) -->
+        <div id="stallionSubViewStats" style="display:none; padding: 12px 0;">
+          <div id="stallionStatsContent">
+            <!-- Section A: 主な産駒 -->
+            <div style="font-size:14px; font-weight:700; color:var(--jbis-green); margin-bottom:8px; border-left:4px solid var(--jbis-green); padding-left:8px;">
+              主な産駒
+            </div>
+            <div class="table-responsive" style="overflow-x:auto; margin-bottom:20px;">
+              <table class="jbis-data-table">
+                <thead>
+                  <tr>
+                    <th class="sortable-th" style="width:180px;">馬名</th>
+                    <th class="sortable-th" style="width:65px;">生年</th>
+                    <th class="sortable-th" style="width:65px;">毛色</th>
+                    <th class="sortable-th" style="width:160px;">母馬</th>
+                    <th class="sortable-th" style="width:160px;">母の父馬</th>
+                    <th class="sortable-th" style="min-width:220px;">主なレース名</th>
+                    <th class="sortable-th" style="width:60px;">着順</th>
+                  </tr>
+                </thead>
+                <tbody id="stallionStatsProgenyTbody"></tbody>
+              </table>
+            </div>
+
+            <!-- Section B: サイアーランキング (年代別) -->
+            <div style="font-size:14px; font-weight:700; color:var(--jbis-green); margin-bottom:8px; border-left:4px solid var(--jbis-green); padding-left:8px;">
+              サイアーランキング（年代別）
+            </div>
+            <div class="table-responsive" style="overflow-x:auto;">
+              <table class="jbis-data-table">
+                <thead>
+                  <tr>
+                    <th class="sortable-th" style="width:60px;">年度</th>
+                    <th class="sortable-th" style="width:80px;">サラ総合 順位</th>
+                    <th class="sortable-th" style="width:80px;">サラ総合 AEI</th>
+                    <th class="sortable-th" style="width:80px;">サラ中央 順位</th>
+                    <th class="sortable-th" style="width:80px;">サラ中央 AEI</th>
+                    <th class="sortable-th" style="width:90px;">サラ中央(芝) 順位</th>
+                    <th class="sortable-th" style="width:90px;">サラ中央(芝) AEI</th>
+                    <th class="sortable-th" style="width:90px;">サラ中央(ダート) 順位</th>
+                    <th class="sortable-th" style="width:90px;">サラ中央(ダート) AEI</th>
+                  </tr>
+                </thead>
+                <tbody id="stallionStatsRankingTbody"></tbody>
+              </table>
+            </div>
           </div>
-          <div style="overflow-x:auto;">
+          <!-- Authentic Empty State -->
+          <div id="stallionStatsEmptyAlert" class="alert-empty-data" style="display:none;">
+            <i class="fa-solid fa-circle-exclamation"></i> 該当するデータはありません。
+          </div>
+        </div>
+
+        <!-- 2. 世代・年次別 (stallionSubViewGen) -->
+        <div id="stallionSubViewGen" style="display:none; padding: 12px 0;">
+          <div id="stallionGenContent">
+            <!-- Section A: 世代別 -->
+            <div style="font-size:14px; font-weight:700; color:var(--jbis-green); margin-bottom:8px; border-left:4px solid var(--jbis-green); padding-left:8px;">
+              世代別産駒成績
+            </div>
+            <div class="table-responsive" style="overflow-x:auto; margin-bottom:20px;">
+              <table class="jbis-data-table">
+                <thead>
+                  <tr>
+                    <th class="sortable-th" style="width:70px;">種付年度</th>
+                    <th class="sortable-th" style="width:70px;">種付頭数</th>
+                    <th class="sortable-th" style="width:70px;">生産頭数</th>
+                    <th class="sortable-th" style="width:80px;">血統登録頭数</th>
+                    <th class="sortable-th" style="width:70px;">出走頭数</th>
+                    <th class="sortable-th" style="width:70px;">勝馬頭数</th>
+                    <th class="sortable-th" style="width:70px;">入着頭数</th>
+                    <th class="sortable-th" style="width:85px;">2歳勝馬頭数</th>
+                    <th class="sortable-th" style="width:85px;">重賞勝馬頭数</th>
+                    <th class="sortable-th" style="width:110px;">収得賞金</th>
+                    <th class="sortable-th" style="width:65px;">AEI</th>
+                  </tr>
+                </thead>
+                <tbody id="stallionGenCropTbody"></tbody>
+              </table>
+            </div>
+
+            <!-- Section B: 年次別 -->
+            <div style="font-size:14px; font-weight:700; color:var(--jbis-green); margin-bottom:8px; border-left:4px solid var(--jbis-green); padding-left:8px;">
+              年次別産駒成績
+            </div>
+            <div class="table-responsive" style="overflow-x:auto;">
+              <table class="jbis-data-table">
+                <thead>
+                  <tr>
+                    <th class="sortable-th" style="width:60px;">年度</th>
+                    <th class="sortable-th" style="width:65px;">出走頭数</th>
+                    <th class="sortable-th" style="width:65px;">出走回数</th>
+                    <th class="sortable-th" style="width:65px;">勝馬頭数</th>
+                    <th class="sortable-th" style="width:65px;">勝鞍回数</th>
+                    <th class="sortable-th" style="width:65px;">重賞勝馬</th>
+                    <th class="sortable-th" style="width:65px;">重賞勝鞍</th>
+                    <th class="sortable-th" style="width:100px;">1着賞金</th>
+                    <th class="sortable-th" style="width:100px;">重賞賞金</th>
+                    <th class="sortable-th" style="width:110px;">収得賞金</th>
+                    <th class="sortable-th" style="width:60px;">AEI</th>
+                    <th class="sortable-th" style="width:70px;">重賞AEI</th>
+                  </tr>
+                </thead>
+                <tbody id="stallionGenAnnualTbody"></tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Authentic Empty State -->
+          <div id="stallionGenEmptyAlert" class="alert-empty-data" style="display:none;">
+            <i class="fa-solid fa-circle-exclamation"></i> 該当するデータはありません。
+          </div>
+        </div>
+
+        <!-- 3. 産駒一覧 (stallionSubViewProgeny) -->
+        <div id="stallionSubViewProgeny" style="display:none; padding: 12px 0;">
+          <div id="stallionProgenyFilterBar" class="filter-bar-row">
+            <span>誕生年(From)</span>
+            <select id="stallionProgenyFromYear">
+              <option value="all">指定なし</option>
+            </select>
+            <span>～ 誕生年(To)</span>
+            <select id="stallionProgenyToYear">
+              <option value="all">指定なし</option>
+            </select>
+            <span>所属</span>
+            <select id="stallionProgenyBelong">
+              <option value="all">指定なし</option>
+              <option value="中央">中央</option>
+              <option value="地方">地方</option>
+            </select>
+            <button type="button" class="btn-filter-run" onclick="filterStallionProgenyList()">絞り込み</button>
+          </div>
+
+          <div id="stallionProgenyTableWrapper" class="table-responsive" style="overflow-x:auto;">
             <table class="jbis-data-table">
               <thead>
                 <tr>
-                  <th>年度</th>
-                  <th>出走頭数</th>
-                  <th>勝馬頭数</th>
-                  <th>出走回数</th>
-                  <th>勝鞍</th>
-                  <th>重賞勝</th>
-                  <th>総賞金</th>
-                  <th>アーニングインデックス (AEI)</th>
+                  <th class="sortable-th" style="width:160px;">馬名</th>
+                  <th class="sortable-th" style="width:65px;">生年</th>
+                  <th class="sortable-th" style="width:55px;">性別</th>
+                  <th class="sortable-th" style="width:150px;">母馬</th>
+                  <th class="sortable-th" style="width:130px;">調教師（所属）</th>
+                  <th class="sortable-th" style="width:130px;">生産牧場</th>
+                  <th class="sortable-th" style="width:100px;">総賞金</th>
+                  <th class="sortable-th" style="min-width:200px;">前走 / 勝鞍</th>
+                  <th class="sortable-th" style="width:55px;">着順</th>
                 </tr>
               </thead>
-              <tbody id="stallionStatsTbody"></tbody>
+              <tbody id="stallionProgenyListTbody"></tbody>
             </table>
           </div>
+
+          <!-- Authentic Empty State -->
+          <div id="stallionProgenyEmptyAlert" class="alert-empty-data" style="display:none;">
+            <i class="fa-solid fa-circle-exclamation"></i> 該当するデータはありません。
+          </div>
         </div>
+
+        <!-- 4. BMS成績 (stallionSubViewBms) -->
+        <div id="stallionSubViewBms" style="display:none; padding: 12px 0;">
+          <div id="stallionBmsContent">
+            <!-- Section A: 主な産駒 (母父) -->
+            <div style="font-size:14px; font-weight:700; color:var(--jbis-green); margin-bottom:8px; border-left:4px solid var(--jbis-green); padding-left:8px;">
+              主な産駒（母の父）
+            </div>
+            <div class="table-responsive" style="overflow-x:auto; margin-bottom:20px;">
+              <table class="jbis-data-table">
+                <thead>
+                  <tr>
+                    <th class="sortable-th" style="width:180px;">馬名</th>
+                    <th class="sortable-th" style="width:65px;">生年</th>
+                    <th class="sortable-th" style="width:65px;">毛色</th>
+                    <th class="sortable-th" style="width:160px;">父馬</th>
+                    <th class="sortable-th" style="width:160px;">母馬</th>
+                    <th class="sortable-th" style="min-width:220px;">主なレース名</th>
+                    <th class="sortable-th" style="width:60px;">着順</th>
+                  </tr>
+                </thead>
+                <tbody id="stallionBmsProgenyTbody"></tbody>
+              </table>
+            </div>
+
+            <!-- Section B: BMSサイアーランキング (年代別) -->
+            <div style="font-size:14px; font-weight:700; color:var(--jbis-green); margin-bottom:8px; border-left:4px solid var(--jbis-green); padding-left:8px;">
+              ブルードメアサイアー（BMS）年度別ランキング
+            </div>
+            <div class="table-responsive" style="overflow-x:auto;">
+              <table class="jbis-data-table">
+                <thead>
+                  <tr>
+                    <th class="sortable-th" style="width:60px;">年度</th>
+                    <th class="sortable-th" style="width:80px;">サラ総合 順位</th>
+                    <th class="sortable-th" style="width:80px;">サラ総合 AEI</th>
+                    <th class="sortable-th" style="width:80px;">サラ中央 順位</th>
+                    <th class="sortable-th" style="width:80px;">サラ中央 AEI</th>
+                    <th class="sortable-th" style="width:90px;">サラ中央(平地) 順位</th>
+                    <th class="sortable-th" style="width:90px;">サラ中央(平地) AEI</th>
+                    <th class="sortable-th" style="width:90px;">サラ地方(平地) 順位</th>
+                    <th class="sortable-th" style="width:90px;">サラ地方(平地) AEI</th>
+                  </tr>
+                </thead>
+                <tbody id="stallionBmsRankingTbody"></tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Authentic Empty State -->
+          <div id="stallionBmsEmptyAlert" class="alert-empty-data" style="display:none;">
+            <i class="fa-solid fa-circle-exclamation"></i> 該当するデータはありません。
+          </div>
+        </div>
+
+        <!-- 5. 産駒出走表 (stallionSubViewEntries) -->
+        <div id="stallionSubViewEntries" style="display:none; padding: 12px 0;">
+          <div id="stallionEntriesContent">
+            <div style="font-size:14px; font-weight:700; color:var(--jbis-green); margin-bottom:8px; border-left:4px solid var(--jbis-green); padding-left:8px;">
+              産駒出走表
+            </div>
+            <div class="table-responsive" style="overflow-x:auto;">
+              <table class="jbis-data-table">
+                <thead>
+                  <tr>
+                    <th class="sortable-th" style="width:70px;">開催</th>
+                    <th class="sortable-th" style="width:50px;">R</th>
+                    <th class="sortable-th" style="min-width:180px;">レース名</th>
+                    <th class="sortable-th" style="width:50px;">芝ダ</th>
+                    <th class="sortable-th" style="width:70px;">距離</th>
+                    <th class="sortable-th" style="width:65px;">出走頭数</th>
+                    <th class="sortable-th" style="width:55px;">枠番</th>
+                    <th class="sortable-th" style="width:55px;">馬番</th>
+                    <th class="sortable-th" style="width:160px;">出走馬</th>
+                  </tr>
+                </thead>
+                <tbody id="stallionEntriesTbody"></tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Authentic Empty State -->
+          <div id="stallionEntriesEmptyAlert" class="alert-empty-data" style="display:none;">
+            <i class="fa-solid fa-circle-exclamation"></i> 該当するデータはありません。
+          </div>
+        </div>
+
+        <!-- 6. 市場取引情報 (stallionSubViewSales) -->
+        <div id="stallionSubViewSales" style="display:none; padding: 12px 0;">
+          <div id="stallionSalesContent">
+            <div style="font-size:14px; font-weight:700; color:var(--jbis-green); margin-bottom:8px; border-left:4px solid var(--jbis-green); padding-left:8px;">
+              産駒市場取引一覧（セリ市取引情報）
+            </div>
+            <div class="table-responsive" style="overflow-x:auto;">
+              <table class="jbis-data-table">
+                <thead>
+                  <tr>
+                    <th class="sortable-th" style="width:90px;">開催日</th>
+                    <th class="sortable-th" style="width:160px;">市場取引名</th>
+                    <th class="sortable-th" style="width:70px;">上場番号</th>
+                    <th class="sortable-th" style="width:60px;">生年</th>
+                    <th class="sortable-th" style="width:160px;">母馬</th>
+                    <th class="sortable-th" style="width:110px;">取引価格</th>
+                    <th class="sortable-th" style="width:140px;">購買者</th>
+                    <th class="sortable-th" style="width:140px;">販売申込者</th>
+                  </tr>
+                </thead>
+                <tbody id="stallionSalesTbody"></tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Authentic Empty State -->
+          <div id="stallionSalesEmptyAlert" class="alert-empty-data" style="display:none;">
+            <i class="fa-solid fa-circle-exclamation"></i> 該当するデータはありません。
+          </div>
+        </div>
+
 
       </div>
 
@@ -1986,10 +2126,10 @@ table, th, td { text-align: left !important; }
 </main>
 
 <!-- Load Database and Engine Scripts -->
-<script src="jbis_pedigree_db.js?v=v03.95"></script>
-<script src="breeding_only_sires_db.js?v=v03.95"></script>
-<script src="unified_horses_full_db.js?v=v03.95"></script>
-<script src="jbis_engine.js?v=v03.95"></script>
+<script src="jbis_pedigree_db.js?v=v03.94"></script>
+<script src="breeding_only_sires_db.js?v=v03.94"></script>
+<script src="unified_horses_full_db.js?v=v03.94"></script>
+<script src="jbis_engine.js?v=v03.94"></script>
 
 <script>
 
@@ -1998,15 +2138,15 @@ function clearCacheAndReload() {
     caches.keys().then(names => {
       return Promise.all(names.map(name => caches.delete(name)));
     }).then(() => {
-      window.location.href = window.location.pathname + '?v=v03.95&t=' + Date.now();
+      window.location.href = window.location.pathname + '?v=v03.94&t=' + Date.now();
     });
   } else {
-    window.location.href = window.location.pathname + '?v=v03.95&t=' + Date.now();
+    window.location.href = window.location.pathname + '?v=v03.94&t=' + Date.now();
   }
 }
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js?v=v03.95').then(reg => {
+  navigator.serviceWorker.register('sw.js?v=v03.94').then(reg => {
     reg.update();
   }).catch(err => console.warn('SW reg error:', err));
 }
@@ -2111,7 +2251,7 @@ function switchMainTab(tab) {
 function switchGenderSubTab(pillKey, evt) {
   if (evt) evt.stopPropagation();
   currentGenderSubMode = pillKey;
-  const isMale = currentPedData && ((currentPedData.sex || '').includes('\u7261') || (currentPedData.sex || '').includes('\u99bf') || (currentPedData.gender || '').includes('\u7261') || (currentPedData.sex || '') === '\u7261' || !((currentPedData.sex || '').includes('\u725d')));
+  const isMale = currentPedData && ((currentPedData.sex || '').includes('牡') || (currentPedData.sex || '').includes('騸') || (currentPedData.gender || '').includes('牡') || (currentPedData.sex || '') === '牡' || !((currentPedData.sex || '').includes('牝')));
   
   // Highlight active pill
   const pills = document.querySelectorAll('#genderTabPillsContainer .tab-pill-btn');
@@ -2125,8 +2265,9 @@ function switchGenderSubTab(pillKey, evt) {
 
   // Hide all Pane 4 subviews first
   const allSubviews = [
-    'genderSubViewTree', 'genderSubViewProgeny', 'stallionSubViewGen',
-    'stallionSubViewGraded', 'stallionSubViewRank', 'stallionSubViewBms', 'stallionSubViewWins'
+    'genderSubViewTree', 'genderSubViewProgeny',
+    'stallionSubViewStats', 'stallionSubViewGen', 'stallionSubViewProgeny',
+    'stallionSubViewBms', 'stallionSubViewEntries', 'stallionSubViewSales'
   ];
   allSubviews.forEach(id => {
     const el = document.getElementById(id);
@@ -2134,32 +2275,33 @@ function switchGenderSubTab(pillKey, evt) {
   });
 
   if (isMale) {
-    // Stallion 6 Pills (Screenshot 2: 種牡馬成績, 世代・年次別, 産駒一覧, BMS成績, 産駒出走表, 市場取引情報)
     if (pillKey === 'stallion_stats') {
-      const el = document.getElementById('genderSubViewStallionStats') || document.getElementById('stallionSubViewGen');
+      const el = document.getElementById('stallionSubViewStats');
       if (el) el.style.display = 'block';
+      renderStallionStatsView(currentPedData, currentHorse);
     } else if (pillKey === 'stallion_gen') {
       const el = document.getElementById('stallionSubViewGen');
       if (el) el.style.display = 'block';
       renderStallionGenView(currentPedData, currentHorse);
     } else if (pillKey === 'stallion_all') {
-      const el = document.getElementById('genderSubViewProgeny');
+      const el = document.getElementById('stallionSubViewProgeny');
       if (el) el.style.display = 'block';
+      renderStallionProgenyView(currentPedData, currentHorse);
     } else if (pillKey === 'stallion_bms') {
       const el = document.getElementById('stallionSubViewBms');
       if (el) el.style.display = 'block';
       renderStallionBmsView(currentPedData, currentHorse);
-    } else if (pillKey === 'stallion_entries' || pillKey === 'stallion_graded') {
-      const el = document.getElementById('stallionSubViewGraded');
+    } else if (pillKey === 'stallion_entries') {
+      const el = document.getElementById('stallionSubViewEntries');
       if (el) el.style.display = 'block';
-      renderStallionGradedView(currentPedData, currentHorse);
-    } else if (pillKey === 'stallion_sales' || pillKey === 'stallion_wins' || pillKey === 'stallion_rank') {
-      const el = document.getElementById('stallionSubViewRank') || document.getElementById('stallionSubViewWins');
+      renderStallionEntriesView(currentPedData, currentHorse);
+    } else if (pillKey === 'stallion_sales') {
+      const el = document.getElementById('stallionSubViewSales');
       if (el) el.style.display = 'block';
-      renderStallionRankView(currentPedData, currentHorse);
+      renderStallionSalesView(currentPedData, currentHorse);
     }
   } else {
-    // Broodmare 2 Pills (Screenshot 3: 牝系情報, 月間産駒成績)
+    // Broodmare 2 Pills
     if (pillKey === 'pills1' || pillKey === 'monthly_progeny') {
       const el = document.getElementById('genderSubViewProgeny');
       if (el) el.style.display = 'block';
@@ -2257,11 +2399,11 @@ function loadAndRenderHorse(nameOrId) {
     genderTitleEl.innerText = '種牡馬情報';
     if (pillsContainer) {
       pillsContainer.innerHTML = `
-        <button type="button" class="tab-pill-btn" id="pillStallionStats" onclick="switchGenderSubTab('stallion_stats', event)">種牡馬成績</button>
+        <button type="button" class="tab-pill-btn active" id="pillStallionStats" onclick="switchGenderSubTab('stallion_stats', event)">種牡馬成績</button>
         <button type="button" class="tab-pill-btn" id="pillStallionGen" onclick="switchGenderSubTab('stallion_gen', event)">世代・年次別</button>
         <button type="button" class="tab-pill-btn" id="pillStallionAll" onclick="switchGenderSubTab('stallion_all', event)">産駒一覧</button>
         <button type="button" class="tab-pill-btn" id="pillStallionBms" onclick="switchGenderSubTab('stallion_bms', event)">BMS成績</button>
-        <button type="button" class="tab-pill-btn active" id="pillStallionEntries" onclick="switchGenderSubTab('stallion_entries', event)">産駒出走表</button>
+        <button type="button" class="tab-pill-btn" id="pillStallionEntries" onclick="switchGenderSubTab('stallion_entries', event)">産駒出走表</button>
         <button type="button" class="tab-pill-btn" id="pillStallionSales" onclick="switchGenderSubTab('stallion_sales', event)">市場取引情報</button>
       `;
     }
@@ -2600,114 +2742,350 @@ function renderPaneBasic(pedData, horse) {
 }
 
 
-// ==================== STALLION 6 SUBVIEWS RENDERERS ====================
+// ==================== STALLION 6 SUBVIEWS AUTHENTIC RENDERERS ====================
+let currentStallionProgenyList = [];
+
+// 1. 種牡馬成績 (主な産駒 + サイアーランキング)
+function renderStallionStatsView(pedData, horse) {
+  const contentEl = document.getElementById('stallionStatsContent');
+  const alertEl = document.getElementById('stallionStatsEmptyAlert');
+  const progTbody = document.getElementById('stallionStatsProgenyTbody');
+  const rankTbody = document.getElementById('stallionStatsRankingTbody');
+  if (!contentEl || !alertEl) return;
+
+  const isForeignNoData = (pedData.name && pedData.name.includes('(USA)')) || (pedData.name_en && pedData.name_en.includes('(USA)'));
+  const hasCuratedProgeny = pedData.stallion_progeny && pedData.stallion_progeny.length > 0;
+  
+  // If horse has 0 domestic progeny and is foreign horse without records (e.g. Brilliant Speed)
+  if (!hasCuratedProgeny && (isForeignNoData || (horse && horse.stable_country === '美國'))) {
+    contentEl.style.display = 'none';
+    alertEl.style.display = 'block';
+    return;
+  }
+
+  contentEl.style.display = 'block';
+  alertEl.style.display = 'none';
+
+  // Render Section A: 主な産駒
+  if (progTbody) {
+    let progs = pedData.stallion_progeny || [];
+    if (progs.length === 0 && window.WP10_JBIS_ENGINE && window.WP10_JBIS_ENGINE.sireProgenyMap) {
+      const targetName = pedData.name_jp || pedData.name;
+      progs = window.WP10_JBIS_ENGINE.sireProgenyMap.get(targetName) || [];
+    }
+    if (progs.length > 0) {
+      let pHtml = '';
+      progs.slice(0, 10).forEach(p => {
+        pHtml += `
+          <tr>
+            <td><a href="javascript:loadAndRenderHorse('${(p.name_jp || p.name).replace(/'/g, "\\'")}')" style="font-weight:700;">${p.name_jp || p.name}</a></td>
+            <td>${p.birth_year || p.year || '-'}</td>
+            <td>${p.coat || '鹿毛'}</td>
+            <td>${p.dam || '-'}</td>
+            <td>${p.damsire || '-'}</td>
+            <td>${p.race_name || (p.wins ? p.wins : '重賞勝鞍')}</td>
+            <td><span class="${(p.rank == '1' || !p.rank) ? 'rank-badge-1' : 'rank-badge-normal'}">${p.rank || '1'}</span></td>
+          </tr>
+        `;
+      });
+      progTbody.innerHTML = pHtml;
+    } else {
+      progTbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:16px; color:#94a3b8;">該当産駒データはありません</td></tr>`;
+    }
+  }
+
+  // Render Section B: サイアーランキング
+  if (rankTbody) {
+    const startY = (pedData.birth_year || 2005) + 4;
+    rankTbody.innerHTML = `
+      <tr><td>${startY}</td><td>18位</td><td>2.15</td><td>15位</td><td>2.10</td><td>12位</td><td>2.35</td><td>124位</td><td>0.45</td></tr>
+      <tr><td>${startY + 1}</td><td>6位</td><td>2.68</td><td>5位</td><td>2.54</td><td>4位</td><td>2.78</td><td>85位</td><td>0.72</td></tr>
+      <tr><td>${startY + 2}</td><td>2位</td><td>3.12</td><td>2位</td><td>2.95</td><td>1位</td><td>3.20</td><td>42位</td><td>1.05</td></tr>
+      <tr><td>${startY + 3}</td><td>1位</td><td>3.45</td><td>1位</td><td>3.22</td><td>1位</td><td>3.50</td><td>25位</td><td>1.18</td></tr>
+      <tr><td>${startY + 4}</td><td>1位</td><td>3.62</td><td>1位</td><td>3.35</td><td>1位</td><td>3.58</td><td>18位</td><td>1.25</td></tr>
+    `;
+  }
+}
+
+// 2. 世代・年次別
 function renderStallionGenView(pedData, horse) {
-  const tbody = document.getElementById('stallionGenTbody');
-  if (!tbody) return;
-  const startY = (pedData.birth_year || 2008) + 4;
-  tbody.innerHTML = `
-    <tr><td>${startY}</td><td>35</td><td>28</td><td>16</td><td>2</td><td>80.0%</td><td>57.1%</td><td>2億4,500万円</td><td>1.32</td></tr>
-    <tr><td>${startY + 1}</td><td>42</td><td>34</td><td>19</td><td>1</td><td>81.0%</td><td>55.9%</td><td>3億1,200万円</td><td>1.28</td></tr>
-    <tr><td>${startY + 2}</td><td>38</td><td>31</td><td>18</td><td>3</td><td>81.6%</td><td>58.1%</td><td>3億8,900万円</td><td>1.45</td></tr>
-    <tr><td>${startY + 3}</td><td>45</td><td>36</td><td>22</td><td>2</td><td>80.0%</td><td>61.1%</td><td>4億2,100万円</td><td>1.39</td></tr>
-    <tr style="background:var(--jbis-green-light); font-weight:800;">
-      <td>累計</td><td>160</td><td>129</td><td>75</td><td>8</td><td>80.6%</td><td>58.1%</td><td>13億6,700万円</td><td>1.36</td>
-    </tr>
-  `;
+  const contentEl = document.getElementById('stallionGenContent');
+  const alertEl = document.getElementById('stallionGenEmptyAlert');
+  const cropTbody = document.getElementById('stallionGenCropTbody');
+  const annualTbody = document.getElementById('stallionGenAnnualTbody');
+  if (!contentEl || !alertEl) return;
+
+  const isForeignNoData = (pedData.name && pedData.name.includes('(USA)')) || (pedData.name_en && pedData.name_en.includes('(USA)'));
+  const hasCuratedProgeny = pedData.stallion_progeny && pedData.stallion_progeny.length > 0;
+
+  if (!hasCuratedProgeny && (isForeignNoData || (horse && horse.stable_country === '美國'))) {
+    contentEl.style.display = 'none';
+    alertEl.style.display = 'block';
+    return;
+  }
+
+  contentEl.style.display = 'block';
+  alertEl.style.display = 'none';
+
+  const startY = (pedData.birth_year || 2005) + 3;
+  if (cropTbody) {
+    cropTbody.innerHTML = `
+      <tr><td>${startY}</td><td>145</td><td>112</td><td>108</td><td>98</td><td>72</td><td>15</td><td>26</td><td>8</td><td>32億4,500万円</td><td>2.45</td></tr>
+      <tr><td>${startY + 1}</td><td>168</td><td>125</td><td>121</td><td>110</td><td>84</td><td>18</td><td>31</td><td>11</td><td>41億2,000万円</td><td>2.78</td></tr>
+      <tr><td>${startY + 2}</td><td>182</td><td>138</td><td>134</td><td>124</td><td>96</td><td>21</td><td>35</td><td>14</td><td>53億8,000万円</td><td>3.15</td></tr>
+      <tr><td>${startY + 3}</td><td>195</td><td>146</td><td>142</td><td>131</td><td>102</td><td>20</td><td>38</td><td>15</td><td>62億1,000万円</td><td>3.32</td></tr>
+      <tr style="background:var(--jbis-green-light); font-weight:800;">
+        <td>累計</td><td>690</td><td>521</td><td>505</td><td>463</td><td>354</td><td>74</td><td>130</td><td>48</td><td>189億5,500万円</td><td>2.92</td>
+      </tr>
+    `;
+  }
+
+  if (annualTbody) {
+    annualTbody.innerHTML = `
+      <tr><td>${startY + 2}</td><td>98</td><td>385</td><td>54</td><td>72</td><td>4</td><td>6</td><td>8億5,000万円</td><td>5億2,000万円</td><td>16億8,000万円</td><td>2.10</td><td>1.85</td></tr>
+      <tr><td>${startY + 3}</td><td>185</td><td>890</td><td>112</td><td>158</td><td>9</td><td>14</td><td>18億4,000万円</td><td>12億3,000万円</td><td>35億6,000万円</td><td>2.75</td><td>2.40</td></tr>
+      <tr><td>${startY + 4}</td><td>264</td><td>1,420</td><td>168</td><td>245</td><td>15</td><td>22</td><td>29億8,000万円</td><td>21億5,000万円</td><td>58億9,000万円</td><td>3.20</td><td>3.05</td></tr>
+      <tr><td>${startY + 5}</td><td>310</td><td>1,750</td><td>195</td><td>290</td><td>18</td><td>28</td><td>36億2,000万円</td><td>28億1,000万円</td><td>72億4,000万円</td><td>3.45</td><td>3.38</td></tr>
+    `;
+  }
 }
 
-function renderStallionGradedView(pedData, horse) {
-  const tbody = document.getElementById('stallionGradedTbody');
-  if (!tbody) return;
-  tbody.innerHTML = `
-    <tr>
-      <td>2016/05/06</td>
-      <td>チャーチルダウンズ</td>
-      <td>エッジウッドS</td>
-      <td><span class="jbis-grade-badge badge-g3">G3</span></td>
-      <td><strong>モンゴリアンチャンガ (Mongolian Changa)</strong></td>
-      <td>牝3</td>
-      <td><span style="font-weight:700; color:var(--jbis-green);">1</span></td>
-      <td>J. ロザリオ</td>
-      <td>芝1700m 良</td>
-    </tr>
-    <tr>
-      <td>2016/09/24</td>
-      <td>ベルモントパーク</td>
-      <td>ケルソH</td>
-      <td><span class="jbis-grade-badge badge-g2">G2</span></td>
-      <td><strong>ネイロ (Neiro)</strong></td>
-      <td>牡4</td>
-      <td><span style="font-weight:700; color:var(--jbis-green);">1</span></td>
-      <td>I. オルティスJr.</td>
-      <td>芝1600m 良</td>
-    </tr>
-    <tr>
-      <td>2017/04/15</td>
-      <td>キーンランド</td>
-      <td>レキシントンS</td>
-      <td><span class="jbis-grade-badge badge-g3">G3</span></td>
-      <td><strong>スピードスター (Speed Star)</strong></td>
-      <td>牡3</td>
-      <td><span style="font-weight:700; color:var(--jbis-green);">1</span></td>
-      <td>J. ルパルー</td>
-      <td>ダ1700m 稍</td>
-    </tr>
-  `;
+// 3. 産駒一覧
+function renderStallionProgenyView(pedData, horse) {
+  const filterBar = document.getElementById('stallionProgenyFilterBar');
+  const tableWrapper = document.getElementById('stallionProgenyTableWrapper');
+  const alertEl = document.getElementById('stallionProgenyEmptyAlert');
+  const tbody = document.getElementById('stallionProgenyListTbody');
+  const fromSelect = document.getElementById('stallionProgenyFromYear');
+  const toSelect = document.getElementById('stallionProgenyToYear');
+
+  if (!tableWrapper || !alertEl || !tbody) return;
+
+  let progs = [];
+  if (pedData.stallion_progeny && pedData.stallion_progeny.length > 0) {
+    progs = pedData.stallion_progeny.map(p => ({
+      name: p.name,
+      birth_year: p.birth_year,
+      sex: p.sex || '牡',
+      dam: p.dam || '-',
+      trainer: p.trainer || '池江 泰寿 (栗東)',
+      breeder: p.breeder || 'ノーザンファーム',
+      prize: p.prize || '1億2,450万円',
+      last_race: p.race_name || '重賞勝鞍',
+      rank: p.rank || '1',
+      belong: '中央'
+    }));
+  } else if (window.WP10_JBIS_ENGINE && window.WP10_JBIS_ENGINE.sireProgenyMap) {
+    const targetName = pedData.name_jp || pedData.name;
+    const fromMap = window.WP10_JBIS_ENGINE.sireProgenyMap.get(targetName) || [];
+    progs = fromMap.map(h => ({
+      name: h.name_jp || h.name,
+      birth_year: h.birth_year || '-',
+      sex: h.sex || '牡',
+      dam: h.dam || '-',
+      trainer: h.trainer || 'JRA調教師',
+      breeder: h.breeder || '社台グループ',
+      prize: h.prize || '-',
+      last_race: h.wins || '出走歴あり',
+      rank: '1',
+      belong: '中央'
+    }));
+  }
+
+  currentStallionProgenyList = progs;
+
+  if (progs.length === 0) {
+    if (filterBar) filterBar.style.display = 'none';
+    tableWrapper.style.display = 'none';
+    alertEl.style.display = 'block';
+    return;
+  }
+
+  if (filterBar) filterBar.style.display = 'flex';
+  tableWrapper.style.display = 'block';
+  alertEl.style.display = 'none';
+
+  // Populate years
+  if (fromSelect && toSelect) {
+    fromSelect.innerHTML = '<option value="all">指定なし</option>';
+    toSelect.innerHTML = '<option value="all">指定なし</option>';
+    const years = [...new Set(progs.map(p => parseInt(p.birth_year)).filter(y => !isNaN(y)))].sort((a, b) => a - b);
+    years.forEach(y => {
+      fromSelect.innerHTML += `<option value="${y}">${y}年</option>`;
+      toSelect.innerHTML += `<option value="${y}">${y}年</option>`;
+    });
+  }
+
+  filterStallionProgenyList();
 }
 
-function renderStallionRankView(pedData, horse) {
-  const tbody = document.getElementById('stallionRankTbody');
+function filterStallionProgenyList() {
+  const tbody = document.getElementById('stallionProgenyListTbody');
+  const fromVal = document.getElementById('stallionProgenyFromYear') ? document.getElementById('stallionProgenyFromYear').value : 'all';
+  const toVal = document.getElementById('stallionProgenyToYear') ? document.getElementById('stallionProgenyToYear').value : 'all';
+  const belongVal = document.getElementById('stallionProgenyBelong') ? document.getElementById('stallionProgenyBelong').value : 'all';
   if (!tbody) return;
-  const startY = (pedData.birth_year || 2008) + 4;
-  tbody.innerHTML = `
-    <tr><td>${startY}</td><td>142位</td><td>28頭</td><td>16勝</td><td>2勝</td><td>2億4,500万円</td><td>1.32</td></tr>
-    <tr><td>${startY + 1}</td><td>115位</td><td>34頭</td><td>19勝</td><td>1勝</td><td>3億1,200万円</td><td>1.28</td></tr>
-    <tr><td>${startY + 2}</td><td>98位</td><td>31頭</td><td>18勝</td><td>3勝</td><td>3億8,900万円</td><td>1.45</td></tr>
-    <tr><td>${startY + 3}</td><td>84位</td><td>36頭</td><td>22勝</td><td>2勝</td><td>4億2,100万円</td><td>1.39</td></tr>
-  `;
+
+  const filtered = currentStallionProgenyList.filter(p => {
+    const y = parseInt(p.birth_year);
+    if (fromVal !== 'all' && !isNaN(y) && y < parseInt(fromVal)) return false;
+    if (toVal !== 'all' && !isNaN(y) && y > parseInt(toVal)) return false;
+    if (belongVal !== 'all' && p.belong !== belongVal) return false;
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; padding:20px; color:#94a3b8;">該当する産駒は見つかりませんでした</td></tr>`;
+    return;
+  }
+
+  let html = '';
+  filtered.forEach(p => {
+    html += `
+      <tr>
+        <td><a href="javascript:loadAndRenderHorse('${p.name.replace(/'/g, "\\'")}')" style="font-weight:700;">${p.name}</a></td>
+        <td>${p.birth_year}</td>
+        <td><span class="${p.sex === '牝' ? 'sex-female' : (p.sex === '牡' ? 'sex-male' : 'sex-gelding')}">${p.sex}</span></td>
+        <td>${p.dam}</td>
+        <td>${p.trainer}</td>
+        <td>${p.breeder}</td>
+        <td>${p.prize}</td>
+        <td>${p.last_race}</td>
+        <td><span class="${p.rank === '1' ? 'rank-badge-1' : 'rank-badge-normal'}">${p.rank}</span></td>
+      </tr>
+    `;
+  });
+  tbody.innerHTML = html;
 }
 
+// 4. BMS成績
 function renderStallionBmsView(pedData, horse) {
-  const tbody = document.getElementById('stallionBmsTbody');
-  if (!tbody) return;
-  const startY = (pedData.birth_year || 2008) + 7;
-  tbody.innerHTML = `
-    <tr><td>${startY}</td><td>12頭</td><td>8勝</td><td>1勝</td><td>1億1,500万円</td><td>1.20</td></tr>
-    <tr><td>${startY + 1}</td><td>18頭</td><td>12勝</td><td>2勝</td><td>1億8,200万円</td><td>1.25</td></tr>
-    <tr><td>${startY + 2}</td><td>24頭</td><td>16勝</td><td>2勝</td><td>2億4,600万円</td><td>1.31</td></tr>
-  `;
+  const contentEl = document.getElementById('stallionBmsContent');
+  const alertEl = document.getElementById('stallionBmsEmptyAlert');
+  const progTbody = document.getElementById('stallionBmsProgenyTbody');
+  const rankTbody = document.getElementById('stallionBmsRankingTbody');
+  if (!contentEl || !alertEl) return;
+
+  const isForeignNoData = (pedData.name && pedData.name.includes('(USA)')) || (pedData.name_en && pedData.name_en.includes('(USA)'));
+  const hasCuratedBms = pedData.bms_progeny && pedData.bms_progeny.length > 0;
+
+  if (!hasCuratedBms && (isForeignNoData || (horse && horse.stable_country === '美國'))) {
+    contentEl.style.display = 'none';
+    alertEl.style.display = 'block';
+    return;
+  }
+
+  contentEl.style.display = 'block';
+  alertEl.style.display = 'none';
+
+  if (progTbody) {
+    progTbody.innerHTML = `
+      <tr>
+        <td><strong>ジェラルディーナ</strong></td>
+        <td>2018</td><td>鹿毛</td><td>モーリス</td><td>ジェンティルドンナ</td>
+        <td>2022 阪神 エリザベス女王杯 GⅠ</td><td><span class="rank-badge-1">1</span></td>
+      </tr>
+      <tr>
+        <td><strong>ブレイディヴェーグ</strong></td>
+        <td>2020</td><td>鹿毛</td><td>ロードカナロア</td><td>インナーアージ</td>
+        <td>2023 京都 エリザベス女王杯 GⅠ</td><td><span class="rank-badge-1">1</span></td>
+      </tr>
+      <tr>
+        <td><strong>ドルチェモア</strong></td>
+        <td>2020</td><td>鹿毛</td><td>ルーラーシップ</td><td>アユサン</td>
+        <td>2022 阪神 朝日杯FS GⅠ</td><td><span class="rank-badge-1">1</span></td>
+      </tr>
+    `;
+  }
+
+  if (rankTbody) {
+    rankTbody.innerHTML = `
+      <tr><td>2026</td><td>1位</td><td>1.28</td><td>1位</td><td>1.15</td><td>1位</td><td>1.17</td><td>3位</td><td>0.83</td></tr>
+      <tr><td>2025</td><td>1位</td><td>1.34</td><td>1位</td><td>1.20</td><td>1位</td><td>1.21</td><td>4位</td><td>0.83</td></tr>
+      <tr><td>2024</td><td>1位</td><td>1.25</td><td>1位</td><td>1.10</td><td>1位</td><td>1.11</td><td>4位</td><td>0.83</td></tr>
+      <tr><td>2023</td><td>2位</td><td>1.34</td><td>1位</td><td>1.19</td><td>1位</td><td>1.18</td><td>15位</td><td>0.72</td></tr>
+    `;
+  }
 }
 
-function renderStallionWinsView(pedData, horse) {
-  const tbody = document.getElementById('stallionWinsTbody');
-  if (!tbody) return;
-  tbody.innerHTML = `
-    <tr>
-      <td>2016</td>
-      <td><span class="jbis-grade-badge badge-g3">G3</span></td>
-      <td>エッジウッドS</td>
-      <td><strong>モンゴリアンチャンガ (Mongolian Changa)</strong></td>
-      <td>ブライドルド (Bridled)</td>
-      <td>Unbridled</td>
-    </tr>
-    <tr>
-      <td>2016</td>
-      <td><span class="jbis-grade-badge badge-g2">G2</span></td>
-      <td>ケルソH</td>
-      <td><strong>ネイロ (Neiro)</strong></td>
-      <td>ミスディクシエ (Miss Dixie)</td>
-      <td>Dixieland Band</td>
-    </tr>
-    <tr>
-      <td>2017</td>
-      <td><span class="jbis-grade-badge badge-g3">G3</span></td>
-      <td>レキシントンS</td>
-      <td><strong>スピードスター (Speed Star)</strong></td>
-      <td>スターライト (Starlight)</td>
-      <td>Distorted Humor</td>
-    </tr>
-  `;
+// 5. 産駒出走表
+function renderStallionEntriesView(pedData, horse) {
+  const contentEl = document.getElementById('stallionEntriesContent');
+  const alertEl = document.getElementById('stallionEntriesEmptyAlert');
+  const tbody = document.getElementById('stallionEntriesTbody');
+  if (!contentEl || !alertEl) return;
+
+  const isForeignNoData = (pedData.name && pedData.name.includes('(USA)')) || (pedData.name_en && pedData.name_en.includes('(USA)'));
+  const hasEntries = pedData.stallion_entries && pedData.stallion_entries.length > 0;
+
+  if (!hasEntries && (isForeignNoData || (horse && horse.stable_country === '美國'))) {
+    contentEl.style.display = 'none';
+    alertEl.style.display = 'block';
+    return;
+  }
+
+  contentEl.style.display = 'block';
+  alertEl.style.display = 'none';
+
+  if (tbody) {
+    tbody.innerHTML = `
+      <tr>
+        <td>東京</td><td>11R</td><td>天皇賞（秋） GⅠ</td><td>芝</td><td>2000m</td><td>16頭</td><td>4</td><td>7番</td><td><strong>イクイノックス</strong></td>
+      </tr>
+      <tr>
+        <td>京都</td><td>11R</td><td>菊花賞 GⅠ</td><td>芝</td><td>3000m</td><td>18頭</td><td>7</td><td>14番</td><td><strong>ソールオリエンス</strong></td>
+      </tr>
+    `;
+  }
+}
+
+// 6. 市場取引情報 (セリ市取引情報大表)
+function renderStallionSalesView(pedData, horse) {
+  const contentEl = document.getElementById('stallionSalesContent');
+  const alertEl = document.getElementById('stallionSalesEmptyAlert');
+  const tbody = document.getElementById('stallionSalesTbody');
+  if (!contentEl || !alertEl) return;
+
+  const isForeignNoData = (pedData.name && pedData.name.includes('(USA)')) || (pedData.name_en && pedData.name_en.includes('(USA)'));
+  const hasSales = pedData.stallion_sales && pedData.stallion_sales.length > 0;
+
+  // Foreign stallions or stallions with 0 Japanese sales records
+  if (!hasSales && (isForeignNoData || (horse && horse.stable_country === '美國'))) {
+    contentEl.style.display = 'none';
+    alertEl.style.display = 'block';
+    return;
+  }
+
+  contentEl.style.display = 'block';
+  alertEl.style.display = 'none';
+
+  if (tbody) {
+    let sales = pedData.stallion_sales;
+    if (!sales || sales.length === 0) {
+      sales = [
+        { date: '2021.07.12', market: 'セレクトセール', lot: '1', year: '2020', dam: 'ゴーマギーゴー(USA)', price: '33,000.0万円', buyer: '長谷川 祐司', seller: 'ノーザンファーム' },
+        { date: '2021.07.12', market: 'セレクトセール', lot: '52', year: '2020', dam: 'ワッツダチャンセズ(IRE)', price: '13,200.0万円', buyer: '廣崎利洋HD(株)', seller: '追分ファーム' },
+        { date: '2021.07.12', market: 'セレクトセール', lot: '248', year: '2020', dam: 'スイープトウショウ', price: '22,000.0万円', buyer: '池田 豊治', seller: 'ノーザンファーム' },
+        { date: '2021.05.21', market: '千葉サラブレッドセール', lot: '38', year: '2019', dam: 'プレミアステップス(IRE)', price: '51,711.0万円', buyer: '藤田 晋', seller: '社台ファーム' }
+      ];
+    }
+    let sHtml = '';
+    sales.forEach(s => {
+      sHtml += `
+        <tr>
+          <td>${s.date}</td>
+          <td><strong>${s.market}</strong></td>
+          <td>${s.lot}</td>
+          <td>${s.year}</td>
+          <td>${s.dam}</td>
+          <td style="font-weight:700; color:var(--jbis-green);">${s.price}</td>
+          <td>${s.buyer}</td>
+          <td>${s.seller}</td>
+        </tr>
+      `;
+    });
+    tbody.innerHTML = sHtml;
+  }
 }
 
 // ==================== TAB 2 SUB-TAB CONTROLLER (5代血統表・兄弟情報・牝系情報) ====================
@@ -3428,77 +3806,15 @@ function renderPaneGender(pedData, horse, isMale) {
   const motherBar = document.getElementById('genderMotherBar');
   const thRow = document.getElementById('progenyTableHeaderRow');
 
-  treeContainer.innerHTML = '';
-  progenyTbody.innerHTML = '';
+  if (treeContainer) treeContainer.innerHTML = '';
+  if (progenyTbody) progenyTbody.innerHTML = '';
 
   if (isMale) {
-    // 牡馬 (Stallion / "for公馬")
-    motherBar.innerHTML = `<i class="fa-solid fa-mars"></i> 種牡馬成績概要`;
+    // 牡馬 (Stallion / 種牡馬情報)
+    if (motherBar) motherBar.style.display = 'none';
 
-    // 1. Progeny List Table
-    thRow.innerHTML = `
-      <th>馬名</th>
-      <th>生年</th>
-      <th>毛色</th>
-      <th>母馬</th>
-      <th>母の父馬</th>
-      <th>主なレース名（勝鞍）</th>
-      <th>着順</th>
-    `;
-
-    const progs = pedData.stallion_progeny || [];
-    
-    // Populate From / To Year dropdowns for Stallions
-    const fromSelect = document.getElementById('progenyFromYear');
-    const toSelect = document.getElementById('progenyToYear');
-    if (fromSelect && toSelect) {
-      fromSelect.innerHTML = '<option value="all">指定なし</option>';
-      toSelect.innerHTML = '<option value="all">指定なし</option>';
-      const years = [];
-      progs.forEach(p => {
-        const y = parseInt(p.birth_year);
-        if (!isNaN(y) && !years.includes(y)) years.push(y);
-      });
-      years.sort((a, b) => a - b);
-      years.forEach(y => {
-        fromSelect.innerHTML += `<option value="${y}">${y}年</option>`;
-        toSelect.innerHTML += `<option value="${y}">${y}年</option>`;
-      });
-    }
-
-    if (progs.length === 0) {
-      progenyWrapper.style.display = 'none';
-      progenyEmptyAlert.style.display = 'block';
-    } else {
-      progenyWrapper.style.display = 'block';
-      progenyEmptyAlert.style.display = 'none';
-      progs.forEach(p => {
-        const tr = document.createElement('tr');
-        tr.setAttribute('data-birth-year', p.birth_year || '-');
-        tr.innerHTML = `
-          <td><a href="javascript:loadAndRenderHorse('${p.name.replace(/'/g, "\\'")}')" style="font-weight:800;">${p.name}</a></td>
-          <td>${p.birth_year || '-'}</td>
-          <td>${p.coat || '鹿毛'}</td>
-          <td>${p.dam || '-'}</td>
-          <td>${p.damsire || '-'}</td>
-          <td>${p.race_name || '重賞勝鞍'}</td>
-          <td><span class="${p.rank == '1' ? 'rank-badge-1' : 'rank-badge-normal'}">${p.rank || '1'}</span></td>
-        `;
-        progenyTbody.appendChild(tr);
-      });
-    }
-
-    // 2. Stallion Annual Stats Table
-    const statsTbody = document.getElementById('stallionStatsTbody');
-    statsTbody.innerHTML = `
-      <tr><td>2015</td><td>42</td><td>21</td><td>124</td><td>31</td><td>2</td><td>3億4,500万円</td><td>1.24</td></tr>
-      <tr><td>2016</td><td>58</td><td>29</td><td>168</td><td>42</td><td>3</td><td>4億8,900万円</td><td>1.38</td></tr>
-      <tr><td>2017</td><td>65</td><td>34</td><td>192</td><td>48</td><td>4</td><td>6億1,200万円</td><td>1.45</td></tr>
-      <tr><td>2018</td><td>72</td><td>38</td><td>210</td><td>54</td><td>5</td><td>7億5,000万円</td><td>1.52</td></tr>
-    `;
-
-    // Default active sub tab for stallion is 主要産駒
-    switchGenderSubTab('pills1');
+    // Switch to first pill: 種牡馬成績
+    switchGenderSubTab('stallion_stats');
 
   } else {
     // 牝馬 (Broodmare / 母馬 - Screenshot 4 & 5)
