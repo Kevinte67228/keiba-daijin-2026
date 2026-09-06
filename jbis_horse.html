@@ -1067,17 +1067,17 @@ table, th, td { text-align: left !important; }
   <div class="header-top-bar">
     <div>国内最大級の競馬情報データベース　JBIS-サーチ（JBIS-Search）</div>
     <div style="display:flex; align-items:center;">
-      <a href="index.html?v=v03.90"><i class="fa-solid fa-book-open"></i> 返回 WP10 2026 戰略百科</a>
+      <a href="index.html?v=v03.91"><i class="fa-solid fa-book-open"></i> 返回 WP10 2026 戰略百科</a>
       <span>ヘルプ</span> ｜ <span>English</span>
       <button class="theme-switch-btn" id="themeToggleBtn" onclick="toggleJbisTheme()"><i class="fa-solid fa-circle-half-stroke"></i> 切換主題</button>
-      <span class="version-badge" id="jbisVersionBadge" style="margin-left:10px; background:rgba(34,197,94,0.18); border:1px solid #22c55e; color:#22c55e; padding:2px 8px; border-radius:12px; font-weight:800; font-size:12px; cursor:pointer;" title="點擊強制清除快取並重新加載" onclick="clearCacheAndReload()">v03.90</span>
+      <span class="version-badge" id="jbisVersionBadge" style="margin-left:10px; background:rgba(34,197,94,0.18); border:1px solid #22c55e; color:#22c55e; padding:2px 8px; border-radius:12px; font-weight:800; font-size:12px; cursor:pointer;" title="點擊強制清除快取並重新加載" onclick="clearCacheAndReload()">v03.91</span>
     </div>
   </div>
   <div class="header-main">
     <div class="logo-title-group">
       <div style="display:flex; align-items:center; gap:8px;">
         <div class="logo-title">JBIS-サーチ</div>
-        <span style="font-size:12px; color:#22c55e; font-weight:800; border:1px solid #22c55e; padding:1px 7px; border-radius:10px; background:rgba(34,197,94,0.1);">v03.90</span>
+        <span style="font-size:12px; color:#22c55e; font-weight:800; border:1px solid #22c55e; padding:1px 7px; border-radius:10px; background:rgba(34,197,94,0.1);">v03.91</span>
       </div>
       <div class="logo-sub">馬情報・5代血統表・產駒牝系完全數據庫</div>
     </div>
@@ -1320,41 +1320,41 @@ table, th, td { text-align: left !important; }
         <div class="jbis-sec-title">プロフィール</div>
         <table class="profile-grid-table">
           <tr>
-            <th>登録</th>
+            <th id="profHeadReg">登録</th>
             <td id="profReg">繁殖</td>
-            <th>品種</th>
+            <th id="profHeadBreed">品種</th>
             <td id="profBreed">サラ</td>
-            <th>性別</th>
+            <th id="profHeadSex">性別</th>
             <td id="profSex"><span style="color:#db2777; font-weight:800;">牝</span></td>
-            <th>生年月日</th>
+            <th id="profHeadBirth">生年月日</th>
             <td id="profBirth">1990.04.11</td>
           </tr>
           <tr>
-            <th>毛色</th>
+            <th id="profHeadCoat">毛色</th>
             <td id="profCoat">栗毛</td>
-            <th>所属</th>
+            <th id="profHeadStable">所属</th>
             <td id="profStable">栗東 (中央)</td>
-            <th>馬主</th>
+            <th id="profHeadOwner">馬主</th>
             <td colspan="3" id="profOwner">近藤英子</td>
           </tr>
           <tr>
-            <th>生産者</th>
+            <th id="profHeadBreeder">生産者</th>
             <td colspan="3" id="profBreeder">社台ファーム</td>
-            <th>調教師</th>
+            <th id="profHeadTrainer">調教師</th>
             <td colspan="3" id="profTrainer">中村均 (栗東)</td>
           </tr>
           <tr>
-            <th>戦績</th>
+            <th id="profHeadRecord">戦績</th>
             <td colspan="3" id="profRecord">国内：7戦2勝</td>
-            <th>総賞金</th>
+            <th id="profHeadPrize">総賞金</th>
             <td colspan="3" id="profPrize" style="font-weight:800; color:var(--jbis-green);">3,184.6万円</td>
           </tr>
         </table>
 
         <!-- 3. 年度別累計成績 (Annual Cumulative Table with Slate Th) -->
         <div class="jbis-sec-title">年度別累計成績</div>
-        <table class="jbis-data-table">
-          <thead>
+        <table class="jbis-data-table" id="annualCumulativeTable">
+          <thead id="annualCumulativeThead">
             <tr>
               <th style="width:60px; text-align:center !important;">所属</th>
               <th>年</th>
@@ -1814,10 +1814,10 @@ table, th, td { text-align: left !important; }
 </main>
 
 <!-- Load Database and Engine Scripts -->
-<script src="jbis_pedigree_db.js?v=v03.90"></script>
-<script src="breeding_only_sires_db.js?v=v03.90"></script>
-<script src="unified_horses_full_db.js?v=v03.90"></script>
-<script src="jbis_engine.js?v=v03.90"></script>
+<script src="jbis_pedigree_db.js?v=v03.91"></script>
+<script src="breeding_only_sires_db.js?v=v03.91"></script>
+<script src="unified_horses_full_db.js?v=v03.91"></script>
+<script src="jbis_engine.js?v=v03.91"></script>
 
 <script>
 
@@ -1826,15 +1826,15 @@ function clearCacheAndReload() {
     caches.keys().then(names => {
       return Promise.all(names.map(name => caches.delete(name)));
     }).then(() => {
-      window.location.href = window.location.pathname + '?v=v03.90&t=' + Date.now();
+      window.location.href = window.location.pathname + '?v=v03.91&t=' + Date.now();
     });
   } else {
-    window.location.href = window.location.pathname + '?v=v03.90&t=' + Date.now();
+    window.location.href = window.location.pathname + '?v=v03.91&t=' + Date.now();
   }
 }
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js?v=v03.90').then(reg => {
+  navigator.serviceWorker.register('sw.js?v=v03.91').then(reg => {
     reg.update();
   }).catch(err => console.warn('SW reg error:', err));
 }
@@ -2045,13 +2045,13 @@ function loadAndRenderHorse(nameOrId) {
   const isMale = (pedData.sex || '').includes('\u7261') || (pedData.sex || '').includes('\u99bf') || ((currentHorse && (currentHorse.sex || '')).includes('\u7261') || (currentHorse && (currentHorse.sex || '')).includes('\u99bf')) || !((pedData.sex || '').includes('\u725d'));
 
   if (isSpeed) {
-    document.getElementById('viewHorseName').innerText = 'Brilliant Speed(USA)';
-    document.getElementById('viewHorseEnName').innerText = 'Brilliant Speed(USA)';
+    document.getElementById('viewHorseName').innerHTML = '布利利亞 <span style="font-size:0.88em; color:#64748b; font-weight:600;">Brilliant Speed(USA)</span>';
+    document.getElementById('viewHorseEnName').innerText = 'ブリリアントスピード / Brilliant Speed(USA)';
     document.getElementById('viewHorseMetaStatus').innerHTML = `
-      供用：2020年04月現在<br>
-      死亡：2020年04月現在
+      生年: 2008年04月09日<br>
+      死没: 2016年07月13日
     `;
-    document.getElementById('breadcrumbCurrent').innerText = 'Brilliant Speed(USA)';
+    document.getElementById('breadcrumbCurrent').innerText = '布利利亞 Brilliant Speed(USA)';
   } else {
     const zhTitle = pedData.zh_name ? ` (${pedData.zh_name})` : '';
     document.getElementById('viewHorseName').innerText = pedData.name + zhTitle;
@@ -2073,7 +2073,7 @@ function loadAndRenderHorse(nameOrId) {
     if (pillsContainer) {
       pillsContainer.innerHTML = `
         <button type="button" class="tab-pill-btn" id="pillStallionGen" onclick="switchGenderSubTab('stallion_gen', event)">世代別一覧</button>
-        <button type="button" class="tab-pill-btn active" id="pillStallionAll" onclick="switchGenderSubTab('stallion_all', event)">産駒一覧(総合)</button>
+        <button type="button" class="tab-pill-btn" id="pillStallionAll" onclick="switchGenderSubTab('stallion_all', event)">産駒一覧(総合)</button>
         <button type="button" class="tab-pill-btn" id="pillStallionGraded" onclick="switchGenderSubTab('stallion_graded', event)">重賞・一覧</button>
         <button type="button" class="tab-pill-btn" id="pillStallionRank" onclick="switchGenderSubTab('stallion_rank', event)">サイアーランキング</button>
         <button type="button" class="tab-pill-btn" id="pillStallionBms" onclick="switchGenderSubTab('stallion_bms', event)">母父馬成績</button>
@@ -2123,10 +2123,10 @@ function renderPaneBasic(pedData, horse) {
 
   const cleanSireName = (sire.name || pedData.sire || '').replace(/\(.*?\)/g, '').trim();
   if (cleanSireName === 'Dynaformer' || (sire.name && sire.name.includes('Dynaformer'))) {
-    sire.name = 'Dynaformer(USA)';
+    sire.name = '強大成形 Dynaformer(USA)';
     sire.info = '黒鹿毛 1985';
-    sireSire = { name: 'Roberto(USA)', info: '鹿毛 1969' };
-    sireDam = { name: 'Andover Way(USA)', info: '黒鹿毛 1978' };
+    sireSire = { name: '羅伯托 Roberto(USA)', info: '鹿毛 1969' };
+    sireDam = { name: '安多佛道 Andover Way(USA)', info: '黒鹿毛 1978' };
   }
   
   document.getElementById('miniSireName').innerText = sire.name || (pedData.sire || '-');
@@ -2148,10 +2148,10 @@ function renderPaneBasic(pedData, horse) {
 
   const cleanDamName = (dam.name || pedData.dam || '').replace(/\(.*?\)/g, '').trim();
   if (cleanDamName === 'Speed Succeeds' || (dam.name && dam.name.includes('Speed Succeeds'))) {
-    dam.name = 'Speed Succeeds(USA)';
+    dam.name = '超速成功 Speed Succeeds(USA)';
     dam.info = '黒鹿毛 2001';
-    damSire = { name: 'Gone West(USA)', info: '鹿毛 1984' };
-    damDam = { name: 'Daijin(USA)', info: '鹿毛 1989' };
+    damSire = { name: '西港 Gone West(USA)', info: '鹿毛 1984' };
+    damDam = { name: '大臣 Daijin(USA)', info: '鹿毛 1989' };
   } else if (!damSire.name || damSire.name === '-') {
     const p = window.WP10_JBIS_ENGINE ? window.WP10_JBIS_ENGINE.getParents(cleanDamName) : {};
     if (p.sire) damSire = { name: p.sire, info: '' };
@@ -2178,7 +2178,13 @@ function renderPaneBasic(pedData, horse) {
   if (isSpeed) {
     document.getElementById('profBirth').innerText = '2008/04/09';
     document.getElementById('profCoat').innerText = '黒鹿毛';
-    document.getElementById('profStable').innerText = '未設定';
+    const thStable = document.getElementById('profHeadStable');
+    const thBreeder = document.getElementById('profHeadBreeder');
+    const thBirth = document.getElementById('profHeadBirth');
+    if (thBirth) thBirth.innerText = '生年月日';
+    if (thStable) thStable.innerText = '産地';
+    if (thBreeder) thBreeder.innerText = '生産牧場';
+    document.getElementById('profStable').innerText = '米';
     document.getElementById('profOwner').innerText = '';
     document.getElementById('profBreeder').innerText = '';
     document.getElementById('profTrainer').innerText = '[海外]';
@@ -2187,13 +2193,25 @@ function renderPaneBasic(pedData, horse) {
   } else if (isOverseas) {
     document.getElementById('profBirth').innerText = pedData.birth_year ? `${pedData.birth_year}/04/09` : '2008/04/09';
     document.getElementById('profCoat').innerText = pedData.coat || (horse && horse.coat) || '黒鹿毛';
-    document.getElementById('profStable').innerText = '未設定';
+    const thStable = document.getElementById('profHeadStable');
+    const thBreeder = document.getElementById('profHeadBreeder');
+    const thBirth = document.getElementById('profHeadBirth');
+    if (thBirth) thBirth.innerText = '生年月日';
+    if (thStable) thStable.innerText = '産地';
+    if (thBreeder) thBreeder.innerText = '生産牧場';
+    document.getElementById('profStable').innerText = '米';
     document.getElementById('profOwner').innerText = (horse && horse.owner) ? horse.owner : '';
     document.getElementById('profBreeder').innerText = (horse && horse.breeder) ? horse.breeder : '';
     document.getElementById('profTrainer').innerText = '[海外]';
     document.getElementById('profRecord').innerText = (horse && horse.reputation) ? `海外：${horse.reputation}戦` : '海外：21戦3勝';
     document.getElementById('profPrize').innerText = '0.0万円';
   } else {
+    const thStable = document.getElementById('profHeadStable');
+    const thBreeder = document.getElementById('profHeadBreeder');
+    const thBirth = document.getElementById('profHeadBirth');
+    if (thBirth) thBirth.innerText = '生年月日';
+    if (thStable) thStable.innerText = '所属';
+    if (thBreeder) thBreeder.innerText = '生産者';
     document.getElementById('profBirth').innerText = pedData.birth_year ? `${pedData.birth_year}.04.11` : '1990.04.11';
     document.getElementById('profCoat').innerText = pedData.coat || '栗毛';
     document.getElementById('profStable').innerText = (horse && horse.stable_country) ? (horse.stable_country + ' (栗東)') : '栗東 (中央)';
@@ -2221,17 +2239,33 @@ function renderPaneBasic(pedData, horse) {
 
   if (isSpeed || (pedData.overseas_races && pedData.overseas_races.length > 0)) {
     // 1:1 Overseas Cumulative Table (Screenshot 1: USA | 合計 | 21 | 3 | 3 | 7 | 8)
+    const annThead = document.getElementById('annualCumulativeThead');
+    if (annThead) {
+      annThead.innerHTML = `
+        <tr>
+          <th style="width:70px;">国</th>
+          <th style="width:60px;">年</th>
+          <th style="width:80px;">出走頭数</th>
+          <th style="width:50px;">1着</th>
+          <th style="width:50px;">2着</th>
+          <th style="width:50px;">3着</th>
+          <th style="width:50px;">着外</th>
+          <th style="width:80px;">中央</th>
+          <th>地方・その他</th>
+        </tr>
+      `;
+    }
     annualTbody.innerHTML = `
       <tr>
-        <td rowspan="2" class="side-header-cell" style="background:#0f2b3c; color:#fff; font-weight:800; text-align:center;">USA</td>
+        <td class="side-header-cell" style="background:#1e3a5f; color:#fff; font-weight:800; text-align:center;">USA</td>
         <td style="font-weight:800;">合計</td>
         <td>21</td>
         <td>3</td>
         <td>3</td>
         <td>7</td>
         <td>8</td>
-        <td>-</td>
-        <td>-</td>
+        <td></td>
+        <td></td>
       </tr>
     `;
 
@@ -2243,23 +2277,23 @@ function renderPaneBasic(pedData, horse) {
           <th style="width:70px;">国</th>
           <th>レース名</th>
           <th style="width:60px;">着順</th>
-          <th style="width:70px;">トラック</th>
+          <th style="width:75px; white-space:nowrap;">トラック</th>
           <th style="width:70px;">距離</th>
         </tr>
       `;
     }
 
-    const oRaces = pedData.overseas_races || [
-      { year: "2011", country: "USA", name: "ブルーグラスS", grade: "G1", rank: "1", track: "", dist: "9.0F" },
-      { year: "2012", country: "USA", name: "サラナクS", grade: "G3", rank: "1", track: "芝", dist: "9.0F" },
-      { year: "2011", country: "USA", name: "ジャマイカH", grade: "G1", rank: "2", track: "芝", dist: "9.0F" },
-      { year: "2011", country: "USA", name: "ベルモントS", grade: "G1", rank: "3", track: "ダ", dist: "12.0F" },
-      { year: "2011", country: "USA", name: "BCターフ", grade: "G1", rank: "3", track: "芝", dist: "12.0F" },
-      { year: "2012", country: "USA", name: "ソードダンサーS", grade: "G1", rank: "3", track: "芝", dist: "12.0F" },
-      { year: "2012", country: "USA", name: "マンノウォーS", grade: "G1", rank: "3", track: "芝", dist: "11.0F" },
-      { year: "2010", country: "USA", name: "ボウリンググリーンH", grade: "G2", rank: "3", track: "芝", dist: "11.0F" },
-      { year: "2011", country: "USA", name: "HALL OF FAME BEACH S", grade: "G2", rank: "3", track: "芝", dist: "8.5F" },
-      { year: "2011", country: "USA", name: "DANIA BEACH S", grade: "L", rank: "2", track: "芝", dist: "8.0F" }
+    const oRaces = [
+      { year: "2011", country: "USA", name_zh: "藍草錦標", name_jp: "ブルーグラスS", grade: "G1", rank: "1", track: "", dist: "9.0F" },
+      { year: "2012", country: "USA", name_zh: "薩拉納克錦標", name_jp: "サラナクS", grade: "G3", rank: "1", track: "芝", dist: "9.0F" },
+      { year: "2011", country: "USA", name_zh: "牙買加讓賽", name_jp: "ジャマイカH", grade: "G1", rank: "2", track: "芝", dist: "9.0F" },
+      { year: "2011", country: "USA", name_zh: "貝蒙錦標", name_jp: "ベルモントS", grade: "G1", rank: "3", track: "ダ", dist: "12.0F" },
+      { year: "2011", country: "USA", name_zh: "BC草地大賽", name_jp: "BCターフ", grade: "G1", rank: "3", track: "芝", dist: "12.0F" },
+      { year: "2012", country: "USA", name_zh: "劍舞者錦標", name_jp: "ソードダンサーS", grade: "G1", rank: "3", track: "芝", dist: "12.0F" },
+      { year: "2012", country: "USA", name_zh: "曼諾瓦錦標", name_jp: "マンノウォーS", grade: "G1", rank: "3", track: "芝", dist: "11.0F" },
+      { year: "2012", country: "USA", name_zh: "保齡綠錦標", name_jp: "ボウリンググリーンS", grade: "G2", rank: "3", track: "芝", dist: "11.0F" },
+      { year: "2011", country: "USA", name_zh: "名人堂錦標", name_jp: "HALL OF FAME STAKES", grade: "G2", rank: "2", track: "芝", dist: "8.5F" },
+      { year: "2011", country: "USA", name_zh: "丹尼亞海灘錦標", name_jp: "DANIA BEACH S.", grade: "L", rank: "2", track: "芝", dist: "8.0F" }
     ];
 
     let rowsHtml = '';
@@ -2279,15 +2313,15 @@ function renderPaneBasic(pedData, horse) {
         <tr>
           <td>${r.year}</td>
           <td>${r.country}</td>
-          <td><strong>${r.name}</strong> ${gradeBadge}</td>
+          <td><strong>${r.name_zh || r.name}</strong> <span style="font-size:0.85em; color:#64748b;">(${r.name_jp || r.name})</span> ${gradeBadge}</td>
           <td>${rankBadge}</td>
-          <td>${r.track || '-'}</td>
-          <td>${r.dist || '-'}</td>
+          <td>${r.track || ''}</td>
+          <td>${r.dist || ''}</td>
         </tr>
       `;
     });
     majorTbody.innerHTML = rowsHtml;
-    majorFooter.innerText = '主な勝鞍：ブルーグラスS (G1)、サラナクS (G3)';
+    majorFooter.innerText = '主な勝鞍：藍草錦標 ブルーグラスS (G1)、薩拉納克錦標 サラナクS (G3)';
 
   } else {
     // Domestic / JRA Mode

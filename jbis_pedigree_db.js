@@ -2,6 +2,7 @@ window.WP10_JBIS_CURATED_DB = {
   "0001138865": {
     "id": "0001138865",
     "name": "Brilliant Speed(USA)",
+    "name_zh": "布利利亞",
     "name_jp": "ブリリアントスピード",
     "name_en": "Brilliant Speed(USA)",
     "family_no": "F1-c",

@@ -1,4 +1,55 @@
 window.WP10_JBIS_CURATED_DB = {
+  "0001138865": {
+    "id": "0001138865",
+    "name": "Brilliant Speed(USA)",
+    "name_zh": "布利利亞",
+    "name_jp": "ブリリアントスピード",
+    "name_en": "Brilliant Speed(USA)",
+    "family_no": "F1-c",
+    "sex": "牡",
+    "birth_year": 2008,
+    "coat": "黒鹿毛",
+    "stable_country": "海外",
+    "birth_country": "美國",
+    "status_meta": "供用：2020年04月現在<br>死亡：2020年04月現在",
+    "prof_reg": "繁殖",
+    "prof_record": "海外：21戦3勝",
+    "prof_prize": "0.0万円",
+    "prof_birth": "2008/04/09",
+    "prof_trainer": "[海外]",
+    "crosses": [
+      "Hail to Reason 4S×5D",
+      "Northern Dancer 5S×5D×5D"
+    ],
+    "overseas_races": [
+      { "year": "2011", "country": "USA", "name": "ブルーグラスS", "grade": "G1", "rank": "1", "track": "", "dist": "9.0F" },
+      { "year": "2012", "country": "USA", "name": "サラナクS", "grade": "G3", "rank": "1", "track": "芝", "dist": "9.0F" },
+      { "year": "2011", "country": "USA", "name": "ジャマイカH", "grade": "G1", "rank": "2", "track": "芝", "dist": "9.0F" },
+      { "year": "2011", "country": "USA", "name": "ベルモントS", "grade": "G1", "rank": "3", "track": "ダ", "dist": "12.0F" },
+      { "year": "2011", "country": "USA", "name": "BCターフ", "grade": "G1", "rank": "3", "track": "芝", "dist": "12.0F" },
+      { "year": "2012", "country": "USA", "name": "ソードダンサーS", "grade": "G1", "rank": "3", "track": "芝", "dist": "12.0F" },
+      { "year": "2012", "country": "USA", "name": "マンノウォーS", "grade": "G1", "rank": "3", "track": "芝", "dist": "11.0F" },
+      { "year": "2010", "country": "USA", "name": "ボウリンググリーンH", "grade": "G2", "rank": "3", "track": "芝", "dist": "11.0F" },
+      { "year": "2011", "country": "USA", "name": "HALL OF FAME BEACH S", "grade": "G2", "rank": "3", "track": "芝", "dist": "8.5F" },
+      { "year": "2011", "country": "USA", "name": "DANIA BEACH S", "grade": "L", "rank": "2", "track": "芝", "dist": "8.0F" }
+    ],
+    "ancestors": [
+      { "idx": 0, "name": "Dynaformer(USA)", "id": "", "sex": "male", "info": "黒鹿毛 1985", "tags": ["血統", "競走", "種"] },
+      { "idx": 1, "name": "Roberto(USA)", "id": "", "sex": "male", "info": "鹿毛 1969", "tags": ["血統", "競走", "種"] },
+      { "idx": 2, "name": "Andover Way(USA)", "id": "", "sex": "female", "info": "黒鹿毛 1978", "tags": ["血統", "繁殖"] },
+      { "idx": 3, "name": "Hail to Reason(USA)", "id": "", "sex": "male", "info": "黒鹿毛 1958", "tags": ["血統"] },
+      { "idx": 4, "name": "Bramalea(USA)", "id": "", "sex": "female", "info": "黒鹿毛 1959", "tags": ["血統"] },
+      { "idx": 5, "name": "His Majesty(USA)", "id": "", "sex": "male", "info": "鹿毛 1968", "tags": ["血統"] },
+      { "idx": 6, "name": "On the Trail(USA)", "id": "", "sex": "female", "info": "黒鹿毛 1964", "tags": ["血統"] },
+      { "idx": 31, "name": "Speed Succeeds(USA)", "id": "", "sex": "female", "info": "黒鹿毛 2001", "tags": ["血統", "繁殖"] },
+      { "idx": 32, "name": "Gone West(USA)", "id": "", "sex": "male", "info": "鹿毛 1984", "tags": ["血統", "競走", "種"] },
+      { "idx": 33, "name": "Daijin(USA)", "id": "", "sex": "female", "info": "鹿毛 1989", "tags": ["血統", "繁殖"] },
+      { "idx": 34, "name": "Mr. Prospector(USA)", "id": "", "sex": "male", "info": "鹿毛 1970", "tags": ["血統"] },
+      { "idx": 35, "name": "Secrettame(USA)", "id": "", "sex": "female", "info": "栗毛 1978", "tags": ["血統"] },
+      { "idx": 36, "name": "Deputy Minister(CAN)", "id": "", "sex": "male", "info": "黒鹿毛 1979", "tags": ["血統"] },
+      { "idx": 37, "name": "Passing Mood(CAN)", "id": "", "sex": "female", "info": "栗毛 1978", "tags": ["血統"] }
+    ]
+  },
   "0000728492": {
     "id": "0000728492",
     "name": "カンパニー",
