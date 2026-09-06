@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.77"></script>
-<script src="core_guides_data.js?v=v03.77"></script>
-<script src="yearly_recs_db.js?v=v03.77"></script>
-<script src="horse_subtopics_data.js?v=v03.77"></script>
+<script src="master_lookup_db.js?v=v03.78"></script>
+<script src="core_guides_data.js?v=v03.78"></script>
+<script src="yearly_recs_db.js?v=v03.78"></script>
+<script src="horse_subtopics_data.js?v=v03.78"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2538,7 +2538,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.77</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.78</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="jbis_horse.html" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;">
@@ -39178,13 +39178,15 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.77"></script>
-<script src="yuruyuru_guides_db.js?v=v03.77"></script>
+<script src="unified_horses_full_db.js?v=v03.78"></script>
+<script src="yuruyuru_guides_db.js?v=v03.78"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
-<script src="nicknames_full_db.js"></script><script>
+<script src="nicknames_full_db.js"></script>
+<script src="jbis_pedigree_db.js?v=v03.78"></script>
+<script src="jbis_engine.js?v=v03.78"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -42947,166 +42949,213 @@ function formatPedigreeCell(name, zhHint) {
 }
 
 function generateVisualPedigreeTree(horse, cleanQuery) {
-    let sire = (horse.sire && horse.sire !== '-' && !horse.sire.includes('主力祖先')) ? horse.sire : '-';
-    let dam = (horse.dam && horse.dam !== '-') ? horse.dam : '-';
-    let damsire = (horse.damsire && horse.damsire !== '-' && !horse.damsire.includes('血統因子')) ? horse.damsire : '-';
-    let sire_sire = '-';
-    let sire_dam = '-';
-    let dam_dam = '-';
-    let gg = ['-', '-', '-', '-', '-', '-', '-', '-'];
-
-    // 1. Dynamic recursive ancestry discovery from full datasets
-    if (sire !== '-') {
-        const sp = findPedigreeParents(sire);
-        if (sp.sire !== '-') sire_sire = sp.sire;
-        if (sp.dam !== '-') sire_dam = sp.dam;
-    }
-    if (dam !== '-') {
-        const dp = findPedigreeParents(dam);
-        if (damsire === '-' && dp.sire !== '-') damsire = dp.sire;
-        if (dp.dam !== '-') dam_dam = dp.dam;
+    if (!horse) return '';
+    const horseName = (horse.name || horse.name_jp || cleanQuery || '').trim();
+    
+    // 1. 優先透過 JBIS Universal Engine 獲取 4 代（30 祖先）與交配/近親資料
+    let pData = null;
+    if (window.WP10_JBIS_ENGINE && window.WP10_JBIS_ENGINE.getPedigreeDetails) {
+        try {
+            pData = window.WP10_JBIS_ENGINE.getPedigreeDetails(horseName);
+        } catch (e) {
+            console.warn('[Pedigree] JBIS engine getPedigreeDetails error:', e);
+        }
     }
 
-    // Level 3 Ancestors (Great-grandparents - 8 branches)
-    if (sire_sire !== '-') {
-        const p_ss = findPedigreeParents(sire_sire);
-        gg[0] = p_ss.sire;
-        gg[1] = p_ss.dam;
-    }
-    if (sire_dam !== '-') {
-        const p_sd = findPedigreeParents(sire_dam);
-        gg[2] = p_sd.sire;
-        gg[3] = p_sd.dam;
-    }
-    if (damsire !== '-') {
-        const p_ds = findPedigreeParents(damsire);
-        gg[4] = p_ds.sire;
-        gg[5] = p_ds.dam;
-    }
-    if (dam_dam !== '-') {
-        const p_dd = findPedigreeParents(dam_dam);
-        gg[6] = p_dd.sire;
-        gg[7] = p_dd.dam;
+    // 2. 祖先陣列 (0..61)
+    const rawAncestors = (pData && pData.ancestors && pData.ancestors.length >= 46) ? pData.ancestors : [];
+    const crosses = (pData && pData.crosses) ? pData.crosses : [];
+    const familyNo = (pData && pData.family_no) ? pData.family_no : (horse.family_no || '');
+    const baseMare = (pData && pData.base_mare) ? pData.base_mare : '';
+    const isCurated = pData && pData.is_curated;
+
+    // 交叉名稱集合（用於高亮節點）
+    const crossNames = new Set();
+    crosses.forEach(c => {
+        if (c.name) {
+            crossNames.add(c.name.trim().toLowerCase());
+            crossNames.add(c.name.replace(/\([A-Z]+\)$/i, '').trim().toLowerCase());
+        }
+    });
+
+    // 輔助函式：取得指定 slot 祖先資料，支援 fallback findPedigreeParents
+    function getSlot(idx, defaultSex) {
+        let name = '';
+        let id = '';
+        let zh = '';
+        let sex = defaultSex;
+        let isCross = false;
+
+        if (rawAncestors[idx] && rawAncestors[idx].name && rawAncestors[idx].name !== '-') {
+            name = rawAncestors[idx].name;
+            id = rawAncestors[idx].id || '';
+            sex = rawAncestors[idx].sex || defaultSex;
+        }
+
+        // Fallback checks from horse object if empty
+        if (!name || name === '-') {
+            if (idx === 0 && horse.sire && horse.sire !== '-') name = horse.sire;
+            else if (idx === 31 && horse.dam && horse.dam !== '-') name = horse.dam;
+            else if (idx === 32 && horse.damsire && horse.damsire !== '-') name = horse.damsire;
+        }
+
+        // Clean names
+        if (name && (name.includes('主力祖先') || name.includes('血統因子') || name === '未詳')) name = '-';
+
+        // Chinese translation / parents lookup
+        if (name && name !== '-') {
+            if (typeof findPedigreeParents === 'function') {
+                const p = findPedigreeParents(name);
+                zh = p.zh || '';
+            }
+            const norm = name.trim().toLowerCase();
+            const normClean = name.replace(/\([A-Z]+\)$/i, '').trim().toLowerCase();
+            if (crossNames.has(norm) || crossNames.has(normClean)) {
+                isCross = true;
+            }
+        }
+
+        return { idx, name, id, zh, sex, isCross };
     }
 
-    // 2. Famous Presets (high-fidelity overrides/fallbacks for legendary overseas lines)
-    if (cleanQuery.includes('ファラオ') || cleanQuery.includes('pharoah')) {
-        sire = 'パイオニアオブザナイル';
-        dam = 'リトルプリンセスエンマ';
-        sire_sire = 'エンパイアメーカー';
-        sire_dam = 'スターオブゴーシェン';
-        damsire = 'ヤンキージェントルマン';
-        dam_dam = 'イクスクルーシヴロゼット';
-        gg = ['アンブライドルド', 'トゥーソード', 'ロードアットウォー', 'キャッスルエイト', 'ストームキャット', 'キーフライング', 'エクラット', 'ジーナロゼット'];
-    } else if (cleanQuery.includes('ディープ') || cleanQuery.includes('deep')) {
-        sire = 'サンデーサイレンス';
-        dam = 'ウインドインハーヘア';
-        sire_sire = 'Halo';
-        sire_dam = 'Wishing Well';
-        damsire = 'Alzao';
-        dam_dam = 'Burghclere';
-        gg = ['Hail to Reason', 'Cosmah', 'Understanding', 'Mountain Flower', 'Lyphard', 'Lady Rebecca', 'Busted', 'Highclere'];
-    } else if (cleanQuery.includes('ノーザンダンサー') || cleanQuery.includes('northern')) {
-        sire = 'Nearctic';
-        dam = 'Natalma';
-        sire_sire = 'Nearco';
-        sire_dam = 'Lady Angela';
-        damsire = 'Native Dancer';
-        dam_dam = 'Almahmoud';
-        gg = ['Pharos', 'Nogara', 'Hyperion', 'Sister Sarah', 'Polynesian', 'Geisha', 'Mahmoud', 'Arbitrator'];
-    } else if (cleanQuery.includes('サンデー') || cleanQuery.includes('sunday')) {
-        sire = 'Halo';
-        dam = 'Wishing Well';
-        sire_sire = 'Hail to Reason';
-        sire_dam = 'Cosmah';
-        damsire = 'Understanding';
-        dam_dam = 'Mountain Flower';
-        gg = ['Turn-to', 'Nothirdchance', 'Cosmic Bomb', 'Almahmoud', 'Promised Land', 'Pretty Kitty', 'Montparnasse', 'Edelweiss'];
+    // 3. 渲染個別單元格 HTML
+    function renderCell(slotIdx, rowspan, roleTitle, defaultSex, colWidth) {
+        const slot = getSlot(slotIdx, defaultSex);
+        const isMale = (slot.sex === 'male' || defaultSex === 'male');
+        const hasHorse = slot.name && slot.name !== '-';
+
+        const sexColor = isMale ? '#60a5fa' : '#f472b6';
+        const sexIcon = isMale ? '<span style="color:#60a5fa; margin-left:3px;">♂</span>' : '<span style="color:#f472b6; margin-left:3px;">♀</span>';
+
+        let bg = isMale ? 'rgba(59,130,246,0.18)' : 'rgba(244,114,182,0.18)';
+        let border = isMale ? 'rgba(59,130,246,0.4)' : 'rgba(244,114,182,0.4)';
+        let textColor = isMale ? '#bfdbfe' : '#fbcfe8';
+        let glow = '';
+
+        if (slot.isCross) {
+            bg = 'rgba(245,158,11,0.22)';
+            border = '#f59e0b';
+            textColor = '#fef08a';
+            glow = 'box-shadow:0 0 6px rgba(245,158,11,0.45);';
+        }
+
+        const roleHtml = `<div style="font-size:0.62rem; color:${sexColor}; font-weight:normal; margin-bottom:2px; display:flex; align-items:center; justify-content:space-between;">
+            <span>${roleTitle} ${sexIcon}</span>
+            ${slot.isCross ? '<span style="background:#f59e0b; color:#0f172a; font-size:0.55rem; font-weight:800; padding:0 3px; border-radius:2px;">★クロス</span>' : ''}
+        </div>`;
+
+        let bodyHtml = '<span style="color:#64748b;">-</span>';
+        if (hasHorse) {
+            const safeName = slot.name.replace(/'/g, "\\'");
+            const zhHtml = slot.zh && slot.zh !== slot.name ? `<div style="font-size:0.60rem; color:#fbbf24; font-weight:normal; line-height:1.1; margin-top:2px;">${slot.zh}</div>` : '';
+            bodyHtml = `
+                <a href="javascript:void(0);" 
+                   onclick="event.stopPropagation(); window.openNativeHorseDossier('${safeName}'); return false;" 
+                   title="點擊調閱【${safeName}】詳細馬歷與血統檔案"
+                   style="color:inherit; text-decoration:underline; text-decoration-color:rgba(56,189,248,0.4); cursor:pointer; font-weight:bold; word-break:break-word; line-height:1.2; display:inline-block;">
+                    ${slot.name}
+                </a>
+                ${zhHtml}
+            `;
+        }
+
+        const pad = rowspan >= 4 ? 'padding:8px 7px;' : (rowspan === 2 ? 'padding:5px 6px;' : 'padding:4px 5px;');
+        const widthStyle = colWidth ? `width:${colWidth};` : '';
+
+        return `<td rowspan="${rowspan}" style="${widthStyle} background:${bg}; border:1px solid ${border}; color:${textColor}; ${pad} border-radius:5px; vertical-align:middle; ${glow} transition:all 0.15s ease;">
+            ${roleHtml}
+            ${bodyHtml}
+        </td>`;
     }
 
-    // Clean any lingering non-horse placeholder words
-    const sanitize = (val) => (!val || val.includes('主力祖先') || val.includes('血統因子')) ? '-' : val;
-    sire = sanitize(sire);
-    dam = sanitize(dam);
-    sire_sire = sanitize(sire_sire);
-    sire_dam = sanitize(sire_dam);
-    damsire = sanitize(damsire);
-    dam_dam = sanitize(dam_dam);
-    for (let g = 0; g < 8; g++) gg[g] = sanitize(gg[g]);
+    // 4. 定義 16 列的結構 (Row 0..7 為父側，Row 8..15 為母側)
+    const rowsDef = [
+        // Row 0
+        [[0, 8, '父 (Sire)', 'male', '26%'], [1, 4, '祖父 (父父)', 'male', '25%'], [3, 2, '曾祖父', 'male', '25%'], [7, 1, '4代祖', 'male', '24%']],
+        // Row 1
+        [[8, 1, '4代祖', 'female']],
+        // Row 2
+        [[4, 2, '曾祖母', 'female'], [9, 1, '4代祖', 'male']],
+        // Row 3
+        [[10, 1, '4代祖', 'female']],
+        // Row 4
+        [[2, 4, '祖母 (父母)', 'female'], [5, 2, '曾祖父', 'male'], [11, 1, '4代祖', 'male']],
+        // Row 5
+        [[12, 1, '4代祖', 'female']],
+        // Row 6
+        [[6, 2, '曾祖母', 'female'], [13, 1, '4代祖', 'male']],
+        // Row 7
+        [[14, 1, '4代祖', 'female']],
+
+        // Row 8 (Dam side)
+        [[31, 8, '母 (Dam)', 'female', '26%'], [32, 4, '外祖父 (母父)', 'male', '25%'], [34, 2, '曾祖父', 'male', '25%'], [38, 1, '4代祖', 'male', '24%']],
+        // Row 9
+        [[39, 1, '4代祖', 'female']],
+        // Row 10
+        [[35, 2, '曾祖母', 'female'], [40, 1, '4代祖', 'male']],
+        // Row 11
+        [[41, 1, '4代祖', 'female']],
+        // Row 12
+        [[33, 4, '外祖母 (母母)', 'female'], [36, 2, '曾祖父', 'male'], [42, 1, '4代祖', 'male']],
+        // Row 13
+        [[43, 1, '4代祖', 'female']],
+        // Row 14
+        [[37, 2, '曾祖母', 'female'], [44, 1, '4代祖', 'male']],
+        // Row 15
+        [[45, 1, '4代祖', 'female']]
+    ];
+
+    let tbodyRowsHtml = '';
+    for (let r = 0; r < rowsDef.length; r++) {
+        tbodyRowsHtml += '<tr>';
+        const cells = rowsDef[r];
+        for (let c = 0; c < cells.length; c++) {
+            const item = cells[c];
+            tbodyRowsHtml += renderCell(item[0], item[1], item[2], item[3], item[4]);
+        }
+        tbodyRowsHtml += '</tr>';
+    }
+
+    // 5. 頂部徽章條：近親交配 (Crosses) 與 牝系 (Family No)
+    let crossBadges = '';
+    if (crosses && crosses.length > 0) {
+        const cItems = crosses.map(c => `<span style="background:rgba(245,158,11,0.25); border:1px solid #f59e0b; color:#fbbf24; padding:2px 6px; border-radius:4px; font-size:0.68rem; font-weight:bold; white-space:nowrap;"><i class="fa-solid fa-bolt"></i> ${c.name} ${c.cross || ''} (${c.rate || ''})</span>`).join(' ');
+        crossBadges = `<div style="display:flex; flex-wrap:wrap; gap:5px; align-items:center; margin-bottom:8px;">
+            <span style="font-size:0.72rem; color:#94a3b8; font-weight:bold;">【近親交配 (Inbreeding)】:</span>
+            ${cItems}
+        </div>`;
+    }
+
+    let familyNoBadge = '';
+    if (familyNo) {
+        familyNoBadge = `<span style="background:rgba(56,189,248,0.18); border:1px solid rgba(56,189,248,0.45); color:#38bdf8; padding:2px 8px; border-radius:4px; font-size:0.72rem; font-weight:bold; white-space:nowrap;"><i class="fa-solid fa-code-branch"></i> 牝系: ${familyNo}${baseMare ? ' (' + baseMare + '族)' : ''}</span>`;
+    }
+
+    const curatedBadge = isCurated ? `<span style="background:rgba(16,185,129,0.2); border:1px solid #10b981; color:#34d399; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;"><i class="fa-solid fa-circle-check"></i> JBIS 官方校訂數據</span>` : '';
+
+    const safeTargetName = (horse.name_jp || horse.name || horseName || '').trim();
 
     return `
     <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border-color); border-radius:10px; padding:12px; margin-bottom:16px;">
-        <div style="font-size:0.85rem; font-weight:bold; color:var(--accent-color); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
-            <i class="fa-solid fa-dna"></i> ◤ 血統情報 (4 代血統譜動態關聯矩陣圖)
+        <div style="font-size:0.88rem; font-weight:bold; color:var(--accent-color); margin-bottom:10px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px;">
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                <span><i class="fa-solid fa-dna"></i> ◤ 血統情報 (4 代血統譜視覺關聯矩陣 · 30 祖先樹)</span>
+                ${familyNoBadge}
+                ${curatedBadge}
+            </div>
+            <a href="jbis_horse.html?name=${encodeURIComponent(safeTargetName)}" target="_blank" 
+               class="btn btn-sm" 
+               style="background:linear-gradient(135deg, #0284c7, #0369a1); color:#ffffff; font-size:0.75rem; font-weight:bold; border-radius:5px; padding:4px 10px; text-decoration:none; display:inline-flex; align-items:center; gap:5px; box-shadow:0 2px 6px rgba(2,132,199,0.35);">
+                <i class="fa-solid fa-magnifying-glass-chart"></i> JBIS 5代血統/家族樹 ↗
+            </a>
         </div>
+
+        ${crossBadges}
         
-        <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
-            <table style="width:100%; min-width:540px; border-collapse:separate; border-spacing:3px; font-size:0.75rem; text-align:left;">
+        <div style="overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:6px; border:1px solid rgba(56,189,248,0.15);">
+            <table style="width:100%; min-width:680px; border-collapse:separate; border-spacing:3px; font-size:0.75rem; text-align:left;">
                 <tbody>
-                    <tr>
-                        <td rowspan="4" style="background:rgba(59,130,246,0.3); border:1px solid rgba(59,130,246,0.6); color:#93c5fd; padding:10px 8px; border-radius:6px; font-weight:bold; width:33%; vertical-align:middle;">
-                            <span style="font-size:0.68rem; color:#60a5fa; font-weight:normal;">父 (Sire)</span><br/>
-                            <strong>${formatPedigreeCell(sire, horse.sire_zh || '')}</strong>
-                        </td>
-                        <td rowspan="2" style="background:rgba(59,130,246,0.25); border:1px solid rgba(59,130,246,0.5); color:#bfdbfe; padding:6px 8px; border-radius:6px; font-weight:bold; width:33%; vertical-align:middle;">
-                            <span style="font-size:0.68rem; color:#60a5fa; font-weight:normal;">祖父 (父父)</span><br/>
-                            ${formatPedigreeCell(sire_sire)}
-                        </td>
-                        <td style="background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:#dbeafe; padding:4px 6px; border-radius:4px; width:34%; vertical-align:middle;">
-                            <span style="font-size:0.65rem; color:#60a5fa; font-weight:normal;">曾祖父</span> ${formatPedigreeCell(gg[0])}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="background:rgba(244,114,182,0.2); border:1px solid rgba(244,114,182,0.4); color:#fbcfe8; padding:4px 6px; border-radius:4px; vertical-align:middle;">
-                            <span style="font-size:0.65rem; color:#f472b6; font-weight:normal;">曾祖母</span> ${formatPedigreeCell(gg[1])}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2" style="background:rgba(244,114,182,0.25); border:1px solid rgba(244,114,182,0.5); color:#fbcfe8; padding:6px 8px; border-radius:6px; font-weight:bold; vertical-align:middle;">
-                            <span style="font-size:0.68rem; color:#f472b6; font-weight:normal;">祖母 (父母)</span><br/>
-                            ${formatPedigreeCell(sire_dam)}
-                        </td>
-                        <td style="background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:#dbeafe; padding:4px 6px; border-radius:4px; vertical-align:middle;">
-                            <span style="font-size:0.65rem; color:#60a5fa; font-weight:normal;">曾祖父</span> ${formatPedigreeCell(gg[2])}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="background:rgba(244,114,182,0.2); border:1px solid rgba(244,114,182,0.4); color:#fbcfe8; padding:4px 6px; border-radius:4px; vertical-align:middle;">
-                            <span style="font-size:0.65rem; color:#f472b6; font-weight:normal;">曾祖母</span> ${formatPedigreeCell(gg[3])}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="4" style="background:rgba(244,114,182,0.3); border:1px solid rgba(244,114,182,0.6); color:#fbcfe8; padding:10px 8px; border-radius:6px; font-weight:bold; vertical-align:middle;">
-                            <span style="font-size:0.68rem; color:#f472b6; font-weight:normal;">母 (Dam)</span><br/>
-                            <strong>${formatPedigreeCell(dam, horse.dam_zh || '')}</strong>
-                        </td>
-                        <td rowspan="2" style="background:rgba(59,130,246,0.25); border:1px solid rgba(59,130,246,0.5); color:#bfdbfe; padding:6px 8px; border-radius:6px; font-weight:bold; width:33%; vertical-align:middle;">
-                            <span style="font-size:0.68rem; color:#60a5fa; font-weight:normal;">外祖父 (母父)</span><br/>
-                            ${formatPedigreeCell(damsire)}
-                        </td>
-                        <td style="background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:#dbeafe; padding:4px 6px; border-radius:4px; vertical-align:middle;">
-                            <span style="font-size:0.65rem; color:#60a5fa; font-weight:normal;">曾祖父</span> ${formatPedigreeCell(gg[4])}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="background:rgba(244,114,182,0.2); border:1px solid rgba(244,114,182,0.4); color:#fbcfe8; padding:4px 6px; border-radius:4px; vertical-align:middle;">
-                            <span style="font-size:0.65rem; color:#f472b6; font-weight:normal;">曾祖母</span> ${formatPedigreeCell(gg[5])}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2" style="background:rgba(244,114,182,0.25); border:1px solid rgba(244,114,182,0.5); color:#fbcfe8; padding:6px 8px; border-radius:6px; font-weight:bold; vertical-align:middle;">
-                            <span style="font-size:0.68rem; color:#f472b6; font-weight:normal;">外祖母 (母母)</span><br/>
-                            ${formatPedigreeCell(dam_dam)}
-                        </td>
-                        <td style="background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:#dbeafe; padding:4px 6px; border-radius:4px; vertical-align:middle;">
-                            <span style="font-size:0.65rem; color:#60a5fa; font-weight:normal;">曾祖父</span> ${formatPedigreeCell(gg[6])}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="background:rgba(244,114,182,0.2); border:1px solid rgba(244,114,182,0.4); color:#fbcfe8; padding:4px 6px; border-radius:4px; vertical-align:middle;">
-                            <span style="font-size:0.65rem; color:#f472b6; font-weight:normal;">曾祖母</span> ${formatPedigreeCell(gg[7])}
-                        </td>
-                    </tr>
+                    ${tbodyRowsHtml}
                 </tbody>
             </table>
         </div>
