@@ -200,6 +200,10 @@
       for (let i = 0; i < variants.length; i++) {
         if (this.horseMap.has(variants[i])) return this.horseMap.get(variants[i]);
       }
+      
+      for (const [key, h] of this.horseMap.entries()) {
+        if (key.includes(q) || q.includes(key)) return h;
+      }
       return null;
     },
 

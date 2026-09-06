@@ -2538,7 +2538,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.78</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.79</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="jbis_horse.html" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;">
@@ -39185,8 +39185,8 @@ window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v03.78"></script>
-<script src="jbis_engine.js?v=v03.78"></script><script>
+<script src="jbis_pedigree_db.js?v=v03.79"></script>
+<script src="jbis_engine.js?v=v03.79"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -42952,7 +42952,7 @@ function generateVisualPedigreeTree(horse, cleanQuery) {
     if (!horse) return '';
     const horseName = (horse.name || horse.name_jp || cleanQuery || '').trim();
     
-    // 1. 優先透過 JBIS Universal Engine 獲取 4 代（30 祖先）與交配/近親資料
+    // 1. 優先透過 JBIS Universal Engine 獲取 4 代（30 祖先）與雙優先級補全
     let pData = null;
     if (window.WP10_JBIS_ENGINE && window.WP10_JBIS_ENGINE.getPedigreeDetails) {
         try {
@@ -42978,25 +42978,30 @@ function generateVisualPedigreeTree(horse, cleanQuery) {
         }
     });
 
-    // 輔助函式：取得指定 slot 祖先資料，支援 fallback findPedigreeParents
+    let fallbackCount = 0;
+    let totalFilled = 0;
+
+    // 輔助函式：取得指定 slot 祖先資料，支援雙優先級補全
     function getSlot(idx, defaultSex) {
         let name = '';
         let id = '';
         let zh = '';
         let sex = defaultSex;
         let isCross = false;
+        let source = 'jbis';
 
         if (rawAncestors[idx] && rawAncestors[idx].name && rawAncestors[idx].name !== '-') {
             name = rawAncestors[idx].name;
             id = rawAncestors[idx].id || '';
             sex = rawAncestors[idx].sex || defaultSex;
+            source = rawAncestors[idx].source || (isCurated ? 'jbis' : 'unified');
         }
 
         // Fallback checks from horse object if empty
         if (!name || name === '-') {
-            if (idx === 0 && horse.sire && horse.sire !== '-') name = horse.sire;
-            else if (idx === 31 && horse.dam && horse.dam !== '-') name = horse.dam;
-            else if (idx === 32 && horse.damsire && horse.damsire !== '-') name = horse.damsire;
+            if (idx === 0 && horse.sire && horse.sire !== '-') { name = horse.sire; source = 'fallback'; }
+            else if (idx === 31 && horse.dam && horse.dam !== '-') { name = horse.dam; source = 'fallback'; }
+            else if (idx === 32 && horse.damsire && horse.damsire !== '-') { name = horse.damsire; source = 'fallback'; }
         }
 
         // Clean names
@@ -43004,6 +43009,9 @@ function generateVisualPedigreeTree(horse, cleanQuery) {
 
         // Chinese translation / parents lookup
         if (name && name !== '-') {
+            totalFilled++;
+            if (source === 'fallback' || source === 'original_db') fallbackCount++;
+
             if (typeof findPedigreeParents === 'function') {
                 const p = findPedigreeParents(name);
                 zh = p.zh || '';
@@ -43015,7 +43023,7 @@ function generateVisualPedigreeTree(horse, cleanQuery) {
             }
         }
 
-        return { idx, name, id, zh, sex, isCross };
+        return { idx, name, id, zh, sex, isCross, source };
     }
 
     // 3. 渲染個別單元格 HTML
@@ -43039,8 +43047,11 @@ function generateVisualPedigreeTree(horse, cleanQuery) {
             glow = 'box-shadow:0 0 6px rgba(245,158,11,0.45);';
         }
 
+        const isFallback = (slot.source === 'fallback' || slot.source === 'original_db');
+        const sourceBadge = isFallback ? '<span title="由舊有大資料庫補全" style="font-size:0.52rem; background:rgba(99,102,241,0.25); color:#a5b4fc; border:1px solid rgba(99,102,241,0.5); padding:0 2px; border-radius:2px; margin-left:3px;">補</span>' : '';
+
         const roleHtml = `<div style="font-size:0.62rem; color:${sexColor}; font-weight:normal; margin-bottom:2px; display:flex; align-items:center; justify-content:space-between;">
-            <span>${roleTitle} ${sexIcon}</span>
+            <span>${roleTitle} ${sexIcon}${sourceBadge}</span>
             ${slot.isCross ? '<span style="background:#f59e0b; color:#0f172a; font-size:0.55rem; font-weight:800; padding:0 3px; border-radius:2px;">★クロス</span>' : ''}
         </div>`;
 
@@ -43048,10 +43059,11 @@ function generateVisualPedigreeTree(horse, cleanQuery) {
         if (hasHorse) {
             const safeName = slot.name.replace(/'/g, "\\'");
             const zhHtml = slot.zh && slot.zh !== slot.name ? `<div style="font-size:0.60rem; color:#fbbf24; font-weight:normal; line-height:1.1; margin-top:2px;">${slot.zh}</div>` : '';
+            const sourceTitle = isFallback ? '【舊有資料庫補全】點擊調閱詳細檔案' : (slot.source === 'jbis' ? '【JBIS 官方數據】點擊調閱詳細檔案' : '點擊調閱詳細馬歷與血統檔案');
             bodyHtml = `
                 <a href="javascript:void(0);" 
                    onclick="event.stopPropagation(); window.openNativeHorseDossier('${safeName}'); return false;" 
-                   title="點擊調閱【${safeName}】詳細馬歷與血統檔案"
+                   title="${sourceTitle}"
                    style="color:inherit; text-decoration:underline; text-decoration-color:rgba(56,189,248,0.4); cursor:pointer; font-weight:bold; word-break:break-word; line-height:1.2; display:inline-block;">
                     ${slot.name}
                 </a>
@@ -43131,7 +43143,8 @@ function generateVisualPedigreeTree(horse, cleanQuery) {
         familyNoBadge = `<span style="background:rgba(56,189,248,0.18); border:1px solid rgba(56,189,248,0.45); color:#38bdf8; padding:2px 8px; border-radius:4px; font-size:0.72rem; font-weight:bold; white-space:nowrap;"><i class="fa-solid fa-code-branch"></i> 牝系: ${familyNo}${baseMare ? ' (' + baseMare + '族)' : ''}</span>`;
     }
 
-    const curatedBadge = isCurated ? `<span style="background:rgba(16,185,129,0.2); border:1px solid #10b981; color:#34d399; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;"><i class="fa-solid fa-circle-check"></i> JBIS 官方校訂數據</span>` : '';
+    const curatedBadge = isCurated ? `<span style="background:rgba(16,185,129,0.2); border:1px solid #10b981; color:#34d399; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;"><i class="fa-solid fa-circle-check"></i> JBIS 官方校訂</span>` : '';
+    const fallbackBadge = fallbackCount > 0 ? `<span style="background:rgba(99,102,241,0.2); border:1px solid #6366f1; color:#a5b4fc; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;"><i class="fa-solid fa-layer-group"></i> 舊庫深度互補 (${fallbackCount} 祖先)</span>` : '';
 
     const safeTargetName = (horse.name_jp || horse.name || horseName || '').trim();
 
@@ -43142,6 +43155,7 @@ function generateVisualPedigreeTree(horse, cleanQuery) {
                 <span><i class="fa-solid fa-dna"></i> ◤ 血統情報 (4 代血統譜視覺關聯矩陣 · 30 祖先樹)</span>
                 ${familyNoBadge}
                 ${curatedBadge}
+                ${fallbackBadge}
             </div>
             <a href="jbis_horse.html?name=${encodeURIComponent(safeTargetName)}" target="_blank" 
                class="btn btn-sm" 
