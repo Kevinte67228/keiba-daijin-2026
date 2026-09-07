@@ -1,12 +1,13 @@
 {
-  "current_version": "v03.98",
-  "last_backup_archived": "v03.95",
+  "current_version": "v03.99",
+  "last_backup_archived": "v03.98",
   "retained_backups": [
-    "v03.91",
-    "v03.92",
-    "v03.93",
     "v03.94",
-    "v03.95"
+    "v03.95",
+    "v03.96",
+    "v03.97",
+    "v03.98"
   ],
-  "description": "Universal Table Sorting 100% full coverage, sub-tools PWA sync to v03.98, netkeiba dual external lookup & 2026 new features fast-track"
+  "description": "Pillar 2 Breeding Master System Upgrade: 6 Beginner Guide SOP Modules, 4 Interactive Calculators (Breeding Wizard, +40 Explosion Block Builder, 16-Ancestor Sandtable, Upgraded Monte Carlo with Mare Vitality & Hidden Ko-Dashi), 1968-2026 Golden Pairs Table & 10 Taboos Checklist, v03.99 PWA cache sync",
+  "last_updated": "2026-09-07"
 }

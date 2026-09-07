@@ -26,6 +26,8 @@
       this.curatedParentMap.set('Daijin', { sire: 'Deputy Minister(CAN)', dam: 'Passing Mood(CAN)', source: 'jbis_curated' });
       this.curatedParentMap.set('Daijin(USA)', { sire: 'Deputy Minister(CAN)', dam: 'Passing Mood(CAN)', source: 'jbis_curated' });
       this.curatedParentMap.set('Dynaformer', { sire: 'Roberto(USA)', dam: 'Andover Way(USA)', source: 'jbis_curated' });
+    this.curatedParentMap.set('Andover Way', { sire: 'His Majesty(USA)', dam: 'On the Trail(USA)', source: 'jbis_curated' });
+    this.curatedParentMap.set('Andover Way(USA)', { sire: 'His Majesty(USA)', dam: 'On the Trail(USA)', source: 'jbis_curated' });
       this.curatedParentMap.set('Dynaformer(USA)', { sire: 'Roberto(USA)', dam: 'Andover Way(USA)', source: 'jbis_curated' });
 
 
@@ -296,6 +298,11 @@
       if (existing.dam) {
         if (!this.damProgenyMap.has(existing.dam)) this.damProgenyMap.set(existing.dam, []);
         this.damProgenyMap.get(existing.dam).push(existing);
+        const cleanDam = existing.dam.replace(/\(.*?\)/g, '').trim();
+        if (cleanDam && cleanDam !== existing.dam) {
+          if (!this.damProgenyMap.has(cleanDam)) this.damProgenyMap.set(cleanDam, []);
+          this.damProgenyMap.get(cleanDam).push(existing);
+        }
       }
     },
 
@@ -865,7 +872,7 @@
         coat: horse.coat || '鹿毛',
         birth_country: horse.birth_country || (horse.region === '海外' ? '海外' : '日本'),
         stable_country: horse.stable_country || (horse.region === '海外' ? '海外' : '中央'),
-        country_code: horse.country_code || (horse.region === '海外' ? 'USA' : 'JPN'),
+        country_code: horse.country_code || ((horse.region === '海外' || (horse.birth_country && (horse.birth_country.includes('米') || horse.birth_country.includes('USA')))) ? 'USA' : 'JPN'),
         prof_reg: isMale ? (horse.region === '海外' ? '繁殖' : '種牡馬') : '繁殖',
         prof_breed: 'サラ',
         prof_owner: horse.owner || '',

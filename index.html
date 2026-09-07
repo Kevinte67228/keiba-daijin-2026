@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.98"></script>
-<script src="core_guides_data.js?v=v03.98"></script>
-<script src="yearly_recs_db.js?v=v03.98"></script>
-<script src="horse_subtopics_data.js?v=v03.98"></script>
+<script src="master_lookup_db.js?v=v03.99"></script>
+<script src="core_guides_data.js?v=v03.99"></script>
+<script src="yearly_recs_db.js?v=v03.99"></script>
+<script src="horse_subtopics_data.js?v=v03.99"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2538,7 +2538,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.98</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.99</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="https://www.jbis.or.jp/horse/" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;" title="前往日本 JBIS Search 官方原站進行即時權威血統與馬情報檢索">
@@ -6547,6 +6547,197 @@ button.chip-btn.active {
             配種（種付け）介面顯示 <strong>総合評価</strong>、<strong>爆發力 (爆発力)</strong>、<strong>危険度</strong> 與隱藏參數 <strong>仔出 (仔出し)</strong>。幼駒能力由父母基礎平均傳承（速度約 2/3）與爆發力 (爆発力)隨機抽樣值共同決定。
           </div>
 </div>
+
+<!-- ==================== 【新手按圖索驥指南】5 分鐘配種 3 步極簡決策樹 (SOP) + 神器一/二 ==================== -->
+<div class="manual-replica-card" style="background: linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)) !important; border: 1px solid rgba(56,189,248,0.35) !important; border-radius: 12px !important; padding: 22px !important; margin-bottom: 24px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.35) !important;">
+  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(56,189,248,0.25); padding-bottom:12px; margin-bottom:18px;">
+    <h3 style="font-size:1.18rem; color:#38bdf8; margin:0; display:flex; align-items:center; gap:10px; font-weight:800;">
+      <i class="fa-solid fa-compass" style="color:#38bdf8;"></i> 【新手按圖索驥指南】5 分鐘配種 3 步極簡決策樹 (SOP)
+    </h3>
+    <span class="badge badge-cyan" style="font-size:0.82rem; padding:4px 12px; font-weight:700;">初學者必備</span>
+  </div>
+  <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.75; margin-bottom:18px;">
+    進入每年 5 月 1 週配種期（種付け），面對上千頭種公馬與牧場繁育母馬群，新手玩家切忌盲目摸索。遵循以下 <strong>「一檢危險、二定爆發、三補弱點」</strong> 3 步黃金決策樹，即可規避 95% 以上之遺傳殘疾與近親暴死，穩健催生重賞冠軍名駒！
+  </p>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:16px; margin-bottom:22px;">
+    <div style="background:rgba(15,23,42,0.75); border:1px solid rgba(239,68,68,0.35); border-left:4px solid #ef4444; padding:16px; border-radius:8px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+        <strong style="color:#f87171; font-size:0.96rem;"><i class="fa-solid fa-triangle-exclamation"></i> 步驟 ①：危險度先決 (危険度チェック)</strong>
+        <span class="pill pill-danger" style="font-size:0.75rem;">一票否決制</span>
+      </div>
+      <p style="font-size:0.84rem; color:#e2e8f0; line-height:1.65; margin:0;">
+        • <strong>危險度 0 ~ 3</strong>：安全交配綠色區間，可安心放行。<br/>
+        • <strong>危險度 4+</strong>：極度危險！近親濃血引發副屬性暴跌、體質劣化與「気性難 (脾氣暴躁)」。<br/>
+        • <strong>唯一豁免例外</strong>：組合若達成 <strong>【6~8 親系血脈活性化配合】</strong>，可強制大幅抵消危險度，此時方能破例通融！
+      </p>
+    </div>
+    <div style="background:rgba(15,23,42,0.75); border:1px solid rgba(245,158,11,0.35); border-left:4px solid #f59e0b; padding:16px; border-radius:8px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+        <strong style="color:#fbbf24; font-size:0.96rem;"><i class="fa-solid fa-bolt"></i> 步驟 ②：爆發力門檻 (爆発力ターゲット)</strong>
+        <span class="pill pill-power" style="font-size:0.75rem;">速度加成引擎</span>
+      </div>
+      <p style="font-size:0.84rem; color:#e2e8f0; line-height:1.65; margin:0;">
+        • <strong>爆發力 15 ~ 22</strong>：及格及格線。保證產駒具備條件戰出走與地方交流重賞能力。<br/>
+        • <strong>爆發力 23 ~ 32</strong>：黃金推薦線。中央 G2/G3 重賞主力，具備直衝一般 G1 領獎台潛能。<br/>
+        • <strong>爆發力 35+</strong>：神話殿堂級。爭逐經典三冠 (Classic Triple Crown)、凱旋門賞必備之超大物階梯！
+      </p>
+    </div>
+    <div style="background:rgba(15,23,42,0.75); border:1px solid rgba(16,185,129,0.35); border-left:4px solid #10b981; padding:16px; border-radius:8px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+        <strong style="color:#34d399; font-size:0.96rem;"><i class="fa-solid fa-shield-halved"></i> 步驟 ③：相補評價與弱點回避</strong>
+        <span class="pill pill-safe" style="font-size:0.75rem;">綜合素質均衡</span>
+      </div>
+      <p style="font-size:0.84rem; color:#e2e8f0; line-height:1.65; margin:0;">
+        • <strong>総合評価</strong>：優先選擇 <strong>S 級或 A 級</strong>，保證力量、勝負根性與瞬發力傳承穩定。<br/>
+        • <strong>避開致命雙弱</strong>：雙親切忌同為 <strong>「精神力 D」或「健康 D」</strong>，否則遠征暴死或產駒動輒骨折。<br/>
+        • <strong>母馬高齡風險</strong>：牝馬 16 歲以上未受胎率劇增，19 歲後產駒成長極限將產生隱性扣減。
+      </p>
+    </div>
+  </div>
+
+  <!-- 神器一：新手極速配種決策精靈 (Breeding Wizard) -->
+  <div style="background:rgba(15,23,42,0.85); border:1px solid rgba(139,92,246,0.4); border-radius:10px; padding:20px; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+      <h4 style="margin:0; font-size:1.08rem; color:#a78bfa; display:flex; align-items:center; gap:8px; font-weight:800;">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> 🧙‍♂️ 神器一：新手極速配種決策精靈 (即開即算)
+      </h4>
+      <span style="font-size:0.82rem; color:#94a3b8;">拖動數值即時評估交配成功率、危險評級與 AI 戰略評語</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; align-items:stretch;">
+      <div style="display:flex; flex-direction:column; gap:12px; justify-content:center;">
+        <div>
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:4px;">
+            <label style="color:#cbd5e1; font-weight:700;">預估爆發力 (爆発力)：</label>
+            <span id="wizExpVal" style="color:#f59e0b; font-weight:800; font-size:1.05rem;">+26</span>
+          </div>
+          <input type="range" id="wizExpInput" min="0" max="45" value="26" style="width:100%; accent-color:#f59e0b;" oninput="window.updateBreedingWizard()"/>
+        </div>
+        <div>
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:4px;">
+            <label style="color:#cbd5e1; font-weight:700;">近親危險度 (危険度)：</label>
+            <span id="wizRiskVal" style="color:#38bdf8; font-weight:800; font-size:1.05rem;">1</span>
+          </div>
+          <input type="range" id="wizRiskInput" min="0" max="8" value="1" style="width:100%; accent-color:#38bdf8;" oninput="window.updateBreedingWizard()"/>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+          <div>
+            <label style="font-size:0.8rem; color:#cbd5e1; font-weight:700; display:block; margin-bottom:4px;">総合評価：</label>
+            <select id="wizRatingSelect" style="width:100%; padding:6px 8px; background:rgba(30,41,59,0.85); border:1px solid rgba(56,189,248,0.3); border-radius:6px; color:#fff; font-size:0.84rem;" onchange="window.updateBreedingWizard()">
+              <option value="S">S 級 (超絕平衡)</option>
+              <option value="A" selected>A 級 (優秀首選)</option>
+              <option value="B">B 級 (普通平穩)</option>
+              <option value="C">C 級 (偏科劣勢)</option>
+              <option value="D">D 級 (嚴重複雜缺陷)</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:0.8rem; color:#cbd5e1; font-weight:700; display:block; margin-bottom:4px;">母馬年齡 (歲)：</label>
+            <input type="number" id="wizMareAge" min="4" max="23" value="9" style="width:100%; padding:5px 8px; background:rgba(30,41,59,0.85); border:1px solid rgba(56,189,248,0.3); border-radius:6px; color:#fff; font-size:0.84rem;" onchange="window.updateBreedingWizard()"/>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px; margin-top:2px; font-size:0.82rem; color:#cbd5e1;">
+          <label style="cursor:pointer; display:flex; align-items:center; gap:6px;"><input type="checkbox" id="wizCheckDoubleWeak" onchange="window.updateBreedingWizard()"/> ⚠️ 公母雙方精神力或健康雙 D (致命雙弱重疊)</label>
+          <label style="cursor:pointer; display:flex; align-items:center; gap:6px;"><input type="checkbox" id="wizCheckSameSire" onchange="window.updateBreedingWizard()"/> 🚫 雙方完全同父 (種付不可禁忌)</label>
+          <label style="cursor:pointer; display:flex; align-items:center; gap:6px;"><input type="checkbox" id="wizCheckActivation" onchange="window.updateBreedingWizard()"/> 🧬 成立 6~8 親系血脈活性化 (化解近親危險)</label>
+          <label style="cursor:pointer; display:flex; align-items:center; gap:6px;"><input type="checkbox" id="wizCheckVitality" onchange="window.updateBreedingWizard()"/> 🌟 牝馬處於「活力增強 / 永續活力」高光狀態</label>
+        </div>
+      </div>
+      <!-- 決策診斷輸出面板 -->
+      <div id="wizVerdictCard" style="background:rgba(30,41,59,0.9); border:2px solid #10b981; border-radius:10px; padding:18px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+        <div>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+            <span style="font-size:0.84rem; color:#94a3b8; font-weight:600;">AI 決策指示燈：</span>
+            <span id="wizStatusBadge" class="badge badge-green" style="font-size:0.92rem; font-weight:800; padding:4px 10px;">🟢 極力推薦交配</span>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:8px; margin-bottom:10px;">
+            <span style="font-size:2.3rem; font-weight:900; color:#38bdf8;" id="wizScoreVal">88</span>
+            <span style="font-size:0.86rem; color:#94a3b8;">/ 100 配種信心指數</span>
+          </div>
+          <div style="font-size:0.85rem; color:#e2e8f0; line-height:1.65; margin-bottom:12px;" id="wizVerdictText">
+            爆發力高達 +26 且近親危險度僅 1，総合評価為 A 級！產駒速度提升空間充裕且各項七大副屬性穩定平衡，預期為次世代 G1 爭奪名駒！
+          </div>
+        </div>
+        <div style="background:rgba(0,0,0,0.35); border-radius:6px; padding:10px 12px; font-size:0.8rem; color:#38bdf8; border-left:3px solid #38bdf8;" id="wizAdviceText">
+          💡 【實戰 SOP 指引】：該配種組合各項指標極佳，建議直接確定受胎！請於次年 4 月幼駒誕生後重點檢視其「母父因子」與幼駒相馬眼評語。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 神器二：+40 爆發力積木試算器 (Explosion Block Builder) -->
+  <div style="background:rgba(15,23,42,0.85); border:1px solid rgba(245,158,11,0.4); border-radius:10px; padding:20px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+      <h4 style="margin:0; font-size:1.08rem; color:#fbbf24; display:flex; align-items:center; gap:8px; font-weight:800;">
+        <i class="fa-solid fa-cubes-stacked"></i> 🧱 神器二：+40 爆發力積木試算器 (隨選隨累加)
+      </h4>
+      <span style="font-size:0.82rem; color:#94a3b8;">勾選成立之配合理論，即時試算總爆發力進度條與產駒實力位階</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; margin-bottom:18px;">
+      <label class="block-calc-item" style="background:rgba(30,41,59,0.75); border:1px solid rgba(56,189,248,0.25); border-radius:6px; padding:8px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#e2e8f0;">
+        <input type="checkbox" class="exp-block-cb" data-val="4" checked onchange="window.updateExplosionBuilder()"/>
+        <span>血脈活性化 6親系 (<strong>+4</strong>)</span>
+      </label>
+      <label class="block-calc-item" style="background:rgba(30,41,59,0.75); border:1px solid rgba(56,189,248,0.25); border-radius:6px; padding:8px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#e2e8f0;">
+        <input type="checkbox" class="exp-block-cb" data-val="8" onchange="window.updateExplosionBuilder()"/>
+        <span>血脈活性化 8親系 (<strong>+8</strong>)</span>
+      </label>
+      <label class="block-calc-item" style="background:rgba(30,41,59,0.75); border:1px solid rgba(56,189,248,0.25); border-radius:6px; padding:8px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#e2e8f0;">
+        <input type="checkbox" class="exp-block-cb" data-val="4" checked onchange="window.updateExplosionBuilder()"/>
+        <span>Single Nicks 單相性 (<strong>+4</strong>)</span>
+      </label>
+      <label class="block-calc-item" style="background:rgba(30,41,59,0.75); border:1px solid rgba(56,189,248,0.25); border-radius:6px; padding:8px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#e2e8f0;">
+        <input type="checkbox" class="exp-block-cb" data-val="8" onchange="window.updateExplosionBuilder()"/>
+        <span>Triple Nicks 三重相性 (<strong>+8</strong>)</span>
+      </label>
+      <label class="block-calc-item" style="background:rgba(30,41,59,0.75); border:1px solid rgba(56,189,248,0.25); border-radius:6px; padding:8px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#e2e8f0;">
+        <input type="checkbox" class="exp-block-cb" data-val="4" checked onchange="window.updateExplosionBuilder()"/>
+        <span>母父◎ (BMS◎ 系統) (<strong>+4</strong>)</span>
+      </label>
+      <label class="block-calc-item" style="background:rgba(30,41,59,0.75); border:1px solid rgba(56,189,248,0.25); border-radius:6px; padding:8px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#e2e8f0;">
+        <input type="checkbox" class="exp-block-cb" data-val="3" checked onchange="window.updateExplosionBuilder()"/>
+        <span>種牡馬施設 Lv3 牧場加成 (<strong>+3</strong>)</span>
+      </label>
+      <label class="block-calc-item" style="background:rgba(30,41,59,0.75); border:1px solid rgba(56,189,248,0.25); border-radius:6px; padding:8px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#e2e8f0;">
+        <input type="checkbox" class="exp-block-cb" data-val="4" onchange="window.updateExplosionBuilder()"/>
+        <span>三冠配合 / 經典三冠 (<strong>+4</strong>)</span>
+      </label>
+      <label class="block-calc-item" style="background:rgba(30,41,59,0.75); border:1px solid rgba(56,189,248,0.25); border-radius:6px; padding:8px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#e2e8f0;">
+        <input type="checkbox" class="exp-block-cb" data-val="6" onchange="window.updateExplosionBuilder()"/>
+        <span>稲妻配合 / 疾風配合 (<strong>+6</strong>)</span>
+      </label>
+      <label class="block-calc-item" style="background:rgba(30,41,59,0.75); border:1px solid rgba(56,189,248,0.25); border-radius:6px; padding:8px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#e2e8f0;">
+        <input type="checkbox" class="exp-block-cb" data-val="3" onchange="window.updateExplosionBuilder()"/>
+        <span>2026 Drama 因子啟動 (<strong>+3</strong>)</span>
+      </label>
+      <label class="block-calc-item" style="background:rgba(30,41,59,0.75); border:1px solid rgba(56,189,248,0.25); border-radius:6px; padding:8px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:#e2e8f0;">
+        <input type="checkbox" class="exp-block-cb" data-val="4" onchange="window.updateExplosionBuilder()"/>
+        <span>牝馬永續活力 (綠色活力) (<strong>+4</strong>)</span>
+      </label>
+    </div>
+    <!-- 進度條與評估階梯 -->
+    <div style="background:rgba(30,41,59,0.85); border-radius:8px; padding:16px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
+        <span style="font-size:0.88rem; color:#cbd5e1;">當前積木合計總爆發力：</span>
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <span id="builderTotalExp" style="font-size:1.9rem; font-weight:900; color:#f59e0b;">+15</span>
+          <span id="builderTierBadge" class="badge badge-blue" style="font-size:0.85rem; font-weight:700;">條件戰~重賞及格線 (+15~22)</span>
+        </div>
+      </div>
+      <div style="width:100%; height:14px; background:rgba(15,23,42,0.8); border-radius:7px; overflow:hidden; border:1px solid rgba(255,255,255,0.12);">
+        <div id="builderProgressBar" style="width:33%; height:100%; background:linear-gradient(90deg, #38bdf8, #818cf8); transition:width 0.3s ease, background 0.3s ease;"></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#94a3b8; margin-top:6px;">
+        <span>0 (平庸普通)</span>
+        <span>15 (可用底線)</span>
+        <span>25 (G1 實力)</span>
+        <span>35 (經典三冠超大物)</span>
+        <span>45+ (神話怪物)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
 <!-- Metrics Table -->
 <div class="tool-card">
@@ -6592,34 +6783,79 @@ button.chip-btn.active {
 </table>
 </div>
 </div>
-<!-- Interactive Simulator -->
+<!-- Interactive Simulator (Upgraded Monte Carlo with Mare Vitality & Hidden 仔出し) -->
 <div class="tool-card">
-<h3 style="font-size:13.5px; font-weight:800; margin-bottom:5px; color:var(--accent-gold);">二、爆發力 (爆発力)隨機抽樣分佈模擬器</h3>
-<p style="font-size:11.5px; color:var(--text-muted); margin-bottom:8px;">
-              當配合顯示爆發力 (爆発力)為 <code style="color:var(--accent-gold)">B</code> 時，幼駒速度加成值 <code style="color:var(--accent-gold)">b</code> 於整數區間 <code style="color:var(--accent-gold)">[0, B - 1]</code> 等機率隨機抽取。
-            </p>
-<div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
-<div>
-<label style="font-size:10.5px; font-weight:700; display:block; margin-bottom:2px;">配合爆發力 (爆発力) (B):</label>
-<input id="simBaseExp" max="60" min="1" onchange="runExplosionSimulation()" oninput="runExplosionSimulation()" style="width:100%; padding:4px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-weight:bold; font-size:11.5px;" type="number" value="30"/>
-</div>
-<div>
-<label style="font-size:10.5px; font-weight:700; display:block; margin-bottom:2px;">種牡馬施設加成:</label>
-<select id="simRanchBonus" onchange="runExplosionSimulation()" style="width:100%; padding:4px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11.5px;">
-<option value="0">無 / 未建設 (+0)</option>
-<option value="1">Lv1 (+1)</option>
-<option value="2">Lv2 (+2)</option>
-<option selected="" value="3">Lv3 (+3)</option>
-<option value="6">Lv3 + 種馬 10 傑 (+6)</option>
-</select>
-</div>
-</div>
-<button onclick="runSimulation()" style="width:100%; padding:6px; background:#2563eb; color:#fff; font-weight:bold; font-size:11.5px; border:none; border-radius:6px; cursor:pointer; transition:background 0.15s;">
-              🎲 執行 1,000 次配種抽樣分佈
-            </button>
-<div class="chart-container" style="position: relative; width: 100%; height: 280px; margin-top: 14px;">
-<canvas id="explosionChart"></canvas>
-</div>
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+    <h3 style="font-size:13.5px; font-weight:800; margin:0; color:var(--accent-gold);">
+      🎲 神器四：千次蒙地卡羅抽樣分佈模擬器 (含母馬活力與隱藏仔出)
+    </h3>
+    <span class="badge badge-purple" style="font-size:0.75rem;">深度抽樣</span>
+  </div>
+  <p style="font-size:11.5px; color:var(--text-muted); margin-bottom:8px;">
+    當配合顯示爆發力為 <code style="color:var(--accent-gold)">B</code> 時，幼駒速度加成值 <code style="color:var(--accent-gold)">b</code> 於整數區間 <code style="color:var(--accent-gold)">[0, B - 1]</code> 等機率隨機抽取；母馬處於「活力增強」或種公馬隱藏「仔出 (仔出し) ≥ 8」時，會大幅提高抽出上限與優化骰取機率！
+  </p>
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:8px; margin-bottom:8px;">
+    <div>
+      <label style="font-size:10.5px; font-weight:700; display:block; margin-bottom:2px;">配合爆發力 (爆発力) (B):</label>
+      <input id="simBaseExp" max="60" min="1" onchange="runExplosionSimulation()" oninput="runExplosionSimulation()" style="width:100%; padding:4px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-weight:bold; font-size:11.5px;" type="number" value="30"/>
+    </div>
+    <div>
+      <label style="font-size:10.5px; font-weight:700; display:block; margin-bottom:2px;">種牡馬施設加成:</label>
+      <select id="simRanchBonus" onchange="runExplosionSimulation()" style="width:100%; padding:4px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11.5px;">
+        <option value="0">無 / 未建設 (+0)</option>
+        <option value="1">Lv1 (+1)</option>
+        <option value="2">Lv2 (+2)</option>
+        <option selected="" value="3">Lv3 (+3)</option>
+        <option value="6">Lv3 + 種馬 10 傑 (+6)</option>
+      </select>
+    </div>
+    <div>
+      <label style="font-size:10.5px; font-weight:700; display:block; margin-bottom:2px;">牝馬活力狀態:</label>
+      <select id="simMareVitality" onchange="runExplosionSimulation()" style="width:100%; padding:4px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11.5px;">
+        <option value="0">無 / 一般活力 (1.0x)</option>
+        <option value="1">活力 小 (+5% 偏向)</option>
+        <option value="2">活力 中 (+10% 偏向)</option>
+        <option value="3">活力 大 (+15% 偏向)</option>
+        <option value="4">活力 特大 (+20% 偏向)</option>
+        <option selected="" value="5">綠色永續活力 (保底高段)</option>
+      </select>
+    </div>
+    <div>
+      <label style="font-size:10.5px; font-weight:700; display:block; margin-bottom:2px;">種馬隱藏仔出 (1~10):</label>
+      <select id="simSireKoDashi" onchange="runExplosionSimulation()" style="width:100%; padding:4px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main); font-size:11.5px;">
+        <option value="1">1 (極低傳承)</option>
+        <option value="4">4 (普通種馬)</option>
+        <option value="7">7 (名種馬)</option>
+        <option selected="" value="9">9 (神級仔出・重骰豁免)</option>
+        <option value="10">10 (傳奇繁育神話)</option>
+      </select>
+    </div>
+  </div>
+  <button onclick="runSimulation()" style="width:100%; padding:7px; background:linear-gradient(135deg, #2563eb, #7c3aed); color:#fff; font-weight:bold; font-size:11.5px; border:none; border-radius:6px; cursor:pointer; transition:background 0.15s; margin-bottom:8px;">
+    🎲 執行 1,000 次蒙地卡羅配種抽樣
+  </button>
+  <!-- 抽樣結果統計摘要 -->
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:6px; margin-bottom:6px; text-align:center;">
+    <div style="background:rgba(30,41,59,0.7); padding:4px; border-radius:4px; border:1px solid rgba(56,189,248,0.2);">
+      <div style="font-size:9.5px; color:#94a3b8;">平均速度加成 b̄</div>
+      <div id="simStatAvg" style="font-size:12px; font-weight:800; color:#38bdf8;">--</div>
+    </div>
+    <div style="background:rgba(30,41,59,0.7); padding:4px; border-radius:4px; border:1px solid rgba(56,189,248,0.2);">
+      <div style="font-size:9.5px; color:#94a3b8;">突破 +20 機率</div>
+      <div id="simStat20" style="font-size:12px; font-weight:800; color:#4ade80;">--</div>
+    </div>
+    <div style="background:rgba(30,41,59,0.7); padding:4px; border-radius:4px; border:1px solid rgba(56,189,248,0.2);">
+      <div style="font-size:9.5px; color:#94a3b8;">怪物級 (+28+) 率</div>
+      <div id="simStatMonster" style="font-size:12px; font-weight:800; color:#f59e0b;">--</div>
+    </div>
+    <div style="background:rgba(30,41,59,0.7); padding:4px; border-radius:4px; border:1px solid rgba(56,189,248,0.2);">
+      <div style="font-size:9.5px; color:#94a3b8;">最大抽出 Max b</div>
+      <div id="simStatMax" style="font-size:12px; font-weight:800; color:#ec4899;">--</div>
+    </div>
+  </div>
+  <div class="chart-container" style="position: relative; width: 100%; height: 260px; margin-top: 6px;">
+    <canvas id="explosionChart"></canvas>
+  </div>
 </div>
 </div>
 <!-- 2026 全新核心：繁殖牝馬「活力 (Vitality)」與「活力增強」爆發體系 -->
@@ -7360,7 +7596,171 @@ button.chip-btn.active {
 <div class="section-title"><i class="fa-solid fa-heart-pulse"></i> 第 14 章：血脈活性化配合 (8親系 / 完全活性)</div>
 </div>
 <div class="section-body">
-<div class="section-body">
+
+<!-- ==================== 神器三：4代16祖先血脈活性化沙盤 (互動判定) ==================== -->
+<div class="manual-replica-card" style="background: linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)) !important; border: 1px solid rgba(236,72,153,0.35) !important; border-radius: 12px !important; padding: 22px !important; margin-bottom: 24px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.35) !important;">
+  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(236,72,153,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+    <h3 style="font-size:1.15rem; color:#f472b6; margin:0; display:flex; align-items:center; gap:8px; font-weight:800;">
+      <i class="fa-solid fa-network-wired" style="color:#f472b6;"></i> 🧬 神器三：4代16祖先血脈活性化沙盤 (互動判定)
+    </h3>
+    <span class="badge badge-pink" style="font-size:0.8rem; padding:4px 10px; font-weight:700;">血統沙盤</span>
+  </div>
+  <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.75; margin-bottom:14px;">
+    在《Winning Post 10 2026》中，「血脈活性化配合」取決於幼駒第 3 代的 <strong>8 匹關鍵祖先親系統</strong>（父系 4 祖先 + 母系 4 祖先）。當 8 匹祖先涵蓋越多完全獨立之親系統時，不僅爆發力 (爆発力) 獲得強大加成，更能徹底消除近親交配副作用！
+  </p>
+  <!-- 範本快速切換晶片軌道 -->
+  <div class="chip-rail" style="margin-bottom:16px; display:flex; gap:8px; overflow-x:auto; padding:6px 4px 10px 4px !important;">
+    <span style="font-size:0.82rem; color:#94a3b8; font-weight:700; white-space:nowrap;">經典血統範本速套：</span>
+    <button type="button" class="nenpyo-era-btn active" style="font-size:0.8rem;" onclick="window.loadSandtablePreset('ss_tony', this)">サンデーサイレンス × トニービン (6親系)</button>
+    <button type="button" class="nenpyo-era-btn" style="font-size:0.8rem;" onclick="window.loadSandtablePreset('kame_deep', this)">キングカメハメハ × ディープ (7親系)</button>
+    <button type="button" class="nenpyo-era-btn" style="font-size:0.8rem;" onclick="window.loadSandtablePreset('perfect8', this)">🏆 完美 8 親系全開黃金沙盤 (+8)</button>
+  </div>
+  <!-- 8 大祖先選單 Grid -->
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-bottom:18px;">
+    <!-- 父方 4 親系 -->
+    <div style="background:rgba(15,23,42,0.75); border:1px solid rgba(56,189,248,0.3); border-radius:8px; padding:14px;">
+      <h5 style="margin:0 0 10px 0; color:#38bdf8; font-size:0.92rem; display:flex; align-items:center; gap:6px; font-weight:700;">
+        <i class="fa-solid fa-mars"></i> 父方第 3 代 4 祖先親系統 (Sire Side)
+      </h5>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div>
+          <label style="font-size:0.75rem; color:#94a3b8; display:block; margin-bottom:3px;">父之父父 (F-Sire):</label>
+          <select id="st_sire_1" class="sandtable-select" style="width:100%; padding:5px 6px; font-size:0.82rem; background:rgba(30,41,59,0.85); border:1px solid rgba(56,189,248,0.3); color:#fff; border-radius:4px;" onchange="window.calcSandtable()">
+            <option value="Halo">Royal Charger (Halo)</option>
+            <option value="NorthernDancer">Northern Dancer</option>
+            <option value="MrProspector">Native Dancer (Mr. P)</option>
+            <option value="Nasrullah">Nasrullah</option>
+            <option value="TomFool">Tom Fool</option>
+            <option value="Ribot">Ribot</option>
+            <option value="Princequillo">Princequillo</option>
+            <option value="Hyperion">Hyperion</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:0.75rem; color:#94a3b8; display:block; margin-bottom:3px;">父之父母 (F-Dam):</label>
+          <select id="st_sire_2" class="sandtable-select" style="width:100%; padding:5px 6px; font-size:0.82rem; background:rgba(30,41,59,0.85); border:1px solid rgba(56,189,248,0.3); color:#fff; border-radius:4px;" onchange="window.calcSandtable()">
+            <option value="NorthernDancer">Northern Dancer</option>
+            <option value="Halo">Royal Charger</option>
+            <option value="MrProspector">Native Dancer</option>
+            <option value="Nasrullah">Nasrullah</option>
+            <option value="TomFool">Tom Fool</option>
+            <option value="Ribot">Ribot</option>
+            <option value="Princequillo">Princequillo</option>
+            <option value="Hyperion">Hyperion</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:0.75rem; color:#94a3b8; display:block; margin-bottom:3px;">父之母父 (F-BMS):</label>
+          <select id="st_sire_3" class="sandtable-select" style="width:100%; padding:5px 6px; font-size:0.82rem; background:rgba(30,41,59,0.85); border:1px solid rgba(56,189,248,0.3); color:#fff; border-radius:4px;" onchange="window.calcSandtable()">
+            <option value="TomFool">Tom Fool</option>
+            <option value="NorthernDancer">Northern Dancer</option>
+            <option value="Halo">Royal Charger</option>
+            <option value="MrProspector">Native Dancer</option>
+            <option value="Nasrullah">Nasrullah</option>
+            <option value="Ribot">Ribot</option>
+            <option value="Princequillo">Princequillo</option>
+            <option value="Hyperion">Hyperion</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:0.75rem; color:#94a3b8; display:block; margin-bottom:3px;">父之母母 (F-BMD):</label>
+          <select id="st_sire_4" class="sandtable-select" style="width:100%; padding:5px 6px; font-size:0.82rem; background:rgba(30,41,59,0.85); border:1px solid rgba(56,189,248,0.3); color:#fff; border-radius:4px;" onchange="window.calcSandtable()">
+            <option value="Hyperion">Hyperion</option>
+            <option value="NorthernDancer">Northern Dancer</option>
+            <option value="Halo">Royal Charger</option>
+            <option value="MrProspector">Native Dancer</option>
+            <option value="Nasrullah">Nasrullah</option>
+            <option value="TomFool">Tom Fool</option>
+            <option value="Ribot">Ribot</option>
+            <option value="Princequillo">Princequillo</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- 母方 4 親系 -->
+    <div style="background:rgba(15,23,42,0.75); border:1px solid rgba(236,72,153,0.3); border-radius:8px; padding:14px;">
+      <h5 style="margin:0 0 10px 0; color:#f472b6; font-size:0.92rem; display:flex; align-items:center; gap:6px; font-weight:700;">
+        <i class="fa-solid fa-venus"></i> 母方第 3 代 4 祖先親系統 (Dam Side)
+      </h5>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div>
+          <label style="font-size:0.75rem; color:#94a3b8; display:block; margin-bottom:3px;">母之父父 (M-Sire):</label>
+          <select id="st_dam_1" class="sandtable-select" style="width:100%; padding:5px 6px; font-size:0.82rem; background:rgba(30,41,59,0.85); border:1px solid rgba(236,72,153,0.3); color:#fff; border-radius:4px;" onchange="window.calcSandtable()">
+            <option value="Nasrullah">Nasrullah (Grey Sovereign)</option>
+            <option value="NorthernDancer">Northern Dancer</option>
+            <option value="Halo">Royal Charger</option>
+            <option value="MrProspector">Native Dancer</option>
+            <option value="TomFool">Tom Fool</option>
+            <option value="Ribot">Ribot</option>
+            <option value="Princequillo">Princequillo</option>
+            <option value="Hyperion">Hyperion</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:0.75rem; color:#94a3b8; display:block; margin-bottom:3px;">母之父母 (M-Dam):</label>
+          <select id="st_dam_2" class="sandtable-select" style="width:100%; padding:5px 6px; font-size:0.82rem; background:rgba(30,41,59,0.85); border:1px solid rgba(236,72,153,0.3); color:#fff; border-radius:4px;" onchange="window.calcSandtable()">
+            <option value="Princequillo">Princequillo</option>
+            <option value="NorthernDancer">Northern Dancer</option>
+            <option value="Halo">Royal Charger</option>
+            <option value="MrProspector">Native Dancer</option>
+            <option value="Nasrullah">Nasrullah</option>
+            <option value="TomFool">Tom Fool</option>
+            <option value="Ribot">Ribot</option>
+            <option value="Hyperion">Hyperion</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:0.75rem; color:#94a3b8; display:block; margin-bottom:3px;">母之母父 (M-BMS):</label>
+          <select id="st_dam_3" class="sandtable-select" style="width:100%; padding:5px 6px; font-size:0.82rem; background:rgba(30,41,59,0.85); border:1px solid rgba(236,72,153,0.3); color:#fff; border-radius:4px;" onchange="window.calcSandtable()">
+            <option value="Ribot">Ribot</option>
+            <option value="NorthernDancer">Northern Dancer</option>
+            <option value="Halo">Royal Charger</option>
+            <option value="MrProspector">Native Dancer</option>
+            <option value="Nasrullah">Nasrullah</option>
+            <option value="TomFool">Tom Fool</option>
+            <option value="Princequillo">Princequillo</option>
+            <option value="Hyperion">Hyperion</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:0.75rem; color:#94a3b8; display:block; margin-bottom:3px;">母之母母 (M-BMD):</label>
+          <select id="st_dam_4" class="sandtable-select" style="width:100%; padding:5px 6px; font-size:0.82rem; background:rgba(30,41,59,0.85); border:1px solid rgba(236,72,153,0.3); color:#fff; border-radius:4px;" onchange="window.calcSandtable()">
+            <option value="MrProspector">Native Dancer</option>
+            <option value="NorthernDancer">Northern Dancer</option>
+            <option value="Halo">Royal Charger</option>
+            <option value="Nasrullah">Nasrullah</option>
+            <option value="TomFool">Tom Fool</option>
+            <option value="Ribot">Ribot</option>
+            <option value="Princequillo">Princequillo</option>
+            <option value="Hyperion">Hyperion</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 沙盤判定輸出結果面板 -->
+  <div id="stResultPanel" style="background:rgba(30,41,59,0.9); border:2px solid #38bdf8; border-radius:10px; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+    <div>
+      <div style="font-size:0.82rem; color:#94a3b8; font-weight:600;">當前沙盤獨立親系統數：</div>
+      <div style="display:flex; align-items:baseline; gap:6px;">
+        <span id="stUniqueCount" style="font-size:2rem; font-weight:900; color:#38bdf8;">8</span>
+        <span style="font-size:0.9rem; color:#cbd5e1;">/ 8 個完全獨立親系統</span>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:0.82rem; color:#94a3b8; font-weight:600;">獲得配合理論與爆發加成：</div>
+      <div id="stTheoryBadge" style="display:flex; gap:8px; align-items:center; margin-top:2px;">
+        <span class="badge badge-gold" style="font-size:0.92rem; font-weight:800; padding:4px 10px;">🏆 8 親系血脈活性化配合</span>
+        <span class="pill pill-power" style="font-size:0.92rem; font-weight:800; padding:4px 10px;">爆發力 +8</span>
+      </div>
+    </div>
+    <div style="background:rgba(0,0,0,0.35); border-radius:6px; padding:10px 14px; font-size:0.82rem; color:#4ade80; border-left:3px solid #4ade80;">
+      🛡️ <strong>近親危險度化解</strong>：<span id="stRiskRelief">近親交配副作用全數消除 (危險度 -3)</span>
+    </div>
+  </div>
+</div>
+
+
 <p>第 3 代 8 匹祖先分別來自 6、7 或 8 個完全不同的親系統：</p>
 <div class="table-responsive">
 <table class="data-table">
@@ -7389,7 +7789,6 @@ button.chip-btn.active {
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 </section>
@@ -8840,6 +9239,239 @@ button.chip-btn.active {
 ※ 欲查詢特定種公馬之史實引退年限，請至 <a href="javascript:void(0)" onclick="switchMainPillar('pillar-db'); setTimeout(() => { document.getElementById('sec-sires-retire-db').scrollIntoView({behavior:'smooth'}); }, 100);" style="color:var(--accent-gold); font-weight:700; text-decoration:underline;">【第 42 章 史實種公馬引退速查庫】</a>。
 </div>
 </div>
+
+<!-- ==================== 【新手必備】1968 ~ 2026 各年代閉眼照抄配種黃金名冊 ==================== -->
+<div class="manual-replica-card" style="background: linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)) !important; border: 1px solid rgba(245,158,11,0.35) !important; border-radius: 12px !important; padding: 22px !important; margin-top: 24px !important; margin-bottom: 24px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.35) !important;">
+  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,158,11,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+    <h3 style="font-size:1.18rem; color:#f59e0b; margin:0; display:flex; align-items:center; gap:10px; font-weight:800;">
+      <i class="fa-solid fa-copy" style="color:#f59e0b;"></i> 【新手必備】1968 ~ 2026 各年代閉眼照抄配種黃金名冊 (日/中並行)
+    </h3>
+    <span class="badge badge-gold" style="font-size:0.82rem; padding:4px 12px; font-weight:700;">開局保底首選</span>
+  </div>
+  <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.75; margin-bottom:14px;">
+    初入遊戲開荒缺乏自創系與專屬名雌？不必焦慮！直接按照以下歷代史實驗證的 <strong>18 組跨年代黃金配對名冊</strong> 閉眼照抄生產，爆發力全面突破 +26~42，保證次世代無痛產出重賞殿堂名駒，快速累積牧場資產與名聲！
+  </p>
+  
+  <div class="scrollable-table-box" style="max-height:640px !important; overflow-y:auto !important;">
+    <div class="table-responsive" style="margin:0;">
+      <table class="data-table" style="min-width:1120px; text-align:left !important;">
+        <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+          <tr>
+            <th class="sortable-th" style="width:75px; text-align:left !important;">年代 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:190px; text-align:left !important;">推薦種公馬 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:190px; text-align:left !important;">推薦繁育牝馬 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:95px; text-align:left !important;">預估爆發力 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:230px; text-align:left !important;">成立主要配合理論 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="min-width:340px; text-align:left !important;">閉眼照抄戰略理由與 SOP 標的 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">1970s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">トウショウボーイ<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">天馬 (Tosho Boy)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">ソシアルトータス<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">社會烏龜 (Social Tortoise)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+28</span></td>
+            <td style="text-align:left !important;">母父◎、血脈活性化 6親系、天馬特質</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">史實神級重現！必出經典三冠馬<strong>ミスターシービー (千明代表)</strong>，昭和初盤牧場資金與名聲破局最大保障！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">1970s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">マルゼンスキー<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">丸善斯基 (Maruzensky)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">クインシルバー<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">皇后銀 (Queen Silver)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+26</span></td>
+            <td style="text-align:left !important;">Nicks 單相性、血脈活性化 6親系、スピード因子</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">誕生德比冠軍<strong>サクラチヨノオー (櫻花千代王)</strong>，丸善斯基強大速度因子傳承，早期泥草雙修利器。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">1980s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">シンボリルドルフ<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">魯鐸象徵 (Symboli Rudolf)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">パシフィカス<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">太平洋 (Pacificus)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+30</span></td>
+            <td style="text-align:left !important;">三冠配合、母父◎、血脈活性化 7親系</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">皇帝配名門名雌！產出名留青史的菊花賞與天皇賞春霸主<strong>ビワハヤヒデ (琵琶晨光)</strong>，長距離絕對統治力。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">1980s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">シンボリルドルフ<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">魯鐸象徵 (Symboli Rudolf)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">ダンシングキイ<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">跳舞之匙 (Dancing Key)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+29</span></td>
+            <td style="text-align:left !important;">三冠配合、3×4 近親奇蹟血量、活力源晃</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">跳舞之匙母系為日本昭和末期最強繁育母體，與皇帝配合兼具瞬發與力量，產駒輕鬆通殺牡馬經典賽事。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">1980s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">オグリキャップ<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">小栗帽 (Oguri Cap)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">ホワイトナルビー牝系<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">白紅寶石母系名雌</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+27</span></td>
+            <td style="text-align:left !important;">地方怪物配合、灰毛/蘆毛同調、活性化 6親系</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">笠松蘆毛神話！勝負根性極高，出賽適應泥地與草地全距離，是新手在中距離打磨產駒信心的最佳範例。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">1990s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">サンデーサイレンス<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">週日寧靜 (Sunday Silence)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">ウインドインハーヘア<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">風中秀髮 (Wind in Her Hair)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+36</span></td>
+            <td style="text-align:left !important;">Nick 單相性、母父 Alzao、血脈活性化 7親系</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">日本賽馬歷史巔峰！孕育出近代無敗三冠<strong>ディープインパクト (大震撼)</strong>，全能瞬發力與速度完全拉滿！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">1990s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">サンデーサイレンス<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">週日寧靜 (Sunday Silence)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">ベガ<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">織女星 (Vega)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+34</span></td>
+            <td style="text-align:left !important;">牝馬二冠 × 冠馬、母父 Tony Bin、Nick 相性</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">誕生德比馬<strong>アドマイヤベガ (愛慕織姬)</strong> 與泥地霸主アドマイヤドン，草泥雙線通吃之夢幻配合。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">1990s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">トニービン<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">東來兵 (Tony Bin)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">ダイナカール<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">狄瑙卡爾 (Dyna Carle)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+32</span></td>
+            <td style="text-align:left !important;">Grey Sovereign 系確立、母父 Northern Taste◎</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">孕育傳奇女帝<strong>エアグルーヴ (氣槽)</strong>，後續成為全日本繁育界最核心之寶藏母系，女帝血統百世流芳！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">1990s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">ブライアンズタイム<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">布萊恩時光 (Brian's Time)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">パシフィカス<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">太平洋 (Pacificus)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+33</span></td>
+            <td style="text-align:left !important;">Roberto 系爆發、母父◎、血脈活性化 6親系</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">誕生史上最強怪童三冠馬<strong>ナリタブライアン (成田白仁)</strong>，力量與耐力兼具，經典三冠以破紀錄巨幅優勢登頂。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">1990s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">メジロマックイーン<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">目白麥昆 (Mejiro McQueen)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">オリエンタルアート<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">東方藝術 (Oriental Art)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+35</span></td>
+            <td style="text-align:left !important;">黃金配合 (ステマ配合)、母父麥昆◎、活力源晃</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">ステイゴールド × 母父麥昆之「ステマ配合」！誕生三冠暴君<strong>オルフェーヴル (黃金巨匠)</strong> 與ドリームジャーニー！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">2000s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">キングカメハメハ<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">夏威夷王 (King Kamehameha)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">エアグルーヴ<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">氣槽 (Air Groove)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+33</span></td>
+            <td style="text-align:left !important;">大王 × 女帝、血脈活性化 7親系、力量補正</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">產出女皇盃盟主<strong>ルーラーシップ (統治地位)</strong>，王道純血碰撞，為後續牝系繁育奠定堅不可摧的鋼鐵支柱。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">2000s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">ディープインパクト<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">大震撼 (Deep Impact)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">アゼルリ<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">愛則理 (Azeri)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+32</span></td>
+            <td style="text-align:left !important;">日美馬王跨洲交配、血脈活性化 8親系</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">日本三冠王大震撼遇上美國日蝕年度馬 Azeri，完全達成 8 親系活性化，兼具早熟與中長距離超一流續航。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">2000s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">ディープインパクト<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">大震撼 (Deep Impact)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">ラヴズオンリーミー<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">唯獨愛你母系 (Loves Only Me)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+34</span></td>
+            <td style="text-align:left !important;">Monevassia 名門母系、Storm Cat BMS 相性◎</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">誕生<strong>リアルスティール (真劍)</strong> 與全球四國遠征女皇<strong>ラヴズオンリーユー (唯獨愛你)</strong>，遠征海外狂掃美金。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">2010s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">ロードカナロア<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">龍王 (Lord Kanaloa)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">シーザリオ<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">西沙里奧 (Cesario)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+33</span></td>
+            <td style="text-align:left !important;">短途之王 × 美日雙橡樹女王、Special 因子</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">誕生皋月賞與希望錦標雙冠王<strong>サートゥルナーリア (農神節慶)</strong>，極致速度與爆發末腳的完美結合。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">2010s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">キタサンブラック<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">北部玄駒 (Kitasan Black)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">シャトーブランシュ<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">白日城堡 (Chateau Blanche)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+37</span></td>
+            <td style="text-align:left !important;">母父 King Halo、Halo 4×3 奇蹟血量、永續活力</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">世界第一名駒<strong>イクイノックス (春秋分)</strong> 之神之誕生！秋天、有馬、杜拜司馬、寶塚、秋天連霸，無可撼動。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">2010s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">キタサンブラック<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">北部玄駒 (Kitasan Black)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">サクラバクシンオー系牝馬<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">櫻花進王系名雌 (Sugar Heart 族)</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+31</span></td>
+            <td style="text-align:left !important;">黑鹿毛/青毛同調、短長速度互補、母父進王</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">複製北部玄駒本體之底層邏輯！長程心肺融合進王極速因子，產駒體質極其耐操，連戰連捷。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">2020s</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">エピファネイア<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">神威啟示 (Epiphaneia)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">サンデーサイレンス系牝馬<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">週日寧靜系 4×3 帶因子名雌</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+32</span></td>
+            <td style="text-align:left !important;">SS 4×3 奇蹟血量、Sadler's Wells 交叉、活力增強</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">誕生無敗牝馬三冠<strong>デアリングタクト (謀勇兼備)</strong> 與年度馬<strong>エフフォーリア (樂透心)</strong>，現代最暴擊配合！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#94a3b8; text-align:left !important;">2026</td>
+            <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">イクイノックス<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">春秋分 (Equinox)</span></td>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">アーモンドアイ / ジェンティルドンナ<br/><span style="font-size:0.75rem; color:#94a3b8; font-weight:normal;">杏目 (Almond Eye) / 貴婦人</span></td>
+            <td style="text-align:left !important;"><span class="pill pill-power" style="font-weight:800;">+40 ~ +43</span></td>
+            <td style="text-align:left !important;">2026 Drama 因子、九冠女帝配合、三冠加乘、永續綠色活力</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65;">《Winning Post 10 2026》天頂神之配合！世界評分 135 與九冠馬之后代，直抽滿值速度與全 S+ 屬性神話！</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 【血的教訓】新手配種避坑指南：十大暴死禁忌 Checklist ==================== -->
+<div class="manual-replica-card" style="background: linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)) !important; border: 1px solid rgba(239,68,68,0.35) !important; border-radius: 12px !important; padding: 22px !important; margin-bottom: 24px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.35) !important;">
+  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(239,68,68,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+    <h3 style="font-size:1.18rem; color:#f87171; margin:0; display:flex; align-items:center; gap:10px; font-weight:800;">
+      <i class="fa-solid fa-skull-crossbones" style="color:#f87171;"></i> 【血的教訓】新手配種避坑指南：十大暴死禁忌 Checklist
+    </h3>
+    <span class="badge badge-danger" style="font-size:0.82rem; padding:4px 12px; font-weight:700;">紅燈必看</span>
+  </div>
+  <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.75; margin-bottom:18px;">
+    配種繁育若犯下以下 10 大常見禁忌，即使擁有金色馬札種公馬，亦可能產出體質廢柴、脾氣狂暴或永遠無法受胎之「金玉其外」殘疾駒。請於每年 5 月配種前逐項檢核：
+  </p>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:14px;">
+    <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(239,68,68,0.3); border-left:3px solid #ef4444; border-radius:6px; padding:12px 14px;">
+      <strong style="color:#f87171; font-size:0.88rem;">❌ 禁忌一：危險度 ≥ 4 且無 8 親系活性化強行配種</strong>
+      <p style="font-size:0.82rem; color:#cbd5e1; margin:4px 0 0; line-height:1.6;">近親濃血（如 2×2 / 2×3）引發血崩，幼駒體質必為 C-，且必定附帶「気性難」，難以調教。</p>
+    </div>
+    <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(239,68,68,0.3); border-left:3px solid #ef4444; border-radius:6px; padding:12px 14px;">
+      <strong style="color:#f87171; font-size:0.88rem;">❌ 禁忌二：雙方「精神力 D」或「健康 D」致命重疊</strong>
+      <p style="font-size:0.82rem; color:#cbd5e1; margin:4px 0 0; line-height:1.6;">七大副屬性遺傳雙弱將被定格放大！精神力殘缺出征關東/關西即掉狀態，健康 D 動輒休養半年。</p>
+    </div>
+    <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(239,68,68,0.3); border-left:3px solid #ef4444; border-radius:6px; padding:12px 14px;">
+      <strong style="color:#f87171; font-size:0.88rem;">❌ 禁忌三：忽視母馬高齡 (16 歲以上未受胎)</strong>
+      <p style="font-size:0.82rem; color:#cbd5e1; margin:4px 0 0; line-height:1.6;">母馬年滿 16 歲後受胎機率斷崖下跌，19 歲後產駒極限能力隱性下調，高齡名雌應儘早安排後繼女嗣。</p>
+    </div>
+    <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(239,68,68,0.3); border-left:3px solid #ef4444; border-radius:6px; padding:12px 14px;">
+      <strong style="color:#f87171; font-size:0.88rem;">❌ 禁忌四：同父同母兄妹或父女配種觸發「種付不可」</strong>
+      <p style="font-size:0.82rem; color:#cbd5e1; margin:4px 0 0; line-height:1.6;">公馬與母馬之父完全相同時，遊戲系統直接判定「種付不可」強制反白，白白浪費一週配種名額。</p>
+    </div>
+    <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(239,68,68,0.3); border-left:3px solid #ef4444; border-radius:6px; padding:12px 14px;">
+      <strong style="color:#f87171; font-size:0.88rem;">❌ 禁忌五：草地與泥地（ダート）適性極端割裂未加調教</strong>
+      <p style="font-size:0.82rem; color:#cbd5e1; margin:4px 0 0; line-height:1.6;">公馬純泥地 + 母馬純草地且無相性，產駒適性往往變成「草○ / 泥○」半吊子，兩端皆無法稱霸。</p>
+    </div>
+    <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(239,68,68,0.3); border-left:3px solid #ef4444; border-radius:6px; padding:12px 14px;">
+      <strong style="color:#f87171; font-size:0.88rem;">❌ 禁忌六：未滿 3 級種牡馬設施前盲目配種</strong>
+      <p style="font-size:0.82rem; color:#cbd5e1; margin:4px 0 0; line-height:1.6;">種馬設施 Lv3 提供無條件 <strong>+3 爆發力</strong>；開局應盡快提升設施等級，等同於白送一個頂級 Nick 配合！</p>
+    </div>
+    <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(239,68,68,0.3); border-left:3px solid #ef4444; border-radius:6px; padding:12px 14px;">
+      <strong style="color:#f87171; font-size:0.88rem;">❌ 禁忌七：在活力衰退期重複近親回交</strong>
+      <p style="font-size:0.82rem; color:#cbd5e1; margin:4px 0 0; line-height:1.6;">母馬一般活力消耗殆盡且未解鎖「永續綠色活力」時，重複配同系種馬將使產駒上限完全鎖死在二流。</p>
+    </div>
+    <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(239,68,68,0.3); border-left:3px solid #ef4444; border-radius:6px; padding:12px 14px;">
+      <strong style="color:#f87171; font-size:0.88rem;">❌ 禁忌八：追求單一血脈導致牧場全場近親鎖死</strong>
+      <p style="font-size:0.82rem; color:#cbd5e1; margin:4px 0 0; line-height:1.6;">過度引進單一強勢系（如全場 Sunday Silence 或 Kingmambo），第 3 代起將陷入「無異性血統可配」之絕境。</p>
+    </div>
+    <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(239,68,68,0.3); border-left:3px solid #ef4444; border-radius:6px; padding:12px 14px;">
+      <strong style="color:#f87171; font-size:0.88rem;">❌ 禁忌九：忽視 2026 Drama 因子史實配合契機</strong>
+      <p style="font-size:0.82rem; color:#cbd5e1; margin:4px 0 0; line-height:1.6;">2026 最新「ドラマ因子」擁有逆天爆發潛能，錯失史實宿命對決組合將白白浪費系統贈予的超常被動！</p>
+    </div>
+    <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(239,68,68,0.3); border-left:3px solid #ef4444; border-radius:6px; padding:12px 14px;">
+      <strong style="color:#f87171; font-size:0.88rem;">❌ 禁忌十：產駒未滿 1 歲盲目拋售拍賣會</strong>
+      <p style="font-size:0.82rem; color:#cbd5e1; margin:4px 0 0; line-height:1.6;">高仔出 (仔出し) 名公之晚成產駒在幼駒期常顯示平庸，未經相馬眼徹底檢視切忌隨意低價賣出！</p>
+    </div>
+  </div>
+</div>
+
+
 
 </div>
 </section>
@@ -39221,15 +39853,15 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.98"></script>
-<script src="yuruyuru_guides_db.js?v=v03.98"></script>
+<script src="unified_horses_full_db.js?v=v03.99"></script>
+<script src="yuruyuru_guides_db.js?v=v03.99"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v03.98"></script>
-<script src="jbis_engine.js?v=v03.98"></script><script>
+<script src="jbis_pedigree_db.js?v=v03.99"></script>
+<script src="jbis_engine.js?v=v03.99"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -40482,6 +41114,12 @@ function switchMainPillar(pillarId) {
         if (pillarId === 'pillar-races' && typeof filterCh38Stakes === 'function') {
             filterCh38Stakes();
         }
+        if (pillarId === 'pillar-breed') {
+            if (typeof initSimulationChart === 'function') initSimulationChart();
+            if (typeof window.updateBreedingWizard === 'function') window.updateBreedingWizard();
+            if (typeof window.updateExplosionBuilder === 'function') window.updateExplosionBuilder();
+            if (typeof window.calcSandtable === 'function') window.calcSandtable();
+        }
     }
     const btnMap = {
         'pillar-db': 'tabPillarDb',
@@ -40497,6 +41135,7 @@ function switchMainPillar(pillarId) {
     const btn = document.getElementById(btnMap[pillarId]);
     if (btn) btn.classList.add('active');
 }
+window.switchMainPillar = switchMainPillar;
 
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -41510,14 +42149,50 @@ function initSimulationChart() {
 function runExplosionSimulation() {
     const baseB = parseInt(document.getElementById('simBaseExp')?.value || 30);
     const ranchLvl = parseInt(document.getElementById('simRanchBonus')?.value || 3);
-    const maxB = baseB + ranchLvl;
+    const vitalityLvl = parseInt(document.getElementById('simMareVitality')?.value || 5);
+    const koDashi = parseInt(document.getElementById('simSireKoDashi')?.value || 9);
     
+    const maxB = baseB + ranchLvl;
     const counts = Array(maxB + 1).fill(0);
     const N = 1000;
+    let sumB = 0;
+    let over20Count = 0;
+    let monsterCount = 0;
+    let maxSampledB = 0;
+    
+    // 活力偏向因子: 0 -> 1.0, 1 -> 1.1, 2 -> 1.2, 3 -> 1.3, 4 -> 1.4, 5 (永續) -> 1.5
+    const vitalityFactor = 1.0 + vitalityLvl * 0.1;
+    // 仔出豁免機率: 仔出 >= 8 時有 15%~25% 機率重新抽樣取較高值
+    const rerollProb = (koDashi >= 8) ? (koDashi - 7) * 0.1 : 0.0;
+    
     for (let i = 0; i < N; i++) {
-        const sampled = Math.floor(Math.random() * (maxB + 1));
+        let r = Math.random();
+        if (Math.random() < rerollProb) {
+            r = Math.max(r, Math.random());
+        }
+        let poweredR = Math.pow(r, 1.0 / vitalityFactor);
+        let sampled = Math.floor(poweredR * (maxB + 1));
+        if (sampled > maxB) sampled = maxB;
+        
         counts[sampled]++;
+        sumB += sampled;
+        if (sampled >= 20) over20Count++;
+        if (sampled >= 28) monsterCount++;
+        if (sampled > maxSampledB) maxSampledB = sampled;
     }
+    
+    const avgB = (sumB / N).toFixed(1);
+    const pct20 = ((over20Count / N) * 100).toFixed(1) + '%';
+    const pctMonster = ((monsterCount / N) * 100).toFixed(1) + '%';
+    
+    const avgEl = document.getElementById('simStatAvg');
+    if (avgEl) avgEl.textContent = `+${avgB}`;
+    const p20El = document.getElementById('simStat20');
+    if (p20El) p20El.textContent = pct20;
+    const monEl = document.getElementById('simStatMonster');
+    if (monEl) monEl.textContent = pctMonster;
+    const maxEl = document.getElementById('simStatMax');
+    if (maxEl) maxEl.textContent = `+${maxSampledB}`;
     
     if (explosionChartInstance) {
         explosionChartInstance.data.labels = Array.from({length: maxB + 1}, (_, i) => `b = ${i}`);
@@ -41526,6 +42201,231 @@ function runExplosionSimulation() {
     }
 }
 function runSimulation() { runExplosionSimulation(); }
+
+// ==========================================
+// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v03.99)
+// ==========================================
+
+// 1. 神器一：新手極速配種決策精靈 (Breeding Decision Wizard)
+window.updateBreedingWizard = function() {
+    const exp = parseInt(document.getElementById('wizExpInput')?.value || 26);
+    const risk = parseInt(document.getElementById('wizRiskInput')?.value || 1);
+    const rating = document.getElementById('wizRatingSelect')?.value || 'A';
+    const age = parseInt(document.getElementById('wizMareAge')?.value || 9);
+    
+    const isDoubleWeak = document.getElementById('wizCheckDoubleWeak')?.checked || false;
+    const isSameSire = document.getElementById('wizCheckSameSire')?.checked || false;
+    const isActivation = document.getElementById('wizCheckActivation')?.checked || false;
+    const isVitality = document.getElementById('wizCheckVitality')?.checked || false;
+    
+    // 更新顯示文字
+    const expValEl = document.getElementById('wizExpVal');
+    if (expValEl) expValEl.textContent = `+${exp}`;
+    const riskValEl = document.getElementById('wizRiskVal');
+    if (riskValEl) riskValEl.textContent = `${risk}`;
+    
+    // 計算信心指數 (Score 0 ~ 100)
+    let score = 50;
+    
+    // 爆發力權重 (0~45)
+    score += Math.min(35, exp * 0.9);
+    
+    // 評價權重
+    if (rating === 'S') score += 15;
+    else if (rating === 'A') score += 10;
+    else if (rating === 'B') score += 3;
+    else if (rating === 'C') score -= 10;
+    else if (rating === 'D') score -= 25;
+    
+    // 危險度扣分 (若有活性化則減輕)
+    let effRisk = risk;
+    if (isActivation) effRisk = Math.max(0, risk - 2);
+    if (effRisk <= 1) score += 5;
+    else if (effRisk <= 3) score -= 5;
+    else if (effRisk === 4) score -= 20;
+    else score -= 40;
+    
+    // 附加項
+    if (isDoubleWeak) score -= 30;
+    if (isSameSire) score -= 50;
+    if (isVitality) score += 12;
+    if (age >= 16) score -= 15;
+    if (age >= 20) score -= 25;
+    
+    score = Math.max(5, Math.min(100, Math.round(score)));
+    
+    // 更新 DOM
+    const scoreValEl = document.getElementById('wizScoreVal');
+    if (scoreValEl) scoreValEl.textContent = score;
+    
+    const badgeEl = document.getElementById('wizStatusBadge');
+    const textEl = document.getElementById('wizVerdictText');
+    const adviceEl = document.getElementById('wizAdviceText');
+    const cardEl = document.getElementById('wizVerdictCard');
+    
+    if (isSameSire) {
+        if (badgeEl) { badgeEl.className = 'badge badge-danger'; badgeEl.textContent = '🔴 嚴禁配種 (種付不可)'; }
+        if (cardEl) cardEl.style.borderColor = '#ef4444';
+        if (textEl) textEl.textContent = '公馬與母馬之父完全相同！遊戲系統判定為完全同父「種付不可」，將強制反白無法交配，請立即更換種公馬！';
+        if (adviceEl) adviceEl.textContent = '🚫 【致命警報】：請切換為其他不同父系之種公馬，杜絕浪費 5 月配種週次。';
+    } else if (effRisk >= 4) {
+        if (badgeEl) { badgeEl.className = 'badge badge-danger'; badgeEl.textContent = '🔴 極度危險 (近親暴死)'; }
+        if (cardEl) cardEl.style.borderColor = '#ef4444';
+        if (textEl) textEl.textContent = `近親危險度高達 ${risk}！幼駒極高機率體質殘缺 (C-)、気性難暴躁且頻繁早衰，常規重賞生涯極難維持。`;
+        if (adviceEl) adviceEl.textContent = '⚠️ 【避坑建議】：強烈建議更換無近親公馬，或重組祖先親系統達成 8 親系活性化以消除副作用。';
+    } else if (isDoubleWeak) {
+        if (badgeEl) { badgeEl.className = 'badge badge-danger'; badgeEl.textContent = '🟡 慎重考慮 (副屬性致命殘缺)'; }
+        if (cardEl) cardEl.style.borderColor = '#f59e0b';
+        if (textEl) textEl.textContent = '公母雙方精神力或健康同為 D 級弱點重疊！產駒極難克服長途遠征與密集賽程，容易骨折受傷。';
+        if (adviceEl) adviceEl.textContent = '💡 【調教建議】：若執意配種，幼駒誕生後務必配置具備「精神力/健康強化」之史實調教方針。';
+    } else if (score >= 80) {
+        if (badgeEl) { badgeEl.className = 'badge badge-green'; badgeEl.textContent = '🟢 極力推薦交配 (勝率極高)'; }
+        if (cardEl) cardEl.style.borderColor = '#10b981';
+        if (textEl) textEl.textContent = `爆發力達 +${exp}、危險度僅 ${risk}，綜合評估優異！產駒速度與各項七大副屬性兼備，預期衝擊中央 G1 舞台！`;
+        if (adviceEl) adviceEl.textContent = '🏆 【SOP 建議】：首選配對！建議優先受胎並關注次年幼駒之母父因子與大物相馬評語。';
+    } else if (score >= 60) {
+        if (badgeEl) { badgeEl.className = 'badge badge-blue'; badgeEl.textContent = '🔵 合格推薦 (穩健之選)'; }
+        if (cardEl) cardEl.style.borderColor = '#38bdf8';
+        if (textEl) textEl.textContent = `爆發力 +${exp} 具備良好基準，危險度處於安全區間。產駒具備條件戰通關與重賞出走實力。`;
+        if (adviceEl) adviceEl.textContent = '✨ 【實戰建議】：適合牧場中堅戰力繁育，可穩步累積重賞出走賞金。';
+    } else {
+        if (badgeEl) { badgeEl.className = 'badge badge-purple'; badgeEl.textContent = '🟡 勉強可用 (略顯平庸)'; }
+        if (cardEl) cardEl.style.borderColor = '#a855f7';
+        if (textEl) textEl.textContent = `綜合信心指數偏低 (${score}分)，可能受制於母馬高齡或爆發力較低。產駒上限受限。`;
+        if (adviceEl) adviceEl.textContent = '📌 【策略建議】：可考慮優先升級種牡馬設施 Lv3，或引進拍賣會高活力母馬。';
+    }
+};
+
+// 2. 神器二：+40 爆發力積木試算器 (Explosion Block Builder)
+window.updateExplosionBuilder = function() {
+    let total = 0;
+    const checkboxes = document.querySelectorAll('.exp-block-cb');
+    checkboxes.forEach(cb => {
+        if (cb.checked) {
+            total += parseInt(cb.getAttribute('data-val') || '0');
+        }
+    });
+    
+    const totalEl = document.getElementById('builderTotalExp');
+    if (totalEl) totalEl.textContent = `+${total}`;
+    
+    const barEl = document.getElementById('builderProgressBar');
+    const badgeEl = document.getElementById('builderTierBadge');
+    
+    const pct = Math.min(100, Math.round((total / 45) * 100));
+    if (barEl) {
+        barEl.style.width = `${pct}%`;
+        if (total >= 35) {
+            barEl.style.background = 'linear-gradient(90deg, #f59e0b, #ef4444)';
+        } else if (total >= 25) {
+            barEl.style.background = 'linear-gradient(90deg, #38bdf8, #8b5cf6)';
+        } else {
+            barEl.style.background = 'linear-gradient(90deg, #38bdf8, #818cf8)';
+        }
+    }
+    
+    if (badgeEl) {
+        if (total >= 38) {
+            badgeEl.className = 'badge badge-danger';
+            badgeEl.textContent = '🏆 經典三冠神話怪物 (+38~45+)';
+        } else if (total >= 30) {
+            badgeEl.className = 'badge badge-gold';
+            badgeEl.textContent = '🌟 G1 頂級名馬大物階梯 (+30~37)';
+        } else if (total >= 23) {
+            badgeEl.className = 'badge badge-purple';
+            badgeEl.textContent = '🔥 重賞主力・G2/G3爭霸 (+23~29)';
+        } else if (total >= 15) {
+            badgeEl.className = 'badge badge-blue';
+            badgeEl.textContent = '⚡ 條件戰~重賞及格線 (+15~22)';
+        } else {
+            badgeEl.className = 'badge badge-cyan';
+            badgeEl.textContent = '⚠️ 爆發力平庸 (< 15)';
+        }
+    }
+};
+
+// 3. 神器三：4代16祖先血脈活性化沙盤 (4-Gen 16-Ancestor Sandtable)
+window.calcSandtable = function() {
+    const ids = [
+        'st_sire_1', 'st_sire_2', 'st_sire_3', 'st_sire_4',
+        'st_dam_1', 'st_dam_2', 'st_dam_3', 'st_dam_4'
+    ];
+    const lines = [];
+    ids.forEach(id => {
+        const val = document.getElementById(id)?.value;
+        if (val) lines.push(val);
+    });
+    
+    const uniqueSet = new Set(lines);
+    const count = uniqueSet.size;
+    
+    const countEl = document.getElementById('stUniqueCount');
+    if (countEl) countEl.textContent = count;
+    
+    const badgeContainer = document.getElementById('stTheoryBadge');
+    const reliefEl = document.getElementById('stRiskRelief');
+    
+    if (count === 8) {
+        if (badgeContainer) {
+            badgeContainer.innerHTML = '<span class="badge badge-gold" style="font-size:0.92rem; font-weight:800; padding:4px 10px;">🏆 8 親系血脈活性化配合</span><span class="pill pill-power" style="font-size:0.92rem; font-weight:800; padding:4px 10px;">爆發力 +8</span>';
+        }
+        if (reliefEl) reliefEl.innerHTML = '<span style="color:#4ade80; font-weight:bold;">近親交配副作用全數消除 (危險度 -3)</span>，可放心實施 3×4 近親！';
+    } else if (count === 7) {
+        if (badgeContainer) {
+            badgeContainer.innerHTML = '<span class="badge badge-purple" style="font-size:0.92rem; font-weight:800; padding:4px 10px;">✨ 7 親系血脈活性化配合</span><span class="pill pill-power" style="font-size:0.92rem; font-weight:800; padding:4px 10px;">爆發力 +6</span>';
+        }
+        if (reliefEl) reliefEl.innerHTML = '<span style="color:#38bdf8; font-weight:bold;">近親危險度大幅減輕 (危險度 -2)</span>';
+    } else if (count === 6) {
+        if (badgeContainer) {
+            badgeContainer.innerHTML = '<span class="badge badge-blue" style="font-size:0.92rem; font-weight:800; padding:4px 10px;">⚡ 6 親系血脈活性化配合</span><span class="pill pill-power" style="font-size:0.92rem; font-weight:800; padding:4px 10px;">爆發力 +4</span>';
+        }
+        if (reliefEl) reliefEl.innerHTML = '<span style="color:#94a3b8; font-weight:bold;">子系 Linebreed 危險度減半 (危險度 -1)</span>';
+    } else {
+        if (badgeContainer) {
+            badgeContainer.innerHTML = '<span class="badge badge-danger" style="font-size:0.92rem; font-weight:800; padding:4px 10px;">未成立活性化配合</span><span class="pill" style="font-size:0.92rem; font-weight:800; padding:4px 10px;">+0</span>';
+        }
+        if (reliefEl) reliefEl.innerHTML = '<span style="color:#f87171; font-weight:bold;">無危險度化解效果 (危險度 0)</span>';
+    }
+};
+
+window.loadSandtablePreset = function(presetKey, btn) {
+    document.querySelectorAll('#mod-activation .nenpyo-era-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    
+    if (presetKey === 'ss_tony') {
+        // サンデーサイレンス × トニービン (6親系)
+        document.getElementById('st_sire_1').value = 'Halo';
+        document.getElementById('st_sire_2').value = 'NorthernDancer';
+        document.getElementById('st_sire_3').value = 'TomFool';
+        document.getElementById('st_sire_4').value = 'NorthernDancer'; // 重複
+        document.getElementById('st_dam_1').value = 'Nasrullah';
+        document.getElementById('st_dam_2').value = 'Princequillo';
+        document.getElementById('st_dam_3').value = 'Hyperion';
+        document.getElementById('st_dam_4').value = 'Nasrullah'; // 重複
+    } else if (presetKey === 'kame_deep') {
+        // キングカメハメハ × ディープ (7親系)
+        document.getElementById('st_sire_1').value = 'MrProspector';
+        document.getElementById('st_sire_2').value = 'NorthernDancer';
+        document.getElementById('st_sire_3').value = 'Ribot';
+        document.getElementById('st_sire_4').value = 'TomFool';
+        document.getElementById('st_dam_1').value = 'Halo';
+        document.getElementById('st_dam_2').value = 'NorthernDancer'; // 重複
+        document.getElementById('st_dam_3').value = 'Princequillo';
+        document.getElementById('st_dam_4').value = 'Hyperion';
+    } else if (presetKey === 'perfect8') {
+        // 8 親系全開黃金沙盤
+        document.getElementById('st_sire_1').value = 'Halo';
+        document.getElementById('st_sire_2').value = 'NorthernDancer';
+        document.getElementById('st_sire_3').value = 'TomFool';
+        document.getElementById('st_sire_4').value = 'Hyperion';
+        document.getElementById('st_dam_1').value = 'Nasrullah';
+        document.getElementById('st_dam_2').value = 'Princequillo';
+        document.getElementById('st_dam_3').value = 'Ribot';
+        document.getElementById('st_dam_4').value = 'MrProspector';
+    }
+    window.calcSandtable();
+};
+
 
 // 7. 章節 29：馬之個性 (ウマソナ) 分類晶片篩選
 function filterUmasona(catKey, btn) {
