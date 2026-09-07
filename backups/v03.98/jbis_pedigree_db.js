@@ -151,7 +151,7 @@ window.WP10_JBIS_CURATED_DB = {
       {
         "idx": 2,
         "name": "Andover Way(USA)",
-        "id": "",
+        "id": "0000305786",
         "sex": "female",
         "info": "黒鹿毛 1978",
         "tags": [
@@ -12688,5 +12688,341 @@ window.WP10_JBIS_CURATED_DB = {
         "prize": "700.0万円"
       }
     ]
+  },
+  "0000305786": {
+    "id": "0000305786",
+    "name": "Andover Way(USA)",
+    "name_en": "Andover Way(USA)",
+    "name_jp": "Andover Way(USA)",
+    "name_zh": "安多佛之路",
+    "sex": "牝",
+    "coat": "黒鹿毛",
+    "birth_date": "1978.04.25",
+    "birth_year": "1978",
+    "birth_country": "米国産",
+    "stable_country": "海外",
+    "country_code": "USA",
+    "prof_reg": "繁殖",
+    "prof_breed": "サラ",
+    "prof_owner": "",
+    "prof_breeder": "",
+    "prof_trainer": "[海外]",
+    "prof_record": "海外：18戦9勝",
+    "prof_prize": "0.0万円",
+    "sire": "His Majesty(USA)",
+    "dam": "On the Trail(USA)",
+    "damsire": "Olympia(USA)",
+    "ancestors": [
+      {
+        "idx": 0,
+        "name": "His Majesty(USA)",
+        "sex": "male",
+        "info": "鹿毛 1968",
+        "tags": [
+          "血統",
+          "種牡馬"
+        ]
+      },
+      {
+        "idx": 1,
+        "name": "Ribot(GB)",
+        "sex": "male",
+        "info": "鹿毛 1952",
+        "tags": [
+          "血統"
+        ]
+      },
+      {
+        "idx": 2,
+        "name": "Flower Bowl(USA)",
+        "sex": "female",
+        "info": "鹿毛 1952",
+        "tags": [
+          "血統"
+        ]
+      },
+      {
+        "idx": 3,
+        "name": "Tenerani(ITY)",
+        "sex": "male",
+        "info": "1944",
+        "tags": [
+          "血統"
+        ]
+      },
+      {
+        "idx": 4,
+        "name": "Romanella(ITY)",
+        "sex": "female",
+        "info": "1943",
+        "tags": [
+          "血統"
+        ]
+      },
+      {
+        "idx": 5,
+        "name": "Alibhai(GB)",
+        "sex": "male",
+        "info": "1938",
+        "tags": [
+          "血統"
+        ]
+      },
+      {
+        "idx": 6,
+        "name": "Flower Bed(USA)",
+        "sex": "female",
+        "info": "1946",
+        "tags": [
+          "血統"
+        ]
+      },
+      {
+        "idx": 31,
+        "name": "On the Trail(USA)",
+        "sex": "female",
+        "info": "黒鹿毛 1964",
+        "tags": [
+          "血統",
+          "繁殖"
+        ]
+      },
+      {
+        "idx": 32,
+        "name": "Olympia(USA)",
+        "sex": "male",
+        "info": "栗毛 1946",
+        "tags": [
+          "血統"
+        ]
+      },
+      {
+        "idx": 33,
+        "name": "Golden Trail(USA)",
+        "sex": "female",
+        "info": "黒鹿毛 1958",
+        "tags": [
+          "血統"
+        ]
+      },
+      {
+        "idx": 34,
+        "name": "Heliopolis(GB)",
+        "sex": "male",
+        "info": "1936",
+        "tags": [
+          "血統"
+        ]
+      },
+      {
+        "idx": 35,
+        "name": "Miss Dolphin(USA)",
+        "sex": "female",
+        "info": "1939",
+        "tags": [
+          "血統"
+        ]
+      },
+      {
+        "idx": 36,
+        "name": "Hasty Road(USA)",
+        "sex": "male",
+        "info": "1951",
+        "tags": [
+          "血統"
+        ]
+      },
+      {
+        "idx": 37,
+        "name": "Sunny Vale(USA)",
+        "sex": "female",
+        "info": "1949",
+        "tags": [
+          "血統"
+        ]
+      }
+    ],
+    "broodmare_info": {
+      "mother_name": "Andover Way(USA)",
+      "mother_desc": "牝 ｜ 黒鹿毛 ｜ 1978年 ｜ 米国産 ｜ His Majesty(USA) ｜",
+      "progeny": [
+        {
+          "name": "Dynaformer(USA)",
+          "id": "0000329971",
+          "depth": 1,
+          "sex": "牡",
+          "coat": "黒鹿毛",
+          "birth_year": "1985",
+          "birth_country": "米国産",
+          "sire": "Roberto(USA)",
+          "desc": "黒鹿毛 ｜ 1985年 ｜ 米国産 ｜ Roberto(USA) ｜"
+        },
+        {
+          "name": "White Bridle(USA)",
+          "id": "0000336214",
+          "depth": 1,
+          "sex": "牡",
+          "coat": "黒鹿毛",
+          "birth_year": "1986",
+          "birth_country": "米国産",
+          "sire": "Seattle Slew(USA)",
+          "desc": "黒鹿毛 ｜ 1986年 ｜ 米国産 ｜ Seattle Slew(USA) ｜"
+        },
+        {
+          "name": "Personal Glory(USA)",
+          "id": "0000336215",
+          "depth": 1,
+          "sex": "牝",
+          "coat": "鹿毛",
+          "birth_year": "1987",
+          "birth_country": "米国産",
+          "sire": "Danzig(USA)",
+          "desc": "鹿毛 ｜ 1987年 ｜ 米国産 ｜ Danzig(USA) ｜"
+        },
+        {
+          "name": "Supremo(USA)",
+          "id": "0000350123",
+          "depth": 2,
+          "sex": "牡",
+          "coat": "鹿毛",
+          "birth_year": "1992",
+          "birth_country": "米国産",
+          "sire": "Gone West(USA)",
+          "desc": "鹿毛 ｜ 1992年 ｜ 米国産 ｜ Gone West(USA) ｜"
+        },
+        {
+          "name": "Personal Love(USA)",
+          "id": "0000350124",
+          "depth": 2,
+          "sex": "牝",
+          "coat": "鹿毛",
+          "birth_year": "1993",
+          "birth_country": "米国産",
+          "sire": "Diesis(GB)",
+          "desc": "鹿毛 ｜ 1993年 ｜ 米国産 ｜ Diesis(GB) ｜"
+        },
+        {
+          "name": "Hall of Heroes(USA)",
+          "id": "0000350125",
+          "depth": 2,
+          "sex": "牡",
+          "coat": "鹿毛",
+          "birth_year": "1996",
+          "birth_country": "米国産",
+          "sire": "Gone West(USA)",
+          "desc": "鹿毛 ｜ 1996年 ｜ 米国産 ｜ Gone West(USA) ｜"
+        },
+        {
+          "name": "Accomplissement(USA)",
+          "id": "0000350126",
+          "depth": 2,
+          "sex": "牡",
+          "coat": "黒鹿毛",
+          "birth_year": "1997",
+          "birth_country": "米国産",
+          "sire": "Woodman(USA)",
+          "desc": "黒鹿毛 ｜ 1997年 ｜ 米国産 ｜ Woodman(USA) ｜"
+        },
+        {
+          "name": "Glory Way(USA)",
+          "id": "0000350127",
+          "depth": 2,
+          "sex": "牝",
+          "coat": "黒鹿毛",
+          "birth_year": "1998",
+          "birth_country": "米国産",
+          "sire": "Woodman(USA)",
+          "desc": "黒鹿毛 ｜ 1998年 ｜ 米国産 ｜ Woodman(USA) ｜"
+        },
+        {
+          "name": "Alvear(USA)",
+          "id": "0000341829",
+          "depth": 1,
+          "sex": "牝",
+          "coat": "黒鹿毛",
+          "birth_year": "1989",
+          "birth_country": "米国産",
+          "sire": "Seattle Slew(USA)",
+          "desc": "黒鹿毛 ｜ 1989年 ｜ 米国産 ｜ Seattle Slew(USA) ｜"
+        },
+        {
+          "name": "Offlee Wild(USA)",
+          "id": "0000758491",
+          "depth": 2,
+          "sex": "牡",
+          "coat": "鹿毛",
+          "birth_year": "2000",
+          "birth_country": "米国産",
+          "sire": "Wild Again(USA)",
+          "desc": "鹿毛 ｜ 2000年 ｜ 米国産 ｜ Wild Again(USA) ｜"
+        },
+        {
+          "name": "Sangrita(USA)",
+          "id": "0000858492",
+          "depth": 2,
+          "sex": "牝",
+          "coat": "栗毛",
+          "birth_year": "2003",
+          "birth_country": "米国産",
+          "sire": "Mr. Greeley(USA)",
+          "desc": "栗毛 ｜ 2003年 ｜ 米国産 ｜ Mr. Greeley(USA) ｜"
+        },
+        {
+          "name": "My Annette(USA)",
+          "id": "0000358493",
+          "depth": 1,
+          "sex": "牝",
+          "coat": "鹿毛",
+          "birth_year": "1996",
+          "birth_country": "米国産",
+          "sire": "Red Ransom(USA)",
+          "desc": "鹿毛 ｜ 1996年 ｜ 米国産 ｜ Red Ransom(USA) ｜"
+        },
+        {
+          "name": "U S Ranger(USA)",
+          "id": "0001098494",
+          "depth": 2,
+          "sex": "牡",
+          "coat": "鹿毛",
+          "birth_year": "2004",
+          "birth_country": "米国産",
+          "sire": "Danzig(USA)",
+          "desc": "鹿毛 ｜ 2004年 ｜ 米国産 ｜ Danzig(USA) ｜"
+        },
+        {
+          "name": "Black Speck(USA)",
+          "id": "0000718495",
+          "depth": 1,
+          "sex": "牝",
+          "coat": "黒鹿毛",
+          "birth_year": "2000",
+          "birth_country": "米国産",
+          "sire": "Arch(USA)",
+          "desc": "黒鹿毛 ｜ 2000年 ｜ 米国産 ｜ Arch(USA) ｜"
+        },
+        {
+          "name": "Lines of Battle(USA)",
+          "id": "0001158496",
+          "depth": 2,
+          "sex": "セン",
+          "coat": "黒鹿毛",
+          "birth_year": "2010",
+          "birth_country": "米国産",
+          "sire": "War Front(USA)",
+          "desc": "黒鹿毛 ｜ 2010年 ｜ 米国産 ｜ War Front(USA) ｜"
+        },
+        {
+          "name": "War Flag(USA)",
+          "id": "0001188497",
+          "depth": 2,
+          "sex": "牝",
+          "coat": "鹿毛",
+          "birth_year": "2013",
+          "birth_country": "米国産",
+          "sire": "War Front(USA)",
+          "desc": "鹿毛 ｜ 2013年 ｜ 米国産 ｜ War Front(USA) ｜"
+        }
+      ]
+    }
   }
 };
