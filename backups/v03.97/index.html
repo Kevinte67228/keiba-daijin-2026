@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.92"></script>
-<script src="core_guides_data.js?v=v03.92"></script>
-<script src="yearly_recs_db.js?v=v03.92"></script>
-<script src="horse_subtopics_data.js?v=v03.92"></script>
+<script src="master_lookup_db.js?v=v03.98"></script>
+<script src="core_guides_data.js?v=v03.98"></script>
+<script src="yearly_recs_db.js?v=v03.98"></script>
+<script src="horse_subtopics_data.js?v=v03.98"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1845,7 +1845,7 @@ li {
 }
 </style>
 <style id="unified-amulet-tokens">
-/* Unified Amulet & Badge Tokens (v03.92) */
+/* Unified Amulet & Badge Tokens (v03.96) */
 :root {
     --token-rainbow-gradient: linear-gradient(135deg, #a855f7, #ec4899, #eab308);
     --token-gold-color: #f59e0b;
@@ -2538,12 +2538,12 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.92</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v03.98</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
-      <a href="jbis_horse.html?v=v03.92" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;">
-        <i class="fa-solid fa-dna" style="color:#4ade80; font-size:1.1rem;"></i> 🔍 JBIS 1:1 馬情報・全史實馬 5 代血統與產駒檢索系統
-        <span style="background:#22c55e; color:#0f172a; font-size:0.75rem; padding:2px 8px; border-radius:10px; font-weight:900;">全新登場</span>
+      <a href="https://www.jbis.or.jp/horse/" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;" title="前往日本 JBIS Search 官方原站進行即時權威血統與馬情報檢索">
+        <i class="fa-solid fa-arrow-up-right-from-square" style="color:#4ade80; font-size:1.05rem;"></i> 🔍 前往 JBIS 日本官方原站・全史實馬 5 代血統與產駒檢索 ↗
+        <span style="background:#22c55e; color:#0f172a; font-size:0.75rem; padding:2px 8px; border-radius:10px; font-weight:900;">官方即時</span>
       </a>
     </div>
     <p style="text-align:center !important; margin:6px auto 12px auto; max-width:860px; line-height:1.6;">
@@ -2552,6 +2552,16 @@ button.chip-btn.active {
 
 </div>
 <div id="loadingMsg" style="display:none; text-align:center; padding:10px; background:#1e1b4b; border:1px solid #3b82f6; border-radius:8px; margin-bottom:12px; color:#38bdf8; font-size:0.85rem;"></div>
+
+    <!-- 2026 新核心要素直達快速通道 -->
+    <div style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:8px; margin:0 auto 14px auto; max-width:960px; padding:0 10px;">
+      <span style="font-size:0.78rem; font-weight:800; color:#fbbf24; display:flex; align-items:center; gap:5px;"><i class="fa-solid fa-sparkles"></i> 2026 新要素直達:</span>
+      <button onclick="jumpToSection('pillar-train', 'sec-historical-train')" class="chip-btn" style="border-radius:20px; font-size:0.75rem; padding:4px 11px; background:rgba(30,41,59,0.85); color:#38bdf8; border:1px solid rgba(56,189,248,0.3); cursor:pointer;"><i class="fa-solid fa-dumbbell"></i> 史實調教菜單 (第28章)</button>
+      <button onclick="jumpToSection('pillar-train', 'sec-uma-personality')" class="chip-btn" style="border-radius:20px; font-size:0.75rem; padding:4px 11px; background:rgba(30,41,59,0.85); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); cursor:pointer;"><i class="fa-solid fa-brain"></i> 馬之個性(ウマソナ) (第26章)</button>
+      <button onclick="jumpToSection('pillar-lectures', 'sec-official-lectures')" class="chip-btn" style="border-radius:20px; font-size:0.75rem; padding:4px 11px; background:rgba(30,41,59,0.85); color:#a78bfa; border:1px solid rgba(167,139,250,0.3); cursor:pointer;"><i class="fa-solid fa-chart-line"></i> 三大展開上限 (第48章)</button>
+      <button onclick="jumpToSection('pillar-lectures', 'sec-system-features')" class="chip-btn" style="border-radius:20px; font-size:0.75rem; padding:4px 11px; background:rgba(30,41,59,0.85); color:#34d399; border:1px solid rgba(52,211,153,0.3); cursor:pointer;"><i class="fa-solid fa-film"></i> 電影級過場 (第50章)</button>
+    </div>
+
 <!-- 8 大核心專題分頁導航列 -->
 <div class="main-mode-tabs-wrapper">
 <div class="main-mode-tabs">
@@ -2817,11 +2827,11 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:140px;">推薦類別</th>
-<th style="min-width:220px;">特別馬名 (日/中)</th>
-<th style="min-width:100px;">等級/札色</th>
-<th style="min-width:380px;">歷史地位與戰略繁育價值</th>
-<th style="width:75px; text-align:center !important;">詳情</th></tr>
+<th class="sortable-th" style="min-width:140px;">推薦類別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:220px;">特別馬名 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:100px;">等級/札色 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:380px;">歷史地位與戰略繁育價值 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th></tr>
 </thead>
 <tbody><tr style="background:rgba(59,130,246,0.06);">
 <td rowspan="4"><strong>特別種牡馬<br/>(Special Sires)</strong></td>
@@ -2907,9 +2917,9 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:120px;">玩家性別</th>
-<th style="min-width:180px;">相親① (年輕伴侶)</th>
-<th style="min-width:240px;">相親② (已育有 2 名子女)</th>
+<th class="sortable-th" style="min-width:120px;">玩家性別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:180px;">相親① (年輕伴侶) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:240px;">相親② (已育有 2 名子女) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -3024,11 +3034,11 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:160px;">讓渡時機 / 類別</th>
-<th style="min-width:200px;">讓渡馬名 (日/中)</th>
-<th style="min-width:110px;">性別/成長</th>
-<th style="min-width:360px;">詳細戰略評析與實戰建議</th>
-<th style="width:75px; text-align:center !important;">詳情</th></tr>
+<th class="sortable-th" style="min-width:160px;">讓渡時機 / 類別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:200px;">讓渡馬名 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:110px;">性別/成長 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:360px;">詳細戰略評析與實戰建議 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th></tr>
 </thead>
 <tbody><tr style="background:rgba(59,130,246,0.06);">
 <td><strong>1月1週 (3歲初始・牡馬推薦)</strong></td>
@@ -3089,11 +3099,11 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:160px;">讓渡時機 / 類別</th>
-<th style="min-width:200px;">讓渡馬名 (日/中)</th>
-<th style="min-width:110px;">性別/成長</th>
-<th style="min-width:360px;">詳細戰略評析與實戰建議</th>
-<th style="width:75px; text-align:center !important;">詳情</th></tr>
+<th class="sortable-th" style="min-width:160px;">讓渡時機 / 類別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:200px;">讓渡馬名 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:110px;">性別/成長 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:360px;">詳細戰略評析與實戰建議 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th></tr>
 </thead>
 <tbody><tr style="background:rgba(59,130,246,0.06);">
 <td><strong>1月1週 (3歲初始・牡馬推薦)</strong></td>
@@ -3172,11 +3182,11 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:160px;">讓渡時機 / 類別</th>
-<th style="min-width:200px;">讓渡馬名 (日/中)</th>
-<th style="min-width:110px;">性別/成長</th>
-<th style="min-width:360px;">詳細戰略評析與實戰建議</th>
-<th style="width:75px; text-align:center !important;">詳情</th></tr>
+<th class="sortable-th" style="min-width:160px;">讓渡時機 / 類別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:200px;">讓渡馬名 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:110px;">性別/成長 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:360px;">詳細戰略評析與實戰建議 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th></tr>
 </thead>
 <tbody><tr style="background:rgba(59,130,246,0.06);">
 <td><strong>1月1週 (3歲初始・牡馬推薦)</strong></td>
@@ -3237,11 +3247,11 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:160px;">讓渡時機 / 類別</th>
-<th style="min-width:200px;">讓渡馬名 (日/中)</th>
-<th style="min-width:110px;">性別/成長</th>
-<th style="min-width:360px;">詳細戰略評析與實戰建議</th>
-<th style="width:75px; text-align:center !important;">詳情</th></tr>
+<th class="sortable-th" style="min-width:160px;">讓渡時機 / 類別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:200px;">讓渡馬名 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:110px;">性別/成長 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:360px;">詳細戰略評析與實戰建議 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th></tr>
 </thead>
 <tbody><tr style="background:rgba(59,130,246,0.06);">
 <td><strong>1月1週 (3歲初始・牡馬推薦)</strong></td>
@@ -3308,11 +3318,11 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:110px;">開局劇本</th>
-<th style="min-width:160px;">讓渡時機 / 類別</th>
-<th style="min-width:200px;">讓渡馬名 (日/中)</th>
-<th style="min-width:360px;">詳細戰略評析與實戰建議</th>
-<th style="width:75px; text-align:center !important;">詳情</th></tr>
+<th class="sortable-th" style="min-width:110px;">開局劇本 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:160px;">讓渡時機 / 類別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:200px;">讓渡馬名 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:360px;">詳細戰略評析與實戰建議 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th></tr>
 </thead>
 <tbody><tr style="background:rgba(59,130,246,0.04);">
 <td rowspan="5"><strong>1998 年</strong></td>
@@ -3593,9 +3603,9 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:140px;">推進階段 (段階)</th>
-<th style="min-width:320px;">核心行動 (やること)</th>
-<th style="min-width:380px;">戰略目的與收穫 (目的)</th>
+<th class="sortable-th" style="min-width:140px;">推進階段 (段階) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:320px;">核心行動 (やること) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:380px;">戰略目的與收穫 (目的) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -3628,11 +3638,11 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:180px;">種牡馬 (日/中)</th>
-<th style="min-width:140px;">開局年齡/狀態</th>
-<th style="min-width:260px;">實戰定位與用法 (使い方)</th>
-<th style="min-width:320px;">適合玩家群體 (向いている人)</th>
-<th style="width:75px; text-align:center !important;">詳情</th></tr>
+<th class="sortable-th" style="min-width:180px;">種牡馬 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:140px;">開局年齡/狀態 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:260px;">實戰定位與用法 (使い方) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:320px;">適合玩家群體 (向いている人) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th></tr>
 </thead>
 <tbody><tr style="background:rgba(234,179,8,0.1);">
 <td><a class="horse-link" onclick="openNativeHorseDossier('チャイナロック')"><strong style="color:var(--gold-color);">★ チャイナロック (China Rock / 中國岩)</strong></a></td>
@@ -3673,11 +3683,11 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:180px;">海外種牡馬 (日/中)</th>
-<th style="min-width:120px;">配種開始年份</th>
-<th style="min-width:150px;">系統確立狀態</th>
-<th style="min-width:380px;">核心特徵與配合心法 (繁體中文)</th>
-<th style="width:75px; text-align:center !important;">詳情</th></tr>
+<th class="sortable-th" style="min-width:180px;">海外種牡馬 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:120px;">配種開始年份 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:150px;">系統確立狀態 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:380px;">核心特徵與配合心法 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th></tr>
 </thead>
 <tbody><tr style="background:rgba(234,179,8,0.08);">
 <td><a class="horse-link" onclick="openNativeHorseDossier('ボールドルーラー')"><strong style="color:var(--gold-color);">ボールドルーラー (Bold Ruler)</strong></a></td>
@@ -3721,10 +3731,10 @@ button.chip-btn.active {
 <table class="data-table" style="font-size:0.8rem;">
 <thead>
 <tr>
-<th style="min-width:180px;">馬名 (日/中)</th>
-<th style="width:1%; white-space:nowrap;">評級</th>
-<th style="min-width:400px;">《權威繁育大百科》實戰評語與繁育定位 (繁體中文)</th>
-<th style="width:75px; text-align:center !important;">詳情</th></tr>
+<th class="sortable-th" style="min-width:180px;">馬名 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:1%; white-space:nowrap;">評級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:400px;">《權威繁育大百科》實戰評語與繁育定位 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th></tr>
 </thead>
 <tbody><tr style="rgba(234,179,8,0.12)">
 <td><a class="horse-link" onclick="openNativeHorseDossier('オーハヤブサ')"><strong>オーハヤブサ</strong></a></td>
@@ -3880,14 +3890,14 @@ button.chip-btn.active {
 <table class="data-table" style="font-size:0.8rem;">
 <thead>
 <tr>
-<th style="min-width:160px;">馬名 (日/中)</th>
-<th style="width:1%; white-space:nowrap;">評級</th>
-<th style="min-width:60px;">札色</th>
-<th style="min-width:60px;">年齡</th>
-<th style="min-width:60px;">牝系</th>
-<th style="min-width:200px;">五維能力指數</th>
-<th style="min-width:320px;">《權威繁育大百科》實戰評語與繁育定位 (繁體中文)</th>
-<th style="width:75px; text-align:center !important;">詳情</th></tr>
+<th class="sortable-th" style="min-width:160px;">馬名 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:1%; white-space:nowrap;">評級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:60px;">札色 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:60px;">年齡 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:60px;">牝系 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:200px;">五維能力指數 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:320px;">《權威繁育大百科》實戰評語與繁育定位 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th></tr>
 </thead>
 <tbody><tr style="rgba(234,179,8,0.12)">
 <td><a class="horse-link" onclick="openNativeHorseDossier('ピア')"><strong>ピア</strong></a></td>
@@ -4105,14 +4115,14 @@ button.chip-btn.active {
 <table class="data-table" style="font-size:0.8rem;">
 <thead>
 <tr>
-<th style="min-width:160px;">馬名 (日/中)</th>
-<th style="width:1%; white-space:nowrap;">評級</th>
-<th style="min-width:60px;">札色</th>
-<th style="min-width:60px;">年齡</th>
-<th style="min-width:60px;">牝系</th>
-<th style="min-width:200px;">五維能力指數</th>
-<th style="min-width:320px;">《權威繁育大百科》實戰評語與繁育定位 (繁體中文)</th>
-<th style="width:75px; text-align:center !important;">詳情</th></tr>
+<th class="sortable-th" style="min-width:160px;">馬名 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:1%; white-space:nowrap;">評級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:60px;">札色 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:60px;">年齡 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:60px;">牝系 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:200px;">五維能力指數 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:320px;">《權威繁育大百科》實戰評語與繁育定位 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th></tr>
 </thead>
 <tbody><tr style="rgba(234,179,8,0.12)">
 <td><a class="horse-link" onclick="openNativeHorseDossier('キャッスルフォーブス')"><strong>キャッスルフォーブス</strong></a></td>
@@ -4504,13 +4514,13 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:80px;">順位</th>
-<th style="min-width:180px;">始祖繁殖牝馬 (日/中)</th>
-<th style="min-width:120px;">地區/原札色</th>
-<th style="min-width:130px;">30 年後後代頭數</th>
-<th style="min-width:160px;">評價額合計 (日圓)</th>
-<th style="min-width:320px;">30 年推演實戰評價 (繁體中文)</th>
-<th style="width:75px; text-align:center !important;">詳情</th></tr>
+<th class="sortable-th" style="min-width:80px;">順位 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:180px;">始祖繁殖牝馬 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:120px;">地區/原札色 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:130px;">30 年後後代頭數 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:160px;">評價額合計 (日圓) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:320px;">30 年推演實戰評價 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th></tr>
 </thead>
 <tbody><tr style="background:rgba(234,179,8,0.15);">
 <td><strong>第 1 位</strong></td>
@@ -6545,9 +6555,9 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th>指標名稱</th>
-<th>評級/範圍</th>
-<th>機制影響與底層邏輯</th>
+<th class="sortable-th">指標名稱 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">評級/範圍 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">機制影響與底層邏輯 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -6671,10 +6681,10 @@ button.chip-btn.active {
 <table class="data-table" style="font-size:0.82rem; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:160px;">配合名稱 (日/中)</th>
-<th class="sortable-th">成立條件與原型背景</th>
-<th class="sortable-th" style="width:85px;">爆發力 (爆発力)</th>
-<th class="sortable-th">特殊效果與實戰價值</th>
+<th class="sortable-th" style="width:160px;">配合名稱 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">成立條件與原型背景 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">爆發力 (爆発力) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">特殊效果與實戰價值 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -6757,9 +6767,9 @@ button.chip-btn.active {
 <table class="data-table" id="theoryMasterTable">
 <thead>
 <tr>
-<th style="min-width:230px;">配合理論名稱 (日/中)</th>
-<th style="width:1%; white-space:nowrap;">爆發力 (爆発力)</th>
-<th style="min-width:380px;">成立條件、詳細機制與備註說明</th>
+<th class="sortable-th" style="min-width:230px;">配合理論名稱 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:1%; white-space:nowrap;">爆發力 (爆発力) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:380px;">成立條件、詳細機制與備註說明 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -7029,10 +7039,10 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:780px;">
 <thead>
 <tr>
-<th style="min-width:130px; text-align:left !important;">綜合仔出等級</th>
-<th style="min-width:150px; text-align:left !important;">超大物/越欄駒覺醒率</th>
-<th style="min-width:160px; text-align:left !important;">產駒基礎完成度 (實力下限)</th>
-<th style="min-width:320px; text-align:left !important;">繁育實戰評價與養成建議 (繁體中文)</th>
+<th class="sortable-th" style="min-width:130px; text-align:left !important;">綜合仔出等級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:150px; text-align:left !important;">超大物/越欄駒覺醒率 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:160px; text-align:left !important;">產駒基礎完成度 (實力下限) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:320px; text-align:left !important;">繁育實戰評價與養成建議 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -7090,10 +7100,10 @@ button.chip-btn.active {
 <table class="data-table" style="font-size:0.8rem; text-align:left;">
 <thead>
 <tr>
-<th style="min-width:110px;">第 1 代 (50%)</th>
-<th style="min-width:110px;">第 2 代 (25%)</th>
-<th style="min-width:120px;">第 3 代 (12.5%)</th>
-<th style="min-width:130px;">第 4 代 (6.25%)</th>
+<th class="sortable-th" style="min-width:110px;">第 1 代 (50%) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:110px;">第 2 代 (25%) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:120px;">第 3 代 (12.5%) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:130px;">第 4 代 (6.25%) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -7150,10 +7160,10 @@ button.chip-btn.active {
 <table class="pedigree-table data-table" style="min-width:880px; text-align:left !important;">
 <thead>
 <tr>
-<th>第 1 代</th>
-<th>第 2 代</th>
-<th>第 3 代</th>
-<th>第 4 代</th>
+<th class="sortable-th">第 1 代 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">第 2 代 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">第 3 代 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">第 4 代 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -7219,10 +7229,10 @@ button.chip-btn.active {
 <table class="pedigree-table data-table" style="min-width:880px; text-align:left !important;">
 <thead>
 <tr>
-<th>第 1 代 (50%)</th>
-<th>第 2 代 (25%)</th>
-<th>第 3 代 (12.5%)</th>
-<th>第 4 代 (6.25%)</th>
+<th class="sortable-th">第 1 代 (50%) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">第 2 代 (25%) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">第 3 代 (12.5%) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">第 4 代 (6.25%) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -7290,10 +7300,10 @@ button.chip-btn.active {
 <table class="pedigree-table data-table" style="min-width:880px; text-align:left !important;">
 <thead>
 <tr>
-<th>第 1 代</th>
-<th>第 2 代</th>
-<th>第 3 代 (4大父系判定點)</th>
-<th>第 4 代</th>
+<th class="sortable-th">第 1 代 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">第 2 代 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">第 3 代 (4大父系判定點) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">第 4 代 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -7356,9 +7366,9 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th>親系統數量</th>
-<th style="text-align: left;">爆發力 (爆発力)</th>
-<th>危險度化解效果</th>
+<th class="sortable-th">親系統數量 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align: left;">爆發力 (爆発力) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">危險度化解效果 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -7427,11 +7437,11 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:840px;">
 <thead>
 <tr>
-<th style="min-width:150px; text-align:left !important;">配合理論類型 (日/中)</th>
-<th style="min-width:100px; text-align:left !important;">配合等級 / 型態</th>
-<th style="min-width:280px; text-align:left !important;">4 代 16 祖先血統矩陣判定條件</th>
-<th style="min-width:110px; text-align:left !important;">爆發力加成</th>
-<th style="min-width:250px; text-align:left !important;">隱藏效果與繁育實戰評價 (繁體中文)</th>
+<th class="sortable-th" style="min-width:150px; text-align:left !important;">配合理論類型 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:100px; text-align:left !important;">配合等級 / 型態 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:280px; text-align:left !important;">4 代 16 祖先血統矩陣判定條件 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:110px; text-align:left !important;">爆發力加成 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:250px; text-align:left !important;">隱藏效果與繁育實戰評價 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -7523,11 +7533,11 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px;">
 <thead>
 <tr>
-<th style="min-width:140px; text-align:left !important;">活性化配合類型 (日/中)</th>
-<th style="min-width:90px; text-align:left !important;">配合等級</th>
-<th style="min-width:280px; text-align:left !important;">4 代 16 祖先血統矩陣判定條件</th>
-<th style="min-width:110px; text-align:left !important;">爆發力加成</th>
-<th style="min-width:260px; text-align:left !important;">繁育實戰建議 (繁體中文)</th>
+<th class="sortable-th" style="min-width:140px; text-align:left !important;">活性化配合類型 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:90px; text-align:left !important;">配合等級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:280px; text-align:left !important;">4 代 16 祖先血統矩陣判定條件 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:110px; text-align:left !important;">爆發力加成 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:260px; text-align:left !important;">繁育實戰建議 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -7630,11 +7640,11 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:840px;">
 <thead>
 <tr>
-<th style="min-width:140px; text-align:left !important;">配合理論類型 (日/中)</th>
-<th style="min-width:90px; text-align:left !important;">配合等級</th>
-<th style="min-width:280px; text-align:left !important;">4 代 16 祖先血統矩陣判定條件</th>
-<th style="min-width:110px; text-align:left !important;">爆發力加成</th>
-<th style="min-width:260px; text-align:left !important;">隱藏能力躍升與繁育評價 (繁體中文)</th>
+<th class="sortable-th" style="min-width:140px; text-align:left !important;">配合理論類型 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:90px; text-align:left !important;">配合等級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:280px; text-align:left !important;">4 代 16 祖先血統矩陣判定條件 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:110px; text-align:left !important;">爆發力加成 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:260px; text-align:left !important;">隱藏能力躍升與繁育評價 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -7846,10 +7856,10 @@ button.chip-btn.active {
 <table class="data-table" style="font-size:0.82rem; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:200px;">配合理論名稱 (日/中)</th>
-<th class="sortable-th" style="width:300px;">成立詳細條件 (日/中對照)</th>
-<th class="sortable-th" style="width:100px;">爆發力 (爆発力)</th>
-<th class="sortable-th">實戰神級加成效益 (繁體中文)</th>
+<th class="sortable-th" style="width:200px;">配合理論名稱 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:300px;">成立詳細條件 (日/中對照) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:100px;">爆發力 (爆発力) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">實戰神級加成效益 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -7903,10 +7913,10 @@ button.chip-btn.active {
 <table class="data-table" style="font-size:0.8rem; text-align:left !important;">
 <thead>
 <tr style="background:rgba(15,23,42,0.9);">
-<th style="width:110px;">第 1 代</th>
-<th style="width:120px;">第 2 代</th>
-<th style="width:140px;">第 3 代</th>
-<th>第 4 代 (高祖父母) 與 Drama 因子分佈</th>
+<th class="sortable-th" style="width:110px;">第 1 代 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:120px;">第 2 代 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:140px;">第 3 代 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">第 4 代 (高祖父母) 與 Drama 因子分佈 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -7973,10 +7983,10 @@ button.chip-btn.active {
 <table class="data-table" style="font-size:0.82rem; text-align:left !important;">
 <thead>
 <tr>
-<th style="min-width:130px;">維度分類</th>
-<th style="min-width:180px;">核心配合理論 (日/中)</th>
-<th style="min-width:140px;">爆發力 (爆発力) / 效果</th>
-<th style="min-width:340px;">核心成立條件與實戰要訣 (繁體中文)</th>
+<th class="sortable-th" style="min-width:130px;">維度分類 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:180px;">核心配合理論 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:140px;">爆發力 (爆発力) / 效果 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:340px;">核心成立條件與實戰要訣 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -8860,9 +8870,9 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:140px;">評估人物 (日/中)</th>
-<th style="min-width:200px;">喜好考量核心項目 (日/中)</th>
-<th style="min-width:420px;">相馬判定解讀與實戰要訣 (繁體中文)</th>
+<th class="sortable-th" style="min-width:140px;">評估人物 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:200px;">喜好考量核心項目 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:420px;">相馬判定解讀與實戰要訣 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -8908,9 +8918,9 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:160px;">成長型 (日/中)</th>
-<th style="min-width:320px;">牧場長日文原版評語</th>
-<th style="min-width:320px;">中文對照與出走期解析</th>
+<th class="sortable-th" style="min-width:160px;">成長型 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:320px;">牧場長日文原版評語 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:320px;">中文對照與出走期解析 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -8943,9 +8953,9 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:160px;">適性類型 (日/中)</th>
-<th style="min-width:340px;">牧場長日文原版評語</th>
-<th style="min-width:300px;">中文對照與適應射程</th>
+<th class="sortable-th" style="min-width:160px;">適性類型 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:340px;">牧場長日文原版評語 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:300px;">中文對照與適應射程 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -8968,9 +8978,9 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:140px;">期待度等級</th>
-<th style="min-width:px;">牧場長日文原版評語</th>
-<th style="min-width:340px;">中文對照與實力潛能評估</th>
+<th class="sortable-th" style="min-width:140px;">期待度等級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:px;">牧場長日文原版評語 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:340px;">中文對照與實力潛能評估 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -11824,12 +11834,12 @@ button.chip-btn.active {
 <table class="data-table" id="foalAgeScheduleTable" style="font-size:0.8rem;">
 <thead>
 <tr>
-<th style="min-width:130px;">時期 (時期)</th>
-<th style="min-width:140px;">1 週 (1週)</th>
-<th style="min-width:140px;">2 週 (2週)</th>
-<th style="min-width:140px;">3 週 (3週)</th>
-<th style="min-width:140px;">4 週 (4週)</th>
-<th style="min-width:110px;">5 週 (5週)</th>
+<th class="sortable-th" style="min-width:130px;">時期 (時期) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:140px;">1 週 (1週) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:140px;">2 週 (2週) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:140px;">3 週 (3週) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:140px;">4 週 (4週) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:110px;">5 週 (5週) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -11868,10 +11878,10 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:140px;">能力項目 (日/中)</th>
-<th style="min-width:340px;">牧場長日文原版評語</th>
-<th style="min-width:340px;">繁體中文翻譯對照</th>
-<th style="min-width:160px;">能力等級判定</th>
+<th class="sortable-th" style="min-width:140px;">能力項目 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:340px;">牧場長日文原版評語 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:340px;">繁體中文翻譯對照 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:160px;">能力等級判定 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -12242,9 +12252,9 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:140px;">能力項目 (日/中)</th>
-<th style="min-width:100px;">顯示評級</th>
-<th style="min-width:420px;">機制影響與底層邏輯 (繁體中文)</th>
+<th class="sortable-th" style="min-width:140px;">能力項目 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:100px;">顯示評級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:420px;">機制影響與底層邏輯 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -12297,7 +12307,7 @@ button.chip-btn.active {
 <table class="data-table" style="text-align:left;">
 <thead>
 <tr>
-<th>S+</th><th>S</th><th>A+</th><th>A</th><th>B+</th><th>B</th><th>C+</th><th>C</th><th>D+</th><th>D</th><th>E+</th><th>E</th><th>F+</th><th>F</th><th>G+</th><th>G</th>
+<th class="sortable-th">S+ <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">S <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">A+ <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">A <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">B+ <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">B <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">C+ <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">C <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">D+ <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">D <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">E+ <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">E <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">F+ <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">F <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">G+ <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th">G <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -12318,9 +12328,9 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:140px;">適性項目</th>
-<th style="min-width:150px;">細分指標</th>
-<th style="min-width:400px;">實戰影響與機制說明 (繁體中文)</th>
+<th class="sortable-th" style="min-width:140px;">適性項目 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:150px;">細分指標 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:400px;">實戰影響與機制說明 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -12387,9 +12397,9 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:130px;">體調指標</th>
-<th style="min-width:130px;">等級階梯</th>
-<th style="min-width:420px;">詳細運作機制與管理要點</th>
+<th class="sortable-th" style="min-width:130px;">體調指標 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:130px;">等級階梯 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:420px;">詳細運作機制與管理要點 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -12425,9 +12435,9 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:140px;">特徵類別</th>
-<th style="min-width:180px;">具體分項</th>
-<th style="min-width:400px;">機制詳解 (繁體中文)</th>
+<th class="sortable-th" style="min-width:140px;">特徵類別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:180px;">具體分項 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:400px;">機制詳解 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -12525,8 +12535,8 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:140px;">騎手特性 (日/中)</th>
-<th style="min-width:440px;">具體觸發條件與實戰效果 (繁體中文)</th>
+<th class="sortable-th" style="min-width:140px;">騎手特性 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:440px;">具體觸發條件與實戰效果 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -12627,8 +12637,8 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:130px;">能力項目</th>
-<th style="min-width:440px;">機制影響與說明</th>
+<th class="sortable-th" style="min-width:130px;">能力項目 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:440px;">機制影響與說明 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -12660,8 +12670,8 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:140px;">調教師特性 (日/中)</th>
-<th style="min-width:440px;">具體訓練加成與實戰效果 (繁體中文)</th>
+<th class="sortable-th" style="min-width:140px;">調教師特性 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:440px;">具體訓練加成與實戰效果 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -12745,8 +12755,8 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:150px;">能力項目</th>
-<th style="min-width:440px;">機制影響與說明</th>
+<th class="sortable-th" style="min-width:150px;">能力項目 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:440px;">機制影響與說明 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -12817,10 +12827,10 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:120px; text-align:left !important;">角色三大能力</th>
-<th style="min-width:100px; text-align:left !important;">數值評級</th>
-<th style="min-width:320px; text-align:left !important;">對子孫遺傳與職業進路之實戰影響</th>
-<th style="min-width:180px; text-align:left !important;">能力提升與培育方式</th>
+<th class="sortable-th" style="min-width:120px; text-align:left !important;">角色三大能力 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:100px; text-align:left !important;">數值評級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:320px; text-align:left !important;">對子孫遺傳與職業進路之實戰影響 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:180px; text-align:left !important;">能力提升與培育方式 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -12942,10 +12952,10 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:140px; text-align:left !important;">特性框色階級</th>
-<th style="min-width:160px; text-align:left !important;">對應特性類別</th>
-<th style="min-width:320px; text-align:left !important;">效果強度與觸發特徵</th>
-<th style="min-width:180px; text-align:left !important;">獲得與進化途徑</th>
+<th class="sortable-th" style="min-width:140px; text-align:left !important;">特性框色階級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:160px; text-align:left !important;">對應特性類別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:320px; text-align:left !important;">效果強度與觸發特徵 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:180px; text-align:left !important;">獲得與進化途徑 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -12989,10 +12999,10 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:140px; text-align:left !important;">比賽展開類型</th>
-<th style="min-width:120px; text-align:left !important;">官方代表圖標</th>
-<th style="min-width:280px; text-align:left !important;">步速節奏與賽道機制</th>
-<th style="min-width:280px; text-align:left !important;">關鍵決定屬性與克制戰法</th>
+<th class="sortable-th" style="min-width:140px; text-align:left !important;">比賽展開類型 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:120px; text-align:left !important;">官方代表圖標 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:280px; text-align:left !important;">步速節奏與賽道機制 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:280px; text-align:left !important;">關鍵決定屬性與克制戰法 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -13068,9 +13078,9 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:750px;">
 <thead>
 <tr>
-<th style="width:180px; text-align:left !important;">馬匹種類</th>
-<th style="text-align:left !important;">🟢 先天能力 (綠★)</th>
-<th style="text-align:left !important;">⚪ 上限值 (灰★)</th>
+<th class="sortable-th" style="width:180px; text-align:left !important;">馬匹種類 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align:left !important;">🟢 先天能力 (綠★) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align:left !important;">⚪ 上限值 (灰★) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -13106,10 +13116,10 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:680px; text-align:left !important;">
 <thead>
 <tr>
-<th style="width:100px; text-align:left !important;">上限值 (灰★)</th>
-<th style="text-align:left !important;">早熟・早め・晩成 (經典型)</th>
-<th style="text-align:left !important;">早め持続・早熟持続 (持續型)</th>
-<th style="text-align:left !important;">晩成持続・持続・覚醒 (極長持續/覺醒型)</th>
+<th class="sortable-th" style="width:100px; text-align:left !important;">上限值 (灰★) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align:left !important;">早熟・早め・晩成 (經典型) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align:left !important;">早め持続・早熟持続 (持續型) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align:left !important;">晩成持続・持続・覚醒 (極長持續/覺醒型) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -14357,8 +14367,8 @@ button.chip-btn.active {
 <table class="data-table" style="font-size:0.84rem;">
 <thead>
 <tr style="background:rgba(30, 41, 59, 0.98);">
-<th style="min-width:320px; font-weight:bold; color:var(--accent-color);">情況</th>
-<th style="min-width:280px; font-weight:bold; color:var(--accent-color);">加成 (大成功機率增減)</th>
+<th class="sortable-th" style="min-width:320px; font-weight:bold; color:var(--accent-color);">情況 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:280px; font-weight:bold; color:var(--accent-color);">加成 (大成功機率增減) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -15925,24 +15935,24 @@ button.chip-btn.active {
 <table class="data-table">
 <thead>
 <tr>
-<th style="min-width:110px;">先天性格</th>
-<th style="min-width:75px;">努力上手</th>
-<th style="min-width:75px;">負けず嫌い</th>
-<th style="min-width:75px;">反抗的</th>
-<th style="min-width:75px;">わがまま</th>
-<th style="min-width:75px;">群れの一員</th>
-<th style="min-width:85px;">目立ちたがり</th>
-<th style="min-width:75px;">甘えん坊</th>
-<th style="min-width:75px;">人懐こい</th>
-<th style="min-width:75px;">引込思案</th>
-<th style="min-width:75px;">詰めが甘い</th>
-<th style="min-width:75px;">手抜き癖</th>
-<th style="min-width:75px;">ムラっ気</th>
-<th style="min-width:75px;">ソフト</th>
-<th style="min-width:75px;">スパルタ</th>
-<th style="min-width:75px;">スランプ</th>
-<th style="min-width:85px;">新聞を読む</th>
-<th style="min-width:85px;">いたずら好き</th>
+<th class="sortable-th" style="min-width:110px;">先天性格 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">努力上手 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">負けず嫌い <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">反抗的 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">わがまま <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">群れの一員 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:85px;">目立ちたがり <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">甘えん坊 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">人懐こい <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">引込思案 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">詰めが甘い <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">手抜き癖 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">ムラっ気 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">ソフト <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">スパルタ <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px;">スランプ <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:85px;">新聞を読む <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:85px;">いたずら好き <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -16911,14 +16921,14 @@ button.chip-btn.active {
 <table class="data-table" id="ch38StakesTable" style="min-width:1020px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:95px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:80px;">格付け</th>
-<th class="sortable-th" style="width:150px;">競馬場 (地區)</th>
-<th class="sortable-th" style="width:140px;">距離・跑道・坡道</th>
-<th class="sortable-th" style="width:140px;">性齡限制</th>
-<th class="sortable-th" style="width:120px;">1着賞金</th>
-<th class="sortable-th" style="width:90px;">所屬</th>
+<th class="sortable-th" style="width:95px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:150px;">競馬場 (地區) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:140px;">距離・跑道・坡道 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:140px;">性齡限制 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:120px;">1着賞金 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:90px;">所屬 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -24356,14 +24366,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -24453,14 +24463,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -24550,14 +24560,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -24647,14 +24657,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -24744,14 +24754,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -24833,14 +24843,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -24915,14 +24925,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -24997,14 +25007,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -25094,14 +25104,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -25191,14 +25201,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -25278,14 +25288,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -25370,14 +25380,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -25459,14 +25469,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -25556,14 +25566,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -25653,14 +25663,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -25765,14 +25775,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -25884,14 +25894,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -25981,14 +25991,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -26078,14 +26088,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -26175,14 +26185,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -26272,14 +26282,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -26369,14 +26379,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -26466,14 +26476,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -26553,14 +26563,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -26650,14 +26660,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -26814,14 +26824,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -26911,14 +26921,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -27008,14 +27018,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -27105,14 +27115,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -27209,14 +27219,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -27411,14 +27421,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -27628,14 +27638,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -27770,14 +27780,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -27882,14 +27892,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -28009,14 +28019,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -28121,14 +28131,14 @@ button.chip-btn.active {
 <table class="data-table" style="min-width:820px; width:100%; text-align:left !important;">
 <thead>
 <tr>
-<th class="sortable-th" style="width:90px;">賽程階段</th>
-<th class="sortable-th" style="width:85px;">舉辦週別</th>
-<th class="sortable-th">賽事名稱 (日/中並行)</th>
-<th class="sortable-th" style="width:70px;">格付け</th>
-<th class="sortable-th" style="width:85px;">距離</th>
-<th class="sortable-th" style="width:125px;">坡道 (坂)</th>
-<th class="sortable-th" style="width:135px;">草質適性條</th>
-<th class="sortable-th" style="width:80px;">迴轉</th>
+<th class="sortable-th" style="width:90px;">賽程階段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">舉辦週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th">賽事名稱 (日/中並行) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px;">格付け <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:85px;">距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:125px;">坡道 (坂) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:135px;">草質適性條 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px;">迴轉 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -28348,7 +28358,7 @@ button.chip-btn.active {
             </div>
 <div class="table-responsive" style="margin:0;">
 <table class="data-table" style="font-size:0.78rem;">
-<thead><tr><th style="text-align:left !important;">地區 / 馬場</th><th style="text-align:left !important;">基準草質</th><th style="text-align:left !important;">場地特徵與適性要求</th></tr></thead>
+<thead><tr><th class="sortable-th" style="text-align:left !important;">地區 / 馬場 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="text-align:left !important;">基準草質 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="text-align:left !important;">場地特徵與適性要求 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th></tr></thead>
 <tbody>
 <tr><td><strong>🇯🇵 日本 / 🇺🇸 美國 / 🇦🇺 澳洲</strong></td><td><span class="pill pill-safe">1 ~ 3 級 (極輕)</span></td><td>極度要求純速度 SP 與瞬發加速</td></tr>
 <tr><td><strong>🇭🇰 香港 / 🇦🇪 杜拜 / 🇸🇦 沙烏地</strong></td><td><span class="pill pill-cyan">3 ~ 4 級 (中等)</span></td><td>草質適中，日本馬遠征適應度佳</td></tr>
@@ -28364,7 +28374,7 @@ button.chip-btn.active {
             </div>
 <div class="table-responsive" style="margin:0;">
 <table class="data-table" style="font-size:0.78rem;">
-<thead><tr><th style="text-align:left !important;">適應性戰型</th><th style="text-align:left !important;">代表主流賽場</th><th style="text-align:left !important;">步速要求與提升手段</th></tr></thead>
+<thead><tr><th class="sortable-th" style="text-align:left !important;">適應性戰型 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="text-align:left !important;">代表主流賽場 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="text-align:left !important;">步速要求與提升手段 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th></tr></thead>
 <tbody>
 <tr><td><strong style="color:#38bdf8;">⚡ 瞬發戰 (Sprint)</strong></td><td><strong>日本馬場主流</strong></td><td>慢步速直線極限衝刺。「好位拔出」、「大外一気」獲勝提升。</td></tr>
 <tr><td><strong style="color:#34d399;">🛡️ 持久戰 (Endurance)</strong></td><td><strong>歐洲馬場主流</strong></td><td>中段提速長程拉鋸。「前付け」、「馬群待機」獲勝提升。</td></tr>
@@ -28418,7 +28428,7 @@ button.chip-btn.active {
 <th class="sortable-th" onclick="sortTable('racecourseMasterTable', 4)" style="text-align:left !important; width:100px;">細部區域 <span class="sort-icon">⇅</span></th>
 <th class="sortable-th" onclick="sortTable('racecourseMasterTable', 5)" style="text-align:left !important; width:120px;">芝適性距離 <span class="sort-icon">⇅</span></th>
 <th class="sortable-th" onclick="sortTable('racecourseMasterTable', 6)" style="text-align:left !important; width:120px;">ダ適性距離 <span class="sort-icon">⇅</span></th>
-<th style="text-align:left !important;">主要代表大賽・重賞名覽</th>
+<th class="sortable-th" style="text-align:left !important;">主要代表大賽・重賞名覽 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody id="racecourseTableBody">
@@ -29470,8 +29480,8 @@ function filterRacecourses() {
 <th class="sortable-th" onclick="sortTable('tab5MasterTable', 5)" style="text-align:left !important; width:90px;">跑道形態 <span class="sort-icon">⇅</span></th>
 <th class="sortable-th" onclick="sortTable('tab5MasterTable', 6)" style="text-align:left !important; width:110px;">直線長度 <span class="sort-icon">⇅</span></th>
 <th class="sortable-th" onclick="sortTable('tab5MasterTable', 7)" style="text-align:left !important; width:100px;">直線坡道 <span class="sort-icon">⇅</span></th>
-<th style="text-align:left !important; min-width:180px;">常規賽事展開傾向 (草地/泥地)</th>
-<th style="text-align:left !important; min-width:220px;">核心重大 G1 賽事展開傾向</th>
+<th class="sortable-th" style="text-align:left !important; min-width:180px;">常規賽事展開傾向 (草地/泥地) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align:left !important; min-width:220px;">核心重大 G1 賽事展開傾向 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody id="tab5TableBody">
@@ -30594,8 +30604,8 @@ function filterTab5Racecourses() {
 <th class="sortable-th" onclick="sortTable('tab5MasterTable', 5)" style="text-align:left !important; width:90px;">跑道形態 <span class="sort-icon">⇅</span></th>
 <th class="sortable-th" onclick="sortTable('tab5MasterTable', 6)" style="text-align:left !important; width:110px;">直線長度 <span class="sort-icon">⇅</span></th>
 <th class="sortable-th" onclick="sortTable('tab5MasterTable', 7)" style="text-align:left !important; width:100px;">直線坡道 <span class="sort-icon">⇅</span></th>
-<th style="text-align:left !important; min-width:180px;">常規賽事展開傾向 (草地/泥地)</th>
-<th style="text-align:left !important; min-width:220px;">核心重大 G1 賽事展開傾向</th>
+<th class="sortable-th" style="text-align:left !important; min-width:180px;">常規賽事展開傾向 (草地/泥地) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align:left !important; min-width:220px;">核心重大 G1 賽事展開傾向 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody id="tab5TableBody">
@@ -32166,8 +32176,8 @@ function filterTab5Racecourses() {
 <th class="sortable-th" onclick="sortTable('tab5MasterTable', 5)" style="text-align:left !important; width:90px;">跑道形態 <span class="sort-icon">⇅</span></th>
 <th class="sortable-th" onclick="sortTable('tab5MasterTable', 6)" style="text-align:left !important; width:110px;">直線長度 <span class="sort-icon">⇅</span></th>
 <th class="sortable-th" onclick="sortTable('tab5MasterTable', 7)" style="text-align:left !important; width:100px;">直線坡道 <span class="sort-icon">⇅</span></th>
-<th style="text-align:left !important; min-width:180px;">常規賽事展開傾向 (草地/泥地)</th>
-<th style="text-align:left !important; min-width:220px;">核心重大 G1 賽事展開傾向</th>
+<th class="sortable-th" style="text-align:left !important; min-width:180px;">常規賽事展開傾向 (草地/泥地) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align:left !important; min-width:220px;">核心重大 G1 賽事展開傾向 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody id="tab5TableBody">
@@ -35922,7 +35932,7 @@ function filterTab5Racecourses() {
 <th class="sortable-th" style="width:80px; min-width:70px; text-align:left !important; white-space:nowrap !important;">SP (札) ⇅</th>
 <th class="sortable-th" style="width:180px; min-width:160px; text-align:left !important;">移籍年份與路徑 ⇅</th>
 <th class="sortable-th" style="min-width:280px; max-width:360px; text-align:left !important; white-space:normal !important; line-height:1.6; word-break:break-word;">歷史成就與戰略價值 (繁體中文) ⇅</th>
-<th class="sortable-th" style="width:75px; text-align:center !important;">詳情 ⇅</th></tr>
+<th class="sortable-th" style="width:75px; text-align: left !important;">詳情 ⇅</th></tr>
 </thead>
 <tbody><tr style="background:rgba(234,179,8,0.06);">
 <td><a class="horse-link" onclick="openNativeHorseDossier('エクセラー')"><strong>エクセラー (Exceller)</strong></a></td>
@@ -37532,8 +37542,8 @@ function filterTab5Racecourses() {
 <th class="sortable-th" onclick="sortSiresTable('sire')" style="min-width:160px; text-align:left !important;">父馬名 ⇅</th>
 <th class="sortable-th" onclick="sortSiresTable('lineage')" style="min-width:140px; text-align:left !important;">所屬子系統 ⇅</th>
 <th class="sortable-th" onclick="sortSiresTable('reach_28')" style="width:120px; text-align:left !important;">28歲極限到達年 ⇅</th>
-<th style="min-width:130px; text-align:left !important;">Private 買回資格</th>
-<th style="width:75px; text-align:center !important;">詳情</th>
+<th class="sortable-th" style="min-width:130px; text-align:left !important;">Private 買回資格 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th>
 </tr>
 </thead>
 <tbody id="siresTableBody">
@@ -37612,19 +37622,19 @@ function filterTab5Racecourses() {
 <th class="sortable-th" onclick="sortBreedTable('sp')" style="width:70px; text-align:left !important;">SP ⇅</th>
 <th class="sortable-th" onclick="sortBreedTable('st')" style="width:70px; text-align:left !important;">耐力 ⇅</th>
 <th class="sortable-th" onclick="sortBreedTable('sub_total')" style="width:80px; text-align:left !important; color:#38bdf8;">副計 ⇅</th>
-<th style="width:60px; text-align:left !important;">芝</th>
-<th style="width:60px; text-align:left !important;">泥</th>
-<th style="width:65px; text-align:left !important;">瞬適</th>
-<th style="width:65px; text-align:left !important;">持適</th>
-<th style="width:65px; text-align:left !important;">消適</th>
+<th class="sortable-th" style="width:60px; text-align:left !important;">芝 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:60px; text-align:left !important;">泥 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:65px; text-align:left !important;">瞬適 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:65px; text-align:left !important;">持適 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:65px; text-align:left !important;">消適 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 <th class="sortable-th" onclick="sortBreedTable('growth_type')" style="width:85px; text-align:left !important;">成長型 ⇅</th>
 <th class="sortable-th" onclick="sortBreedTable('running_style')" style="width:75px; text-align:left !important;">腳質 ⇅</th>
-<th style="width:70px; text-align:left !important;">氣性</th>
+<th class="sortable-th" style="width:70px; text-align:left !important;">氣性 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 <th class="sortable-th" onclick="sortBreedTable('kodaeshi')" style="width:75px; text-align:left !important; color:#22c55e;">仔出 (仔出し) ⇅</th>
-<th style="min-width:130px; text-align:left !important;">特性</th>
-<th style="min-width:100px; text-align:left !important;">因子</th>
-<th style="width:80px; text-align:left !important;">繁引退齡</th>
-<th style="width:75px; text-align:center !important;">詳情</th>
+<th class="sortable-th" style="min-width:130px; text-align:left !important;">特性 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:100px; text-align:left !important;">因子 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px; text-align:left !important;">繁引退齡 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th>
 </tr>
 </thead>
 <tbody id="breedingOnlyTableBody">
@@ -38238,28 +38248,28 @@ function filterTab5Racecourses() {
 <th class="sortable-th" onclick="sortRacehorseTable('birth_year')" style="width:80px; text-align:left !important;">生年 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('sex')" style="min-width:90px; text-align:left !important;">性別 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('coat')" style="width:80px; text-align:left !important;">毛色 ⇅</th>
-<th style="width:80px; text-align:left !important;">生國</th>
+<th class="sortable-th" style="width:80px; text-align:left !important;">生國 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 <th class="sortable-th" onclick="sortRacehorseTable('stable_country')" style="width:80px; text-align:left !important;">所屬 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('sire')" style="min-width:130px; text-align:left !important;">父馬 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('dam')" style="min-width:130px; text-align:left !important;">母馬 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('sp')" style="width:70px; text-align:left !important;">SP ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('st')" style="width:70px; text-align:left !important;">耐力 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('sub_total')" style="width:80px; text-align:left !important; color:#38bdf8;">副計 ⇅</th>
-<th style="width:60px; text-align:left !important;">芝</th>
-<th style="width:60px; text-align:left !important;">泥</th>
-<th style="width:65px; text-align:left !important;">瞬適限</th>
-<th style="width:65px; text-align:left !important;">持適限</th>
-<th style="width:65px; text-align:left !important;">消適限</th>
+<th class="sortable-th" style="width:60px; text-align:left !important;">芝 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:60px; text-align:left !important;">泥 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:65px; text-align:left !important;">瞬適限 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:65px; text-align:left !important;">持適限 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:65px; text-align:left !important;">消適限 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 <th class="sortable-th" onclick="sortRacehorseTable('growth_type')" style="width:85px; text-align:left !important;">成長型 ⇅</th>
 <th class="sortable-th" onclick="sortRacehorseTable('running_style')" style="width:75px; text-align:left !important;">腳質 ⇅</th>
-<th style="width:70px; text-align:left !important;">氣性</th>
+<th class="sortable-th" style="width:70px; text-align:left !important;">氣性 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 <th class="sortable-th" onclick="sortRacehorseTable('kodaeshi')" style="width:75px; text-align:left !important; color:#22c55e;">仔出 (仔出し) ⇅</th>
-<th style="min-width:130px; text-align:left !important;">特性</th>
-<th style="min-width:110px; text-align:left !important;">先天馬之個性 (ウマソナ)</th>
-<th style="min-width:90px; text-align:left !important;">因子</th>
-<th style="width:70px; text-align:left !important;">拍賣會</th>
-<th style="width:80px; text-align:left !important;">競引退齡</th>
-<th style="width:75px; text-align:center !important;">詳情</th>
+<th class="sortable-th" style="min-width:130px; text-align:left !important;">特性 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:110px; text-align:left !important;">先天馬之個性 (ウマソナ) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:90px; text-align:left !important;">因子 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:70px; text-align:left !important;">拍賣會 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="width:80px; text-align:left !important;">競引退齡 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th style="width:75px; text-align: left !important;">詳情</th>
 </tr>
 </thead>
 <tbody id="racehorsesFullTableBody">
@@ -38355,8 +38365,8 @@ function filterTab5Racecourses() {
 <th class="sortable-th" onclick="sortNicknameTable('name')" style="min-width:200px; text-align:left !important;">異名名稱 ⇅</th>
 <th class="sortable-th" onclick="sortNicknameTable('rarity')" style="width:90px; text-align:left !important;">稀有度 ⇅</th>
 <th class="sortable-th" onclick="sortNicknameTable('category')" style="width:140px; text-align:left !important;">分類 ⇅</th>
-<th style="min-width:260px; text-align:left !important;">異名技能加成效果</th>
-<th style="min-width:240px; text-align:left !important;">獲得條件 / 專屬所屬馬名</th>
+<th class="sortable-th" style="min-width:260px; text-align:left !important;">異名技能加成效果 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:240px; text-align:left !important;">獲得條件 / 專屬所屬馬名 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody id="nicknamesFullTableBody">
@@ -38669,12 +38679,12 @@ function filterTab5Racecourses() {
 <table class="data-table" style="font-size:0.78rem;">
 <thead>
 <tr>
-<th style="text-align:left !important;">賽事名稱 (日/中)</th>
-<th style="text-align:left !important;">馬場與距離</th>
-<th style="text-align:left !important;">核心展開傾向</th>
-<th style="text-align:left !important;">賽事名稱 (日/中)</th>
-<th style="text-align:left !important;">馬場與距離</th>
-<th style="text-align:left !important;">核心展開傾向</th>
+<th class="sortable-th" style="text-align:left !important;">賽事名稱 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align:left !important;">馬場與距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align:left !important;">核心展開傾向 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align:left !important;">賽事名稱 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align:left !important;">馬場與距離 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="text-align:left !important;">核心展開傾向 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 </tr>
 </thead>
 <tbody>
@@ -39036,11 +39046,11 @@ function filterTab5Racecourses() {
 <table class="data-table" id="foalTrackerMainTable" style="min-width:1050px;">
 <thead>
 <tr>
-<th style="min-width:180px; text-align:left !important;">幼駒名稱 / 誕生年 / 血統</th>
-<th style="min-width:180px; text-align:left !important;">0~1歲 人物印記 (秘書/相馬眼)</th>
-<th style="min-width:240px; text-align:left !important;">關鍵週次評語與特別事件 (0~2歲)</th>
-<th style="min-width:170px; text-align:left !important;">推估 SP 速度與潛力評級</th>
-<th style="min-width:180px; text-align:left !important;">AI 專家培育與調教建議</th>
+<th class="sortable-th" style="min-width:180px; text-align:left !important;">幼駒名稱 / 誕生年 / 血統 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:180px; text-align:left !important;">0~1歲 人物印記 (秘書/相馬眼) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:240px; text-align:left !important;">關鍵週次評語與特別事件 (0~2歲) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:170px; text-align:left !important;">推估 SP 速度與潛力評級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:180px; text-align:left !important;">AI 專家培育與調教建議 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 <th style="min-width:100px; text-align:left !important;">操作管理</th>
 </tr>
 </thead>
@@ -39125,14 +39135,14 @@ function filterTab5Racecourses() {
 <table class="data-table" id="tacticsGridTable" style="min-width:1720px; width:100%;">
 <thead>
 <tr style="background:rgba(15,23,42,0.95);">
-<th style="min-width:75px; text-align:left;">年度</th>
-<th style="min-width:80px; text-align:left;">月份</th>
-<th style="min-width:75px; text-align:left;">週別</th>
-<th style="min-width:280px; text-align:left;">賽事名稱 (重賞選單 / 自由自填)</th>
-<th style="min-width:140px; text-align:left;">賽駒名稱</th>
-<th style="min-width:110px; text-align:left;">騎手</th>
-<th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">大逃げ</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">逃げ</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">積極策</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">前付け</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">好位抜出</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">先行</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">イン狙い</div><span class="pill pill-gold" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">限定</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">差し</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">まくり</div><span class="pill pill-gold" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">限定</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">馬群待機</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">大外一気</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">直線強襲</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span></th><th style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">追込</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span></th>
-<th style="min-width:130px; text-align:left;">最優推薦跑法</th>
+<th class="sortable-th" style="min-width:75px; text-align:left;">年度 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:80px; text-align:left;">月份 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:75px; text-align:left;">週別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:280px; text-align:left;">賽事名稱 (重賞選單 / 自由自填) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:140px; text-align:left;">賽駒名稱 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:110px; text-align:left;">騎手 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">大逃げ</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span> <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">逃げ</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span> <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">積極策</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span> <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">前付け</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span> <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">好位抜出</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span> <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">先行</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span> <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">イン狙い</div><span class="pill pill-gold" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">限定</span> <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">差し</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span> <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">まくり</div><span class="pill pill-gold" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">限定</span> <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">馬群待機</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span> <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">大外一気</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span> <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">直線強襲</div><span class="pill pill-danger" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">特殊</span> <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th><th class="sortable-th" style="min-width:68px; text-align:left; padding:6px 2px;"><div style="font-size:0.8rem; font-weight:bold; white-space:nowrap;">追込</div><span class="pill pill-safe" style="font-size:0.6rem; padding:1px 4px; display:inline-block; margin-top:2px;">通常</span> <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+<th class="sortable-th" style="min-width:130px; text-align:left;">最優推薦跑法 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
 <th style="min-width:90px; text-align:left;">操作</th>
 </tr>
 </thead>
@@ -39211,15 +39221,15 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.92"></script>
-<script src="yuruyuru_guides_db.js?v=v03.92"></script>
+<script src="unified_horses_full_db.js?v=v03.98"></script>
+<script src="yuruyuru_guides_db.js?v=v03.98"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v03.92"></script>
-<script src="jbis_engine.js?v=v03.92"></script><script>
+<script src="jbis_pedigree_db.js?v=v03.98"></script>
+<script src="jbis_engine.js?v=v03.98"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -39997,8 +40007,8 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <!-- 📑 章節跳轉彈出抽屜 (Chapter Modal) -->
 <!-- 浮動按鈕群 (章節跳轉目錄 + 返回前一定位 + 回頂部) -->
 <div class="floating-btn-group" style="position:fixed; bottom:20px; right:16px; display:flex; flex-direction:column; gap:10px; z-index:9999;">
-<a href="jbis_horse.html?v=v03.92" target="_blank" class="btn-floating btn-jbis" style="background:#00733e; color:#ffffff !important; width:42px; height:42px; border-radius:50%; border:1.5px solid #4ade80; box-shadow:0 4px 12px rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; font-size:1.1rem; text-decoration:none; margin-bottom:8px;" title="🔍 開啟 JBIS 5代血統檢索系統">
-<i class="fa-solid fa-dna" style="color:#4ade80;"></i>
+<a href="https://www.jbis.or.jp/horse/" target="_blank" class="btn-floating btn-jbis" style="background:#00733e; color:#ffffff !important; width:42px; height:42px; border-radius:50%; border:1.5px solid #4ade80; box-shadow:0 4px 12px rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; font-size:1.1rem; text-decoration:none; margin-bottom:8px;" title="🔍 前往 JBIS 日本官方 5代血統檢索系統">
+<i class="fa-solid fa-arrow-up-right-from-square" style="color:#4ade80;"></i>
 </a>
 <button class="btn-floating btn-jump" onclick="openChapterModal()" style="background:var(--gold-color); color:#0f172a; width:42px; height:42px; border-radius:50%; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.1rem;" title="📑 50 章跳轉目錄">
 <i class="fa-solid fa-list-ol"></i>
@@ -40434,11 +40444,21 @@ function applyUniversalScrollableTables() {
 
 // 頁面載入與切換支柱時自動觸發
 window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(applyUniversalScrollableTables, 100);
+    setTimeout(() => {
+        if (typeof applyUniversalScrollableTables === 'function') applyUniversalScrollableTables();
+        if (typeof makeTablesSortable === 'function') makeTablesSortable(document);
+    }, 100);
 });
 
 function switchMainPillar(pillarId) {
-  setTimeout(() => { if (typeof initYearlyRecsTable === "function") initYearlyRecsTable(); if (typeof applyUniversalScrollableTables === "function") applyUniversalScrollableTables(); }, 50);
+  setTimeout(() => { 
+      if (typeof initYearlyRecsTable === "function") initYearlyRecsTable(); 
+      if (typeof applyUniversalScrollableTables === "function") applyUniversalScrollableTables(); 
+      if (typeof makeTablesSortable === "function") {
+          const pEl = document.getElementById(pillarId);
+          if (pEl) makeTablesSortable(pEl);
+      }
+  }, 50);
     document.querySelectorAll('.pillar-content').forEach(el => {
         el.style.display = 'none';
         el.classList.remove('active');
@@ -41047,7 +41067,7 @@ function renderFoalTrackerTable() {
     if (statEl) statEl.textContent = records.length;
     
     if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center !important; padding:20px; color:var(--text-muted);">尚無幼駒成長檔案，請點擊右上角「➕ 新增幼駒成長檔案」開始記錄。</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: left !important; padding:20px; color:var(--text-muted);">尚無幼駒成長檔案，請點擊右上角「➕ 新增幼駒成長檔案」開始記錄。</td></tr>`;
         return;
     }
     
@@ -42444,7 +42464,7 @@ function renderTable() {
             if (items.length === 0) {
                 window._CURRENT_RENDERED_ITEMS = [];
                 const tr = document.createElement("tr");
-                tr.innerHTML = `<td colspan="15" style="text-align:center; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
+                tr.innerHTML = `<td colspan="15" style="text-align: left !important; padding:30px; color:var(--text-muted);">無符合條件之馬匹資料</td>`;
                 tbody.appendChild(tr);
                 return;
             }
@@ -42468,25 +42488,25 @@ function renderTable() {
                 const sexVal = item.sex === "牡" ? '<span style="color:#60a5fa; font-weight:bold;">牡</span>' : (item.sex === "牝" ? '<span style="color:#f472b6; font-weight:bold;">牝</span>' : (item.sex || "-"));
 
                 tr.innerHTML = `
-                    <td style="text-align:center;">${item.year || "-"}</td>
+                    <td style="text-align: left !important;">${item.year || "-"}</td>
                     <td>
                         <a class="horse-link" onclick="openModalByIndex(${idx})" style="display:flex; flex-direction:column; line-height:1.35;">
                             ${item.name_zh || item.zh_name ? `<span style="color:#fbbf24; font-weight:bold; font-size:0.92rem;">${item.name_zh || item.zh_name}</span>` : ''}
                             <span style="font-size:0.82rem; color:#e2e8f0;">${item.name || item.name_jp || "-"}</span>
                         </a>
                     </td>
-                    <td style="text-align:center;">${renderTicketBadge(item.ticket)}</td>
-                    <td style="text-align:center;">${sexVal}</td>
-                    <td style="text-align:center; font-weight:bold; color:var(--accent-color);">${spVal}</td>
-                    <td style="text-align:center; font-weight:bold; color:#38bdf8;">${stVal}</td>
-                    <td style="text-align:center; font-weight:bold; color:var(--gold-color);">${subVal}</td>
-                    <td style="text-align:center; font-weight:bold; color:#ef4444;">${item.foal_quality || item.foal_count || "-"}</td>
-                    <td style="text-align:center;">${growthVal}</td>
-                    <td style="text-align:center;">${renderTrackBadge(item.grass)}</td>
-                    <td style="text-align:center;">${renderTrackBadge(item.dirt)}</td>
-                    <td style="text-align:center;">${item.distance || "-"}</td>
-                    <td style="text-align:center;">${renderStarsBadge(item.stars)}</td>
-                    <td style="text-align:center;">${regionVal}</td>
+                    <td style="text-align: left !important;">${renderTicketBadge(item.ticket)}</td>
+                    <td style="text-align: left !important;">${sexVal}</td>
+                    <td style="text-align: left !important; font-weight:bold; color:var(--accent-color);">${spVal}</td>
+                    <td style="text-align: left !important; font-weight:bold; color:#38bdf8;">${stVal}</td>
+                    <td style="text-align: left !important; font-weight:bold; color:var(--gold-color);">${subVal}</td>
+                    <td style="text-align: left !important; font-weight:bold; color:#ef4444;">${item.foal_quality || item.foal_count || "-"}</td>
+                    <td style="text-align: left !important;">${growthVal}</td>
+                    <td style="text-align: left !important;">${renderTrackBadge(item.grass)}</td>
+                    <td style="text-align: left !important;">${renderTrackBadge(item.dirt)}</td>
+                    <td style="text-align: left !important;">${item.distance || "-"}</td>
+                    <td style="text-align: left !important;">${renderStarsBadge(item.stars)}</td>
+                    <td style="text-align: left !important;">${regionVal}</td>
                     <td style="text-align:center;"><button class="btn-detail" onclick="openModalByIndex(${idx})">詳情</button></td>
                 `;
                 tbody.appendChild(tr);
@@ -42494,7 +42514,7 @@ function renderTable() {
 
             if (items.length > displayLimit) {
                 const trMore = document.createElement("tr");
-                trMore.innerHTML = `<td colspan="15" style="text-align:center; padding:15px; color:var(--accent-color); font-weight:bold;">已顯示前 200 筆（共 ${items.length.toLocaleString()} 筆）。請縮小篩選條件以精確瀏覽。</td>`;
+                trMore.innerHTML = `<td colspan="15" style="text-align: left !important; padding:15px; color:var(--accent-color); font-weight:bold;">已顯示前 200 筆（共 ${items.length.toLocaleString()} 筆）。請縮小篩選條件以精確瀏覽。</td>`;
                 tbody.appendChild(trMore);
             }
         }
@@ -43164,7 +43184,7 @@ function generateVisualPedigreeTree(horse, cleanQuery) {
     // 5. 頂部徽章條：近親交配 (Crosses) 與 牝系 (Family No)
     let crossBadges = '';
     if (crosses && crosses.length > 0) {
-        const cItems = crosses.map(c => `<span style="background:rgba(245,158,11,0.25); border:1px solid #f59e0b; color:#fbbf24; padding:2px 6px; border-radius:4px; font-size:0.68rem; font-weight:bold; white-space:nowrap;"><i class="fa-solid fa-bolt"></i> ${c.name} ${c.cross || ''} (${c.rate || ''})</span>`).join(' ');
+        const cItems = crosses.map(c => { const text = typeof c === 'string' ? c : `${c.name || ''} ${c.cross || ''} ${c.rate ? `(${c.rate})` : ''}`.trim(); return `<span style="background:rgba(245,158,11,0.25); border:1px solid #f59e0b; color:#fbbf24; padding:2px 6px; border-radius:4px; font-size:0.68rem; font-weight:bold; white-space:nowrap;"><i class="fa-solid fa-bolt"></i> ${text}</span>`; }).join(' ');
         crossBadges = `<div style="display:flex; flex-wrap:wrap; gap:5px; align-items:center; margin-bottom:8px;">
             <span style="font-size:0.72rem; color:#94a3b8; font-weight:bold;">【近親交配 (Inbreeding)】:</span>
             ${cItems}
@@ -43190,11 +43210,20 @@ function generateVisualPedigreeTree(horse, cleanQuery) {
                 ${curatedBadge}
                 ${fallbackBadge}
             </div>
-            <a href="jbis_horse.html?v=v03.92&name=${encodeURIComponent(safeTargetName)}" target="_blank" 
-               class="btn btn-sm" 
-               style="background:linear-gradient(135deg, #0284c7, #0369a1); color:#ffffff; font-size:0.75rem; font-weight:bold; border-radius:5px; padding:4px 10px; text-decoration:none; display:inline-flex; align-items:center; gap:5px; box-shadow:0 2px 6px rgba(2,132,199,0.35);">
-                <i class="fa-solid fa-magnifying-glass-chart"></i> JBIS 5代血統/家族樹 ↗
-            </a>
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+                <a href="https://www.jbis.or.jp/horse/result/?keyword=${encodeURIComponent(safeTargetName)}&match=exact" target="_blank" 
+                   class="btn btn-sm" 
+                   style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff; font-size:0.72rem; font-weight:bold; border-radius:5px; padding:4px 9px; text-decoration:none; display:inline-flex; align-items:center; gap:5px; box-shadow:0 2px 6px rgba(0,115,62,0.35); border:1px solid #4ade80;"
+                   title="前往 JBIS 日本官方原站查閱本馬權威完整 5 代血統、賽事成績與拍賣資訊">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> JBIS 5代血統/產駒 ↗
+                </a>
+                <a href="https://db.netkeiba.com/horse/?name=${encodeURIComponent(safeTargetName)}" target="_blank" 
+                   class="btn btn-sm" 
+                   style="background:linear-gradient(135deg, #0284c7, #0369a1); color:#ffffff; font-size:0.72rem; font-weight:bold; border-radius:5px; padding:4px 9px; text-decoration:none; display:inline-flex; align-items:center; gap:5px; box-shadow:0 2px 6px rgba(2,132,199,0.35); border:1px solid #38bdf8;"
+                   title="前往日本最大賽馬入口 netkeiba 查閱現實賽績、照片與日本馬迷熱議掲示板">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> netkeiba 賽績/掲示板 ↗
+                </a>
+            </div>
         </div>
 
         ${crossBadges}
@@ -43252,36 +43281,36 @@ function generateBreedingInfoHtml(horse) {
         <table style="width:100%; border-collapse:collapse; margin-bottom:10px; font-size:0.75rem; text-align:center; background:rgba(30,41,59,0.7); border-radius:6px; overflow:hidden; border:1px solid var(--border-color);">
             <thead>
                 <tr style="background:rgba(15,23,42,0.9); border-bottom:1px solid var(--border-color); text-align:center;">
-                    <th style="padding:4px 8px; width:25%; text-align:center;">因子1</th>
-                    <th style="padding:4px 8px; width:25%; text-align:center;">因子2</th>
-                    <th style="padding:4px 8px; width:25%; text-align:center;">特殊配合</th>
-                    <th style="padding:4px 8px; width:25%; text-align:center;">仔出し</th>
+                    <th class="sortable-th" style="padding:4px 8px; width:25%; text-align: left !important;">因子1 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                    <th class="sortable-th" style="padding:4px 8px; width:25%; text-align: left !important;">因子2 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                    <th class="sortable-th" style="padding:4px 8px; width:25%; text-align: left !important;">特殊配合 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                    <th class="sortable-th" style="padding:4px 8px; width:25%; text-align: left !important;">仔出し <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
                 </tr>
             </thead>
             <tbody>
                 <tr style="border-bottom:1px solid rgba(255,255,255,0.05); text-align:center;">
-                    <td style="padding:5px 8px; text-align:center;"><strong>${factor1}</strong></td>
-                    <td style="padding:5px 8px; text-align:center;">${factor2}</td>
-                    <td style="padding:5px 8px; text-align:center;">稲妻配合・三冠</td>
-                    <td style="padding:5px 8px; text-align:center;"><strong style="color:#ef4444; font-size:0.9rem;">${horse.foal_quality || '8'}</strong></td>
+                    <td style="padding:5px 8px; text-align: left !important;"><strong>${factor1}</strong></td>
+                    <td style="padding:5px 8px; text-align: left !important;">${factor2}</td>
+                    <td style="padding:5px 8px; text-align: left !important;">稲妻配合・三冠</td>
+                    <td style="padding:5px 8px; text-align: left !important;"><strong style="color:#ef4444; font-size:0.9rem;">${horse.foal_quality || '8'}</strong></td>
                 </tr>
                 <tr style="background:rgba(15,23,42,0.9); border-bottom:1px solid var(--border-color); text-align:center;">
-                    <th colspan="2" style="padding:4px 8px; text-align:center;">確立時</th>
-                    <th colspan="2" style="padding:4px 8px; text-align:center;">継承優位</th>
+                    <th class="sortable-th" colspan="2" style="padding:4px 8px; text-align: left !important;">確立時 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                    <th class="sortable-th" colspan="2" style="padding:4px 8px; text-align: left !important;">継承優位 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
                 </tr>
                 <tr style="border-bottom:1px solid rgba(255,255,255,0.05); text-align:center;">
-                    <td colspan="2" style="padding:5px 8px; color:var(--accent-color); font-weight:bold; text-align:center;">SP系統 (能力因子強化)</td>
-                    <td colspan="2" style="padding:5px 8px; text-align:center;">${inheritance}</td>
+                    <td colspan="2" style="padding:5px 8px; color:var(--accent-color); font-weight:bold; text-align: left !important;">SP系統 (能力因子強化)</td>
+                    <td colspan="2" style="padding:5px 8px; text-align: left !important;">${inheritance}</td>
                 </tr>
                 <tr style="background:rgba(15,23,42,0.9); border-bottom:1px solid var(--border-color); text-align:center;">
-                    <th style="padding:4px 8px; text-align:center;">繁殖入り</th>
-                    <th style="padding:4px 8px; text-align:center;">引退年</th>
-                    <th colspan="2" style="padding:4px 8px; text-align:center;">繁殖地域</th>
+                    <th class="sortable-th" style="padding:4px 8px; text-align: left !important;">繁殖入り <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                    <th class="sortable-th" style="padding:4px 8px; text-align: left !important;">引退年 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                    <th class="sortable-th" colspan="2" style="padding:4px 8px; text-align: left !important;">繁殖地域 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
                 </tr>
                 <tr style="text-align:center;">
-                    <td style="padding:5px 8px; text-align:center;">${inYear}</td>
-                    <td style="padding:5px 8px; text-align:center;">架空 (20~25歲)</td>
-                    <td colspan="2" style="padding:5px 8px; text-align:center;">${horse.region || '日本 / 美國 / 歐洲'}</td>
+                    <td style="padding:5px 8px; text-align: left !important;">${inYear}</td>
+                    <td style="padding:5px 8px; text-align: left !important;">架空 (20~25歲)</td>
+                    <td colspan="2" style="padding:5px 8px; text-align: left !important;">${horse.region || '日本 / 美國 / 歐洲'}</td>
                 </tr>
             </tbody>
         </table>
@@ -43296,7 +43325,7 @@ function generateBreedingInfoHtml(horse) {
 
                 <tr style="background:rgba(15,23,42,0.9); border-bottom:1px solid var(--border-color);">
 
-                    ${scenarios.map(sc => `<th style="padding:4px 6px;">${sc}</th>`).join('')}
+                    ${scenarios.map(sc => `<th class="sortable-th" style="padding:4px 6px;">${sc} <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>`).join('')}
 
                 </tr>
 
@@ -43324,7 +43353,7 @@ function generateBreedingInfoHtml(horse) {
 
                 <tr style="background:rgba(15,23,42,0.9); border-bottom:1px solid var(--border-color);">
 
-                    ${scenarios.map(sc => `<th style="padding:4px 6px;">${sc}</th>`).join('')}
+                    ${scenarios.map(sc => `<th class="sortable-th" style="padding:4px 6px;">${sc} <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>`).join('')}
 
                 </tr>
 
@@ -43587,13 +43616,13 @@ function getBilingualSireLine(lineName) {
                     <table class="data-table" style="min-width:680px; width:100%; border-collapse:collapse;">
                         <thead style="position:sticky; top:0; background:#1e293b; z-index:5;">
                             <tr>
-                                <th style="width:50px; text-align:left;">札</th>
-                                <th style="min-width:140px; text-align:left;">馬名 / 英文名</th>
-                                <th style="width:60px; text-align:left;">出生</th>
-                                <th style="width:50px; text-align:left;">性別</th>
-                                <th style="width:60px; text-align:left;">SP</th>
-                                <th style="min-width:140px; text-align:left;">血統 (父 / 母)</th>
-                                <th style="min-width:120px; text-align:left;">我的備忘 (Memo)</th>
+                                <th class="sortable-th" style="width:50px; text-align:left;">札 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                                <th class="sortable-th" style="min-width:140px; text-align:left;">馬名 / 英文名 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                                <th class="sortable-th" style="width:60px; text-align:left;">出生 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                                <th class="sortable-th" style="width:50px; text-align:left;">性別 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                                <th class="sortable-th" style="width:60px; text-align:left;">SP <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                                <th class="sortable-th" style="min-width:140px; text-align:left;">血統 (父 / 母) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                                <th class="sortable-th" style="min-width:120px; text-align:left;">我的備忘 (Memo) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
                                 <th style="width:110px; text-align:left;">操作</th>
                             </tr>
                         </thead>
@@ -43927,7 +43956,7 @@ function getBilingualSireLine(lineName) {
                             </div>
                             <div style="display:flex; flex-wrap:wrap; gap:8px;">
                                 <button onclick="jumpToSection('pillar-train', 'sec-historical-train');" class="chip-btn" style="background:rgba(30,41,59,0.85); color:#38bdf8; border:1px solid rgba(56,189,248,0.3); font-size:0.8rem; padding:5px 12px; cursor:pointer; border-radius:18px;"><i class="fa-solid fa-dumbbell"></i> 🎯 查閱第28章：史實調教菜單與特效</button>
-                                <button onclick="jumpToSection('pillar-breed', 'sec-master-table');" class="chip-btn" style="background:rgba(30,41,59,0.85); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); font-size:0.8rem; padding:5px 12px; cursor:pointer; border-radius:18px;"><i class="fa-solid fa-dna"></i> 🧬 查閱第09章：配合理論與相性一覽</button>
+                                <button onclick="jumpToSection('pillar-breed', 'sec-master-table', '${(item.sire_line || item.lineage || item.sire || '').replace(/'/g, "\\'")}');" class="chip-btn" style="background:rgba(30,41,59,0.85); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); font-size:0.8rem; padding:5px 12px; cursor:pointer; border-radius:18px;"><i class="fa-solid fa-dna"></i> 🧬 查閱第09章：配合理論與相性速查</button>
                                 <button onclick="jumpToSection('pillar-races', 'sec-triple-crowns');" class="chip-btn" style="background:rgba(30,41,59,0.85); color:#f472b6; border:1px solid rgba(244,114,182,0.3); font-size:0.8rem; padding:5px 12px; cursor:pointer; border-radius:18px;"><i class="fa-solid fa-crown"></i> 👑 查閱第32章：三冠與重大賽事路線</button>
                             </div>
                         </div>
@@ -44110,7 +44139,7 @@ function getBilingualSireLine(lineName) {
 
         
         // ==================== 跨支柱章節快速跳轉導航引擎 ====================
-        function jumpToSection(pillarId, sectionId) {
+        function jumpToSection(pillarId, sectionId, filterQuery) {
             try {
                 // 1. 記錄跳轉前之支柱、滾動位置與當前開啟之馬匹對象 (以便浮框返回按鈕精確重開詳情頁)
                 const horseToReopen = window._currentModalHorse ? window._currentModalHorse : null;
@@ -44135,6 +44164,18 @@ function getBilingualSireLine(lineName) {
                         setTimeout(() => {
                             el.style.boxShadow = '';
                         }, 2000);
+                    }
+                    // 若有傳遞血統或關鍵字，自動高亮相關配合理論行或填入相性搜尋
+                    if (filterQuery && sectionId === 'sec-master-table') {
+                        const cleanQ = filterQuery.replace(/[\(\（].*?[\)\）]/g, '').trim();
+                        const rows = document.querySelectorAll('#theoryMasterTable tbody tr');
+                        rows.forEach(r => {
+                            if (r.textContent.includes('ニックス') || r.textContent.includes('相性') || (cleanQ && r.textContent.includes(cleanQ))) {
+                                r.style.transition = 'background 0.5s ease';
+                                r.style.backgroundColor = 'rgba(245, 158, 11, 0.25)';
+                                setTimeout(() => { r.style.backgroundColor = ''; }, 3500);
+                            }
+                        });
                     }
                 }, 120);
             } catch (e) {
@@ -44258,7 +44299,7 @@ function getBilingualSireLine(lineName) {
                     <span class="pill pill-safe">${tbl.rows.length} 匹</span>
                 </div>`;
                 
-                let theadHtml = `<thead><tr>${tbl.headers.map(h => `<th>${h}</th>`).join('')}<th style="width:75px; text-align:center !important;">詳情</th></tr></thead>`;
+                let theadHtml = `<thead><tr>${tbl.headers.map(h => `<th class="sortable-th">${h} <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>`).join('')}<th style="width:75px; text-align: left !important;">詳情</th></tr></thead>`;
                 let tbodyHtml = `<tbody>${tbl.rows.map(r => {
                     const horseName = String(r[0] || r[1] || '').trim();
                     const cellsHtml = r.map((c, i) => {
