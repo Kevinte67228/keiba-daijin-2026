@@ -1,13 +1,13 @@
 {
-  "current_version": "v04.11",
-  "last_backup_archived": "v04.10",
+  "current_version": "v04.12",
+  "last_backup_archived": "v04.11",
   "retained_backups": [
-    "v03.97",
     "v03.98",
     "v03.99",
     "v04.00",
-    "v04.10"
+    "v04.10",
+    "v04.11"
   ],
-  "description": "Hotfix v04.11: Repaired premature closing tags in section-body across section cards, eliminating border-touching/slicing issues on tables, icons, and matrices. Injected Universal Anti-Edge-Sticking Defensive Shield CSS. Verified with CDP headless browser screenshot. 0 exceptions.",
+  "description": "Refinement v04.12: Overhauled Tool 22 (Global Expedition Calculator) calculation engine. Correctly models Middle East/North America dirt power constraints, white-board expedition baseline penalties, and provides a 3-part debuff breakdown card (travel/power/spirit). CDP verified 0 exceptions.",
   "last_updated": "2026-09-08"
 }
