@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v04.10"></script>
-<script src="core_guides_data.js?v=v04.10"></script>
-<script src="yearly_recs_db.js?v=v04.10"></script>
-<script src="horse_subtopics_data.js?v=v04.10"></script>
+<script src="master_lookup_db.js?v=v04.11"></script>
+<script src="core_guides_data.js?v=v04.11"></script>
+<script src="yearly_recs_db.js?v=v04.11"></script>
+<script src="horse_subtopics_data.js?v=v04.11"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1817,6 +1817,37 @@ li {
     filter: brightness(1.15) !important;
 }
 
+
+/* ========================================================= */
+/* UNIVERSAL ANTI-EDGE-STICKING DEFENSIVE SHIELD (GEMINI.MD) */
+/* ========================================================= */
+.section-card {
+    box-sizing: border-box !important;
+}
+.section-card > *:not(.section-header):not(.section-body) {
+    margin-left: 18px !important;
+    margin-right: 18px !important;
+    box-sizing: border-box !important;
+}
+.section-body {
+    padding: 16px 18px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+}
+.scrollable-table-box {
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.table-responsive {
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.wiki-subcard {
+    box-sizing: border-box !important;
+}
+
 </style>
 <style>
 @keyframes sectionFlashAnim {
@@ -2538,7 +2569,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v04.10</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v04.11</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="https://www.jbis.or.jp/horse/" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;" title="前往日本 JBIS Search 官方原站進行即時權威血統與馬情報檢索">
@@ -3459,9 +3490,6 @@ button.chip-btn.active {
 </div>
 </div>
 </div>
-<!-- ==================== 3. 1970 ~ 2022 全年代推薦數據庫即時互動面板 ==================== -->
-</div>
-
 <!-- SECTION 01 ENHANCEMENT: EARLY 3-YEAR FUND ACCELERATION & PITFALL SOP -->
 <div style="margin-top:36px; padding-top:24px; border-top:1px dashed rgba(56,189,248,0.3);">
   <h3 style="color:#f59e0b; font-size:1.25rem; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
@@ -3582,9 +3610,6 @@ button.chip-btn.active {
       </table>
     </div>
   </div>
-</div>
-
-
 <!-- ==================== 【項目 1】全年代開局 1~3 年黃金 SOP ＆ 資金破產防禦機制 ==================== -->
 <div id="starter-golden-sop-matrix" style="margin-top:26px; margin-bottom:24px; background:linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
   <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(56,189,248,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
@@ -5205,9 +5230,6 @@ button.chip-btn.active {
       </table>
     </div>
   </div>
-</div>
-
-
 <!-- ==================== 【項目 2】歷代時代魔王馬 (Boss) 正面擊破與精準避戰指南 ==================== -->
 <div id="boss-horses-counter-guide" style="margin-top:26px; margin-bottom:24px; background:linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)); border:1px solid rgba(239,68,68,0.35); border-radius:12px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
   <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(239,68,68,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
@@ -5468,9 +5490,6 @@ button.chip-btn.active {
 <li><strong>必花虹札的唯一特例：</strong>自身即為「外國輸入種公馬」且歷史上無母馬在日登記者（如<a class="horse-link" onclick="openNativeHorseDossier('サンデーサイレンス')">サンデーサイレンス</a>、<a class="horse-link" onclick="openNativeHorseDossier('ブライアンズタイム')">ブライアンズタイム</a>、<a class="horse-link" onclick="openNativeHorseDossier('トニービン')">トニービン</a>），以及海外出生之無可替代繁殖雌馬（如パシフィカス、ダンシングキイ）。</li>
 </ul>
 </div>
-
-</div>
-
 <!-- ==================== 【項目 3】守護符 (お守り) 全獲取路徑與以小換大兌換日曆 ==================== -->
 <div id="amulets-conversion-calendar-matrix" style="margin-top:24px; margin-bottom:24px; background:linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)); border:1px solid rgba(168,85,247,0.35); border-radius:12px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
   <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(168,85,247,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
@@ -7410,8 +7429,6 @@ button.chip-btn.active {
 </tbody>
 </table>
 </div>
-</div>
-
 <!-- ==================== 【項目 7】+60 極限爆發力天梯圖譜 ==================== -->
 <div id="explosion-60-mastery-tree" style="margin-top:24px; margin-bottom:24px; background:linear-gradient(135deg, rgba(30,41,59,0.95), rgba(15,23,42,0.98)); border:1px solid rgba(245,158,11,0.45); border-radius:12px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
   <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,158,11,0.3); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
@@ -8052,8 +8069,6 @@ button.chip-btn.active {
 </div>
 </div>
 </div>
-</div>
-
 <!-- ==================== 【項目 5】近親交配 3×4 奇蹟之血名駒圖鑑與 0 危險度中和秘術 ==================== -->
 <div id="inbreed-miracle-blood-guide" style="margin-top:20px; margin-bottom:20px; background:rgba(15,23,42,0.8); border:1px solid rgba(245,158,11,0.35); border-radius:10px; padding:18px;">
   <h4 style="color:#f59e0b; margin:0 0 10px 0; font-size:1.02rem; display:flex; align-items:center; gap:8px; font-weight:700;">
@@ -9225,8 +9240,6 @@ button.chip-btn.active {
 </tbody>
 </table>
 </div>
-</div>
-
 <!-- ==================== 【項目 4】因子活性化與史實特性傳承判定公式 ==================== -->
 <div id="gene-factor-inheritance-formula" style="margin-top:20px; margin-bottom:20px; background:rgba(15,23,42,0.8); border:1px solid rgba(56,189,248,0.35); border-radius:10px; padding:18px;">
   <h4 style="color:#38bdf8; margin:0 0 10px 0; font-size:1.02rem; display:flex; align-items:center; gap:8px; font-weight:700;">
@@ -10323,11 +10336,6 @@ button.chip-btn.active {
     </div>
   </div>
 </div>
-
-
-
-</div>
-
 <!-- ==================== 【項目 6】系統滅亡救援大表 (1970~2020 瀕危零細親系拯救名冊) ==================== -->
 <div id="extinction-rescue-registry" style="margin-top:24px; margin-bottom:24px; background:linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)); border:1px solid rgba(239,68,68,0.35); border-radius:12px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
   <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(239,68,68,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
@@ -10550,8 +10558,6 @@ button.chip-btn.active {
 </tbody>
 </table>
 </div>
-</div>
-
 <!-- SECTION 22 ENHANCEMENT: AUCTION HISTORICAL HORSES MASTER DATABASE -->
 <div style="margin-top:36px; padding-top:24px; border-top:1px dashed rgba(56,189,248,0.3);">
   <h3 style="color:#f59e0b; font-size:1.25rem; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
@@ -13335,9 +13341,6 @@ button.chip-btn.active {
       </table>
     </div>
   </div>
-</div>
-
-
 <!-- ==================== 【項目 8】0~2 歲評語數值逆向解碼字典 ==================== -->
 <div id="foal-comment-decoder-matrix" style="margin-top:24px; margin-bottom:24px; background:linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
   <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(56,189,248,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
@@ -13402,9 +13405,6 @@ button.chip-btn.active {
       </table>
     </div>
   </div>
-</div>
-
-
 <!-- ========================================== -->
 <!-- 項目 24: 幼駒評語逆向解碼與潛力速查器 (神器3) -->
 <!-- ========================================== -->
@@ -13811,9 +13811,6 @@ button.chip-btn.active {
 </tbody>
 </table>
 </div>
-
-</div>
-
 <!-- ==================== 【項目 9】幼駒頂級出生史詩事件 100% 觸發與 S/L SOP ==================== -->
 <div id="epic-birth-events-matrix" style="margin-top:20px; margin-bottom:20px; background:rgba(15,23,42,0.8); border:1px solid rgba(245,158,11,0.35); border-radius:10px; padding:18px;">
   <h4 style="color:#f59e0b; margin:0 0 10px 0; font-size:1.02rem; display:flex; align-items:center; gap:8px; font-weight:700;">
@@ -16971,7 +16968,7 @@ button.chip-btn.active {
             若賽駒擁有「使い詰め×」等連戰不耐負面個性，切勿在疲勞偏高時連續實施斯巴達調教，否則大成功率將大幅倒扣！建議先執行「マムシ団子 (蝮蛇團子)」或「整体治療」克服後再行衝刺！
         </div>
 </div>
-</div></div>
+</div>
 <!-- ==================== 【項目 10】1 歲幼駒史實調教永久拉高 SP 上限培育藍圖 ==================== -->
 <div id="foal-sp-historical-training" style="margin-top:20px; margin-bottom:20px; background:rgba(15,23,42,0.8); border:1px solid rgba(56,189,248,0.35); border-radius:10px; padding:18px;">
   <h4 style="color:#38bdf8; margin:0 0 10px 0; font-size:1.02rem; display:flex; align-items:center; gap:8px; font-weight:700;">
@@ -18096,8 +18093,6 @@ button.chip-btn.active {
 </table>
 </div>
 </div>
-</div>
-
 <!-- ==================== 【項目 12】全 60+ 種後天個性 (ウマソナ) 正向進化樹 ＆ 負面消除指南 ==================== -->
 <div id="umasona-evolution-tree-matrix" style="margin-top:24px; margin-bottom:24px; background:linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)); border:1px solid rgba(245,158,11,0.35); border-radius:12px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
   <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,158,11,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
@@ -18389,9 +18384,6 @@ button.chip-btn.active {
 </tbody>
 </table>
 </div>
-
-</div>
-
 <!-- SECTION 30 ENHANCEMENT: SPECIAL RELATIONSHIPS MASTER ENCYCLOPEDIA & HUB STRATEGY -->
 <div style="margin-top:36px; padding-top:24px; border-top:1px dashed rgba(56,189,248,0.3);">
   <h3 style="color:#f59e0b; font-size:1.25rem; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
@@ -18743,9 +18735,6 @@ button.chip-btn.active {
       </div>
     </div>
   </div>
-</div>
-
-
 <!-- ==================== 【項目 13】2026 關係性深度共鳴機制 ==================== -->
 <div id="relations-resonance-deep-guide" style="margin-top:20px; margin-bottom:20px; background:rgba(15,23,42,0.8); border:1px solid rgba(56,189,248,0.35); border-radius:10px; padding:18px;">
   <h4 style="color:#38bdf8; margin:0 0 10px 0; font-size:1.02rem; display:flex; align-items:center; gap:8px; font-weight:700;">
@@ -35149,9 +35138,6 @@ function filterTab5Racecourses() {
       </table>
     </div>
   </div>
-</div>
-
-
 <!-- ========================================== -->
 <!-- 項目 23: 全國賽道跑法匹配最佳化推薦儀 (神器2) -->
 <!-- ========================================== -->
@@ -35653,8 +35639,6 @@ function filterTab5Racecourses() {
 </tbody>
 </table>
 </div>
-</div>
-
 <!-- ========================================== -->
 <!-- 項目 14 & 15: 全球遠征大滿貫作戰地圖 & 世界 10 大三冠系列賽日程與榮譽矩陣 -->
 <!-- ========================================== -->
@@ -35877,9 +35861,7 @@ function filterTab5Racecourses() {
         </tr>
       </tbody>
     </table>
-  </div>
 </div>
-
 <!-- ========================================== -->
 <!-- 項目 22: 全球海外遠征難度與減益試算器 (神器1) -->
 <!-- ========================================== -->
@@ -36074,9 +36056,6 @@ function filterTab5Racecourses() {
 <li><strong>實戰效果：</strong>比賽最終直道自動發動，無視地面阻力與疲勞，直接提供等同於固有スキル等級的終極加速！</li>
 </ul>
 </div>
-
-</div>
-
 <!-- ========================================== -->
 <!-- 項目 16: 賽馬狂潮 ★1~★5 評定公式與 100% 點火無限接力 SOP -->
 <!-- ========================================== -->
@@ -36264,7 +36243,6 @@ function filterTab5Racecourses() {
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 <!-- ========================================== -->
 <!-- 項目 20: 100+ 殿堂馬異名觸發條件與加成圖鑑 -->
@@ -37369,9 +37347,6 @@ function filterTab5Racecourses() {
       </table>
     </div>
   </div>
-</div>
-
-
 <!-- ========================================== -->
 <!-- 項目 25: 牧場設施空間配置與收益模擬沙盤 (神器4) -->
 <!-- ========================================== -->
@@ -38667,8 +38642,6 @@ function filterTab5Racecourses() {
 </table>
 </div>
 </div>
-</div>
-
 <!-- ========================================== -->
 <!-- 項目 17: 40+ 知人好感度 100 速刷指南與全特權回報名錄 -->
 <!-- ========================================== -->
@@ -39981,9 +39954,6 @@ function filterTab5Racecourses() {
       </table>
     </div>
   </div>
-</div>
-
-
 <!-- ========================================== -->
 <!-- 項目 19: 跨越三代家族王朝譜系樹與天才基因工程 -->
 <!-- ========================================== -->
@@ -40160,10 +40130,7 @@ function filterTab5Racecourses() {
 • <strong>種母馬配置：</strong>需持有繁殖牝馬 ≥ 10 頭，種牡馬 ≥ 5 頭。<br/>
 • <strong>效益：</strong>俱樂部牧場完全自產幼駒供會員募集，大幅減輕自家牧場負擔，實現利潤永動機！
 </div>
-</div>
-
-</div>
-
+  </div>
 <!-- ========================================== -->
 <!-- 項目 18: 一口馬主俱樂部法人商業經營術 -->
 <!-- ========================================== -->
@@ -40564,8 +40531,6 @@ function filterTab5Racecourses() {
 </tbody>
 </table>
 </div>
-</div>
-
 <!-- ========================================== -->
 <!-- 項目 21: 歷史名駒早逝/閹割/骨折悲劇改寫全年代名錄 -->
 <!-- ========================================== -->
@@ -42320,15 +42285,15 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v04.10"></script>
-<script src="yuruyuru_guides_db.js?v=v04.10"></script>
+<script src="unified_horses_full_db.js?v=v04.11"></script>
+<script src="yuruyuru_guides_db.js?v=v04.11"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v04.10"></script>
-<script src="jbis_engine.js?v=v04.10"></script><script>
+<script src="jbis_pedigree_db.js?v=v04.11"></script>
+<script src="jbis_engine.js?v=v04.11"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -44679,7 +44644,7 @@ function runExplosionSimulation() {
 function runSimulation() { runExplosionSimulation(); }
 
 // ==========================================
-// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.10)
+// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.11)
 // ==========================================
 
 // 1. 神器一：新手極速配種決策精靈 (Breeding Decision Wizard)
