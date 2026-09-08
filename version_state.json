@@ -1,13 +1,13 @@
 {
-  "current_version": "v03.99",
-  "last_backup_archived": "v03.98",
+  "current_version": "v04.00",
+  "last_backup_archived": "v03.99",
   "retained_backups": [
-    "v03.94",
     "v03.95",
     "v03.96",
     "v03.97",
-    "v03.98"
+    "v03.98",
+    "v03.99"
   ],
-  "description": "Pillar 2 Breeding Master System Upgrade: 6 Beginner Guide SOP Modules, 4 Interactive Calculators (Breeding Wizard, +40 Explosion Block Builder, 16-Ancestor Sandtable, Upgraded Monte Carlo with Mare Vitality & Hidden Ko-Dashi), 1968-2026 Golden Pairs Table & 10 Taboos Checklist, v03.99 PWA cache sync",
-  "last_updated": "2026-09-07"
+  "description": "Six Major Strategic Enhancements (v04.00): 1. All-era Starter 3yo & God-tier Broodmare Selection (9 eras); 2. System Establishment Engineering & Sire Anti-jamming Timeline & Private Rescue DB; 3. Interactive System Establishment Estimator; 4. Historical Training 100% Crit Formula & Target Matrix; 5. Farm Facility 3-stage Layout & ROI Matrix; 6. Dynasty Descendant Education & Genius Jockey/Trainer Matrix. CDP 0 error verified.",
+  "last_updated": "2026-09-08"
 }
