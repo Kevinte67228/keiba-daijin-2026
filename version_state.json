@@ -1,13 +1,13 @@
 {
-  "current_version": "v04.16",
-  "last_backup_archived": "v04.15",
+  "current_version": "v04.17",
+  "last_backup_archived": "v04.16",
   "retained_backups": [
-    "v04.11",
     "v04.12",
     "v04.13",
     "v04.14",
-    "v04.15"
+    "v04.15",
+    "v04.16"
   ],
-  "description": "Milestone v04.16: Removed '2026 新要素直達' quick channel bar from the header per user request. Verified clean layout via CDP.",
+  "description": "Milestone v04.17: Removed header summary subtitle text ('15,389 匹全史實馬庫...') per user request, achieving minimalist header design.",
   "last_updated": "2026-09-08"
 }
