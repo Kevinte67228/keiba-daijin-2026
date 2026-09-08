@@ -1,13 +1,13 @@
 {
-  "current_version": "v04.12",
-  "last_backup_archived": "v04.11",
+  "current_version": "v04.13",
+  "last_backup_archived": "v04.12",
   "retained_backups": [
-    "v03.98",
     "v03.99",
     "v04.00",
     "v04.10",
-    "v04.11"
+    "v04.11",
+    "v04.12"
   ],
-  "description": "Refinement v04.12: Overhauled Tool 22 (Global Expedition Calculator) calculation engine. Correctly models Middle East/North America dirt power constraints, white-board expedition baseline penalties, and provides a 3-part debuff breakdown card (travel/power/spirit). CDP verified 0 exceptions.",
+  "description": "Milestone v04.13: Comprehensive overhaul of all 4 interactive tools (Tool 22 Global Expedition Calculator, Tool 23 Course Tactics Matcher, Tool 24 Foal Comment Decoder, Tool 25 Facilities Sandbox). Full dynamic response, realistic WP10 simulation mechanics, and 0 CDP exceptions.",
   "last_updated": "2026-09-08"
 }

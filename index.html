@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v04.12"></script>
-<script src="core_guides_data.js?v=v04.12"></script>
-<script src="yearly_recs_db.js?v=v04.12"></script>
-<script src="horse_subtopics_data.js?v=v04.12"></script>
+<script src="master_lookup_db.js?v=v04.13"></script>
+<script src="core_guides_data.js?v=v04.13"></script>
+<script src="yearly_recs_db.js?v=v04.13"></script>
+<script src="horse_subtopics_data.js?v=v04.13"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2569,7 +2569,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v04.12</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v04.13</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="https://www.jbis.or.jp/horse/" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;" title="前往日本 JBIS Search 官方原站進行即時權威血統與馬情報檢索">
@@ -42285,15 +42285,15 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v04.12"></script>
-<script src="yuruyuru_guides_db.js?v=v04.12"></script>
+<script src="unified_horses_full_db.js?v=v04.13"></script>
+<script src="yuruyuru_guides_db.js?v=v04.13"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v04.12"></script>
-<script src="jbis_engine.js?v=v04.12"></script><script>
+<script src="jbis_pedigree_db.js?v=v04.13"></script>
+<script src="jbis_engine.js?v=v04.13"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -44644,7 +44644,7 @@ function runExplosionSimulation() {
 function runSimulation() { runExplosionSimulation(); }
 
 // ==========================================
-// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.12)
+// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.13)
 // ==========================================
 
 // 1. 神器一：新手極速配種決策精靈 (Breeding Decision Wizard)
@@ -48106,66 +48106,127 @@ window.matchCourseTactics = function() {
   const dist = document.getElementById('matchDistance')?.value || 'mile';
   const cond = document.getElementById('matchCondition')?.value || 'firm';
 
-  let scores = { '逃げ (領放)': 3, '先行 (前置)': 3, '差し (居中)': 3, '追込 (後追)': 3 };
-  let desc = '';
-
-  if (course === 'tokyo') {
-    scores['差し (居中)'] += 2;
-    scores['追込 (後追)'] += 2;
-    scores['逃げ (領放)'] -= 1;
-    desc = '東京擁有 525.9m 寬闊長直線與末段上坡，居中與後追末腳能完全舒展，領放馬極易在最後 100m 被大群吞噬。';
-  } else if (course === 'nakayama') {
-    scores['逃げ (領放)'] += 2;
-    scores['先行 (前置)'] += 2;
-    scores['追込 (後追)'] -= 2;
-    desc = '中山直線僅 310m 且起伏險峻，後追馬極易遭車牆封阻，領放與先行前置優勢極為壓倒性。';
-  } else if (course === 'hanshin_out') {
-    scores['差し (居中)'] += 2;
-    scores['先行 (前置)'] += 1;
-    desc = '阪神外回直線 473.6m 具備充裕衝刺距離，兼備速度與持久力的居中跑法最為穩健。';
-  } else if (course === 'kyoto_out') {
-    scores['先行 (前置)'] += 2;
-    scores['差し (居中)'] += 1;
-    desc = '京都外回自第 3 彎道開始順坡俯衝，先行馬若順勢加速帶入平坦直道極難被追趕。';
-  } else if (course === 'oi_dirt' || course === 'churchill') {
-    scores['逃げ (領放)'] += 2;
-    scores['先行 (前置)'] += 2;
-    scores['追込 (後追)'] -= 2;
-    desc = '泥地賽事後方賽駒吃沙極度嚴重，前置領放具有決定性戰術主動權。';
-  } else if (course === 'longchamp') {
-    scores['先行 (前置)'] += 2;
-    scores['差し (居中)'] += 1;
-    scores['追込 (後追)'] -= 1;
-    desc = '隆尚凱旋門草皮極黏重且有假直線，需極佳位置感與力量前置，純後追極難逆轉。';
-  }
-
-  if (cond === 'heavy' || cond === 'soft') {
-    scores['逃げ (領放)'] += 1;
-    scores['先行 (前置)'] += 1;
-    scores['追込 (後追)'] -= 1;
-  }
-
-  const renderStars = (val) => {
-    val = Math.max(1, Math.min(5, val));
-    return '★'.repeat(val) + '☆'.repeat(5 - val);
+  const coursesDb = {
+    'tokyo': { name: '東京競馬場', straight: 525.9, slope: '末段緩上坡 (高低差 2.1m)', turn: '大迴圈寬闊左回', desc: '擁有全日本最長草地直線之一 (525.9m)，末端帶有緩坡，給予居中與後追末腳充分舒展空間。' },
+    'nakayama': { name: '中山競馬場', straight: 310.0, slope: '終點前險峻陡坡 (高低差 5.3m)', turn: '急彎緊湊右回', desc: '直線僅 310m 且終點前為著名的險峻陡坡，後追馬若無極強長距離衝刺極難在短直道突破車牆。' },
+    'hanshin_out': { name: '阪神外回', straight: 473.6, slope: '終點前陡坡 (高低差 1.8m)', turn: '寬闊大外圈右回', desc: '外回直線達 473.6m 衝刺長度充足，彎道平緩，兼具瞬發速度與終點陡坡耐力考驗。' },
+    'hanshin_in': { name: '阪神內回', straight: 356.5, slope: '終點前陡坡 (高低差 1.8m)', turn: '內圈急彎右回', desc: '內回直線僅 356.5m 且第 3~4 彎道角度小，出彎即進入衝刺，前置跑法優勢顯著。' },
+    'kyoto_out': { name: '京都外回', straight: 404.0, slope: '第3彎道下坡 (高低差 4.3m) 直線平坦', turn: '順下坡外圈右回', desc: '著名的「淀之坡 (淀の坂)」，自第 3 彎道順坡急降進入平坦直線，極度考驗騎手下坡時機拿捏。' },
+    'chukyo': { name: '中京競馬場', straight: 412.5, slope: '終點前急陡坡 (高低差 2.0m)', turn: '起伏較大左回', desc: '左回賽道起伏大，終點前有 2m 陡坡考驗最後勝負根性。' },
+    'oi_dirt': { name: '大井競馬場 (地方南關東)', straight: 386.0, slope: '全平坦深邃海砂', turn: '右回夜賽外圈', desc: '南關東泥地首府，砂厚且重，後方賽駒吃沙嚴重，前置優勢壓倒性。' },
+    'longchamp': { name: '隆尚 (法國)', straight: 533.0, slope: '假直道 (Fausse Ligne) 黏重泥沼', turn: '右回大外圈', desc: '凱旋門大賽主場，超長假直道對節奏感考驗極苛刻，深邃重草皮吞噬後追力量。' },
+    'churchill': { name: '邱吉爾園 (美國)', straight: 376.0, slope: '全平坦極速疾馳', turn: '緊湊左回泥地環道', desc: '北美肯塔基打吡主場，起步步速極快，內側泥地前置馬掌控全場節奏。' }
   };
 
+  const cInfo = coursesDb[course] || coursesDb['tokyo'];
+  let scores = { '逃げ (領放)': 3, '先行 (前置)': 3, '差し (居中)': 3, '追込 (後追)': 3 };
+  let tacticalNotes = [];
+
+  // 1. 直線長度對跑法幾何之影響
+  if (cInfo.straight >= 500) {
+    scores['差し (居中)'] += 1;
+    scores['追込 (後追)'] += 1;
+    scores['逃げ (領放)'] -= 1;
+    tacticalNotes.push(`直線長達 ${cInfo.straight}m，後方衝刺距離極充裕，純領放馬若無極致耐力易在最後 100m 遭群體吞噬。`);
+  } else if (cInfo.straight <= 360) {
+    scores['逃げ (領放)'] += 2;
+    scores['先行 (前置)'] += 2;
+    scores['追込 (後追)'] -= 2;
+    tacticalNotes.push(`直線僅 ${cInfo.straight}m，後追馬極易遭遇前方車牆受困失速，前置領放優勢壓倒性！`);
+  }
+
+  // 2. 馬場種類 (草地 vs 泥地)
+  if (surface === 'dirt' || course === 'oi_dirt' || course === 'churchill') {
+    scores['逃げ (領放)'] += 1;
+    scores['先行 (前置)'] += 2;
+    scores['追込 (後追)'] -= 2;
+    scores['差し (居中)'] -= 1;
+    tacticalNotes.push('泥地賽道後方吃沙 (キックバック) 極為嚴重，後追末腳大幅受阻，強烈推薦「前置先行」或「領放」！');
+  }
+
+  // 3. 賽事距離分類
+  if (dist === 'sprint') {
+    scores['逃げ (領放)'] += 2;
+    scores['先行 (前置)'] += 1;
+    scores['追込 (後追)'] -= 2;
+    tacticalNotes.push('短途 (1000m~1400m) 起跑即進入極速肉搏，後追馬無充足時間展開長距離末腳。');
+  } else if (dist === 'mile') {
+    scores['先行 (前置)'] += 1;
+    scores['差し (居中)'] += 1;
+  } else if (dist === 'stayer') {
+    scores['先行 (前置)'] += 1;
+    scores['差し (居中)'] += 2;
+    scores['逃げ (領放)'] -= 1;
+    tacticalNotes.push('長途極限 (2500m~3600m) 考驗耐心與節奏控制，盲目狂逃易體力耗竭，居中保留長衝刺力量最穩健。');
+  }
+
+  // 4. 含水量與場地狀態
+  if (cond === 'soft' || cond === 'heavy') {
+    if (surface === 'dirt') {
+      scores['逃げ (領放)'] += 1;
+      scores['先行 (前置)'] += 1;
+      tacticalNotes.push('濕爛泥地 (重/不良) 形成「高速滑溜快地」，領放馬前推阻力大幅下降，極難被逆轉！');
+    } else {
+      scores['逃げ (領放)'] += 1;
+      scores['追込 (後追)'] -= 1;
+      tacticalNotes.push('黏爛重芝增加外側長驅直入之能耗，內側前置馬省力優勢顯著。');
+    }
+  }
+
+  // Clamp 1~5
+  for (let k in scores) {
+    scores[k] = Math.max(1, Math.min(5, scores[k]));
+  }
+
+  let bestTact = '先行 (前置)';
+  let maxScore = -1;
+  for (let k in scores) {
+    if (scores[k] > maxScore) {
+      maxScore = scores[k];
+      bestTact = k;
+    }
+  }
+
+  const renderStars = (val) => '★'.repeat(val) + '☆'.repeat(5 - val);
+
   const outHtml = `
-    <div style="font-size:13px; color:#cbd5e1; line-height:1.6; margin-bottom:12px;">
-      <strong>賽道幾何與環境特性：</strong>${desc}
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:12px;">
+      <div>
+        <span style="font-size:12px; color:#94a3b8;">賽道幾何適性最佳推薦跑法：</span>
+        <div style="font-size:24px; font-weight:800; color:#34d399;">${bestTact} (${renderStars(maxScore)})</div>
+      </div>
+      <div style="display:flex; gap:14px;">
+        <div style="background:rgba(30,41,59,0.6); padding:6px 12px; border-radius:6px; font-size:12px;">
+          <span style="color:#94a3b8;">最後直線：</span> <strong style="color:#38bdf8;">${cInfo.straight}m</strong>
+        </div>
+        <div style="background:rgba(30,41,59,0.6); padding:6px 12px; border-radius:6px; font-size:12px;">
+          <span style="color:#94a3b8;">地形高低差：</span> <strong style="color:#fbbf24;">${cInfo.slope}</strong>
+        </div>
+      </div>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px;">
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px; margin-bottom:14px;">
       ${Object.entries(scores).map(([tact, val]) => {
-        const num = Math.max(1, Math.min(5, val));
-        const color = num >= 4 ? '#34d399' : num === 3 ? '#fbbf24' : '#94a3b8';
+        const color = val >= 4 ? '#34d399' : val === 3 ? '#fbbf24' : '#ef4444';
+        const label = val === 5 ? '極力推薦 (S)' : val === 4 ? '強力推薦 (A)' : val === 3 ? '穩健適用 (B)' : val === 2 ? '劣勢慎用 (C)' : '極度危險 (D)';
         return `
-          <div style="background:rgba(30, 41, 59, 0.6); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px;">
+          <div style="background:rgba(30, 41, 59, 0.7); border:1px solid ${val >= 4 ? 'rgba(52,211,153,0.3)' : 'rgba(255,255,255,0.08)'}; border-radius:8px; padding:10px;">
             <div style="font-size:12px; font-weight:bold; color:#f8fafc; margin-bottom:4px;">${tact}</div>
-            <div style="font-size:14px; font-weight:bold; color:${color}; margin-bottom:2px;">${renderStars(num)}</div>
-            <div style="font-size:11px; color:#94a3b8;">${num >= 4 ? '強烈推薦' : num === 3 ? '適用' : '劣勢慎用'}</div>
+            <div style="font-size:15px; font-weight:bold; color:${color}; margin-bottom:2px;">${renderStars(val)}</div>
+            <div style="font-size:11px; color:${color}; font-weight:bold;">${label}</div>
           </div>
         `;
       }).join('')}
+    </div>
+
+    <div style="font-size:13px; color:#cbd5e1; line-height:1.6; background:rgba(30, 41, 59, 0.5); border-radius:8px; padding:12px;">
+      <strong style="color:#38bdf8;">🎯 賽道幾何特性：</strong>${cInfo.desc}<br>
+      <div style="margin-top:6px;">
+        <strong style="color:#fbbf24;">💡 戰術執行建議：</strong>
+        <ul style="margin:4px 0 0 16px; padding:0; font-size:12px; line-height:1.6;">
+          ${tacticalNotes.map(n => `<li>${n}</li>`).join('')}
+        </ul>
+      </div>
     </div>
   `;
   const el = document.getElementById('matchResultCard');
@@ -48180,49 +48241,132 @@ window.decodeFoalComment = function() {
 
   let spMin = 65;
   let spMax = 70;
-  let growth = '普早';
+  let stMin = 60;
+  let stMax = 70;
+  let distRange = '1600m ~ 2200m (一哩至中距離)';
+  let explosionTier = 'A (良好爆發)';
+  let growth = '普早 (持続)';
   let tier = '重賞候選 (G2/G3)';
+  let highlights = [];
 
-  if (c0 === 'god') { spMin += 12; spMax += 15; }
-  else if (c0 === 'super') { spMin += 9; spMax += 12; }
-  else if (c0 === 'great') { spMin += 6; spMax += 8; }
-  else if (c0 === 'good') { spMin += 3; spMax += 5; }
+  // 0歲 牧場長評語判定
+  if (c0 === 'god') {
+    spMin += 13; spMax += 15;
+    tier = '傳奇神話級 (怪物名駒)';
+    highlights.push('0歲誕生即展現神話領域氣場，全屬性潛力上限天花板！');
+  } else if (c0 === 'super') {
+    spMin += 10; spMax += 12;
+    tier = '超大物 (海外頂級G1制霸)';
+    highlights.push('0歲具備超大物資質，為世代前列核心代表。');
+  } else if (c0 === 'great') {
+    spMin += 6; spMax += 8;
+    tier = '大物候選 (國內經典G1爭奪)';
+    highlights.push('0歲具備大物氣質，具備挑戰八大競走資質。');
+  } else if (c0 === 'good') {
+    spMin += 3; spMax += 5;
+    tier = '重賞有力馬 (重賞常客)';
+  }
 
-  if (c1 === 'sp_flow') { spMin += 2; spMax += 3; }
-  else if (c1 === 'flex_spurt') { spMin += 1; spMax += 2; }
+  // 1歲 9月 相馬相評語判定
+  if (c1 === 'sp_flow') {
+    spMin += 2; spMax += 3;
+    explosionTier = 'S (速度流暢)';
+    highlights.push('1歲步態展現超絕速度感，SP成長速率為常規馬 1.3 倍。');
+  } else if (c1 === 'st_power') {
+    stMin += 10; stMax += 15;
+    distRange = '2200m ~ 3200m (長途極限)';
+    highlights.push('長途耐力與力量厚重，菊花賞、春季天皇賞黃金候選！');
+  } else if (c1 === 'flex_spurt') {
+    spMin += 1; spMax += 2;
+    explosionTier = 'S+ (彈力爆發雙S)';
+    distRange = '1800m ~ 2400m (中距離瞬發)';
+    highlights.push('兼備柔軟身姿與彈力末腳，出彎瞬間爆發力極具殺傷力。');
+  }
 
-  if (c2 === 'classic') { tier = '經典三冠競爭者 (頂級G1)'; }
-  else if (c2 === 'early') { growth = '早熟'; tier = '早熟短途快馬'; }
-  else if (c2 === 'late') { growth = '晚成'; tier = '大器晚成長途霸主'; }
-  else if (c2 === 'world') { tier = '海外遠征制霸級 (世界名駒)'; spMin += 1; spMax += 2; }
+  // 2歲 入廄前調教師評語判定
+  if (c2 === 'classic') {
+    growth = '普早 (經典三冠型)';
+    distRange = '2000m ~ 2400m (三冠路線)';
+    highlights.push('調教師直言問鼎經典三冠，體力與體態發育完全吻合打吡週期。');
+  } else if (c2 === 'early') {
+    growth = '早熟 (2歲即戰力)';
+    distRange = '1200m ~ 1600m (短途快馬)';
+    highlights.push('早熟完成度極高，可直接出戰 2 歲朝日杯、阪神幼牝錦標。');
+  } else if (c2 === 'late') {
+    growth = '晚成 (大器晚成)';
+    stMin += 5; stMax += 10;
+    distRange = '2400m ~ 3600m (古馬長途霸主)';
+    highlights.push('大器晚成，4~6 歲為競賽黃金巔峰期，切忌 2 歲過度操練！');
+  } else if (c2 === 'world') {
+    growth = '普晚 (遠征型)';
+    spMin += 1; spMax += 2;
+    highlights.push('具備征戰歐美海外 G1 的頂級精神力與骨格框架。');
+  }
 
-  if (sp === 'fence') { spMin += 2; spMax += 3; }
-  else if (sp === 'meteor') { spMin += 3; spMax += 4; }
-  else if (sp === 'sohma') { spMin += 1; spMax += 2; }
+  // 特殊標記判定
+  if (sp === 'fence') {
+    spMin += 2; spMax += 3;
+    highlights.push('⚡ 柵越え (跳柵) 事件觸發！破除常規 SP 上限，勝負根性與力量保底 S+！');
+  } else if (sp === 'meteor') {
+    spMin += 3; spMax += 4;
+    tier = '殿堂三冠金馬 (流星)';
+    highlights.push('🌠 流星神駒降世！三冠能力保底，引退後必獲雙速度因子！');
+  } else if (sp === 'white') {
+    highlights.push('🤍 稀世白毛誕生！自帶賽馬狂潮光環，拍賣身價翻倍，牧場觀光效益頂峰。');
+  } else if (sp === 'sohma') {
+    spMin += 1; spMax += 2;
+    highlights.push('👁️ 相馬眼精確確診！無隱藏劣質素質，全數值無虛標。');
+  }
 
   spMin = Math.min(84, spMin);
   spMax = Math.min(85, spMax);
 
   const outHtml = `
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; margin-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:12px;">
       <div>
         <span style="font-size:12px; color:#94a3b8;">逆向推估真·速度 (SP) 區間：</span>
-        <div style="font-size:24px; font-weight:800; color:#fbbf24;">SP ${spMin} ~ ${spMax}</div>
+        <div style="font-size:26px; font-weight:800; color:#fbbf24;">SP ${spMin} ~ ${spMax}</div>
       </div>
       <div>
-        <span style="font-size:12px; color:#94a3b8;">成長型態判定：</span>
+        <span style="font-size:12px; color:#94a3b8;">成長型態：</span>
         <div style="font-size:18px; font-weight:bold; color:#38bdf8;">${growth}</div>
       </div>
       <div>
-        <span style="font-size:12px; color:#94a3b8;">戰力評級期望：</span>
-        <div style="font-size:16px; font-weight:bold; color:#34d399;">${tier}</div>
+        <span style="font-size:12px; color:#94a3b8;">大賽戰力評級：</span>
+        <div style="font-size:18px; font-weight:bold; color:#34d399;">${tier}</div>
       </div>
     </div>
-    <div style="font-size:13px; color:#cbd5e1; line-height:1.6; background:rgba(30, 41, 59, 0.5); border-radius:6px; padding:10px;">
-      <strong>培育建議：</strong>
-      ${spMin >= 76 ? '⚡ 絕對殿堂級逸材！幼駒 1 歲秋季務必使用「幼駒史實調教 (精神/瞬發)」將上限拉滿，2歲直接報名頂級新馬戰。' :
-        spMin >= 72 ? '✨ 一流賽駒水準，足以橫掃國內多數重賞，注意維持鬥志與避免過度消耗。' :
-        '穩健賽駒，適合在專屬適性賽程累積勝星或作為俱樂部一口馬主優秀盈利馬。'}
+
+    <!-- 細部屬性解碼面板 -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin-bottom:14px;">
+      <div style="background:rgba(30,41,59,0.5); padding:8px 12px; border-radius:6px; font-size:12px;">
+        <span style="color:#94a3b8;">黃金適性路程：</span><br>
+        <strong style="color:#f8fafc;">${distRange}</strong>
+      </div>
+      <div style="background:rgba(30,41,59,0.5); padding:8px 12px; border-radius:6px; font-size:12px;">
+        <span style="color:#94a3b8;">瞬發力/爆發評級：</span><br>
+        <strong style="color:#ec4899;">${explosionTier}</strong>
+      </div>
+      <div style="background:rgba(30,41,59,0.5); padding:8px 12px; border-radius:6px; font-size:12px;">
+        <span style="color:#94a3b8;">耐力指標 (ST)：</span><br>
+        <strong style="color:#38bdf8;">ST ${stMin} ~ ${stMax}</strong>
+      </div>
+    </div>
+
+    <div style="background:rgba(30, 41, 59, 0.5); border-radius:8px; padding:12px; font-size:13px; line-height:1.6;">
+      <strong style="color:#fbbf24;">🔍 解碼核心特徵：</strong>
+      <ul style="margin:4px 0 0 16px; padding:0; font-size:12px; line-height:1.6; color:#cbd5e1;">
+        ${highlights.map(h => `<li>${h}</li>`).join('')}
+      </ul>
+      <div style="margin-top:8px; border-top:1px dashed rgba(255,255,255,0.1); padding-top:8px;">
+        <strong style="color:#34d399;">📋 培育與調教方針：</strong>
+        <span style="font-size:12px; color:#94a3b8;">
+          ${spMin >= 76 ? '1歲 9~11 月務必配置「幼駒史實調教 (瞬發/精神)」將上限拉滿，2歲直接出戰中央頂級新馬戰！' :
+            growth.includes('早熟') ? '早熟短途型，應抓緊 2~3 歲黃金窗口，狂掃 2 歲 G1 與短途重賞！' :
+            growth.includes('晚成') ? '大器晚成型，前期切勿過度消耗鬥志與體能，4歲起全面發力接管古馬王座！' :
+            '穩健實力派，按部就班累積重賞勝星，亦可作為俱樂部招牌一口募集馬。'}
+        </span>
+      </div>
     </div>
   `;
   const el = document.getElementById('decodeResultCard');
@@ -48234,73 +48378,171 @@ window.simulateFacilitiesSandbox = function() {
   const budget = parseInt(document.getElementById('sandBudget')?.value || '60', 10);
   const strategy = document.getElementById('sandStrategy')?.value || 'train';
 
-  let facilList = [];
-  let cost = 0;
+  let facils = [];
   let effect = '';
+  let bonuses = {};
 
-  if (strategy === 'train') {
-    facilList = [
-      { name: '草地跑道 (芝コース) Lv3', cost: 6, plots: 3, role: '幼駒SP與瞬發力調教成長+30%' },
-      { name: '泥地跑道 (ダートコース) Lv3', cost: 6, plots: 3, role: '力量與泥地適性強化+30%' },
-      { name: '坡道設施 (坂路) Lv3', cost: 8, plots: 3, role: '勝負根性與體力爆發成長MAX' },
-      { name: '逍遙馬房 (ウォーキングマシン) Lv3', cost: 5, plots: 3, role: '幼駒心肺機能與基礎耐力提升' },
-      { name: '溫泉設施 (温泉施設) Lv2', cost: 10, plots: 4, role: '競賽馬疲勞恢復週期縮短 40%' },
-      { name: '醫療馬房 (診療所) Lv2', cost: 8, plots: 4, role: '賽駒傷病幾率大幅驟降 60%' }
-    ];
-    effect = '打造超一流競賽戰力！旗下幼駒入廄前各項屬性即可達到 A~S+，現役馬疲勞秒速回復。';
-  } else if (strategy === 'breed') {
-    facilList = [
-      { name: '繁殖牝馬馬房 (母馬房) Lv3', cost: 12, plots: 6, role: '容納 20 匹母馬，受胎率保底+20%' },
-      { name: '種牡馬繫養設施 Lv3', cost: 10, plots: 4, role: '自家種公配種費激增，活性化提升' },
-      { name: '大型產房 (分娩舍) Lv3', cost: 8, plots: 4, role: '幼駒難產猝死率歸零，幼駒健康保底' },
-      { name: '幼駒放牧場 (育成場) Lv3', cost: 8, plots: 6, role: '當歲至1歲幼駒精神力與體格成長' },
-      { name: '診療所 Lv3', cost: 12, plots: 4, role: '全牧場馬匹疾病免疫，壽命延長' }
-    ];
-    effect = '血統帝國終極核心！每年可量產 20 匹頂尖幼駒，受胎率逼近 100%，杜絕任何流產猝死。';
+  if (plots <= 12) {
+    // 12 格初期開荒佈局 (總用地 <= 12 格)
+    if (strategy === 'train') {
+      facils = [
+        { name: '草地跑道 (芝コース) Lv1', cost: 2, plots: 2, role: '基礎SP與瞬發調教成長+10%' },
+        { name: '泥地跑道 (ダートコース) Lv1', cost: 2, plots: 2, role: '力量與泥地適性成長+10%' },
+        { name: '逍遙馬房 Lv1', cost: 1.5, plots: 2, role: '幼駒基礎心肺耐力育成' },
+        { name: '母馬房 Lv1 (基本)', cost: 2, plots: 3, role: '容納 10 匹母馬，維持基本產能' },
+        { name: '醫療馬房 (診療所) Lv1', cost: 2, plots: 2, role: '降低賽駒急性傷病 25%' }
+      ];
+      effect = '開局育成特化：在 12 格緊湊用地中優先確保雙賽道調教，兼顧 10 匹母馬繁育與防病。';
+      bonuses = { sp: '+10%', fatigue: '+10%', fert: '+5%', disease: '-25%' };
+    } else if (strategy === 'breed') {
+      facils = [
+        { name: '母馬房 Lv2 (增築)', cost: 4, plots: 4, role: '母馬容納提升至 15 匹，受胎率+10%' },
+        { name: '產房 (分娩舍) Lv1', cost: 2, plots: 2, role: '降低幼駒難產猝死風險 50%' },
+        { name: '幼駒放牧場 Lv1', cost: 2, plots: 3, role: '當歲幼駒精神力與體格基礎培養' },
+        { name: '草地跑道 Lv1', cost: 2, plots: 2, role: '基礎幼駒調教鍛鍊' }
+      ];
+      effect = '開局繁育特化：以 15 匹母馬擴建與產房安全為核心，杜絕幼駒猝死悲劇。';
+      bonuses = { sp: '+5%', fatigue: '+5%', fert: '+15%', disease: '-30%' };
+    } else { // boom
+      facils = [
+        { name: '觀光設施 Lv1', cost: 3, plots: 3, role: '每年提供 1~2 億穩定觀光門票收益' },
+        { name: '母馬房 Lv1', cost: 2, plots: 3, role: '基礎繁育保底 10 匹' },
+        { name: '一口馬主專屬沙龍 Lv1', cost: 3, plots: 2, role: '俱樂部一口會員招募速度+25%' },
+        { name: '草地跑道 Lv1', cost: 2, plots: 2, role: '培育早期話題賽駒' }
+      ];
+      effect = '開局觀光商業特化：利用一口馬主與觀光門票提早建立穩定現金流，防禦初期破產。';
+      bonuses = { sp: '+5%', fatigue: '+5%', fert: '+5%', income: '每年 2 億+' };
+    }
+  } else if (plots <= 20) {
+    // 20 格中型進階佈局 (總用地 <= 20 格)
+    if (strategy === 'train') {
+      facils = [
+        { name: '草地跑道 Lv2', cost: 4, plots: 2, role: '幼駒SP調教成長+20%' },
+        { name: '泥地跑道 Lv2', cost: 4, plots: 2, role: '力量強化成長+20%' },
+        { name: '坡道設施 (坂路) Lv2', cost: 5, plots: 3, role: '勝負根性與爆發力成長' },
+        { name: '逍遙馬房 Lv2', cost: 3, plots: 2, role: '幼駒心肺機能顯著躍升' },
+        { name: '溫泉設施 Lv1', cost: 5, plots: 3, role: '賽駒疲勞恢復週期縮短 25%' },
+        { name: '醫療馬房 Lv2', cost: 4, plots: 3, role: '傷病幾率降低 40%' },
+        { name: '母馬房 Lv2', cost: 4, plots: 4, role: '容納 15 匹優質繁殖牝馬' }
+      ];
+      effect = '中盤進階育成：引入坂路與溫泉，現役馬回血週期縮短 1 週，重賞出賽頻率大增。';
+      bonuses = { sp: '+20%', fatigue: '+25%', fert: '+10%', disease: '-40%' };
+    } else if (strategy === 'breed') {
+      facils = [
+        { name: '母馬房 Lv3 (滿額20匹)', cost: 8, plots: 5, role: '容納 20 匹母馬，受胎率保底+20%' },
+        { name: '產房 (分娩舍) Lv2', cost: 4, plots: 3, role: '幼駒難產猝死率降至 0%' },
+        { name: '幼駒放牧場 Lv2', cost: 5, plots: 4, role: '幼駒體格與骨骼發育全面加速' },
+        { name: '種牡馬繫養設施 Lv2', cost: 6, plots: 3, role: '自家種公配種費加成+30%' },
+        { name: '醫療馬房 Lv2', cost: 4, plots: 3, role: '全牧場疾病免疫與壽命延長' }
+      ];
+      effect = '中盤繁育帝國：滿載 20 匹母馬與自家種公，產房零猝死，年產 20 匹精銳幼駒。';
+      bonuses = { sp: '+10%', fatigue: '+10%', fert: '+25%', disease: '-50%' };
+    } else { // boom
+      facils = [
+        { name: '觀光設施 Lv2', cost: 8, plots: 4, role: '每年提供 3~5 億觀光門票收益' },
+        { name: '一口馬主專屬沙龍 Lv2', cost: 6, plots: 3, role: '一口會員招募速度+50%' },
+        { name: '高松凱旋像', cost: 5, plots: 3, role: '賽馬狂潮熱度累積效率+30%' },
+        { name: '母馬房 Lv2', cost: 4, plots: 4, role: '穩定供應優良一口幼駒 (15匹)' },
+        { name: '草地跑道 Lv2', cost: 4, plots: 2, role: '打造話題明星賽駒' }
+      ];
+      effect = '中盤商業霸權：觀光+一口俱樂部雙重造血，狂潮點火加速，年入十億現金。';
+      bonuses = { sp: '+10%', fatigue: '+10%', fert: '+10%', income: '每年 6 億+' };
+    }
   } else {
-    facilList = [
-      { name: '觀光設施 (クラブハウス/観光) Lv3', cost: 15, plots: 6, role: '每年提供 5~10 億觀光門票收益' },
-      { name: '高松凱旋像 / 歷代名馬紀念碑', cost: 10, plots: 4, role: '賽馬狂潮蓄積效率 +50%' },
-      { name: '一口馬主專屬沙龍 Lv3', cost: 12, plots: 4, role: '俱樂部一口募集秒速滿額，年費倍增' },
-      { name: '溫泉設施 Lv3', cost: 15, plots: 6, role: '人氣偶像名駒引退戰休養特化' }
-    ];
-    effect = '百億商業帝國流！大幅加速「賽馬狂潮」點火進度，一口馬主會員爆滿，牧場現金流無窮無盡。';
+    // 30 格完全體名門佈局 (總用地 <= 30 格)
+    if (strategy === 'train') {
+      facils = [
+        { name: '草地跑道 Lv3 (極限)', cost: 8, plots: 3, role: '幼駒SP與瞬發力調教成長+30% (滿載)' },
+        { name: '泥地跑道 Lv3 (極限)', cost: 8, plots: 3, role: '力量與泥地適性強化+30% (滿載)' },
+        { name: '坡道設施 (坂路) Lv3', cost: 10, plots: 4, role: '勝負根性與體力爆發成長 MAX' },
+        { name: '逍遙馬房 Lv3', cost: 6, plots: 3, role: '幼駒心肺機能與基礎耐力上限突破' },
+        { name: '溫泉設施 Lv2', cost: 10, plots: 4, role: '現役馬疲勞恢復週期縮短 40%' },
+        { name: '醫療馬房 Lv3', cost: 10, plots: 4, role: '賽駒傷病幾率驟降 60%' },
+        { name: '母馬房 Lv2', cost: 5, plots: 4, role: '維持 15 匹超良血母系精銳' },
+        { name: '海外遠征馬房 Lv2', cost: 8, plots: 3, role: '出征歐美輸送衰退減免 50%' }
+      ];
+      effect = '終極名門競賽主宰：全賽道 Lv3 極限培育成型，現役馬自備溫泉與海外遠征特化！';
+      bonuses = { sp: '+30%', fatigue: '+40%', fert: '+15%', disease: '-60%' };
+    } else if (strategy === 'breed') {
+      facils = [
+        { name: '母馬房 Lv3 (滿配20匹)', cost: 12, plots: 6, role: '容納 20 匹母馬，受胎率保底+25%' },
+        { name: '種牡馬繫養設施 Lv3', cost: 10, plots: 4, role: '自家種公配種費翻倍，血統確立加乘' },
+        { name: '大型產房 (分娩舍) Lv3', cost: 8, plots: 4, role: '幼駒難產猝死率歸零，健康保底 S' },
+        { name: '幼駒放牧場 Lv3', cost: 8, plots: 6, role: '1歲幼駒秋季SP潛力永久突破 MAX' },
+        { name: '診療所 Lv3 (名門特化)', cost: 10, plots: 4, role: '全牧場疾病完全免疫，壽命延長' },
+        { name: '溫泉設施 Lv1', cost: 6, plots: 3, role: '產後母馬快速復元' }
+      ];
+      effect = '血統帝國終極核心：20 匹超良血母馬滿配，受胎率 100%，獨佔神級種牡馬配種席位！';
+      bonuses = { sp: '+15%', fatigue: '+20%', fert: '+30%', disease: '-70%' };
+    } else { // boom
+      facils = [
+        { name: '觀光設施 Lv3 (頂級主題公園)', cost: 15, plots: 6, role: '每年提供 8~15 億觀光門票暴利' },
+        { name: '高松凱旋像 / 歷代名馬紀念碑', cost: 10, plots: 4, role: '賽馬狂潮熱度累積效率+50% (狂潮常駐)' },
+        { name: '一口馬主專屬沙龍 Lv3', cost: 12, plots: 4, role: '俱樂部一口募集秒速滿額，年費倍增' },
+        { name: '溫泉設施 Lv3 (傳奇特化)', cost: 14, plots: 5, role: '引退名駒休養觀光特化' },
+        { name: '母馬房 Lv3', cost: 10, plots: 5, role: '大量繁育一口俱樂部熱門血統' },
+        { name: '草地跑道 Lv2', cost: 5, plots: 3, role: '維持狂潮競賽戰力' }
+      ];
+      effect = '百億商業帝國流：狂潮無限接力點火，一口會員爆滿，牧場每年被動收益破 20 億！';
+      bonuses = { sp: '+15%', fatigue: '+25%', fert: '+20%', income: '每年 15 億+' };
+    }
   }
 
-  cost = facilList.reduce((sum, f) => sum + f.cost, 0);
-  const totalPlotsUsed = facilList.reduce((sum, f) => sum + f.plots, 0);
+  const totalCost = facils.reduce((sum, f) => sum + f.cost, 0);
+  const totalPlotsUsed = facils.reduce((sum, f) => sum + f.plots, 0);
+  const isBudgetOk = totalCost <= budget;
+  const isPlotOk = totalPlotsUsed <= plots;
 
   const outHtml = `
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:12px;">
       <div>
-        <span style="font-size:12px; color:#94a3b8;">預估建設投資總額：</span>
-        <div style="font-size:22px; font-weight:800; color:#f472b6;">${cost} 億日圓</div>
+        <span style="font-size:12px; color:#94a3b8;">預估設施建造總投資：</span>
+        <div style="font-size:24px; font-weight:800; color:${isBudgetOk ? '#f472b6' : '#ef4444'};">
+          ${totalCost} 億日圓 <span style="font-size:13px; font-weight:normal; color:${isBudgetOk ? '#34d399' : '#f87171'};">
+            ${isBudgetOk ? `(預算充足，結餘 ${budget - totalCost} 億)` : `(超出當前預算 ${totalCost - budget} 億，需分期建設)`}
+          </span>
+        </div>
       </div>
       <div>
-        <span style="font-size:12px; color:#94a3b8;">用地佔比：</span>
-        <div style="font-size:18px; font-weight:bold; color:${totalPlotsUsed <= plots ? '#34d399' : '#ef4444'};">
-          ${totalPlotsUsed} / ${plots} 格 ${totalPlotsUsed <= plots ? '(空間充足)' : '(超出容量，需升級)'}
+        <span style="font-size:12px; color:#94a3b8;">牧場用地規劃佔比：</span>
+        <div style="font-size:20px; font-weight:bold; color:${isPlotOk ? '#34d399' : '#ef4444'};">
+          ${totalPlotsUsed} / ${plots} 格 ${isPlotOk ? `(空間充足，剩餘 ${plots - totalPlotsUsed} 格)` : `(超出容量，需升級擴建)`}
         </div>
       </div>
     </div>
-    <div style="font-size:13px; color:#cbd5e1; line-height:1.6; margin-bottom:12px;">
-      <strong>流派核心效益：</strong>${effect}
+
+    <!-- 核心產能指標 -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:8px; margin-bottom:14px;">
+      ${Object.entries(bonuses).map(([k, v]) => {
+        const labels = { sp: '幼駒SP成長加成', fatigue: '疲勞回復加速', fert: '受胎率保底加成', disease: '傷病幾率抑制', income: '預估年被動收益' };
+        return `
+          <div style="background:rgba(30,41,59,0.5); padding:8px 10px; border-radius:6px; font-size:11px;">
+            <span style="color:#94a3b8;">${labels[k] || k}：</span><br>
+            <strong style="color:#38bdf8; font-size:13px;">${v}</strong>
+          </div>
+        `;
+      }).join('')}
     </div>
+
+    <div style="font-size:13px; color:#cbd5e1; line-height:1.6; margin-bottom:12px;">
+      <strong style="color:#f472b6;">📐 佈局戰略定位：</strong>${effect}
+    </div>
+
     <div class="scrollable-table-box" style="max-height:280px; overflow-y:auto;">
       <table class="data-table" style="min-width:600px; width:100%;">
         <thead>
           <tr>
             <th class="sortable-th" style="width:200px; text-align:left !important;">建議設施名稱 ⇅</th>
-            <th class="sortable-th" style="width:90px; text-align:left !important;">耗資 ⇅</th>
-            <th class="sortable-th" style="width:90px; text-align:left !important;">用地 ⇅</th>
-            <th class="sortable-th" style="min-width:220px; text-align:left !important;">專屬功能與協同效益 ⇅</th>
+            <th class="sortable-th" style="width:80px; text-align:left !important;">耗資 ⇅</th>
+            <th class="sortable-th" style="width:80px; text-align:left !important;">佔地 ⇅</th>
+            <th class="sortable-th" style="min-width:240px; text-align:left !important;">專屬功能與協同效益 ⇅</th>
           </tr>
         </thead>
         <tbody>
-          ${facilList.map(f => `
+          ${facils.map(f => `
             <tr>
-              <td style="text-align:left !important;"><strong>${f.name}</strong></td>
-              <td style="text-align:left !important;">${f.cost} 億</td>
+              <td style="text-align:left !important;"><strong style="color:#f8fafc;">${f.name}</strong></td>
+              <td style="text-align:left !important; color:#fbbf24;">${f.cost} 億</td>
               <td style="text-align:left !important;">${f.plots} 格</td>
               <td style="text-align:left !important; white-space:normal !important; line-height:1.5;">${f.role}</td>
             </tr>
