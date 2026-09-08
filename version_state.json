@@ -1,13 +1,13 @@
 {
-  "current_version": "v04.14",
-  "last_backup_archived": "v04.13",
+  "current_version": "v04.15",
+  "last_backup_archived": "v04.14",
   "retained_backups": [
-    "v04.00",
     "v04.10",
     "v04.11",
     "v04.12",
-    "v04.13"
+    "v04.13",
+    "v04.14"
   ],
-  "description": "Milestone v04.14: Added dedicated Interactive Calculators & Simulators Quick Jump Index (8 major interactive tools) on both the main index page and inside the global Chapter Jump Modal with animated smooth scrolling and flash highlighting.",
+  "description": "Milestone v04.15: Removed on-page calculator index card per user request while keeping the clean quick-jump block in the global chapter modal (TOC). Verified 0 errors via CDP.",
   "last_updated": "2026-09-08"
 }
