@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v03.99"></script>
-<script src="core_guides_data.js?v=v03.99"></script>
-<script src="yearly_recs_db.js?v=v03.99"></script>
-<script src="horse_subtopics_data.js?v=v03.99"></script>
+<script src="master_lookup_db.js?v=v04.00"></script>
+<script src="core_guides_data.js?v=v04.00"></script>
+<script src="yearly_recs_db.js?v=v04.00"></script>
+<script src="horse_subtopics_data.js?v=v04.00"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2538,7 +2538,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v03.99</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v04.00</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="https://www.jbis.or.jp/horse/" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;" title="前往日本 JBIS Search 官方原站進行即時權威血統與馬情報檢索">
@@ -4912,6 +4912,220 @@ button.chip-btn.active {
 </div>
 
 </div>
+
+<!-- ==================== 【方向一】全年代劇本「開局首年讓渡馬與神級名牝馬」抉擇指南 ==================== -->
+<div id="era-starter-transfer-matrix" style="margin-top:28px; margin-bottom:28px; background:linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
+  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(56,189,248,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+    <h3 style="font-size:1.18rem; color:#38bdf8; margin:0; display:flex; align-items:center; gap:10px; font-weight:800;">
+      <i class="fa-solid fa-flag-checkered" style="color:#38bdf8;"></i> 【全年代開局必備】9 大劇本首年讓渡 3 歲現役馬與神級繁殖名雌抉擇全書 (日/中並行)
+    </h3>
+    <span class="badge badge-info" style="font-size:0.82rem; padding:4px 12px; font-weight:700;">開局第一桶金</span>
+  </div>
+  <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.75; margin-bottom:16px;">
+    進入不同歷史劇本時，最關鍵的戰略分水嶺在於：<strong>① 首年系統讓渡 3 歲現役馬的選拔</strong>（直接決定開局前兩年能否奪下經典三冠並累積第一桶金），以及 <strong>② 首年 5 月配種前能以銅札、綠札或無料搶購的性價比之王繁殖牝馬</strong>。以下為跨越半世紀 9 大劇本年代的終極抉擇指南：
+  </p>
+
+  <!-- 1. 首年讓渡 3 歲現役馬大表 -->
+  <h4 style="font-size:1.02rem; color:#f59e0b; margin:16px 0 10px 0; display:flex; align-items:center; gap:8px; font-weight:700;">
+    <i class="fa-solid fa-trophy"></i> ① 9 大劇本開局首年讓渡 3 歲現役馬性價比、戰略價值與三冠勝率全景大表
+  </h4>
+  <div class="scrollable-table-box" style="max-height:580px !important; overflow-y:auto !important; margin-bottom:22px;">
+    <div class="table-responsive" style="margin:0;">
+      <table class="data-table" style="min-width:1260px; text-align:left !important;">
+        <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+          <tr>
+            <th class="sortable-th" style="width:110px; text-align:left !important;">劇本年代 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:200px; text-align:left !important;">首選讓渡馬 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:80px; text-align:left !important;">札位 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:180px; text-align:left !important;">備選讓渡馬 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:140px; text-align:left !important;">三冠/大賽潛力 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:110px; text-align:left !important;">回本年限 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="min-width:440px; text-align:left !important;">開局戰略優缺點與 SOP 跑法路線 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1971 年<br><span style="font-size:0.75rem; color:#94a3b8;">TTG前夜</span></td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">タニノチカラ</strong><br><span style="font-size:0.75rem; color:#94a3b8;">谷野力量 (Tanino Chikara)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-silver">銀札</span></td>
+            <td style="text-align:left !important;">タイテエム<br><span style="font-size:0.75rem; color:#94a3b8;">(大天王 / Tai Tehm)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-warning">有馬/天皇秋雙冠</span></td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">1 年內</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【破局神駒】</strong>成長型為持続，長距離耐力達 3000m。春季經典避開怪物，秋季強勢進軍菊花賞與有馬記念，首年即可賺進 4 億+ 獎金！退役後是優秀母父。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1973 年<br><span style="font-size:0.75rem; color:#94a3b8;">ハイセイコー時代</span></td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">ハイセイコー</strong><br><span style="font-size:0.75rem; color:#94a3b8;">高尚駿逸 (Haiseiko)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-gold">金札</span></td>
+            <td style="text-align:left !important;">タケホープ<br><span style="font-size:0.75rem; color:#94a3b8;">(竹希望 / Take Hope)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-danger">皐月賞/寶塚/春古馬</span></td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">1 年內</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【國民偶像】</strong>開局直接擁有超高人氣，引爆賽馬狂潮 (競馬ブーム)！皐月賞必勝，打比與菊花賞需注意タケホープ的長途背刺。建議秋季轉攻一哩冠軍賽與古馬戰。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1976 年<br><span style="font-size:0.75rem; color:#94a3b8;">TTG 時代</span></td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">トウショウボーイ</strong><br><span style="font-size:0.75rem; color:#94a3b8;">東商小子 (Tosho Boy / 天馬)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-gold">金札</span></td>
+            <td style="text-align:left !important;">テンポイント<br><span style="font-size:0.75rem; color:#94a3b8;">(天之頂點 / Ten Point)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-danger">皐月/有馬/寶塚三冠</span></td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">即效暴富</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【天馬降臨】</strong>SP 76 統治級速度，皐月賞以大差壓勝。菊花賞若距離稍長可透過「天馬特質」克服，隨後橫掃古馬中距離與寶塚、有馬。退役後可產出無數重賞神駒與千明代表。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1984 年<br><span style="font-size:0.75rem; color:#94a3b8;">皇帝魯鐸象徵</span></td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">スズパレード</strong><br><span style="font-size:0.75rem; color:#94a3b8;">鈴巡遊 (Suzu Parade)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-silver">銀札</span></td>
+            <td style="text-align:left !important;">カウンテスアップ<br><span style="font-size:0.75rem; color:#94a3b8;">(伯爵飛昇 / 泥地之王)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-warning">春季經典/寶塚記念</span></td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">1~2 年</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【避開皇帝首選】</strong>此年シンボリルドルフ (皇帝) 統治三冠，正面對決毫無勝算！スズパレード在草地中距離具備極高安定度，或選カウンテスアップ全面稱霸地方泥地交流重賞！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1991 年<br><span style="font-size:0.75rem; color:#94a3b8;">東海帝皇時代</span></td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">トウカイテイオー</strong><br><span style="font-size:0.75rem; color:#94a3b8;">東海帝皇 (Tokai Teio)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-rainbow">虹札</span></td>
+            <td style="text-align:left !important;">ナイスネイチャ<br><span style="font-size:0.75rem; color:#94a3b8;">(優秀素質 / Nice Nature)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-danger">無敗經典三冠/日本盃</span></td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">極速回本</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【天之驕子】</strong>只要玩家自控出賽並配置高級骨折預防調教，即可完全避免史實骨折悲劇，輕鬆包辦無敗經典三冠、日本盃與有馬記念，單馬獎金輕鬆破 12 億日圓！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1998 年<br><span style="font-size:0.75rem; color:#94a3b8;">黃金世代神仙打架</span></td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">スペシャルウィーク</strong><br><span style="font-size:0.75rem; color:#94a3b8;">特別週 (Special Week)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-rainbow">虹札</span></td>
+            <td style="text-align:left !important;">エルコンドルパサー<br><span style="font-size:0.75rem; color:#94a3b8;">(神鷹 / El Condor Pasa)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-danger">日本打比/秋古馬三冠</span></td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">1 年內</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【日本總大將】</strong>經典打比必奪，4 歲秋季古馬三冠（秋天皇、日本盃、有馬）全通關。若持有海外牧場 DLC，可改選神鷹遠征歐洲奪下凱旋門賞與伊斯曼打比！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">2005 年<br><span style="font-size:0.75rem; color:#94a3b8;">大震撼無敵時代</span></td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">ディープインパクト</strong><br><span style="font-size:0.75rem; color:#94a3b8;">大震撼 (Deep Impact)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-rainbow">虹札</span></td>
+            <td style="text-align:left !important;">カネヒキリ<br><span style="font-size:0.75rem; color:#94a3b8;">(攝政王 / Kane Hekili)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-danger">無敗三冠/凱旋門/全球G1</span></td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">破格提款機</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【跨世紀魔王】</strong>SP 79 統治力，日本三冠閉眼通關，可出海橫掃英王錦標與凱旋門。若缺虹札，選銀札カネヒキリ稱霸日本與杜拜泥地同樣快速致富！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">2012 年<br><span style="font-size:0.75rem; color:#94a3b8;">黃金世代再臨</span></td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">ゴールドシップ</strong><br><span style="font-size:0.75rem; color:#94a3b8;">黃金船 (Gold Ship)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-gold">金札</span></td>
+            <td style="text-align:left !important;">ジェンティルドンナ<br><span style="font-size:0.75rem; color:#94a3b8;">(貴婦人 / 三冠雌馬)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-danger">皐月/菊花/寶塚/有馬</span></td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">1 年內</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【長途王者與怪童】</strong>皐月賞ワープ與菊花賞超遠程統治，寶塚紀念連霸。性情雖狂躁但耐久極高，是累積資金與支持層人氣的第一選擇。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">2025 年<br><span style="font-size:0.75rem; color:#94a3b8;">現代令和新風</span></td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">フォーエバーヤング</strong><br><span style="font-size:0.75rem; color:#94a3b8;">本初之海 (Forever Young)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-gold">金札</span></td>
+            <td style="text-align:left !important;">ジャスティンミラノ<br><span style="font-size:0.75rem; color:#94a3b8;">(駿天宮 / Justin Milano)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-danger">肯塔基打吡/沙特盃/泥三冠</span></td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">1 年內暴富</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【世界級泥地怪物】</strong>直接遠征沙特打吡、UAE打吡與美國肯塔基打吡，單場獎金折合數億日圓，是 2025 開局最暴力之資金收割機！</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 2. 首年 5 月配種前必搶銅/綠/無料繁殖名雌大表 -->
+  <h4 style="font-size:1.02rem; color:#38bdf8; margin:20px 0 10px 0; display:flex; align-items:center; gap:8px; font-weight:700;">
+    <i class="fa-solid fa-gem"></i> ② 9 大劇本開局首年 5 月配種前必搶「銅/綠/無料」性價比之王繁殖牝馬大表
+  </h4>
+  <div class="scrollable-table-box" style="max-height:580px !important; overflow-y:auto !important;">
+    <div class="table-responsive" style="margin:0;">
+      <table class="data-table" style="min-width:1260px; text-align:left !important;">
+        <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+          <tr>
+            <th class="sortable-th" style="width:110px; text-align:left !important;">劇本年代 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:200px; text-align:left !important;">推薦繁殖牝馬 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:80px; text-align:left !important;">札位 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:110px; text-align:left !important;">仔出 / 因子 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:200px; text-align:left !important;">首選配種種公馬 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="min-width:440px; text-align:left !important;">產駒史實名駒與繁育戰略價值 (SOP) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1971 / 1973 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">トウメイ</strong><br><span style="font-size:0.75rem; color:#94a3b8;">透明 (Tomei / 年度代表馬)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-bronze">銅札</span></td>
+            <td style="text-align:left !important;"><span style="color:#10b981; font-weight:700;">仔出 9</span><br><span style="font-size:0.75rem; color:#cbd5e1;">瞬發＋勝負根性</span></td>
+            <td style="text-align:left !important;">テスコボーイ<br><span style="font-size:0.75rem; color:#94a3b8;">(特斯高男孩)</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">產下年度代表馬 <strong>テンメイ (天明)</strong>，奪得秋季天皇賞！與テスコボーイ配合極度相合，開局必搶的國寶級母系起點。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1976 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">ソシアルトウショウ</strong><br><span style="font-size:0.75rem; color:#94a3b8;">社交東商 (Social Tosho)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-green">綠札</span></td>
+            <td style="text-align:left !important;"><span style="color:#10b981; font-weight:700;">仔出 8</span><br><span style="font-size:0.75rem; color:#cbd5e1;">速度＋柔軟性</span></td>
+            <td style="text-align:left !important;">トウショウボーイ<br><span style="font-size:0.75rem; color:#94a3b8;">(東商小子)</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">東商名門奠基母馬，產下 <strong>トウショウペガサス (東商天馬)</strong> 與後代無數名駒，綠札性價比之巔峰，低成本配種首選。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1984 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">ダイナサッシュ</strong><br><span style="font-size:0.75rem; color:#94a3b8;">社台飾帶 (Dyna Sash)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-bronze">銅札</span></td>
+            <td style="text-align:left !important;"><span style="color:#10b981; font-weight:700;">仔出 10</span><br><span style="font-size:0.75rem; color:#cbd5e1;">根性＋長距離</span></td>
+            <td style="text-align:left !important;">サンデーサイレンス<br><span style="font-size:0.75rem; color:#94a3b8;">(週日寧靜)</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【黃金之母】</strong>次世代產下 <strong>ステイゴールド (黃金旅程)</strong>！只要銅札即可入手，是解鎖黃金船、夢之旅血脈的絕對核心！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1984 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">パシフィカス</strong><br><span style="font-size:0.75rem; color:#94a3b8;">太平洋 (Pacificus)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-bronze">銅札</span></td>
+            <td style="text-align:left !important;"><span style="color:#10b981; font-weight:700;">仔出 10</span><br><span style="font-size:0.75rem; color:#cbd5e1;">力量＋精神力</span></td>
+            <td style="text-align:left !important;">ブライアンズタイム<br><span style="font-size:0.75rem; color:#94a3b8;">(布萊恩時光)</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【三冠白仁之母】</strong>接連產下 <strong>ビワハヤヒデ (琵琶晨光)</strong> 與無敵三冠 <strong>ナリタブライアン (成田白仁)</strong>！一匹母馬保證牧場十餘年橫掃 G1。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1991 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">ダンシングキイ</strong><br><span style="font-size:0.75rem; color:#94a3b8;">跳舞之鑰 (Dancing Key)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-silver">銀札/銅札</span></td>
+            <td style="text-align:left !important;"><span style="color:#10b981; font-weight:700;">仔出 10</span><br><span style="font-size:0.75rem; color:#cbd5e1;">瞬發＋柔軟性</span></td>
+            <td style="text-align:left !important;">サンデーサイレンス<br><span style="font-size:0.75rem; color:#94a3b8;">(週日寧靜)</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【日本繁殖神木】</strong>連續產下 <strong>ダンスパートナー (舞伴 / 橡樹女王)</strong>、<strong>ダンスインザダーク (夜舞 / 菊花賞)</strong>、<strong>エアダブリン</strong>！全量產 G1 巨星。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1998 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">スカーレットブーケ</strong><br><span style="font-size:0.75rem; color:#94a3b8;">緋紅花束 (Scarlet Bouquet)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-bronze">銅札</span></td>
+            <td style="text-align:left !important;"><span style="color:#10b981; font-weight:700;">仔出 10</span><br><span style="font-size:0.75rem; color:#cbd5e1;">勝負根性＋力量</span></td>
+            <td style="text-align:left !important;">アグネスタキオン<br><span style="font-size:0.75rem; color:#94a3b8;">(愛麗速子)</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【大和赤驥之母】</strong>產下有馬紀念有史以來最兇悍女王 <strong>ダイワスカーレット (大和赤驥)</strong> 與 <strong>ダイワメジャー (大和主將)</strong>，兄妹合體狂攬 9 座 G1！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">2005 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">ハルーワスウィート</strong><br><span style="font-size:0.75rem; color:#94a3b8;">甜美露瓦 (Halwa Sweet)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-bronze">銅札</span></td>
+            <td style="text-align:left !important;"><span style="color:#10b981; font-weight:700;">仔出 9</span><br><span style="font-size:0.75rem; color:#cbd5e1;">瞬發力＋精神力</span></td>
+            <td style="text-align:left !important;">ハーツクライ<br><span style="font-size:0.75rem; color:#94a3b8;">(真心呼喚)</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">無尾名雌，產下日本盃冠軍 <strong>シュヴァルグラン (高尚駿逸)</strong>、兩度維多利亞一哩冠軍 <strong>ヴィルシーナ</strong> 與秋華賞馬 <strong>ヴィブロス</strong>！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">2012 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">シュガーハート</strong><br><span style="font-size:0.75rem; color:#94a3b8;">糖心 (Sugar Heart)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-green">綠札/無料</span></td>
+            <td style="text-align:left !important;"><span style="color:#10b981; font-weight:700;">仔出 10</span><br><span style="font-size:0.75rem; color:#cbd5e1;">持久力＋精神力</span></td>
+            <td style="text-align:left !important;">ブラックタイド<br><span style="font-size:0.75rem; color:#94a3b8;">(黑潮 / Black Tide)</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【玄駒之母】</strong>未出走名雌，配種黑潮誕生 7 冠殿堂馬 <strong>キタサンブラック (北部玄駒)</strong>！進而開啟春秋分 (Equinox) 王朝，綠札最強奇蹟！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">2025 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">シャトーブランシュ</strong><br><span style="font-size:0.75rem; color:#94a3b8;">白城堡 (Chateau Blanche)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-bronze">銅札</span></td>
+            <td style="text-align:left !important;"><span style="color:#10b981; font-weight:700;">仔出 10</span><br><span style="font-size:0.75rem; color:#cbd5e1;">瞬發力＋柔軟性</span></td>
+            <td style="text-align:left !important;">キタサンブラック<br><span style="font-size:0.75rem; color:#94a3b8;">(北部玄駒)</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【世界第一之母】</strong>產下世界世界第一評分名駒 <strong>イクイノックス (春秋分)</strong> 與菊花賞二著 <strong>ヴァイスメテオール</strong>，現代開局必備母系旗艦。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 </section>
 <section class="section-card" id="sec-amulets">
 <div class="section-header" style="background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(236,72,153,0.15)); border-bottom:1px solid rgba(168,85,247,0.3);">
@@ -9227,18 +9441,279 @@ button.chip-btn.active {
 </table>
 </div>
 
-<!-- 支配率精算機互動區塊保留 -->
-<div class="tool-card" style="background:rgba(15,23,42,0.85); border:1px solid rgba(56,189,248,0.3); padding:16px;">
-<h4 style="color:#38bdf8; margin-top:0; font-size:0.95rem; display:flex; align-items:center; gap:6px;">
-<i class="fa-solid fa-calculator"></i> 🧮 系統確立支配率精算公式速查
-</h4>
-<div style="font-size:0.84rem; color:var(--text-color); line-height:1.7;">
-• <strong>日本子系統確立：</strong>該公馬產駒在日本地區年度出走賞金總額佔全日本總賞金 ≥ <strong>5.0%</strong>。<br/>
-• <strong>世界子系統確立：</strong>該公馬產駒在全球各區總賞金佔全球總賞金 ≥ <strong>2.0%</strong>。<br/>
-• <strong>親系統昇格門檻：</strong>所屬子系統在單一地區支配率 ≥ <strong>12.0%</strong>，或世界支配率 ≥ <strong>8.0%</strong>，或其名下已有 <strong>3 個子系統</strong>確立。<br/>
-※ 欲查詢特定種公馬之史實引退年限，請至 <a href="javascript:void(0)" onclick="switchMainPillar('pillar-db'); setTimeout(() => { document.getElementById('sec-sires-retire-db').scrollIntoView({behavior:'smooth'}); }, 100);" style="color:var(--accent-gold); font-weight:700; text-decoration:underline;">【第 42 章 史實種公馬引退速查庫】</a>。
+
+<!-- ==================== 【方向二】系統確立實戰工程學 ＆ 史實種公馬防塞車避難年表 ==================== -->
+<div id="system-establishment-engineering" style="margin-top:24px; margin-bottom:24px;">
+
+  <!-- 一、子系統確立條件與親系統昇格三大路徑 SOP -->
+  <div style="background:rgba(15,23,42,0.85); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:20px; margin-bottom:22px; box-shadow:0 6px 20px rgba(0,0,0,0.3);">
+    <h4 style="color:#38bdf8; margin:0 0 12px 0; font-size:1.05rem; display:flex; align-items:center; gap:8px; font-weight:700;">
+      <i class="fa-solid fa-diagram-project"></i> 一、子系統確立條件 ＆ 親系統昇格三大路徑 SOP 完全解析
+    </h4>
+    <p style="font-size:0.86rem; color:#cbd5e1; line-height:1.75; margin-bottom:14px;">
+      在《Winning Post 10 2026》中，系統確立是所有高級配種理論（血脈活性化 8 系統、母父相性、爆發力極限突破）的底層地基。種公馬確立後，其所屬血統將從所屬親系獨立出來成為專屬子系統，<strong>徹底洗清近親交配危險度</strong>，並大幅提升產駒爆發力！
+    </p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:14px;">
+      <div style="background:rgba(30,41,59,0.7); border-left:3px solid #38bdf8; padding:12px 14px; border-radius:6px;">
+        <strong style="color:#38bdf8; font-size:0.9rem;"><i class="fa-solid fa-flag"></i> ① 子系統確立三大硬條件：</strong>
+        <ul style="font-size:0.82rem; color:#cbd5e1; line-height:1.7; margin:6px 0 0 0; padding-left:18px;">
+          <li><strong>日本國內支配率 ≥ 5.0%</strong>（或美歐單一海外地域 ≥ 5.0%）。</li>
+          <li><strong>世界總合支配率 ≥ 2.0%</strong>（全球日美歐產駒總合）。</li>
+          <li><strong>年齡硬上限：現役種公馬必須 ≤ 27 歲</strong>（27 歲年底若未確立將強制引退，此後永遠無法確立）。</li>
+          <li><strong>每年限額：全日本地區每年年底「最多僅確立 1 匹」</strong>（多匹達標時依支配率與年齡順位判定，排隊失敗且達 27 歲將直接絕後！）。</li>
+        </ul>
+      </div>
+      <div style="background:rgba(30,41,59,0.7); border-left:3px solid #f59e0b; padding:12px 14px; border-radius:6px;">
+        <strong style="color:#f59e0b; font-size:0.9rem;"><i class="fa-solid fa-crown"></i> ② 親系統昇格三大路徑：</strong>
+        <ul style="font-size:0.82rem; color:#cbd5e1; line-height:1.7; margin:6px 0 0 0; padding-left:18px;">
+          <li><strong>路徑 A（子代開枝散葉）：</strong>名下有 <strong>2 匹直系子公馬</strong> 完成子系統確立（例：サンデーサイレンス系旗下有ディープインパクト與ステイゴールド確立）。</li>
+          <li><strong>路徑 B（三代連續傳承）：</strong>直系連續 <strong>3 代種公馬</strong> 依序完成子系統確立（例：Northern Dancer ➔ Danzig ➔ Danehill）。</li>
+          <li><strong>路徑 C（支配率全面統治）：</strong>單一地域支配率 ≥ <strong>12.0%</strong>，或世界支配率 ≥ <strong>8.0%</strong>（自動升格為親系統）。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 【方向三】全新互動工具：系統確立支配率與產駒配種試算器 ==================== -->
+  <div class="interactive-tool-card" style="background:linear-gradient(135deg, rgba(30,41,59,0.95), rgba(15,23,42,0.98)) !important; border:1px solid rgba(245,158,11,0.4) !important; border-radius:14px !important; padding:22px !important; margin-bottom:24px !important; box-shadow:0 10px 30px rgba(0,0,0,0.4) !important;">
+    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,158,11,0.3); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+      <h3 style="font-size:1.15rem; color:#f59e0b; margin:0; display:flex; align-items:center; gap:10px; font-weight:800;">
+        <i class="fa-solid fa-calculator" style="color:#f59e0b;"></i> 🧮【神器】系統確立支配率與年末衝刺精算器 (System Establishment Estimator)
+      </h3>
+      <div style="display:flex; gap:6px;">
+        <button id="sysEstModeJapan" class="chip-btn active" onclick="setSysEstMode('japan')" style="font-size:0.78rem; padding:4px 12px; border-radius:20px; border:1px solid #f59e0b; background:#f59e0b; color:#0f172a; font-weight:bold; cursor:pointer;">日本 5.0% 模式</button>
+        <button id="sysEstModeWorld" class="chip-btn" onclick="setSysEstMode('world')" style="font-size:0.78rem; padding:4px 12px; border-radius:20px; border:1px solid rgba(56,189,248,0.3); background:rgba(30,41,59,0.7); color:#94a3b8; cursor:pointer;">世界 2.0% 模式</button>
+      </div>
+    </div>
+    
+    <p style="font-size:0.86rem; color:#cbd5e1; line-height:1.7; margin-bottom:16px;">
+      輸入當前年度該種公馬產駒的賞金表現與活躍種馬頭數，即時精算本年度年底結算時的預估血統支配率，掌握能否在 27 歲前順利確立，杜絕因相差 0.1% 錯失良機！
+    </p>
+
+    <!-- 輸入控制項 -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px; margin-bottom:18px;">
+      <div style="background:rgba(15,23,42,0.6); padding:12px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
+        <label style="font-size:0.82rem; color:#94a3b8; display:flex; justify-content:space-between; margin-bottom:6px;">
+          <span>旗下產駒年度總賞金 (億日圓)：</span>
+          <strong id="valSysPrize" style="color:#f59e0b; font-size:0.95rem;">14.5 億</strong>
+        </label>
+        <input type="range" id="inputSysPrize" min="0" max="35" step="0.5" value="14.5" oninput="calcSystemEstablishment()" style="width:100%; accent-color:#f59e0b;">
+        <span style="font-size:0.72rem; color:#64748b;">全國總賞金基準預設約 260 億日圓</span>
+      </div>
+
+      <div style="background:rgba(15,23,42,0.6); padding:12px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
+        <label style="font-size:0.82rem; color:#94a3b8; display:flex; justify-content:space-between; margin-bottom:6px;">
+          <span>該系現役種牡馬頭數 (匹)：</span>
+          <strong id="valSysSires" style="color:#38bdf8; font-size:0.95rem;">6 匹</strong>
+        </label>
+        <input type="range" id="inputSysSires" min="1" max="20" step="1" value="6" oninput="calcSystemEstablishment()" style="width:100%; accent-color:#38bdf8;">
+        <span style="font-size:0.72rem; color:#64748b;">全國種牡馬總頭數預設約 250 匹</span>
+      </div>
+
+      <div style="background:rgba(15,23,42,0.6); padding:12px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
+        <label style="font-size:0.82rem; color:#94a3b8; display:flex; justify-content:space-between; margin-bottom:6px;">
+          <span>本年度海外/外區 G1 勝場數：</span>
+          <strong id="valSysG1" style="color:#10b981; font-size:0.95rem;">2 勝</strong>
+        </label>
+        <input type="range" id="inputSysG1" min="0" max="10" step="1" value="2" oninput="calcSystemEstablishment()" style="width:100%; accent-color:#10b981;">
+        <span style="font-size:0.72rem; color:#64748b;">海外高額獎金能大幅拉高世界支配率權重</span>
+      </div>
+    </div>
+
+    <!-- 運算結果看板 -->
+    <div style="background:rgba(15,23,42,0.9); border:1px solid rgba(245,158,11,0.3); border-radius:10px; padding:16px; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; align-items:center;">
+      <div style="text-align:left;">
+        <div style="font-size:0.8rem; color:#94a3b8; margin-bottom:4px;">預估年底結算支配率</div>
+        <div style="display:flex; align-items:baseline; gap:8px;">
+          <span id="resSysRate" style="font-size:2.1rem; font-weight:900; color:#f59e0b; font-family:monospace;">5.28%</span>
+          <span id="resSysTarget" style="font-size:0.82rem; color:#64748b;">(門檻: 5.00%)</span>
+        </div>
+      </div>
+
+      <div style="text-align:left;">
+        <div style="font-size:0.8rem; color:#94a3b8; margin-bottom:6px;">AI 確立判定狀態</div>
+        <div id="resSysBadge"><span class="badge" style="background:#10b981; color:#fff; font-size:0.88rem; padding:6px 14px; font-weight:800;">🟢 安全穩固確立 (High Safety)</span></div>
+      </div>
+
+      <div style="grid-column:1/-1; text-align:left; border-top:1px solid rgba(255,255,255,0.1); padding-top:12px;">
+        <div style="font-size:0.82rem; color:#94a3b8; margin-bottom:6px;"><strong>⚡ 年末衝刺 AI SOP 戰略指引：</strong></div>
+        <div id="resSysAdvice" style="font-size:0.85rem; color:#cbd5e1; line-height:1.7;">
+          恭喜！目前支配率達標且具備 0.28% 之安全緩衝。若該年度有其他歷史大種公馬同時競爭，建議在 11~12 月派遣 1~2 匹 3 歲雄馬引退進入種馬舍，進一步鎖死排隊首位！
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 二、1970 ~ 2025 史實名種公馬確立時程與防塞車排程大表 -->
+  <h4 style="font-size:1.02rem; color:#f59e0b; margin:22px 0 10px 0; display:flex; align-items:center; gap:8px; font-weight:700;">
+    <i class="fa-solid fa-calendar-check"></i> 二、1970 ~ 2025 史實名種公馬確立時程與防塞車排程大表 (日/中並行)
+  </h4>
+  <div class="scrollable-table-box" style="max-height:600px !important; overflow-y:auto !important; margin-bottom:24px;">
+    <div class="table-responsive" style="margin:0;">
+      <table class="data-table" style="min-width:1260px; text-align:left !important;">
+        <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+          <tr>
+            <th class="sortable-th" style="width:105px; text-align:left !important;">自然確立年 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:190px; text-align:left !important;">種公馬名 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:140px; text-align:left !important;">母系/原所屬系統 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:110px; text-align:left !important;">地域/目標 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:140px; text-align:left !important;">塞車衝突風險 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="min-width:440px; text-align:left !important;">防塞車戰略指引 ＆ 自創種馬插隊窗口評級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1975~1977 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">テスコボーイ</strong><br><span style="font-size:0.75rem; color:#94a3b8;">特斯高男孩 (Tesco Boy)</span></td>
+            <td style="text-align:left !important;">プリンスリーギフト系</td>
+            <td style="text-align:left !important;"><span class="badge badge-info">日本 5.0%</span></td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">🔴 極度擁擠</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">昭和早期天王級種馬，此時期玩家若強推自創公馬，易導致トウショウボーイ或キタノカチドキ無法順利接班。建議順應其自然確立。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1982~1984 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">ノーザンテースト</strong><br><span style="font-size:0.75rem; color:#94a3b8;">北方風味 (Northern Taste)</span></td>
+            <td style="text-align:left !important;">ノーザンダンサー系</td>
+            <td style="text-align:left !important;"><span class="badge badge-info">日本 5.0%</span></td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">🔴 極度擁擠</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">社台集團開創者，日本支配率高達 8% 以上無可阻擋。此 3 年內不可插隊，否則必定失敗。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1988~1990 年</td>
+            <td style="text-align:left !important;"><strong style="color:#10b981;">【黃金空窗期】</strong><br><span style="font-size:0.75rem; color:#94a3b8;">昭和末期交替窗口</span></td>
+            <td style="text-align:left !important;">任意自產血統</td>
+            <td style="text-align:left !important;"><span class="badge badge-success">自由確立</span></td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#10b981; color:#fff;">🟢 黃金空窗 (極力推薦)</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">北方風味之後、週日寧靜產駒出道前的空窗期！此時歷史強種馬斷檔，是玩家自產第一匹怪物種公馬插隊確立的最佳天賜良機！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1994~1996 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">サンデーサイレンス</strong><br><span style="font-size:0.75rem; color:#94a3b8;">週日寧靜 (Sunday Silence)</span></td>
+            <td style="text-align:left !important;">ヘイロー系</td>
+            <td style="text-align:left !important;"><span class="badge badge-danger">日本 5.0% (極速)</span></td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">🔴 絕對霸權</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">初年度產駒登場即橫掃全國，支配率爆炸。絕不要在此時與週日寧靜搶確立名額，應全力協助其及早完成親系統昇格。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">1997~2000 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">トニービン / ブライアンズタイム</strong><br><span style="font-size:0.75rem; color:#94a3b8;">托尼賓 / 布萊恩時光</span></td>
+            <td style="text-align:left !important;">カンパラ系 / ロベルト系</td>
+            <td style="text-align:left !important;"><span class="badge badge-info">日本 5.0%</span></td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#0f172a;">🟡 雙雄爭霸</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">三大巨頭時代。トニービン通常在 1998 年確立，ブライアンズタイム在 2000 年確立。玩家若有自創馬建議避開這幾年。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">2006~2008 年</td>
+            <td style="text-align:left !important;"><strong style="color:#10b981;">【黃金空窗期】</strong><br><span style="font-size:0.75rem; color:#94a3b8;">平成中期交替窗口</span></td>
+            <td style="text-align:left !important;">任意自產血統</td>
+            <td style="text-align:left !important;"><span class="badge badge-success">自由確立</span></td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#10b981; color:#fff;">🟢 黃金空窗 (極力推薦)</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">週日寧靜過世後、大震撼子嗣尚未出道前的平靜期！特別適合確立ステイゴールド、アグネスタキオン或玩家自產種公馬！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">2012~2014 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">ディープインパクト</strong><br><span style="font-size:0.75rem; color:#94a3b8;">大震撼 (Deep Impact)</span></td>
+            <td style="text-align:left !important;">サンデーサイレンス系</td>
+            <td style="text-align:left !important;"><span class="badge badge-danger">日本 5.0% (自動)</span></td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">🔴 絕對霸權</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">大震撼產駒無差別橫掃經典賽，自動確立且迅速推進親系統昇格。嚴禁在此時推動同地域競爭公馬。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">2014~2016 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">キングカメハメハ</strong><br><span style="font-size:0.75rem; color:#94a3b8;">夏威夷王 (King Kamehameha)</span></td>
+            <td style="text-align:left !important;">キングマンボ系</td>
+            <td style="text-align:left !important;"><span class="badge badge-info">日本 5.0%</span></td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#0f172a;">🟡 激烈競爭</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">草地泥地通吃的大種馬，確立後可使 Kingmambo 昇格為親系統，化解血統飽和。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">2022~2024 年</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">ロードカナロア / キタサンブラック</strong><br><span style="font-size:0.75rem; color:#94a3b8;">龍王 / 北部玄駒</span></td>
+            <td style="text-align:left !important;">キングカメハメハ系 / ブラックタイド系</td>
+            <td style="text-align:left !important;"><span class="badge badge-info">日本 5.0%</span></td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">🔴 雙星高壓</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">現代最強新兩大巨頭，杏目 (Almond Eye) 與春秋分 (Equinox) 的生父，此期間進入現代劇本需特別注意確立排隊順序。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 三、Private 種公馬搶救清單 (終極版) -->
+  <h4 style="font-size:1.02rem; color:#ef4444; margin:22px 0 10px 0; display:flex; align-items:center; gap:8px; font-weight:700;">
+    <i class="fa-solid fa-triangle-exclamation"></i> 三、Private 種公馬搶救清單 (終極救濟版・不買斷即斷絕之歷史名公)
+  </h4>
+  <p style="font-size:0.85rem; color:#94a3b8; margin-bottom:12px;">
+    ※ 歷史上部分名種馬在退役或輸出海外時，若玩家未以 <strong>Private 種牡馬</strong> 買回繋養，遊戲系統將自動執行「強制閹割、海外除名或直接退役」，導致整條史實黃金血脈徹底斷絕！
+  </p>
+  <div class="scrollable-table-box" style="max-height:540px !important; overflow-y:auto !important; margin-bottom:20px;">
+    <div class="table-responsive" style="margin:0;">
+      <table class="data-table" style="min-width:1260px; text-align:left !important;">
+        <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+          <tr>
+            <th class="sortable-th" style="width:110px; text-align:left !important;">危機年份 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:200px; text-align:left !important;">危險種公馬 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:120px; text-align:left !important;">原繋養地域 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:140px; text-align:left !important;">買斷最後期限 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:170px; text-align:left !important;">若未搶救之下場 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="min-width:440px; text-align:left !important;">血統戰略價值與搶救後果 (SOP) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700; color:#ef4444; text-align:left !important;">1979 年底</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">ボールドルーラー</strong><br><span style="font-size:0.75rem; color:#94a3b8;">Bold Ruler (美)</span></td>
+            <td style="text-align:left !important;">美國</td>
+            <td style="text-align:left !important; color:#f87171; font-weight:700;">1979 年 12 月 4 週</td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">強制引退除名</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">美國泥地速度王朝之父！買斷後可繋養至 27 歲，讓 Secretariat 與 Seattle Slew 血脈在自家牧場全面開花。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#ef4444; text-align:left !important;">1985 年底</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">カロ</strong><br><span style="font-size:0.75rem; color:#94a3b8;">Caro (法/美)</span></td>
+            <td style="text-align:left !important;">歐洲/美國</td>
+            <td style="text-align:left !important; color:#f87171; font-weight:700;">1985 年 12 月 4 週</td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">種馬淘汰賣出</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">灰色之神，Cozzene (高舉飛馳) 與 Winning Colors 之父。未搶救會導致灰毛獨立血脈在 90 年代初斷絕。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#ef4444; text-align:left !important;">1989 年底</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">リアルシャダイ</strong><br><span style="font-size:0.75rem; color:#94a3b8;">真實影 (Real Shadai)</span></td>
+            <td style="text-align:left !important;">日本</td>
+            <td style="text-align:left !important; color:#f87171; font-weight:700;">1996 年 12 月 4 週</td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#f59e0b; color:#0f172a;">地方輸出斷絕</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">產下米浴 (ライスシャワー) 與伊吹舞城之長途名種馬，Roberto 系在昭和晚期的重要支柱，Private 買回可確保母父相性。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#ef4444; text-align:left !important;">1995 年底</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">シルバーステルス</strong><br><span style="font-size:0.75rem; color:#94a3b8;">銀色幽靈 (Silver Stealth)</span></td>
+            <td style="text-align:left !important;">海外</td>
+            <td style="text-align:left !important; color:#f87171; font-weight:700;">1995 年 12 月 4 週</td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">強制閹割引退</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">關鍵罕見零細親系種馬，若不及時買回繋養，該小眾親系將在遊戲中永久消失。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#ef4444; text-align:left !important;">2002 年底</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">サンデーサイレンス</strong><br><span style="font-size:0.75rem; color:#94a3b8;">週日寧靜 (Sunday Silence)</span></td>
+            <td style="text-align:left !important;">日本</td>
+            <td style="text-align:left !important; color:#f87171; font-weight:700;">2002 年 8 月 (病故前)</td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">史實死亡 (心衰竭)</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【改寫歷史最高神作】</strong>若玩家在 2002 年前持有或買斷為 Private 種馬，可徹底規避史實 2002 年 8 月心衰竭死亡，延壽至 27 歲（2013年）！多產出整整 11 個世代的週日神駒！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#ef4444; text-align:left !important;">2010 年底</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">エルコンドルパサー</strong><br><span style="font-size:0.75rem; color:#94a3b8;">神鷹 (El Condor Pasa)</span></td>
+            <td style="text-align:left !important;">日本</td>
+            <td style="text-align:left !important; color:#f87171; font-weight:700;">2002 年 (史實早逝前)</td>
+            <td style="text-align:left !important;"><span class="badge" style="background:#ef4444; color:#fff;">史實早逝 (腸捻轉)</span></td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【凱旋門巨星延壽】</strong>史實僅配種 3 年即因腸捻轉早逝。玩家提前買入繋養可規避早逝，讓 Kingmambo 系在日本誕生無敵神鷹獨立子系統！</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-</div>
+
 
 <!-- ==================== 【新手必備】1968 ~ 2026 各年代閉眼照抄配種黃金名冊 ==================== -->
 <div class="manual-replica-card" style="background: linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)) !important; border: 1px solid rgba(245,158,11,0.35) !important; border-radius: 12px !important; padding: 22px !important; margin-top: 24px !important; margin-bottom: 24px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.35) !important;">
@@ -15048,6 +15523,103 @@ button.chip-btn.active {
 </table>
 </div>
 </div>
+
+<!-- ==================== 【方向四】史實調教全圖鑑與「100% 大成功暴擊判定公式」 ==================== -->
+<div id="historical-training-crit-mastery" style="margin-top:20px; margin-bottom:24px; background:linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)); border:1px solid rgba(245,158,11,0.35); border-radius:12px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
+  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(245,158,11,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+    <h3 style="font-size:1.15rem; color:#f59e0b; margin:0; display:flex; align-items:center; gap:10px; font-weight:800;">
+      <i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> 【極限調教 SOP】史實調教「大成功率 100%」暴擊疊加公式 ＆ 定向突破矩陣
+    </h3>
+    <span class="badge badge-gold" style="font-size:0.82rem; padding:4px 12px; font-weight:700;">暴擊必中</span>
+  </div>
+
+  <p style="font-size:0.86rem; color:#cbd5e1; line-height:1.75; margin-bottom:16px;">
+    史實調教在常規執行時大成功率通常僅 20%~40%。然而，透過《Winning Post 10 2026》底層的<strong>「熱潮狀態 ＋ 設施 Lv3 ＋ 提案者專屬 ＋ 上位馬之個性 ＋ 關係性深化」</strong>加成鏈，完全可以將大成功率推升至 <strong>100% 絕對暴擊</strong>！
+  </p>
+
+  <!-- 100% 暴擊公式分解卡片 -->
+  <div style="background:rgba(15,23,42,0.7); border:1px solid rgba(56,189,248,0.3); border-radius:10px; padding:16px; margin-bottom:18px;">
+    <div style="font-size:0.95rem; font-weight:800; color:#38bdf8; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+      <i class="fa-solid fa-calculator"></i> 史實調教 100% 大成功暴擊疊加算式 (Stacked Crit Formula)
+    </div>
+    <div style="font-family:monospace; font-size:0.95rem; background:rgba(0,0,0,0.4); padding:10px 14px; border-radius:6px; color:#f59e0b; border-left:3px solid #f59e0b; margin-bottom:12px;">
+      基礎成功率 (30%) + 賽馬熱潮 (競馬ブーム) (+20%) + 調教師応接室 Lv3 (+10%) + 提案調教師親自帶領 (+10%) + 上位馬之個性 (ウマソナ) (+15%) + 關係性深化 (+15%) ＝ 100% 暴擊！
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:10px; font-size:0.82rem; color:#cbd5e1; line-height:1.6;">
+      <div style="background:rgba(30,41,59,0.6); padding:8px 12px; border-radius:6px;">
+        <strong style="color:#38bdf8;">• 賽馬熱潮 (競馬ブーム) 暴擊期：</strong>在熱潮爆發的 3~6 個月期間，所有史實調教大成功率全面自動 +20%，是使用「シンザン鉄」或「SP雙馬合練」的最佳黃金期。
+      </div>
+      <div style="background:rgba(30,41,59,0.6); padding:8px 12px; border-radius:6px;">
+        <strong style="color:#10b981;">• 冷卻期 (CD) 致命陷阱：</strong>同馬在 4 週內重複使用同種調教將遭受 <strong>-30%</strong> 巨額懲罰！務必採用「3 種不同調教輪流交替」的三角循環排程法。
+      </div>
+    </div>
+  </div>
+
+  <!-- 能力定向突破最優調教推薦大表 -->
+  <h4 style="font-size:1.02rem; color:#38bdf8; margin:18px 0 10px 0; display:flex; align-items:center; gap:8px; font-weight:700;">
+    <i class="fa-solid fa-crosshairs"></i> 賽馬五大核心屬性「定向突破 S+」最優史實調教矩陣大表 (日/中並行)
+  </h4>
+  <div class="scrollable-table-box" style="max-height:540px !important; overflow-y:auto !important;">
+    <div class="table-responsive" style="margin:0;">
+      <table class="data-table" style="min-width:1240px; text-align:left !important;">
+        <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+          <tr>
+            <th class="sortable-th" style="width:130px; text-align:left !important;">目標突破能力 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:220px; text-align:left !important;">最優史實調教 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:80px; text-align:left !important;">等級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:110px; text-align:left !important;">基底大成功率 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:200px; text-align:left !important;">契合馬之個性 (ウマソナ) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="min-width:440px; text-align:left !important;">實戰突破效果與調教 SOP 指引 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700; color:#f59e0b; text-align:left !important;">瞬發力突破 S+<br><span style="font-size:0.75rem; color:#94a3b8;">終點直線極速</span></td>
+            <td style="text-align:left !important;"><strong style="color:#38bdf8;">日本式併せ調教</strong><br><span style="font-size:0.75rem; color:#94a3b8;">日本式併走調教 (SP級)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-gold">SP 級</span></td>
+            <td style="text-align:left !important; font-weight:700; color:#10b981;">30% (可堆至100%)</td>
+            <td style="text-align:left !important;">詰めが甘い / 風車鞭○</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">6 週雙馬合練。瞬發戰大幅上升，特性能進化為「府中の申し子」，東京競馬場 525m 長直線無敵衝刺！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#ef4444; text-align:left !important;">力量與泥地適性<br><span style="font-size:0.75rem; color:#94a3b8;">陡坡與深沙克服</span></td>
+            <td style="text-align:left !important;"><strong style="color:#38bdf8;">シンザン鉄</strong><br><span style="font-size:0.75rem; color:#94a3b8;">神贊鐵 (Shinzan Steel)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-rainbow">A 級</span></td>
+            <td style="text-align:left !important; font-weight:700; color:#10b981;">30% (可堆至95%)</td>
+            <td style="text-align:left !important;">使い詰め○ / 走法：大跳び</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">調子與力量雙重大幅成長，特性升級為「二の脚 → 横綱相撲」，征戰中山競馬場與杜拜泥地必備。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">精神力與遠征適性<br><span style="font-size:0.75rem; color:#94a3b8;">海外客場環境克服</span></td>
+            <td style="text-align:left !important;"><strong style="color:#38bdf8;">プール (水池游泳調教)</strong><br><span style="font-size:0.75rem; color:#94a3b8;">Pool Training</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-silver">B 級</span></td>
+            <td style="text-align:left !important; font-weight:700; color:#10b981;">30% (極速迴轉)</td>
+            <td style="text-align:left !important;">ソフト調整向き / わがまま</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">無腿部負擔之超輕量調教。疲勞上升極微，大成功時直接洗刷精神力低下的「環境変化×」弱點！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#10b981; text-align:left !important;">勝負根性與肉搏戰<br><span style="font-size:0.75rem; color:#94a3b8;">並頭拼鬥不屈</span></td>
+            <td style="text-align:left !important;"><strong style="color:#38bdf8;">レジェンド豪華併せ馬</strong><br><span style="font-size:0.75rem; color:#94a3b8;">傳奇豪華併走合練 (SP級)</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-gold">SP 級</span></td>
+            <td style="text-align:left !important; font-weight:700; color:#10b981;">40% (最高基礎)</td>
+            <td style="text-align:left !important;">負けず嫌い / 剛腕○ / 馬込み○</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">同廄雙名駒合練，同時建立「宿敵」關係性。特性升級為「長駆突入」，有馬紀念與長途 G1 並頭肉搏必定勝出！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#c084fc; text-align:left !important;">幼駒成長促成<br><span style="font-size:0.75rem; color:#94a3b8;">1歲9~11月限定</span></td>
+            <td style="text-align:left !important;"><strong style="color:#38bdf8;">集団ウォーキング</strong><br><span style="font-size:0.75rem; color:#94a3b8;">幼駒集體走馬操練</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-info">幼駒專用</span></td>
+            <td style="text-align:left !important; font-weight:700; color:#10b981;">35% (極高成功)</td>
+            <td style="text-align:left !important;">素直 / 秀才肌</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">入廄前幼駒專用史實調教。大成功時直接提升早熟度與 SP 潛力上限，是培養兩歲 G1 霸主不可缺之神技。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
 <!-- ==================== 二、SP 史實調教 (雙馬合練・關係性深化) 全圖鑑 (全 8 種) ==================== -->
 <h3 style="font-size:1.05rem; color:#f59e0b; margin:28px 0 12px; display:flex; align-items:center; gap:8px; border-bottom:1px solid rgba(245,158,11,0.3); padding-bottom:6px;">一、SP 史實調教 (雙馬合練・關係性深化) 全圖鑑 (全 8 種)</h3>
 <p style="font-size:0.83rem; color:var(--text-muted); margin-bottom:12px;">
@@ -35375,7 +35947,147 @@ function filterTab5Racecourses() {
             初期首推優先興建<strong>「種牡馬繋養施設」與「坂路コース」</strong>！待資金充裕時，務必建立<strong>「海外牧場 (美歐分場)」</strong>，即可直接引進海外史實名馬與繁殖母馬，不受輸出入限制！
         </div>
 </div>
-</div></div></section>
+</div></div>
+<!-- ==================== 【方向五】牧場設施「拓荒 ➔ 中期 ➔ 終極」黃金配置與維護費投報矩陣 ==================== -->
+<div id="farm-facilities-roadmap-matrix" style="margin-top:26px; margin-bottom:24px; background:linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)); border:1px solid rgba(56,189,248,0.35); border-radius:12px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
+  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(56,189,248,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+    <h3 style="font-size:1.15rem; color:#38bdf8; margin:0; display:flex; align-items:center; gap:10px; font-weight:800;">
+      <i class="fa-solid fa-map-location-dot" style="color:#38bdf8;"></i> 【牧場經營全景】三大階段黃金配置藍圖 ＆ 16 大設施維護費投報 (ROI) 精算大表 (日/中並行)
+    </h3>
+    <span class="badge badge-info" style="font-size:0.82rem; padding:4px 12px; font-weight:700;">百億牧場藍圖</span>
+  </div>
+
+  <p style="font-size:0.86rem; color:#cbd5e1; line-height:1.75; margin-bottom:16px;">
+    盲目擴建高級設施是新手開局最容易「現金流斷裂破產」的致命陷阱。以下為依據資產階梯量身定制的<strong>三大時期黃金佔地配置</strong>，以及全 16 項設施的<strong>建設成本、每月維持費與投資回收年限 (ROI)</strong> 精算矩陣：
+  </p>
+
+  <!-- 三大發展階段卡片 -->
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:14px; margin-bottom:20px;">
+    <div style="background:rgba(15,23,42,0.7); border-left:3px solid #10b981; padding:14px 16px; border-radius:8px;">
+      <strong style="color:#10b981; font-size:0.92rem;"><i class="fa-solid fa-seedling"></i> 階段一：開局拓荒防破產流 (資金 &lt; 10 億)</strong>
+      <div style="font-size:0.81rem; color:#cbd5e1; margin-top:6px; line-height:1.65;">
+        • <strong>核心用地 6 塊</strong>：醫療所 Lv1 ＋ 逍遙馬場 Lv1 ＋ 種牡馬施設 Lv1 ＋ 坂路 Lv1 ＋ サイロ Lv1 ＋ 基本馬房。<br>
+        • <strong>月維持費上限</strong>：嚴格壓制在 <strong>1,800 萬/月</strong> 內，避免冬季無重賞獎金時赤字倒閉！<br>
+        • <strong>戰略重心</strong>：防止母馬難產早夭與幼駒受傷，確保第一代小馬順利成長出賽。
+      </div>
+    </div>
+
+    <div style="background:rgba(15,23,42,0.7); border-left:3px solid #f59e0b; padding:14px 16px; border-radius:8px;">
+      <strong style="color:#f59e0b; font-size:0.92rem;"><i class="fa-solid fa-medal"></i> 階段二：中期名門極限育成流 (資金 30~80 億)</strong>
+      <div style="font-size:0.81rem; color:#cbd5e1; margin-top:6px; line-height:1.65;">
+        • <strong>核心用地 12 塊</strong>：室內坂路 Lv3 ＋ 全天候トラック Lv3 ＋ 集団馬房 Lv2 ＋ 花園 Lv3 ＋ 応接室 Lv3。<br>
+        • <strong>月維持費水平</strong>：約 <strong>4,500 萬/月</strong>（每年由 2 匹以上 G1 現役賽駒獎金全額覆蓋）。<br>
+        • <strong>戰略重心</strong>：徹底消除冬季調教懲罰，史實調教大成功率 +10%，知人與名調教師頻繁來訪。
+      </div>
+    </div>
+
+    <div style="background:rgba(15,23,42,0.7); border-left:3px solid #38bdf8; padding:14px 16px; border-radius:8px;">
+      <strong style="color:#38bdf8; font-size:0.92rem;"><i class="fa-solid fa-globe"></i> 階段三：終極海外雙棟全滿流 (資金 &gt; 200 億)</strong>
+      <div style="font-size:0.81rem; color:#cbd5e1; margin-top:6px; line-height:1.65;">
+        • <strong>核心配置</strong>：美歐海外分牧場開設 ＋ <strong>雙醫療所 (2 棟滿級)</strong> ＋ <strong>雙種牡馬施設 (2 棟滿級)</strong>。<br>
+        • <strong>神級連鎖效果</strong>：雙醫療所讓現役馬「重傷提早引退率歸零」；雙種馬舍讓「受胎率飆升至 98%」！<br>
+        • <strong>戰略重心</strong>：海外自由配種世界級種公馬，完全不受跨國檢疫限制，年產 30 匹頂級名駒。
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 大設施維護費與 ROI 大表 -->
+  <h4 style="font-size:1.02rem; color:#f59e0b; margin:20px 0 10px 0; display:flex; align-items:center; gap:8px; font-weight:700;">
+    <i class="fa-solid fa-coins"></i> 16 大核心設施建設費、每月維持費與投資回收期 (ROI) 精算大表 (日/中並行)
+  </h4>
+  <div class="scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important;">
+    <div class="table-responsive" style="margin:0;">
+      <table class="data-table" style="min-width:1260px; text-align:left !important;">
+        <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+          <tr>
+            <th class="sortable-th" style="width:180px; text-align:left !important;">設施名稱 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:110px; text-align:left !important;">初始/滿級費 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:110px; text-align:left !important;">月維持費 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:110px; text-align:left !important;">年維持支出 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:120px; text-align:left !important;">回收期 (ROI) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="min-width:440px; text-align:left !important;">核心產出價值 ＆ 損益平衡門檻指引 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700; color:#f59e0b; text-align:left !important;">医療施設<br><span style="font-size:0.75rem; color:#94a3b8;">醫療設施 (獸醫所)</span></td>
+            <td style="text-align:left !important;">1.2 億 / 2.5 億</td>
+            <td style="text-align:left !important; color:#ef4444; font-weight:700;">200 萬/月</td>
+            <td style="text-align:left !important;">2,400 萬/年</td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">即時極高</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;"><strong>【生命保險】</strong>免除一匹 G1 級別馬匹骨折退役，等於直接保住 5~10 億獎金與退役種馬價值，ROI 無限大！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#f59e0b; text-align:left !important;">坂路コース<br><span style="font-size:0.75rem; color:#94a3b8;">斜坡跑道 (室內坂路)</span></td>
+            <td style="text-align:left !important;">1.0 億 / 3.0 億</td>
+            <td style="text-align:left !important; color:#ef4444; font-weight:700;">350 萬/月</td>
+            <td style="text-align:left !important;">4,200 萬/年</td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">1~2 年</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">提升幼駒瞬發力與勝負根性。滿級室內坂路消除冬季成長懲罰，培育出一匹經典三冠馬即可全數回本。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#f59e0b; text-align:left !important;">トラックコース<br><span style="font-size:0.75rem; color:#94a3b8;">環形跑道 (全天候)</span></td>
+            <td style="text-align:left !important;">1.0 億 / 3.0 億</td>
+            <td style="text-align:left !important; color:#ef4444; font-weight:700;">350 萬/月</td>
+            <td style="text-align:left !important;">4,200 萬/年</td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">1~2 年</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">入廄前 SP 速度鍛鍊基石。擴建為全天候賽道後，全天候提升 SP 成長上限，與坂路並列雙神級設施。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#f59e0b; text-align:left !important;">種牡馬繋養施設<br><span style="font-size:0.75rem; color:#94a3b8;">種公馬繋養設施 (1~2棟)</span></td>
+            <td style="text-align:left !important;">2.0 億 / 6.0 億</td>
+            <td style="text-align:left !important; color:#ef4444; font-weight:700;">500 萬/月</td>
+            <td style="text-align:left !important;">6,000 萬/年</td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">1 年 (自繁省配種費)</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">繋養 10~20 匹種馬，省下每年對外配種費數億日圓。2 棟滿級更激發受胎率 +16%，達到驚人的 98%！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#f59e0b; text-align:left !important;">サイロ<br><span style="font-size:0.75rem; color:#94a3b8;">青貯飼料塔</span></td>
+            <td style="text-align:left !important;">8,000 萬 / 1.6 億</td>
+            <td style="text-align:left !important; color:#ef4444; font-weight:700;">120 萬/月</td>
+            <td style="text-align:left !important;">1,440 萬/年</td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">半年內</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">提供極高營養飼料，促進幼駒骨骼快速發育，入廄前全屬性成長幅度額外 +10%，造價極低性價比之冠。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#f59e0b; text-align:left !important;">調教師応接室<br><span style="font-size:0.75rem; color:#94a3b8;">調教師接待室 (Lv1~3)</span></td>
+            <td style="text-align:left !important;">1.5 億 / 3.5 億</td>
+            <td style="text-align:left !important; color:#ef4444; font-weight:700;">250 萬/月</td>
+            <td style="text-align:left !important;">3,000 萬/年</td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">2 年</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">滿級 Lv3 提供全牧場史實調教大成功率 <strong>+10%</strong>！調教大成功帶來的賽事勝率提升極為驚人。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#f59e0b; text-align:left !important;">花園<br><span style="font-size:0.75rem; color:#94a3b8;">景觀花園 (Lv1~3)</span></td>
+            <td style="text-align:left !important;">1.0 億 / 2.5 億</td>
+            <td style="text-align:left !important; color:#ef4444; font-weight:700;">180 萬/月</td>
+            <td style="text-align:left !important;">2,160 萬/年</td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">中盤必備</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">大幅吸引名騎手、知名調教師與相親知人主動來訪，友好度上升速度翻倍，解鎖結婚對象與傳奇調教。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#f59e0b; text-align:left !important;">ウォーキングマシン<br><span style="font-size:0.75rem; color:#94a3b8;">自動走馬圈 (步行機)</span></td>
+            <td style="text-align:left !important;">1.0 億 / 2.0 億</td>
+            <td style="text-align:left !important; color:#ef4444; font-weight:700;">150 萬/月</td>
+            <td style="text-align:left !important;">1,800 萬/年</td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">1~2 年</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">每日低強度運步，讓放牧中的繁殖牝馬與放牧賽駒疲勞快速消散，健康度維持在 S 級不易生病。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#f59e0b; text-align:left !important;">温泉施設<br><span style="font-size:0.75rem; color:#94a3b8;">天然溫泉療養池</span></td>
+            <td style="text-align:left !important;">2.0 億 / 4.0 億</td>
+            <td style="text-align:left !important; color:#ef4444; font-weight:700;">300 萬/月</td>
+            <td style="text-align:left !important;">3,600 萬/年</td>
+            <td style="text-align:left !important; color:#10b981; font-weight:700;">2 年</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">賽馬放牧時競走壽命微量回復，洗刷暗傷與慢性疲勞，讓 6~8 歲古馬持續征戰 G1 的核心利器。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</section>
 <section class="section-card" id="sec-personnel">
 <div class="section-header">
 <div class="section-title"><i class="fa-solid fa-user-tie"></i> 第 37 章：騎手・調教師・牧場長 18 大人物技能全書</div>
@@ -37738,7 +38450,123 @@ function filterTab5Racecourses() {
                 • <strong>「子孫 性別・顔選択チケット」</strong>（110 日圓）：使用後可於誕生時<strong>自由指定孩子的性別與喜愛的頭像立繪</strong>，徹底免除 9 月 4 週 S/L 刷檔流程！
             </div>
 </div>
-</div></section>
+</div>
+<!-- ==================== 【方向六】子孫傳承・天才騎手/調教師家族養成計畫 ==================== -->
+<div id="descendant-dynasty-mastery" style="margin-top:26px; margin-bottom:24px; background:linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)); border:1px solid rgba(236,72,153,0.35); border-radius:12px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,0.35);">
+  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(236,72,153,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+    <h3 style="font-size:1.15rem; color:#f472b6; margin:0; display:flex; align-items:center; gap:10px; font-weight:800;">
+      <i class="fa-solid fa-people-roof" style="color:#f472b6;"></i> 【家族傳承全書】子孫 0~20 歲培育時程表 ＆ 天才騎手/名調教師養成矩陣 (日/中並行)
+    </h3>
+    <span class="badge" style="background:#db2777; color:#fff; font-size:0.82rem; padding:4px 12px; font-weight:700;">賽馬王朝</span>
+  </div>
+
+  <p style="font-size:0.86rem; color:#cbd5e1; line-height:1.75; margin-bottom:16px;">
+    結婚生子後的子孫培育是《Winning Post 10 2026》最具成就感的百年玩法。若未加引導，孩子長大後容易變成普通公司職員；但若精準掌握<strong>小學運動會、中學進路指導與騎手學校特訓</strong>，就能親手打造橫掃凱旋門賞的天才「三冠主戰騎手」與專屬「傳奇名調教師」！
+  </p>
+
+  <!-- 0~20 歲培育時程卡片 -->
+  <div style="background:rgba(15,23,42,0.7); border:1px solid rgba(244,114,182,0.3); border-radius:10px; padding:16px; margin-bottom:18px;">
+    <div style="font-size:0.95rem; font-weight:800; color:#fbcfe8; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+      <i class="fa-solid fa-graduation-cap" style="color:#f472b6;"></i> 0 ~ 20 歲子孫五大成長階段事件與進路誘導 SOP
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; font-size:0.82rem; color:#cbd5e1; line-height:1.65;">
+      <div style="background:rgba(30,41,59,0.6); padding:10px 12px; border-radius:6px; border-left:3px solid #38bdf8;">
+        <strong style="color:#38bdf8;">① 0 ~ 6 歲 幼兒萌芽期：</strong><br>
+        每年春季牧場巡視時，孩子會主動與剛出生的幼駒互動。若出現「馬への愛着」閃光事件，將奠定未來高親和力與動物直覺。
+      </div>
+      <div style="background:rgba(30,41,59,0.6); padding:10px 12px; border-radius:6px; border-left:3px solid #f59e0b;">
+        <strong style="color:#f59e0b;">② 7 ~ 12 歲 小學定型期 (最關鍵)：</strong><br>
+        <strong>5 月運動會事件</strong>：跑步第一名直接大幅提升「運動神經（騎手核心）」！<br>
+        <strong>10 月考試事件</strong>：全校頂尖大幅提升「知力（調教師/牧場長核心）」！
+      </div>
+      <div style="background:rgba(30,41,59,0.6); padding:10px 12px; border-radius:6px; border-left:3px solid #10b981;">
+        <strong style="color:#10b981;">③ 13 ~ 15 歲 中學進路分歧：</strong><br>
+        中學 3 年級面談時，家長可進行進路建議。運動神經達 A/S 建議誘導選擇<strong>「騎手學校」</strong>；知力達 A/S 誘導選擇<strong>「調教師助手」</strong>；動物愛好誘導選擇<strong>「牧場長後繼」</strong>。
+      </div>
+      <div style="background:rgba(30,41,59,0.6); padding:10px 12px; border-radius:6px; border-left:3px solid #c084fc;">
+        <strong style="color:#c084fc;">④ 16 ~ 18 歲 競馬學校專業特訓：</strong><br>
+        在騎手學校就讀 3 年期間，每年評鑑成績達優等可額外領悟「剛腕」或「風車鞭」前置特性，並與同期學員建立深厚同門關係。
+      </div>
+      <div style="background:rgba(30,41,59,0.6); padding:10px 12px; border-radius:6px; border-left:3px solid #f472b6;">
+        <strong style="color:#f472b6;">⑤ 19 ~ 20 歲 新人出道與主戰契約：</strong><br>
+        出道首年享有 <strong>-3kg 減量特典</strong>！玩家直接將牧場最強 3 歲馬與古馬全力託付給孩子策騎，首年輕鬆斬獲 30~50 勝解除減量，直衝最佳新人騎手！
+      </div>
+    </div>
+  </div>
+
+  <!-- 天才騎手與調教師特性矩陣大表 -->
+  <h4 style="font-size:1.02rem; color:#f472b6; margin:20px 0 10px 0; display:flex; align-items:center; gap:8px; font-weight:700;">
+    <i class="fa-solid fa-star"></i> 天才騎手・傳奇名調教師核心神技養成矩陣大表 (日/中並行)
+  </h4>
+  <div class="scrollable-table-box" style="max-height:560px !important; overflow-y:auto !important;">
+    <div class="table-responsive" style="margin:0;">
+      <table class="data-table" style="min-width:1260px; text-align:left !important;">
+        <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+          <tr>
+            <th class="sortable-th" style="width:120px; text-align:left !important;">職業定位 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:190px; text-align:left !important;">核心神技 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:90px; text-align:left !important;">特質位階 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="width:180px; text-align:left !important;">習得條件樹 (SOP) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+            <th class="sortable-th" style="min-width:440px; text-align:left !important;">實戰比賽加成與戰略效果 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">天才騎手</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">剛腕 (ごうわん)</strong><br><span style="font-size:0.75rem; color:#94a3b8;">剛腕強推</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-rainbow">S 級神技</span></td>
+            <td style="text-align:left !important;">小學運動會第 1 名 ＋ 騎手特訓優等</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">最後 200m 直線強力推騎！能將馬匹的勝負根性額外激發 +1 階，在並頭肉搏戰中勝率高達 90%！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">天才騎手</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">風車鞭 (ふうしゃむち)</strong><br><span style="font-size:0.75rem; color:#94a3b8;">旋風風車鞭</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-rainbow">S 級神技</span></td>
+            <td style="text-align:left !important;">策騎瞬發型賽駒勝出 10 場 G1</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">極致加速神技！在東京競馬場等長直道賽事中，能將賽駒瞬發爆發力維持時間延長 1.5 倍，上演史詩級大外一氣絕殺！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">天才騎手</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">海外遠征 (かいがいえんせい)</strong><br><span style="font-size:0.75rem; color:#94a3b8;">海外遠征名手</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-gold">A 級名手</span></td>
+            <td style="text-align:left !important;">遠征海外美歐勝出 3 場一級賽</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">徹底消除賽駒遠征海外時的環境不適應懲罰，帶領自家名馬出戰凱旋門賞與育馬者盃的絕對主力保障！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#38bdf8; text-align:left !important;">天才騎手</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">大舞台 (おおぶたい)</strong><br><span style="font-size:0.75rem; color:#94a3b8;">大舞台強心臟</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-gold">A 級名手</span></td>
+            <td style="text-align:left !important;">年度打比或有馬紀念奪冠</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">在 G1 大賽中自身騎乘狀態強制鎖定為最高峰，徹底免疫觀眾噪音與大賽壓力，發揮 120% 潛力。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#10b981; text-align:left !important;">傳奇調教師</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">史実調教専修</strong><br><span style="font-size:0.75rem; color:#94a3b8;">史實調教專家</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-rainbow">S 級名匠</span></td>
+            <td style="text-align:left !important;">小學知力 S ＋ 研修期積累調教經驗</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">旗下馬房執行史實調教時，大成功率額外 <strong>+15%</strong>！能大幅加速旗下幼駒與現役馬能力突破 S+！</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#10b981; text-align:left !important;">傳奇調教師</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">クラシック三冠マイスター</strong><br><span style="font-size:0.75rem; color:#94a3b8;">經典三冠大師</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-gold">A 級名匠</span></td>
+            <td style="text-align:left !important;">訓練馬匹達成經典三冠制霸</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">3 歲馬出戰皐月賞、日本打比與菊花賞時，賽駒調子自動保底為「絶好調 (雙圈雙箭頭)」，免除調整失誤。</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:#c084fc; text-align:left !important;">名門牧場長</td>
+            <td style="text-align:left !important;"><strong style="color:#f59e0b;">相馬眼 (そうまがん)</strong><br><span style="font-size:0.75rem; color:#94a3b8;">終極相馬眼</span></td>
+            <td style="text-align:left !important;"><span class="badge badge-rainbow">S 級眼力</span></td>
+            <td style="text-align:left !important;">留任牧場接班 ＋ 連續 3 年產出 G1 馬</td>
+            <td style="text-align:left !important; font-size:0.83rem; line-height:1.65; color:#cbd5e1;">4 月 1 週幼駒誕生時，直接 100% 精確看破該駒的 SP 速度評級、成長型與隱藏副屬性，免除猜測！</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</section>
 <section class="section-card" id="sec-club-management">
 <div class="section-header">
 <div class="section-title"><i class="fa-solid fa-building-columns"></i> 第 39 章：賽馬俱樂部 (Club) 經營・法人化牧場與會員招募完全指南</div>
@@ -39853,15 +40681,15 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v03.99"></script>
-<script src="yuruyuru_guides_db.js?v=v03.99"></script>
+<script src="unified_horses_full_db.js?v=v04.00"></script>
+<script src="yuruyuru_guides_db.js?v=v04.00"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v03.99"></script>
-<script src="jbis_engine.js?v=v03.99"></script><script>
+<script src="jbis_pedigree_db.js?v=v04.00"></script>
+<script src="jbis_engine.js?v=v04.00"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -41119,6 +41947,7 @@ function switchMainPillar(pillarId) {
             if (typeof window.updateBreedingWizard === 'function') window.updateBreedingWizard();
             if (typeof window.updateExplosionBuilder === 'function') window.updateExplosionBuilder();
             if (typeof window.calcSandtable === 'function') window.calcSandtable();
+            if (typeof window.calcSystemEstablishment === 'function') window.calcSystemEstablishment();
         }
     }
     const btnMap = {
@@ -42203,7 +43032,7 @@ function runExplosionSimulation() {
 function runSimulation() { runExplosionSimulation(); }
 
 // ==========================================
-// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v03.99)
+// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.00)
 // ==========================================
 
 // 1. 神器一：新手極速配種決策精靈 (Breeding Decision Wizard)
@@ -42488,7 +43317,99 @@ function makeTablesSortable(root = document) {
 }
 document.addEventListener('DOMContentLoaded', () => {
     makeTablesSortable();
+    
+// ==========================================
+// 5. 系統確立支配率即時精算器 (System Establishment Estimator)
+// ==========================================
+window.sysEstMode = 'japan';
+
+window.setSysEstMode = function(mode) {
+    window.sysEstMode = mode;
+    const btnJ = document.getElementById('sysEstModeJapan');
+    const btnW = document.getElementById('sysEstModeWorld');
+    if (btnJ && btnW) {
+        if (mode === 'japan') {
+            btnJ.style.background = '#f59e0b';
+            btnJ.style.color = '#0f172a';
+            btnJ.style.borderColor = '#f59e0b';
+            btnJ.style.fontWeight = 'bold';
+            btnW.style.background = 'rgba(30,41,59,0.7)';
+            btnW.style.color = '#94a3b8';
+            btnW.style.borderColor = 'rgba(56,189,248,0.3)';
+            btnW.style.fontWeight = 'normal';
+        } else {
+            btnW.style.background = '#38bdf8';
+            btnW.style.color = '#0f172a';
+            btnW.style.borderColor = '#38bdf8';
+            btnW.style.fontWeight = 'bold';
+            btnJ.style.background = 'rgba(30,41,59,0.7)';
+            btnJ.style.color = '#94a3b8';
+            btnJ.style.borderColor = 'rgba(56,189,248,0.3)';
+            btnJ.style.fontWeight = 'normal';
+        }
+    }
+    window.calcSystemEstablishment();
+};
+
+window.calcSystemEstablishment = function() {
+    const prizeInput = document.getElementById('inputSysPrize');
+    const siresInput = document.getElementById('inputSysSires');
+    const g1Input = document.getElementById('inputSysG1');
+
+    if (!prizeInput || !siresInput || !g1Input) return;
+
+    const prize = parseFloat(prizeInput.value) || 0;
+    const sires = parseInt(siresInput.value) || 0;
+    const g1 = parseInt(g1Input.value) || 0;
+
+    const valPrize = document.getElementById('valSysPrize');
+    const valSires = document.getElementById('valSysSires');
+    const valG1 = document.getElementById('valSysG1');
+
+    if (valPrize) valPrize.textContent = prize.toFixed(1) + ' 億';
+    if (valSires) valSires.textContent = sires + ' 匹';
+    if (valG1) valG1.textContent = g1 + ' 勝';
+
+    const mode = window.sysEstMode || 'japan';
+    let rate = 0;
+
+    if (mode === 'japan') {
+        const prizeShare = (prize / 260.0) * 100.0 * 0.70;
+        const siresShare = (sires / 250.0) * 100.0 * 0.30;
+        const g1Bonus = g1 * 0.08;
+        rate = prizeShare + siresShare + g1Bonus;
+    } else {
+        const prizeShareW = (prize / 750.0) * 100.0 * 0.60;
+        const siresShareW = (sires / 650.0) * 100.0 * 0.40;
+        const g1BonusW = g1 * 0.15;
+        rate = prizeShareW + siresShareW + g1BonusW;
+    }
+
+    const target = (mode === 'japan') ? 5.00 : 2.00;
+    const rateEl = document.getElementById('resSysRate');
+    const targetEl = document.getElementById('resSysTarget');
+    const badgeEl = document.getElementById('resSysBadge');
+    const adviceEl = document.getElementById('resSysAdvice');
+
+    if (rateEl) rateEl.textContent = rate.toFixed(2) + '%';
+    if (targetEl) targetEl.textContent = '(門檻: ' + target.toFixed(2) + '%)';
+
+    if (badgeEl && adviceEl) {
+        if (rate >= target + 0.20) {
+            badgeEl.innerHTML = '<span class="badge" style="background:#10b981; color:#fff; font-size:0.88rem; padding:6px 14px; font-weight:800;">🟢 安全穩固確立 (High Safety)</span>';
+            adviceEl.innerHTML = '<strong style="color:#10b981;">勝券在握！</strong> 支配率已超越門檻達 ' + (rate - target).toFixed(2) + '% 緩衝。若該年度有其他歷史大種馬競爭，建議在 12 月前安排 1~2 匹 3 歲公馬引退入舍，以頭數優勢搶下全日唯一確立席位！';
+        } else if (rate >= target - 0.25) {
+            badgeEl.innerHTML = '<span class="badge" style="background:#f59e0b; color:#0f172a; font-size:0.88rem; padding:6px 14px; font-weight:800;">🟡 臨界邊緣 (Marginal - 需衝刺)</span>';
+            adviceEl.innerHTML = '<strong style="color:#f59e0b;">極度驚險！</strong> 支配率剛好在門檻邊緣。強烈建議在 11~12 月派遣主力產駒搶攻日本盃、有馬紀念或海外香港國際賽事，並強制引退 2 匹雄馬充實種馬舍拉高頭數！';
+        } else {
+            badgeEl.innerHTML = '<span class="badge" style="background:#ef4444; color:#fff; font-size:0.88rem; padding:6px 14px; font-weight:800;">🔴 距離門檻尚遠 (Need Expansion)</span>';
+            adviceEl.innerHTML = '<strong style="color:#ef4444;">差距顯著！</strong> 當前支配率尚缺 ' + (target - rate).toFixed(2) + '%。建議：① 下一年度 5 月將牧場半數以上優質牝馬全部配種該種馬；② 積極購買其拍賣會 1 歲幼駒；③ 集中安排產駒出戰次級 G2/G3 重賞累積獎金池。';
+        }
+    }
+};
+
     if (typeof initSimulationChart === 'function') setTimeout(initSimulationChart, 300);
+    if (typeof window.calcSystemEstablishment === 'function') setTimeout(window.calcSystemEstablishment, 350);
 });
 </script>
 <script id="yearly-recs-engine">
