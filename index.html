@@ -17,10 +17,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v04.13"></script>
-<script src="core_guides_data.js?v=v04.13"></script>
-<script src="yearly_recs_db.js?v=v04.13"></script>
-<script src="horse_subtopics_data.js?v=v04.13"></script>
+<script src="master_lookup_db.js?v=v04.14"></script>
+<script src="core_guides_data.js?v=v04.14"></script>
+<script src="yearly_recs_db.js?v=v04.14"></script>
+<script src="horse_subtopics_data.js?v=v04.14"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2569,7 +2569,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v04.13</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v04.14</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="https://www.jbis.or.jp/horse/" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;" title="前往日本 JBIS Search 官方原站進行即時權威血統與馬情報檢索">
@@ -2592,6 +2592,127 @@ button.chip-btn.active {
       <button onclick="jumpToSection('pillar-lectures', 'sec-official-lectures')" class="chip-btn" style="border-radius:20px; font-size:0.75rem; padding:4px 11px; background:rgba(30,41,59,0.85); color:#a78bfa; border:1px solid rgba(167,139,250,0.3); cursor:pointer;"><i class="fa-solid fa-chart-line"></i> 三大展開上限 (第48章)</button>
       <button onclick="jumpToSection('pillar-lectures', 'sec-system-features')" class="chip-btn" style="border-radius:20px; font-size:0.75rem; padding:4px 11px; background:rgba(30,41,59,0.85); color:#34d399; border:1px solid rgba(52,211,153,0.3); cursor:pointer;"><i class="fa-solid fa-film"></i> 電影級過場 (第50章)</button>
     </div>
+
+<!-- ==================== 🧮 全域實戰互動計算器與戰略沙盤快速跳轉索引 ==================== -->
+<div id="calculator-quick-index-section" class="manual-replica-card" style="margin: 0 auto 16px auto; max-width: 1320px; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9)); border: 1.5px solid rgba(56, 189, 248, 0.35); border-radius: 14px; padding: 14px 18px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(56, 189, 248, 0.18); color: #38bdf8; font-size: 1.15rem; border: 1px solid rgba(56, 189, 248, 0.3);">
+        <i class="fa-solid fa-calculator"></i>
+      </span>
+      <div>
+        <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #f8fafc; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px;">
+          🧮 實戰互動計算器與模擬沙盤・快速跳轉索引
+        </h3>
+        <span style="font-size: 0.76rem; color: #94a3b8;">全站 8 大動態即時運算神器・一鍵切換直達指定工具</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span class="badge" style="background: linear-gradient(135deg, #0284c7, #38bdf8); color: #0f172a; font-weight: 900; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; white-space: nowrap !important;">
+        8 大神器全開
+      </span>
+    </div>
+  </div>
+
+  <!-- 計算器網格按鈕群 (平板/行動端自適應流暢排列) -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 8px;">
+    <!-- 1. 全球海外遠征試算器 (項目 22) -->
+    <button onclick="jumpToTool('pillar-races', 'sec-triple-crowns', 'tool-global-expedition-calc')" class="chip-btn" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px !important; border-radius: 10px !important; background: rgba(30, 41, 59, 0.75); border: 1px solid rgba(56, 189, 248, 0.25); text-align: left; cursor: pointer; transition: all 0.2s ease;">
+      <div style="display: flex; align-items: center; gap: 10px; overflow: hidden;">
+        <span style="color: #38bdf8; font-size: 1.1rem; width: 20px; text-align: center;"><i class="fa-solid fa-plane-departure"></i></span>
+        <div style="overflow: hidden;">
+          <div style="font-size: 0.84rem; font-weight: bold; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">全球海外遠征難度試算器</div>
+          <div style="font-size: 0.72rem; color: #94a3b8;">三維獨立減益・地質/精神/輸送真實勝率</div>
+        </div>
+      </div>
+      <span class="badge" style="background: rgba(56, 189, 248, 0.18); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 0.7rem; padding: 2px 7px; border-radius: 6px; white-space: nowrap !important;">項目 22</span>
+    </button>
+
+    <!-- 2. 全國賽道跑法幾何匹配儀 (項目 23) -->
+    <button onclick="jumpToTool('pillar-races', 'sec-stakes-master', 'tool-course-tactics-matcher')" class="chip-btn" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px !important; border-radius: 10px !important; background: rgba(30, 41, 59, 0.75); border: 1px solid rgba(52, 211, 153, 0.25); text-align: left; cursor: pointer; transition: all 0.2s ease;">
+      <div style="display: flex; align-items: center; gap: 10px; overflow: hidden;">
+        <span style="color: #34d399; font-size: 1.1rem; width: 20px; text-align: center;"><i class="fa-solid fa-crosshairs"></i></span>
+        <div style="overflow: hidden;">
+          <div style="font-size: 0.84rem; font-weight: bold; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">賽道跑法幾何匹配推薦儀</div>
+          <div style="font-size: 0.72rem; color: #94a3b8;">直線長度/陡坡/泥地吃沙戰術SOP</div>
+        </div>
+      </div>
+      <span class="badge" style="background: rgba(52, 211, 153, 0.18); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); font-size: 0.7rem; padding: 2px 7px; border-radius: 6px; white-space: nowrap !important;">項目 23</span>
+    </button>
+
+    <!-- 3. 幼駒評語逆向解碼器 (項目 24) -->
+    <button onclick="jumpToTool('pillar-foals', 'sec-potential', 'tool-foal-comment-decoder')" class="chip-btn" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px !important; border-radius: 10px !important; background: rgba(30, 41, 59, 0.75); border: 1px solid rgba(245, 158, 11, 0.25); text-align: left; cursor: pointer; transition: all 0.2s ease;">
+      <div style="display: flex; align-items: center; gap: 10px; overflow: hidden;">
+        <span style="color: #fbbf24; font-size: 1.1rem; width: 20px; text-align: center;"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
+        <div style="overflow: hidden;">
+          <div style="font-size: 0.84rem; font-weight: bold; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">幼駒評語逆向解碼速查器</div>
+          <div style="font-size: 0.72rem; color: #94a3b8;">反推真·SP/耐力ST/路程/跳柵特權</div>
+        </div>
+      </div>
+      <span class="badge" style="background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); font-size: 0.7rem; padding: 2px 7px; border-radius: 6px; white-space: nowrap !important;">項目 24</span>
+    </button>
+
+    <!-- 4. 牧場設施沙盤模擬規劃器 (項目 25) -->
+    <button onclick="jumpToTool('pillar-ranch', 'sec-farm-facilities', 'tool-facilities-sandbox')" class="chip-btn" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px !important; border-radius: 10px !important; background: rgba(30, 41, 59, 0.75); border: 1px solid rgba(236, 72, 153, 0.25); text-align: left; cursor: pointer; transition: all 0.2s ease;">
+      <div style="display: flex; align-items: center; gap: 10px; overflow: hidden;">
+        <span style="color: #f472b6; font-size: 1.1rem; width: 20px; text-align: center;"><i class="fa-solid fa-building-wheat"></i></span>
+        <div style="overflow: hidden;">
+          <div style="font-size: 0.84rem; font-weight: bold; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">牧場設施空間配置與收益沙盤</div>
+          <div style="font-size: 0.72rem; color: #94a3b8;">12/20/30格用地・預算結餘動態配置</div>
+        </div>
+      </div>
+      <span class="badge" style="background: rgba(236, 72, 153, 0.18); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); font-size: 0.7rem; padding: 2px 7px; border-radius: 6px; white-space: nowrap !important;">項目 25</span>
+    </button>
+
+    <!-- 5. 新手極速配種決策精靈 (神器一) -->
+    <button onclick="jumpToTool('pillar-breed', 'sec-metrics', 'tool-breeding-wizard')" class="chip-btn" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px !important; border-radius: 10px !important; background: rgba(30, 41, 59, 0.75); border: 1px solid rgba(167, 139, 250, 0.25); text-align: left; cursor: pointer; transition: all 0.2s ease;">
+      <div style="display: flex; align-items: center; gap: 10px; overflow: hidden;">
+        <span style="color: #a78bfa; font-size: 1.1rem; width: 20px; text-align: center;"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        <div style="overflow: hidden;">
+          <div style="font-size: 0.84rem; font-weight: bold; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">新手極速配種決策精靈</div>
+          <div style="font-size: 0.72rem; color: #94a3b8;">SOP 3 步極簡育種・四大指標動態導航</div>
+        </div>
+      </div>
+      <span class="badge" style="background: rgba(167, 139, 250, 0.18); color: #a78bfa; border: 1px solid rgba(167, 139, 250, 0.3); font-size: 0.7rem; padding: 2px 7px; border-radius: 6px; white-space: nowrap !important;">神器 1</span>
+    </button>
+
+    <!-- 6. +40 爆發力積木試算器 (神器二) -->
+    <button onclick="jumpToTool('pillar-breed', 'sec-metrics', 'tool-explosion-builder')" class="chip-btn" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px !important; border-radius: 10px !important; background: rgba(30, 41, 59, 0.75); border: 1px solid rgba(245, 158, 11, 0.25); text-align: left; cursor: pointer; transition: all 0.2s ease;">
+      <div style="display: flex; align-items: center; gap: 10px; overflow: hidden;">
+        <span style="color: #fbbf24; font-size: 1.1rem; width: 20px; text-align: center;"><i class="fa-solid fa-cubes-stacked"></i></span>
+        <div style="overflow: hidden;">
+          <div style="font-size: 0.84rem; font-weight: bold; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">+40 爆發力積木試算器</div>
+          <div style="font-size: 0.72rem; color: #94a3b8;">隨選隨累加・產駒實力階級即時動態推算</div>
+        </div>
+      </div>
+      <span class="badge" style="background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); font-size: 0.7rem; padding: 2px 7px; border-radius: 6px; white-space: nowrap !important;">神器 2</span>
+    </button>
+
+    <!-- 7. 4代16祖先血脈活性化沙盤 (神器三) -->
+    <button onclick="jumpToTool('pillar-breed', 'sec-metrics', 'tool-sandtable')" class="chip-btn" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px !important; border-radius: 10px !important; background: rgba(30, 41, 59, 0.75); border: 1px solid rgba(56, 189, 248, 0.25); text-align: left; cursor: pointer; transition: all 0.2s ease;">
+      <div style="display: flex; align-items: center; gap: 10px; overflow: hidden;">
+        <span style="color: #38bdf8; font-size: 1.1rem; width: 20px; text-align: center;"><i class="fa-solid fa-network-wired"></i></span>
+        <div style="overflow: hidden;">
+          <div style="font-size: 0.84rem; font-weight: bold; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">4代16祖先血脈活性化沙盤</div>
+          <div style="font-size: 0.72rem; color: #94a3b8;">父方/母方 8 親系統衝突與成立判定</div>
+        </div>
+      </div>
+      <span class="badge" style="background: rgba(56, 189, 248, 0.18); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 0.7rem; padding: 2px 7px; border-radius: 6px; white-space: nowrap !important;">神器 3</span>
+    </button>
+
+    <!-- 8. 幼駒能力動態推估 暨 實戰13大跑法戰績大表 -->
+    <button onclick="jumpToTool('pillar-foal-calc', 'sec-foal-calc-db', 'sec-foal-calc-db')" class="chip-btn" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px !important; border-radius: 10px !important; background: rgba(30, 41, 59, 0.75); border: 1px solid rgba(16, 185, 129, 0.25); text-align: left; cursor: pointer; transition: all 0.2s ease;">
+      <div style="display: flex; align-items: center; gap: 10px; overflow: hidden;">
+        <span style="color: #34d399; font-size: 1.1rem; width: 20px; text-align: center;"><i class="fa-solid fa-calculator"></i></span>
+        <div style="overflow: hidden;">
+          <div style="font-size: 0.84rem; font-weight: bold; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">幼駒能力動態推估 暨 戰績紀錄儀</div>
+          <div style="font-size: 0.72rem; color: #94a3b8;">八維能力雷達圖・13 大跑法批量錄入</div>
+        </div>
+      </div>
+      <span class="badge" style="background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); font-size: 0.7rem; padding: 2px 7px; border-radius: 6px; white-space: nowrap !important;">獨立神器</span>
+    </button>
+  </div>
+</div>
 
 <!-- 8 大核心專題分頁導航列 -->
 <div class="main-mode-tabs-wrapper">
@@ -7044,7 +7165,7 @@ button.chip-btn.active {
   </div>
 
   <!-- 神器一：新手極速配種決策精靈 (Breeding Wizard) -->
-  <div style="background:rgba(15,23,42,0.85); border:1px solid rgba(139,92,246,0.4); border-radius:10px; padding:20px; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+  <div id="tool-breeding-wizard" style="background:rgba(15,23,42,0.85); border:1px solid rgba(139,92,246,0.4); border-radius:10px; padding:20px; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
       <h4 style="margin:0; font-size:1.08rem; color:#a78bfa; display:flex; align-items:center; gap:8px; font-weight:800;">
         <i class="fa-solid fa-wand-magic-sparkles"></i> 🧙‍♂️ 神器一：新手極速配種決策精靈 (即開即算)
@@ -7113,7 +7234,7 @@ button.chip-btn.active {
   </div>
 
   <!-- 神器二：+40 爆發力積木試算器 (Explosion Block Builder) -->
-  <div style="background:rgba(15,23,42,0.85); border:1px solid rgba(245,158,11,0.4); border-radius:10px; padding:20px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
+  <div id="tool-explosion-builder" style="background:rgba(15,23,42,0.85); border:1px solid rgba(245,158,11,0.4); border-radius:10px; padding:20px; box-shadow:0 4px 16px rgba(0,0,0,0.25);">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
       <h4 style="margin:0; font-size:1.08rem; color:#fbbf24; display:flex; align-items:center; gap:8px; font-weight:800;">
         <i class="fa-solid fa-cubes-stacked"></i> 🧱 神器二：+40 爆發力積木試算器 (隨選隨累加)
@@ -8191,7 +8312,7 @@ button.chip-btn.active {
 <div class="section-body">
 
 <!-- ==================== 神器三：4代16祖先血脈活性化沙盤 (互動判定) ==================== -->
-<div class="manual-replica-card" style="background: linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)) !important; border: 1px solid rgba(236,72,153,0.35) !important; border-radius: 12px !important; padding: 22px !important; margin-bottom: 24px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.35) !important;">
+<div id="tool-sandtable" class="manual-replica-card" style="background: linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.96)) !important; border: 1px solid rgba(236,72,153,0.35) !important; border-radius: 12px !important; padding: 22px !important; margin-bottom: 24px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.35) !important;">
   <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(236,72,153,0.25); padding-bottom:12px; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
     <h3 style="font-size:1.15rem; color:#f472b6; margin:0; display:flex; align-items:center; gap:8px; font-weight:800;">
       <i class="fa-solid fa-network-wired" style="color:#f472b6;"></i> 🧬 神器三：4代16祖先血脈活性化沙盤 (互動判定)
@@ -42285,15 +42406,15 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v04.13"></script>
-<script src="yuruyuru_guides_db.js?v=v04.13"></script>
+<script src="unified_horses_full_db.js?v=v04.14"></script>
+<script src="yuruyuru_guides_db.js?v=v04.14"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v04.13"></script>
-<script src="jbis_engine.js?v=v04.13"></script><script>
+<script src="jbis_pedigree_db.js?v=v04.14"></script>
+<script src="jbis_engine.js?v=v04.14"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -43099,6 +43220,59 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 </div>
 
 <div class="chapter-list-container" id="chapterListContainer">
+<!-- ==================== 🧮 全站實戰互動計算器與模擬沙盤快速跳轉專區 ==================== -->
+<div class="chapter-pillar-group" style="border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 12px; padding: 12px 14px 16px 14px; background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.7)); margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.35);">
+  <div class="chapter-pillar-title" style="color: #38bdf8; cursor: default; margin-bottom: 12px; border-bottom: 1px solid rgba(56, 189, 248, 0.25); padding-bottom: 8px;" title="實戰互動計算器與戰略模擬器">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <i class="fa-solid fa-calculator" style="color: #38bdf8; font-size: 1.1rem;"></i>
+      <span style="font-weight: 900; font-size: 0.98rem; letter-spacing: 0.5px;">🧮 實戰互動計算器與模擬沙盤快速直達 (全 8 大神器)</span>
+    </div>
+    <span class="badge" style="background: linear-gradient(135deg, #0284c7, #38bdf8); color: #0f172a; font-weight: 900; font-size: 0.74rem; padding: 3px 10px; border-radius: 12px; white-space: nowrap !important;">即開即算</span>
+  </div>
+  <div class="chapter-items-grid">
+    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-races', 'sec-triple-crowns', 'tool-global-expedition-calc')">
+      <span class="jump-icon"><i class="fa-solid fa-plane-departure" style="color:#38bdf8;"></i></span>
+      <span class="jump-num" style="color:#38bdf8;">項目 22</span>
+      <span class="jump-title">全球海外遠征難度與減益 (Debuff) 試算器 (三維獨立減益・真實勝率)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-races', 'sec-stakes-master', 'tool-course-tactics-matcher')">
+      <span class="jump-icon"><i class="fa-solid fa-crosshairs" style="color:#34d399;"></i></span>
+      <span class="jump-num" style="color:#34d399;">項目 23</span>
+      <span class="jump-title">全國賽道跑法幾何匹配最佳化推薦儀 (直線長度・泥地吃沙・戰術SOP)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-foals', 'sec-potential', 'tool-foal-comment-decoder')">
+      <span class="jump-icon"><i class="fa-solid fa-magnifying-glass-chart" style="color:#fbbf24;"></i></span>
+      <span class="jump-num" style="color:#fbbf24;">項目 24</span>
+      <span class="jump-title">幼駒評語逆向解碼與潛力速查器 (真·SP/耐力ST/適性路程/跳柵特權)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-ranch', 'sec-farm-facilities', 'tool-facilities-sandbox')">
+      <span class="jump-icon"><i class="fa-solid fa-building-wheat" style="color:#f472b6;"></i></span>
+      <span class="jump-num" style="color:#f472b6;">項目 25</span>
+      <span class="jump-title">牧場設施空間配置與收益模擬沙盤 (12/20/30格用地・預算結餘動態配置)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-breed', 'sec-metrics', 'tool-breeding-wizard')">
+      <span class="jump-icon"><i class="fa-solid fa-wand-magic-sparkles" style="color:#a78bfa;"></i></span>
+      <span class="jump-num" style="color:#a78bfa;">神器 1</span>
+      <span class="jump-title">新手極速配種決策精靈 (SOP 3 步極簡育種導航・四大指標即開即算)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-breed', 'sec-metrics', 'tool-explosion-builder')">
+      <span class="jump-icon"><i class="fa-solid fa-cubes-stacked" style="color:#fbbf24;"></i></span>
+      <span class="jump-num" style="color:#fbbf24;">神器 2</span>
+      <span class="jump-title">+40 爆發力積木試算器 (隨選隨累加進度條・產駒實力階級即時動態推算)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-breed', 'sec-metrics', 'tool-sandtable')">
+      <span class="jump-icon"><i class="fa-solid fa-network-wired" style="color:#38bdf8;"></i></span>
+      <span class="jump-num" style="color:#38bdf8;">神器 3</span>
+      <span class="jump-title">4 代 16 祖先血脈活性化沙盤 (父方/母方 8 親系統衝突與成立判定)</span>
+    </button>
+    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-foal-calc', 'sec-foal-calc-db', 'sec-foal-calc-db')">
+      <span class="jump-icon"><i class="fa-solid fa-calculator" style="color:#34d399;"></i></span>
+      <span class="jump-num" style="color:#34d399;">獨立神器</span>
+      <span class="jump-title">幼駒能力計算器 暨 實戰 13 大跑法比賽戰績紀錄大表</span>
+    </button>
+  </div>
+</div>
+
 <div class="chapter-pillar-group">
 <div class="chapter-pillar-title" onclick="jumpToPillar('pillar-secrets')" style="color:#38bdf8;" title="點擊直達【支柱一】">
   <div style="display:flex; align-items:center; gap:8px;">
@@ -43629,6 +43803,22 @@ function jumpToPillar(pillarId) {
     }, 120);
 }
 window.jumpToPillar = jumpToPillar;
+
+
+window.jumpToTool = function(pillarId, sectionId, toolElementId) {
+    if (typeof recordCurrentPosition === 'function') recordCurrentPosition();
+    if (typeof switchMainPillar === 'function') switchMainPillar(pillarId);
+    if (typeof closeChapterModal === 'function') closeChapterModal();
+    setTimeout(() => {
+        const toolEl = document.getElementById(toolElementId) || document.getElementById(sectionId);
+        if (toolEl) {
+            toolEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            toolEl.classList.remove('section-highlight-flash');
+            void toolEl.offsetWidth; // trigger reflow
+            toolEl.classList.add('section-highlight-flash');
+        }
+    }, 180);
+};
 
 function jumpToChapter(pillarId, sectionId) {
     recordCurrentPosition();
@@ -44644,7 +44834,7 @@ function runExplosionSimulation() {
 function runSimulation() { runExplosionSimulation(); }
 
 // ==========================================
-// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.13)
+// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.14)
 // ==========================================
 
 // 1. 神器一：新手極速配種決策精靈 (Breeding Decision Wizard)

@@ -1,13 +1,13 @@
 {
-  "current_version": "v04.13",
-  "last_backup_archived": "v04.12",
+  "current_version": "v04.14",
+  "last_backup_archived": "v04.13",
   "retained_backups": [
-    "v03.99",
     "v04.00",
     "v04.10",
     "v04.11",
-    "v04.12"
+    "v04.12",
+    "v04.13"
   ],
-  "description": "Milestone v04.13: Comprehensive overhaul of all 4 interactive tools (Tool 22 Global Expedition Calculator, Tool 23 Course Tactics Matcher, Tool 24 Foal Comment Decoder, Tool 25 Facilities Sandbox). Full dynamic response, realistic WP10 simulation mechanics, and 0 CDP exceptions.",
+  "description": "Milestone v04.14: Added dedicated Interactive Calculators & Simulators Quick Jump Index (8 major interactive tools) on both the main index page and inside the global Chapter Jump Modal with animated smooth scrolling and flash highlighting.",
   "last_updated": "2026-09-08"
 }
