@@ -17,11 +17,11 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v04.21"></script>
-<script src="core_guides_data.js?v=v04.21"></script>
-<script src="broodmare_recs_db.js?v=v04.21"></script>
-<script src="yearly_recs_db.js?v=v04.21"></script>
-<script src="horse_subtopics_data.js?v=v04.21"></script>
+<script src="master_lookup_db.js?v=v04.22"></script>
+<script src="core_guides_data.js?v=v04.22"></script>
+<script src="broodmare_recs_db.js?v=v04.22"></script>
+<script src="yearly_recs_db.js?v=v04.22"></script>
+<script src="horse_subtopics_data.js?v=v04.22"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2570,7 +2570,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v04.21</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v04.22</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="https://www.jbis.or.jp/horse/" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;" title="前往日本 JBIS Search 官方原站進行即時權威血統與馬情報檢索">
@@ -41092,531 +41092,529 @@ function filterTab5Racecourses() {
   </div>
 
   <div class="scrollable-table-box table-responsive" style="max-height:640px !important; overflow-y:auto !important;">
-    <table class="data-table" style="min-width:1220px; width:100%; text-align:left !important;">
+    <table class="data-table" style="min-width:1140px; width:100%; text-align:left !important;">
       <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
-<thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
         <tr>
-          <th class="sortable-th" style="width:180px; min-width:160px; text-align:left !important;">種公馬名稱 (日/中) ⇅</th>
-          <th class="sortable-th" style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important;">草地成績 (勝/複) ⇅</th>
-          <th class="sortable-th" style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important;">泥地成績 (勝/複) ⇅</th>
-          <th class="sortable-th" style="width:180px; min-width:160px; text-align:left !important;">得意距離帶 ⇅</th>
-          <th class="sortable-th" style="width:160px; min-width:150px; text-align:left !important;">成長曲線 ⇅</th>
-          <th class="sortable-th" style="width:180px; min-width:160px; text-align:left !important;">得意賽場 ⇅</th>
-          <th class="sortable-th" style="min-width:320px; text-align:left !important;">育種相性與實戰指引 (繁體中文評語) ⇅</th>
-          <th class="sortable-th" style="width:220px; min-width:200px; text-align:left !important;">代表 G1 / 重賞產駒 ⇅</th>
+          <th class="sortable-th" style="width:145px; min-width:135px; text-align:left !important; white-space:nowrap !important;">種公馬名稱 (日/中) ⇅</th>
+          <th class="sortable-th" style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important;">草地 (勝/複) ⇅</th>
+          <th class="sortable-th" style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important;">泥地 (勝/複) ⇅</th>
+          <th class="sortable-th" style="width:160px; min-width:145px; text-align:left !important; white-space:normal !important; line-height:1.4;">得意距離帶 ⇅</th>
+          <th class="sortable-th" style="width:150px; min-width:135px; text-align:left !important; white-space:normal !important; line-height:1.4;">成長曲線 ⇅</th>
+          <th class="sortable-th" style="width:145px; min-width:130px; text-align:left !important; white-space:normal !important; line-height:1.4;">得意賽場 ⇅</th>
+          <th class="sortable-th" style="min-width:280px; max-width:360px; text-align:left !important; white-space:normal !important; line-height:1.5;">育種相性與實戰指引 (繁體中文評語) ⇅</th>
+          <th class="sortable-th" style="width:170px; min-width:155px; text-align:left !important; white-space:normal !important; line-height:1.4;">代表 G1 / 重賞產駒 ⇅</th>
         </tr>
-      
       </thead>
       <tbody>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ロードカナロア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">龍王 (Lord Kanaloa)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.4% (複 27.6%)</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.7% (複 23.7%)</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">芝1500-1800mが最良ゾーン、複勝率30％超。芝1200m以下・芝2100-2400mも好相性</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">2歳・3歳から本格的に走り、4歳までがピーク。5歳以降は徐々に下降、6歳以上は明</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京(複31.9%)、函館(複29.5%)、中山(複28.6%)</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 18勝の超大物 ：アーモンドアイ8勝＋サートゥルナーリア・ステルヴィオ・ジャスティンパレス・ファストフォース・ブレイディヴェーグ・ダノンスコーピオン各1勝＋ベラジオオペラ・サトノレーヴ各2勝 912頭・7958戦・複勝率26.1％ ：現役種牡馬最大級のサンプル、平均人気6.6で堅実に馬券に絡む 芝27.</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">アーモンドアイ（牝／鹿毛）、サートゥルナーリア（牡／黒鹿毛）、ステルヴィオ（牡／黒鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ロードカナロア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">龍王 (Lord Kanaloa)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.4% (複 27.6%)</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.7% (複 23.7%)</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">芝1500-1800mが最良ゾーン、複勝率30％超。芝1200m以下・芝2100-2400mも好相性</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">2歳・3歳から本格的に走り、4歳までがピーク。5歳以降は徐々に下降、6歳以上は明</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京(複31.9%)、函館(複29.5%)、中山(複28.6%)</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 18勝の超大物 ：アーモンドアイ8勝＋サートゥルナーリア・ステルヴィオ・ジャスティンパレス・ファストフォース・ブレイディヴェーグ・ダノンスコーピオン各1勝＋ベラジオオペラ・サトノレーヴ各2勝 912頭・7958戦・複勝率26.1％ ：現役種牡馬最大級のサンプル、平均人気6.6で堅実に馬券に絡む 芝27.</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">アーモンドアイ（牝／鹿毛）、サートゥルナーリア（牡／黒鹿毛）、ステルヴィオ（牡／黒鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ミッキーアイル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">米奇島 (Mikki Isle)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">7.8% (複 25.2%)</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.0% (複 24.7%)</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">芝1500-1600mが最良、芝1300-1400mも同水準。芝1900m以降は明確に苦手 ダート適</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">2歳から走るが本格化は4歳。5歳で急落・6歳以上はほぼ勝てない短ピーク型</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">函館(複37.9%)、札幌(複31.6%)、中京(複29.7%)</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">353頭・2875戦・複勝率25.0％ ：中堅サイアー水準、平均人気7.0で安定して馬券に絡む JRA中央G1未勝利だが、ナムラクレアが高松宮記念G1 2着3回・スプリンターズSG1 3着3回 の重賞戦線常連 函館芝が最強 ：66戦・勝率12.1％・複勝率37.9％は産駒の頂点 芝とダートがほぼ同率の万能型 ：芝25.</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ナムラクレア（牝／鹿毛）、ウィリアムバローズ（牡／鹿毛）、ララクリスティーヌ（牝／鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ミッキーアイル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">米奇島 (Mikki Isle)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">7.8% (複 25.2%)</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.0% (複 24.7%)</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">芝1500-1600mが最良、芝1300-1400mも同水準。芝1900m以降は明確に苦手 ダート適</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">2歳から走るが本格化は4歳。5歳で急落・6歳以上はほぼ勝てない短ピーク型</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">函館(複37.9%)、札幌(複31.6%)、中京(複29.7%)</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">353頭・2875戦・複勝率25.0％ ：中堅サイアー水準、平均人気7.0で安定して馬券に絡む JRA中央G1未勝利だが、ナムラクレアが高松宮記念G1 2着3回・スプリンターズSG1 3着3回 の重賞戦線常連 函館芝が最強 ：66戦・勝率12.1％・複勝率37.9％は産駒の頂点 芝とダートがほぼ同率の万能型 ：芝25.</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">ナムラクレア（牝／鹿毛）、ウィリアムバローズ（牡／鹿毛）、ララクリスティーヌ（牝／鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">キタサンブラック</strong><br><span style="font-size:0.78rem; color:#94a3b8;">北部玄駒 (Kitasan Black)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 10勝 ：イクイノックス5＋クロワデュノール4＋ソールオリエンス1 368頭・2890戦・複勝率30.9% ：中央リーディング上位水準（平均人気5.9） 札幌芝42.2%・函館芝41.1% ：洋芝で複勝率40%超の圧倒的成績 新潟芝は16.7%で最弱 ：キレ比べの外回りは消し 牡馬複勝率33.7% vs</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">イクイノックス｜歴代最強級の称</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">キタサンブラック</strong><br><span style="font-size:0.78rem; color:#94a3b8;">北部玄駒 (Kitasan Black)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 10勝 ：イクイノックス5＋クロワデュノール4＋ソールオリエンス1 368頭・2890戦・複勝率30.9% ：中央リーディング上位水準（平均人気5.9） 札幌芝42.2%・函館芝41.1% ：洋芝で複勝率40%超の圧倒的成績 新潟芝は16.7%で最弱 ：キレ比べの外回りは消し 牡馬複勝率33.7% vs</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">イクイノックス｜歴代最強級の称</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">キズナ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">絆 (Kizuna)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">函館(複33.3%)、東京(複33.2%)、福島(複32.8%)</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">全体複勝率29.5%は現役トップ級 ：744頭・6868戦で勝率11.1%・複勝率29.5%、平均人気6.2 芝・ダート両刀が最大の武器 ：芝29.3%・ダ28.4%と馬場を問わず複勝率3割前後 障害で驚異の複勝率43.6% ：241戦・勝率18.3%は全種牡馬中トップクラス 芝の適距離は1800-2400m ：複勝率</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">⑥ 性別｜牡馬が一歩リード、JRA中央G1勝ち馬、重賞戦線の主力</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">キズナ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">絆 (Kizuna)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">函館(複33.3%)、東京(複33.2%)、福島(複32.8%)</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">全体複勝率29.5%は現役トップ級 ：744頭・6868戦で勝率11.1%・複勝率29.5%、平均人気6.2 芝・ダート両刀が最大の武器 ：芝29.3%・ダ28.4%と馬場を問わず複勝率3割前後 障害で驚異の複勝率43.6% ：241戦・勝率18.3%は全種牡馬中トップクラス 芝の適距離は1800-2400m ：複勝率</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">⑥ 性別｜牡馬が一歩リード、JRA中央G1勝ち馬、重賞戦線の主力</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">エピファネイア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">神威啟示 (Epiphaneia)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">芝の中距離種牡馬 ：芝4670戦・複勝率27.2% vs ダ1425戦・19.4%で芝が明確に上 2歳の完成度が突出 ：芝2歳910戦・複勝率40.3%、デビュー直後から高確率で馬券に絡む 芝1500-2400mが主戦場 ：芝1500-1600m 29.4%、1900-2000m 30.1%、2100-2400m 28</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">エフフォーリア（牡）、デアリングタクト（牝）、ダノンデサイル（牡）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">エピファネイア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">神威啟示 (Epiphaneia)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">芝の中距離種牡馬 ：芝4670戦・複勝率27.2% vs ダ1425戦・19.4%で芝が明確に上 2歳の完成度が突出 ：芝2歳910戦・複勝率40.3%、デビュー直後から高確率で馬券に絡む 芝1500-2400mが主戦場 ：芝1500-1600m 29.4%、1900-2000m 30.1%、2100-2400m 28</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">エフフォーリア（牡）、デアリングタクト（牝）、ダノンデサイル（牡）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">リアルスティール</strong><br><span style="font-size:0.78rem; color:#94a3b8;">真實之鋼 (Real Steel)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">芝もダートも走る万能型 ：芝1449戦・複勝率28.3% / ダ1240戦・複勝率25.7%で両方安定 東京芝が最強条件 ：248戦・複勝率36.7%は全競馬場・全馬場で突出 芝1300-1400m・1700-2000mに二大ピーク ：芝1300-1400m複勝率30.6%、芝1700-1800m 30.8%、芝190</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">フォーエバーヤング（牡／鹿毛）、レーベンスティール（牡／黒鹿毛）、アドマイヤクワッズ（牡／鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">リアルスティール</strong><br><span style="font-size:0.78rem; color:#94a3b8;">真實之鋼 (Real Steel)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">芝もダートも走る万能型 ：芝1449戦・複勝率28.3% / ダ1240戦・複勝率25.7%で両方安定 東京芝が最強条件 ：248戦・複勝率36.7%は全競馬場・全馬場で突出 芝1300-1400m・1700-2000mに二大ピーク ：芝1300-1400m複勝率30.6%、芝1700-1800m 30.8%、芝190</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">フォーエバーヤング（牡／鹿毛）、レーベンスティール（牡／黒鹿毛）、アドマイヤクワッズ（牡／鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ドレフォン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">卓夫 (Drefong)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G1勝ち馬、地方G1・重賞勝ち馬</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ドレフォン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">卓夫 (Drefong)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G1勝ち馬、地方G1・重賞勝ち馬</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">アドマイヤマーズ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">頌讚火星 (Admire Mars)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">初年度世代だけでJRA中央G1 3勝 ：桜花賞・秋華賞・ヴィクトリアマイル（全てエンブロイダリー） 芝もダートも走れる万能型 ：芝426戦・複勝率24.4%、ダ211戦・複勝率27.5% フィリーサイアー ：牝馬複勝率26.1% vs 牡馬22.2%、牝馬の方が強い 2歳の早熟性 ：2歳複勝率29.3%でピーク、4歳1</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">エンブロイダリー（牝／鹿毛）、テレサ（牝／鹿毛）、ナムラクララ（牝／鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">アドマイヤマーズ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">頌讚火星 (Admire Mars)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">初年度世代だけでJRA中央G1 3勝 ：桜花賞・秋華賞・ヴィクトリアマイル（全てエンブロイダリー） 芝もダートも走れる万能型 ：芝426戦・複勝率24.4%、ダ211戦・複勝率27.5% フィリーサイアー ：牝馬複勝率26.1% vs 牡馬22.2%、牝馬の方が強い 2歳の早熟性 ：2歳複勝率29.3%でピーク、4歳1</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">エンブロイダリー（牝／鹿毛）、テレサ（牝／鹿毛）、ナムラクララ（牝／鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">モーリス</strong><br><span style="font-size:0.78rem; color:#94a3b8;">滿樂時 (Maurice)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 4勝 ：スプリンターズS・エリザベス女王杯・大阪杯・朝日杯FS 芝特化型 ：芝3643戦・複勝率26.0%、ダ1525戦・複勝率21.9% 2歳で抜群の早熟性 ：2歳複勝率34.0%でピーク、新興種牡馬全体でもトップクラスの2歳成績 5歳以降急落 ：3歳26.0%・4歳25.1%で安定、5歳18.3%・</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ジャックドール（牡／鹿毛）、ジェラルディーナ（牝／青鹿毛）、ピクシーナイト（牡／鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">モーリス</strong><br><span style="font-size:0.78rem; color:#94a3b8;">滿樂時 (Maurice)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 4勝 ：スプリンターズS・エリザベス女王杯・大阪杯・朝日杯FS 芝特化型 ：芝3643戦・複勝率26.0%、ダ1525戦・複勝率21.9% 2歳で抜群の早熟性 ：2歳複勝率34.0%でピーク、新興種牡馬全体でもトップクラスの2歳成績 5歳以降急落 ：3歳26.0%・4歳25.1%で安定、5歳18.3%・</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">ジャックドール（牡／鹿毛）、ジェラルディーナ（牝／青鹿毛）、ピクシーナイト（牡／鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ルーラーシップ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">統治地位 (Rulership)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 3勝＋海外G1 1勝 ：菊花賞・マイルCS・天皇賞（春）＋ドバイターフ 芝とダートの両方で安定 ：芝3163戦・複勝率22.3%、ダ2459戦・複勝率19.8% 牡馬複勝率26.4% > 牝馬18.7% でコルトサイアー傾向が強い 4歳ピーク（複勝率28.2%）・晩成型 ：5歳21.0%、6歳以上14.</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ソウルラッシュ（牡／鹿毛）、ヘデントール（牡／鹿毛）、キセキ（牡／栗毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ルーラーシップ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">統治地位 (Rulership)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 3勝＋海外G1 1勝 ：菊花賞・マイルCS・天皇賞（春）＋ドバイターフ 芝とダートの両方で安定 ：芝3163戦・複勝率22.3%、ダ2459戦・複勝率19.8% 牡馬複勝率26.4% > 牝馬18.7% でコルトサイアー傾向が強い 4歳ピーク（複勝率28.2%）・晩成型 ：5歳21.0%、6歳以上14.</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">ソウルラッシュ（牡／鹿毛）、ヘデントール（牡／鹿毛）、キセキ（牡／栗毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">コントレイル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">鐵鳥翱天 (Contrail)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">脚質・走り方の傾向、仕上がりの早さと成長曲線、バドリナート（牡・松永幸夫厩舎）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">コントレイル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">鐵鳥翱天 (Contrail)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">脚質・走り方の傾向、仕上がりの早さと成長曲線、バドリナート（牡・松永幸夫厩舎）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">スワーヴリチャード</strong><br><span style="font-size:0.78rem; color:#94a3b8;">斯瓦夫理察 (Suave Richard)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">初年度世代だけでJRA中央G1 4勝 ：ホープフルS・有馬記念・エリザベス女王杯・菊花賞 芝特化型 ：芝874戦・複勝率25.5%、ダ310戦・複勝率18.7% 芝中長距離が強い ：芝1700-1800m複勝率29.1%、芝1900-2000m複勝率31.4% 2歳の早熟性 ：2歳複勝率32.7%でファーストクロップサ</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">レガレイラ（牝／鹿毛）、アーバンシック（牡／鹿毛）、コラソンビート（牝／鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">スワーヴリチャード</strong><br><span style="font-size:0.78rem; color:#94a3b8;">斯瓦夫理察 (Suave Richard)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">初年度世代だけでJRA中央G1 4勝 ：ホープフルS・有馬記念・エリザベス女王杯・菊花賞 芝特化型 ：芝874戦・複勝率25.5%、ダ310戦・複勝率18.7% 芝中長距離が強い ：芝1700-1800m複勝率29.1%、芝1900-2000m複勝率31.4% 2歳の早熟性 ：2歳複勝率32.7%でファーストクロップサ</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">レガレイラ（牝／鹿毛）、アーバンシック（牡／鹿毛）、コラソンビート（牝／鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ゴールドシップ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">黃金船 (Gold Ship)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 2勝＋障害J・G1 1勝 ：オークス・宝塚記念・中山大障害を制覇 芝特化型 ：芝3138戦・複勝率21.0%、ダ605戦・複勝率17.0%、障害181戦・複勝率29.8% 長距離で本領発揮 ：芝2500-2800mで複勝率22.1%、芝2900m以上で勝率9.1% 4歳ピーク・5歳以降急落 ：4歳複勝率</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">メイショウタバル（牡／鹿毛）、ユーバーレーベン（牝／青鹿毛）、マイネルエンペラー（牡／黒鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ゴールドシップ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">黃金船 (Gold Ship)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 2勝＋障害J・G1 1勝 ：オークス・宝塚記念・中山大障害を制覇 芝特化型 ：芝3138戦・複勝率21.0%、ダ605戦・複勝率17.0%、障害181戦・複勝率29.8% 長距離で本領発揮 ：芝2500-2800mで複勝率22.1%、芝2900m以上で勝率9.1% 4歳ピーク・5歳以降急落 ：4歳複勝率</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">メイショウタバル（牡／鹿毛）、ユーバーレーベン（牝／青鹿毛）、マイネルエンペラー（牡／黒鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ナダル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">拿達爾 (Nadal)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央で勝率15.3%・複勝率36.2% ：平均人気4.7で評価されつつこの数字 ダート特化型 ：ダ671戦・勝率16.4%・複勝率38.6%、芝は75戦のみ 中山ダ・新潟ダで複勝率47%超 ：中山ダ47.6%、新潟ダ47.5%は全競馬場のトップ ダ1400m複勝率41.1%・ダ1700-1800m複勝率38.9%</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">メモリアカフェ（牝／鹿毛）、メルキオル（牡／黒鹿毛）、クレーキング（牡／鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ナダル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">拿達爾 (Nadal)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央で勝率15.3%・複勝率36.2% ：平均人気4.7で評価されつつこの数字 ダート特化型 ：ダ671戦・勝率16.4%・複勝率38.6%、芝は75戦のみ 中山ダ・新潟ダで複勝率47%超 ：中山ダ47.6%、新潟ダ47.5%は全競馬場のトップ ダ1400m複勝率41.1%・ダ1700-1800m複勝率38.9%</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">メモリアカフェ（牝／鹿毛）、メルキオル（牡／黒鹿毛）、クレーキング（牡／鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">レイデオロ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">雷神精靈 (Rey de Oro)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">2026年春シーズンでG2 2勝・G3 2勝・G1掲示板 ：阪神大賞典・日経賞・エプソムC・アンタレスS・天皇賞春3着 東京芝が勝率15.0%でトップ ：240戦・複勝率32.1%は全競馬場のトップ 芝2400m以上が真のコア ：156戦・勝率13.5%・複勝率34.0% 札幌芝・福島ダで複勝率33.3% ：ローカル開</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">アドマイヤテラ（牡／芦毛）、トロヴァトーレ（牡／青鹿毛）、ムルソー（牡／鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">レイデオロ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">雷神精靈 (Rey de Oro)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">2026年春シーズンでG2 2勝・G3 2勝・G1掲示板 ：阪神大賞典・日経賞・エプソムC・アンタレスS・天皇賞春3着 東京芝が勝率15.0%でトップ ：240戦・複勝率32.1%は全競馬場のトップ 芝2400m以上が真のコア ：156戦・勝率13.5%・複勝率34.0% 札幌芝・福島ダで複勝率33.3% ：ローカル開</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">アドマイヤテラ（牡／芦毛）、トロヴァトーレ（牡／青鹿毛）、ムルソー（牡／鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">インディチャンプ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">冠軍車手 (Indy Champ)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">初年度世代でG1 3着＋G2勝ち ：タイセイボーグ 阪神JF 3着・チューリップ賞 1着 勝率9.3％・複勝率28.6％ の新種牡馬として極めて高い水準 中山ダート複勝率50.0％ ：18戦・産駒最強条件 新潟芝複勝率44.4％ ：18戦・芝最強コース 阪神芝・福島芝も◎ ：阪神芝41.2％、福島芝30.8％ 東京芝は</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">タイセイボーグ（牝／鹿毛）、モルニケ（牝／黒鹿毛）、ブレナヴォン（牡／黒鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">インディチャンプ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">冠軍車手 (Indy Champ)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">初年度世代でG1 3着＋G2勝ち ：タイセイボーグ 阪神JF 3着・チューリップ賞 1着 勝率9.3％・複勝率28.6％ の新種牡馬として極めて高い水準 中山ダート複勝率50.0％ ：18戦・産駒最強条件 新潟芝複勝率44.4％ ：18戦・芝最強コース 阪神芝・福島芝も◎ ：阪神芝41.2％、福島芝30.8％ 東京芝は</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">タイセイボーグ（牝／鹿毛）、モルニケ（牝／黒鹿毛）、ブレナヴォン（牡／黒鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">シルバーステート</strong><br><span style="font-size:0.78rem; color:#94a3b8;">銀幕盛宴 (Silver State)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">2026年G1戦線で複数掲示板 ：オークス4着リアライズルミナス、大阪杯5着セイウンハーデス 芝中長距離が真のコア ：芝2000m勝率10.4%・複勝率29.3%、芝2200m複勝率31.4% 札幌芝・中山芝が◎ ：札幌芝複勝率31.7%（全競馬場トップ）、中山芝勝率9.4%・複勝率28.5% ダートは明確に苦手 ：8</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">リアライズルミナス（牝／黒鹿毛）、セイウンハーデス（牡／黒鹿毛）、ラヴァンダ（牝／黒鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">シルバーステート</strong><br><span style="font-size:0.78rem; color:#94a3b8;">銀幕盛宴 (Silver State)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">2026年G1戦線で複数掲示板 ：オークス4着リアライズルミナス、大阪杯5着セイウンハーデス 芝中長距離が真のコア ：芝2000m勝率10.4%・複勝率29.3%、芝2200m複勝率31.4% 札幌芝・中山芝が◎ ：札幌芝複勝率31.7%（全競馬場トップ）、中山芝勝率9.4%・複勝率28.5% ダートは明確に苦手 ：8</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">リアライズルミナス（牝／黒鹿毛）、セイウンハーデス（牡／黒鹿毛）、ラヴァンダ（牝／黒鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ブリックスアンドモルタル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">磚石奧秘 (Bricks and Mortar)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">新潟(複23.8%)、札幌(複20.0%)、小倉(複23.1%)</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">② 実はダートのほうが勝率が高い、⑧ その他に見えてくる傾向</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ブリックスアンドモルタル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">磚石奧秘 (Bricks and Mortar)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">新潟(複23.8%)、札幌(複20.0%)、小倉(複23.1%)</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">② 実はダートのほうが勝率が高い、⑧ その他に見えてくる傾向</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">マインドユアビスケッツ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">萬全之策 (Mind Your Biscuits)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央で重賞2勝＋G1 3着の実績 ：ホウオウビスケッツ天皇賞秋3着・函館記念勝ち、マピュース中京記念勝ち ダート主戦場 ：1397戦・複勝率21.0％、ダ1700-1800mが681戦の最大ボリュームゾーン 函館ダートが圧倒的 ：52戦・勝率15.4％・複勝率42.3％は産駒最強 札幌ダ・東京ダも◎ ：札幌ダ複勝</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ホウオウビスケッツ（牡／鹿毛）、マピュース（牝／栗毛）、アムールドパリ（牝／芦毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">マインドユアビスケッツ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">萬全之策 (Mind Your Biscuits)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央で重賞2勝＋G1 3着の実績 ：ホウオウビスケッツ天皇賞秋3着・函館記念勝ち、マピュース中京記念勝ち ダート主戦場 ：1397戦・複勝率21.0％、ダ1700-1800mが681戦の最大ボリュームゾーン 函館ダートが圧倒的 ：52戦・勝率15.4％・複勝率42.3％は産駒最強 札幌ダ・東京ダも◎ ：札幌ダ複勝</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">ホウオウビスケッツ（牡／鹿毛）、マピュース（牝／栗毛）、アムールドパリ（牝／芦毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">タワーオブロンドン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">倫敦塔 (Tower of London)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 1勝＋G1高松宮記念で2頭掲示板 ：パンジャタワー、レイピアの実績 芝1400mが効率最強 ：79戦・勝率7.6％・複勝率24.1％ ダート1700-1800mが隠れた狙い目 ：60戦・複勝率28.3％ 札幌芝が芝勝率トップ ：18戦・勝率16.7％・複勝率22.2％ 函館ダ・福島ダで爆発 ：函館ダ複勝</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">パンジャタワー（牡／鹿毛）、レイピア（牡／鹿毛）、タマモジャスミン（牝／鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">タワーオブロンドン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">倫敦塔 (Tower of London)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央G1 1勝＋G1高松宮記念で2頭掲示板 ：パンジャタワー、レイピアの実績 芝1400mが効率最強 ：79戦・勝率7.6％・複勝率24.1％ ダート1700-1800mが隠れた狙い目 ：60戦・複勝率28.3％ 札幌芝が芝勝率トップ ：18戦・勝率16.7％・複勝率22.2％ 函館ダ・福島ダで爆発 ：函館ダ複勝</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">パンジャタワー（牡／鹿毛）、レイピア（牡／鹿毛）、タマモジャスミン（牝／鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">モズアスコット</strong><br><span style="font-size:0.78rem; color:#94a3b8;">摩茲雅谷 (Mozu Ascot)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">札幌(複31.8%)、函館(複30.8%)、小倉(複21.6%)</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">主な勝ち鞍（抜粋）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">モズアスコット</strong><br><span style="font-size:0.78rem; color:#94a3b8;">摩茲雅谷 (Mozu Ascot)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">札幌(複31.8%)、函館(複30.8%)、小倉(複21.6%)</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">主な勝ち鞍（抜粋）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">リオンディーズ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">獅子之姿 (Leontes)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央で勝率7.5％・複勝率22.8％ 、495頭規模の安定種牡馬 芝2400m以上が勝率17.9％・複勝率28.6％ でテーオーロイヤル型の長距離適性 札幌ダート最強 ：80戦・勝率16.2％・複勝率31.2％ ダート1900m以上も複勝率31.9％ 、長距離適性は芝ダ両方で発揮 コルトサイアー傾向 ：牡馬複勝率</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ミュージアムマイル（牡／黒鹿毛）、テーオーロイヤル（牡／鹿毛）、アスクエジンバラ（牡／青鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">リオンディーズ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">獅子之姿 (Leontes)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央で勝率7.5％・複勝率22.8％ 、495頭規模の安定種牡馬 芝2400m以上が勝率17.9％・複勝率28.6％ でテーオーロイヤル型の長距離適性 札幌ダート最強 ：80戦・勝率16.2％・複勝率31.2％ ダート1900m以上も複勝率31.9％ 、長距離適性は芝ダ両方で発揮 コルトサイアー傾向 ：牡馬複勝率</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">ミュージアムマイル（牡／黒鹿毛）、テーオーロイヤル（牡／鹿毛）、アスクエジンバラ（牡／青鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">サトノダイヤモンド</strong><br><span style="font-size:0.78rem; color:#94a3b8;">里見光鑽 (Satono Diamond)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">重賞優勝產駒多數</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">サトノダイヤモンド</strong><br><span style="font-size:0.78rem; color:#94a3b8;">里見光鑽 (Satono Diamond)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">重賞優勝產駒多數</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">オルフェーヴル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">黃金巨匠 (Orfevre)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">⑥ 障害戦は産駒の隠れた最強舞台、中央G1勝ち馬、地方G1・海外G1勝ち馬</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">オルフェーヴル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">黃金巨匠 (Orfevre)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">⑥ 障害戦は産駒の隠れた最強舞台、中央G1勝ち馬、地方G1・海外G1勝ち馬</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">アメリカンファラオ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">美國法老 (American Pharoah)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央で勝率12.8％・複勝率28.3％ の高水準、種牡馬としても安定した遺伝力 2歳の早熟性が圧倒的 ：2歳勝率17.9％・複勝率41.5％は現役種牡馬でも上位 意外な芝スプリント適性 ：芝〜1200m勝率19.4％・複勝率48.4％は産駒距離別トップ 小回りローカルダートこそエース ：小倉ダ35.3％、札幌ダ3</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">カフェファラオ（牡／鹿毛）、ダノンファラオ（牡／青鹿毛）、ルクソールカフェ（牡／鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">アメリカンファラオ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">美國法老 (American Pharoah)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">JRA中央で勝率12.8％・複勝率28.3％ の高水準、種牡馬としても安定した遺伝力 2歳の早熟性が圧倒的 ：2歳勝率17.9％・複勝率41.5％は現役種牡馬でも上位 意外な芝スプリント適性 ：芝〜1200m勝率19.4％・複勝率48.4％は産駒距離別トップ 小回りローカルダートこそエース ：小倉ダ35.3％、札幌ダ3</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">カフェファラオ（牡／鹿毛）、ダノンファラオ（牡／青鹿毛）、ルクソールカフェ（牡／鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ニューイヤーズデイ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">元旦 (New Year's Day)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">勝率9.5％・複勝率26.8％ の安定水準、平均人気6.7で人気薄でも結果を出す ダート1900m以上が最強 ：62戦・勝率16.1％・複勝率33.9％ ダート1700-1800mが主戦場 ：372戦・勝率10.8％・複勝率28.8％の最大ボリュームゾーン 中京ダ・阪神ダが◎ ：中京ダ複勝率35.6％、阪神ダ複勝率33</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">プレシャスデイ（牡／黒鹿毛）、ニホンピロホリデー（牝／黒鹿毛）、エートラックス（牡／黒鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ニューイヤーズデイ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">元旦 (New Year's Day)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">勝率9.5％・複勝率26.8％ の安定水準、平均人気6.7で人気薄でも結果を出す ダート1900m以上が最強 ：62戦・勝率16.1％・複勝率33.9％ ダート1700-1800mが主戦場 ：372戦・勝率10.8％・複勝率28.8％の最大ボリュームゾーン 中京ダ・阪神ダが◎ ：中京ダ複勝率35.6％、阪神ダ複勝率33</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">プレシャスデイ（牡／黒鹿毛）、ニホンピロホリデー（牝／黒鹿毛）、エートラックス（牡／黒鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">シスキン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">希斯金 (Siskin)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">G1・重賞戦線で名前を出した産駒</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">シスキン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">希斯金 (Siskin)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">G1・重賞戦線で名前を出した産駒</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">リアルインパクト</strong><br><span style="font-size:0.78rem; color:#94a3b8;">真實衝擊 (Real Impact)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">実はダートが主戦場 ：芝564戦に対しダ1320戦、ダート勝率9.4％・複勝率25.3％は芝より上 ダート1400mが圧倒的 ：306戦・勝率12.4％・複勝率31.0％は産駒の最強条件 京都競馬場が芝・ダート両得意 ：京都芝勝率14.3％・京都ダ勝率13.6％は産駒のWエース 3歳がピーク、5歳以降は急落 ：3歳勝率</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ラウダシオン（牡／鹿毛）、モズメイメイ（牝／鹿毛）、スウィートハピネス（牝／栗毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">リアルインパクト</strong><br><span style="font-size:0.78rem; color:#94a3b8;">真實衝擊 (Real Impact)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">実はダートが主戦場 ：芝564戦に対しダ1320戦、ダート勝率9.4％・複勝率25.3％は芝より上 ダート1400mが圧倒的 ：306戦・勝率12.4％・複勝率31.0％は産駒の最強条件 京都競馬場が芝・ダート両得意 ：京都芝勝率14.3％・京都ダ勝率13.6％は産駒のWエース 3歳がピーク、5歳以降は急落 ：3歳勝率</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">ラウダシオン（牡／鹿毛）、モズメイメイ（牝／鹿毛）、スウィートハピネス（牝／栗毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ウインブライト</strong><br><span style="font-size:0.78rem; color:#94a3b8;">溫布萊特 (Win Bright)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">札幌・函館の洋芝が最強 ：札幌芝複勝率52.9％、函館芝複勝率56.2％は産駒の頂点 芝短距離（〜1200m）が意外に強い ：44戦・勝率11.4％・複勝率40.9％ 芝長距離（2400m〜）も◎レベル ：41戦・勝率9.8％・複勝率36.6％ 福島芝・阪神芝も得意 ：福島芝複勝率29.7％、阪神芝35.3％ 父の主戦</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">フクノブルーレイク（牡／青鹿毛）、マイネルフルムーン（牡／青鹿毛）、ドーバーブライト（牡／芦毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ウインブライト</strong><br><span style="font-size:0.78rem; color:#94a3b8;">溫布萊特 (Win Bright)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">札幌・函館の洋芝が最強 ：札幌芝複勝率52.9％、函館芝複勝率56.2％は産駒の頂点 芝短距離（〜1200m）が意外に強い ：44戦・勝率11.4％・複勝率40.9％ 芝長距離（2400m〜）も◎レベル ：41戦・勝率9.8％・複勝率36.6％ 福島芝・阪神芝も得意 ：福島芝複勝率29.7％、阪神芝35.3％ 父の主戦</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">フクノブルーレイク（牡／青鹿毛）、マイネルフルムーン（牡／青鹿毛）、ドーバーブライト（牡／芦毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ヘンリーバローズ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">亨利巴羅斯 (Henry Barows)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">芝もダートもこなす二刀流 ：芝111戦・複勝率24.3％、ダート121戦・複勝率23.1％でほぼ同水準 芝2000mが勝率13.8％でコア距離 ：芝1500-1600mも勝率11.5％、中距離全般に強い ダート1400mが複勝率29.4％ ：「ダート向きじゃない」は明確に誤り 阪神芝が複勝率42.9％ ：7戦と少サンプ</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">ジェットマグナム（牡／黒鹿毛）、ローランドバローズ（牡／鹿毛）、ストームサンダー（牡／黒鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ヘンリーバローズ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">亨利巴羅斯 (Henry Barows)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">芝もダートもこなす二刀流 ：芝111戦・複勝率24.3％、ダート121戦・複勝率23.1％でほぼ同水準 芝2000mが勝率13.8％でコア距離 ：芝1500-1600mも勝率11.5％、中距離全般に強い ダート1400mが複勝率29.4％ ：「ダート向きじゃない」は明確に誤り 阪神芝が複勝率42.9％ ：7戦と少サンプ</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">ジェットマグナム（牡／黒鹿毛）、ローランドバローズ（牡／鹿毛）、ストームサンダー（牡／黒鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ミスターメロディ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">旋律先生 (Mr Melody)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">短距離が主戦場 ：芝1400m勝率10.9％、ダ〜1300m複勝率26.9％ 左回り芝が明確に得意 ：芝左回り勝率10.6％は右回り（5.4％）のほぼ2倍 ダートでは逆に右回り優勢 ：ダ右回り24.1％ vs 左回り13.0％、芝とは傾向が真逆 中山ダートが突出 ：60戦・勝率13.3％・複勝率28.3％は全競馬場の頂</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">タガノアラリア（牡／黒鹿毛）、クラスペディア（牡／黒鹿毛）、スリールミニョン（牝／鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ミスターメロディ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">旋律先生 (Mr Melody)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">短距離が主戦場 ：芝1400m勝率10.9％、ダ〜1300m複勝率26.9％ 左回り芝が明確に得意 ：芝左回り勝率10.6％は右回り（5.4％）のほぼ2倍 ダートでは逆に右回り優勢 ：ダ右回り24.1％ vs 左回り13.0％、芝とは傾向が真逆 中山ダートが突出 ：60戦・勝率13.3％・複勝率28.3％は全競馬場の頂</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">タガノアラリア（牡／黒鹿毛）、クラスペディア（牡／黒鹿毛）、スリールミニョン（牝／鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ポエティックフレア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">詩人之躍 (Poetic Flare)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">東京芝が圧倒的に得意 ：23戦7勝・複勝率47.8％は全競馬場で最高水準 芝マイル〜1800mが主戦場 ：芝1500-1600mで勝率20.8％、芝1800mで複勝率57.7％ 2歳戦の完成度が高い ：2歳時の複勝率49.2％、新馬・OP特別を着実に勝ち上がる 京都芝も穴場 ：勝率15.0％ながら複勝率60.0％、馬券</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">リアライズシリウス（牡3／芦毛）、カフジエメンタール（牡3／鹿毛）、ラストスマイル（牡3／栗毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ポエティックフレア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">詩人之躍 (Poetic Flare)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">東京芝が圧倒的に得意 ：23戦7勝・複勝率47.8％は全競馬場で最高水準 芝マイル〜1800mが主戦場 ：芝1500-1600mで勝率20.8％、芝1800mで複勝率57.7％ 2歳戦の完成度が高い ：2歳時の複勝率49.2％、新馬・OP特別を着実に勝ち上がる 京都芝も穴場 ：勝率15.0％ながら複勝率60.0％、馬券</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">リアライズシリウス（牡3／芦毛）、カフジエメンタール（牡3／鹿毛）、ラストスマイル（牡3／栗毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">サートゥルナーリア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">農神節慶 (Saturnalia)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">札幌(複44.1%)、東京(複38.8%)、中京(複33.0%)</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">② 芝が圧倒的、ダートは苦戦、G1勝ち馬、G2・G3勝ち馬</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">サートゥルナーリア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">農神節慶 (Saturnalia)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">札幌(複44.1%)、東京(複38.8%)、中京(複33.0%)</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">② 芝が圧倒的、ダートは苦戦、G1勝ち馬、G2・G3勝ち馬</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ハービンジャー</strong><br><span style="font-size:0.78rem; color:#94a3b8;">無敵先鋒 (Harbinger)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G1勝ち馬、中央G2・G3勝ち馬</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ハービンジャー</strong><br><span style="font-size:0.78rem; color:#94a3b8;">無敵先鋒 (Harbinger)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G1勝ち馬、中央G2・G3勝ち馬</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">アルアイン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">艾恩 (Al Ain)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">② 主戦場は芝、ダートは平均以下、中央G2勝ち・G1掲示板実績の産駒、中央OP・3勝クラスの活躍馬</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">アルアイン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">艾恩 (Al Ain)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">② 主戦場は芝、ダートは平均以下、中央G2勝ち・G1掲示板実績の産駒、中央OP・3勝クラスの活躍馬</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">フィエールマン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">氣自豪 (Fierement)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">中山(複34.5%)、札幌(複35.3%)、東京(複30.1%)</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">重賞戦線に名前が出てきた産駒</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">フィエールマン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">氣自豪 (Fierement)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">中山(複34.5%)、札幌(複35.3%)、東京(複30.1%)</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">重賞戦線に名前が出てきた産駒</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ディープブリランテ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">迪比經典 (Deep Brillante)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G2・G3勝ち馬、地方転厩後の活躍馬</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ディープブリランテ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">迪比經典 (Deep Brillante)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G2・G3勝ち馬、地方転厩後の活躍馬</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">フォーウィールドライブ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">四輪驅動 (Four Wheel Drive)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">地方交流Jpn2/Jpn3勝ち馬、中央オープン・3勝クラス勝ち馬</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">フォーウィールドライブ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">四輪驅動 (Four Wheel Drive)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">地方交流Jpn2/Jpn3勝ち馬、中央オープン・3勝クラス勝ち馬</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ワールドプレミア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">世界之霸 (World Premiere)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">距離適性、コース適性</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ワールドプレミア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">世界之霸 (World Premiere)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">距離適性、コース適性</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ロジャーバローズ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">羅傑巴羅斯 (Roger Barows)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央リステッド勝ち馬</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ロジャーバローズ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">羅傑巴羅斯 (Roger Barows)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">中央リステッド勝ち馬</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ホッコータルマエ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">北港火山 (Hokko Tarumae)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">JRA重賞勝ち馬、地方交流G2/G3勝ち馬、地方重賞勝ち馬</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ホッコータルマエ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">北港火山 (Hokko Tarumae)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">JRA重賞勝ち馬、地方交流G2/G3勝ち馬、地方重賞勝ち馬</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ダノンプレミアム</strong><br><span style="font-size:0.78rem; color:#94a3b8;">野田優驥 (Danon Premium)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">距離適性、コース適性、馬場状態</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ダノンプレミアム</strong><br><span style="font-size:0.78rem; color:#94a3b8;">野田優驥 (Danon Premium)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">距離適性、コース適性、馬場状態</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">グレーターロンドン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">大倫敦 (Greater London)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G3勝ち馬、中央リステッド・G2級の活躍馬、中央オープン・3勝クラス級の活躍馬</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">グレーターロンドン</strong><br><span style="font-size:0.78rem; color:#94a3b8;">大倫敦 (Greater London)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G3勝ち馬、中央リステッド・G2級の活躍馬、中央オープン・3勝クラス級の活躍馬</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ファインニードル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">鐵膽威龍 (Fine Needle)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">② 主戦場は芝、ダートは平均的、中央G3勝ち馬、中央オープン・リステッド級の活躍馬</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ファインニードル</strong><br><span style="font-size:0.78rem; color:#94a3b8;">鐵膽威龍 (Fine Needle)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">② 主戦場は芝、ダートは平均的、中央G3勝ち馬、中央オープン・リステッド級の活躍馬</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ジャスタウェイ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">賈斯汀 (Just A Way)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G1勝ち馬・G1級活躍馬、中央G2・G3勝ち馬、地方G1勝ち馬・交流重賞勝ち馬</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ジャスタウェイ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">賈斯汀 (Just A Way)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G1勝ち馬・G1級活躍馬、中央G2・G3勝ち馬、地方G1勝ち馬・交流重賞勝ち馬</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">イスラボニータ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">艾島 (Isla Bonita)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G3勝ち馬、地方G2勝ち馬・中央オープン級</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">イスラボニータ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">艾島 (Isla Bonita)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">中央G3勝ち馬、地方G2勝ち馬・中央オープン級</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ミッキーロケット</strong><br><span style="font-size:0.78rem; color:#94a3b8;">米奇火箭 (Mikki Rocket)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">中央重賞戦線で名前を出した産駒、地方転厩後に活躍する産駒</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ミッキーロケット</strong><br><span style="font-size:0.78rem; color:#94a3b8;">米奇火箭 (Mikki Rocket)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">中央重賞戦線で名前を出した産駒、地方転厩後に活躍する産駒</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">ルヴァンスレーヴ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">日蝕生輝 (Le Vent Se Leve)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">父シンボリクリスエス×米国ダート系 の本格派ダートサイヤー、芝17.2％対ダート30.8％の極端なダート特化型 185頭・1,113戦・複勝率29.7％ はデビュー4年目の中堅サイヤーとして高水準 ダート1800-1900mが主戦場 ：435戦・勝率14.5％・複勝率39.5％でここに数字が集中 ダート2000m以上も</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">シルバーレシオ（牡／鹿毛）、メルカントゥール（牡／鹿毛）、ソルジャーフィルド（牡／鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">ルヴァンスレーヴ</strong><br><span style="font-size:0.78rem; color:#94a3b8;">日蝕生輝 (Le Vent Se Leve)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">父シンボリクリスエス×米国ダート系 の本格派ダートサイヤー、芝17.2％対ダート30.8％の極端なダート特化型 185頭・1,113戦・複勝率29.7％ はデビュー4年目の中堅サイヤーとして高水準 ダート1800-1900mが主戦場 ：435戦・勝率14.5％・複勝率39.5％でここに数字が集中 ダート2000m以上も</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">シルバーレシオ（牡／鹿毛）、メルカントゥール（牡／鹿毛）、ソルジャーフィルド（牡／鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">シニスターミニスター</strong><br><span style="font-size:0.78rem; color:#94a3b8;">險峰 (Sinister Minister)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">米国産の輸入種牡馬 、父Old Trieste（A.P. Indy系）の本格ダート血統を伝えるダート専門サイヤー 328頭・3,039戦・複勝率28.5％ と豊富なサンプルを持つ、ダート界の主力サイヤーの一角 芝は複勝率2.2％で完全なダート専用 、芝に出てきた産駒は基本的に消し ダ1800-1900mが主戦場 ：1,</td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">テーオーケインズ（牡／栗毛）、キングズソード（牡／栗毛）、ミックファイア（牡／黒鹿毛）</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">シニスターミニスター</strong><br><span style="font-size:0.78rem; color:#94a3b8;">險峰 (Sinister Minister)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;">米国産の輸入種牡馬 、父Old Trieste（A.P. Indy系）の本格ダート血統を伝えるダート専門サイヤー 328頭・3,039戦・複勝率28.5％ と豊富なサンプルを持つ、ダート界の主力サイヤーの一角 芝は複勝率2.2％で完全なダート専用 、芝に出てきた産駒は基本的に消し ダ1800-1900mが主戦場 ：1,</td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">テーオーケインズ（牡／栗毛）、キングズソード（牡／栗毛）、ミックファイア（牡／黒鹿毛）</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">エフフォーリア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">樂透心 (Efforia)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">重賞優勝產駒多數</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">エフフォーリア</strong><br><span style="font-size:0.78rem; color:#94a3b8;">樂透心 (Efforia)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">重賞優勝產駒多數</td>
         </tr>
         <tr>
-          <td style="width:180px; min-width:160px; text-align:left !important;"><strong style="color:#fde047;">サリオス</strong><br><span style="font-size:0.78rem; color:#94a3b8;">敬愛鬥神 (Salios)</span></td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
-          <td style="width:130px; min-width:120px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#e2e8f0;">マイル・中距離</td>
-          <td style="width:160px; min-width:150px; text-align:left !important; font-size:0.82rem; color:#38bdf8;">標準</td>
-          <td style="width:180px; min-width:160px; text-align:left !important; font-size:0.82rem; color:#cbd5e1;">東京・京都・阪神</td>
-          <td style="min-width:320px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
-          <td style="width:220px; min-width:200px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#f472b6;">重賞優勝產駒多數</td>
+          <td style="width:145px; min-width:135px; text-align:left !important; line-height:1.4;"><strong style="color:#fde047;">サリオス</strong><br><span style="font-size:0.78rem; color:#94a3b8;">敬愛鬥神 (Salios)</span></td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#86efac;">10.0% / 27.0%</td>
+          <td style="width:95px; min-width:90px; text-align:left !important; white-space:nowrap !important; font-size:0.82rem; color:#fde047;">8.5% / 24.0%</td>
+          <td style="width:160px; min-width:145px; text-align:left !important; font-size:0.82rem; color:#e2e8f0; white-space:normal !important; word-break:break-word; line-height:1.45;">マイル・中距離</td>
+          <td style="width:150px; min-width:135px; text-align:left !important; font-size:0.82rem; color:#38bdf8; white-space:normal !important; word-break:break-word; line-height:1.45;">標準</td>
+          <td style="width:145px; min-width:130px; text-align:left !important; font-size:0.82rem; color:#cbd5e1; white-space:normal !important; word-break:break-word; line-height:1.45;">東京・京都・阪神</td>
+          <td style="min-width:280px; max-width:360px; text-align:left !important; font-size:0.82rem; line-height:1.6; white-space:normal !important; word-break:break-word; color:#cbd5e1;"></td>
+          <td style="width:170px; min-width:155px; text-align:left !important; font-size:0.82rem; line-height:1.45; white-space:normal !important; word-break:break-word; color:#f472b6;">重賞優勝產駒多數</td>
         </tr>
       </tbody>
     </table>
@@ -42733,15 +42731,15 @@ window.applyUmasonaCombinedFilter = function() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v04.21"></script>
-<script src="yuruyuru_guides_db.js?v=v04.21"></script>
+<script src="unified_horses_full_db.js?v=v04.22"></script>
+<script src="yuruyuru_guides_db.js?v=v04.22"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v04.21"></script>
-<script src="jbis_engine.js?v=v04.21"></script><script>
+<script src="jbis_pedigree_db.js?v=v04.22"></script>
+<script src="jbis_engine.js?v=v04.22"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -45161,7 +45159,7 @@ function runExplosionSimulation() {
 function runSimulation() { runExplosionSimulation(); }
 
 // ==========================================
-// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.21)
+// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.22)
 // ==========================================
 
 // 1. 神器一：新手極速配種決策精靈 (Breeding Decision Wizard)
