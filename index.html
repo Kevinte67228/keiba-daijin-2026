@@ -17,10 +17,11 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v04.17"></script>
-<script src="core_guides_data.js?v=v04.17"></script>
-<script src="yearly_recs_db.js?v=v04.17"></script>
-<script src="horse_subtopics_data.js?v=v04.17"></script>
+<script src="master_lookup_db.js?v=v04.19"></script>
+<script src="core_guides_data.js?v=v04.19"></script>
+<script src="broodmare_recs_db.js?v=v04.19"></script>
+<script src="yearly_recs_db.js?v=v04.19"></script>
+<script src="horse_subtopics_data.js?v=v04.19"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2569,7 +2570,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v04.17</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v04.19</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="https://www.jbis.or.jp/horse/" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;" title="前往日本 JBIS Search 官方原站進行即時權威血統與馬情報檢索">
@@ -6548,7 +6549,7 @@ button.chip-btn.active {
 <div class="section-header">
 <div class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> 第 06 章：+40 爆發力 (爆発力)滿貫公式與賽務職業小技</div>
 <div class="section-meta">
-<span class="pill pill-gold">三大實戰血統樹 ＋ 爆發力堆疊精算 ＋ 賽務職業避坑手冊</span>
+<span class="pill pill-gold">四大實戰血統樹 ＋ 95極限配合精算 ＋ 賽務職業避坑手冊</span>
 </div>
 </div>
 <div class="section-body">
@@ -6564,7 +6565,7 @@ button.chip-btn.active {
 </div>
 
 <h3 style="color:var(--accent-gold); margin:20px 0 10px 0; font-size:1.05rem; display:flex; align-items:center; gap:8px;">
-<i class="fa-solid fa-diagram-project"></i> 【三大教科書級血統模型】+40 爆發力 (爆発力) 滿貫配種公式實戰範本
+<i class="fa-solid fa-diagram-project"></i> 【四大教科書級血統模型】+40~95 爆發力 (爆発力) 滿貫配種公式實戰範本
 </h3>
 <p style="font-size:0.85rem; color:#94a3b8; margin-bottom:12px;">
 ※ 提供三套不同配種流派的爆發力堆疊拆解表，玩家可依當前牧場公母馬血統現狀靈活套用。
@@ -6632,6 +6633,156 @@ button.chip-btn.active {
 </table>
 </div>
 
+
+<!-- 模型四：爆發力 95 ＆ 74 雙軌極限配合 -->
+<div class="tool-card" style="background:rgba(30,41,59,0.7); border:1px solid rgba(239,68,68,0.45);">
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+<strong style="color:#f87171; font-size:0.95rem;">④ 神域雙軌驗證型：爆發力 95＆74 配合</strong>
+<span class="badge badge-rainbow" style="font-size:0.85rem;">歐 95 (期71) / 日 74 (期50)</span>
+</div>
+<p style="font-size:0.8rem; color:#94a3b8; margin-bottom:8px;">以 12 重頂級理論滿貫構築，拆解近親虛胖暗箱與歐日場地切換的極致血統模型。</p>
+<table style="width:100%; font-size:0.78rem; line-height:1.7; color:#cbd5e1;">
+<tr><td style="text-align:left !important;">• 種牡馬設施 Lv3 ＋ 牝系配合</td><td style="text-align:right !important; color:#38bdf8; font-weight:bold;">+3 + 2</td></tr>
+<tr><td style="text-align:left !important;">• 血脈活性化配合 1 (6~8親系)</td><td style="text-align:right !important; color:#38bdf8; font-weight:bold;">+4</td></tr>
+<tr><td style="text-align:left !important;">• 母系インブリード ×4 (實質期待值 +12)</td><td style="text-align:right !important; color:#38bdf8; font-weight:bold;">+36</td></tr>
+<tr><td style="text-align:left !important;">• 名種牡馬因子 ×6 ＋ 大種牡馬因子 ×5</td><td style="text-align:right !important; color:#38bdf8; font-weight:bold;">+4 + 6</td></tr>
+<tr><td style="text-align:left !important;">• 第四重相性 (Force Nicks)</td><td style="text-align:right !important; color:#38bdf8; font-weight:bold;">+8</td></tr>
+<tr><td style="text-align:left !important;">• 宿敵母父◎ (同世代現役死鬥認定)</td><td style="text-align:right !important; color:#38bdf8; font-weight:bold;">+6</td></tr>
+<tr><td style="text-align:left !important;">• 〆母父世界系統昇格加成</td><td style="text-align:right !important; color:#38bdf8; font-weight:bold;">+5</td></tr>
+<tr><td style="text-align:left !important;">• 歐州限定：雙再見(8)＋完全活力(3)＋父系活性LV3(10)</td><td style="text-align:right !important; color:#f59e0b; font-weight:bold;">+21 (日場扣除)</td></tr>
+<tr style="border-top:1px dashed rgba(239,68,68,0.4); font-weight:bold;"><td style="color:#f87171; text-align:left !important;">雙軌滿貫總計：</td><td style="text-align:right !important; color:#f87171; font-size:0.95rem;">歐州 95 / 日本 74</td></tr>
+</table>
+</div>
+
+</div>
+
+<!-- ==================== 爆發力 95 ＆ 74 雙軌極限配合 12 重理論全覽深度解析 ==================== -->
+<div style="margin-top:24px; margin-bottom:24px; background:rgba(15,23,42,0.85); border:1px solid rgba(245,158,11,0.35); border-radius:10px; padding:18px;">
+  <h4 style="color:#f59e0b; margin:0 0 10px 0; font-size:1.02rem; display:flex; align-items:center; gap:8px; font-weight:700;">
+    <i class="fa-solid fa-crown"></i> 👑【第四範本：神域雙軌極限配合】95＆74 爆發力 12 重理論滿貫矩陣 (歐/日場地切換與期待值分析)
+  </h4>
+  <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.7; margin-bottom:12px;">
+    此配合為《Winning Post》系列最高難度的終極收斂配合之一。透過在 1970~1980 年代同時規劃 <strong>Haiseiko (ハイセイコー) 直系 5 子系統世界系統昇格</strong>、<strong>Secretariat、Tesco Boy、Halo 子系統確立</strong> 與 <strong>Danzig 歐洲人造零細化</strong>，達成全遊戲前所未見的 12 重配合理論全面共鳴！
+  </p>
+  <div class="scrollable-table-box" style="max-height:480px !important; overflow-y:auto !important;">
+    <table class="data-table" style="min-width:1080px; text-align:left !important;">
+      <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+        <tr>
+          <th class="sortable-th" style="width:70px; text-align:left !important;">序號 ⇅</th>
+          <th class="sortable-th" style="width:200px; text-align:left !important;">配合理論項目 (日/中) ⇅</th>
+          <th class="sortable-th" style="width:110px; text-align:left !important;">歐洲面板值 ⇅</th>
+          <th class="sortable-th" style="width:110px; text-align:left !important;">日本面板值 ⇅</th>
+          <th class="sortable-th" style="width:140px; text-align:left !important;">實質期待爆發力 ⇅</th>
+          <th class="sortable-th" style="min-width:450px; text-align:left !important;">具體達成條件與高階血統操控 SOP (繁體中文) ⇅</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:700; text-align:left !important;">01</td>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">種牡馬施設 Lv3</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+3</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+3</td>
+          <td style="text-align:left !important; color:#10b981; font-weight:700;">+3.0 (100%)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">牧場名聲突破 1000 後，將種牡馬設施擴建至等級 3 滿級。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; text-align:left !important;">02</td>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">血脈活性化配合 1</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+4</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+4</td>
+          <td style="text-align:left !important; color:#10b981; font-weight:700;">+4.0 (100%)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">3 代 8 本祖先中包含 6 個獨立親系統，兼具高活力與基因多樣性。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; text-align:left !important;">03</td>
+          <td style="font-weight:700; color:#f87171; text-align:left !important;">母系インブリード ×4</td>
+          <td style="text-align:left !important; color:#f87171; font-weight:700;">+36</td>
+          <td style="text-align:left !important; color:#f87171; font-weight:700;">+36</td>
+          <td style="text-align:left !important; color:#f59e0b; font-weight:700;">+12.0 (機率衰減)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">4 條母系近親疊加。面板數值高達 +36，但速度因子受血量機率抽籤影響，實質期待值為 12 點；其最大戰略價值在於 100% 穩定引導名牝特性。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; text-align:left !important;">04</td>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">牝系配合 (名門/主流)</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+2</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+2</td>
+          <td style="text-align:left !important; color:#10b981; font-weight:700;">+2.0 (100%)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">繁殖牝馬所屬牝系昇格為名門牝系或主流牝系。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; text-align:left !important;">05</td>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">名種牡馬因子 ×6</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+4</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+4</td>
+          <td style="text-align:left !important; color:#10b981; font-weight:700;">+4.0</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">血統表內持有 6 匹系統確立名種牡馬因子（因近親交配抵銷減算 2 點後實拿 4 點）。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; text-align:left !important;">06</td>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">大種牡馬因子 ×5</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+6</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+6</td>
+          <td style="text-align:left !important; color:#10b981; font-weight:700;">+6.0</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">血統表內持有 5 匹大種牡馬，其中 3 頭為世界系統（大種因子×2算），扣除近親減算後淨得 6 點。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; text-align:left !important;">07</td>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">フォースニックス (第四重相性)</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+8</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+8</td>
+          <td style="text-align:left !important; color:#10b981; font-weight:700;">+8.0 (100%)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">父系與母方 4 個母系系統全部建立相性關係（Force Nicks），提供極致穩定的 +8 滿額爆發力。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; text-align:left !important;">08</td>
+          <td style="font-weight:700; color:#f59e0b; text-align:left !important;">Wサヨナラ配合 (雙再見配合)</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+8</td>
+          <td style="text-align:left !important; color:#94a3b8;">0 (未成立)</td>
+          <td style="text-align:left !important; color:#10b981; font-weight:700;">+8.0 (歐州)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">種牡馬年齡 ≥ 23 歲且為所屬地區唯一該系統公馬，且繁殖母馬年齡 ≥ 15 歲。在歐州分牧場實施成立，日本因同系馬過多而不成立。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; text-align:left !important;">09</td>
+          <td style="font-weight:700; color:#f59e0b; text-align:left !important;">完全型活力補完</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+3</td>
+          <td style="text-align:left !important; color:#94a3b8;">0 (未成立)</td>
+          <td style="text-align:left !important; color:#10b981; font-weight:700;">+3.0 (歐州)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">四代 16 祖先全部由零細系統構成。需透過 Private 種牡馬設施將 Danzig 等主流系在歐洲徹底零細化。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; text-align:left !important;">10</td>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">ライバル母父◎ (宿敵母父◎)</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+6</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+6</td>
+          <td style="text-align:left !important; color:#10b981; font-weight:700;">+6.0 (100%)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">〆父與〆母父在現役時期多次同場 G1 廝殺累積宿敵度達到最高等級。兩者出生年份需嚴格控制在同世代。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; text-align:left !important;">11</td>
+          <td style="font-weight:700; color:#f59e0b; text-align:left !important;">メールライン活性化配合 Lv3</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+10</td>
+          <td style="text-align:left !important; color:#94a3b8;">0 (未成立)</td>
+          <td style="text-align:left !important; color:#10b981; font-weight:700;">+10.0 (歐州)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">父系連續 3 代皆為所屬區域零細系統，提供高達 +10 點純粹速度爆發力。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; text-align:left !important;">12</td>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">〆母父世界系統昇格加成</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+5</td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+5</td>
+          <td style="text-align:left !important; color:#10b981; font-weight:700;">+5.0 (100%)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">〆母父達成世界系統（4 個地區各具備獨立子系統分支），直接提供最高檔位母父加成。</td>
+        </tr>
+        <tr style="background:rgba(239,68,68,0.1); border-top:2px solid #ef4444; font-weight:bold;">
+          <td colspan="2" style="text-align:left !important; color:#f87171; font-size:0.95rem;">滿貫合計 (Total)</td>
+          <td style="text-align:left !important; color:#38bdf8; font-size:1.05rem;">95 點</td>
+          <td style="text-align:left !important; color:#fbbf24; font-size:1.05rem;">74 點 (-21)</td>
+          <td style="text-align:left !important; color:#10b981; font-size:1.05rem;">歐 71.0 / 日 50.0</td>
+          <td style="text-align:left !important; font-size:0.85rem; color:#cbd5e1;">歐洲比日本多出雙再見(+8)、完全活力(+3)與父系活性化(+10)共 21 點。實測產駒 SP 均值完美吻合實質期待值。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <h3 style="color:#38bdf8; margin:20px 0 10px 0; font-size:1.05rem; display:flex; align-items:center; gap:8px;">
@@ -8104,6 +8255,96 @@ button.chip-btn.active {
   </div>
 </div>
 
+
+<!-- ==================== 【項目 6】⚡【破解隱藏暗箱】近親交配 (含母系近親) 面板爆發力 vs 實質「期待爆發力」機率衰減大解密 ==================== -->
+<div id="inbreed-hidden-probability-mechanics" style="margin-top:24px; margin-bottom:20px; background:rgba(15,23,42,0.85); border:1px solid rgba(239,68,68,0.4); border-radius:10px; padding:18px;">
+  <h4 style="color:#f87171; margin:0 0 10px 0; font-size:1.02rem; display:flex; align-items:center; gap:8px; font-weight:700;">
+    <i class="fa-solid fa-triangle-exclamation"></i> ⚡【破解隱藏暗箱】近親交配 (含母系近親) 面板爆發力 vs 實質「期待爆發力」機率衰減大解密
+  </h4>
+  <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.7; margin-bottom:12px;">
+    在《Winning Post 10 2026》中，許多玩家常疑惑：<strong>「為何我組出面板爆發力 70~95 的母系近親極限配合，產下的幼駒速度 (SP) 分布卻和爆發力 45 的普通配合幾乎一樣？」</strong><br/>
+    經由底層代碼解構證實：<strong>近親交配 (インブリード / 母系インブリード) 的面板顯示爆發力存在嚴重「虛胖機率衰減」暗箱！</strong>
+  </p>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:14px;">
+    <div style="background:rgba(30,41,59,0.7); border-left:3px solid #10b981; padding:10px 14px; border-radius:4px;">
+      <strong style="color:#34d399; font-size:0.85rem;">① 基礎近親爆發力 (固定 100% 生效)</strong>
+      <p style="font-size:0.8rem; color:#94a3b8; margin:4px 0 0 0; line-height:1.6;">
+        由近親交配本身提供的固有爆發力（例如 3×4 的 +3 點），為底層常態固定觸發，不受機率衰減影響。
+      </p>
+    </div>
+    <div style="background:rgba(30,41,59,0.7); border-left:3px solid #f87171; padding:10px 14px; border-radius:4px;">
+      <strong style="color:#f87171; font-size:0.85rem;">② 速度因子爆發力 (依血量機率抽籤生效)</strong>
+      <p style="font-size:0.8rem; color:#94a3b8; margin:4px 0 0 0; line-height:1.6;">
+        祖先馬持有的速度因子 (スピード因子) 額外爆發力（如 2 個速因子 +6 點），<strong>必須依血量百分比（3×4 為 18.75%）逐次判定命中！</strong>未命中則該次配種速度加成直接歸零！
+      </p>
+    </div>
+    <div style="background:rgba(30,41,59,0.7); border-left:3px solid #f59e0b; padding:10px 14px; border-radius:4px;">
+      <strong style="color:#fbbf24; font-size:0.85rem;">③ 母系近親 (母系インブリード) 的真實戰略價值</strong>
+      <p style="font-size:0.8rem; color:#94a3b8; margin:4px 0 0 0; line-height:1.6;">
+        母系近親的真正價值<strong>絕非盲目堆疊數值</strong>，而是為了 <strong>100% 強制定向繼承目標名牝的「牝系特性」</strong>（如大舞台、超回復、直擊、芝質適性等）。
+      </p>
+    </div>
+  </div>
+
+  <div class="scrollable-table-box" style="max-height:420px !important; overflow-y:auto !important; margin-top:10px;">
+    <table class="data-table" style="min-width:960px; text-align:left !important;">
+      <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+        <tr>
+          <th class="sortable-th" style="width:130px; text-align:left !important;">近親交配世代模式 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+          <th class="sortable-th" style="width:100px; text-align:left !important;">血量佔比 (係數) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+          <th class="sortable-th" style="width:150px; text-align:left !important;">速因子命中率 (機率) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+          <th class="sortable-th" style="width:140px; text-align:left !important;">面板顯示爆發力 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+          <th class="sortable-th" style="width:140px; text-align:left !important;">實質期待爆發力 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+          <th class="sortable-th" style="min-width:300px; text-align:left !important;">育種學實戰診斷與性價比評級 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">3 × 4 (奇蹟血量)</td>
+          <td style="text-align:left !important;">18.75%</td>
+          <td style="text-align:left !important; color:#fbbf24; font-weight:700;">約 18.75% ~ 22%</td>
+          <td style="text-align:left !important;">+9 點 (基3 + 因子6)</td>
+          <td style="text-align:left !important; color:#34d399; font-weight:700;">約 +4.1 ~ +4.3 點</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">【性價比極限】雖實質期望值腰斬，但因危險度可中和，且能啟動名駒因子活性化，依然為近親首選。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">母系インブリード × 4</td>
+          <td style="text-align:left !important;">複合母系血量</td>
+          <td style="text-align:left !important; color:#fbbf24; font-weight:700;">約 20% ~ 25%</td>
+          <td style="text-align:left !important; color:#f87171; font-weight:700;">+36 點 (面板虛高)</td>
+          <td style="text-align:left !important; color:#34d399; font-weight:700;">實質期待值僅 +12 點</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">【極限陷阱警報】看似貢獻 +36 爆發力，實質因因子判定落空僅 +12！切勿為湊母系近親而犧牲異系活性化！</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">4 × 4</td>
+          <td style="text-align:left !important;">12.50%</td>
+          <td style="text-align:left !important; color:#fbbf24; font-weight:700;">約 12.50%</td>
+          <td style="text-align:left !important;">+6 點 (基2 + 因子4)</td>
+          <td style="text-align:left !important; color:#34d399; font-weight:700;">約 +2.5 點</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">【微效近親】爆發力期望值甚低，通常僅作為維持特定血統純度的次要過渡手段。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">2 × 3 / 2 × 4 (極濃)</td>
+          <td style="text-align:left !important;">25.00% ~ 37.5%</td>
+          <td style="text-align:left !important; color:#ef4444; font-weight:700;">約 25% ~ 37% (高危險)</td>
+          <td style="text-align:left !important;">+11 ~ +15 點</td>
+          <td style="text-align:left !important; color:#f87171; font-weight:700;">期望值 +5 點 (伴隨病弱)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">【極端危險禁區】危險度高達 3~5 點，伴隨產駒體質永久衰退、精神脆弱，嚴禁在主力產駒上實施。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:#34d399; text-align:left !important;">異系活性化配合 (Outbreed)</td>
+          <td style="text-align:left !important;">0% (無近親)</td>
+          <td style="text-align:left !important; color:#34d399; font-weight:700;">100% 必定生效</td>
+          <td style="text-align:left !important;">面板顯示即真實</td>
+          <td style="text-align:left !important; color:#34d399; font-weight:700;">100% 全額轉化 (不打折)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">【黃金育種真理】血脈活性化、第四重相性、雙再見、父系活性化等均為 100% 全額生效，同數值下異系質量碾壓近親！</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 </section>
 <!-- ==================== 第 13 章：系統交配 (Linebreed / 3×4 / 流行與零細) ==================== -->
 <section class="section-card" id="mod-linebreed">
@@ -9039,6 +9280,80 @@ button.chip-btn.active {
 </table>
 </div>
 </div>
+
+<!-- ==================== 五、2026 終極前瞻藍圖：始祖血脈融合 ＋ 戲劇因子 200 爆發力極限配合構想 ==================== -->
+<div id="ancestral-drama-200-explosion-blueprint" style="margin-top:28px; margin-bottom:20px; background:rgba(15,23,42,0.85); border:1px solid rgba(234,179,8,0.4); border-radius:10px; padding:18px;">
+  <h4 style="color:#fbbf24; margin:0 0 10px 0; font-size:1.02rem; display:flex; align-items:center; gap:8px; font-weight:700;">
+    <i class="fa-solid fa-bolt-lightning"></i> ⚡【五、2026 終極前瞻藍圖】始祖血脈融合 ＋ 戲劇因子 200 爆發力極限配合構想
+  </h4>
+  <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.7; margin-bottom:12px;">
+    《Winning Post 10 2026》全新登場的<strong>「始祖系統」</strong>與<strong>「Drama 因子 (ドラマ因子)」</strong>徹底粉碎了過去系列作 90~100 爆發力的理論上限，引領育種界正式跨入<strong>「爆發力 200 前後」</strong>的超神紀元！以下拆解 2026 最新四大配合理論的極限融合架構：
+  </p>
+
+  <div class="scrollable-table-box" style="max-height:480px !important; overflow-y:auto !important;">
+    <table class="data-table" style="min-width:1040px; text-align:left !important;">
+      <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+        <tr>
+          <th class="sortable-th" style="width:180px; text-align:left !important;">2026 極限核心配合 ⇅</th>
+          <th class="sortable-th" style="width:140px; text-align:left !important;">預估爆發加成 ⇅</th>
+          <th class="sortable-th" style="width:250px; text-align:left !important;">血統拓撲佈局條件 (日/中) ⇅</th>
+          <th class="sortable-th" style="min-width:420px; text-align:left !important;">神級突破效益與 2026 代碼級機制特徵 (繁體中文) ⇅</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:700; color:#fbbf24; text-align:left !important;">始祖血脈融合配合<br/><small class="text-muted">[2026 速度上限突破]</small></td>
+          <td style="text-align:left !important; color:#fbbf24; font-weight:700;">速度直接突破上限</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">
+            <strong>〆父父、〆父母、〆母父、〆母母</strong> 4 個位置分別歸屬於 <strong>4 個不同的「始祖系統」</strong>。
+          </td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">
+            【2026 唯一超越 85 SP 之鑰】當 4 始祖全滿時觸發終極「速度大幅提升 (スピードアップ)」，產駒能力上限突破常規天花板！
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">ドラマ因子ライン配合<br/><small class="text-muted">(戲劇因子傳承 Line)</small></td>
+          <td style="text-align:left !important; color:#38bdf8; font-weight:700;">+10 ~ +15 點<br/>(因子效果常態發動)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">
+            • 父系直系連續 4 代持有同一 Drama 因子（如引爆競馬ブーム之因子）。<br/>
+            • 〆母系連續 4 代持有同一 Drama 因子（如 8 馬身差大勝因子）。
+          </td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">
+            確保父方與母方的高階戲劇因子在產駒身上<strong>發動機率接近 100%</strong>，克服常規因子隨機不觸發的致命痛點。
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:#c084fc; text-align:left !important;">ドラマ因子融合配合<br/><small class="text-muted">(戲劇因子大融合)</small></td>
+          <td style="text-align:left !important; color:#c084fc; font-weight:700;">+25 ~ +35 點<br/>(超適應能力暴增)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">
+            全血統 13 種 Drama 因子全面覆蓋，且持有因子的種公馬全數達成系統確立。
+          </td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">
+            提供極其恐怖的純粹爆發力疊加，產駒全地形（芝質超寬幅、泥草雙全）與全氣候適應能力達到歷史顛峰。
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:#34d399; text-align:left !important;">始祖從屬進化規則<br/><small class="text-muted">(親系統 ➔ 始祖系統)</small></td>
+          <td style="text-align:left !important; color:#34d399; font-weight:700;">消除飽和 / 親系升格</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">
+            【2026 關鍵規則澄清】始祖系統並非親系統的外部上位夾層，而是<strong>「親系統直接進化晉升為始祖系統」</strong>（架構轉變為始祖系統 - 子系統）。
+          </td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">
+            澄清了初期社群對於系統層級的誤解，玩家可大膽將成熟親系統推向始祖系統，同時享有始祖血脈融合與子系統相性疊加雙重紅利。
+          </td>
+        </tr>
+        <tr style="background:rgba(234,179,8,0.1); border-top:2px solid #eab308; font-weight:bold;">
+          <td style="color:#fbbf24; text-align:left !important;">終極合體預測</td>
+          <td style="color:#fbbf24; font-size:1.05rem; text-align:left !important;">預測爆發力 ~200</td>
+          <td colspan="2" style="font-size:0.85rem; color:#cbd5e1; line-height:1.7; text-align:left !important;">
+            結合：傳統滿貫 (+45) ＋ 雙再見/父系活性 (+21) ＋ 始祖融合 (速度突破) ＋ 戲劇 Line (+15) ＋ 戲劇融合 (+35) ＋ 母馬滿活力 (+30) ＋ 宿敵三冠配合 (+15) ➔ <strong>合計極限爆發力可達 180 ~ 200+ 點！</strong>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 </section>
 <section class="section-card" id="sec-gene-factors">
 <div class="section-header">
@@ -9258,6 +9573,56 @@ button.chip-btn.active {
 <strong>《賽馬大亨 10 2026》血統支配率・系統確立與滅亡救援戰略庫</strong><br/>
 系統確立是本作血統繁育的終極核心。確立專屬子系統（日本支配率 ≥ 5.0% 或 世界支配率 ≥ 2.0%），不僅可將該公馬變更為獨立親系分支，更能全面消除近親交配的危險率，並激發「血脈活性化」與「特性昇華」！掌握關鍵年代的大種公馬確立時間軸，並提前改寫史實悲劇名駒的命運，是登頂大馬主的最高榮耀！
 </div>
+
+<!-- ==================== 【神級控盤術】利用 Private 種牡馬設施人造「零細化」極速控盤 SOP ==================== -->
+<div id="private-stud-zero-line-control-guide" style="margin-top:28px; margin-bottom:24px; background:rgba(15,23,42,0.85); border:1px solid rgba(56,189,248,0.35); border-radius:10px; padding:18px;">
+  <h4 style="color:#38bdf8; margin:0 0 10px 0; font-size:1.02rem; display:flex; align-items:center; gap:8px; font-weight:700;">
+    <i class="fa-solid fa-shield-halved"></i> 🛡️【神級控盤術】利用 Private 種牡馬設施人造「零細化」極速控盤指南 (以 Danzig 系歐州零細化為例)
+  </h4>
+  <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.7; margin-bottom:12px;">
+    在高階收斂配合（如爆發力 95 配合）中，「完全型活力補完 (+3)」、「父系活力化配合 (+10)」與「零細系統交配 (+4)」皆強制要求目標祖先所屬血統必須為<strong>「零細系統 (該區域支配率 &lt; 1%)」</strong>。然而像 Danzig (但茲)、Northern Dancer 等統治級巨頭在歐洲往往繁盛無比，常規下絕無可能自然零細化。
+  </p>
+
+  <div class="scrollable-table-box" style="max-height:460px !important; overflow-y:auto !important;">
+    <table class="data-table" style="min-width:1020px; text-align:left !important;">
+      <thead style="position:sticky !important; top:0 !important; z-index:10 !important; background:#1e293b !important;">
+        <tr>
+          <th class="sortable-th" style="width:130px; text-align:left !important;">控盤步驟階段 ⇅</th>
+          <th class="sortable-th" style="width:170px; text-align:left !important;">操作標的與歷史年份 ⇅</th>
+          <th class="sortable-th" style="width:230px; text-align:left !important;">具體執行機制與買入 SOP ⇅</th>
+          <th class="sortable-th" style="min-width:440px; text-align:left !important;">底層血統支配率演變與戰略收益 (繁體中文) ⇅</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">階段一：設施前置</td>
+          <td style="text-align:left !important;">牧場設施擴建 (早期)</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">開設歐美分牧場並建立 <strong>Private 種牡馬設施</strong>（可容納自身專屬種公馬）。</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">Private 設施內的種馬<strong>不對 NPC (電腦) 牧場開放配種</strong>，是人為切斷某一主流血脈繁育源頭的最強利器。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">階段二：名駒鎖定</td>
+          <td style="text-align:left !important;">1986 年 Green Desert<br/>1987 年 Chief's Crown</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">在引退年末結算時，第一時間購入 Danzig 最具產駒爆發力的主力直系種馬並打入 Private 設施。</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">阻斷 Green Desert (綠色沙漠) 在歐洲的大規模擴散，NPC 無法再用其繁育次世代優質公馬，Danzig 歐洲擴張瞬間熄火。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:#38bdf8; text-align:left !important;">階段三：急速枯竭</td>
+          <td style="text-align:left !important;">1988~1994 年間</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">持續將歐洲所有新退役的 Danzig 直系優質公馬全數收購或轉移至美洲/私人廄舍。</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">歐洲 Danzig 系統在籍種馬數急遽歸零，<strong>血統支配率在 5 年內由 4.5% 暴跌至 0.8%</strong>，成功達成「人造歐洲零細化」！</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:#10b981; text-align:left !important;">階段四：極限收割</td>
+          <td style="text-align:left !important;">收斂配種實施期</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6;">將具備 Danzig 血統的母馬引入歐洲分牧場與目標種馬交配。</td>
+          <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1;">原本因主流而失效的<strong>「完全型活力補完 (+3)」與「父系活力化配合 (+10)」瞬間被完全點亮</strong>，白賺 +13 點滿額真爆發力！</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 </div>
 
 <h3 style="color:var(--accent-gold); margin:20px 0 10px 0; font-size:1.05rem; display:flex; align-items:center; gap:8px;">
@@ -41366,6 +41731,81 @@ function filterTab5Racecourses() {
 </div>
 </div>
 </section>
+
+<!-- ==================== 第 46 章：全年代推薦繁殖母馬・四大管道引進大百科 (1968~2025) ==================== -->
+<section class="section-card" id="sec-broodmare-yearly-db" style="margin-bottom:18px;">
+<div class="section-header">
+<div class="section-title"><i class="fa-solid fa-venus"></i> 第 46 章：全年代推薦繁殖母馬・四大管道引進大百科 (國內/海外/10月拍賣/12月年末輸入 1968~2025)</div>
+<div class="section-meta">
+<span class="pill pill-gold">1968~2025 年代全覆蓋 ＋ 1,425 筆名牝 ＋ 4 大管道即時過濾</span>
+</div>
+</div>
+<div class="section-body">
+
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-venus-mars" style="font-size:1.3rem; color:var(--gold-color);"></i>
+<div>
+<strong>《賽馬大亨 10 2026》全年代繁殖母馬 (繁殖牝馬) 繁育引進全覽庫</strong><br/>
+完整收錄 <strong>1968 年至 2025 年</strong> 全年代精選繁殖母馬，清晰標註四大引進管道（<strong>🇯🇵 國內牧場購入</strong>、<strong>🌎 海外名牝引進</strong>、<strong>🏛️ 10 月市場拍賣會焦點</strong>、<strong>❄️ 12 月年末輸入限定名牝</strong>）。包含仔出星級 (★0~10)、適性、預估預算與後代核心成就，助您精準鎖定各年代最強母系基石！
+</div>
+</div>
+
+<!-- 控制組件：年代膠囊軌道 ＋ 管道篩選 ＋ 馬札篩選 ＋ 搜尋框 -->
+<div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:18px;">
+
+<!-- 頂部資訊列與搜尋框 -->
+<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+  <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+    <span id="broodmareCurrentYearBadge" style="font-size:14px; color:var(--gold-color); font-weight:800;">📅 1968 年推薦繁殖母馬</span>
+    <span id="broodmareResultCount" class="badge badge-info" style="font-size:12px;">載入中...</span>
+  </div>
+  <div style="display:flex; align-items:center; gap:8px;">
+    <input type="text" id="broodmareSearchInput" placeholder="🔍 搜尋母馬名、產駒、評語..." oninput="onBroodmareFilterChange()" style="background:rgba(15,23,42,0.8); border:1px solid rgba(56,189,248,0.3); border-radius:20px; padding:6px 14px; color:#fff; font-size:12px; width:220px; outline:none;" />
+    <button class="chip-btn" onclick="resetBroodmareFilters()" style="padding:4px 10px !important; font-size:11px !important;">重設</button>
+  </div>
+</div>
+
+<!-- 年代單行滑動膠囊軌道 (GEMINI.md 規範 5) -->
+<div id="broodmareYearChipsRail" class="chip-rail" style="padding: 6px 4px 10px 4px; margin-bottom:12px;">
+  <!-- Rendered via JS -->
+</div>
+
+<!-- 管道過濾晶片軌道 -->
+<div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
+  <span style="font-size:12px; color:#94a3b8; font-weight:700; white-space:nowrap;">入手管道：</span>
+  <div id="broodmareChannelChips" class="chip-rail" style="padding: 2px 0; display:inline-flex; gap:6px;">
+    <button class="chip-btn active" data-channel="ALL" onclick="setBroodmareChannel('ALL', this)">全部管道</button>
+    <button class="chip-btn" data-channel="國內牧場" onclick="setBroodmareChannel('國內牧場', this)">🇯🇵 國內牧場</button>
+    <button class="chip-btn" data-channel="海外引進" onclick="setBroodmareChannel('海外引進', this)">🌎 海外引進</button>
+    <button class="chip-btn" data-channel="10月市場拍賣" onclick="setBroodmareChannel('10月市場拍賣', this)">🏛️ 10月市場拍賣</button>
+    <button class="chip-btn" data-channel="12月年末輸入" onclick="setBroodmareChannel('12月年末輸入', this)">❄️ 12月年末輸入</button>
+  </div>
+</div>
+
+<!-- 馬札等級過濾晶片軌道 -->
+<div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+  <span style="font-size:12px; color:#94a3b8; font-weight:700; white-space:nowrap;">馬札等級：</span>
+  <div id="broodmareBadgeChips" class="chip-rail" style="padding: 2px 0; display:inline-flex; gap:6px;">
+    <button class="chip-btn active" data-badge="ALL" onclick="setBroodmareBadge('ALL', this)">全部札</button>
+    <button class="chip-btn" data-badge="虹札" onclick="setBroodmareBadge('虹札', this)">🌈 虹札</button>
+    <button class="chip-btn" data-badge="金札" onclick="setBroodmareBadge('金札', this)">🥇 金札</button>
+    <button class="chip-btn" data-badge="銀札" onclick="setBroodmareBadge('銀札', this)">🥈 銀札</button>
+    <button class="chip-btn" data-badge="銅札" onclick="setBroodmareBadge('銅札', this)">🥉 銅札</button>
+    <button class="chip-btn" data-badge="綠札" onclick="setBroodmareBadge('綠札', this)">🟢 綠札/無札</button>
+  </div>
+</div>
+
+</div>
+
+<!-- 繁殖母馬資料表格容器 -->
+<div id="broodmareTableContainer" style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:10px; padding:16px; min-height:300px;">
+  <!-- Rendered via JS -->
+</div>
+
+</div>
+</section>
+
+
 <section class="section-card" id="sec-nicknames-full-db" style="margin-bottom:18px;">
 <div class="section-header">
 <div class="section-title"><i class="fa-solid fa-tags"></i> 第 46 章：殿堂馬稱號 (異名 / Nicknames) 全量數據庫與獲得條件完全圖鑑</div>
@@ -42274,15 +42714,15 @@ function applyUmasonaCombinedFilter() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v04.17"></script>
-<script src="yuruyuru_guides_db.js?v=v04.17"></script>
+<script src="unified_horses_full_db.js?v=v04.19"></script>
+<script src="yuruyuru_guides_db.js?v=v04.19"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v04.17"></script>
-<script src="jbis_engine.js?v=v04.17"></script><script>
+<script src="jbis_pedigree_db.js?v=v04.19"></script>
+<script src="jbis_engine.js?v=v04.19"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -44702,7 +45142,7 @@ function runExplosionSimulation() {
 function runSimulation() { runExplosionSimulation(); }
 
 // ==========================================
-// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.17)
+// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.19)
 // ==========================================
 
 // 1. 神器一：新手極速配種決策精靈 (Breeding Decision Wizard)
@@ -48620,6 +49060,214 @@ document.addEventListener('DOMContentLoaded', function() {
   if (typeof window.decodeFoalComment === 'function') window.decodeFoalComment();
   if (typeof window.simulateFacilitiesSandbox === 'function') window.simulateFacilitiesSandbox();
 });
+
+
+
+// ==================== 全年代推薦繁殖母馬大百科交互引擎 (Broodmare Recs Engine) ====================
+let currentBroodmareYear = 1968;
+let currentBroodmareChannel = 'ALL';
+let currentBroodmareBadge = 'ALL';
+
+function initBroodmareRecsUI() {
+    const rail = document.getElementById('broodmareYearChipsRail');
+    if (!rail) return;
+    rail.innerHTML = '';
+    
+    const data = window.BROODMARE_RECS_DATA || {};
+    const years = Object.keys(data).map(Number).filter(n => !isNaN(n)).sort((a,b) => a - b);
+    
+    if (years.length === 0) {
+        rail.innerHTML = '<span style="color:#94a3b8; font-size:12px;">⏳ 正在載入繁殖母馬數據庫...</span>';
+        return;
+    }
+    
+    if (!years.includes(currentBroodmareYear) && years.length > 0) {
+        currentBroodmareYear = years[0];
+    }
+    
+    years.forEach(y => {
+        const btn = document.createElement('button');
+        btn.className = 'chip-btn' + (y === currentBroodmareYear ? ' active' : '');
+        btn.textContent = y + ' 年';
+        btn.onclick = () => selectBroodmareYear(y, btn);
+        rail.appendChild(btn);
+    });
+    
+    const badgeEl = document.getElementById('broodmareCurrentYearBadge');
+    if (badgeEl) badgeEl.textContent = `📅 ${currentBroodmareYear} 年推薦繁殖母馬`;
+    
+    renderBroodmareRecsTable();
+}
+
+function selectBroodmareYear(year, btn) {
+    currentBroodmareYear = year;
+    const rail = document.getElementById('broodmareYearChipsRail');
+    if (rail) {
+        rail.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+    }
+    if (btn) btn.classList.add('active');
+    
+    const badgeEl = document.getElementById('broodmareCurrentYearBadge');
+    if (badgeEl) badgeEl.textContent = `📅 ${year} 年推薦繁殖母馬`;
+    
+    renderBroodmareRecsTable();
+}
+
+function setBroodmareChannel(channel, btn) {
+    currentBroodmareChannel = channel;
+    const container = document.getElementById('broodmareChannelChips');
+    if (container) {
+        container.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+    }
+    if (btn) btn.classList.add('active');
+    renderBroodmareRecsTable();
+}
+
+function setBroodmareBadge(badge, btn) {
+    currentBroodmareBadge = badge;
+    const container = document.getElementById('broodmareBadgeChips');
+    if (container) {
+        container.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+    }
+    if (btn) btn.classList.add('active');
+    renderBroodmareRecsTable();
+}
+
+function resetBroodmareFilters() {
+    currentBroodmareChannel = 'ALL';
+    currentBroodmareBadge = 'ALL';
+    const sInput = document.getElementById('broodmareSearchInput');
+    if (sInput) sInput.value = '';
+    
+    document.querySelectorAll('#broodmareChannelChips .chip-btn').forEach(b => {
+        if (b.getAttribute('data-channel') === 'ALL') b.classList.add('active');
+        else b.classList.remove('active');
+    });
+    document.querySelectorAll('#broodmareBadgeChips .chip-btn').forEach(b => {
+        if (b.getAttribute('data-badge') === 'ALL') b.classList.add('active');
+        else b.classList.remove('active');
+    });
+    renderBroodmareRecsTable();
+}
+
+function onBroodmareFilterChange() {
+    renderBroodmareRecsTable();
+}
+
+function renderBroodmareRecsTable() {
+    const container = document.getElementById('broodmareTableContainer');
+    if (!container) return;
+    
+    const data = window.BROODMARE_RECS_DATA || {};
+    let list = data[currentBroodmareYear] || [];
+    
+    const sInput = document.getElementById('broodmareSearchInput');
+    const q = sInput ? sInput.value.trim().toLowerCase() : '';
+    
+    let filtered = list.filter(item => {
+        if (currentBroodmareChannel !== 'ALL') {
+            if (currentBroodmareChannel === '10月市場拍賣' && !item.channel.includes('10月')) return false;
+            else if (currentBroodmareChannel === '12月年末輸入' && !item.channel.includes('12月')) return false;
+            else if (currentBroodmareChannel === '海外引進' && !item.channel.includes('海外')) return false;
+            else if (currentBroodmareChannel === '國內牧場' && !item.channel.includes('國內')) return false;
+        }
+        if (currentBroodmareBadge !== 'ALL') {
+            if (currentBroodmareBadge === '綠札' && (item.badge !== '綠札' && item.badge !== '無札')) return false;
+            else if (currentBroodmareBadge !== '綠札' && item.badge !== currentBroodmareBadge) return false;
+        }
+        if (q) {
+            const str = (item.name + ' ' + (item.disp_name||'') + ' ' + (item.comment||'') + ' ' + (item.region||'')).toLowerCase();
+            if (!str.includes(q)) return false;
+        }
+        return true;
+    });
+    
+    const countEl = document.getElementById('broodmareResultCount');
+    if (countEl) {
+        countEl.textContent = `共 ${filtered.length} 筆名牝 (該年總計 ${list.length} 筆)`;
+    }
+    
+    if (filtered.length === 0) {
+        container.innerHTML = `
+            <div style="text-align:center; padding:30px; color:#94a3b8;">
+                <i class="fa-solid fa-filter" style="font-size:2rem; margin-bottom:8px; opacity:0.5;"></i>
+                <p>在 ${currentBroodmareYear} 年查無符合當前篩選條件的繁殖母馬紀錄。</p>
+                <button class="chip-btn" onclick="resetBroodmareFilters()" style="margin-top:10px;">清除篩選條件</button>
+            </div>
+        `;
+        return;
+    }
+    
+    const isScrollable = filtered.length > 15;
+    let tableHtml = `
+        <div class="table-responsive ${isScrollable ? 'scrollable-table-box' : ''}" style="${isScrollable ? 'max-height:600px !important; overflow-y:auto !important;' : ''}">
+            <table class="data-table" style="min-width:1120px; width:100%; text-align:left !important;">
+                <thead style="${isScrollable ? 'position:sticky !important; top:0 !important; z-index:10 !important;' : ''} background:#1e293b !important;">
+                    <tr>
+                        <th class="sortable-th" style="width:70px; text-align:left !important;">年份 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                        <th class="sortable-th" style="width:190px; text-align:left !important;">繁殖母馬名稱 (日/中) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                        <th class="sortable-th" style="width:140px; text-align:left !important;">入手管道 / 時機 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                        <th class="sortable-th" style="width:80px; text-align:left !important;">馬札 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                        <th class="sortable-th" style="width:90px; text-align:left !important;">仔出 (仔出し) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                        <th class="sortable-th" style="width:130px; text-align:left !important;">場地 / 距離適性 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                        <th class="sortable-th" style="width:150px; text-align:left !important;">入手預算 / 難度 <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                        <th class="sortable-th" style="min-width:380px; text-align:left !important;">繁育價值與戰略評語 (繁體中文) <span class="sort-indicator" style="font-size:0.75em; opacity:0.6;">⇅</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+    `;
+    
+    filtered.forEach(item => {
+        let badgeColor = 'badge-muted';
+        if (item.badge === '虹札') badgeColor = 'badge-rainbow';
+        else if (item.badge === '金札') badgeColor = 'badge-gold';
+        else if (item.badge === '銀札') badgeColor = 'badge-silver';
+        else if (item.badge === '銅札') badgeColor = 'badge-bronze';
+        else if (item.badge === '綠札') badgeColor = 'badge-green';
+        
+        let channelBadge = 'badge-info';
+        if (item.channel.includes('10月')) channelBadge = 'badge-warning';
+        else if (item.channel.includes('12月')) channelBadge = 'badge-danger';
+        else if (item.channel.includes('海外')) channelBadge = 'badge-purple';
+        
+        tableHtml += `
+            <tr>
+                <td style="font-weight:700; color:#94a3b8; text-align:left !important;">${currentBroodmareYear}</td>
+                <td style="font-weight:700; color:var(--accent-gold); text-align:left !important;">
+                    <a class="horse-link" onclick="openNativeHorseDossier('${item.name}')">${item.disp_name || item.name}</a>
+                </td>
+                <td style="text-align:left !important;">
+                    <span class="badge ${channelBadge}" style="font-size:0.75rem;">${item.channel}</span>
+                </td>
+                <td style="text-align:left !important;">
+                    <span class="badge ${badgeColor}" style="font-size:0.75rem;">${item.badge}</span>
+                </td>
+                <td style="text-align:left !important; font-weight:700; color:#fbbf24;">
+                    ${item.kodaidashi}
+                </td>
+                <td style="text-align:left !important; font-size:0.8rem; color:#cbd5e1;">
+                    ${item.track} ${item.dist && item.dist !== '-' ? '('+item.dist+')' : ''}
+                </td>
+                <td style="text-align:left !important; font-size:0.8rem; color:#38bdf8;">
+                    ${item.budget || '-'}
+                </td>
+                <td style="text-align:left !important; font-size:0.82rem; line-height:1.6; color:#cbd5e1; word-break:break-word;">
+                    ${item.comment}
+                </td>
+            </tr>
+        `;
+    });
+    
+    tableHtml += `
+                </tbody>
+            </table>
+        </div>
+    `;
+    
+    container.innerHTML = tableHtml;
+}
+
+
 </script>
 </body>
 </html>
