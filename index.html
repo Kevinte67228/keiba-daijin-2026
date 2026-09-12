@@ -17,12 +17,13 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v04.24"></script>
-<script src="core_guides_data.js?v=v04.24"></script>
-<script src="broodmare_recs_db.js?v=v04.24"></script>
-<script src="gamerch_guides_db.js?v=v04.24"></script>
-<script src="yearly_recs_db.js?v=v04.24"></script>
-<script src="horse_subtopics_data.js?v=v04.24"></script>
+<script src="master_lookup_db.js?v=v04.25"></script>
+<script src="core_guides_data.js?v=v04.25"></script>
+<script src="broodmare_recs_db.js?v=v04.25"></script>
+<script src="gamerch_guides_db.js?v=v04.25"></script>
+<script src="breeding_expansion_db.js?v=v04.25"></script>
+<script src="yearly_recs_db.js?v=v04.25"></script>
+<script src="horse_subtopics_data.js?v=v04.25"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2571,7 +2572,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v04.24</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v04.25</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="https://www.jbis.or.jp/horse/" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;" title="前往日本 JBIS Search 官方原站進行即時權威血統與馬情報檢索">
@@ -10761,6 +10762,61 @@ button.chip-btn.active {
 </div>
 
 </section>
+
+<section class="section-card" id="sec-breeding-master-expansion" style="margin-bottom:18px;">
+<div class="section-header">
+<div class="section-title"><i class="fa-solid fa-dna"></i> 第 51 章：Winning Post 10 2026 極限配種大師・名牝系確立與全年代系統確立路線圖大百科 (Dosute 爆發力 95 & 74 配合 ＋ 6大傳奇名牝系 ＋ 現代51名種馬智慧相性 ＋ 8大年代確立路線圖)</div>
+<div class="section-meta">
+<span class="pill pill-gold">Dosute 爆發力95神級配合 ＋ 6大名牝系 ＋ 51名種公智慧相性 ＋ 8大劇本40年確立年表</span>
+</div>
+</div>
+<div class="section-body">
+
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-crown" style="font-size:1.3rem; color:var(--gold-color);"></i>
+<div>
+<strong>《賽馬大亨 10 2026》極限配種大師・名牝系確立與全年代系統確立全書</strong><br/>
+全面復刻權威攻略 Dosute 3周目極限爆發力體系與世界級血統傳承。涵蓋 <strong>Dosute 爆發力 95 & 74 神級配合全套流程與 4 代血統矩陣構建樹</strong>、<strong>全年代 6 大傳奇名牝系 (緋紅/風之星/西沙里奧/太平洋/跳舞之匙/織女星) 確立大百科</strong>、<strong>現代 51 大名種公馬「智慧相性與最高爆發力 (25~45+) 配種推薦庫」</strong>、<strong>8 大年代劇本 40 年系統確立路線圖 (照抄級年表與 Private 搶救)</strong> 與 <strong>受胎率暗箱・雙胞胎仔出 ★10 鎖定術</strong>！
+</div>
+</div>
+
+<!-- 控制組件：5 大核心模組科技流光膠囊軌道 ＋ 即時搜尋框 -->
+<div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:18px;">
+
+<!-- 頂部資訊列與搜尋框 -->
+<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+  <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+    <span id="breedingExpActiveModuleBadge" style="font-size:14px; color:var(--gold-color); font-weight:800;">⚡ Dosute 3周目 極限配種大師實戰庫 (爆發力 95 & 74)</span>
+    <span id="breedingExpModuleStatus" class="badge badge-info" style="font-size:12px;">5 大繁育模組就緒</span>
+  </div>
+  <div style="display:flex; align-items:center; gap:8px;">
+    <input id="breedingExpSearchInput" oninput="window.onBreedingExpSearchChange()" placeholder="🔍 搜尋種馬/母馬/配合理論/爆發力..." style="background:var(--bg-primary); color:var(--text-primary); border:1px solid var(--border-color); border-radius:20px; padding:6px 14px; font-size:13px; outline:none; min-width:260px;" type="text"/>
+    <button class="btn btn-sm btn-outline-secondary" onclick="window.resetBreedingExpFilters()" style="border-radius:20px; font-size:12px; padding:5px 12px;">重設</button>
+  </div>
+</div>
+
+<!-- 5 大核心模組流光膠囊軌道 -->
+<div class="chip-rail" id="breedingExpModuleChips" style="padding: 6px 4px 10px 4px !important; margin-bottom:4px;">
+  <button class="chip-btn active" data-module="dosute-extreme" onclick="window.switchBreedingExpModule('dosute-extreme', this)">⚡ 爆發力 95 & 74</button>
+  <button class="chip-btn" data-module="female-lines" onclick="window.switchBreedingExpModule('female-lines', this)">👑 6大名牝系傳承</button>
+  <button class="chip-btn" data-module="sire-matches" onclick="window.switchBreedingExpModule('sire-matches', this)">🐴 51名種公智慧相性</button>
+  <button class="chip-btn" data-module="system-roadmaps" onclick="window.switchBreedingExpModule('system-roadmaps', this)">📅 8大年代確立路線圖</button>
+  <button class="chip-btn" data-module="fertility-secrets" onclick="window.switchBreedingExpModule('fertility-secrets', this)">🏥 受胎率與雙胞胎秘笈</button>
+</div>
+
+</div>
+
+<!-- 動態內容渲染容器 -->
+<div id="breedingExpansionContainer">
+  <div style="text-align:center; padding:40px; color:var(--text-muted);">
+    <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem; margin-bottom:10px;"></i><br/>
+    正在載入極限配種大師與繁育擴充數據庫...
+  </div>
+</div>
+
+</div>
+</section>
+
 </div>
 <!-- Pillar 3: 🐴 幼駒相馬・評語對照 -->
 <div class="pillar-content" id="pillar-foals" style="display:none;">
@@ -42796,15 +42852,15 @@ window.applyUmasonaCombinedFilter = function() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v04.24"></script>
-<script src="yuruyuru_guides_db.js?v=v04.24"></script>
+<script src="unified_horses_full_db.js?v=v04.25"></script>
+<script src="yuruyuru_guides_db.js?v=v04.25"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v04.24"></script>
-<script src="jbis_engine.js?v=v04.24"></script><script>
+<script src="jbis_pedigree_db.js?v=v04.25"></script>
+<script src="jbis_engine.js?v=v04.25"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -43966,6 +44022,14 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <span class="jump-num">第 47 章</span>
 <span class="jump-title">Winning Post 10 2026 終極進階攻略與暗箱大數據庫 (Gamerch 48 篇全量深度攻略)</span>
 </button>
+
+<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-breeding-master-expansion')">
+<span class="jump-icon"><i class="fa-solid fa-dna"></i></span>
+<span class="jump-num">第 51 章</span>
+<span class="jump-title">極限配種大師・名牝系確立與全年代系統確立路線圖大百科 (Dosute 爆發力95)</span>
+</button>
+
+
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-nicknames-full-db')">
 <span class="jump-icon"><i class="fa-solid fa-tags"></i></span>
 <span class="jump-num">第 46 章</span>
@@ -44111,6 +44175,7 @@ function switchMainPillar(pillarId) {
         if (pillarId === 'pillar-db') {
             if (typeof window.initMasterHorseDb === 'function') window.initMasterHorseDb();
             if (typeof window.initGamerchMasterDB === 'function') window.initGamerchMasterDB();
+    if (typeof window.initBreedingExpDB === 'function') window.initBreedingExpDB();
             if (typeof initSiresAndNenpyo === 'function') initSiresAndNenpyo();
             if (typeof filterBreedingHorsesTable === 'function') filterBreedingHorsesTable();
             if (typeof filterRacehorsesTable === 'function') filterRacehorsesTable();
@@ -45235,7 +45300,7 @@ function runExplosionSimulation() {
 function runSimulation() { runExplosionSimulation(); }
 
 // ==========================================
-// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.24)
+// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.25)
 // ==========================================
 
 // 1. 神器一：新手極速配種決策精靈 (Breeding Decision Wizard)
@@ -49912,6 +49977,176 @@ document.addEventListener('DOMContentLoaded', () => {
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
     setTimeout(window.initGamerchMasterDB, 150);
 }
+
+
+
+// ==========================================
+// Chapter 51: Breeding Master Expansion Engine
+// ==========================================
+window.currentBreedingExpModule = 'dosute-extreme';
+
+window.switchBreedingExpModule = function(modId, btn) {
+    window.currentBreedingExpModule = modId;
+    const rail = document.getElementById('breedingExpModuleChips');
+    if (rail) {
+        rail.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+        if (btn) {
+            btn.classList.add('active');
+        } else {
+            const target = rail.querySelector(`.chip-btn[data-module="${modId}"]`);
+            if (target) target.classList.add('active');
+        }
+    }
+    const badgeEl = document.getElementById('breedingExpActiveModuleBadge');
+    if (badgeEl && window.BREEDING_EXPANSION_DB) {
+        const mod = window.BREEDING_EXPANSION_DB.modules.find(m => m.id === modId);
+        if (mod) badgeEl.innerHTML = `${mod.badge} ${mod.name}`;
+    }
+    window.renderBreedingExpModuleContent();
+};
+
+window.onBreedingExpSearchChange = function() {
+    window.renderBreedingExpModuleContent();
+};
+
+window.resetBreedingExpFilters = function() {
+    const sInput = document.getElementById('breedingExpSearchInput');
+    if (sInput) sInput.value = '';
+    window.switchBreedingExpModule('dosute-extreme', document.querySelector('#breedingExpModuleChips .chip-btn[data-module="dosute-extreme"]'));
+};
+
+window.renderBreedingExpModuleContent = function() {
+    const container = document.getElementById('breedingExpansionContainer');
+    if (!container || !window.BREEDING_EXPANSION_DB) return;
+    
+    const mod = window.BREEDING_EXPANSION_DB.modules.find(m => m.id === window.currentBreedingExpModule);
+    if (!mod) {
+        container.innerHTML = `<div style="text-align:center; padding:30px; color:var(--text-muted);">模組載入中...</div>`;
+        return;
+    }
+    
+    const searchVal = (document.getElementById('breedingExpSearchInput')?.value || '').toLowerCase().trim();
+    let html = '';
+    
+    // Header
+    html += `
+        <div style="background:rgba(30, 41, 59, 0.5); border-left:4px solid var(--accent-gold); padding:12px 18px; border-radius:6px; margin-bottom:16px;">
+            <div style="font-size:15px; font-weight:700; color:var(--text-primary); margin-bottom:4px;">
+                <i class="fa-solid ${mod.icon}" style="color:var(--accent-gold); margin-right:8px;"></i>${mod.name}
+            </div>
+            <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">${mod.desc}</div>
+        </div>
+    `;
+    
+    if (mod.table) {
+        let rows = mod.table.rows;
+        if (searchVal) {
+            rows = rows.filter(r => r.join(' ').toLowerCase().includes(searchVal));
+        }
+        html += `
+            <div class="scrollable-table-box" style="margin-top:10px;">
+                <table class="data-table" style="min-width:1120px; width:100%;">
+                    <thead>
+                        <tr>
+        `;
+        mod.table.headers.forEach(h => {
+            html += `<th class="sortable-th" style="text-align:left !important;">${h} ⇅</th>`;
+        });
+        html += `</tr></thead><tbody>`;
+        rows.forEach(r => {
+            html += `<tr>`;
+            r.forEach((cell, idx) => {
+                const style = idx === 0 ? 'font-weight:700; color:var(--text-primary);' : (idx === r.length - 1 ? 'min-width:320px; white-space:normal !important; line-height:1.6;' : 'line-height:1.5;');
+                html += `<td style="${style} text-align:left !important;">${cell}</td>`;
+            });
+            html += `</tr>`;
+        });
+        html += `</tbody></table></div>`;
+    } else if (mod.sections) {
+        mod.sections.forEach(sec => {
+            html += `
+                <div style="margin-top:20px; margin-bottom:14px;">
+                    <div style="font-size:15px; font-weight:800; color:var(--accent-gold); border-bottom:1px solid rgba(245, 158, 11, 0.3); padding-bottom:6px; margin-bottom:12px;">
+                        ${sec.title}
+                    </div>
+            `;
+            if (sec.type === 'cards' && sec.cards) {
+                html += `<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px;">`;
+                sec.cards.forEach(card => {
+                    const borderColor = card.color === 'gold' ? 'var(--accent-gold)' : (card.color === 'blue' ? '#38bdf8' : '#10b981');
+                    html += `
+                        <div style="background:rgba(15, 23, 42, 0.6); border:1px solid ${borderColor}; border-radius:8px; padding:14px;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                <div style="font-weight:700; color:var(--text-primary); font-size:14px;">${card.title}</div>
+                                <span class="badge" style="background:${borderColor}; color:#0f172a; font-weight:800; font-size:11px;">${card.tag}</span>
+                            </div>
+                            <div style="font-size:13px; color:var(--text-secondary); line-height:1.6; text-align:left !important;">
+                                ${card.content.replace(/\n/g, '<br/>')}
+                            </div>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+            } else if (sec.type === 'table' && sec.headers && sec.rows) {
+                let rows = sec.rows;
+                if (searchVal) {
+                    rows = rows.filter(r => r.join(' ').toLowerCase().includes(searchVal));
+                }
+                html += `
+                    <div class="scrollable-table-box">
+                        <table class="data-table" style="min-width:1080px; width:100%;">
+                            <thead>
+                                <tr>
+                `;
+                sec.headers.forEach(h => {
+                    html += `<th class="sortable-th" style="text-align:left !important;">${h} ⇅</th>`;
+                });
+                html += `</tr></thead><tbody>`;
+                rows.forEach(r => {
+                    html += `<tr>`;
+                    r.forEach((cell, idx) => {
+                        const style = idx === 0 ? 'font-weight:700; color:var(--text-primary);' : (idx === r.length - 1 ? 'min-width:320px; white-space:normal !important; line-height:1.6;' : 'line-height:1.5;');
+                        html += `<td style="${style} text-align:left !important;">${cell}</td>`;
+                    });
+                    html += `</tr>`;
+                });
+                html += `</tbody></table></div>`;
+            }
+            html += `</div>`;
+        });
+    } else if (mod.cards) {
+        html += `<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; margin-top:12px;">`;
+        mod.cards.forEach(card => {
+            const borderColor = card.color === 'gold' ? 'var(--accent-gold)' : (card.color === 'blue' ? '#38bdf8' : '#10b981');
+            html += `
+                <div style="background:rgba(15, 23, 42, 0.6); border:1px solid ${borderColor}; border-radius:8px; padding:14px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <div style="font-weight:700; color:var(--text-primary); font-size:14px;">${card.title}</div>
+                        <span class="badge" style="background:${borderColor}; color:#0f172a; font-weight:800; font-size:11px;">${card.tag}</span>
+                    </div>
+                    <div style="font-size:13px; color:var(--text-secondary); line-height:1.6; text-align:left !important;">
+                        ${card.content.replace(/\n/g, '<br/>')}
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div>`;
+    }
+    
+    container.innerHTML = html;
+    
+    if (typeof window.makeSortable === 'function') {
+        container.querySelectorAll('table.data-table').forEach(tbl => window.makeSortable(tbl));
+    }
+};
+
+window.initBreedingExpDB = function() {
+    if (window.BREEDING_EXPANSION_DB) {
+        window.renderBreedingExpModuleContent();
+    } else {
+        setTimeout(window.initBreedingExpDB, 100);
+    }
+};
 
 </script>
 </body>
