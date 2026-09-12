@@ -17,14 +17,14 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v04.27"></script>
-<script src="core_guides_data.js?v=v04.27"></script>
-<script src="broodmare_recs_db.js?v=v04.27"></script>
-<script src="gamerch_guides_db.js?v=v04.27"></script>
-<script src="breeding_expansion_db.js?v=v04.27"></script>
-<script src="book_toc_db.js?v=v04.27"></script>
-<script src="yearly_recs_db.js?v=v04.27"></script>
-<script src="horse_subtopics_data.js?v=v04.27"></script>
+<script src="master_lookup_db.js?v=v04.28"></script>
+<script src="core_guides_data.js?v=v04.28"></script>
+<script src="broodmare_recs_db.js?v=v04.28"></script>
+<script src="gamerch_guides_db.js?v=v04.28"></script>
+<script src="breeding_expansion_db.js?v=v04.28"></script>
+<script src="book_toc_db.js?v=v04.28"></script>
+<script src="yearly_recs_db.js?v=v04.28"></script>
+<script src="horse_subtopics_data.js?v=v04.28"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -3065,7 +3065,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v04.27</span> <button id="btnOpenBookToc" onclick="openBookTocModal()" class="chip-btn" style="background:linear-gradient(135deg, #f59e0b, #d97706); color:#0f172a; font-weight:800; cursor:pointer; margin-left:8px; font-size:0.8rem; padding:4px 14px; border:1px solid #f59e0b; border-radius:20px; box-shadow:0 0 10px rgba(245,158,11,0.45);"><i class="fa-solid fa-book-bookmark"></i> 📖 書本全覽目錄</button> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v04.28</span> <button id="btnOpenBookToc" onclick="openBookTocModal()" class="chip-btn" style="background:linear-gradient(135deg, #f59e0b, #d97706); color:#0f172a; font-weight:800; cursor:pointer; margin-left:8px; font-size:0.8rem; padding:4px 14px; border:1px solid #f59e0b; border-radius:20px; box-shadow:0 0 10px rgba(245,158,11,0.45);"><i class="fa-solid fa-book-bookmark"></i> 📖 書本全覽目錄</button> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="https://www.jbis.or.jp/horse/" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;" title="前往日本 JBIS Search 官方原站進行即時權威血統與馬情報檢索">
@@ -3081,7 +3081,7 @@ button.chip-btn.active {
 <div class="book-toc-header">
 <div class="book-toc-header-title">
 <h2><i class="fa-solid fa-book-bookmark"></i> 📖 Winning Post 10 2026 全書大百科典藏目錄</h2>
-<span class="book-toc-stats-badge"><i class="fa-solid fa-layer-group"></i> 10 大卷冊 ‧ 51 大章 ‧ 160+ 深度小節</span>
+<span class="book-toc-stats-badge"><i class="fa-solid fa-layer-group"></i> 11 大卷冊 (含實戰工具附錄) ‧ 55 大章 ‧ 180+ 深度小節與互動工具</span>
 </div>
 <span class="modal-close" onclick="closeBookTocModal()" style="font-size:1.6rem; cursor:pointer; color:#94a3b8;">×</span>
 </div>
@@ -3089,7 +3089,7 @@ button.chip-btn.active {
 <div class="book-toc-controls-bar">
 <div class="book-toc-search-box">
 <i class="fa-solid fa-magnifying-glass"></i>
-<input id="bookTocSearchInput" oninput="filterBookToc()" placeholder="🔍 全書速查：輸入章名、小節、關鍵字 (如: 95, 雙胞胎, 放牧, 史實調教, 凱旋門, 繁殖母馬, 特性)..." type="text"/>
+<input id="bookTocSearchInput" oninput="filterBookToc()" placeholder="🔍 全書速查：輸入章名、小節、工具、關鍵字 (如: 計算器, 戰績表, 拍賣會, 95, 雙胞胎, 放牧, 史實調教, 凱旋門)..." type="text"/>
 </div>
 <div class="book-toc-action-btns">
 <span id="bookTocMatchCounter" style="display:none; font-size:0.75rem; color:#f59e0b; font-weight:bold; margin-right:4px;"></span>
@@ -43373,15 +43373,15 @@ window.applyUmasonaCombinedFilter = function() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v04.27"></script>
-<script src="yuruyuru_guides_db.js?v=v04.27"></script>
+<script src="unified_horses_full_db.js?v=v04.28"></script>
+<script src="yuruyuru_guides_db.js?v=v04.28"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v04.27"></script>
-<script src="jbis_engine.js?v=v04.27"></script><script>
+<script src="jbis_pedigree_db.js?v=v04.28"></script>
+<script src="jbis_engine.js?v=v04.28"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -45557,7 +45557,7 @@ function runExplosionSimulation() {
 function runSimulation() { runExplosionSimulation(); }
 
 // ==========================================
-// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.27)
+// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.28)
 // ==========================================
 
 // 1. 神器一：新手極速配種決策精靈 (Breeding Decision Wizard)

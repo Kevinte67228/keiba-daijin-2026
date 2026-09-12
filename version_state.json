@@ -1,5 +1,5 @@
 {
-  "current_version": "v04.27",
+  "current_version": "v04.28",
   "history": [
     {
       "version": "v04.20",
@@ -17,7 +17,8 @@
     "v04.24",
     "v04.25",
     "v04.26",
-    "v04.27"
+    "v04.27",
+    "v04.28"
   ],
   "updated_at": "2026-09-12"
 }
