@@ -1,6 +1,6 @@
 // 賽馬大亨 10 2026 終極速查 PWA - Service Worker
 // 快取版本號 (每次更新後遞增以強制刷新)
-const CACHE_NAME = 'wp10-2026-v04.25';
+const CACHE_NAME = 'wp10-2026-v04.29';
 
 // 首次安裝時快取的核心檔案
 const CORE_ASSETS = [
@@ -13,6 +13,8 @@ const CORE_ASSETS = [
   './core_guides_data.js',
   './broodmare_recs_db.js',
   './gamerch_guides_db.js',
+  './breeding_expansion_db.js',
+  './book_toc_db.js',
   './yearly_recs_db.js',
   './horse_subtopics_data.js',
   './manifest.json',

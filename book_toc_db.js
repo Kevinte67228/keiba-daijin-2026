@@ -1304,7 +1304,7 @@ window.BOOK_TOC_DATA = [
       {
         "chapNum": "附錄 A",
         "title": "🧮 核心互動計算器與血統相性試算儀 (6 大工具)",
-        "secId": "sec-appendix-calculators",
+        "secId": "sec-foal-calc-db",
         "icon": "fa-calculator",
         "subsections": [
           {
@@ -1362,7 +1362,7 @@ window.BOOK_TOC_DATA = [
       {
         "chapNum": "附錄 B",
         "title": "🏆 賽事戰績紀錄儀與跑法勝率分析表 (3 大工具)",
-        "secId": "sec-appendix-trackers",
+        "secId": "pillar-tracker",
         "icon": "fa-trophy",
         "subsections": [
           {
@@ -1397,7 +1397,7 @@ window.BOOK_TOC_DATA = [
       {
         "chapNum": "附錄 C",
         "title": "🔍 全域多維度資料篩選控制台 (10 大篩選主表)",
-        "secId": "sec-appendix-filters",
+        "secId": "sec-horse-db",
         "icon": "fa-filter",
         "subsections": [
           {
@@ -1494,7 +1494,7 @@ window.BOOK_TOC_DATA = [
       {
         "chapNum": "附錄 D",
         "title": "🧭 實戰必備神級秘籍與照抄 SOP 速查表 (7 大必備指南)",
-        "secId": "sec-appendix-sop",
+        "secId": "sec-pro-tricks",
         "icon": "fa-compass",
         "subsections": [
           {
