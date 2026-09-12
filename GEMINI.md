@@ -97,6 +97,15 @@
 
 ## 版本更新履歷與章節變更記錄 (Version Changelog & Chapter Audit Log)
 
+### [v04.30] - 2026-09-12
+- **更新章節與模組**：
+  - 【浮動目錄修復】修復右下角懸浮跳轉按鈕 (`.btn-floating.btn-jump`) 點擊無反應問題（綁定 `openBookTocModal` 並補全 `openChapterModal` 雙向兼容別名）
+  - 【行動端體驗優化】徹底移除目錄打開時的搜尋框自動聚焦 (`input.focus()`)，根除手機/平板端開啟目錄即自動彈出螢幕虛擬鍵盤遮擋視野的痛點
+  - 【真機驗證】以 Google Chrome Headless 真機 CDP 驗證浮動目錄按鈕點擊觸發、搜尋框無聚焦狀態 (`document.activeElement !== input`) 與小節跳轉關閉 100% 成功（0 Exception）
+  - 【更新】PWA 快取設定 `sw.js` (綁定 `v04.30`)、全站版本號 `v04.30`
+
+---
+
 ### [v04.29] - 2026-09-12
 - **更新章節與模組**：
   - 【全域修復】`📖 全書大百科典藏目錄 (Book-Style TOC)` 點選無反應與無限遞迴堆疊溢位 (Maximum call stack size exceeded) 根除
