@@ -89,9 +89,28 @@
 11. **每次更新後章節與內容變更記錄規範 (Post-Update Changelog & Chapter Audit Rules)**：
    - **更新後即時記錄**：凡完成任何功能新增、資料庫擴充、排版修正或版本推進並發布後，必須於 `GEMINI.md` 的【版本更新履歷與章節變更記錄 (Changelog)】中完整列出當次更新之「版本號」、「變更章節編號與名稱」及「具體更新內容與技術要點摘要」，確保協作軌跡 100% 透明可查。
 
+12. **全書大百科典藏目錄同步維護規範 (Mandatory Book TOC Synchronous Update Rules)**：
+   - **改動必更目錄 (Zero Out-of-Sync Policy)**：凡未來進行任何章節新增、小節拆解、專題模組擴充、DOM 結構更動或功能遷移時，**必須 100% 同步更新 `book_toc_db.js` 之全書目錄結構**（包含對應之卷冊 `volId`、章節 `chapNum`、標題 `title`、錨點 `secId` 及深度小節 `subsections` 與調度動作 `action`/`params`）。
+   - **檢索關鍵字與索引一致性**：確保新增之核心攻略主題、名馬名詞與工具名稱皆能透過全書目錄速查過濾器 (`filterBookToc`) 即時檢索定位，嚴禁遺漏任何新子模組，確保玩家永遠能透過書本目錄一站直達全站所有內容。
+
 ---
 
 ## 版本更新履歷與章節變更記錄 (Version Changelog & Chapter Audit Log)
+
+### [v04.27] - 2026-09-12
+- **更新章節與模組**：
+  - 【排版修復】`📖 全書大百科典藏目錄 (Book-Style TOC)` 彈窗 Flexbox 垂直壓縮破圖修復與樣式重構
+  - 【規範新增】`GEMINI.md` 協作規範第 12 條：全書大百科典藏目錄同步維護規範 (改動必更目錄)
+  - 【更新】PWA 快取設定 `sw.js` (綁定 `v04.27`)、全站版本號 `v04.27`
+- **具體更新內容與技術要點**：
+  1. **徹底解決全書目錄卡片垂直擠壓破圖 (Flex-shrink Squish Fix)**：
+     - `.book-volume-card`、`.book-vol-header`、`.book-vol-body`、`.book-chapter-row` 全面配置 `flex-shrink: 0 !important; width: 100% !important; box-sizing: border-box !important;`，根除瀏覽器 flex 容器因空間不足強制縮減各卷冊卡片高度導致字體被切斷、卷冊被壓平成細線的破圖現象。
+     - 清理 `<head>` 中重複注入的歷史樣式，整合至獨立唯一的 `<style id="book-toc-style">`。
+     - 滾動容器 `.book-toc-body-container` 啟用 `flex: 1 1 auto; min-height: 0; overflow-y: auto !important;`，保證所有 10 大卷冊、51 大章節平滑捲動。
+  2. **新增協作核心鐵律第 12 條**：
+     - 明確規定未來任何新功能、新章節、小節拆解與模組擴充，一律強制同步更新 `book_toc_db.js` 資料庫結構與檢索詞庫。
+
+---
 
 ### [v04.26] - 2026-09-12
 - **更新章節與模組**：
