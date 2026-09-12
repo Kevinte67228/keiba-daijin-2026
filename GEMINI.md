@@ -97,6 +97,16 @@
 
 ## 版本更新履歷與章節變更記錄 (Version Changelog & Chapter Audit Log)
 
+### [v04.29] - 2026-09-12
+- **更新章節與模組**：
+  - 【全域修復】`📖 全書大百科典藏目錄 (Book-Style TOC)` 點選無反應與無限遞迴堆疊溢位 (Maximum call stack size exceeded) 根除
+  - 【架構重構】徹底清理 `index.html` 內殘留之歷史舊版重複目錄腳本區塊，確立 `book_toc_db.js` 為唯一真理來源 (Single Source of Truth)
+  - 【全域對齊】11 大卷冊、55 大章、180+ 深度小節與附錄卷（A、B、C、D）全錨點與 Pillar DOM ID 100% 精確校準
+  - 【驗證】以 Google Chrome Headless 真機 CDP 深度模擬點擊測試（0 SyntaxError、0 RangeError、0 Exception，彈窗自閉合＋分頁切換＋金色流光聚焦 100% 成功）
+  - 【更新】PWA 快取設定 `sw.js` (綁定 `v04.29`)、全站版本號 `v04.29`
+
+---
+
 ### [v04.28] - 2026-09-12
 - **更新章節與模組**：
   - 【全新卷冊】`📖 全書大百科典藏目錄 / 附錄卷：實戰工具・互動計算・全域篩選典藏庫 (Appendix & Interactive Utilities)`
