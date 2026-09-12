@@ -17,13 +17,14 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v04.25"></script>
-<script src="core_guides_data.js?v=v04.25"></script>
-<script src="broodmare_recs_db.js?v=v04.25"></script>
-<script src="gamerch_guides_db.js?v=v04.25"></script>
-<script src="breeding_expansion_db.js?v=v04.25"></script>
-<script src="yearly_recs_db.js?v=v04.25"></script>
-<script src="horse_subtopics_data.js?v=v04.25"></script>
+<script src="master_lookup_db.js?v=v04.26"></script>
+<script src="core_guides_data.js?v=v04.26"></script>
+<script src="broodmare_recs_db.js?v=v04.26"></script>
+<script src="gamerch_guides_db.js?v=v04.26"></script>
+<script src="breeding_expansion_db.js?v=v04.26"></script>
+<script src="book_toc_db.js?v=v04.26"></script>
+<script src="yearly_recs_db.js?v=v04.26"></script>
+<script src="horse_subtopics_data.js?v=v04.26"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -1851,6 +1852,417 @@ li {
     box-sizing: border-box !important;
 }
 
+
+/* ============================================================================
+   📖 典藏書本式目錄大百科 (Book Table of Contents) 高級科技流光樣式
+============================================================================ */
+.book-toc-card {
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 16px;
+    width: 94%;
+    max-width: 1060px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.15);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.book-toc-header {
+    padding: 16px 22px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.book-toc-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-toc-header-title h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f59e0b;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-stats-badge {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.3));
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-toc-controls-bar {
+    padding: 10px 20px;
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.book-toc-search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.book-toc-search-box i {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.book-toc-search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    color: #f1f5f9;
+    font-size: 0.86rem;
+    outline: none !important;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.book-toc-search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.book-toc-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-ctrl-btn {
+    background: rgba(30, 41, 59, 0.9);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 16px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.book-toc-ctrl-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+.book-toc-body-container {
+    padding: 16px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+/* 卷冊卡片 (Volume Card) */
+.book-volume-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease;
+}
+
+.book-volume-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.book-vol-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+    border-left: 5px solid #38bdf8;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.book-vol-header:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(30, 41, 59, 0.95));
+}
+
+.book-vol-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-vol-num {
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    white-space: nowrap !important;
+}
+
+.book-vol-meta {
+    text-align: left !important;
+}
+
+.book-vol-title {
+    margin: 0 0 2px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left !important;
+}
+
+.book-vol-desc {
+    margin: 0;
+    font-size: 0.76rem;
+    color: #94a3b8;
+    text-align: left !important;
+    line-height: 1.3;
+}
+
+.book-vol-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-vol-counts {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-vol-arrow {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+}
+
+.book-vol-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+/* 章節行 (Chapter Row) */
+.book-chapter-row {
+    background: rgba(30, 41, 59, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    text-align: left !important;
+}
+
+.book-chapter-row:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.book-chapter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.book-chap-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    text-align: left !important;
+}
+
+.book-chap-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.74rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.book-chap-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.45;
+    text-align: left !important;
+}
+
+.book-chap-left:hover .book-chap-title {
+    color: #38bdf8;
+}
+
+.book-chap-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-subs-count {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* 小節專題清單 (Sub-sections Container & Chips) */
+.book-subsections-container {
+    margin-top: 6px;
+    padding-left: 8px;
+    border-left: 2px dashed rgba(56, 189, 248, 0.25);
+}
+
+.book-subsections-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.book-subsection-chip {
+    background: rgba(15, 23, 42, 0.7);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left !important;
+    white-space: nowrap !important;
+    max-width: 100%;
+}
+
+.book-subsection-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+.book-sub-num {
+    color: #f59e0b;
+    font-weight: 800;
+    font-size: 0.72rem;
+}
+
+.book-sub-title {
+    color: inherit;
+}
+
+.book-sub-arrow {
+    color: #38bdf8;
+    font-size: 0.65rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.book-subsection-chip:hover .book-sub-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* 滾動平滑高亮動效 */
+@keyframes secGlowPulse {
+    0% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+    30% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.8), 0 0 10px rgba(245, 158, 11, 0.6); border-color: #38bdf8; }
+    100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+}
+
+.sec-highlight-glow {
+    animation: secGlowPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
 <style>
 @keyframes sectionFlashAnim {
@@ -1861,6 +2273,417 @@ li {
 .section-highlight-flash {
   animation: sectionFlashAnim 1.8s ease-out !important;
 }
+
+/* ============================================================================
+   📖 典藏書本式目錄大百科 (Book Table of Contents) 高級科技流光樣式
+============================================================================ */
+.book-toc-card {
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 16px;
+    width: 94%;
+    max-width: 1060px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.15);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.book-toc-header {
+    padding: 16px 22px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.book-toc-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-toc-header-title h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f59e0b;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-stats-badge {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.3));
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-toc-controls-bar {
+    padding: 10px 20px;
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.book-toc-search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.book-toc-search-box i {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.book-toc-search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    color: #f1f5f9;
+    font-size: 0.86rem;
+    outline: none !important;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.book-toc-search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.book-toc-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-ctrl-btn {
+    background: rgba(30, 41, 59, 0.9);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 16px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.book-toc-ctrl-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+.book-toc-body-container {
+    padding: 16px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+/* 卷冊卡片 (Volume Card) */
+.book-volume-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease;
+}
+
+.book-volume-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.book-vol-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+    border-left: 5px solid #38bdf8;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.book-vol-header:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(30, 41, 59, 0.95));
+}
+
+.book-vol-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-vol-num {
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    white-space: nowrap !important;
+}
+
+.book-vol-meta {
+    text-align: left !important;
+}
+
+.book-vol-title {
+    margin: 0 0 2px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left !important;
+}
+
+.book-vol-desc {
+    margin: 0;
+    font-size: 0.76rem;
+    color: #94a3b8;
+    text-align: left !important;
+    line-height: 1.3;
+}
+
+.book-vol-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-vol-counts {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-vol-arrow {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+}
+
+.book-vol-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+/* 章節行 (Chapter Row) */
+.book-chapter-row {
+    background: rgba(30, 41, 59, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    text-align: left !important;
+}
+
+.book-chapter-row:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.book-chapter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.book-chap-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    text-align: left !important;
+}
+
+.book-chap-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.74rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.book-chap-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.45;
+    text-align: left !important;
+}
+
+.book-chap-left:hover .book-chap-title {
+    color: #38bdf8;
+}
+
+.book-chap-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-subs-count {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* 小節專題清單 (Sub-sections Container & Chips) */
+.book-subsections-container {
+    margin-top: 6px;
+    padding-left: 8px;
+    border-left: 2px dashed rgba(56, 189, 248, 0.25);
+}
+
+.book-subsections-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.book-subsection-chip {
+    background: rgba(15, 23, 42, 0.7);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left !important;
+    white-space: nowrap !important;
+    max-width: 100%;
+}
+
+.book-subsection-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+.book-sub-num {
+    color: #f59e0b;
+    font-weight: 800;
+    font-size: 0.72rem;
+}
+
+.book-sub-title {
+    color: inherit;
+}
+
+.book-sub-arrow {
+    color: #38bdf8;
+    font-size: 0.65rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.book-subsection-chip:hover .book-sub-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* 滾動平滑高亮動效 */
+@keyframes secGlowPulse {
+    0% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+    30% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.8), 0 0 10px rgba(245, 158, 11, 0.6); border-color: #38bdf8; }
+    100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+}
+
+.sec-highlight-glow {
+    animation: secGlowPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
 <style id="qa-fix-no-results-style">
 .no-results-state {
@@ -1877,6 +2700,417 @@ li {
 .no-results-state.active {
     display: block !important;
 }
+
+/* ============================================================================
+   📖 典藏書本式目錄大百科 (Book Table of Contents) 高級科技流光樣式
+============================================================================ */
+.book-toc-card {
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 16px;
+    width: 94%;
+    max-width: 1060px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.15);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.book-toc-header {
+    padding: 16px 22px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.book-toc-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-toc-header-title h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f59e0b;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-stats-badge {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.3));
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-toc-controls-bar {
+    padding: 10px 20px;
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.book-toc-search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.book-toc-search-box i {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.book-toc-search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    color: #f1f5f9;
+    font-size: 0.86rem;
+    outline: none !important;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.book-toc-search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.book-toc-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-ctrl-btn {
+    background: rgba(30, 41, 59, 0.9);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 16px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.book-toc-ctrl-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+.book-toc-body-container {
+    padding: 16px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+/* 卷冊卡片 (Volume Card) */
+.book-volume-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease;
+}
+
+.book-volume-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.book-vol-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+    border-left: 5px solid #38bdf8;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.book-vol-header:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(30, 41, 59, 0.95));
+}
+
+.book-vol-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-vol-num {
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    white-space: nowrap !important;
+}
+
+.book-vol-meta {
+    text-align: left !important;
+}
+
+.book-vol-title {
+    margin: 0 0 2px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left !important;
+}
+
+.book-vol-desc {
+    margin: 0;
+    font-size: 0.76rem;
+    color: #94a3b8;
+    text-align: left !important;
+    line-height: 1.3;
+}
+
+.book-vol-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-vol-counts {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-vol-arrow {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+}
+
+.book-vol-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+/* 章節行 (Chapter Row) */
+.book-chapter-row {
+    background: rgba(30, 41, 59, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    text-align: left !important;
+}
+
+.book-chapter-row:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.book-chapter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.book-chap-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    text-align: left !important;
+}
+
+.book-chap-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.74rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.book-chap-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.45;
+    text-align: left !important;
+}
+
+.book-chap-left:hover .book-chap-title {
+    color: #38bdf8;
+}
+
+.book-chap-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-subs-count {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* 小節專題清單 (Sub-sections Container & Chips) */
+.book-subsections-container {
+    margin-top: 6px;
+    padding-left: 8px;
+    border-left: 2px dashed rgba(56, 189, 248, 0.25);
+}
+
+.book-subsections-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.book-subsection-chip {
+    background: rgba(15, 23, 42, 0.7);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left !important;
+    white-space: nowrap !important;
+    max-width: 100%;
+}
+
+.book-subsection-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+.book-sub-num {
+    color: #f59e0b;
+    font-weight: 800;
+    font-size: 0.72rem;
+}
+
+.book-sub-title {
+    color: inherit;
+}
+
+.book-sub-arrow {
+    color: #38bdf8;
+    font-size: 0.65rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.book-subsection-chip:hover .book-sub-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* 滾動平滑高亮動效 */
+@keyframes secGlowPulse {
+    0% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+    30% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.8), 0 0 10px rgba(245, 158, 11, 0.6); border-color: #38bdf8; }
+    100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+}
+
+.sec-highlight-glow {
+    animation: secGlowPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
 <style id="unified-amulet-tokens">
 /* Unified Amulet & Badge Tokens (v03.96) */
@@ -1905,6 +3139,417 @@ li {
     white-space: nowrap !important;
     word-break: keep-all !important;
 }
+
+/* ============================================================================
+   📖 典藏書本式目錄大百科 (Book Table of Contents) 高級科技流光樣式
+============================================================================ */
+.book-toc-card {
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 16px;
+    width: 94%;
+    max-width: 1060px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.15);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.book-toc-header {
+    padding: 16px 22px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.book-toc-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-toc-header-title h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f59e0b;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-stats-badge {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.3));
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-toc-controls-bar {
+    padding: 10px 20px;
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.book-toc-search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.book-toc-search-box i {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.book-toc-search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    color: #f1f5f9;
+    font-size: 0.86rem;
+    outline: none !important;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.book-toc-search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.book-toc-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-ctrl-btn {
+    background: rgba(30, 41, 59, 0.9);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 16px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.book-toc-ctrl-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+.book-toc-body-container {
+    padding: 16px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+/* 卷冊卡片 (Volume Card) */
+.book-volume-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease;
+}
+
+.book-volume-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.book-vol-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+    border-left: 5px solid #38bdf8;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.book-vol-header:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(30, 41, 59, 0.95));
+}
+
+.book-vol-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-vol-num {
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    white-space: nowrap !important;
+}
+
+.book-vol-meta {
+    text-align: left !important;
+}
+
+.book-vol-title {
+    margin: 0 0 2px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left !important;
+}
+
+.book-vol-desc {
+    margin: 0;
+    font-size: 0.76rem;
+    color: #94a3b8;
+    text-align: left !important;
+    line-height: 1.3;
+}
+
+.book-vol-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-vol-counts {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-vol-arrow {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+}
+
+.book-vol-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+/* 章節行 (Chapter Row) */
+.book-chapter-row {
+    background: rgba(30, 41, 59, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    text-align: left !important;
+}
+
+.book-chapter-row:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.book-chapter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.book-chap-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    text-align: left !important;
+}
+
+.book-chap-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.74rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.book-chap-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.45;
+    text-align: left !important;
+}
+
+.book-chap-left:hover .book-chap-title {
+    color: #38bdf8;
+}
+
+.book-chap-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-subs-count {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* 小節專題清單 (Sub-sections Container & Chips) */
+.book-subsections-container {
+    margin-top: 6px;
+    padding-left: 8px;
+    border-left: 2px dashed rgba(56, 189, 248, 0.25);
+}
+
+.book-subsections-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.book-subsection-chip {
+    background: rgba(15, 23, 42, 0.7);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left !important;
+    white-space: nowrap !important;
+    max-width: 100%;
+}
+
+.book-subsection-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+.book-sub-num {
+    color: #f59e0b;
+    font-weight: 800;
+    font-size: 0.72rem;
+}
+
+.book-sub-title {
+    color: inherit;
+}
+
+.book-sub-arrow {
+    color: #38bdf8;
+    font-size: 0.65rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.book-subsection-chip:hover .book-sub-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* 滾動平滑高亮動效 */
+@keyframes secGlowPulse {
+    0% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+    30% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.8), 0 0 10px rgba(245, 158, 11, 0.6); border-color: #38bdf8; }
+    100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+}
+
+.sec-highlight-glow {
+    animation: secGlowPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
 <style id="global-capsule-chips-style">
 /* ==========================================================================
@@ -2153,6 +3798,417 @@ button.chip-btn.active:hover,
 }
 
 
+
+/* ============================================================================
+   📖 典藏書本式目錄大百科 (Book Table of Contents) 高級科技流光樣式
+============================================================================ */
+.book-toc-card {
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 16px;
+    width: 94%;
+    max-width: 1060px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.15);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.book-toc-header {
+    padding: 16px 22px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.book-toc-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-toc-header-title h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f59e0b;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-stats-badge {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.3));
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-toc-controls-bar {
+    padding: 10px 20px;
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.book-toc-search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.book-toc-search-box i {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.book-toc-search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    color: #f1f5f9;
+    font-size: 0.86rem;
+    outline: none !important;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.book-toc-search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.book-toc-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-ctrl-btn {
+    background: rgba(30, 41, 59, 0.9);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 16px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.book-toc-ctrl-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+.book-toc-body-container {
+    padding: 16px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+/* 卷冊卡片 (Volume Card) */
+.book-volume-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease;
+}
+
+.book-volume-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.book-vol-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+    border-left: 5px solid #38bdf8;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.book-vol-header:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(30, 41, 59, 0.95));
+}
+
+.book-vol-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-vol-num {
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    white-space: nowrap !important;
+}
+
+.book-vol-meta {
+    text-align: left !important;
+}
+
+.book-vol-title {
+    margin: 0 0 2px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left !important;
+}
+
+.book-vol-desc {
+    margin: 0;
+    font-size: 0.76rem;
+    color: #94a3b8;
+    text-align: left !important;
+    line-height: 1.3;
+}
+
+.book-vol-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-vol-counts {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-vol-arrow {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+}
+
+.book-vol-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+/* 章節行 (Chapter Row) */
+.book-chapter-row {
+    background: rgba(30, 41, 59, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    text-align: left !important;
+}
+
+.book-chapter-row:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.book-chapter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.book-chap-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    text-align: left !important;
+}
+
+.book-chap-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.74rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.book-chap-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.45;
+    text-align: left !important;
+}
+
+.book-chap-left:hover .book-chap-title {
+    color: #38bdf8;
+}
+
+.book-chap-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-subs-count {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* 小節專題清單 (Sub-sections Container & Chips) */
+.book-subsections-container {
+    margin-top: 6px;
+    padding-left: 8px;
+    border-left: 2px dashed rgba(56, 189, 248, 0.25);
+}
+
+.book-subsections-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.book-subsection-chip {
+    background: rgba(15, 23, 42, 0.7);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left !important;
+    white-space: nowrap !important;
+    max-width: 100%;
+}
+
+.book-subsection-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+.book-sub-num {
+    color: #f59e0b;
+    font-weight: 800;
+    font-size: 0.72rem;
+}
+
+.book-sub-title {
+    color: inherit;
+}
+
+.book-sub-arrow {
+    color: #38bdf8;
+    font-size: 0.65rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.book-subsection-chip:hover .book-sub-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* 滾動平滑高亮動效 */
+@keyframes secGlowPulse {
+    0% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+    30% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.8), 0 0 10px rgba(245, 158, 11, 0.6); border-color: #38bdf8; }
+    100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+}
+
+.sec-highlight-glow {
+    animation: secGlowPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
 <style id="dark-calc-select-style">
 /* 下拉選單與選單選項暗黑科技風優化，徹底消除白底死角 */
@@ -2179,6 +4235,417 @@ button.chip-btn.active:hover,
     color: #f8fafc !important;
     padding: 8px 10px !important;
 }
+
+/* ============================================================================
+   📖 典藏書本式目錄大百科 (Book Table of Contents) 高級科技流光樣式
+============================================================================ */
+.book-toc-card {
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 16px;
+    width: 94%;
+    max-width: 1060px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.15);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.book-toc-header {
+    padding: 16px 22px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.book-toc-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-toc-header-title h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f59e0b;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-stats-badge {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.3));
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-toc-controls-bar {
+    padding: 10px 20px;
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.book-toc-search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.book-toc-search-box i {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.book-toc-search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    color: #f1f5f9;
+    font-size: 0.86rem;
+    outline: none !important;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.book-toc-search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.book-toc-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-ctrl-btn {
+    background: rgba(30, 41, 59, 0.9);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 16px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.book-toc-ctrl-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+.book-toc-body-container {
+    padding: 16px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+/* 卷冊卡片 (Volume Card) */
+.book-volume-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease;
+}
+
+.book-volume-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.book-vol-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+    border-left: 5px solid #38bdf8;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.book-vol-header:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(30, 41, 59, 0.95));
+}
+
+.book-vol-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-vol-num {
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    white-space: nowrap !important;
+}
+
+.book-vol-meta {
+    text-align: left !important;
+}
+
+.book-vol-title {
+    margin: 0 0 2px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left !important;
+}
+
+.book-vol-desc {
+    margin: 0;
+    font-size: 0.76rem;
+    color: #94a3b8;
+    text-align: left !important;
+    line-height: 1.3;
+}
+
+.book-vol-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-vol-counts {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-vol-arrow {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+}
+
+.book-vol-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+/* 章節行 (Chapter Row) */
+.book-chapter-row {
+    background: rgba(30, 41, 59, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    text-align: left !important;
+}
+
+.book-chapter-row:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.book-chapter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.book-chap-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    text-align: left !important;
+}
+
+.book-chap-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.74rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.book-chap-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.45;
+    text-align: left !important;
+}
+
+.book-chap-left:hover .book-chap-title {
+    color: #38bdf8;
+}
+
+.book-chap-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-subs-count {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* 小節專題清單 (Sub-sections Container & Chips) */
+.book-subsections-container {
+    margin-top: 6px;
+    padding-left: 8px;
+    border-left: 2px dashed rgba(56, 189, 248, 0.25);
+}
+
+.book-subsections-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.book-subsection-chip {
+    background: rgba(15, 23, 42, 0.7);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left !important;
+    white-space: nowrap !important;
+    max-width: 100%;
+}
+
+.book-subsection-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+.book-sub-num {
+    color: #f59e0b;
+    font-weight: 800;
+    font-size: 0.72rem;
+}
+
+.book-sub-title {
+    color: inherit;
+}
+
+.book-sub-arrow {
+    color: #38bdf8;
+    font-size: 0.65rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.book-subsection-chip:hover .book-sub-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* 滾動平滑高亮動效 */
+@keyframes secGlowPulse {
+    0% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+    30% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.8), 0 0 10px rgba(245, 158, 11, 0.6); border-color: #38bdf8; }
+    100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+}
+
+.sec-highlight-glow {
+    animation: secGlowPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
 <style id="scrollable-table-style">
 /* 全域清單與表格超過 15 筆自適應內滑桿容器與置頂表頭 (Universal Sticky Header & Inner Scrollbar) */
@@ -2221,6 +4688,417 @@ button.chip-btn.active:hover,
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
     border-bottom: 2px solid rgba(56, 189, 248, 0.4) !important;
 }
+
+/* ============================================================================
+   📖 典藏書本式目錄大百科 (Book Table of Contents) 高級科技流光樣式
+============================================================================ */
+.book-toc-card {
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 16px;
+    width: 94%;
+    max-width: 1060px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.15);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.book-toc-header {
+    padding: 16px 22px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.book-toc-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-toc-header-title h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f59e0b;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-stats-badge {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.3));
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-toc-controls-bar {
+    padding: 10px 20px;
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.book-toc-search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.book-toc-search-box i {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.book-toc-search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    color: #f1f5f9;
+    font-size: 0.86rem;
+    outline: none !important;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.book-toc-search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.book-toc-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-ctrl-btn {
+    background: rgba(30, 41, 59, 0.9);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 16px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.book-toc-ctrl-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+.book-toc-body-container {
+    padding: 16px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+/* 卷冊卡片 (Volume Card) */
+.book-volume-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease;
+}
+
+.book-volume-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.book-vol-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+    border-left: 5px solid #38bdf8;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.book-vol-header:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(30, 41, 59, 0.95));
+}
+
+.book-vol-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-vol-num {
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    white-space: nowrap !important;
+}
+
+.book-vol-meta {
+    text-align: left !important;
+}
+
+.book-vol-title {
+    margin: 0 0 2px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left !important;
+}
+
+.book-vol-desc {
+    margin: 0;
+    font-size: 0.76rem;
+    color: #94a3b8;
+    text-align: left !important;
+    line-height: 1.3;
+}
+
+.book-vol-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-vol-counts {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-vol-arrow {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+}
+
+.book-vol-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+/* 章節行 (Chapter Row) */
+.book-chapter-row {
+    background: rgba(30, 41, 59, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    text-align: left !important;
+}
+
+.book-chapter-row:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.book-chapter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.book-chap-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    text-align: left !important;
+}
+
+.book-chap-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.74rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.book-chap-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.45;
+    text-align: left !important;
+}
+
+.book-chap-left:hover .book-chap-title {
+    color: #38bdf8;
+}
+
+.book-chap-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-subs-count {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* 小節專題清單 (Sub-sections Container & Chips) */
+.book-subsections-container {
+    margin-top: 6px;
+    padding-left: 8px;
+    border-left: 2px dashed rgba(56, 189, 248, 0.25);
+}
+
+.book-subsections-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.book-subsection-chip {
+    background: rgba(15, 23, 42, 0.7);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left !important;
+    white-space: nowrap !important;
+    max-width: 100%;
+}
+
+.book-subsection-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+.book-sub-num {
+    color: #f59e0b;
+    font-weight: 800;
+    font-size: 0.72rem;
+}
+
+.book-sub-title {
+    color: inherit;
+}
+
+.book-sub-arrow {
+    color: #38bdf8;
+    font-size: 0.65rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.book-subsection-chip:hover .book-sub-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* 滾動平滑高亮動效 */
+@keyframes secGlowPulse {
+    0% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+    30% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.8), 0 0 10px rgba(245, 158, 11, 0.6); border-color: #38bdf8; }
+    100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+}
+
+.sec-highlight-glow {
+    animation: secGlowPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
 
 <style id="ch31-chips-style">
@@ -2284,6 +5162,417 @@ button.chip-btn.active:hover,
     border-color: #f59e0b !important;
     box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
 }
+
+/* ============================================================================
+   📖 典藏書本式目錄大百科 (Book Table of Contents) 高級科技流光樣式
+============================================================================ */
+.book-toc-card {
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 16px;
+    width: 94%;
+    max-width: 1060px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.15);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.book-toc-header {
+    padding: 16px 22px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.book-toc-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-toc-header-title h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f59e0b;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-stats-badge {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.3));
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-toc-controls-bar {
+    padding: 10px 20px;
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.book-toc-search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.book-toc-search-box i {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.book-toc-search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    color: #f1f5f9;
+    font-size: 0.86rem;
+    outline: none !important;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.book-toc-search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.book-toc-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-ctrl-btn {
+    background: rgba(30, 41, 59, 0.9);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 16px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.book-toc-ctrl-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+.book-toc-body-container {
+    padding: 16px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+/* 卷冊卡片 (Volume Card) */
+.book-volume-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease;
+}
+
+.book-volume-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.book-vol-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+    border-left: 5px solid #38bdf8;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.book-vol-header:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(30, 41, 59, 0.95));
+}
+
+.book-vol-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-vol-num {
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    white-space: nowrap !important;
+}
+
+.book-vol-meta {
+    text-align: left !important;
+}
+
+.book-vol-title {
+    margin: 0 0 2px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left !important;
+}
+
+.book-vol-desc {
+    margin: 0;
+    font-size: 0.76rem;
+    color: #94a3b8;
+    text-align: left !important;
+    line-height: 1.3;
+}
+
+.book-vol-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-vol-counts {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-vol-arrow {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+}
+
+.book-vol-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+/* 章節行 (Chapter Row) */
+.book-chapter-row {
+    background: rgba(30, 41, 59, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    text-align: left !important;
+}
+
+.book-chapter-row:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.book-chapter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.book-chap-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    text-align: left !important;
+}
+
+.book-chap-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.74rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.book-chap-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.45;
+    text-align: left !important;
+}
+
+.book-chap-left:hover .book-chap-title {
+    color: #38bdf8;
+}
+
+.book-chap-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-subs-count {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* 小節專題清單 (Sub-sections Container & Chips) */
+.book-subsections-container {
+    margin-top: 6px;
+    padding-left: 8px;
+    border-left: 2px dashed rgba(56, 189, 248, 0.25);
+}
+
+.book-subsections-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.book-subsection-chip {
+    background: rgba(15, 23, 42, 0.7);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left !important;
+    white-space: nowrap !important;
+    max-width: 100%;
+}
+
+.book-subsection-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+.book-sub-num {
+    color: #f59e0b;
+    font-weight: 800;
+    font-size: 0.72rem;
+}
+
+.book-sub-title {
+    color: inherit;
+}
+
+.book-sub-arrow {
+    color: #38bdf8;
+    font-size: 0.65rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.book-subsection-chip:hover .book-sub-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* 滾動平滑高亮動效 */
+@keyframes secGlowPulse {
+    0% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+    30% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.8), 0 0 10px rgba(245, 158, 11, 0.6); border-color: #38bdf8; }
+    100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+}
+
+.sec-highlight-glow {
+    animation: secGlowPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
 
 
@@ -2361,6 +5650,417 @@ button.chip-btn.active:hover,
     border-color: #f59e0b !important;
     box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
 }
+
+/* ============================================================================
+   📖 典藏書本式目錄大百科 (Book Table of Contents) 高級科技流光樣式
+============================================================================ */
+.book-toc-card {
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 16px;
+    width: 94%;
+    max-width: 1060px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.15);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.book-toc-header {
+    padding: 16px 22px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.book-toc-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-toc-header-title h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f59e0b;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-stats-badge {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.3));
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-toc-controls-bar {
+    padding: 10px 20px;
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.book-toc-search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.book-toc-search-box i {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.book-toc-search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    color: #f1f5f9;
+    font-size: 0.86rem;
+    outline: none !important;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.book-toc-search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.book-toc-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-ctrl-btn {
+    background: rgba(30, 41, 59, 0.9);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 16px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.book-toc-ctrl-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+.book-toc-body-container {
+    padding: 16px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+/* 卷冊卡片 (Volume Card) */
+.book-volume-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease;
+}
+
+.book-volume-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.book-vol-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+    border-left: 5px solid #38bdf8;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.book-vol-header:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(30, 41, 59, 0.95));
+}
+
+.book-vol-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-vol-num {
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    white-space: nowrap !important;
+}
+
+.book-vol-meta {
+    text-align: left !important;
+}
+
+.book-vol-title {
+    margin: 0 0 2px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left !important;
+}
+
+.book-vol-desc {
+    margin: 0;
+    font-size: 0.76rem;
+    color: #94a3b8;
+    text-align: left !important;
+    line-height: 1.3;
+}
+
+.book-vol-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-vol-counts {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-vol-arrow {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+}
+
+.book-vol-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+/* 章節行 (Chapter Row) */
+.book-chapter-row {
+    background: rgba(30, 41, 59, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    text-align: left !important;
+}
+
+.book-chapter-row:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.book-chapter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.book-chap-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    text-align: left !important;
+}
+
+.book-chap-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.74rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.book-chap-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.45;
+    text-align: left !important;
+}
+
+.book-chap-left:hover .book-chap-title {
+    color: #38bdf8;
+}
+
+.book-chap-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-subs-count {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* 小節專題清單 (Sub-sections Container & Chips) */
+.book-subsections-container {
+    margin-top: 6px;
+    padding-left: 8px;
+    border-left: 2px dashed rgba(56, 189, 248, 0.25);
+}
+
+.book-subsections-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.book-subsection-chip {
+    background: rgba(15, 23, 42, 0.7);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left !important;
+    white-space: nowrap !important;
+    max-width: 100%;
+}
+
+.book-subsection-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+.book-sub-num {
+    color: #f59e0b;
+    font-weight: 800;
+    font-size: 0.72rem;
+}
+
+.book-sub-title {
+    color: inherit;
+}
+
+.book-sub-arrow {
+    color: #38bdf8;
+    font-size: 0.65rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.book-subsection-chip:hover .book-sub-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* 滾動平滑高亮動效 */
+@keyframes secGlowPulse {
+    0% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+    30% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.8), 0 0 10px rgba(245, 158, 11, 0.6); border-color: #38bdf8; }
+    100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+}
+
+.sec-highlight-glow {
+    animation: secGlowPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
 
 <style id="ch43-46-chips-style">
@@ -2566,13 +6266,424 @@ button.chip-btn.active {
     box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
     transform: none !important;
 }
+
+/* ============================================================================
+   📖 典藏書本式目錄大百科 (Book Table of Contents) 高級科技流光樣式
+============================================================================ */
+.book-toc-card {
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 16px;
+    width: 94%;
+    max-width: 1060px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.15);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.book-toc-header {
+    padding: 16px 22px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.book-toc-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-toc-header-title h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f59e0b;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-stats-badge {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.3));
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-toc-controls-bar {
+    padding: 10px 20px;
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.book-toc-search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.book-toc-search-box i {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.book-toc-search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    color: #f1f5f9;
+    font-size: 0.86rem;
+    outline: none !important;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.book-toc-search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.book-toc-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-ctrl-btn {
+    background: rgba(30, 41, 59, 0.9);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 16px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.book-toc-ctrl-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+.book-toc-body-container {
+    padding: 16px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+/* 卷冊卡片 (Volume Card) */
+.book-volume-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease;
+}
+
+.book-volume-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.book-vol-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+    border-left: 5px solid #38bdf8;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.book-vol-header:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(30, 41, 59, 0.95));
+}
+
+.book-vol-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-vol-num {
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    white-space: nowrap !important;
+}
+
+.book-vol-meta {
+    text-align: left !important;
+}
+
+.book-vol-title {
+    margin: 0 0 2px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left !important;
+}
+
+.book-vol-desc {
+    margin: 0;
+    font-size: 0.76rem;
+    color: #94a3b8;
+    text-align: left !important;
+    line-height: 1.3;
+}
+
+.book-vol-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-vol-counts {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-vol-arrow {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+}
+
+.book-vol-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+/* 章節行 (Chapter Row) */
+.book-chapter-row {
+    background: rgba(30, 41, 59, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    text-align: left !important;
+}
+
+.book-chapter-row:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.book-chapter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.book-chap-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    text-align: left !important;
+}
+
+.book-chap-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.74rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.book-chap-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.45;
+    text-align: left !important;
+}
+
+.book-chap-left:hover .book-chap-title {
+    color: #38bdf8;
+}
+
+.book-chap-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-subs-count {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* 小節專題清單 (Sub-sections Container & Chips) */
+.book-subsections-container {
+    margin-top: 6px;
+    padding-left: 8px;
+    border-left: 2px dashed rgba(56, 189, 248, 0.25);
+}
+
+.book-subsections-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.book-subsection-chip {
+    background: rgba(15, 23, 42, 0.7);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left !important;
+    white-space: nowrap !important;
+    max-width: 100%;
+}
+
+.book-subsection-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+.book-sub-num {
+    color: #f59e0b;
+    font-weight: 800;
+    font-size: 0.72rem;
+}
+
+.book-sub-title {
+    color: inherit;
+}
+
+.book-sub-arrow {
+    color: #38bdf8;
+    font-size: 0.65rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.book-subsection-chip:hover .book-sub-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* 滾動平滑高亮動效 */
+@keyframes secGlowPulse {
+    0% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+    30% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.8), 0 0 10px rgba(245, 158, 11, 0.6); border-color: #38bdf8; }
+    100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+}
+
+.sec-highlight-glow {
+    animation: secGlowPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
 
 </head>
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v04.25</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v04.26</span> <button id="btnOpenBookToc" onclick="openBookTocModal()" class="chip-btn" style="background:linear-gradient(135deg, #f59e0b, #d97706); color:#0f172a; font-weight:800; cursor:pointer; margin-left:8px; font-size:0.8rem; padding:4px 14px; border:1px solid #f59e0b; border-radius:20px; box-shadow:0 0 10px rgba(245,158,11,0.45);"><i class="fa-solid fa-book-bookmark"></i> 📖 書本全覽目錄</button> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="https://www.jbis.or.jp/horse/" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;" title="前往日本 JBIS Search 官方原站進行即時權威血統與馬情報檢索">
@@ -2583,6 +6694,34 @@ button.chip-btn.active {
     
 
 </div>
+<div class="modal-backdrop" id="chapterModal" onclick="closeBookTocModal(event)">
+<div class="book-toc-card" onclick="event.stopPropagation()">
+<div class="book-toc-header">
+<div class="book-toc-header-title">
+<h2><i class="fa-solid fa-book-bookmark"></i> 📖 Winning Post 10 2026 全書大百科典藏目錄</h2>
+<span class="book-toc-stats-badge"><i class="fa-solid fa-layer-group"></i> 10 大卷冊 ‧ 51 大章 ‧ 160+ 深度小節</span>
+</div>
+<span class="modal-close" onclick="closeBookTocModal()" style="font-size:1.6rem; cursor:pointer; color:#94a3b8;">×</span>
+</div>
+
+<div class="book-toc-controls-bar">
+<div class="book-toc-search-box">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input id="bookTocSearchInput" oninput="filterBookToc()" placeholder="🔍 全書速查：輸入章名、小節、關鍵字 (如: 95, 雙胞胎, 放牧, 史實調教, 凱旋門, 繁殖母馬, 特性)..." type="text"/>
+</div>
+<div class="book-toc-action-btns">
+<span id="bookTocMatchCounter" style="display:none; font-size:0.75rem; color:#f59e0b; font-weight:bold; margin-right:4px;"></span>
+<button class="book-toc-ctrl-btn" onclick="expandAllBookToc()" title="全部展開所有卷冊小節"><i class="fa-solid fa-folder-open"></i> 全部展開</button>
+<button class="book-toc-ctrl-btn" onclick="collapseAllBookToc()" title="全部折疊收合卷冊"><i class="fa-solid fa-folder"></i> 全部折疊</button>
+</div>
+</div>
+
+<div class="book-toc-body-container" id="bookTocVolumeContainer">
+<!-- 動態由 renderBookToc() 渲染 -->
+</div>
+</div>
+</div>
+
 <div id="loadingMsg" style="display:none; text-align:center; padding:10px; background:#1e1b4b; border:1px solid #3b82f6; border-radius:8px; margin-bottom:12px; color:#38bdf8; font-size:0.85rem;"></div>
 
     <!-- 8 大核心專題分頁導航列 -->
@@ -42852,15 +46991,15 @@ window.applyUmasonaCombinedFilter = function() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v04.25"></script>
-<script src="yuruyuru_guides_db.js?v=v04.25"></script>
+<script src="unified_horses_full_db.js?v=v04.26"></script>
+<script src="yuruyuru_guides_db.js?v=v04.26"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v04.25"></script>
-<script src="jbis_engine.js?v=v04.25"></script><script>
+<script src="jbis_pedigree_db.js?v=v04.26"></script>
+<script src="jbis_engine.js?v=v04.26"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -43654,422 +47793,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <i class="fa-solid fa-arrow-up"></i>
 </button>
 </div>
-<div class="modal-backdrop" id="chapterModal" onclick="closeChapterModal(event)">
-<div class="chapter-modal-card" onclick="event.stopPropagation()">
-<div class="chapter-modal-header">
-<h2><i class="fa-solid fa-list-ol"></i> 📑 全 50 大章節快速跳轉</h2>
-<span class="modal-close" onclick="closeChapterModal()">×</span>
-</div>
-<div class="chapter-search-box">
-<i class="fa-solid fa-magnifying-glass"></i>
-<input id="chapterFilterInput" oninput="filterChapterList()" placeholder="🔍 全局內文檢索：輸入任何關鍵字 (如: 爆發力 (爆発力), 評語, 三冠, 史實調教, 繁育, 異名, 推薦馬)..." type="text"/>
-</div>
 
-<div class="chapter-list-container" id="chapterListContainer">
-<!-- ==================== 🧮 全站實戰互動計算器與模擬沙盤快速跳轉專區 ==================== -->
-<div class="chapter-pillar-group" style="border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 12px; padding: 12px 14px 16px 14px; background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.7)); margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.35);">
-  <div class="chapter-pillar-title" style="color: #38bdf8; cursor: default; margin-bottom: 12px; border-bottom: 1px solid rgba(56, 189, 248, 0.25); padding-bottom: 8px;" title="實戰互動計算器與戰略模擬器">
-    <div style="display: flex; align-items: center; gap: 8px;">
-      <i class="fa-solid fa-calculator" style="color: #38bdf8; font-size: 1.1rem;"></i>
-      <span style="font-weight: 900; font-size: 0.98rem; letter-spacing: 0.5px;">🧮 實戰互動計算器與模擬沙盤快速直達 (全 8 大神器)</span>
-    </div>
-    <span class="badge" style="background: linear-gradient(135deg, #0284c7, #38bdf8); color: #0f172a; font-weight: 900; font-size: 0.74rem; padding: 3px 10px; border-radius: 12px; white-space: nowrap !important;">即開即算</span>
-  </div>
-  <div class="chapter-items-grid">
-    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-races', 'sec-triple-crowns', 'tool-global-expedition-calc')">
-      <span class="jump-icon"><i class="fa-solid fa-plane-departure" style="color:#38bdf8;"></i></span>
-      <span class="jump-num" style="color:#38bdf8;">項目 22</span>
-      <span class="jump-title">全球海外遠征難度與減益 (Debuff) 試算器 (三維獨立減益・真實勝率)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-races', 'sec-stakes-master', 'tool-course-tactics-matcher')">
-      <span class="jump-icon"><i class="fa-solid fa-crosshairs" style="color:#34d399;"></i></span>
-      <span class="jump-num" style="color:#34d399;">項目 23</span>
-      <span class="jump-title">全國賽道跑法幾何匹配最佳化推薦儀 (直線長度・泥地吃沙・戰術SOP)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-foals', 'sec-potential', 'tool-foal-comment-decoder')">
-      <span class="jump-icon"><i class="fa-solid fa-magnifying-glass-chart" style="color:#fbbf24;"></i></span>
-      <span class="jump-num" style="color:#fbbf24;">項目 24</span>
-      <span class="jump-title">幼駒評語逆向解碼與潛力速查器 (真·SP/耐力ST/適性路程/跳柵特權)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-ranch', 'sec-farm-facilities', 'tool-facilities-sandbox')">
-      <span class="jump-icon"><i class="fa-solid fa-building-wheat" style="color:#f472b6;"></i></span>
-      <span class="jump-num" style="color:#f472b6;">項目 25</span>
-      <span class="jump-title">牧場設施空間配置與收益模擬沙盤 (12/20/30格用地・預算結餘動態配置)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-breed', 'sec-metrics', 'tool-breeding-wizard')">
-      <span class="jump-icon"><i class="fa-solid fa-wand-magic-sparkles" style="color:#a78bfa;"></i></span>
-      <span class="jump-num" style="color:#a78bfa;">神器 1</span>
-      <span class="jump-title">新手極速配種決策精靈 (SOP 3 步極簡育種導航・四大指標即開即算)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-breed', 'sec-metrics', 'tool-explosion-builder')">
-      <span class="jump-icon"><i class="fa-solid fa-cubes-stacked" style="color:#fbbf24;"></i></span>
-      <span class="jump-num" style="color:#fbbf24;">神器 2</span>
-      <span class="jump-title">+40 爆發力積木試算器 (隨選隨累加進度條・產駒實力階級即時動態推算)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-breed', 'sec-metrics', 'tool-sandtable')">
-      <span class="jump-icon"><i class="fa-solid fa-network-wired" style="color:#38bdf8;"></i></span>
-      <span class="jump-num" style="color:#38bdf8;">神器 3</span>
-      <span class="jump-title">4 代 16 祖先血脈活性化沙盤 (父方/母方 8 親系統衝突與成立判定)</span>
-    </button>
-    <button class="chapter-jump-btn" onclick="jumpToTool('pillar-foal-calc', 'sec-foal-calc-db', 'sec-foal-calc-db')">
-      <span class="jump-icon"><i class="fa-solid fa-calculator" style="color:#34d399;"></i></span>
-      <span class="jump-num" style="color:#34d399;">獨立神器</span>
-      <span class="jump-title">幼駒能力計算器 暨 實戰 13 大跑法比賽戰績紀錄大表</span>
-    </button>
-  </div>
-</div>
-
-<div class="chapter-pillar-group">
-<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-secrets')" style="color:#38bdf8;" title="點擊直達【支柱一】">
-  <div style="display:flex; align-items:center; gap:8px;">
-    <i class="fa-solid fa-crown"></i> 支柱一：開局劇本年代與史實攻略 (第 01 ~ 07 章)
-  
-  </div>
-</div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-start-guide')">
-<span class="jump-icon"><i class="fa-solid fa-flag-checkered"></i></span>
-<span class="jump-num">第 01 章</span>
-<span class="jump-title">開局劇本年代選拔・初年度52週圖文通關與全年代初期讓渡馬完全指南</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-1968-scenario')">
-<span class="jump-icon"><i class="fa-solid fa-scroll"></i></span>
-<span class="jump-num">第 02 章</span>
-<span class="jump-title">1968 年最古開局劇本完全攻略 (元祖三強・日美歐持続牝馬全書)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-era-horses-guide')">
-<span class="jump-icon"><i class="fa-solid fa-calendar-days"></i></span>
-<span class="jump-num">第 03 章</span>
-<span class="jump-title">按年代史實攻略與 1967~2023 各年代推薦名馬完全指南</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-amulets')">
-<span class="jump-icon"><i class="fa-solid fa-shield-halved"></i></span>
-<span class="jump-num">第 04 章</span>
-<span class="jump-title">守護符 (御守 / お守り) 獲得全圖鑑・兌換日曆與虹札名馬運用戰略</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-super-horses')">
-<span class="jump-icon"><i class="fa-solid fa-star"></i></span>
-<span class="jump-num">第 05 章</span>
-<span class="jump-title">超級巨星名駒 (スーパースターホース) 機制解析與歷代超級馬 (SH) 完全名單</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-pro-tricks')">
-<span class="jump-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-<span class="jump-num">第 06 章</span>
-<span class="jump-title">+40 爆發力 (爆発力)滿貫公式與賽務職業小技</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-secrets', 'sec-version-diff')">
-<span class="jump-icon"><i class="fa-solid fa-code-compare"></i></span>
-<span class="jump-num">第 07 章</span>
-<span class="jump-title">歷代版本演進差異完全剖析 (2023~2026)</span>
-</button>
-</div>
-</div>
-<div class="chapter-pillar-group">
-<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-breed')" style="color:#06b6d4;" title="點擊直達【支柱二】">
-  <div style="display:flex; align-items:center; gap:8px;">
-    <i class="fa-solid fa-dna"></i> 支柱二：配合繁育大系・四大指標與爆發力 (爆発力)理論 (第 08 ~ 21 章)
-  
-  </div>
-</div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-metrics')">
-<span class="jump-icon"><i class="fa-solid fa-gauge-high"></i></span>
-<span class="jump-num">第 08 章</span>
-<span class="jump-title">配合機制・四大指標與爆發力 (爆発力)抽樣模擬器</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-master-table')">
-<span class="jump-icon"><i class="fa-solid fa-table-list"></i></span>
-<span class="jump-num">第 09 章</span>
-<span class="jump-title">全配合理論速查與加成總覽表 (全 39 條目)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-diagrams')">
-<span class="jump-icon"><i class="fa-solid fa-network-wired"></i></span>
-<span class="jump-num">第 10 章</span>
-<span class="jump-title">專屬 4 代血統矩陣圖譜總覽</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-nicks')">
-<span class="jump-icon"><i class="fa-solid fa-heart"></i></span>
-<span class="jump-num">第 11 章</span>
-<span class="jump-title">相性配合 (ニックス / Nicks) 與副屬性爆發</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-inbreed')">
-<span class="jump-icon"><i class="fa-solid fa-link"></i></span>
-<span class="jump-num">第 12 章</span>
-<span class="jump-title">近親交配 (Inbreed)、母系近親、全兄妹與異系</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-linebreed')">
-<span class="jump-icon"><i class="fa-solid fa-code-branch"></i></span>
-<span class="jump-num">第 13 章</span>
-<span class="jump-title">系統交配 (Linebreed / 3×4 / 流行與零細)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-activation')">
-<span class="jump-icon"><i class="fa-solid fa-bolt"></i></span>
-<span class="jump-num">第 14 章</span>
-<span class="jump-title">血脈活性化配合 (8親系 / 完全活性)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-vitality')">
-<span class="jump-icon"><i class="fa-solid fa-battery-full"></i></span>
-<span class="jump-num">第 15 章</span>
-<span class="jump-title">活力源化・活力補完與隔世遺傳</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-lines')">
-<span class="jump-icon"><i class="fa-solid fa-arrows-split-up-and-left"></i></span>
-<span class="jump-num">第 16 章</span>
-<span class="jump-title">雄系活性化與雌系活性化配合</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-traits')">
-<span class="jump-icon"><i class="fa-solid fa-gem"></i></span>
-<span class="jump-num">第 17 章</span>
-<span class="jump-title">特性昇華配合與母系融合</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-special')">
-<span class="jump-icon"><i class="fa-solid fa-wand-sparkles"></i></span>
-<span class="jump-num">第 18 章</span>
-<span class="jump-title">特殊名馬配合與彩蛋配合</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'mod-2026new')">
-<span class="jump-icon"><i class="fa-solid fa-atom"></i></span>
-<span class="jump-num">第 19 章</span>
-<span class="jump-title">2024~2026 最新繁育理論 (歷史因子/世界始祖/Drama融合)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-gene-factors')">
-<span class="jump-icon"><i class="fa-solid fa-dna"></i></span>
-<span class="jump-num">第 20 章</span>
-<span class="jump-title">Drama 因子 (ドラマ因子) 全書・活力增強 4 階段與 2026 繁育新理論</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-systems')">
-<span class="jump-icon"><i class="fa-solid fa-sitemap"></i></span>
-<span class="jump-num">第 21 章</span>
-<span class="jump-title">系統確立與滅亡年表・血統支配率精算機</span>
-</button>
-</div>
-</div>
-<div class="chapter-pillar-group">
-<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-foals')" style="color:#10b981;" title="點擊直達【支柱三】">
-  <div style="display:flex; align-items:center; gap:8px;">
-    <i class="fa-solid fa-horse"></i> 支柱三：幼駒培育・相馬心法與出生事件 (第 22 ~ 24 章)
-  
-  </div>
-</div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-potential')">
-<span class="jump-icon"><i class="fa-solid fa-eye"></i></span>
-<span class="jump-num">第 22 章</span>
-<span class="jump-title">優質幼駒四大判別法・相馬心法與幼駒專用史實調教</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-horse-comments')">
-<span class="jump-icon"><i class="fa-solid fa-comment-dots"></i></span>
-<span class="jump-num">第 23 章</span>
-<span class="jump-title">0~3 歲幼駒與賽馬評語完全手冊 (日/中/解讀三欄對照)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-foals', 'sec-special-events')">
-<span class="jump-icon"><i class="fa-solid fa-meteor"></i></span>
-<span class="jump-num">第 24 章</span>
-<span class="jump-title">幼駒頂級出生事件 (流星/春雷/天馬等 9 大事件)</span>
-</button>
-</div>
-</div>
-<div class="chapter-pillar-group">
-<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-train')" style="color:#f59e0b;" title="點擊直達【支柱四】">
-  <div style="display:flex; align-items:center; gap:8px;">
-    <i class="fa-solid fa-bolt"></i> 支柱四：賽馬能力・特性圖鑑・史實調教與馬之個性 (ウマソナ) (第 25 ~ 30 章)
-  
-  </div>
-</div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-status-encyclopedia')">
-<span class="jump-icon"><i class="fa-solid fa-address-card"></i></span>
-<span class="jump-num">第 25 章</span>
-<span class="jump-title">五大人物與賽馬數值能力完全百科 (競走馬・騎手・調教師・牧場長・子孫結婚知人)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-skills-traits')">
-<span class="jump-icon"><i class="fa-solid fa-chart-simple"></i></span>
-<span class="jump-num">第 26 章</span>
-<span class="jump-title">基礎能力・四大比賽展開與適應能力機制全書</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-traits-master')">
-<span class="jump-icon"><i class="fa-solid fa-medal"></i></span>
-<span class="jump-num">第 27 章</span>
-<span class="jump-title">特性全書・全 223 種通常・上位進化・日本固有與海外專屬特性完全圖鑑</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-historical-train')">
-<span class="jump-icon"><i class="fa-solid fa-dumbbell"></i></span>
-<span class="jump-num">第 28 章</span>
-<span class="jump-title">史實調教・SP 雙馬合練・大成功量表與全 40+ 種調教效果全圖鑑</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-umasona')">
-<span class="jump-icon"><i class="fa-solid fa-masks-theater"></i></span>
-<span class="jump-num">第 29 章</span>
-<span class="jump-title">馬之個性 (ウマソナ) 全圖鑑・克服進化秘技與 14 大性格分佈矩陣</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-train', 'sec-relations-2026')">
-<span class="jump-icon"><i class="fa-solid fa-handshake"></i></span>
-<span class="jump-num">第 30 章</span>
-<span class="jump-title">2026 名馬相関圖與 4 大關係性 (親友/犬猿/戀仲/強敵) 深度指南</span>
-</button>
-</div>
-</div>
-<div class="chapter-pillar-group">
-<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-races')" style="color:#ec4899;" title="點擊直達【支柱五】">
-  <div style="display:flex; align-items:center; gap:8px;">
-    <i class="fa-solid fa-trophy"></i> 支柱五：重賞日程・全球三冠・熱潮與賽馬場特性 (第 31 ~ 35 章)
-  
-  </div>
-</div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-stakes-master')">
-<span class="jump-icon"><i class="fa-solid fa-trophy"></i></span>
-<span class="jump-num">第 31 章</span>
-<span class="jump-title">全重賞日程・全球三冠系列賽・G1 頂級攻略與 64 大競馬場特性大百科</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-triple-crowns')">
-<span class="jump-icon"><i class="fa-solid fa-award"></i></span>
-<span class="jump-num">第 32 章</span>
-<span class="jump-title">全球三冠路線與夏季系列賽完全對照</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-keiba-boom')">
-<span class="jump-icon"><i class="fa-solid fa-fire"></i></span>
-<span class="jump-num">第 33 章</span>
-<span class="jump-title">偶像馬地圖・賽馬熱潮・傳奇特性與顯彰馬</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-nicknames')">
-<span class="jump-icon"><i class="fa-solid fa-tags"></i></span>
-<span class="jump-num">第 34 章</span>
-<span class="jump-title">殿堂馬稱號 (異名)・人氣加成 (Boost) 與獲得條件全圖鑑</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-races', 'sec-historia')">
-<span class="jump-icon"><i class="fa-solid fa-landmark"></i></span>
-<span class="jump-num">第 35 章</span>
-<span class="jump-title">競馬歷史事件 (Historia) 名場面與觸發條件</span>
-</button>
-</div>
-</div>
-<div class="chapter-pillar-group">
-<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-ranch')" style="color:#a855f7;" title="點擊直達【支柱六】">
-  <div style="display:flex; align-items:center; gap:8px;">
-    <i class="fa-solid fa-house-chimney"></i> 支柱六：牧場經營・人物技能・婚姻與俱樂部法人 (第 36 ~ 40 章)
-  
-  </div>
-</div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-farm-facilities')">
-<span class="jump-icon"><i class="fa-solid fa-house-chimney"></i></span>
-<span class="jump-num">第 36 章</span>
-<span class="jump-title">牧場設施升級與美歐海外分場規劃</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-personnel')">
-<span class="jump-icon"><i class="fa-solid fa-user-tie"></i></span>
-<span class="jump-num">第 37 章</span>
-<span class="jump-title">騎手・調教師・牧場長 18 大人物技能全書</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-marriage-secrets')">
-<span class="jump-icon"><i class="fa-solid fa-venus-mars"></i></span>
-<span class="jump-num">第 38 章</span>
-<span class="jump-title">知人・結婚相手・秘書・牧場長與子孫培育進路全圖鑑</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-club-management')">
-<span class="jump-icon"><i class="fa-solid fa-briefcase"></i></span>
-<span class="jump-num">第 39 章</span>
-<span class="jump-title">賽馬俱樂部 (Club) 經營・法人化牧場與會員招募完全指南</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-ranch', 'sec-legend-match')">
-<span class="jump-icon"><i class="fa-solid fa-chess-king"></i></span>
-<span class="jump-num">第 40 章</span>
-<span class="jump-title">傳奇對決 (The Legend Match)・世界百大名駒殿堂排行榜與顯彰馬決戰</span>
-</button>
-</div>
-</div>
-<div class="chapter-pillar-group">
-<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-db')" style="color:#eab308;" title="點擊直達【支柱七】">
-  <div style="display:flex; align-items:center; gap:8px;">
-    <i class="fa-solid fa-magnifying-glass"></i> 支柱七：馬匹資料庫互動速查與終極檔案庫 (第 41 ~ 46 章)
-  
-  </div>
-</div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-horse-db')">
-<span class="jump-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-<span class="jump-num">第 41 章</span>
-<span class="jump-title">1.5 萬匹全史實馬與 11 大年度推薦速查庫</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-sires-retire-db')">
-<span class="jump-icon"><i class="fa-solid fa-clock-rotate-left"></i></span>
-<span class="jump-num">第 42 章</span>
-<span class="jump-title">2,898 匹史實種公馬引退年限完全速查庫 (Private 保護期檢索庫)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-breeding-only-horses')">
-<span class="jump-icon"><i class="fa-solid fa-venus-mars"></i></span>
-<span class="jump-num">第 43 章</span>
-<span class="jump-title">4,314 匹繁殖專用史實馬全量數據庫 (名種公馬 / 繁殖名雌完全對照大表)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-racehorses-full-db')">
-<span class="jump-icon"><i class="fa-solid fa-flag-checkered"></i></span>
-<span class="jump-num">第 44 章</span>
-<span class="jump-title">16,570 匹全史實競走馬完全數據庫 (日本馬 ＋ 海外馬對照大表)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-yearly-recs-db')">
-<span class="jump-icon"><i class="fa-solid fa-calendar-check"></i></span>
-<span class="jump-num">第 45 章</span>
-<span class="jump-title">全年代 11 大路線年度推薦史實馬完全數據庫 (日本馬 ＋ 海外馬 1:1 復刻)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-broodmare-yearly-db')">
-<span class="jump-icon"><i class="fa-solid fa-venus"></i></span>
-<span class="jump-num">第 46 章</span>
-<span class="jump-title">全年代推薦繁殖母馬・四大管道引進大百科 (1968~2025)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-gamerch-master-db')">
-<span class="jump-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-<span class="jump-num">第 47 章</span>
-<span class="jump-title">Winning Post 10 2026 終極進階攻略與暗箱大數據庫 (Gamerch 48 篇全量深度攻略)</span>
-</button>
-
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-breed', 'sec-breeding-master-expansion')">
-<span class="jump-icon"><i class="fa-solid fa-dna"></i></span>
-<span class="jump-num">第 51 章</span>
-<span class="jump-title">極限配種大師・名牝系確立與全年代系統確立路線圖大百科 (Dosute 爆發力95)</span>
-</button>
-
-
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-nicknames-full-db')">
-<span class="jump-icon"><i class="fa-solid fa-tags"></i></span>
-<span class="jump-num">第 46 章</span>
-<span class="jump-title">殿堂馬稱號 (異名 / Nicknames) 全量數據庫與獲得條件完全圖鑑</span>
-</button>
-
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-era-horses-recs-handbook')">
-<span class="jump-icon"><i class="fa-solid fa-list-check"></i></span>
-<span class="jump-num">第 47 章</span>
-<span class="jump-title">年代別推薦史實名駒完全名冊 (1967~2023 全 56 大史實年代・496 匹名駒評級與戰略全書)</span>
-</button>
-
-</div>
-</div>
-<div class="chapter-pillar-group">
-<div class="chapter-pillar-title" onclick="jumpToPillar('pillar-lectures')" style="color:#6366f1;" title="點擊直達【支柱八】">
-  <div style="display:flex; align-items:center; gap:8px;">
-    <i class="fa-solid fa-graduation-cap"></i> 支柱八：名師實戰講堂・線上對戰與系統機能 (第 48 ~ 50 章)
-  
-  </div>
-</div>
-<div class="chapter-items-grid">
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-official-lectures')">
-<span class="jump-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-<span class="jump-num">第 48 章</span>
-<span class="jump-title">名師實戰講堂 (吹里谷芽愛育成指南 &amp; リオン展開適應性徹底講座)</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-online-strongest')">
-<span class="jump-icon"><i class="fa-solid fa-globe"></i></span>
-<span class="jump-num">第 49 章</span>
-<span class="jump-title">線上模式・最強馬之路 (最強馬ロード) 育成・前哨戰與全國大會對戰完全手冊</span>
-</button>
-<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-lectures', 'sec-system-features')">
-<span class="jump-icon"><i class="fa-solid fa-clapperboard"></i></span>
-<span class="jump-num">第 50 章</span>
-<span class="jump-title">電影級過場名場面 (Cinema Event) 觸發條件與系統便利機能全書</span>
-</button>
-</div>
-</div>
-</div>
 </div>
 </div>
 <script>
@@ -44232,109 +47956,260 @@ function toggleAppTheme() {
     }
 }
 
-function openChapterModal() {
-    const m = document.getElementById("chapterModal");
-    if (m) {
-        m.style.display = "flex";
-        const inp = document.getElementById("chapterFilterInput");
+function openBookTocModal() {
+    const modal = document.getElementById("chapterModal");
+    if (modal) {
+        modal.style.display = "flex";
+        if (typeof renderBookToc === 'function') renderBookToc();
+        const inp = document.getElementById("bookTocSearchInput");
         if (inp) {
             inp.value = "";
-            filterChapterList();
-            inp.blur();
+            filterBookToc();
+            inp.focus();
         }
     }
+}
+
+function openChapterModal() {
+    openBookTocModal();
+}
+
+function closeBookTocModal(event) {
+    if (event && event.target && event.target.closest('.book-toc-card') && !event.target.classList.contains('modal-close') && !event.target.closest('.modal-close')) {
+        return;
+    }
+    const modal = document.getElementById("chapterModal");
+    if (modal) modal.style.display = "none";
 }
 
 function closeChapterModal(event) {
-    if (event && event.target && event.target.closest('.chapter-modal-card') && !event.target.classList.contains('modal-close')) {
-        return;
-    }
-    const m = document.getElementById("chapterModal");
-    if (m) m.style.display = "none";
+    closeBookTocModal(event);
 }
 
-
-function jumpToPillar(pillarId) {
-    if (typeof recordCurrentPosition === 'function') recordCurrentPosition();
-    if (typeof switchMainPillar === 'function') switchMainPillar(pillarId);
-    if (typeof closeChapterModal === 'function') closeChapterModal();
-    setTimeout(() => {
-        const target = document.getElementById(pillarId);
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            const headerCard = target.querySelector('.pillar-header-card') || target;
-            headerCard.classList.add('section-highlight-flash');
-            setTimeout(() => headerCard.classList.remove('section-highlight-flash'), 1800);
-        }
-    }, 120);
-}
-window.jumpToPillar = jumpToPillar;
-
-
-window.jumpToTool = function(pillarId, sectionId, toolElementId) {
-    if (typeof recordCurrentPosition === 'function') recordCurrentPosition();
-    if (typeof switchMainPillar === 'function') switchMainPillar(pillarId);
-    if (typeof closeChapterModal === 'function') closeChapterModal();
-    setTimeout(() => {
-        const toolEl = document.getElementById(toolElementId) || document.getElementById(sectionId);
-        if (toolEl) {
-            toolEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            toolEl.classList.remove('section-highlight-flash');
-            void toolEl.offsetWidth; // trigger reflow
-            toolEl.classList.add('section-highlight-flash');
-        }
-    }, 180);
-};
-
-function jumpToChapter(pillarId, sectionId) {
-    recordCurrentPosition();
-    switchMainPillar(pillarId);
-    closeChapterModal();
-    setTimeout(() => {
-        const target = document.getElementById(sectionId);
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            target.classList.add('section-highlight-flash');
-            setTimeout(() => target.classList.remove('section-highlight-flash'), 1800);
-        }
-    }, 120);
-}
-
-function filterChapterList() {
-    const inputEl = document.getElementById("chapterFilterInput");
-    const query = (inputEl ? inputEl.value : "").trim().toLowerCase();
-    const groups = document.querySelectorAll(".chapter-pillar-group");
+function filterBookToc() {
+    const inp = document.getElementById("bookTocSearchInput");
+    const query = inp ? inp.value.trim().toLowerCase() : '';
     
-    groups.forEach(group => {
-        let anyVisible = false;
-        const btns = group.querySelectorAll(".chapter-jump-btn");
-        btns.forEach(btn => {
-            const titleText = btn.innerText.toLowerCase();
-            let match = !query || titleText.includes(query);
+    const volCards = document.querySelectorAll('.book-volume-card');
+    let matchCount = 0;
+    
+    volCards.forEach(volCard => {
+        let volHasMatch = false;
+        const chapRows = volCard.querySelectorAll('.book-chapter-row');
+        
+        chapRows.forEach(chapRow => {
+            const chapText = (chapRow.getAttribute('data-search-text') || chapRow.textContent).toLowerCase();
+            const subItems = chapRow.querySelectorAll('.book-subsection-chip');
+            let chapHasMatch = false;
             
-            if (!match && query) {
-                const onclickAttr = btn.getAttribute("onclick") || "";
-                const secMatch = onclickAttr.match(/jumpToChapter\(['"][^'"]+['"]\s*,\s*['"]([^'"]+)['"]\)/);
-                if (secMatch && secMatch[1]) {
-                    const sectionEl = document.getElementById(secMatch[1]);
-                    if (sectionEl) {
-                        const bodyText = sectionEl.innerText.toLowerCase();
-                        if (bodyText.includes(query)) {
-                            match = true;
-                        }
-                    }
-                }
+            if (!query || chapText.includes(query)) {
+                chapHasMatch = true;
             }
             
-            if (match) {
-                btn.style.display = "flex";
-                anyVisible = true;
+            subItems.forEach(subChip => {
+                const subText = (subChip.getAttribute('data-search-text') || subChip.textContent).toLowerCase();
+                if (!query || subText.includes(query) || chapText.includes(query)) {
+                    subChip.style.display = 'inline-flex';
+                    chapHasMatch = true;
+                } else {
+                    subChip.style.display = 'none';
+                }
+            });
+            
+            if (chapHasMatch) {
+                chapRow.style.display = 'block';
+                volHasMatch = true;
+                matchCount++;
             } else {
-                btn.style.display = "none";
+                chapRow.style.display = 'none';
             }
         });
-        group.style.display = anyVisible ? "block" : "none";
+        
+        const volBody = volCard.querySelector('.book-vol-body');
+        const volArrow = volCard.querySelector('.book-vol-arrow');
+        
+        if (volHasMatch) {
+            volCard.style.display = 'block';
+            if (volBody) {
+                volBody.style.display = 'flex';
+                if (volArrow) volArrow.style.transform = 'rotate(180deg)';
+            }
+        } else {
+            volCard.style.display = 'none';
+        }
     });
+    
+    const counterEl = document.getElementById('bookTocMatchCounter');
+    if (counterEl) {
+        if (query) {
+            counterEl.textContent = `找到 ${matchCount} 個匹配項目`;
+            counterEl.style.display = 'inline-block';
+        } else {
+            counterEl.style.display = 'none';
+        }
+    }
+}
+
+function renderBookToc() {
+    const container = document.getElementById("bookTocVolumeContainer");
+    if (!container || !window.BOOK_TOC_DATA) return;
+    
+    let html = '';
+    
+    window.BOOK_TOC_DATA.forEach((vol, vIdx) => {
+        let chapHtml = '';
+        let totalSubsInVol = 0;
+        
+        vol.chapters.forEach((chap, cIdx) => {
+            totalSubsInVol += (chap.subsections ? chap.subsections.length : 0);
+            let subChipsHtml = '';
+            
+            if (chap.subsections && chap.subsections.length > 0) {
+                subChipsHtml = `
+                <div class="book-subsections-container">
+                    <div class="book-subsections-rail">
+                        ${chap.subsections.map(sub => {
+                            const actionStr = sub.action || 'jumpToChapter';
+                            const paramsStr = JSON.stringify(sub.params || [vol.pillarId, chap.secId]);
+                            const searchContent = `${vol.volNum} ${vol.volTitle} ${chap.chapNum} ${chap.title} ${sub.subNum} ${sub.title}`.toLowerCase();
+                            return `
+                            <button class="book-subsection-chip" 
+                                    data-search-text="${searchContent.replace(/"/g, '&quot;')}"
+                                    onclick='jumpToSubSection("${vol.pillarId}", "${chap.secId}", "${actionStr}", ${paramsStr})'
+                                    title="點擊直達：${sub.title}">
+                                <span class="book-sub-num">${sub.subNum}</span>
+                                <span class="book-sub-title">${sub.title}</span>
+                                <i class="fa-solid fa-arrow-right-long book-sub-arrow"></i>
+                            </button>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+                `;
+            }
+            
+            const chapSearchContent = `${vol.volNum} ${vol.volTitle} ${chap.chapNum} ${chap.title}`.toLowerCase();
+            
+            chapHtml += `
+            <div class="book-chapter-row" data-search-text="${chapSearchContent.replace(/"/g, '&quot;')}">
+                <div class="book-chapter-header">
+                    <div class="book-chap-left" onclick='jumpToSubSection("${vol.pillarId}", "${chap.secId}", "jumpToChapter", ["${vol.pillarId}", "${chap.secId}"])'>
+                        <span class="book-chap-badge"><i class="fa-solid ${chap.icon || 'fa-bookmark'}"></i> ${chap.chapNum}</span>
+                        <h4 class="book-chap-title">${chap.title}</h4>
+                    </div>
+                    <div class="book-chap-right">
+                        ${chap.subsections && chap.subsections.length ? `<span class="book-subs-count">${chap.subsections.length} 個小節</span>` : ''}
+                        <button class="book-chap-jump-btn" onclick='jumpToSubSection("${vol.pillarId}", "${chap.secId}", "jumpToChapter", ["${vol.pillarId}", "${chap.secId}"])' title="直達本章">
+                            <span>進入章節</span> <i class="fa-solid fa-angles-right"></i>
+                        </button>
+                    </div>
+                </div>
+                ${subChipsHtml}
+            </div>
+            `;
+        });
+        
+        html += `
+        <div class="book-volume-card" id="book-vol-card-${vol.volId}">
+            <div class="book-vol-header" onclick="toggleBookVolume('${vol.volId}')" style="border-left-color: ${vol.color || '#38bdf8'};">
+                <div class="book-vol-header-left">
+                    <span class="book-vol-num" style="background: ${vol.color || '#38bdf8'};">${vol.volNum}</span>
+                    <div class="book-vol-meta">
+                        <h3 class="book-vol-title"><i class="fa-solid ${vol.icon || 'fa-book'}"></i> ${vol.volTitle}</h3>
+                        <p class="book-vol-desc">${vol.volDesc}</p>
+                    </div>
+                </div>
+                <div class="book-vol-header-right">
+                    <span class="book-vol-counts">${vol.chapters.length} 大章 / ${totalSubsInVol} 小節</span>
+                    <i class="fa-solid fa-chevron-down book-vol-arrow" id="book-vol-arrow-${vol.volId}" style="transform: rotate(180deg);"></i>
+                </div>
+            </div>
+            <div class="book-vol-body" id="book-vol-body-${vol.volId}" style="display: flex;">
+                ${chapHtml}
+            </div>
+        </div>
+        `;
+    });
+    
+    container.innerHTML = html;
+}
+
+function toggleBookVolume(volId) {
+    const el = document.getElementById('book-vol-body-' + volId);
+    const arrow = document.getElementById('book-vol-arrow-' + volId);
+    if (!el) return;
+    if (el.style.display === 'none') {
+        el.style.display = 'flex';
+        if (arrow) arrow.style.transform = 'rotate(180deg)';
+    } else {
+        el.style.display = 'none';
+        if (arrow) arrow.style.transform = 'rotate(0deg)';
+    }
+}
+
+function expandAllBookToc() {
+    const bodies = document.querySelectorAll('.book-vol-body');
+    const arrows = document.querySelectorAll('.book-vol-arrow');
+    bodies.forEach(b => b.style.display = 'flex');
+    arrows.forEach(a => a.style.transform = 'rotate(180deg)');
+}
+
+function collapseAllBookToc() {
+    const bodies = document.querySelectorAll('.book-vol-body');
+    const arrows = document.querySelectorAll('.book-vol-arrow');
+    bodies.forEach(b => b.style.display = 'none');
+    arrows.forEach(a => a.style.transform = 'rotate(0deg)');
+}
+
+function jumpToSubSection(pillarId, secId, action, params) {
+
+window.openBookTocModal = openBookTocModal;
+window.openChapterModal = openChapterModal;
+window.closeBookTocModal = closeBookTocModal;
+window.closeChapterModal = closeChapterModal;
+window.filterBookToc = filterBookToc;
+window.renderBookToc = renderBookToc;
+window.toggleBookVolume = toggleBookVolume;
+window.expandAllBookToc = expandAllBookToc;
+window.collapseAllBookToc = collapseAllBookToc;
+window.jumpToSubSection = jumpToSubSection;
+
+    // 1. Close modal
+    const modal = document.getElementById("chapterModal");
+    if (modal) modal.style.display = "none";
+    
+    // 2. Switch main pillar
+    if (typeof switchMainPillar === 'function') {
+        switchMainPillar(pillarId);
+    }
+    
+    // 3. Execute custom action if specified (e.g. sub-module switch)
+    if (action && typeof window[action] === 'function') {
+        try {
+            if (Array.isArray(params)) {
+                window[action](...params);
+            } else if (params) {
+                window[action](params);
+            } else {
+                window[action]();
+            }
+        } catch(err) {
+            console.warn("SubSection action error:", err);
+        }
+    }
+    
+    // 4. Scroll smoothly to target section
+    setTimeout(() => {
+        const targetEl = document.getElementById(secId);
+        if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Apply highlight glow
+            targetEl.classList.remove('sec-highlight-glow');
+            void targetEl.offsetWidth; // Trigger reflow
+            targetEl.classList.add('sec-highlight-glow');
+            setTimeout(() => targetEl.classList.remove('sec-highlight-glow'), 2500);
+        }
+    }, 150);
 }
 </script>
 <script>
@@ -45300,7 +49175,7 @@ function runExplosionSimulation() {
 function runSimulation() { runExplosionSimulation(); }
 
 // ==========================================
-// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.25)
+// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.26)
 // ==========================================
 
 // 1. 神器一：新手極速配種決策精靈 (Breeding Decision Wizard)
@@ -45880,6 +49755,417 @@ window.calcSystemEstablishment = function() {
     font-weight: 800 !important;
     box-shadow: 0 0 12px rgba(245, 158, 11, 0.45) !important;
 }
+
+/* ============================================================================
+   📖 典藏書本式目錄大百科 (Book Table of Contents) 高級科技流光樣式
+============================================================================ */
+.book-toc-card {
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 16px;
+    width: 94%;
+    max-width: 1060px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.15);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.book-toc-header {
+    padding: 16px 22px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.book-toc-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-toc-header-title h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f59e0b;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-stats-badge {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.3));
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-toc-controls-bar {
+    padding: 10px 20px;
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.book-toc-search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.book-toc-search-box i {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.book-toc-search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    color: #f1f5f9;
+    font-size: 0.86rem;
+    outline: none !important;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.book-toc-search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.book-toc-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-ctrl-btn {
+    background: rgba(30, 41, 59, 0.9);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 16px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.book-toc-ctrl-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+.book-toc-body-container {
+    padding: 16px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+/* 卷冊卡片 (Volume Card) */
+.book-volume-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease;
+}
+
+.book-volume-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.book-vol-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+    border-left: 5px solid #38bdf8;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.book-vol-header:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(30, 41, 59, 0.95));
+}
+
+.book-vol-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-vol-num {
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    white-space: nowrap !important;
+}
+
+.book-vol-meta {
+    text-align: left !important;
+}
+
+.book-vol-title {
+    margin: 0 0 2px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left !important;
+}
+
+.book-vol-desc {
+    margin: 0;
+    font-size: 0.76rem;
+    color: #94a3b8;
+    text-align: left !important;
+    line-height: 1.3;
+}
+
+.book-vol-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-vol-counts {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-vol-arrow {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+}
+
+.book-vol-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+/* 章節行 (Chapter Row) */
+.book-chapter-row {
+    background: rgba(30, 41, 59, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    text-align: left !important;
+}
+
+.book-chapter-row:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.book-chapter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.book-chap-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    text-align: left !important;
+}
+
+.book-chap-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.74rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.book-chap-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.45;
+    text-align: left !important;
+}
+
+.book-chap-left:hover .book-chap-title {
+    color: #38bdf8;
+}
+
+.book-chap-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-subs-count {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* 小節專題清單 (Sub-sections Container & Chips) */
+.book-subsections-container {
+    margin-top: 6px;
+    padding-left: 8px;
+    border-left: 2px dashed rgba(56, 189, 248, 0.25);
+}
+
+.book-subsections-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.book-subsection-chip {
+    background: rgba(15, 23, 42, 0.7);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left !important;
+    white-space: nowrap !important;
+    max-width: 100%;
+}
+
+.book-subsection-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+.book-sub-num {
+    color: #f59e0b;
+    font-weight: 800;
+    font-size: 0.72rem;
+}
+
+.book-sub-title {
+    color: inherit;
+}
+
+.book-sub-arrow {
+    color: #38bdf8;
+    font-size: 0.65rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.book-subsection-chip:hover .book-sub-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* 滾動平滑高亮動效 */
+@keyframes secGlowPulse {
+    0% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+    30% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.8), 0 0 10px rgba(245, 158, 11, 0.6); border-color: #38bdf8; }
+    100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+}
+
+.sec-highlight-glow {
+    animation: secGlowPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
 <!-- ➕ 新增/編輯 幼駒成長檔案 Modal -->
 <div class="modal-overlay" id="addFoalModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.85); z-index:99999; backdrop-filter:blur(8px); overflow-y:auto; padding:20px 10px;">
@@ -46075,6 +50361,417 @@ window.calcSystemEstablishment = function() {
     font-weight: 800 !important;
     box-shadow: 0 0 12px rgba(16, 185, 129, 0.45) !important;
 }
+
+/* ============================================================================
+   📖 典藏書本式目錄大百科 (Book Table of Contents) 高級科技流光樣式
+============================================================================ */
+.book-toc-card {
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 16px;
+    width: 94%;
+    max-width: 1060px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.15);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.book-toc-header {
+    padding: 16px 22px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.book-toc-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-toc-header-title h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f59e0b;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-stats-badge {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.3));
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-toc-controls-bar {
+    padding: 10px 20px;
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.book-toc-search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.book-toc-search-box i {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.book-toc-search-box input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    color: #f1f5f9;
+    font-size: 0.86rem;
+    outline: none !important;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.book-toc-search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.book-toc-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-toc-ctrl-btn {
+    background: rgba(30, 41, 59, 0.9);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 16px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.book-toc-ctrl-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: #38bdf8;
+}
+
+.book-toc-body-container {
+    padding: 16px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+/* 卷冊卡片 (Volume Card) */
+.book-volume-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease;
+}
+
+.book-volume-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.book-vol-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+    border-left: 5px solid #38bdf8;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.book-vol-header:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(30, 41, 59, 0.95));
+}
+
+.book-vol-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-vol-num {
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    white-space: nowrap !important;
+}
+
+.book-vol-meta {
+    text-align: left !important;
+}
+
+.book-vol-title {
+    margin: 0 0 2px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left !important;
+}
+
+.book-vol-desc {
+    margin: 0;
+    font-size: 0.76rem;
+    color: #94a3b8;
+    text-align: left !important;
+    line-height: 1.3;
+}
+
+.book-vol-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.book-vol-counts {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap !important;
+}
+
+.book-vol-arrow {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+}
+
+.book-vol-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+/* 章節行 (Chapter Row) */
+.book-chapter-row {
+    background: rgba(30, 41, 59, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    text-align: left !important;
+}
+
+.book-chapter-row:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.book-chapter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.book-chap-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    text-align: left !important;
+}
+
+.book-chap-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.74rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.book-chap-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.45;
+    text-align: left !important;
+}
+
+.book-chap-left:hover .book-chap-title {
+    color: #38bdf8;
+}
+
+.book-chap-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-subs-count {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap !important;
+}
+
+.book-chap-jump-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* 小節專題清單 (Sub-sections Container & Chips) */
+.book-subsections-container {
+    margin-top: 6px;
+    padding-left: 8px;
+    border-left: 2px dashed rgba(56, 189, 248, 0.25);
+}
+
+.book-subsections-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.book-subsection-chip {
+    background: rgba(15, 23, 42, 0.7);
+    color: #cbd5e1;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left !important;
+    white-space: nowrap !important;
+    max-width: 100%;
+}
+
+.book-subsection-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+.book-sub-num {
+    color: #f59e0b;
+    font-weight: 800;
+    font-size: 0.72rem;
+}
+
+.book-sub-title {
+    color: inherit;
+}
+
+.book-sub-arrow {
+    color: #38bdf8;
+    font-size: 0.65rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.book-subsection-chip:hover .book-sub-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* 滾動平滑高亮動效 */
+@keyframes secGlowPulse {
+    0% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+    30% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.8), 0 0 10px rgba(245, 158, 11, 0.6); border-color: #38bdf8; }
+    100% { box-shadow: 0 0 0 rgba(56, 189, 248, 0); border-color: rgba(56, 189, 248, 0.3); }
+}
+
+.sec-highlight-glow {
+    animation: secGlowPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
 
 
