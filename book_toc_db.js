@@ -1573,18 +1573,32 @@ window.openBookTocModal = function() {
         if (typeof window.renderBookToc === 'function') {
             window.renderBookToc();
         }
-        setTimeout(() => {
-            const input = document.getElementById("bookTocSearchInput");
-            if (input) input.focus();
-        }, 100);
+        const input = document.getElementById("bookTocSearchInput");
+        if (input) {
+            input.value = "";
+            if (typeof window.filterBookToc === 'function') {
+                window.filterBookToc();
+            }
+            if (document.activeElement === input) {
+                input.blur();
+            }
+        }
     }
 };
 
+window.openChapterModal = function() {
+    window.openBookTocModal();
+};
+
 window.closeBookTocModal = function(e) {
-    if (!e || e.target.id === "chapterModal" || e.target.classList.contains("modal-close")) {
+    if (!e || e.target.id === "chapterModal" || e.target.classList.contains("modal-close") || e.target.closest(".modal-close")) {
         const modal = document.getElementById("chapterModal");
         if (modal) modal.style.display = "none";
     }
+};
+
+window.closeChapterModal = function(e) {
+    window.closeBookTocModal(e);
 };
 
 window.renderBookToc = function() {
