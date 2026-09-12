@@ -17,11 +17,12 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- 本地資料庫優先，若無則由 jsDelivr CDN 動態載入 -->
-<script src="master_lookup_db.js?v=v04.22"></script>
-<script src="core_guides_data.js?v=v04.22"></script>
-<script src="broodmare_recs_db.js?v=v04.22"></script>
-<script src="yearly_recs_db.js?v=v04.22"></script>
-<script src="horse_subtopics_data.js?v=v04.22"></script>
+<script src="master_lookup_db.js?v=v04.23"></script>
+<script src="core_guides_data.js?v=v04.23"></script>
+<script src="broodmare_recs_db.js?v=v04.23"></script>
+<script src="gamerch_guides_db.js?v=v04.23"></script>
+<script src="yearly_recs_db.js?v=v04.23"></script>
+<script src="horse_subtopics_data.js?v=v04.23"></script>
 <script>
         window._DB_LOADED = false;
         const DB_CDN_URL = './master_lookup_db.js?t=' + Date.now();
@@ -2570,7 +2571,7 @@ button.chip-btn.active {
 <body>
 <!-- 頁首 Header -->
 <div class="header">
-<span class="version-badge">v04.22</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
+<span class="version-badge">v04.23</span> <button id="btnOpenFavorites" onclick="openFavoritesModal()" class="chip-btn" style="background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.35)); color:#fbbf24; border:1px solid #f59e0b; font-weight:bold; cursor:pointer; margin-left:12px; font-size:0.78rem; padding:4px 12px;"><i class="fa-solid fa-star"></i> ⭐ 我的繁育計畫 (<span id="favCountBadge">0</span>)</button>
 <h1>🏇 賽馬大亨 10 2026 史實數據庫與完全攻略大百科</h1>
 <div style="text-align:center; margin:10px auto 14px auto;">
       <a href="https://www.jbis.or.jp/horse/" target="_blank" class="jbis-portal-banner-btn" style="background:linear-gradient(135deg, #00733e, #00502b); color:#ffffff !important; padding:8px 22px; border-radius:24px; font-weight:800; font-size:0.92rem; border:1.5px solid #4ade80; box-shadow:0 0 15px rgba(74,222,128,0.4); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease;" title="前往日本 JBIS Search 官方原站進行即時權威血統與馬情報檢索">
@@ -41830,6 +41831,70 @@ function filterTab5Racecourses() {
 </section>
 
 
+<!-- ==========================================================================
+     第 47 章：Winning Post 10 2026 終極進階攻略與暗箱大數據庫 (Gamerch 48 篇全量深度攻略)
+     ========================================================================== -->
+<section class="section-card" id="sec-gamerch-master-db" style="margin-bottom:18px;">
+<div class="section-header">
+<div class="section-title"><i class="fa-solid fa-graduation-cap"></i> 第 47 章：Winning Post 10 2026 終極進階攻略與暗箱大數據庫 (Gamerch 48 篇全量深度攻略・暗箱判定・初期讓渡馬・神級小技大百科)</div>
+<div class="section-meta">
+<span class="pill pill-gold">48 篇全量深度攻略 ＋ 10 大核心模組 ＋ 8 大年代初期讓渡馬評級 ＋ 暗箱機制大解密</span>
+</div>
+</div>
+<div class="section-body">
+
+<div class="callout callout-gold" style="margin-bottom:16px;">
+<i class="fa-solid fa-shield-halved" style="font-size:1.3rem; color:var(--gold-color);"></i>
+<div>
+<strong>《賽馬大亨 10 2026》終極進階攻略與暗箱大數據庫 (全量深度指南)</strong><br/>
+全面提煉自日本權威攻略 Wiki 之 <strong>48 篇全量專題攻略</strong>，100% 繁體中文化純化並採用日/中專有名詞並行。涵蓋<strong>底層暗箱數據 (仔出衰退/成長度/壽命公式)</strong>、<strong>海外指定 G1 限定固有特性</strong>、<strong>幼駒相馬眼月份評語</strong>、<strong>實戰小技</strong>、<strong>8 大劇本初期讓渡馬完全評級</strong>、<strong>1 年目開局 SOP 與 2020 任務</strong>、<strong>牧場設施 2026 升級順序</strong>、<strong>線上對戰最強馬培育</strong>、<strong>全事件大辭典</strong> 與 <strong>DLC 性價比評級</strong>！
+</div>
+</div>
+
+<!-- 控制組件：10 大核心模組科技流光膠囊軌道 ＋ 即時搜尋框 -->
+<div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:10px; padding:14px; margin-bottom:18px;">
+
+<!-- 頂部資訊列與搜尋框 -->
+<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+  <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+    <span id="gamerchActiveModuleBadge" style="font-size:14px; color:var(--gold-color); font-weight:800;">🔬 底層暗箱數據與隱藏數值大揭密</span>
+    <span id="gamerchModuleStatus" class="badge badge-info" style="font-size:12px;">10 大模組就緒</span>
+  </div>
+  <div style="display:flex; align-items:center; gap:8px;">
+    <input id="gamerchSearchInput" oninput="window.onGamerchSearchChange()" placeholder="🔍 搜尋特性/馬名/暗箱數值/評語..." style="background:var(--bg-primary); color:var(--text-primary); border:1px solid var(--border-color); border-radius:20px; padding:6px 14px; font-size:13px; outline:none; min-width:260px;" type="text"/>
+    <button class="btn btn-sm btn-outline-secondary" onclick="window.resetGamerchFilters()" style="border-radius:20px; font-size:12px; padding:5px 12px;">重設</button>
+  </div>
+</div>
+
+<!-- 10 大核心模組流光膠囊軌道 -->
+<div class="chip-rail" id="gamerchModuleChips" style="padding: 6px 4px 10px 4px !important; margin-bottom:4px;">
+  <button class="chip-btn active" data-module="mask-data" onclick="window.switchGamerchModule('mask-data', this)">🔬 底層暗箱數據</button>
+  <button class="chip-btn" data-module="overseas-traits" onclick="window.switchGamerchModule('overseas-traits', this)">🌎 海外固有特性</button>
+  <button class="chip-btn" data-module="foal-evaluation" onclick="window.switchGamerchModule('foal-evaluation', this)">🐴 幼駒相馬評語</button>
+  <button class="chip-btn" data-module="pro-tricks" onclick="window.switchGamerchModule('pro-tricks', this)">💡 實戰神級小技</button>
+  <button class="chip-btn" data-module="initial-transfers" onclick="window.switchGamerchModule('initial-transfers', this)">🎁 8大年代讓渡馬</button>
+  <button class="chip-btn" data-module="first-year-walkthrough" onclick="window.switchGamerchModule('first-year-walkthrough', this)">📅 1年目開局SOP</button>
+  <button class="chip-btn" data-module="ranch-facilities-2026" onclick="window.switchGamerchModule('ranch-facilities-2026', this)">🏗️ 牧場設施2026</button>
+  <button class="chip-btn" data-module="online-rewards" onclick="window.switchGamerchModule('online-rewards', this)">🌐 線上對戰育成</button>
+  <button class="chip-btn" data-module="events-encyclopedia" onclick="window.switchGamerchModule('events-encyclopedia', this)">📖 全事件大辭典</button>
+  <button class="chip-btn" data-module="dlc-ratings" onclick="window.switchGamerchModule('dlc-ratings', this)">💎 DLC性價比評級</button>
+</div>
+
+</div>
+
+<!-- 動態內容渲染容器 -->
+<div id="gamerchContentContainer">
+  <div style="text-align:center; padding:40px; color:var(--text-muted);">
+    <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem; margin-bottom:10px;"></i><br/>
+    正在載入終極進階攻略大數據庫...
+  </div>
+</div>
+
+</div>
+</section>
+
+
+
 <section class="section-card" id="sec-nicknames-full-db" style="margin-bottom:18px;">
 <div class="section-header">
 <div class="section-title"><i class="fa-solid fa-tags"></i> 第 46 章：殿堂馬稱號 (異名 / Nicknames) 全量數據庫與獲得條件完全圖鑑</div>
@@ -42731,15 +42796,15 @@ window.applyUmasonaCombinedFilter = function() {
 </script><script src="yearly_full_db.js"></script>
 <script src="sires_retire_db.js"></script>
 <script src="breeding_only_sires_db.js"></script>
-<script src="unified_horses_full_db.js?v=v04.22"></script>
-<script src="yuruyuru_guides_db.js?v=v04.22"></script>
+<script src="unified_horses_full_db.js?v=v04.23"></script>
+<script src="yuruyuru_guides_db.js?v=v04.23"></script>
 <script>
 window.WP10_RACEHORSES_FULL_DATA = window.WP10_UNIFIED_HORSES_DATA;
 window.WP10_HORSES_DB = window.WP10_UNIFIED_HORSES_DATA;
 </script>
 <script src="nicknames_full_db.js"></script>
-<script src="jbis_pedigree_db.js?v=v04.22"></script>
-<script src="jbis_engine.js?v=v04.22"></script><script>
+<script src="jbis_pedigree_db.js?v=v04.23"></script>
+<script src="jbis_engine.js?v=v04.23"></script><script>
 // 1967 ~ 2023 全年代推薦史實馬切換引擎
 let currentSelectedEra = 1967;
 
@@ -43891,6 +43956,16 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 <span class="jump-num">第 45 章</span>
 <span class="jump-title">全年代 11 大路線年度推薦史實馬完全數據庫 (日本馬 ＋ 海外馬 1:1 復刻)</span>
 </button>
+<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-broodmare-yearly-db')">
+<span class="jump-icon"><i class="fa-solid fa-venus"></i></span>
+<span class="jump-num">第 46 章</span>
+<span class="jump-title">全年代推薦繁殖母馬・四大管道引進大百科 (1968~2025)</span>
+</button>
+<button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-gamerch-master-db')">
+<span class="jump-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+<span class="jump-num">第 47 章</span>
+<span class="jump-title">Winning Post 10 2026 終極進階攻略與暗箱大數據庫 (Gamerch 48 篇全量深度攻略)</span>
+</button>
 <button class="chapter-jump-btn" onclick="jumpToChapter('pillar-db', 'sec-nicknames-full-db')">
 <span class="jump-icon"><i class="fa-solid fa-tags"></i></span>
 <span class="jump-num">第 46 章</span>
@@ -44035,6 +44110,7 @@ function switchMainPillar(pillarId) {
         target.classList.add('active');
         if (pillarId === 'pillar-db') {
             if (typeof window.initMasterHorseDb === 'function') window.initMasterHorseDb();
+            if (typeof window.initGamerchMasterDB === 'function') window.initGamerchMasterDB();
             if (typeof initSiresAndNenpyo === 'function') initSiresAndNenpyo();
             if (typeof filterBreedingHorsesTable === 'function') filterBreedingHorsesTable();
             if (typeof filterRacehorsesTable === 'function') filterRacehorsesTable();
@@ -45159,7 +45235,7 @@ function runExplosionSimulation() {
 function runSimulation() { runExplosionSimulation(); }
 
 // ==========================================
-// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.22)
+// 🧬 支柱二：配合繁育大系 互動計算器與決策精靈核心引擎 (v04.23)
 // ==========================================
 
 // 1. 神器一：新手極速配種決策精靈 (Breeding Decision Wizard)
@@ -49581,6 +49657,260 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
     setTimeout(window.initBroodmareRecsUI, 150);
+}
+
+
+
+
+/* ==========================================================================
+   第 47 章：Winning Post 10 2026 終極進階攻略與暗箱大數據庫 UI 引擎
+   ========================================================================== */
+window.currentGamerchModule = 'mask-data';
+window.currentGamerchScenarioYear = '1968';
+
+window.switchGamerchModule = function(modId, btn) {
+    window.currentGamerchModule = modId;
+    const rail = document.getElementById('gamerchModuleChips');
+    if (rail) {
+        rail.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+    }
+    if (btn) btn.classList.add('active');
+    
+    // Update badge text
+    const badgeEl = document.getElementById('gamerchActiveModuleBadge');
+    if (badgeEl && window.GAMERCH_MASTER_DB) {
+        const mod = window.GAMERCH_MASTER_DB.modules.find(m => m.id === modId);
+        if (mod) {
+            badgeEl.innerHTML = `${mod.badge} ${mod.name}`;
+        }
+    }
+    
+    window.renderGamerchModuleContent();
+};
+
+window.onGamerchSearchChange = function() {
+    window.renderGamerchModuleContent();
+};
+
+window.resetGamerchFilters = function() {
+    const sInput = document.getElementById('gamerchSearchInput');
+    if (sInput) sInput.value = '';
+    window.switchGamerchModule('mask-data', document.querySelector('#gamerchModuleChips .chip-btn[data-module="mask-data"]'));
+};
+
+window.switchGamerchScenarioYear = function(year, btn) {
+    window.currentGamerchScenarioYear = String(year);
+    const rail = document.getElementById('gamerchScenarioChips');
+    if (rail) {
+        rail.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+    }
+    if (btn) btn.classList.add('active');
+    window.renderGamerchModuleContent();
+};
+
+window.renderGamerchModuleContent = function() {
+    const container = document.getElementById('gamerchContentContainer');
+    if (!container || !window.GAMERCH_MASTER_DB) return;
+    
+    const mod = window.GAMERCH_MASTER_DB.modules.find(m => m.id === window.currentGamerchModule);
+    if (!mod) {
+        container.innerHTML = `<div style="text-align:center; padding:30px; color:var(--text-muted);">模組載入中...</div>`;
+        return;
+    }
+    
+    const searchVal = (document.getElementById('gamerchSearchInput')?.value || '').toLowerCase().trim();
+    let html = '';
+    
+    // Module Description Header
+    html += `
+        <div style="background:rgba(30, 41, 59, 0.5); border-left:4px solid var(--accent-gold); padding:12px 18px; border-radius:6px; margin-bottom:16px;">
+            <div style="font-size:15px; font-weight:700; color:var(--text-primary); margin-bottom:4px;">
+                <i class="fa-solid ${mod.icon}" style="color:var(--accent-gold); margin-right:8px;"></i>${mod.name}
+            </div>
+            <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">${mod.desc}</div>
+        </div>
+    `;
+    
+    // Render based on module type
+    if (mod.id === 'initial-transfers') {
+        // Render 8 scenarios sub-chips
+        html += `
+            <div style="margin-bottom:14px;">
+                <div style="font-size:13px; font-weight:700; color:var(--accent-gold); margin-bottom:6px;">
+                    <i class="fa-solid fa-clock-rotate-left"></i> 選擇年代劇本開局 (8大劇本)：
+                </div>
+                <div class="chip-rail" id="gamerchScenarioChips" style="padding: 4px 2px 8px 2px !important;">
+        `;
+        mod.scenarios.forEach(sc => {
+            const isActive = String(sc.year) === String(window.currentGamerchScenarioYear) ? 'active' : '';
+            html += `<button class="chip-btn ${isActive}" onclick="window.switchGamerchScenarioYear('${sc.year}', this)">📅 ${sc.year}年 (${sc.name.split('(')[1]?.replace(')', '') || sc.year})</button>`;
+        });
+        html += `</div></div>`;
+        
+        const currentSc = mod.scenarios.find(sc => String(sc.year) === String(window.currentGamerchScenarioYear)) || mod.scenarios[0];
+        let horses = currentSc.horses;
+        if (searchVal) {
+            horses = horses.filter(h => `${h.type} ${h.name} ${h.grow} ${h.dist} ${h.comment}`.toLowerCase().includes(searchVal));
+        }
+        
+        html += `
+            <div class="scrollable-table-box" style="margin-top:10px;">
+                <table class="data-table" style="min-width:1080px; width:100%;">
+                    <thead>
+                        <tr>
+                            <th class="sortable-th" style="width:110px; text-align:left !important;">讓渡類別 ⇅</th>
+                            <th class="sortable-th" style="width:200px; text-align:left !important;">馬匹名稱 (日/中) ⇅</th>
+                            <th class="sortable-th" style="width:80px; text-align:left !important;">SP 數值 ⇅</th>
+                            <th class="sortable-th" style="width:90px; text-align:left !important;">成長型 ⇅</th>
+                            <th class="sortable-th" style="width:130px; text-align:left !important;">適性距離 ⇅</th>
+                            <th class="sortable-th" style="width:100px; text-align:left !important;">推薦度 ⇅</th>
+                            <th style="min-width:370px; text-align:left !important; white-space:normal !important;">戰略定位與推薦理由 (SOP)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+        
+        horses.forEach(h => {
+            const spColor = h.sp >= 75 ? 'var(--accent-gold)' : (h.sp >= 70 ? '#38bdf8' : '#94a3b8');
+            html += `
+                <tr>
+                    <td style="text-align:left !important;"><span class="badge badge-info">${h.type}</span></td>
+                    <td style="font-weight:700; color:var(--text-primary); text-align:left !important;">${h.name}</td>
+                    <td style="font-weight:800; color:${spColor}; text-align:left !important;">${h.sp}</td>
+                    <td style="text-align:left !important;">${h.grow}</td>
+                    <td style="color:#94a3b8; text-align:left !important;">${h.dist}</td>
+                    <td style="color:#f59e0b; font-weight:700; text-align:left !important;">${h.rating}</td>
+                    <td style="text-align:left !important; line-height:1.6; white-space:normal !important; word-break:break-word;">${h.comment}</td>
+                </tr>
+            `;
+        });
+        html += `</tbody></table></div>`;
+        
+    } else if (mod.table) {
+        // Single table module
+        let rows = mod.table.rows;
+        if (searchVal) {
+            rows = rows.filter(r => r.join(' ').toLowerCase().includes(searchVal));
+        }
+        
+        html += `
+            <div class="scrollable-table-box" style="margin-top:10px;">
+                <table class="data-table" style="min-width:1120px; width:100%;">
+                    <thead>
+                        <tr>
+        `;
+        mod.table.headers.forEach(h => {
+            html += `<th class="sortable-th" style="text-align:left !important;">${h} ⇅</th>`;
+        });
+        html += `</tr></thead><tbody>`;
+        
+        rows.forEach(r => {
+            html += `<tr>`;
+            r.forEach((cell, idx) => {
+                const style = idx === 0 ? 'font-weight:700; color:var(--text-primary);' : (idx === r.length - 1 ? 'min-width:320px; white-space:normal !important; line-height:1.6;' : 'line-height:1.5;');
+                html += `<td style="${style} text-align:left !important;">${cell}</td>`;
+            });
+            html += `</tr>`;
+        });
+        html += `</tbody></table></div>`;
+        
+    } else if (mod.sections) {
+        // Multi-section module
+        mod.sections.forEach(sec => {
+            html += `
+                <div style="margin-top:20px; margin-bottom:14px;">
+                    <div style="font-size:15px; font-weight:800; color:var(--accent-gold); border-bottom:1px solid rgba(245, 158, 11, 0.3); padding-bottom:6px; margin-bottom:12px;">
+                        ${sec.title}
+                    </div>
+            `;
+            
+            if (sec.type === 'cards' && sec.cards) {
+                html += `<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px;">`;
+                sec.cards.forEach(card => {
+                    const borderColor = card.color === 'gold' ? 'var(--accent-gold)' : (card.color === 'blue' ? '#38bdf8' : '#10b981');
+                    html += `
+                        <div style="background:rgba(15, 23, 42, 0.6); border:1px solid ${borderColor}; border-radius:8px; padding:14px;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                <div style="font-weight:700; color:var(--text-primary); font-size:14px;">${card.title}</div>
+                                <span class="badge" style="background:${borderColor}; color:#0f172a; font-weight:800; font-size:11px;">${card.tag}</span>
+                            </div>
+                            <div style="font-size:13px; color:var(--text-secondary); line-height:1.6; text-align:left !important;">
+                                ${card.content.replace(/\n/g, '<br/>')}
+                            </div>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+            } else if (sec.type === 'table' && sec.headers && sec.rows) {
+                let rows = sec.rows;
+                if (searchVal) {
+                    rows = rows.filter(r => r.join(' ').toLowerCase().includes(searchVal));
+                }
+                html += `
+                    <div class="scrollable-table-box">
+                        <table class="data-table" style="min-width:1080px; width:100%;">
+                            <thead>
+                                <tr>
+                `;
+                sec.headers.forEach(h => {
+                    html += `<th class="sortable-th" style="text-align:left !important;">${h} ⇅</th>`;
+                });
+                html += `</tr></thead><tbody>`;
+                rows.forEach(r => {
+                    html += `<tr>`;
+                    r.forEach((cell, idx) => {
+                        const style = idx === 0 ? 'font-weight:700; color:var(--text-primary);' : (idx === r.length - 1 ? 'min-width:320px; white-space:normal !important; line-height:1.6;' : 'line-height:1.5;');
+                        html += `<td style="${style} text-align:left !important;">${cell}</td>`;
+                    });
+                    html += `</tr>`;
+                });
+                html += `</tbody></table></div>`;
+            }
+            html += `</div>`;
+        });
+    } else if (mod.cards) {
+        // Direct cards module
+        html += `<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; margin-top:12px;">`;
+        mod.cards.forEach(card => {
+            const borderColor = card.color === 'gold' ? 'var(--accent-gold)' : (card.color === 'blue' ? '#38bdf8' : '#10b981');
+            html += `
+                <div style="background:rgba(15, 23, 42, 0.6); border:1px solid ${borderColor}; border-radius:8px; padding:14px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <div style="font-weight:700; color:var(--text-primary); font-size:14px;">${card.title}</div>
+                        <span class="badge" style="background:${borderColor}; color:#0f172a; font-weight:800; font-size:11px;">${card.tag}</span>
+                    </div>
+                    <div style="font-size:13px; color:var(--text-secondary); line-height:1.6; text-align:left !important;">
+                        ${card.content.replace(/\n/g, '<br/>')}
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div>`;
+    }
+    
+    container.innerHTML = html;
+    
+    // Enable sorting on generated tables
+    if (typeof window.makeSortable === 'function') {
+        container.querySelectorAll('table.data-table').forEach(tbl => window.makeSortable(tbl));
+    }
+};
+
+window.initGamerchMasterDB = function() {
+    if (window.GAMERCH_MASTER_DB) {
+        window.renderGamerchModuleContent();
+    } else {
+        setTimeout(window.initGamerchMasterDB, 100);
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof window.initGamerchMasterDB === 'function') {
+        window.initGamerchMasterDB();
+    }
+});
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(window.initGamerchMasterDB, 150);
 }
 
 </script>
